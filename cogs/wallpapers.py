@@ -26,6 +26,13 @@ class wallpapers(commands.Cog):
         embednat = discord.Embed(title="Nature Wallpapers", color=0x00ff00, url=imgnat)
         embednat.set_image(url=imgnat)
         await ctx.send(embed=embednat)
+    
+    @wallpaper.command()
+    async def starwars(self, ctx):
+        imgnat = random.choice(desStarwars.images)
+        embednat = discord.Embed(title="Star Wars Wallpapers", color=0x00ff00, url=imgstarwars)
+        embednat.set_image(url=imgstarwars)
+        await ctx.send(embed=embedstarwars)
 
 
 def setup(bot):
