@@ -11,7 +11,7 @@ class wallpapers(commands.Cog):
         self.bot = bot
     @commands.group(invoke_without_command=True)
     async def wallpaper(self, ctx):    
-        wallinfo = discord.Embed(title="Wallpaper command", description="Используется для просмотра обоев рабочего стола. ", color=0x00ff00)
+        wallinfo = discord.Embed(title="Wallpaper command", description="Used to view desktop wallpapers. ", color=0x00ff00)
         wallinfo.add_field(name="Usage", value="``wallpaper anime`` - for weaboo stupid fucks. \n``wallpaper nature``- nature wallpapers. \n``wallpaper starwars``- star wars wallpapers.", inline=True)
         await ctx.send(embed=wallinfo)
 
