@@ -3,6 +3,7 @@ import asyncio
 import random
 from scripts import desAnime
 from scripts import desNature
+from scripts import desStarwars
 from discord.ext import commands
 
 class wallpapers(commands.Cog):
