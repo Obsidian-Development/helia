@@ -12,7 +12,7 @@ class wallpapers(commands.Cog):
     @commands.group(invoke_without_command=True)
     async def wallpaper(self, ctx):    
         wallinfo = discord.Embed(title="Команда wallpaper", description="Используется для просмотра обоев рабочего стола. ", color=0x00ff00)
-        wallinfo.add_field(name="Использование", value="``wallpaper anime`` - for weaboo stupid fucks. \n``wallpaper nature``- nature wallpapers.", inline=True)
+        wallinfo.add_field(name="Использование", value="``wallpaper anime`` - for weaboo stupid fucks. \n``wallpaper nature``- nature wallpapers. \n``wallpaper starwars``- star wars wallpapers.", inline=True)
         await ctx.send(embed=wallinfo)
 
     @wallpaper.command()
