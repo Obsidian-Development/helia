@@ -72,6 +72,15 @@ class mod(commands.Cog):
         else:
             await ctx.send("bot: Not Enough Permissions")
 
+    @commands.command()
+    async def shutdown(ctx): # Команда для выключения бота
+        author = ctx.message.author
+        if author.id == 540142383270985738:
+        await ctx.send("Shutting Down The Bot")
+        await ctx.bot.logout()
+    else:
+        await ctx.send("bot: You dont have enough Permissions for this command : Need perms Bot Owner")        
+
 
 def setup(bot):
     bot.add_cog(mod(bot))
