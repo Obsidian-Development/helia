@@ -5,6 +5,8 @@ commands_string = """
 **Moderation and Administartion Contact Commands Info**
 `clear`, `devnull`, `rmmod`, `unrmmod`, `userdel`, `sub`, `ticket`, `shutdown`, `welcome` , `goodbye` , `set_status`
 
+**Utility Commands**
+`embed` `factorial` `randint` `remind` `sqrt` `wallpaper`
 
 **Other Commands**
 `avatar` `guild` `neofetch` `voicedemo` `casino` `kubik` `monetka` `ubuntu ` `mint` `manjaro` `debian` `arch` `echo` `ping`
