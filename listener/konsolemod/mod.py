@@ -76,7 +76,8 @@ class mod(commands.Cog):
     async def shutdown(self, ctx,): # Команда для выключения бота
         author = ctx.message.author
         if author.id == 540142383270985738:
-            await ctx.send("Shutting Down The Bot")
+            embed=discord.Embed(title="Shutting Down", description="Goodbye", color=0xff8000)
+            await ctx.send(embed=embed)
             await ctx.bot.logout()
         else:
             await ctx.send("bot: You dont have enough Permissions for this command : Need perms Bot Owner")      
