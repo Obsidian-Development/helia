@@ -72,7 +72,7 @@ class mod(commands.Cog):
         else:
             await ctx.send("bot: Not Enough Permissions")
 
-    @bot.command()
+    @commands.command()
     async def shutdown(ctx): # Команда для выключения бота
         author = ctx.message.author
         if author.id == 540142383270985738:
