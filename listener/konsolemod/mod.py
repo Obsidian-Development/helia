@@ -79,7 +79,7 @@ class mod(commands.Cog):
         await ctx.send("Shutting Down The Bot")
         await ctx.bot.logout()
     else:
-        await ctx.send("bot: You dont have enough Permissions for this command : Need perms Bot Owner")        
+        await ctx.send("bot: You dont have enough Permissions for this command : Need perms Bot Owner")      
 
 
 def setup(bot):
