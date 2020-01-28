@@ -43,7 +43,7 @@ class GeneralListener(commands.Cog):
     async def ping(self, ctx):
         latency = "%.0fms" % (self.client.latency * 100)
         embed = discord.Embed(
-            title="{}-bot's Latency'".format(self.client.name),
+            title="{}-Latency'".format(self.client.name),
             type='rich',
             description=":hourglass_flowing_sand:" + latency,
             colour=discord.Colour(value=11735575).orange()
