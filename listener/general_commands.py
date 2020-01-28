@@ -11,6 +11,9 @@ commands_string = """
 **Other Commands**
 `avatar` `guild` `neofetch` `voicedemo` `casino` `kubik` `monetka` `ubuntu ` `mint` `manjaro` `debian` `arch` `echo` `ping`
 
+**Invite The Bot To Your Server**
+`https://discordapp.com/oauth2/authorize?client_id=666304823934844938&scope=bot&permissions=8`
+
 """
 
 class GeneralListener(commands.Cog):
