@@ -12,7 +12,8 @@ class mod(commands.Cog):
         author = ctx.message.author
         if author.guild_permissions.kick_members:
             await member.kick(reason=reason)
-            await ctx.send(f"bot: User Removed for: {reason}")
+            embed=discord.Embed(title="Action Done", description="User Removed", color=0xff8000)
+            await ctx.send(embed=embed)
         else:
                 embed=discord.Embed(title="You failed", description="You do not have enough permissions", color=0xff0000)
                 await ctx.send(embed=embed)
@@ -22,7 +23,8 @@ class mod(commands.Cog):
         author = ctx.message.author
         if author.guild_permissions.ban_members:
                 await member.ban(reason=reason)
-                await ctx.send(f"bot: User Banned for: {reason}")
+                embed=discord.Embed(title="Action Done", description="User Banned", color=0xff8000)
+                await ctx.send(embed=embed)
         else:
                 embed=discord.Embed(title="You failed", description="You do not have enough permissions", color=0xff0000)
                 await ctx.send(embed=embed)
