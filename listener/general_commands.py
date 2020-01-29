@@ -67,7 +67,7 @@ class GeneralListener(commands.Cog):
             embed=discord.Embed(title="Рапорт", description="Ваш приказ выполнен о владыка ", color=0xff8000)
             embed.add_field(name="English", value="Your orders were done My Lord", inline=True)
             embed.set_footer(text="Openbot")
-            await self.bot.say(embed=embed)
+            await ctx.send(embed=embed)
         else:
             await ctx.send("bot: You dont have enough Permissions for this command : Need perms Bot Owner")       
 
