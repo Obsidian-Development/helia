@@ -14,7 +14,8 @@ class mod(commands.Cog):
             await member.kick(reason=reason)
             await ctx.send(f"bot: User Removed for: {reason}")
         else:
-                await ctx.send("bot: Not Enough Permissions")
+                embed=discord.Embed(title="You failed", description="You do not have enough permissions", color=0xff0000)
+                await ctx.send(embed=embed)
 
     @commands.command()
     async def devnull(self, ctx, member : discord.Member,*, reason=None ): # devnull - бан пользователя
@@ -23,7 +24,8 @@ class mod(commands.Cog):
                 await member.ban(reason=reason)
                 await ctx.send(f"bot: User Banned for: {reason}")
         else:
-                await ctx.send("bot: Not Enough Permissions")
+                embed=discord.Embed(title="You failed", description="You do not have enough permissions", color=0xff0000)
+                await ctx.send(embed=embed)
 
     @commands.command()
     async def clear(self, ctx,*,number:int=None): # clear - Очистка сообщений
@@ -36,7 +38,8 @@ class mod(commands.Cog):
                 await ctx.channel.purge(limit=number)
                 await ctx.send(f"bot: Cleared Messages")
         else:
-            await ctx.send("bot: Not Enough Permissions")
+            embed=discord.Embed(title="You failed", description="You do not have enough permissions", color=0xff0000)
+            await ctx.send(embed=embed)
 
 
     @commands.command()
@@ -55,7 +58,8 @@ class mod(commands.Cog):
             await channel.send(embed=mutemb)
 
         else:
-            await ctx.send("bot: Not Enough Permissions")
+            embed=discord.Embed(title="You failed", description="You do not have enough permissions", color=0xff0000)
+            await ctx.send(embed=embed)
 
     @commands.command()
     async def unrmmod(self, ctx, member: discord.Member):
@@ -70,7 +74,8 @@ class mod(commands.Cog):
             unmutemb.add_field(name="Administrator/Moderator", value=f"{ctx.message.author.mention}", inline=False)
             await channel.send(embed=unmutemb)
         else:
-            await ctx.send("bot: Not Enough Permissions")
+            embed=discord.Embed(title="You failed", description="You do not have enough permissions", color=0xff0000)
+            await ctx.send(embed=embed)
 
     @commands.command()
     async def shutdown(self, ctx,): # Команда для выключения бота
@@ -80,7 +85,8 @@ class mod(commands.Cog):
             await ctx.send(embed=embed)
             await ctx.bot.logout()
         else:
-            await ctx.send("bot: You dont have enough Permissions for this command : Need perms Bot Owner")      
+            embed=discord.Embed(title="You failed", description="Need Permission : Bot Owner", color=0xff0000)
+            await ctx.send(embed=embed)        
 
 
 def setup(bot):
