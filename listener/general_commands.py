@@ -69,7 +69,8 @@ class GeneralListener(commands.Cog):
             embed.set_footer(text="Openbot")
             await ctx.send(embed=embed)
         else:
-            await ctx.send("bot: You dont have enough Permissions for this command : Need perms Bot Owner")       
+            embed=discord.Embed(title="You failed", description="Need Permission : Bot Owner", color=0xff0000)
+            await ctx.send(embed=embed)      
 
 
 
