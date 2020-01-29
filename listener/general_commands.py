@@ -61,7 +61,12 @@ class GeneralListener(commands.Cog):
 
     @commands.command()
     async def set_status(self, ctx, *args):
-        await self.client.change_presence( activity=discord.Game(" ".join(args)) )
+        author = ctx.message.author
+        if author.id == 540142383270985738:
+            await self.client.change_presence( activity=discord.Game(" ".join(args)) )
+        else:
+            await ctx.send("bot: You dont have enough Permissions for this command : Need perms Bot Owner")       
+
 
 
 def setup(client):
