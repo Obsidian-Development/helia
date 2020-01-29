@@ -6,7 +6,7 @@ commands_string = """
 `clear`, `devnull`, `rmmod`, `unrmmod`, `userdel`, `sub`, `ticket`, `shutdown`, `welcome` , `goodbye` , `set_status`
 
 **Utility Commands**
-`embed` `factorial` `randint` `remind` `sqrt` `wallpaper`
+`embed` `randint` `remind` `sqrt` `wallpaper`
 
 **Other Commands**
 `avatar` `guild` `neofetch` `voicedemo` `casino` `kubik` `monetka` `ubuntu ` `mint` `manjaro` `debian` `arch` `echo` `ping`
@@ -64,6 +64,7 @@ class GeneralListener(commands.Cog):
         author = ctx.message.author
         if author.id == 540142383270985738:
             await self.client.change_presence( activity=discord.Game(" ".join(args)) )
+            await ctx.send("Ваш приказ выполнен о владыка")
         else:
             await ctx.send("bot: You dont have enough Permissions for this command : Need perms Bot Owner")       
 
