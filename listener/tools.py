@@ -14,12 +14,7 @@ class tools(commands.Cog):
     async def randint(self,ctx, stc1:int, stc2:int):
         result = random.randint(stc1, stc2)
         await ctx.send(f"Randome number geneation between {stc1} and {stc2} equals ``{result}``")
-
-    @commands.command()
-    async def factorial(self, ctx, num:int):
-        result = math.factorial(num)
-        await ctx.send(f"Factorial number of {num} equals ``{result}``")
-
+ 
     @commands.command()
     async def sqrt(self, ctx, num:int):
         result = math.sqrt(num)
