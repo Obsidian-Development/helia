@@ -7,8 +7,8 @@ kubik = [
 "6"]
 
 monet = [
-"Решка",
-"Орёл",
+"Tails",
+"Eagle",
 ]
 
 casin_obj1 = [
