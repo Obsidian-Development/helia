@@ -38,7 +38,8 @@ class mod(commands.Cog):
                 await ctx.send("bot: Enter Quota Of Messages to be purged")
             else:
                 await ctx.channel.purge(limit=number)
-                await ctx.send(f"bot: Cleared Messages")
+                embed=discord.Embed(title="Action Done", description="Cleared Messages", color=0xff8000)
+                await ctx.send(embed=embed)
         else:
             embed=discord.Embed(title="You failed", description="You do not have enough permissions", color=0xff0000)
             await ctx.send(embed=embed)
