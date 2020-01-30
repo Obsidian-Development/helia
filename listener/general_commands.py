@@ -14,6 +14,9 @@ commands_string = """
 **Invite The Bot To Your Server**
 "https://discordapp.com/oauth2/authorize?client_id=666304823934844938&scope=bot&permissions=8"
 
+**SOURCE CODE**
+"https://github.com/pieckenst/openbot"
+
 """
 
 class GeneralListener(commands.Cog):
