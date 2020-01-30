@@ -33,6 +33,14 @@ class gnulinux(commands.Cog):
         await ctx.send(embed=debian1)
 
     @commands.command()
+    async def deepin(self, ctx): # Deepin
+        channel = ctx.message.channel
+        await ctx.send("bot: It Will Be Done - Command Result Below")
+        deepin1=discord.Embed(title="Deepin", url="https://www.deepin.org", description="Deepin (stylized as deepin; formerly known as Linux Deepin and Hiweed Linux[6]) is a Linux distribution based on Debian's stable branch. It features DDE, the Deepin Desktop Environment, built on Qt and available for various distributions like Manjaro, Arch or Fedora. As of version 15.10 it also uses dde-kwin, a set of patches for KDE Plasma's window manager.[7] In 2019, Huawei started to ship Linux laptops pre-installed with deepin.[8] ", color=0x1793d1)
+        deepin1.set_thumbnail(url="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Deepin_logo.svg/600px-Deepin_logo.svg.png")
+        await ctx.send(embed=deepin1)
+
+    @commands.command()
     async def manjaro(self, ctx): # Manjaro
          channel = ctx.message.channel
          await ctx.send("bot: It Will Be Done - Command Result Below")

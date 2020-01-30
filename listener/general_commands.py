@@ -9,7 +9,7 @@ commands_string = """
 `embed` `randint` `remind` `sqrt` `wallpaper`
 
 **Other Commands**
-`avatar` `guild` `neofetch` `voicedemo` `casino` `kubik` `monetka` `ubuntu ` `mint` `manjaro` `debian` `arch` `echo` `ping`
+`avatar` `guild` `neofetch` `voicedemo` `casino` `kubik` `monetka` `ubuntu ` `mint` `manjaro` `debian` `arch` `echo` `ping` `deepin`
 
 **Invite The Bot To Your Server**
 "https://discordapp.com/oauth2/authorize?client_id=666304823934844938&scope=bot&permissions=8"
