@@ -6,9 +6,13 @@ class fun(commands.Cog):
     def __init__(self,bot):
         self.bot = bot
 
-    @commands.command(pass_context=True)
-    async def echo(self, ctx,*, arg):
-       await ctx.send(arg)
+    @commands.command()
+    async def echo(self, ctx, *, content:str):
+        if "@everyone" in ctx.message.content:
+            return await ctx.send("Don't ping 'everyone' please")
+        if "@here" in ctx.message.content:
+            return await ctx.send("Don't ping 'here' please")
+        await ctx.send(content)
 
     @commands.command(pass_context=True)
     async def setname(self, ctx, member: discord.Member, *, nickname=None):
