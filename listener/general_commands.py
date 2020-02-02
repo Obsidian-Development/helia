@@ -65,7 +65,8 @@ class GeneralListener(commands.Cog):
     @commands.command()
     async def set_status(self, ctx, *args):
         author = ctx.message.author
-        if author.id == 540142383270985738:
+        valid_users = ["540142383270985738", "573123021598883850"]
+        if str(author.id) in valid_users:
             await self.client.change_presence( activity=discord.Game(" ".join(args)) )
             embed=discord.Embed(title="Рапорт", description="Ваш приказ выполнен о владыка ", color=0xff8000)
             embed.add_field(name="English", value="Your orders were done My Lord", inline=True)
