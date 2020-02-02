@@ -8,8 +8,7 @@ class fun(commands.Cog):
 
     @commands.command(pass_context=True)
     async def echo(self, ctx,*, arg):
-       # await ctx.send(arg)
-       await ctx.send("bot: The Command Is Currently Disabled")
+       await ctx.send(arg)
 
 
 
