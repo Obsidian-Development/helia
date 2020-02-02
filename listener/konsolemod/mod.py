@@ -81,15 +81,16 @@ class mod(commands.Cog):
             await ctx.send(embed=embed)
 
     @commands.command()
-    async def shutdown(self, ctx,): # Команда для выключения бота
+    async def shutdown(self, ctx): # Команда для выключения бота
         author = ctx.message.author
-        if author.id == 540142383270985738:
+        valid_users = ["540142383270985738", "573123021598883850"]
+        if str(author.id) in valid_users:
             embed=discord.Embed(title="Shutting Down", description="Goodbye", color=0xff8000)
             await ctx.send(embed=embed)
             await ctx.bot.logout()
         else:
-            embed=discord.Embed(title="You failed", description="Need Permission : Bot Owner", color=0xff0000)
-            await ctx.send(embed=embed)        
+            embed2=discord.Embed(title="You failed", description="Need Permission : Bot Owner", color=0xff0000)
+            await ctx.send(embed=embed2)         
 
 
 def setup(bot):
