@@ -10,7 +10,7 @@ class fun(commands.Cog):
     @commands.command()
     async def echo(self, ctx, *, content):
         if blacklist.list in content:
-            return await ctx.send("Please Dont use @everyone or @here")
+            return await ctx.send("Please Dont use everyone or here")
         else:    
             return await ctx.send(content)
 
