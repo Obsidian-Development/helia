@@ -10,6 +10,17 @@ class fun(commands.Cog):
     async def echo(self, ctx,*, arg):
        await ctx.send(arg)
 
+    @commands.command(pass_context=True)
+    async def setname(self, ctx, member: discord.Member, *, nickname=None):
+       '''
+       Change user's nickname
+       '''
+       if member is ctx.message.author:
+            return await ctx.send("Invalid user")
+       await member.edit(nick=nickname)
+       await ctx.message.delete()
+   
+
 
 
 
