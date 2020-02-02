@@ -1,18 +1,18 @@
 import discord
 import asyncio
 from discord.ext import commands
+from scripts import blacklist
 
 class fun(commands.Cog):
     def __init__(self,bot):
         self.bot = bot
 
     @commands.command()
-    async def echo(self, ctx, *, content:str):
-        if "@everyone" in ctx.message.content:
-            return await ctx.send("Don't ping 'everyone' please")
-        if "@here" in ctx.message.content:
-            return await ctx.send("Don't ping 'here' please")
-        await ctx.send(content)
+    async def echo(self, ctx, *, content):
+        if blacklist.list in content:
+            return await ctx.send("Please Dont use @everyone or @here")
+        else:    
+            return await ctx.send(content)
 
     @commands.command(pass_context=True)
     async def setname(self, ctx, member: discord.Member, *, nickname=None):
