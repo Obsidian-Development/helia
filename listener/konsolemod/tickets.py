@@ -1,6 +1,7 @@
 import discord
 import asyncio
-import os
+import sqlite3
+from scripts import db
 from discord.ext import commands
 
 
@@ -10,46 +11,67 @@ class tickets(commands.Cog):
 
     @commands.group(invoke_without_command=True)
     async def ticket(self, ctx):
-        tinfo = discord.Embed(title="Ticket Command", description="Used for support ticker", color=0x00ff00)
-        tinfo.add_field(name="Usage", value="``ticket create`` - create a support ticket", inline=True)
+        tinfo = discord.Embed(title="Ticket command", description="Used for contacting administration and making a ticket", color=0x00ff00)
+        tinfo.add_field(name="Usage", value="``ticket create`` - creates a ticket in a channel", inline=True)
         await ctx.send(embed=tinfo)
 
     @ticket.command(pass_context=True)
     async def channel(self, ctx, channel: discord.TextChannel):
         author = ctx.message.author
-        ticktxt = os.path.join(f"db/tickets/", f"tickets_{author.guild.id}.txt")
         if author.guild_permissions.administrator:
-            if os.path.exists(ticktxt):
-                os.remove(ticktxt)
-            with open(ticktxt, "a") as sub_f:
-                sub_f.write(f"{channel.id}")
-            await ctx.send(f"bot: Ticket channel set to {channel.mention}")
+            connect = sqlite3.connect(db.main)
+            cursor = connect.cursor()
+            cursor.execute(db.select_table("ticket", ctx.guild.id))
+            result = cursor.fetchone()
+            if result is None:
+                val = (ctx.guild.id, channel.id)
+                cursor.execute(db.insert_table("ticket"), val)
+            else:
+                cursor.execute(db.update_table("ticket", channel.id, ctx.guild.id))
+            connect.commit()
+            cursor.close()
+            connect.close()        
+            await ctx.send(f"bot: Set the ticket channel to  {channel.mention}")
         else:
-            await ctx.send("bot: Not Enough Perms. Need permission: **Administrator**")
+            await ctx.send("bot: You do not have enough permissions - :You require **Administrator**")
 
     @ticket.command(pass_context=True)
     async def clear(self, ctx):
         author = ctx.message.author
         if author.guild_permissions.administrator:
-            tclear = os.path.join(f"db/tickets/"f"tickets_{author.guild.id}.txt")
-            if os.path.exists(tclear):
-                os.remove(tclear)
-            await ctx.send("bot: Config file was cleared")
+            connect = sqlite3.connect(db.main)
+            cursor = connect.cursor()
+            cursor.execute(db.select_table("ticket", ctx.guild.id))
+            result = cursor.fetchone()
+            if result is None:
+                await ctx.send("bot: Do not have a table for the ticket channel - Check Database")
+            else:
+                cursor.execute(db.delete_table("ticket", ctx.guild.id))
+                await ctx.send("bot: Cleared the table")  
+            connect.commit()
+            cursor.close()
+            connect.close()                
         else:
-            await ctx.send("bot: Not Enough Perms. Need permission: **Administrator**")
+            await ctx.send("bot: You do not have enough permissions - :You require **Administrator**")
 
     @ticket.command(pass_context=True)
     async def create(self, ctx, *, tekst):
         author = ctx.message.author
-        ticktxt = os.path.join(f"db/tickets/", f"tickets_{author.guild.id}.txt")
-        with open(ticktxt, "r") as file:
-            tset = file.read()
-            chan = int(tset)
-        channel = self.bot.get_channel(chan)
-        tick = discord.Embed(title=f"Ticket by user {author}", color=0x00ff00)
+        connect = sqlite3.connect(db.main)
+        cursor = connect.cursor()
+        cursor.execute(db.select_table("ticket", ctx.guild.id)) 
+        chan = cursor.fetchone()
+        if chan is None:
+            await ctx.send("bot: Do not have a activated ticket channel")
+            return
+        channel = self.bot.get_channel(id=int(chan[0]))
+        tick = discord.Embed(title=f"Ticket coming from {author}", color=0x00ff00)
         tick.add_field(name="Description", value=tekst, inline=False)
-        tick.set_footer(text=f"OpenBot Ticket System. User ID: {author.id} ")
+        tick.set_footer(text=f"Ticket System OpenBot. User ID: {author.id} ")
         await channel.send(embed=tick)
+        connect.commit()
+        cursor.close()
+        connect.close()
 
 def setup(bot):
     bot.add_cog(tickets(bot))

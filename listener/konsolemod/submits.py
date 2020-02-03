@@ -1,6 +1,7 @@
 import discord
 import asyncio
-import os
+import sqlite3
+from scripts import db
 from discord.ext import commands
 
 
@@ -10,58 +11,76 @@ class submits(commands.Cog):
 
     @commands.group(invoke_without_command=True)
     async def sub(self, ctx):
-        subinfo = discord.Embed(title="Command sub", description="Used to create a vote, proposal.. ",
-                                color=0x00ff00)
-        subinfo.add_field(name="Usage", value="``sub create``- create suggestion. ", inline=True)
+        subinfo = discord.Embed(title="Sub Command", description="Used for initiating a vote , suggestion  ", color=0x00ff00)
+        subinfo.add_field(name="Usage", value="``sub create``- create a suggestion ", inline=True)
         await ctx.send(embed=subinfo)
 
     @sub.command(pass_context=True)
     async def create(self, ctx, *, arg):
-        author = ctx.message.author
-        subtxt = os.path.join(r"db/submits/", f"submit_{author.guild.id}.txt")
+        author = ctx.message.author    
         if author.guild_permissions.manage_messages:
-            with open(subtxt, "r") as file:
-                subset = file.read()
-                chan = int(subset)
-            channel = self.bot.get_channel(chan)
-            user = ctx.message.author
-            submit = discord.Embed(title=f"<:speech_balloon:644199603033473055> User suggestion {user}",
-                                   description=arg, color=0x00ff00)
-            msg = await channel.send(embed=submit)
-            emoj = self.bot.get_emoji(656155011687907358)
-            emoj2 = self.bot.get_emoji(656155011746889758)
-            await msg.add_reaction(emoj)
-            await msg.add_reaction(emoj2)
+            connect = sqlite3.connect(db.main)
+            cursor = connect.cursor()
+            cursor.execute(db.select_table("submit", ctx.guild.id)) 
+            chan = cursor.fetchone()
+            if chan is None:
+                await ctx.send("bot: Do not have a set suggestion channel")
+                return
+            else:
+                channel = self.bot.get_channel(id=int(chan[0]))
+                user = ctx.message.author
+                submit = discord.Embed(title=f"<:speech_balloon:644199603033473055> Suggestion from {user}", description=arg, color=0x00ff00)
+                msg = await channel.send(embed=submit)
+                emoj = self.bot.get_emoji(656155011687907358)
+                emoj2 = self.bot.get_emoji(656155011746889758)
+                await msg.add_reaction(emoj)
+                await msg.add_reaction(emoj2)
+            connect.commit()
+            cursor.close()
+            connect.close()     
         else:
-            await ctx.send(
-                "bot: Insufficient permissions to execute this command. Necessary Rights: **Manage Messages**")
+            await ctx.send("bot: You do not have enough permissions: You Require  **Manage Messages**")
+
+                     
 
     @sub.command(pass_context=True)
     async def channel(self, ctx, channel: discord.TextChannel):
         author = ctx.message.author
-        subtxt = os.path.join(f"db/submits/submit_{author.guild.id}.txt")
         if author.guild_permissions.administrator:
-            if os.path.exists(subtxt):
-                os.remove(subtxt)
-            with open(subtxt, "a") as sub_f:
-                sub_f.write(f"{channel.id}")
-            await ctx.send(f"bot: Channel for bot suggestions was set to  {channel.mention}")
+            connect = sqlite3.connect(db.main)
+            cursor = connect.cursor()
+            cursor.execute(db.select_table("submit", ctx.guild.id))
+            result = cursor.fetchone()
+            if result is None:
+                val = (ctx.guild.id, channel.id)
+                cursor.execute(db.insert_table("submit"), val)
+            else:
+                cursor.execute(db.update_table("submit", channel.id, ctx.guild.id))
+            connect.commit()
+            cursor.close()
+            connect.close()
+            await ctx.send(f"bot: Set the suggestion channel to  {channel.mention}")
         else:
-            await ctx.send("bot: Insufficient permissions to execute this command. Necessary rights: ** Administrator **")
+            await ctx.send("bot: You do not have enough permissions - :You require **Administrator**")
 
     @sub.command(pass_context=True)
     async def clear(self, ctx):
         author = ctx.message.author
         if author.guild_permissions.administrator:
-            sclear = os.path.join(f"db/submits/submit_{author.guild.id}.txt")
-            if os.path.exists(sclear):
-                os.remove(sclear)
-            await ctx.send("bot: Config File Cleared")
+            connect = sqlite3.connect(db.main)
+            cursor = connect.cursor()
+            cursor.execute(db.select_table("submit", ctx.guild.id))
+            result = cursor.fetchone()
+            if result is None:
+                await ctx.send("bot: Do not have a table for the suggestion channel - Check Database")
+            else:
+                cursor.execute(db.delete_table("submit", ctx.guild.id))
+                await ctx.send("bot: Cleared the table")  
+            connect.commit()
+            cursor.close()
+            connect.close()        
         else:
-            await ctx.send("bot: Insufficient permissions to execute this command. Necessary rights: ** Administrator **")
-
-
-
+            await ctx.send("bot: You do not have enough permissions - :You require **Administrator**")
 
 
 def setup(bot):
