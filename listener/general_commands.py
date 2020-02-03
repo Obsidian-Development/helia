@@ -12,10 +12,15 @@ commands_string = """
 `avatar` `guild` `neofetch` `voicedemo` `casino` `kubik` `monetka` `ubuntu ` `mint` `manjaro` `debian` `arch` `echo` `ping` `deepin` `setname`
 
 **Invite The Bot To Your Server**
-"https://discordapp.com/oauth2/authorize?client_id=666304823934844938&scope=bot&permissions=8"
+"https://discordapp.com/oauth2/authorize?client_id=666304823934844938&scope=bot&permissions=2146958545"
+"If you for some reason dont trust the bot use the link below for invite with 0 permissions"
+"https://discordapp.com/oauth2/authorize?client_id=666304823934844938&scope=bot&permissions=0"
 
 **SOURCE CODE**
 "https://github.com/pieckenst/openbot"
+
+**Hosting**
+"Heroku (due to dependency on sqlite , bye bye saving set welcome and goodbye channels)"
 
 """
 
