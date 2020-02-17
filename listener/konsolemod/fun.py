@@ -19,8 +19,6 @@ class fun(commands.Cog):
        '''
        Change user's nickname
        '''
-       if member is ctx.message.author:
-            return await ctx.send("Invalid user")
        await member.edit(nick=nickname)
        await ctx.message.delete()
    

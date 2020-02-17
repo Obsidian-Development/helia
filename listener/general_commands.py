@@ -3,7 +3,7 @@ from discord.ext import commands
 
 commands_string = """
 **Moderation and Administartion Contact Commands Info**
-`clear`, `devnull`, `rmmod`, `unrmmod`, `userdel`, `sub`, `ticket`, `shutdown`, `welcome` , `goodbye` , `set_status`
+`clear`, `devnull`(alias `ban`), `rmmod`, `unrmmod`, `userdel`(alias `kick`), `sub`, `ticket`, `shutdown`, `welcome` , `goodbye` , `set_status`
 
 **Utility Commands**
 `embed` `randint` `remind` `sqrt` `wallpaper`
@@ -13,8 +13,8 @@ commands_string = """
 
 **Invite The Bot To Your Server**
 "https://discordapp.com/oauth2/authorize?client_id=666304823934844938&scope=bot&permissions=2146958545"
-"If you for some reason dont trust the bot use the link below for invite with 0 permissions"
-"https://discordapp.com/oauth2/authorize?client_id=666304823934844938&scope=bot&permissions=0"
+"If you for some reason dont trust the bot use the link below for invite with less permissions"
+"https://discordapp.com/oauth2/authorize?client_id=666304823934844938&scope=bot&permissions=67213505"
 
 **SOURCE CODE**
 "https://github.com/pieckenst/openbot"
