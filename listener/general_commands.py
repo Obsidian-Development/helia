@@ -47,11 +47,7 @@ class GeneralListener(commands.Cog):
         nano_bot = self.client.get_user(self.client.user.id)
         embed.set_thumbnail(url=nano_bot.avatar_url)
         await ctx.send(embed=embed)
-
-    @commands.command()
-    async def secret(self, ctx):
-        await ctx.send(ctx.secret)
-
+          
     @commands.command()
     async def ping(self, ctx):
         latency = "%.0fms" % (self.client.latency * 100)

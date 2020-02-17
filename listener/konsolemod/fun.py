@@ -16,11 +16,18 @@ class fun(commands.Cog):
 
     @commands.command(pass_context=True)
     async def setname(self, ctx, member: discord.Member, *, nickname=None):
-       '''
-       Change user's nickname
-       '''
-       await member.edit(nick=nickname)
-       await ctx.message.delete()
+       try:
+          '''
+          Change user's nickname
+          '''
+          await member.edit(nick=nickname)
+          await ctx.message.delete()
+          
+       except discord.errors.Forbidden:
+          embed=discord.Embed(title="🔴 Error", description="I need the ``Manage Nicknames`` permission to do this.", color=0xdd2e44,)
+          await ctx.send(embed=embed)
+          await ctx.message.delete()
+            
    
 
 
