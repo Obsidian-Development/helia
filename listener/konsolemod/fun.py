@@ -22,8 +22,6 @@ class fun(commands.Cog):
           '''
           await member.edit(nick=nickname)
           await ctx.message.delete()
-          embed=discord.Embed(title="Name set", color=0xff8000)
-          await ctx.send(embed=embed)  
           
        except discord.errors.Forbidden:
           embed=discord.Embed(title="🔴 Error", description="I need the ``Manage Nicknames`` permission to do this.", color=0xdd2e44,)
