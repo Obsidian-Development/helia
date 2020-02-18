@@ -14,7 +14,7 @@ class fun(commands.Cog):
         else:    
             return await ctx.send(content)
 
-    @commands.command(pass_context=True)
+    @commands.command(pass_context=True , aliases=['name', 'set_name', 'prozvische'])
     async def setname(self, ctx, member: discord.Member, *, nickname=None):
        try:
           '''
@@ -22,11 +22,13 @@ class fun(commands.Cog):
           '''
           await member.edit(nick=nickname)
           await ctx.message.delete()
+          embed=discord.Embed(title="Name set", color=0xff8000)
+          await ctx.send(embed=embed)  
           
        except discord.errors.Forbidden:
           embed=discord.Embed(title="🔴 Error", description="I need the ``Manage Nicknames`` permission to do this.", color=0xdd2e44,)
           await ctx.send(embed=embed)
-          await ctx.message.delete()
+          
             
    
 

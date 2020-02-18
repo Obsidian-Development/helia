@@ -11,16 +11,13 @@ commands_string = """
 **Other Commands**
 `avatar` `guild` `neofetch` `voicedemo` `casino` `kubik` `monetka` `ubuntu ` `mint` `manjaro` `debian` `arch` `echo` `ping` `deepin` `setname`
 
-**Invite The Bot To Your Server**
-"https://discordapp.com/oauth2/authorize?client_id=666304823934844938&scope=bot&permissions=2146958545"
-"If you for some reason dont trust the bot use the link below for invite with less permissions"
-"https://discordapp.com/oauth2/authorize?client_id=666304823934844938&scope=bot&permissions=67213505"
-
 **SOURCE CODE**
 "https://github.com/pieckenst/openbot"
 
 **Hosting**
 "Heroku (due to dependency on sqlite , bye bye saving set welcome and goodbye channels)"
+
+**Use $invite for getting bot invite links**
 
 """
 
@@ -62,6 +59,13 @@ class GeneralListener(commands.Cog):
     @commands.command()
     async def say(self, ctx, *args):
         await ctx.send(" ".join(args))
+
+    @commands.command()
+    async def invite(self, ctx):
+        embed = discord.Embed(title="Recomended Functionality Bot Invite", colour=discord.Colour(0xff6900), url="https://discordapp.com/oauth2/authorize?client_id=666304823934844938&scope=bot&permissions=2146958545", description="Bot invite Links")
+        embed.set_author(name="Basic Functionality Bot Invite", url="https://discordapp.com/oauth2/authorize?client_id=666304823934844938&scope=bot&permissions=67213505")
+        embed.set_footer(icon_url="https://cdn.discordapp.com/avatars/666304823934844938/4a2b2b8de59275e0986de9de582acb25.webp?size=1024")
+        await ctx.send(embed=embed)
 
     @commands.command()
     async def set_status(self, ctx, *args):
