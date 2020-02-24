@@ -3,21 +3,19 @@ from discord.ext import commands
 
 commands_string = """
 **Moderation and Administartion Contact Commands Info**
-`clear (message count)`, `devnull @member`(alias `ban`), `rmmod @member`, `unrmmod @member`, `userdel @member`(alias `kick`), `sub create`, `ticket create`, `shutdown`, `welcome` , `goodbye` , `set_status`
+`clear`, `devnull`, `rmmod`, `unrmmod`, `userdel`, `sub`, `ticket`, `shutdown`, `welcome` , `goodbye` , `set_status`
 
 **Utility Commands**
-`embed "your text" your text` `randint` `remind` `sqrt` `wallpaper`
+`embed` `randint` `remind` `sqrt` `wallpaper`
 
 **Other Commands**
-`avatar` `guild` `neofetch` `voicedemo (channel id) ` `casino` `kubik` `monetka` `ubuntu ` `mint` `manjaro` `debian` `arch` `echo (your text)` `ping` `deepin` `setname @member (your text)`
+`avatar` `guild` `neofetch` `voicedemo` `casino` `kubik` `monetka` `ubuntu ` `mint` `manjaro` `debian` `arch` `echo` `ping` `deepin` `setname`
+
+**Invite The Bot To Your Server**
+"https://discordapp.com/oauth2/authorize?client_id=666304823934844938&scope=bot&permissions=8"
 
 **SOURCE CODE**
 "https://github.com/pieckenst/openbot"
-
-**Hosting**
-"Heroku (due to dependency on sqlite , bye bye saving set welcome and goodbye channels)"
-
-**Use $invite for getting bot invite links**
 
 """
 
@@ -26,25 +24,8 @@ class GeneralListener(commands.Cog):
     def __init__(self, client):
         self.client = client
 
-    @commands.command()
-    async def help(self, ctx):
-        embed = discord.Embed(
-            title="OpenBot. Help System",
-            colour=discord.Colour(value=11735575).orange()
-            )
-        embed.add_field(
-            name=":tools: **Based On NigamanRPG#6937 KonsoleBot**",
-            value="Translated Into English By Middlle#7488"
-            )
-        embed.add_field(
-            name=":books: **Commands** | Prefix: **$**",
-            value=commands_string,
-            inline=False
-            )
-        nano_bot = self.client.get_user(self.client.user.id)
-        embed.set_thumbnail(url=nano_bot.avatar_url)
-        await ctx.send(embed=embed)
-          
+
+
     @commands.command()
     async def ping(self, ctx):
         latency = "%.0fms" % (self.client.latency * 100)
@@ -79,7 +60,7 @@ class GeneralListener(commands.Cog):
             await ctx.send(embed=embed)
         else:
             embed=discord.Embed(title="You failed", description="Need Permission : Bot Owner", color=0xff0000)
-            await ctx.send(embed=embed)      
+            await ctx.send(embed=embed)     
 
 
 

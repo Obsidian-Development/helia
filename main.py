@@ -1,7 +1,10 @@
 import discord
+import os 
+import json
 from listener.core.client import NanoClient as Client
 
 startup_extensions = [
+    'listener.konsolemod.helper',
     'listener.general_commands',
     'listener.konsolemod.fun',
     'listener.konsolemod.gnulinux',
@@ -14,6 +17,7 @@ startup_extensions = [
     'listener.tools',
     'listener.wallpapers',
     'listener.minigames',
+    'listener.music.music',
 ]
 
 client = Client(command_prefix='$')
