@@ -1,2 +1,3 @@
 heroku/python
 https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest.git
+https://github.com/xrisk/heroku-opus.git
