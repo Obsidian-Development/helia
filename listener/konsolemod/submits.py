@@ -1,7 +1,7 @@
 import discord
 import asyncio
 import sqlite3
-from scripts import db
+from scripts import db, help
 from discord.ext import commands
 
 
@@ -11,9 +11,7 @@ class submits(commands.Cog):
 
     @commands.group(invoke_without_command=True)
     async def sub(self, ctx):
-        subinfo = discord.Embed(title="Sub Command", description="Used for initiating a vote , suggestion  ", color=0x00ff00)
-        subinfo.add_field(name="Usage", value="``sub create``- create a suggestion ", inline=True)
-        await ctx.send(embed=subinfo)
+        await ctx.send(help.submit)
 
     @sub.command(pass_context=True)
     async def create(self, ctx, *, arg):

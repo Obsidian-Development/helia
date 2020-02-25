@@ -1,7 +1,7 @@
 import discord
 import asyncio
 import sqlite3
-from scripts import db
+from scripts import db, help
 from discord.ext import commands
 
 
@@ -11,9 +11,7 @@ class tickets(commands.Cog):
 
     @commands.group(invoke_without_command=True)
     async def ticket(self, ctx):
-        tinfo = discord.Embed(title="Ticket command", description="Used for contacting administration and making a ticket", color=0x00ff00)
-        tinfo.add_field(name="Usage", value="``ticket create`` - creates a ticket in a channel", inline=True)
-        await ctx.send(embed=tinfo)
+        await ctx.send(help.tickets)
 
     @ticket.command(pass_context=True)
     async def channel(self, ctx, channel: discord.TextChannel):

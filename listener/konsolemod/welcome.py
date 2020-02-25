@@ -3,7 +3,7 @@ import asyncio
 import functools
 import os
 import sqlite3
-from scripts import db
+from scripts import db, help
 from discord.ext import commands
 class welcome(commands.Cog):
     def __init__(self,bot):
@@ -33,7 +33,7 @@ class welcome(commands.Cog):
         
     @commands.group(invoke_without_command=True)
     async def welcome(self, ctx):
-        await ctx.send("Set A Welcome Channel ")
+        await ctx.send(help.welcome)
 
     @welcome.command(pass_context=True)
     async def channel(self, ctx, chan: discord.TextChannel):

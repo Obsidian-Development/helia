@@ -3,7 +3,7 @@ import asyncio
 from datetime import datetime
 import functools
 import sqlite3
-from scripts import db
+from scripts import db, help
 from discord.ext import commands
 class goodbye(commands.Cog):
     def __init__(self,bot):
@@ -33,7 +33,7 @@ class goodbye(commands.Cog):
 
     @commands.group(invoke_without_command=True)
     async def goodbye(self, ctx):
-        await ctx.send("bot: Set a goodbye channel")
+        await ctx.send(help.goodbye)
 
     @goodbye.command()
     async def channel(self, ctx, channel: discord.TextChannel):

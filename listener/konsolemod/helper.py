@@ -63,6 +63,7 @@ class helper(commands.Cog):
         embed.add_field(name="Current version", value=ver, inline=False)
         embed.add_field(name="Author", value="Bot based on NigamanRPG#6937 KonsoleBot -English translation + additions by Middlle#7488 ", inline=False)
         embed.add_field(name="Thanks", value="NigamanRPG#6937 for konsolebot code on https://computerteam.tk:4600/ , Plastik#5004 for setname command code ", inline=False)
+        embed.add_field(name="Hosting", value="Okteto", inline=False)
         embed.set_footer(text="Openbot", icon_url="https://cdn.discordapp.com/avatars/666304823934844938/4a2b2b8de59275e0986de9de582acb25.webp?size=1024")
         await ctx.send(embed=embed)
 
