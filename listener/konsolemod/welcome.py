@@ -11,21 +11,27 @@ class welcome(commands.Cog):
     
     @commands.Cog.listener()
     async def on_member_join(self, member):
-        connect = sqlite3.connect(db.main)
-        cursor = connect.cursor()
-        cursor.execute(db.select_table("welcome", member.guild.id)) 
-        chan = cursor.fetchone()
-        if chan is None:
-            print(f"Server {member.guild.id} doesent have a set welcome channel")
-            return
-        else:
-             hello = discord.Embed(title="Welcome", description=f"{member} hello there", color=0x00ff00)
-             hello.set_author(name=f"{member.guild}", icon_url=f"{member.guild.icon_url}")
-             hello.set_thumbnail(url=f"{member.avatar_url}")
-             channel = self.bot.get_channel(id=int(chan[0]))
-             await channel.send(embed=hello)      
-        cursor.close()
-        connect.close()
+        try:
+            connect = sqlite3.connect(db.main)
+            cursor = connect.cursor()
+            cursor.execute(db.select_table("welcome", "channel_id", "guild_id", member.guild.id)) 
+            chan = cursor.fetchone()
+            if chan is None:
+                return
+            else:
+                cursor.execute(db.select_table("welcome", "text", "guild_id", member.guild.id))
+                desc = cursor.fetchone()
+                if desc is None: 
+                    desc = f" Hi there {MEMBER} and welcome to our humble community"
+                hello = discord.Embed(title="Hello there", description=(desc[0]).format(MEMBER=member, MENTION=member.mention), color=0x00ff00)
+                hello.set_author(name=f"{member.guild}", icon_url=f"{member.guild.icon_url}")
+                hello.set_thumbnail(url=f"{member.avatar_url}")
+                channel = self.bot.get_channel(id=int(chan[0]))
+                await channel.send(embed=hello)      
+            cursor.close()
+            connect.close()
+        except:
+            print(f"The server  {member.guild.id} encountered an unknown error. Perhaps the welcome channel was removed.")
 
        
 
@@ -36,44 +42,80 @@ class welcome(commands.Cog):
         await ctx.send(help.welcome)
 
     @welcome.command(pass_context=True)
-    async def channel(self, ctx, chan: discord.TextChannel):
-        author = ctx.message.author     
-        if author.guild_permissions.administrator:
-            connect = sqlite3.connect(db.main)
-            cursor = connect.cursor()   
-            cursor.execute(db.select_table("welcome", ctx.guild.id)) 
-            res = cursor.fetchone()
-            if res is None:
-                val = (ctx.guild.id, chan.id)
-                cursor.execute(db.insert_table("welcome"), val)
+    async def channel(self, ctx, chan: discord.TextChannel=None):
+        try:
+            author = ctx.message.author     
+            if author.guild_permissions.administrator:
+                connect = sqlite3.connect(db.main)
+                cursor = connect.cursor()   
+                cursor.execute(db.select_table("welcome", "channel_id", "guild_id", ctx.guild.id)) 
+                res = cursor.fetchone()
+                if res is None:
+                    val = (ctx.guild.id, chan.id)
+                    cursor.execute(db.insert_table("welcome","guild_id","channel_id"), val)
+                else:
+                    cursor.execute(db.update_table("welcome", "channel_id", chan.id, "guild_id", ctx.guild.id))  
+                connect.commit()
+                cursor.close()
+                connect.close()
+                await ctx.send(f"bot: Set the welcome channel to {chan.mention}")  
             else:
-                cursor.execute(db.update_table("welcome", chan.id, ctx.guild.id))  
-            connect.commit()
-            cursor.close()
-            connect.close()
-            await ctx.send(f"bot: Succesfully set the welcome channel to {chan.mention}")  
-        else:
-            await ctx.send("bot: You do not have enough permissions - :You require **Administrator**")      
+                await ctx.send("You do not have enough permissions - :You require **Administrator**.")  
+        except:
+            await ctx.send("bot: Error")    
 
 
     @welcome.command(pass_context=True)
     async def clear(self, ctx):
-        author =  ctx.message.author
-        if author.guild_permissions.administrator:
-            connect = sqlite3.connect(db.main)
-            cursor = connect.cursor()
-            cursor.execute(db.select_table("welcome", ctx.guild.id))
-            res = cursor.fetchone()
-            if res is None:
-                await ctx.send("bot: Do not have a table for the welcome channel - Check Database")
+        try:
+            author = ctx.message.author
+            if author.guild_permissions.administrator:
+                connect = sqlite3.connect(db.main)
+                cursor = connect.cursor()
+                cursor.execute(db.select_table("welcome", "channel_id", "guild_id", ctx.guild.id))
+                res = cursor.fetchone()
+                if res is None:
+                    await ctx.send("bot: Do not have a table for the welcome channel - Check Database.")
+                else:
+                    cursor.execute(db.delete_table("welcome", "guild_id", ctx.guild.id))
+                    await ctx.send("bot: Cleared the table")
+                connect.commit()
+                cursor.close()
+                connect.close()
             else:
-                cursor.execute(db.delete_table("welcome", ctx.guild.id))
-                await ctx.send("bot: Cleared Table")
-            connect.commit()
-            cursor.close()
-            connect.close()
-        else:
-            await ctx.send("bot: You do not have enough permissions - :You require **Administrator**")
+                await ctx.send("You do not have enough permissions - :You require **Administrator**.")
+        except:
+            await ctx.send("bot: Error")
+    
+    @welcome.command(pass_context=True)
+    async def text(self, ctx,*,content=None):
+        try:    
+            author = ctx.message.author
+            if author.guild_permissions.administrator:
+                if content is None:
+                    return await ctx.send("bot: Please type the text you wish for the welcome message")
+                connect = sqlite3.connect(db.main)
+                cursor = connect.cursor()
+                cursor.execute(db.select_table("welcome", "text", "guild_id", ctx.guild.id))
+                res = cursor.fetchone()
+                if res is None:
+                    val = (ctx.guild.id, content)
+                    cursor.execute(db.insert_table("welcome","guild_id","text"), val)
+                else:
+                    val = (content, ctx.guild.id)
+                    cursor.execute("UPDATE welcome SET text = ? WHERE guild_id = ?", val)      
+                connect.commit()
+                cursor.close()
+                connect.close()
+                await ctx.send(f"bot: Set the welcome message text") 
+            else:
+                await ctx.send("bot: You do not have enough permissions - :You require **Administrator**.")
+        except:
+            await ctx.send("bot: Error , argument may be invalid")
+
+
+
+
        
 def setup(bot):
     bot.add_cog(welcome(bot))

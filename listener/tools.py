@@ -2,6 +2,7 @@ import discord
 import asyncio
 import random
 import math
+import wikipedia
 from scripts import blacklist
 from discord.ext import commands
 
@@ -24,7 +25,7 @@ class tools(commands.Cog):
     async def embed(self,ctx, name,*, content):
         creator = discord.Embed(title=name, description=content)
         await ctx.send(embed = creator)
-
+        
     @commands.group(invoke_without_command=True)
     async def remind(self, ctx):
         rinfo = discord.Embed(title="Reminder Command", description="Used to create a reminder. Time is indicated in seconds.", color=0x00ff00)
@@ -34,7 +35,8 @@ class tools(commands.Cog):
     @remind.command()
     async def me(self,ctx, time:int,*, content):
         author = ctx.message.author
-        if blacklist.list in content:
+        valid_users = ["663457844460388362"]
+        if str(author.id) in valid_users:
             await ctx.send("bot: Not enough rights to use this text in a reminder")
         else:
             await ctx.send(f"bot: Reminder successfully installed, off in {time} seconds")
@@ -52,6 +54,21 @@ class tools(commands.Cog):
                 await ctx.send(f"<:alarm_clock:664007109188255745> **Reminder for {role.mention} :** {content}")
             else:
                 await ctx.send("bot: Not Enough Permissions , Mention another role ")
+                
+    @commands.command()
+    async def wiki(self,ctx,*, searcher=None):
+        try:
+            wikipedia.set_lang("en")
+            req = wikipedia.page(searcher)
+            wikip = discord.Embed(title=req.title, description="Wikipedia search results", url=req.url, color=0x269926)
+            wikip.set_thumbnail(url=req.images[0])
+            await ctx.send(embed=wikip)
+        except wikipedia.exceptions.PageError:
+            await ctx.send("Wikipedia: No page with that name")
+        except:
+            await ctx.send("bot: Missing argument or permissions to do the command")
+
+
 
 
 def setup(client):

@@ -11,4 +11,7 @@ praw
 aiohttp
 random2
 simpleeval
-flask 
+flask
+datetime
+wikipedia
+Pillow

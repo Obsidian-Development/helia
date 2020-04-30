@@ -1,0 +1,10 @@
+{
+    "active_extensions": [
+        "ext.admin",
+        "ext.events",
+        "ext.music"
+    ],
+    "command_prefix": "",
+    "delete_messages": true,
+    "discord_token": ""
+}

@@ -1,14 +1,14 @@
 categories = """
 ```OpenBot Help System.```
-Prefix: ``$``
-More Information: ``$help [Module]``
-[ARG] - Required Argument | {ARG} - Optional Argument
+Prefix: ``{}``
+More Information: ``help [Module]``
+
 -----------------------------------
 **moderation** - Moderation module
 **minigames** - Minigames module
 **infosystem** - Information module
-**system** - Submission and ticket creation information
-**config** - Settings for server setup
+**system** - Submission and ticket creation information 
+**config** - Settings for server setup 
 **tools** - Useful tools
 **sudo** - Help for bot owners
 
@@ -23,7 +23,9 @@ mod = """
 ``kick [User] {Reason}`` - Kick user
 ``rmmod [User] {Reason}`` - Mute User
 ``unrmmod [User]`` - Unmute User
-``clear [Amount]`` - Clear messages"""
+``clear [Amount]`` - Clear messages
+``clear user [User] [Amount]`` - Clear messages from mentioned user
+"""
 
 minigames = """
 ```OpenBot Help. Module: Minigames```
@@ -57,7 +59,11 @@ config = """
 ``welcome channel [TextChannel] | clear`` - Sets a channel for welcome messages | Clears configuration in database
 ``goodbye channel [TextChannel] | clear`` - Sets a channel for farewell messages | Clears configuration in database
 ``sub channel [TextChannel] | clear`` - Sets a channel for suggestion messages | Clears configuration in database
-``ticket channel [TextChannel] | clear`` - Sets a channel for ticket messages | Clears configuration in database"""
+``ticket channel [TextChannel] | clear`` - Sets a channel for ticket messages | Clears configuration in database
+``prefix [Prefix]`` - Set the prefix for this guild
+``verify role | clear`` - Set the verification role | clear the verification role
+TEXT: {MEMBER} = User tag; {MENTION} = Mention of  the user
+"""
 
 tools = """
 ```OpenBot Help. Module: Tools```
@@ -72,6 +78,7 @@ tools = """
 ``mint``  information about a linux distribution named Linux Mint
 ``manjaro`` information about a linux distribution named Manjaro
 ``wallpaper`` get some nice wallpapers
+``wiki`` search for something on wikipedia
 """
 
 system = """
@@ -95,14 +102,18 @@ goodbye = """
 [ARG] - Required Argument | {ARG} - Optional Argument
 -----------------------------------
 ``goodbye channel [TextChannel]`` - Set a farewell channel
-``goodbye clear`` - clear database info""" 
+``goodbye clear`` - clear database info
+``goodbye text`` - set the text for a farewell
+""" 
 
 welcome = """
 ```OpenBot Help. Command: Welcome```
 [ARG] - Required Argument | {ARG} - Optional Argument
 -----------------------------------
 ``welcome channel [TextChannel]`` - Set a welcome channel
-``welcome clear`` - clear database info""" 
+``welcome clear`` - clear database info
+``welcome text`` - set the text for a welcome
+""" 
 
 submit = """
 ```OpenBot Help. Command: Sub```

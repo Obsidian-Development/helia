@@ -24,7 +24,7 @@ class NanoClient(commands.Bot):
             await session.post(self.BASE_URL, data=payload, headers=self.headers)
 
     async def on_ready(self):
-        status_message = discord.Game("I am Inevitable")
+        status_message = discord.Game("$help , OpenBot")
         await super(NanoClient, self).change_presence(status=discord.Status.online, activity=status_message)
         await self.update_status_on_dbl()
         print("Logged in as {}".format(super(NanoClient, self).user))
