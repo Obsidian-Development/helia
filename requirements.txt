@@ -13,5 +13,6 @@ random2
 simpleeval
 flask
 datetime
+timedelta
 wikipedia
 Pillow
