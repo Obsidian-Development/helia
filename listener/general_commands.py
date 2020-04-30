@@ -1,5 +1,7 @@
 import discord
 from discord.ext import commands
+from datetime import datetime, timedelta
+from scripts.time import pretty_datetime, pretty_timedelta
 
 commands_string = """
 **Moderation and Administartion Contact Commands Info**
@@ -28,14 +30,15 @@ class GeneralListener(commands.Cog):
 
     @commands.command()
     async def ping(self, ctx):
-        latency = "%.0fms" % (self.client.latency * 100)
-        embed = discord.Embed(
-            title="{} Latency'".format(self.client.name),
-            type='rich',
-            description=":hourglass_flowing_sand:" + latency,
-            colour=discord.Colour(value=11735575).orange()
-            )
-        await ctx.send(embed=embed)
+        '''Check response time.'''
+
+        msg = await ctx.send('Wait...')
+
+        await msg.edit(content='Response: {}.\nGateway: {}'.format(
+	   pretty_timedelta(msg.created_at - ctx.message.created_at),
+	   pretty_timedelta(timedelta(seconds=self.client.latency))
+	)
+	)
 
     @commands.command()
     async def say(self, ctx, *args):
