@@ -12,7 +12,7 @@ aiohttp
 random2
 simpleeval
 flask
-datetime
 timedelta
+datetime
 wikipedia
 Pillow

@@ -23,6 +23,7 @@ startup_extensions = [
     'listener.wallpapers',
     'listener.minigames',
     'listener.music.music',
+    'listener.announce',
 ]
 
 # Префикс
@@ -47,7 +48,7 @@ async def on_ready():
     db.control()
     print("[SQLITE] Tables checked")
     print("[SUCCESS] Started the bot") # Вывод информации о запуске
-    await bot.change_presence(status=discord.Status.online, activity=discord.Game("$help , OpenBot"))
+    await bot.change_presence(status=discord.Status.online, activity=discord.Activity(type=discord.ActivityType.watching, name=f"{len(bot.guilds)} servers ,$help, OpenBot"))
 
 
 bot.remove_command('help')

@@ -8,9 +8,9 @@ class infosystem(commands.Cog):
         self.bot = bot
 
     @commands.command()
-    async def neofetch(self, ctx, member: discord.Member=None):
+    async def neofetch(self, ctx , member : discord.Member=None  ):
         if member is None:
-            member = ctx.message.author
+            member = ctx.message.author  
         username = member.nick
         join = member.joined_at
         stat = member.status
