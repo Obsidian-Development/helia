@@ -65,7 +65,7 @@ class tickets(commands.Cog):
         channel = self.bot.get_channel(id=int(chan[0]))
         tick = discord.Embed(title=f"Ticket coming from {author}", color=0x00ff00)
         tick.add_field(name="Description", value=tekst, inline=False)
-        tick.set_footer(text=f"Ticket System OpenBot. User ID: {author.id} ")
+        tick.set_footer(text=f"Ticket System Openbot. User ID: {author.id} ")
         await channel.send(embed=tick)
         connect.commit()
         cursor.close()

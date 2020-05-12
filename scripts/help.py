@@ -1,11 +1,13 @@
 categories = """
-```OpenBot Help System.```
+```Openbot Help System.```
 Prefix: ``{}``
 More Information: ``help [Module]``
 
 -----------------------------------
 **moderation** - Moderation module
 **minigames** - Minigames module
+**fun** - Fun Module
+**music** - Music Module
 **infosystem** - Information module
 **system** - Submission and ticket creation information 
 **config** - Settings for server setup 
@@ -16,7 +18,7 @@ More Information: ``help [Module]``
 """ 
 
 mod = """
-```OpenBot Help. Module: Moderation```
+```Openbot Help. Module: Moderation```
 [ARG] - Required Argument | {ARG} - Optional Argument
 -----------------------------------
 ``ban [User] {Reason}`` - User Ban
@@ -28,7 +30,7 @@ mod = """
 """
 
 minigames = """
-```OpenBot Help. Module: Minigames```
+```Openbot Help. Module: Minigames```
 [ARG] - Required Argument | {ARG} - Optional Argument
 -----------------------------------
 ``kubik`` - Roll the dice (Results: a number from 1 to 6)
@@ -37,14 +39,29 @@ minigames = """
 """
 
 fun = """
-```OpenBot Help. Module: Fun```
+```Openbot Help. Module: Fun```
 [ARG] - Required Argument | {ARG} - Optional Argument
 -----------------------------------
 ``echo [text]`` - Send a message from bot name
 """
 
+music = """
+```Openbot Help. Module: Music```
+[ARG] - Required Argument | {ARG} - Optional Argument
+-----------------------------------
+``play [url]`` - Play Music/Video From youtube
+``pause`` - Pauses playback of track
+``resume`` - Resumes playback of track
+``np`` - Shows info about current track
+``stop`` - Stops playback
+``loop`` - Sets current track on repeat
+``skip`` - Skips current track
+``join`` - Connects to voice channel you are in
+``leave`` - Disconnect from Voice channel
+"""
+
 infosystem = """
-```OpenBot Help. Module: InfoSystem```
+```Openbot Help. Module: InfoSystem```
 [ARG] - Required Argument | {ARG} - Optional Argument
 -----------------------------------
 ``neofetch {User}`` - Information about user
@@ -53,7 +70,7 @@ infosystem = """
 ``voicedemo [VoiceChannel]`` - Get a link for screenshare in voice channel"""
 
 config = """
-```OpenBot Help. Module: Configuration```
+```Openbot Help. Module: Configuration```
 [ARG] - Required Argument | {ARG} - Optional Argument
 -----------------------------------
 ``welcome channel [TextChannel] | clear`` - Sets a channel for welcome messages | Clears configuration in database
@@ -66,7 +83,7 @@ TEXT: {MEMBER} = User tag; {MENTION} = Mention of  the user
 """
 
 tools = """
-```OpenBot Help. Module: Tools```
+```Openbot Help. Module: Tools```
 [ARG] - Required Argument | {ARG} - Optional Argument
 -----------------------------------
 ``embed [Title] [Content]`` - Creates a embed with your text
@@ -82,14 +99,14 @@ tools = """
 """
 
 system = """
-```OpenBot Help. Module: System```
+```Openbot Help. Module: System```
 [ARG] - Required Argument | {ARG} - Optional Argument
 -----------------------------------
 ``sub create [Text]`` - Create a suggestion
 ``ticket create [Text]`` - Send a ticket to administration"""
 
 sudo = """
-```OpenBot Help. Module: Owner configuration```
+```Openbot Help. Module: Owner configuration```
 [ARG] - Required Argument | {ARG} - Optional Argument
 -----------------------------------
 ``shutdown`` - Bot Shutdown
@@ -98,7 +115,7 @@ sudo = """
 
 # HELP для команд
 goodbye = """
-```OpenBot Help. Command: Goodbye```
+```Openbot Help. Command: Goodbye```
 [ARG] - Required Argument | {ARG} - Optional Argument
 -----------------------------------
 ``goodbye channel [TextChannel]`` - Set a farewell channel
@@ -107,7 +124,7 @@ goodbye = """
 """ 
 
 welcome = """
-```OpenBot Help. Command: Welcome```
+```Openbot Help. Command: Welcome```
 [ARG] - Required Argument | {ARG} - Optional Argument
 -----------------------------------
 ``welcome channel [TextChannel]`` - Set a welcome channel
@@ -116,7 +133,7 @@ welcome = """
 """ 
 
 submit = """
-```OpenBot Help. Command: Sub```
+```Openbot Help. Command: Sub```
 [ARG] - Required Argument | {ARG} - Optional Argument
 -----------------------------------
 ``sub channel [TextChannel]`` - set a channel for suggestions/votes
@@ -124,7 +141,7 @@ submit = """
 ``sub create [Content]`` - create vote/suggestion"""
 
 tickets = """
-```OpenBot Help. Command: Ticket```
+```Openbot Help. Command: Ticket```
 [ARG] - Required Argument | {ARG} - Optional Argument
 -----------------------------------
 ``ticket channel [TextChannel]`` - set a channel for tickets

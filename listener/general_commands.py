@@ -17,7 +17,7 @@ commands_string = """
 "https://discordapp.com/oauth2/authorize?client_id=666304823934844938&scope=bot&permissions=8"
 
 **SOURCE CODE**
-"https://github.com/pieckenst/openbot"
+"https://github.com/pieckenst/Openbot"
 
 """
 
@@ -48,7 +48,7 @@ class GeneralListener(commands.Cog):
     async def invite(self, ctx):
         embed = discord.Embed(title="Recomended Functionality Bot Invite", colour=discord.Colour(0xff6900), url="https://discordapp.com/oauth2/authorize?client_id=666304823934844938&scope=bot&permissions=2146958545", description="Bot invite Links")
         embed.set_author(name="Basic Functionality Bot Invite", url="https://discordapp.com/oauth2/authorize?client_id=666304823934844938&scope=bot&permissions=67213505")
-        embed.set_footer(text="Openbot", icon_url="https://cdn.discordapp.com/avatars/666304823934844938/4a2b2b8de59275e0986de9de582acb25.webp?size=1024")
+        embed.set_footer(text="Openbot", icon_url="https://cdn.discordapp.com/avatars/666304823934844938/c3e9338cdbe1d2ccb1e15288724f8e74.webp?size=1024")
         await ctx.send(embed=embed)
 
     @commands.command()

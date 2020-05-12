@@ -9,7 +9,7 @@ class NanoContext(commands.Context):
         return 'this is my secret'
 
 class NanoClient(commands.Bot):
-    def __init__(self, name='OpenBot', id='536892183404478483',
+    def __init__(self, name='Openbot', id='536892183404478483',
         owner_id='213866895806300161', command_prefix='do.'):
         super(NanoClient, self).__init__(command_prefix)
         self.name = name
@@ -24,7 +24,7 @@ class NanoClient(commands.Bot):
             await session.post(self.BASE_URL, data=payload, headers=self.headers)
 
     async def on_ready(self):
-        status_message = discord.Game("$help , OpenBot")
+        status_message = discord.Game("$help , Openbot")
         await super(NanoClient, self).change_presence(status=discord.Status.online, activity=status_message)
         await self.update_status_on_dbl()
         print("Logged in as {}".format(super(NanoClient, self).user))

@@ -67,7 +67,7 @@ class Command:
             return
         else:
             hash = hashlib.md5(file).hexdigest()
-            filename = "smug-anime-faces/{}.{}".format(hash, allowed_content[type])
+            filename = "smug-anime-faces/{}.{}".format(hOpenbot, allowed_content[type])
             with open(filename, 'wb') as f:
                 f.write(file)
             await self.bot.say("Smugness levels increased")

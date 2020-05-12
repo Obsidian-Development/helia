@@ -24,7 +24,7 @@ class help(commands.Cog):
     @commands.command()
     async def help(self, ctx):
         embed = discord.Embed(
-            title="OpenBot. Commands",
+            title="Openbot. Commands",
             colour=discord.Colour(value=11735575).orange()
             )
         embed.add_field(
