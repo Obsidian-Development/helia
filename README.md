@@ -1,7 +1,2 @@
-# OPENBOT
-Discord.py Version: 1.2.5
-
-Python Version: 3.8
-
-
-BASED ON https://github.com/Computer-Team-2019/KonsoleBot-Discord
+# OPENBOT test branch
+Will be used for ploping test stuff here , for now even with master branch
