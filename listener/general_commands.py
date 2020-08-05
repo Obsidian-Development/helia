@@ -48,7 +48,8 @@ class GeneralListener(commands.Cog):
     async def invite(self, ctx):
         embed = discord.Embed(title="Recomended Functionality Bot Invite", colour=discord.Colour(0xff6900), url="https://discordapp.com/oauth2/authorize?client_id=666304823934844938&scope=bot&permissions=2146958545", description="Bot invite Links")
         embed.set_author(name="Basic Functionality Bot Invite", url="https://discordapp.com/oauth2/authorize?client_id=666304823934844938&scope=bot&permissions=67213505")
-        embed.set_footer(text="Openbot", icon_url="https://cdn.discordapp.com/avatars/666304823934844938/c3e9338cdbe1d2ccb1e15288724f8e74.webp?size=1024")
+        embed.add_field(name="Bot up on bots.server-discord.com", value="https://bots.server-discord.com/666304823934844938", inline=True)
+        embed.set_footer(text=self.client.user.name, icon_url=self.client.user.avatar_url)
         await ctx.send(embed=embed)
 
     @commands.command()
@@ -59,7 +60,7 @@ class GeneralListener(commands.Cog):
             await self.client.change_presence( activity=discord.Game(" ".join(args)) )
             embed=discord.Embed(title="Рапорт", description="Ваш приказ выполнен о владыка ", color=0xff8000)
             embed.add_field(name="English", value="Your orders were done My Lord", inline=True)
-            embed.set_footer(text="Openbot")
+            embed.set_footer(text=self.client.user.name, icon_url=self.client.user.avatar_url)
             await ctx.send(embed=embed)
         else:
             embed=discord.Embed(title="You failed", description="Need Permission : Bot Owner", color=0xff0000)

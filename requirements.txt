@@ -1,4 +1,4 @@
-discord.py==1.2.5
+discord.py
 discord.py[voice]
 google-api-python-client
 google-auth
@@ -16,3 +16,4 @@ timedelta
 datetime
 wikipedia
 Pillow
+

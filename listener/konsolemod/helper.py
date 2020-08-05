@@ -71,12 +71,12 @@ class helper(commands.Cog):
         path = "scripts/version.txt"
         with open(path, "r") as file:
             ver = file.readline()
-        embed = discord.Embed(title="Openbot", description="Opensource moderation and music bot", color=0xff6900)
+        embed = discord.Embed(title="Information about bot", description="Listed below", color=0xff6900)
         embed.add_field(name="Current version", value=ver, inline=False)
         embed.add_field(name="Author", value="Bot based on NigamanRPG#6937 KonsoleBot -English translation + additions by Middlle#7488 ", inline=False)
         embed.add_field(name="Thanks", value="NigamanRPG#6937 for konsolebot code on https://computerteam.tk:4600/ , Plastik#5004 for setname command code ", inline=False)
         embed.add_field(name="Hosting", value="Heroku", inline=False)
-        embed.set_footer(text="Openbot", icon_url="https://cdn.discordapp.com/avatars/666304823934844938/c3e9338cdbe1d2ccb1e15288724f8e74.webp?size=1024")
+        embed.set_footer(text=self.bot.user.name, icon_url=self.bot.user.avatar_url)
         await ctx.send(embed=embed)
 
 

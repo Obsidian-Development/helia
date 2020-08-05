@@ -133,8 +133,9 @@ class mod(commands.Cog):
         valid_users = ["540142383270985738", "573123021598883850"]
         if str(author.id) in valid_users:
             embed=discord.Embed(title="Shutting Down", description="Goodbye", color=0xff8000)
+            embed.set_footer(text=self.bot.user.name, icon_url=self.bot.user.avatar_url)
             await ctx.send(embed=embed)
-            await ctx.bot.change_presence(activity=discord.Game(name="Вырубаемся нахуй"))
+            await ctx.bot.change_presence(activity=discord.Game(name="Shutting down for either reboot or update "))
             await asyncio.sleep(5)
             await ctx.bot.logout()
         else:

@@ -47,8 +47,9 @@ bot = commands.Bot(command_prefix=prefixed)
 async def on_ready():
     db.control()
     print("[SQLITE] Tables checked")
+    print("[Коментарий про политику] Надеемся и верим что лукашенку скинут")
     print("[SUCCESS] Started the bot") # Вывод информации о запуске
-    await bot.change_presence(status=discord.Status.online, activity=discord.Activity(type=discord.ActivityType.watching, name=f"{len(bot.guilds)} servers ,Openbot"))
+    await bot.change_presence(status=discord.Status.online, activity=discord.Activity(type=discord.ActivityType.watching, name=f"{len(bot.guilds)} servers "))
 
 
 bot.remove_command('help')
@@ -61,4 +62,4 @@ if __name__ == '__main__':
             exc = '{}: {}'.format(type(e).__name__, e)
             print('Failed to load extension {}\n{}'.format(extension, exc))
 
-bot.run("токен ваш")
+bot.run("сами создавайте на discord.com/developers")
