@@ -1,7 +1,2 @@
-# OPENBOT
-Discord.py Version: 1.2.5
-
-Python Version: 3.8
-
-
-BASED ON https://github.com/Computer-Team-2019/KonsoleBot-Discord
+# Helia
+An opensource music and moderation bot made for your pleasure)
