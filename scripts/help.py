@@ -54,10 +54,9 @@ music = """
 ``resume`` - Resumes playback of track
 ``np`` - Shows info about current track
 ``stop`` - Stops playback
-``loop`` - Sets current track on repeat
 ``skip`` - Skips current track
-``join`` - Connects to voice channel you are in
-``leave`` - Disconnect from Voice channel
+``queue`` - Music queue
+``volume`` - Change volume
 """
 
 infosystem = """

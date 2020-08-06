@@ -41,7 +41,12 @@ def prefixed(bot, message):
             return res
     except:
         pass   
-bot = commands.Bot(command_prefix=prefixed) 
+bot = commands.Bot(command_prefix=prefixed)
+
+#@bot.event
+#async def on_message(message):
+    #if bot.user.mentioned_in(message) and 'prefix' in message.content:
+        #await message.channel.send(f'My Prefix is {bot.command_prefix}')
 
 @bot.event
 async def on_ready():
