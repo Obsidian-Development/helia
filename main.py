@@ -43,7 +43,7 @@ startup_extensions = [
             #return res
     #except:
         #pass   
-bot = discord.Client(intents=discord.Intents.all())
+bot = discord.Client(intents=discord.Intents.default())
 bot = commands.Bot(command_prefix="/")
 slash = SlashCommand(bot, auto_register=True)
 
