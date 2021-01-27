@@ -1,6 +1,7 @@
 import discord
 import asyncio
 from discord.ext import commands
+from discord_slash import cog_ext, SlashContext
 
 
 class mod(commands.Cog):
@@ -8,7 +9,7 @@ class mod(commands.Cog):
         self.bot = bot
 
     @commands.command(aliases=['kick'])
-    async def userdel(self, ctx, member : discord.Member,*, reason=None ): # pacmanR - кик пользователя
+    async def userdel(self, ctx: SlashContext, member : discord.Member,*, reason=None ): # pacmanR - кик пользователя
         try:
             author = ctx.message.author
             if author.guild_permissions.kick_members:
@@ -29,7 +30,7 @@ class mod(commands.Cog):
 
 
     @commands.command(aliases=['ban'])
-    async def devnull(self, ctx, member : discord.Member,*, reason=None ): # devnull - бан пользователя
+    async def devnull(self, ctx: SlashContext, member : discord.Member,*, reason=None ): # devnull - бан пользователя
         try:
             author = ctx.message.author
             if author.guild_permissions.ban_members:          
@@ -50,7 +51,7 @@ class mod(commands.Cog):
 
 
     @commands.group(invoke_without_command=True)
-    async def clear(self, ctx,*,number:int=None): # clear - Очистка сообщений
+    async def clear(self, ctx: SlashContext,*,number:int=None): # clear - Очистка сообщений
         try:
             author = ctx.message.author
             if author.guild_permissions.manage_messages:
@@ -70,7 +71,7 @@ class mod(commands.Cog):
             await ctx.send(embed=embed)
             
     @clear.command(pass_context=True) 
-    async def user(self,ctx,member=None,*, amount:int=None):
+    async def user(self,ctx: SlashContext,member=None,*, amount:int=None):
         try:
             author = ctx.message.author
             if author.guild_permissions.manage_messages:           
@@ -94,7 +95,7 @@ class mod(commands.Cog):
 
 
     @commands.command(aliases=['mute'])
-    async def rmmod(self, ctx, member: discord.Member,time,*, reason=None):
+    async def rmmod(self, ctx: SlashContext, member: discord.Member,time,*, reason=None):
         author = ctx.message.author
         role = discord.utils.get(ctx.guild.roles, name="Muted")
         try:
@@ -112,7 +113,7 @@ class mod(commands.Cog):
             await ctx.send(embed=embed)        
 
     @commands.command(aliases=['unmute'])
-    async def unrmmod(self, ctx, member: discord.Member):
+    async def unrmmod(self, ctx: SlashContext, member: discord.Member):
         author = ctx.message.author
         role = discord.utils.get(ctx.guild.roles, name="Muted")
         try:
@@ -128,7 +129,7 @@ class mod(commands.Cog):
             await ctx.send(embed=embed)
     
     @commands.command()
-    async def shutdown(self, ctx): # Команда для выключения бота
+    async def shutdown(self, ctx: SlashContext): # Команда для выключения бота
         author = ctx.message.author
         valid_users = ["540142383270985738", "573123021598883850"]
         if str(author.id) in valid_users:

@@ -5,6 +5,8 @@ import asyncio
 import sqlite3
 from scripts import db
 from discord.ext import commands
+from discord_slash import SlashCommand
+
 
 startup_extensions = [
     'listener.konsolemod.helper',
@@ -27,21 +29,23 @@ startup_extensions = [
 ]
 
 # Префикс
-def prefixed(bot, message):
-    try:
-        connect = sqlite3.connect(db.main)
-        cursor = connect.cursor()
-        cursor.execute(db.select_table("prefixes","prefix","guild_id",message.guild.id))
-        res = cursor.fetchone()
-        cursor.close()
-        connect.close()
-        if res is None:
-            return "$"
-        else:
-            return res
-    except:
-        pass   
-bot = commands.Bot(command_prefix=prefixed)
+#def prefixed(bot, message):
+    #try:
+        #connect = sqlite3.connect(db.main)
+        #cursor = connect.cursor()
+        #cursor.execute(db.select_table("prefixes","prefix","guild_id",message.guild.id))
+        #res = cursor.fetchone()
+        #cursor.close()
+        #connect.close()
+        #if res is None:
+            #return "$"
+        #else:
+            #return res
+    #except:
+        #pass   
+bot = discord.Client(intents=discord.Intents.all())
+bot = commands.Bot(command_prefix="/")
+slash = SlashCommand(bot, auto_register=True)
 
 #@bot.event
 #async def on_message(message):

@@ -6,6 +6,7 @@ import random
 import aiohttp
 from discord.ext import commands
 from simpleeval import simple_eval
+from discord_slash import cog_ext, SlashContext
 
 import global_methods
 from db import database
@@ -20,7 +21,7 @@ class Command:
         self.database = database.Database()
 
     @commands.command(name="bye", pass_context=True)
-    async def bye(self, ctx):
+    async def bye(self, ctx: SlashContext):
         if not global_methods.is_admin(ctx.message.author):
             await self.bot.say("You're not a big boy")
             return None
@@ -29,7 +30,7 @@ class Command:
         await self.bot.logout()
 
     @commands.command(name="math", pass_context=True)
-    async def math(self, ctx, *, params):
+    async def math(self, ctx: SlashContext, *, params):
         try:
             result = simple_eval("{}".format(params), names={"e": math.e, "pi": math.pi},
                                  functions={"log": math.log, "sqrt": math.sqrt, "cos": math.cos, "sin": math.sin,
@@ -40,7 +41,7 @@ class Command:
         await self.respond(result, ctx.message.author.mention)
 
     @commands.command(name="doStuff", pass_context=True)
-    async def do_stuff(self, ctx):
+    async def do_stuff(self, ctx: SlashContext):
         pass
 
     @commands.command(name="8ball", help="you may or may not get a yes or a no answer")
@@ -48,12 +49,12 @@ class Command:
         await self.bot.say(get_random_line('8ballresponses.txt'))
 
     @commands.command(name="whoIsTheBuffest", pass_context=True)
-    async def whoIsTheBuffest(self, ctx):
+    async def whoIsTheBuffest(self, ctx: SlashContext):
         await self.respond("Wiklem", ctx.message.author.mention)
 
 
     @commands.command(name="smugadd", pass_context=True)
-    async def add_smug(self, ctx, path):
+    async def add_smug(self, ctx: SlashContext, path):
         allowed_content = {'image/jpeg': 'jpg', 'image/png': 'png', 'image/gif': 'gif'}
         if not global_methods.is_admin(ctx.message.author):
             await self.bot.say("You're not a big boy")
@@ -74,7 +75,7 @@ class Command:
 
 
     @commands.command(name="smug", pass_context=True)
-    async def smug(self, ctx):
+    async def smug(self, ctx: SlashContext):
         path = 'smug-anime-faces' # The folder in which smug anime face images are contained
         face = os.path.join(path, random.choice(os.listdir(path))) # Generate path to a random face
         # Send the image to the channel where the smug command was triggered

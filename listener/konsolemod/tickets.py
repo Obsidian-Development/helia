@@ -3,6 +3,7 @@ import asyncio
 import sqlite3
 from scripts import db, help
 from discord.ext import commands
+from discord_slash import cog_ext, SlashContext
 
 
 class tickets(commands.Cog):
@@ -10,11 +11,11 @@ class tickets(commands.Cog):
         self.bot = bot
 
     @commands.group(invoke_without_command=True)
-    async def ticket(self, ctx):
+    async def ticket(self, ctx: SlashContext):
         await ctx.send(help.tickets)
 
     @ticket.command(pass_context=True)
-    async def channel(self, ctx, channel: discord.TextChannel):
+    async def channel(self, ctx: SlashContext, channel: discord.TextChannel):
         author = ctx.message.author
         if author.guild_permissions.administrator:
             connect = sqlite3.connect(db.main)
@@ -34,7 +35,7 @@ class tickets(commands.Cog):
             await ctx.send("bot: You do not have enough permissions - :You require **Administrator**")
 
     @ticket.command(pass_context=True)
-    async def clear(self, ctx):
+    async def clear(self, ctx: SlashContext):
         author = ctx.message.author
         if author.guild_permissions.administrator:
             connect = sqlite3.connect(db.main)
@@ -53,7 +54,7 @@ class tickets(commands.Cog):
             await ctx.send("bot: You do not have enough permissions - :You require **Administrator**")
 
     @ticket.command(pass_context=True)
-    async def create(self, ctx, *, tekst):
+    async def create(self, ctx: SlashContext, *, tekst):
         author = ctx.message.author
         connect = sqlite3.connect(db.main)
         cursor = connect.cursor()

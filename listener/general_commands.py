@@ -1,5 +1,6 @@
 import discord
 from discord.ext import commands
+from discord_slash import cog_ext, SlashContext
 from datetime import datetime, timedelta
 from scripts.time import pretty_datetime, pretty_timedelta
 
@@ -29,7 +30,7 @@ class GeneralListener(commands.Cog):
 
 
     @commands.command()
-    async def ping(self, ctx):
+    async def ping(self, ctx: SlashContext):
         '''Check response time.'''
 
         msg = await ctx.send('Wait...')
@@ -41,11 +42,16 @@ class GeneralListener(commands.Cog):
 	)
 
     @commands.command()
-    async def say(self, ctx, *args):
+    async def say(self, ctx: SlashContext, *args):
         await ctx.send(" ".join(args))
 
+
     @commands.command()
-    async def invite(self, ctx):
+    async def piratstvo(self, ctx):
+        await ctx.send("Windows 10, china goverment edition, https://rutracker.org/forum/viewtopic.php?t=5752397")
+
+    @commands.command()
+    async def invite(self, ctx: SlashContext):
         embed = discord.Embed(title="Recomended Functionality Bot Invite", colour=discord.Colour(0xff6900), url="https://discord.com/oauth2/authorize?client_id=666304823934844938&scope=bot&permissions=204794950", description="Bot invite Links")
         embed.set_author(name="Basic Functionality Bot Invite", url="https://discord.com/oauth2/authorize?client_id=666304823934844938&scope=bot&permissions=204557314")
         embed.add_field(name="Bot up on bots.server-discord.com", value="https://bots.server-discord.com/666304823934844938", inline=True)

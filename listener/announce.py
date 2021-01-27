@@ -2,6 +2,8 @@ import discord
 import asyncio
 import os
 from discord.ext import commands
+from discord_slash import cog_ext, SlashContext
+
 
 class broadcast(commands.Cog):
   def __init__(self,bot):
@@ -9,7 +11,7 @@ class broadcast(commands.Cog):
 
   @commands.command()
   @commands.is_owner()
-  async def announce(self, ctx, *, content):
+  async def announce(self, ctx: SlashContext, *, content):
     announcement = discord.Embed(color=0x3B88C3)
     author_name = f'{ctx.message.author}'
     announcement.set_author(name=author_name, url=ctx.message.author.avatar_url)

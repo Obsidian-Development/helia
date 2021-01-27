@@ -1,5 +1,6 @@
 import discord
 from discord.ext import commands
+from discord_slash import cog_ext, SlashContext
 
 import asyncio
 import itertools
@@ -210,7 +211,7 @@ class Music(commands.Cog):
         return player
 
     @commands.command(name='connect', aliases=['join'])
-    async def connect_(self, ctx, *, channel: discord.VoiceChannel=None):
+    async def connect_(self, ctx: SlashContext, *, channel: discord.VoiceChannel=None):
         """Connect to voice.
         Parameters
         ------------
@@ -243,7 +244,7 @@ class Music(commands.Cog):
         await ctx.send(f'Connected to: **{channel}**', delete_after=20)
 
     @commands.command(name='play', aliases=['sing'])
-    async def play_(self, ctx, *, search: str):
+    async def play_(self, ctx: SlashContext, *, search: str):
         """Request a song and add it to the queue.
         This command attempts to join a valid voice channel if the bot is not already in one.
         Uses YTDL to automatically search and retrieve a song.
@@ -268,7 +269,7 @@ class Music(commands.Cog):
         await player.queue.put(source)
 
     @commands.command(name='pause')
-    async def pause_(self, ctx):
+    async def pause_(self, ctx: SlashContext):
         """Pause the currently playing song."""
         vc = ctx.voice_client
 
@@ -281,7 +282,7 @@ class Music(commands.Cog):
         await ctx.send(f'**`{ctx.author}`**: Paused the song!')
 
     @commands.command(name='resume')
-    async def resume_(self, ctx):
+    async def resume_(self, ctx: SlashContext):
         """Resume the currently paused song."""
         vc = ctx.voice_client
 
@@ -294,7 +295,7 @@ class Music(commands.Cog):
         await ctx.send(f'**`{ctx.author}`**: Resumed the song!')
 
     @commands.command(name='skip')
-    async def skip_(self, ctx):
+    async def skip_(self, ctx: SlashContext):
         """Skip the song."""
         vc = ctx.voice_client
 
@@ -310,7 +311,7 @@ class Music(commands.Cog):
         await ctx.send(f'**`{ctx.author}`**: Skipped the song!')
 
     @commands.command(name='queue', aliases=['q', 'playlist'])
-    async def queue_info(self, ctx):
+    async def queue_info(self, ctx: SlashContext):
         """Retrieve a basic queue of upcoming songs."""
         vc = ctx.voice_client
 
@@ -330,7 +331,7 @@ class Music(commands.Cog):
         await ctx.send(embed=embed)
 
     @commands.command(name='now_playing', aliases=['np', 'current', 'currentsong', 'playing'])
-    async def now_playing_(self, ctx):
+    async def now_playing_(self, ctx: SlashContext):
         """Display information about the currently playing song."""
         vc = ctx.voice_client
 
@@ -350,7 +351,7 @@ class Music(commands.Cog):
         player.np = await ctx.send(f'**Now Playing:** \n▶️`{vc.source.title} \nrequested by `{vc.source.requester}`')
 
     @commands.command(name='volume', aliases=['vol'])
-    async def change_volume(self, ctx, *, vol: float):
+    async def change_volume(self, ctx: SlashContext, *, vol: float):
         """Change the player volume.
         Parameters
         ------------
@@ -374,7 +375,7 @@ class Music(commands.Cog):
         await ctx.send(f'**`{ctx.author}`**: Set the volume to **{vol}%**')
 
     @commands.command(name='stop')
-    async def stop_(self, ctx):
+    async def stop_(self, ctx: SlashContext):
         """Stop the currently playing song and destroy the player.
         !Warning!
             This will destroy the player assigned to your guild, also deleting any queued songs and settings.

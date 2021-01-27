@@ -5,6 +5,7 @@ import os
 import sqlite3
 from scripts import db, help
 from discord.ext import commands
+from discord_slash import cog_ext, SlashContext
 class welcome(commands.Cog):
     def __init__(self,bot):
         self.bot = bot
@@ -38,11 +39,11 @@ class welcome(commands.Cog):
 
         
     @commands.group(invoke_without_command=True)
-    async def welcome(self, ctx):
+    async def welcome(self, ctx: SlashContext):
         await ctx.send(help.welcome)
 
     @welcome.command(pass_context=True)
-    async def channel(self, ctx, chan: discord.TextChannel=None):
+    async def channel(self, ctx: SlashContext, chan: discord.TextChannel=None):
         try:
             author = ctx.message.author     
             if author.guild_permissions.administrator:
@@ -66,7 +67,7 @@ class welcome(commands.Cog):
 
 
     @welcome.command(pass_context=True)
-    async def clear(self, ctx):
+    async def clear(self, ctx: SlashContext):
         try:
             author = ctx.message.author
             if author.guild_permissions.administrator:
@@ -88,7 +89,7 @@ class welcome(commands.Cog):
             await ctx.send("bot: Error")
     
     @welcome.command(pass_context=True)
-    async def text(self, ctx,*,content=None):
+    async def text(self, ctx: SlashContext,*,content=None):
         try:    
             author = ctx.message.author
             if author.guild_permissions.administrator:
