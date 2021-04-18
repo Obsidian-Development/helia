@@ -6,7 +6,7 @@
 # * http://www.eclipse.org/legal/epl-2.0, or the Mozilla Public License, Version 2.0
 # * which is available at https://www.mozilla.org/en-US/MPL/2.0/
 # *
-# * SPDX-License-Identifier: EPL-2.0 OR -2.0
+# * SPDX-License-Identifier: EPL-2.0 OR MPL-2.0
 # ********************************************************************************/
 import discord
 import os 
