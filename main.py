@@ -48,7 +48,7 @@ startup_extensions = [
             #return res
     #except:
         #pass   
-bot = commands.Bot(command_prefix="$", intents=discord.Intents.default())
+bot = commands.Bot(command_prefix="//", intents=discord.Intents.default())
 #intents.members = True # preparation for reenabling welcome and goodbye functionality 
 slash = SlashCommand(bot, override_type = True)
 Slashify(bot)
@@ -64,7 +64,7 @@ async def changeStatus():
     await bot.change_presence(status=discord.Status.online, activity=discord.Activity(type=discord.ActivityType.watching, name=f"{len(bot.guilds)} servers "))
     print("Status changed to status 1!")
     await asyncio.sleep(80)
-    await bot.change_presence(status=discord.Status.online, activity=discord.Activity(type=discord.ActivityType.listening,name="Dont forget to bump the bot every 3 hours on bots.server-discord.com!"))
+    await bot.change_presence(status=discord.Status.online, activity=discord.Activity(type=discord.ActivityType.listening,name="Dont forget to bump the bot every 3 hours on bot lists!"))
     print("Status changed to status 2!")
     await asyncio.sleep(80)
     await bot.change_presence(activity=discord.Game(name="//help for info"))

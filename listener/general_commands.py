@@ -55,6 +55,8 @@ class GeneralListener(commands.Cog):
         embed = discord.Embed(title="Recomended Functionality Bot Invite", colour=discord.Colour(0xff6900), url="https://discord.com/api/oauth2/authorize?client_id=666304823934844938&permissions=204859462&scope=applications.commands%20bot", description="Bot invite Links")
         embed.set_author(name="Basic Functionality Bot Invite", url="https://discord.com/oauth2/authorize?client_id=666304823934844938&scope=bot&permissions=204557314")
         embed.add_field(name="Bot up on bots.server-discord.com", value="https://bots.server-discord.com/666304823934844938", inline=True)
+        embed.add_field(name="Bot up on top.gg", value="https://top.gg/bot/666304823934844938", inline=True)
+        embed.add_field(name="Bot up on bots on discord", value="https://bots.ondiscord.xyz/bots/666304823934844938", inline=True)
         embed.set_footer(text=self.client.user.name, icon_url=self.client.user.avatar_url)
         await ctx.send(embed=embed)
 
