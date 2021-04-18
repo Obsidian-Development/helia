@@ -26,7 +26,7 @@ class helper(commands.Cog):
     def __init__(self,bot):
         self.bot = bot
 
-    @commands.group(invoke_without_command=True) # Команда Help
+    @commands.group(invoke_without_command=True,description= 'Help System') # Команда Help
     async def help(self, ctx: SlashContext):
         connect = sqlite3.connect(db.main)
         cursor = connect.cursor()
@@ -156,7 +156,7 @@ class helper(commands.Cog):
 
 
 
-    @commands.command()
+    @commands.command(description='Bot version')
     async def version(self, ctx: SlashContext):
         path = "scripts/version.txt"
         with open(path, "r") as file:
@@ -164,7 +164,7 @@ class helper(commands.Cog):
         vers = discord.Embed(title="Current version", description=ver, color=0xd12ec9)
         await ctx.send(embed=vers)
 
-    @commands.command()
+    @commands.command(description='Bot Information')
     async def info(self, ctx: SlashContext):
         path = "scripts/version.txt"
         with open(path, "r") as file:

@@ -37,5 +37,5 @@ class wallpapers(commands.Cog):
         await ctx.send(embed=embedstarwars)
 
 
-def setup(bot):
-    bot.add_cog(wallpapers(bot))
+def setup(client):
+    client.add_cog(wallpapers(client))

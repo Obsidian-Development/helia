@@ -8,7 +8,7 @@ class infosystem(commands.Cog):
     def __init__(self,bot):
         self.bot = bot
 
-    @commands.command()
+    @commands.command(description='User Information')
     async def neofetch(self, ctx: SlashContext , member : discord.Member=None  ):
         if member is None:
             member = ctx.message.author  
@@ -30,7 +30,7 @@ class infosystem(commands.Cog):
         neoembed.set_thumbnail(url=member.avatar_url)
         await ctx.send(embed=neoembed)
 
-    @commands.command()
+    @commands.command(description='User Profile picture')
     async def avatar(self, ctx: SlashContext, member : discord.Member=None):
         if member is None:
             member = ctx.message.author
@@ -39,7 +39,7 @@ class infosystem(commands.Cog):
         avaembed.set_footer(text=f"User ID: {member.id}")
         await ctx.send(embed=avaembed)
 
-    @commands.command()
+    @commands.command(description='Server Information')
     async def guild(self, ctx: SlashContext):
         member = ctx.message.author
         servinfo = discord.Embed(title="Server Information", color=0x00ff00)

@@ -128,7 +128,7 @@ class mod(commands.Cog):
             embed=discord.Embed(title="🔴 Error", description="I need the ``Manage Roles`` permission to do this.", color=0xdd2e44,)
             await ctx.send(embed=embed)
     
-    @commands.command()
+    @commands.command(description='Bot restart/shutdown')
     async def shutdown(self, ctx: SlashContext): # Команда для выключения бота
         author = ctx.message.author
         valid_users = ["540142383270985738", "573123021598883850"]

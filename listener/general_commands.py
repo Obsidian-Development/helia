@@ -29,7 +29,7 @@ class GeneralListener(commands.Cog):
 
 
 
-    @commands.command()
+    @commands.command(description='Check Ping')
     async def ping(self, ctx: SlashContext):
         '''Check response time.'''
 
@@ -41,24 +41,24 @@ class GeneralListener(commands.Cog):
 	)
 	)
 
-    @commands.command()
+    @commands.command(description='Say things as bot')
     async def say(self, ctx: SlashContext, *args):
         await ctx.send(" ".join(args))
 
 
-    @commands.command()
-    async def piratstvo(self, ctx):
+    @commands.command(description='...')
+    async def shh(self, ctx):
         await ctx.send("Windows 10, china goverment edition, https://rutracker.org/forum/viewtopic.php?t=5752397")
 
-    @commands.command()
+    @commands.command(description='Bot invite links')
     async def invite(self, ctx: SlashContext):
-        embed = discord.Embed(title="Recomended Functionality Bot Invite", colour=discord.Colour(0xff6900), url="https://discord.com/oauth2/authorize?client_id=666304823934844938&scope=bot&permissions=204794950", description="Bot invite Links")
+        embed = discord.Embed(title="Recomended Functionality Bot Invite", colour=discord.Colour(0xff6900), url="https://discord.com/api/oauth2/authorize?client_id=666304823934844938&permissions=204859462&scope=applications.commands%20bot", description="Bot invite Links")
         embed.set_author(name="Basic Functionality Bot Invite", url="https://discord.com/oauth2/authorize?client_id=666304823934844938&scope=bot&permissions=204557314")
         embed.add_field(name="Bot up on bots.server-discord.com", value="https://bots.server-discord.com/666304823934844938", inline=True)
         embed.set_footer(text=self.client.user.name, icon_url=self.client.user.avatar_url)
         await ctx.send(embed=embed)
 
-    @commands.command()
+    @commands.command(description='Set bot status')
     async def set_status(self, ctx, *args):
         author = ctx.message.author
         valid_users = ["540142383270985738", "573123021598883850", "584377789969596416", "106451437839499264", "237984877604110336", "579750505736044574", "497406228364787717"]

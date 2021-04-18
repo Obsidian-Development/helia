@@ -7,7 +7,7 @@ class gnulinux(commands.Cog):
     def __init__(self,bot):
         self.bot = bot
 
-    @commands.command() # GNU/Linux Distr Wiki
+    @commands.command(description='Arch Linux Description') # GNU/Linux Distr Wiki
     async def arch(self, ctx: SlashContext):
         channel = ctx.message.channel
         await ctx.send("bot: It Will Be Done - Command Result Below")
@@ -16,7 +16,7 @@ class gnulinux(commands.Cog):
         archl.add_field(name="Suggestions", value="Install it yourself without gui", inline=True)
         await ctx.send(embed=archl)
 
-    @commands.command()
+    @commands.command(description='Ubuntu linux description')
     async def ubuntu(self, ctx: SlashContext): # Ubuntu
         channel = ctx.message.channel
         await ctx.send("bot: It Will Be Done - Command Result Below")
@@ -25,7 +25,7 @@ class gnulinux(commands.Cog):
         ubuntu1.set_thumbnail(url="https://i.imgur.com/TfVgK1v.png")
         await ctx.send(embed=ubuntu1)
 
-    @commands.command()
+    @commands.command(description='Debian Linux Description')
     async def debian(self, ctx: SlashContext): # Debian
         channel = ctx.message.channel
         await ctx.send("bot: It Will Be Done - Command Result Below")
@@ -33,7 +33,7 @@ class gnulinux(commands.Cog):
         debian1.set_thumbnail(url="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Debian-OpenLogo.svg/800px-Debian-OpenLogo.svg.png")
         await ctx.send(embed=debian1)
 
-    @commands.command()
+    @commands.command(description='Deepin linux description')
     async def deepin(self, ctx: SlashContext): # Deepin
         channel = ctx.message.channel
         await ctx.send("bot: It Will Be Done - Command Result Below")
@@ -41,7 +41,7 @@ class gnulinux(commands.Cog):
         deepin1.set_thumbnail(url="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Deepin_logo.svg/600px-Deepin_logo.svg.png")
         await ctx.send(embed=deepin1)
 
-    @commands.command()
+    @commands.command(description='Manjaro linux description')
     async def manjaro(self, ctx: SlashContext): # Manjaro
          channel = ctx.message.channel
          await ctx.send("bot: It Will Be Done - Command Result Below")
@@ -50,7 +50,7 @@ class gnulinux(commands.Cog):
          manjaro1.add_field(name="Suggestions", value="Good for not complete noobs", inline=True)
          await ctx.send(embed=manjaro1)
 
-    @commands.command()
+    @commands.command(description='Linux Mint description')
     async def mint(self, ctx: SlashContext): # Mint
         channel = ctx.message.channel
         await ctx.send("bot: It Will Be Done - Command Result Below")

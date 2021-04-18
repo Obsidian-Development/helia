@@ -12,22 +12,22 @@ class tools(commands.Cog):
     def __init__(self,bot):
         self.bot = bot
 
-    @commands.command()
+    @commands.command(description='Random number generator')
     async def randint(self,ctx: SlashContext, stc1:int, stc2:int):
         result = random.randint(stc1, stc2)
         await ctx.send(f"Randome number geneation between {stc1} and {stc2} equals ``{result}``")
  
-    @commands.command()
+    @commands.command(description='Count square root')
     async def sqrt(self, ctx: SlashContext, num:int):
         result = math.sqrt(num)
         await ctx.send(f"Square root of {num} equals ``{result}``")
 
-    @commands.command()
+    @commands.command(description='Generate Embed')
     async def embed(self,ctx: SlashContext, name,*, content):
         creator = discord.Embed(title=name, description=content)
         await ctx.send(embed = creator)
         
-    @commands.group(invoke_without_command=True)
+    @commands.group(invoke_without_command=True, description='Reminder')
     async def remind(self, ctx: SlashContext):
         rinfo = discord.Embed(title="Reminder Command", description="Used to create a reminder. Time is indicated in seconds.", color=0x00ff00)
         rinfo.add_field(name="Usage", value="``remind role [Role] [Time]`` - reminder for role \n ``remind me [Time] [Message]`` - reminder for you", inline=True)
@@ -56,7 +56,7 @@ class tools(commands.Cog):
             else:
                 await ctx.send("bot: Not Enough Permissions , Mention another role ")
                 
-    @commands.command()
+    @commands.command(description='Search Wikipedia')
     async def wiki(self,ctx: SlashContext,*, searcher=None):
         try:
             wikipedia.set_lang("en")

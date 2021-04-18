@@ -9,7 +9,7 @@ class broadcast(commands.Cog):
   def __init__(self,bot):
       self.bot = bot
 
-  @commands.command()
+  @commands.command(description='Global Announcement from bot owner')
   @commands.is_owner()
   async def announce(self, ctx: SlashContext, *, content):
     announcement = discord.Embed(color=0x3B88C3)

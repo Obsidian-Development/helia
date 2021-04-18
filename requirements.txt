@@ -17,4 +17,7 @@ timedelta
 datetime
 wikipedia
 Pillow
-
+slashify
+python-dotenv
+wavelink
+discord-ext-menus
