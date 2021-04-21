@@ -46,10 +46,6 @@ class GeneralListener(commands.Cog):
         await ctx.send(" ".join(args))
 
 
-    @commands.command(description='...')
-    async def shh(self, ctx):
-        await ctx.send("Windows 10, china goverment edition, https://rutracker.org/forum/viewtopic.php?t=5752397")
-
     @commands.command(description='Bot invite links')
     async def invite(self, ctx: SlashContext):
         embed = discord.Embed(title="Recomended Functionality Bot Invite", colour=discord.Colour(0xff6900), url="https://discord.com/api/oauth2/authorize?client_id=666304823934844938&permissions=204859462&scope=applications.commands%20bot", description="Bot invite Links")
