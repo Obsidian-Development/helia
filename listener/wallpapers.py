@@ -18,7 +18,7 @@ class wallpapers(commands.Cog):
 
     @wallpaper.command()
     async def anime(self, ctx: SlashContext):
-        embedanime = discord.Embed(title="Fuck you weaboo", color=0x00ff00, )
+        embedanime = discord.Embed(title="Nope", color=0x00ff00, )
         embedanime.set_footer(text="No anime here")
         await ctx.send(embed=embedanime)
 
