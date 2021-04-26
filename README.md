@@ -1,7 +1,7 @@
 <img align="right" src="https://raw.githubusercontent.com/pieckenst/helia/master/bitmap.png" height="100" width="100">
 
 # Helia
-![GitHub last commit](https://img.shields.io/github/last-commit/pieckenst/helia?style=for-the-badge)
+[![GitHub last commit](https://img.shields.io/github/last-commit/pieckenst/helia?style=for-the-badge)](https://github.com/pieckenst/helia/commits/master)
 [![forthebadge](https://forthebadge.com/images/badges/made-with-python.svg)](https://forthebadge.com)
 [![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)](https://forthebadge.com)
 [![GitHub](https://img.shields.io/github/license/pieckenst/helia?style=for-the-badge)](https://github.com/pieckenst/helia/blob/master/LICENSE)
