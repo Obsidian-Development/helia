@@ -1,7 +1,7 @@
 <img align="right" src="https://raw.githubusercontent.com/pieckenst/helia/master/bitmap.png" height="150" width="150">
 
 # Helia
-https://img.shields.io/github/license/pieckenst/helia?style=for-the-badge
+![GitHub](https://img.shields.io/github/license/pieckenst/helia?style=for-the-badge)
 [![forthebadge](https://forthebadge.com/images/badges/made-with-python.svg)](https://forthebadge.com)
 [![forthebadge](https://forthebadge.com/images/badges/open-source.svg)](https://forthebadge.com)
 [![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)](https://forthebadge.com)
