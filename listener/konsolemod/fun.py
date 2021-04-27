@@ -17,16 +17,17 @@ class fun(commands.Cog):
 
     @commands.command(pass_context=True ,description='Set a nickname for a person', aliases=['name', 'set_name', 'prozvische'])
     async def setname(self, ctx: SlashContext, member: discord.Member, *, nickname=None):
-       try:
-          '''
-          Change user's nickname
-          '''
-          await member.edit(nick=nickname)
-          await ctx.message.delete()
+        '''
+        Change user's nickname
+        '''
+        if ctx.message.guild.me.permissions_in(ctx.message.channel).manage_nicknames is False:
+           embed = discord.Embed(title="🔴 Error", description="I need the ``Manage Nicknames`` permission to do this.",color=0xdd2e44, )
+           await ctx.send(embed=embed)
+           return
+        else:    
+           await member.edit(nick=nickname)
+           await ctx.message.delete()
           
-       except discord.errors.Forbidden:
-          embed=discord.Embed(title="🔴 Error", description="I need the ``Manage Nicknames`` permission to do this.", color=0xdd2e44,)
-          await ctx.send(embed=embed)
           
             
    

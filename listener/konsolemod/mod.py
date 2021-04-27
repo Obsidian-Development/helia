@@ -133,7 +133,7 @@ class mod(commands.Cog):
         author = ctx.message.author
         valid_users = ["540142383270985738", "573123021598883850"]
         if str(author.id) in valid_users:
-            embed=discord.Embed(title="Shutting Down", description="Goodbye", color=0xff8000)
+            embed=discord.Embed(title="Service command", description="Bot is going for shutdown/restart - wait patiently", color=0xff8000)
             embed.set_footer(text=self.bot.user.name, icon_url=self.bot.user.avatar_url)
             await ctx.send(embed=embed)
             await ctx.bot.change_presence(activity=discord.Game(name="Shutting down for either reboot or update "))

@@ -31,7 +31,11 @@ class broadcast(commands.Cog):
             except discord.NotFound:
                 continue
           
-    
+  #@commands.command(description='Debug info')
+  #@commands.is_owner()
+  #async def debug(self, ctx: SlashContext):
+    #voice_states = ctx.bot.voice_clients
+    #await ctx.send(f'I am currently in {len(voice_states)} voice channels')
   
     
 

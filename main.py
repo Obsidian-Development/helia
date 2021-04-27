@@ -58,7 +58,7 @@ startup_extensions = [
             #return res
     #except:
         #pass   
-bot = commands.Bot(command_prefix="//", intents=discord.Intents.default())
+bot = commands.Bot(command_prefix=commands.when_mentioned_or('//'), intents=discord.Intents.default())
 #intents.members = True # preparation for reenabling welcome and goodbye functionality 
 slash = SlashCommand(bot, override_type = True)
 Slashify(bot)
@@ -67,9 +67,13 @@ Slashify(bot)
 #@bot.event
 #async def on_message(message):
     #if bot.user.mentioned_in(message) and 'prefix' in message.content:
+"""Should show bot prefix on mention except this does not work"""
         #await message.channel.send(f'My Prefix is {bot.command_prefix}')
 @tasks.loop(seconds=80)
 async def changeStatus():
+   """
+   Functionality to cycle bot status 
+   """
    while True:
     await bot.change_presence(status=discord.Status.online, activity=discord.Activity(type=discord.ActivityType.watching, name=f"{len(bot.guilds)} servers "))
     print("Status changed to status 1!")
@@ -89,13 +93,20 @@ async def changeStatus():
     await bot.change_presence(status=discord.Status.online, activity=discord.Activity(type=discord.ActivityType.watching, name="our support server https://discord.gg/7uUBM8mKbu"))
     print("Status changed to tell about our support server!")
     await asyncio.sleep(80)
-
+    await bot.change_presence(activity=discord.Game(name="Deep inside, we're nothing more than scions and sinners"))
+    print("Status changed to status 7!")
+    await asyncio.sleep(80)
+    await bot.change_presence(status=discord.Status.online, activity=discord.Activity(type=discord.ActivityType.watching, name="headbanging"))
+    print("Status changed to status 8!")
+    await asyncio.sleep(100)
 @bot.event
 async def on_ready():
     db.control()
-    print("[SQLITE] Tables checked")
-    print("[Коментарий про политику] Надеемся и верим что лукашенку скинут")
+    print("---------------------------")
+    print("Helia discord bot starting")
+    print(f"[Extension_OK] Initialized {len(startup_extensions)} extensions")
     print("[SUCCESS] Started the bot") # Вывод информации о запуске
+    print("---------------------------")
     changeStatus.start()
 
 
@@ -105,6 +116,9 @@ if __name__ == '__main__':
     for extension in startup_extensions:
         try:
             bot.load_extension(extension)
+            print("---------------------------")
+            print(f"[Extension_Load] {extension} is being initialized")
+            print("---------------------------")
         except Exception as e:
             exc = '{}: {}'.format(type(e).__name__, e)
             print('Failed to load extension {}\n{}'.format(extension, exc))

@@ -19,7 +19,8 @@ More Information: ``help [Module]``
 **config** - Settings for server setup 
 **tools** - Useful tools
 **sudo** - Help for bot owners
-**Use $invite for bot invite links**
+**Use //invite for bot invite links**
+**For information about bot type //info**
 """ 
 
 class helper(commands.Cog):
@@ -28,14 +29,6 @@ class helper(commands.Cog):
 
     @commands.group(invoke_without_command=True,description= 'Help System') # Команда Help
     async def help(self, ctx: SlashContext):
-        connect = sqlite3.connect(db.main)
-        cursor = connect.cursor()
-        cursor.execute(db.select_table("prefixes","prefix","guild_id", ctx.guild.id))
-        res = cursor.fetchone()
-        cursor.close()
-        connect.close()
-        if res is None:
-            res = "$"
         embed = discord.Embed(
             title="Help System",
         )    
@@ -169,11 +162,11 @@ class helper(commands.Cog):
         path = "scripts/version.txt"
         with open(path, "r") as file:
             ver = file.readline()
-        embed = discord.Embed(title="Information about bot", description="Listed below", color=0xff6900)
+        embed = discord.Embed(title="Information", description="Here you can see credits and bot information", color=0xff6900)
         embed.add_field(name="Current version", value=ver, inline=False)
-        embed.add_field(name="Author", value="Bot based on NigamanRPG#6937 KonsoleBot -English translation + additions by Middlle#7488 ", inline=False)
-        embed.add_field(name="Thanks", value="NigamanRPG#6937 for konsolebot code on https://computerteam.tk:4600/ , Plastik#5004 for setname command code ", inline=False)
-        embed.add_field(name="Hosting", value="Heroku", inline=False)
+        embed.add_field(name="Author", value="Initial code based on NigamanRPG#6937 KonsoleBot which is now abandonware , this version is maintaned by Middlle#7488", inline=True)
+        embed.add_field(name="Thanks", value="NigamanRPG#6937(Now deleted account) for konsolebot code on https://computerteam.tk:4600/ , Plastik#5004 for setname command code , and other opensource projects for snippets of code", inline=True)
+        embed.add_field(name="Hosting", value="<:heroku:833426074289438730>Heroku", inline=True)
         embed.set_footer(text=self.bot.user.name, icon_url=self.bot.user.avatar_url)
         await ctx.send(embed=embed)
 
