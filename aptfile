@@ -1,7 +1,0 @@
-libopus0
-git
-libopus-dev -y
-libssl-dev
-libffi-dev -y
-libsodium-dev -y
-:repo:ppa:mc3man/xerus-media -y
