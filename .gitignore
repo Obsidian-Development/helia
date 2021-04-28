@@ -6,3 +6,7 @@ nohup.out
 poetry.lock
 pyproject.toml
 pyproject.tmp
+# dont bring in tests.py , setup.py and sh crap
+*.sh
+setup.py
+tests.py
