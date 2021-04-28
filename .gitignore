@@ -5,3 +5,4 @@ nohup.out
 # no need for poetry crap in public repo
 poetry.lock
 pyproject.toml
+pyproject.tmp
