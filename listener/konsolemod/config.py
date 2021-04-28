@@ -5,39 +5,40 @@ import random
 from scripts import db
 from PIL import Image, ImageDraw, ImageFont
 from discord.ext import commands
+from discord_slash import cog_ext, SlashContext
 import os
 class config(commands.Cog):
     def __init__(self,bot):
         self.bot = bot
     
-    @commands.command()
-    async def prefix(self,ctx,*, prefix_n=None):
-        try:
-            author = ctx.message.author
-            if author.guild_permissions.administrator:
-                if prefix_n is None:
-                    return await ctx.send("bot: Write the prefix")
-                connect = sqlite3.connect(db.main)
-                cursor = connect.cursor()
-                cursor.execute(db.select_table("prefixes", "prefix", "guild_id", ctx.guild.id))     
-                result = cursor.fetchone()
-                if result is None:
-                    val = (ctx.guild.id, prefix_n)
-                    cursor.execute(db.insert_table("prefixes","guild_id","prefix"), val)
-                else:
-                    val = (prefix_n, ctx.guild.id)
-                    cursor.execute(f"UPDATE prefixes SET prefix = ? WHERE guild_id = ?", val)  
-                connect.commit()
-                cursor.close()
-                connect.close()
-                await ctx.send(f"bot: Changed the prefix to ``{prefix_n}``")
-            else:
-                await ctx.send("bot: You do not have enough permissions - :You require **Administrator**.")
-        except:
-            await ctx.send("bot: Error , wrong argument or not enough permissions")
+    #@commands.command()
+    #async def prefix(self,ctx,*, prefix_n=None):
+        #try:
+            #author = ctx.message.author
+            #if author.guild_permissions.administrator:
+                #if prefix_n is None:
+                    #return await ctx.send("bot: Write the prefix")
+                #connect = sqlite3.connect(db.main)
+                #cursor = connect.cursor()
+                #cursor.execute(db.select_table("prefixes", "prefix", "guild_id", ctx.guild.id))     
+                #result = cursor.fetchone()
+                #if result is None:
+                    #val = (ctx.guild.id, prefix_n)
+                    #cursor.execute(db.insert_table("prefixes","guild_id","prefix"), val)
+                #else:
+                    #val = (prefix_n, ctx.guild.id)
+                    #cursor.execute(f"UPDATE prefixes SET prefix = ? WHERE guild_id = ?", val)  
+                #connect.commit()
+                #cursor.close()
+                #connect.close()
+                #await ctx.send(f"bot: Changed the prefix to ``{prefix_n}``")
+            #else:
+                #await ctx.send("bot: You do not have enough permissions - :You require **Administrator**.")
+        #except:
+            #await ctx.send("bot: Error , wrong argument or not enough permissions")
 
     @commands.group(invoke_without_command=True)
-    async def verify(self, ctx):
+    async def verify(self, ctx: SlashContext):
         try:
             conn = sqlite3.connect(db.main)
             cursor = conn.cursor()
@@ -75,7 +76,7 @@ class config(commands.Cog):
 
 
     @verify.command()
-    async def role(self, ctx, ver_role: discord.Role=None):
+    async def role(self, ctx: SlashContext, ver_role: discord.Role=None):
         try:
             author = ctx.message.author
             if author.guild_permissions.administrator:
@@ -99,7 +100,7 @@ class config(commands.Cog):
         
 
     @verify.command(pass_context=True)
-    async def clear(self, ctx):
+    async def clear(self, ctx: SlashContext):
         try:
             author = ctx.message.author
             if author.guild_permissions.administrator:

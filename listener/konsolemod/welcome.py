@@ -5,6 +5,7 @@ import os
 import sqlite3
 from scripts import db, help
 from discord.ext import commands
+from discord_slash import cog_ext, SlashContext
 class welcome(commands.Cog):
     def __init__(self,bot):
         self.bot = bot
@@ -38,14 +39,14 @@ class welcome(commands.Cog):
 
         
     @commands.group(invoke_without_command=True)
-    async def welcome(self, ctx):
+    async def welcome(self, ctx: SlashContext):
         await ctx.send(help.welcome)
 
     @welcome.command(pass_context=True)
-    async def channel(self, ctx, chan: discord.TextChannel=None):
+    async def channel(self, ctx: SlashContext, chan: discord.TextChannel=None):
         try:
             author = ctx.message.author     
-            if author.guild_permissions.administrator:
+            if author.guild_permissions.manage_channels:
                 connect = sqlite3.connect(db.main)
                 cursor = connect.cursor()   
                 cursor.execute(db.select_table("welcome", "channel_id", "guild_id", ctx.guild.id)) 
@@ -60,16 +61,16 @@ class welcome(commands.Cog):
                 connect.close()
                 await ctx.send(f"bot: Set the welcome channel to {chan.mention}")  
             else:
-                await ctx.send("You do not have enough permissions - :You require **Administrator**.")  
+                await ctx.send("You do not have enough permissions - :You require **Manage Channels**.")  
         except:
             await ctx.send("bot: Error")    
 
 
     @welcome.command(pass_context=True)
-    async def clear(self, ctx):
+    async def clear(self, ctx: SlashContext):
         try:
             author = ctx.message.author
-            if author.guild_permissions.administrator:
+            if author.guild_permissions.manage_channels:
                 connect = sqlite3.connect(db.main)
                 cursor = connect.cursor()
                 cursor.execute(db.select_table("welcome", "channel_id", "guild_id", ctx.guild.id))
@@ -83,15 +84,15 @@ class welcome(commands.Cog):
                 cursor.close()
                 connect.close()
             else:
-                await ctx.send("You do not have enough permissions - :You require **Administrator**.")
+                await ctx.send("You do not have enough permissions - :You require **Manage Channels**.")
         except:
             await ctx.send("bot: Error")
     
     @welcome.command(pass_context=True)
-    async def text(self, ctx,*,content=None):
+    async def text(self, ctx: SlashContext,*,content=None):
         try:    
             author = ctx.message.author
-            if author.guild_permissions.administrator:
+            if author.guild_permissions.manage_channels:
                 if content is None:
                     return await ctx.send("bot: Please type the text you wish for the welcome message")
                 connect = sqlite3.connect(db.main)
@@ -109,7 +110,7 @@ class welcome(commands.Cog):
                 connect.close()
                 await ctx.send(f"bot: Set the welcome message text") 
             else:
-                await ctx.send("bot: You do not have enough permissions - :You require **Administrator**.")
+                await ctx.send("bot: You do not have enough permissions - :You require **Manage Channels**.")
         except:
             await ctx.send("bot: Error , argument may be invalid")
 

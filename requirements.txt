@@ -1,5 +1,6 @@
-discord.py==1.2.5
+discord.py
 discord.py[voice]
+discord-py-slash-command
 google-api-python-client
 google-auth
 google-auth-httplib2
@@ -16,3 +17,7 @@ timedelta
 datetime
 wikipedia
 Pillow
+slashify
+python-dotenv
+wavelink
+discord-ext-menus

@@ -1,5 +1,6 @@
 import asyncio
 import discord
+from discord_slash import cog_ext, SlashContext
 #### PERMISSION ####
 
 def is_admin(member) :

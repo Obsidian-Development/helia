@@ -2,13 +2,14 @@ import discord
 import asyncio
 import os
 from discord.ext import commands
+from discord_slash import cog_ext, SlashContext
 
 class infosystem(commands.Cog):
     def __init__(self,bot):
         self.bot = bot
 
-    @commands.command()
-    async def neofetch(self, ctx , member : discord.Member=None  ):
+    @commands.command(description='User Information')
+    async def neofetch(self, ctx: SlashContext , member : discord.Member=None  ):
         if member is None:
             member = ctx.message.author  
         username = member.nick
@@ -29,8 +30,8 @@ class infosystem(commands.Cog):
         neoembed.set_thumbnail(url=member.avatar_url)
         await ctx.send(embed=neoembed)
 
-    @commands.command()
-    async def avatar(self, ctx, member : discord.Member=None):
+    @commands.command(description='User Profile picture')
+    async def avatar(self, ctx: SlashContext, member : discord.Member=None):
         if member is None:
             member = ctx.message.author
         avaembed = discord.Embed(title=f"User Profile Picture {member}",color=0x00ff00)
@@ -38,8 +39,8 @@ class infosystem(commands.Cog):
         avaembed.set_footer(text=f"User ID: {member.id}")
         await ctx.send(embed=avaembed)
 
-    @commands.command()
-    async def guild(self, ctx):
+    @commands.command(description='Server Information')
+    async def guild(self, ctx: SlashContext):
         member = ctx.message.author
         servinfo = discord.Embed(title="Server Information", color=0x00ff00)
         servinfo.set_author(name=f"{member.guild}", icon_url=f"{member.guild.icon_url}")
@@ -52,7 +53,7 @@ class infosystem(commands.Cog):
         await ctx.send(embed=servinfo)
     
     @commands.command(pass_context=True)
-    async def voicedemo(self,ctx, voice: discord.VoiceChannel):
+    async def voicedemo(self,ctx: SlashContext, voice: discord.VoiceChannel):
         member = ctx.message.author
         await ctx.send(f"**Voice Channel Screenshare Link {voice.mention}**: https://discordapp.com/channels/{member.guild.id}/{voice.id}")
         
