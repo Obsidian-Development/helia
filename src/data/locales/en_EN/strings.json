@@ -21,11 +21,12 @@
         "abouthostingvalue": "<:heroku:833426074289438730>Heroku",
         "botownererrorembedtitle": "Error",
         "botownererrorembeddesc": "You need the ``Bot Owner`` permission to do this.",
-        "announcestitle": "\uD83C\uDF10 Global  Announcement",
+        "announcestitle": "Global Announcement System \uD83C\uDF10",
         "announcesdesc": "Announcement from bot owner",
         "announcesfieldtitle": "Announced from",
         "announcesfielddesc": "Description",
-        "announcesfooter": "\uD83C\uDF10 Thank you for listening"
+        "announcesfooter": "\uD83C\uDF10 Thank you for listening",
+        "announceaway": "✅ Announcement sending/sent to guilds."
     },
     "helpsystemfirstpage": {
         "gemtitle": "**general**",

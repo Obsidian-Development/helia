@@ -26,7 +26,7 @@ class broadcast(commands.Cog):
     announcement.set_footer(text=STRINGS['general']['announcesfooter'], icon_url=ctx.message.guild.icon_url)
     sent_counter = 0
     text_channel_list = []
-    embed=discord.Embed(title="Global Announcement System 🌐", description="✅ Announcement sending/sent to guilds.")
+    embed=discord.Embed(title=STRINGS['general']['announcestitle'], description=STRINGS['general']['announceaway'])
     embed.set_author(name=self.bot.user.name)
     await ctx.send(embed=embed)
     for guild in self.bot.guilds:
@@ -48,4 +48,5 @@ class broadcast(commands.Cog):
 
     
 def setup(bot):
-    bot.add_cog(broadcast(bot))     
+    bot.add_cog(broadcast(bot))
+    print("Global announcements initialized")
