@@ -29,9 +29,26 @@ Russian Description
 1. Create .env file in src folder with this content
 DISCORD_TOKEN=your token without quote symbols or anything
 2. If you want to host localy then just launch the bot with py main.py otherwise follow next steps
-3. For hosting in heroku do this
-Follow step 1 
-Install Git and do git init when inside your directory
-Install heroku cli
-Then do heroku apps:create name_of_app and heroku buildpacks:set heroku/python
-Finally, do git push heroku master or git push heroku branch_name:master if you want to only push one branch
+3. Heroku cli setup
+4. Follow step 1 
+5. Go to heroku.com and Sign Up or Log In if already have an account.
+6. For command line setup install Git and do git init when inside your directory
+7. Install heroku cli
+8. Then do heroku apps:create name_of_app and heroku buildpacks:set heroku/python
+9. Finally, do git push heroku master or git push heroku branch_name:master if you want to only push one branch
+10. For heroku gui setup do
+11. Go to heroku.com and Sign Up or Log In if already have an account.
+12. Go to Heroku Dashboard
+13. Hit New. Now give the application on heroku a unique name
+14. Click on Connect to Github. You might need to Authorize the app. If so Do It. 
+15. Create a private repository on github 
+16. Upload bot files into your private repository and edit gitignore and remove .env file mentions from there
+17. Create .env file in src folder of your private repository with this content
+DISCORD_TOKEN=your token without quote symbols or anything
+18. Now go back to heroku and link your private repository there by entering your name of private repository. Hit search and then connect.
+19. Now scroll down below and Enable Auto Deploy. Now Scroll a little more and hit Deploy Branch.
+# Enabling the bot to launch in heroku
+20. Go to Resources Tab
+21. Click the little edit icon near our apps' name to enable our dynos
+22. Enable it and hit confirm
+23. Congrats you now have your own helia instance
