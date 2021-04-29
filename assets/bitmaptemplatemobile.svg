@@ -41,7 +41,7 @@
        x2="361.73773"
        y2="153.81944"
        gradientUnits="userSpaceOnUse"
-       gradientTransform="matrix(0.47285842,0,0,0.4873341,-57.687992,-61.184731)" />
+       gradientTransform="matrix(0.47285842,0,0,0.4873341,-57.636574,-60.271261)" />
   </defs>
   <sodipodi:namedview
      id="base"
@@ -51,10 +51,10 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.98994948"
-     inkscape:cx="275.1017"
-     inkscape:cy="37.260517"
+     inkscape:cx="84.246309"
+     inkscape:cy="-190.62637"
      inkscape:document-units="mm"
-     inkscape:current-layer="layer1"
+     inkscape:current-layer="layer3"
      inkscape:document-rotation="0"
      showgrid="false"
      units="px"
@@ -76,16 +76,36 @@
     </rdf:RDF>
   </metadata>
   <g
-     inkscape:label="Слой 1"
      inkscape:groupmode="layer"
-     id="layer1">
+     id="layer3"
+     inkscape:label="Слой 3">
     <rect
        style="fill:url(#linearGradient860);fill-opacity:1;stroke:#ffffff;stroke-width:0.12701"
        id="rect838"
        width="133.68947"
        height="42.734562"
-       x="-20.389284"
-       y="-7.5905399" />
+       x="-20.337866"
+       y="-6.6770701" />
+  </g>
+  <g
+     inkscape:label="Слой 1"
+     inkscape:groupmode="layer"
+     id="layer1" />
+  <g
+     inkscape:groupmode="layer"
+     id="layer4"
+     inkscape:label="Слой 4" />
+  <g
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="Слой 2">
+    <rect
+       style="fill:#1a1a1a;stroke:#ffffff;stroke-width:0.264583"
+       id="rect839"
+       width="15.780505"
+       height="4.5357141"
+       x="26.859236"
+       y="15.60773" />
     <text
        xml:space="preserve"
        style="font-size:14.8687px;line-height:1.25;font-family:'Franklin Gothic Medium Cond';-inkscape-font-specification:'Franklin Gothic Medium Cond';stroke-width:0.371718"
