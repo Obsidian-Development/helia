@@ -1,9 +1,9 @@
 <img align="center" src="https://raw.githubusercontent.com/pieckenst/helia/canary/bitmapcanarym.png" height="100" width="320">
 
-[![GitHub last commit](https://img.shields.io/github/last-commit/pieckenst/helia?style=for-the-badge)](https://github.com/pieckenst/helia/commits/master)
 [![forthebadge](https://forthebadge.com/images/badges/made-with-python.svg)](https://forthebadge.com)
-[![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)](https://forthebadge.com)
+[![GitHub last commit](https://img.shields.io/github/last-commit/pieckenst/helia?style=for-the-badge)](https://github.com/pieckenst/helia/commits/master)
 [![GitHub](https://img.shields.io/github/license/pieckenst/helia?style=for-the-badge)](https://github.com/pieckenst/helia/blob/master/LICENSE)
+[![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)](https://forthebadge.com)
 
 An opensource music and moderation bot made for your pleasure)  
 Main bot features Music (May some times break) Can play music from youtube , skip it ,has queue , the usual stuff for music bots overall
