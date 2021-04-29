@@ -10,3 +10,5 @@ pyproject.tmp
 *.sh
 setup.py
 tests.py
+# dont bring in backups
+bak/
