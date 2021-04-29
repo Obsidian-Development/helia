@@ -8,9 +8,9 @@
    xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="1000"
-   height="300"
-   viewBox="0 0 264.58333 79.375002"
+   width="320"
+   height="50"
+   viewBox="0 0 84.666666 13.229167"
    version="1.1"
    id="svg8"
    inkscape:export-filename="H:\canary\helia\bitmapcanary.png"
@@ -39,9 +39,9 @@
        x1="157.17702"
        y1="152.49652"
        x2="361.73773"
-       y2="153.81945"
+       y2="153.81944"
        gradientUnits="userSpaceOnUse"
-       gradientTransform="translate(-78.698259,-109.75859)" />
+       gradientTransform="matrix(0.30740704,0,0,0.17688255,-24.735461,-21.039218)" />
   </defs>
   <sodipodi:namedview
      id="base"
@@ -50,9 +50,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.98994949"
-     inkscape:cx="270.0196"
-     inkscape:cy="-43.986028"
+     inkscape:zoom="1.4"
+     inkscape:cx="56.267393"
+     inkscape:cy="-28.057931"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      inkscape:document-rotation="0"
@@ -71,7 +71,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -80,33 +80,33 @@
      inkscape:groupmode="layer"
      id="layer1">
     <rect
-       style="fill:url(#linearGradient860);fill-opacity:1;stroke:#ffffff;stroke-width:0.264583"
+       style="fill:url(#linearGradient860);fill-opacity:1;stroke:#ffffff;stroke-width:0.0616966"
        id="rect838"
-       width="282.7262"
-       height="87.690468"
-       x="0.18097909"
-       y="0.21564019" />
+       width="86.912018"
+       height="15.510914"
+       x="-0.48742825"
+       y="-1.5866961" />
     <text
        xml:space="preserve"
-       style="font-size:33.1262px;line-height:1.25;font-family:'Franklin Gothic Medium Cond';-inkscape-font-specification:'Franklin Gothic Medium Cond';stroke-width:0.828157"
-       x="96.831863"
-       y="48.664833"
+       style="font-size:9.49513px;line-height:1.25;font-family:'Franklin Gothic Medium Cond';-inkscape-font-specification:'Franklin Gothic Medium Cond';stroke-width:0.237379"
+       x="31.664398"
+       y="7.9608879"
        id="text864"><tspan
          sodipodi:role="line"
          id="tspan862"
-         x="96.831863"
-         y="48.664833"
-         style="stroke-width:0.828157">HELIA</tspan></text>
+         x="31.664398"
+         y="7.9608879"
+         style="stroke-width:0.237379">HELIA</tspan></text>
     <text
        xml:space="preserve"
-       style="font-size:10.5833px;line-height:1.25;font-family:'Franklin Gothic Medium Cond';-inkscape-font-specification:'Franklin Gothic Medium Cond';fill:#ffcc00;stroke-width:0.264583"
-       x="98.651787"
-       y="58.586304"
+       style="font-size:3.03355px;line-height:1.25;font-family:'Franklin Gothic Medium Cond';-inkscape-font-specification:'Franklin Gothic Medium Cond';fill:#ffcc00;stroke-width:0.0758388"
+       x="32.18605"
+       y="10.804729"
        id="text868"><tspan
          sodipodi:role="line"
          id="tspan866"
-         x="98.651787"
-         y="58.586304"
-         style="fill:#ffcc00;stroke-width:0.264583">CANARY</tspan></text>
+         x="32.18605"
+         y="10.804729"
+         style="fill:#ffcc00;stroke-width:0.0758388">CANARY</tspan></text>
   </g>
 </svg>
