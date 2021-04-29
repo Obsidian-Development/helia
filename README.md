@@ -25,3 +25,13 @@ Russian Description
 
 Более подробную информацию о функциях бота можно увидеть в //help, и вы всегда можете внести свой вклад в улучшение бота, если знаете python, перейдя в репозиторий бота на github по адресу https://github.com/pieckenst/helia и сделать изменения сответствуя нашим требованиям для пул реквестов на https://github.com/pieckenst/helia/blob/master/CONTRIBUTING. Исходный код на общедоступном github может немного отставать от захосченной версии, поскольку обновления в него отправляются, когда накапливается достаточно изменений
 
+# BOT HOSTING GUIDE
+1. Create .env file in src folder with this content
+DISCORD_TOKEN=your token without quoute symbols or anything
+2. If you want to host localy then just launch the bot with py main.py otherwise follow next steps
+3. For hosting in heroku do this
+Follow step 1 
+Install Git and do git init when inside your directory
+Install heroku cli
+Then do heroku apps:create name_of_app and heroku buildpacks:set heroku/python
+Finally, do git push heroku master or git push heroku branch_name:master if you want to only push one branch
