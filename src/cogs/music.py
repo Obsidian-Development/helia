@@ -351,8 +351,8 @@ class Music(commands.Cog, wavelink.WavelinkMixin, name='Music'):
         if not player.queue.upcoming:
             raise NoMoreTracks
         await player.stop()
-        nextEmbed=discord.Embed(title="Listedeki mevcut sıradan bir sonraki parça çalınıyor.",colour=0xffd500)
-        nextEmbed.set_footer(text=f"Tarafından: {ctx.author}", icon_url=ctx.author.avatar_url)
+        nextEmbed=discord.Embed(title=STRINGS['music']['skipsongtext'],colour=0xffd500)
+        nextEmbed.set_footer(text=STRINGS['music']['embed_controler_footer'])
         
         await ctx.send(embed=nextEmbed)
         
@@ -368,7 +368,11 @@ class Music(commands.Cog, wavelink.WavelinkMixin, name='Music'):
             nextEmbed_2.set_footer(text=STRINGS['music']['embed_controler_footer'])
             await ctx.send(embed=nextEmbed_2)
         elif isinstance(exc, NoMoreTracks):
-            nextEmbed_3=discord.Embed(title="Listede başka parça yok.",colour=0xffd500)
+            s = await Settings(ctx.guild.id)
+            lang = await s.get_field('locale', CONFIG['default_locale'])
+            STRINGS = Strings(lang)
+            nextEmbed_3=discord.Embed(title=STRINGS['music']['nomoretrackstext'],description=STRINGS['music']['nomoretrackdesc'],colour=0xffd500)
+            nextEmbed_3.set_footer(text=STRINGS['music']['embed_controler_footer'])
             await ctx.send(embed=nextEmbed_3)
 
     @commands.command(name="previous", brief = "Returns to the previous song in the list.",aliases=["prev","предыдущая"])
@@ -398,7 +402,8 @@ class Music(commands.Cog, wavelink.WavelinkMixin, name='Music'):
             previousEmbed_2.set_footer(text=STRINGS['music']['embed_controler_footer'])
             await ctx.send(embed=previousEmbed_2)
         elif isinstance(exc, NoPreviousTracks):
-            previousEmbed_3=discord.Embed(title="Listede başka parça yok.",colour=0xffd500)
+            previousEmbed_3=discord.Embed(title=STRINGS['music']['nomoretrackstext'],description=STRINGS['music']['nomoretracksprevdesc'],colour=0xffd500)
+            previousEmbed_3.set_footer(text=STRINGS['music']['embed_controler_footer'])
             await ctx.send(embed=previousEmbed_3)
 
     @commands.command(name="shuffle", brief = "Shuffles queue.",aliases=["randomize","рандомизацияплейлиста"])
