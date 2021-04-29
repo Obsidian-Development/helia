@@ -77,7 +77,11 @@
     },
     "other": {
         "on_prefix": "The prefix was changed successfully.",
-        "pong": "Pong! Server latency: {0} ms."
+        "pong": "Pong! Server latency: {0} ms.",
+        "rollcubetitle": "<:game_die:643509937892229142> Play Roll Cube",
+        "cointosstitle": "<:moneybag:643869263937011732> Play Coin Toss",
+        "casinotitle": "<:slot_machine:643869263937011732> Casino Minigame",
+        "rolled": "You rolled: "
     },
     "error": {
         "cannot_ban_user": "You cannot ban a user whose role is higher than that of a bot.",
