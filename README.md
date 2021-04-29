@@ -48,7 +48,7 @@ DISCORD_TOKEN=your token without quote symbols or anything
 18. Now go back to heroku and link your private repository there by entering your name of private repository. Hit search and then connect.
 19. Now scroll down below and Enable Auto Deploy. Now Scroll a little more and hit Deploy Branch.
 # Enabling the bot to launch in heroku
-20. Go to Resources Tab
+20. Go to Resources Tab once the bot deployement is finished
 21. Click the little edit icon near our apps' name to enable our dynos
 22. Enable it and hit confirm
 23. Congrats you now have your own helia instance
