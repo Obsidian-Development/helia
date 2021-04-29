@@ -41,7 +41,7 @@
        x2="361.73773"
        y2="153.81944"
        gradientUnits="userSpaceOnUse"
-       gradientTransform="matrix(0.47285842,0,0,0.4873341,-57.636574,-60.271261)" />
+       gradientTransform="matrix(0.48041389,0,0,0.49512087,-56.152661,-61.504567)" />
   </defs>
   <sodipodi:namedview
      id="base"
@@ -50,9 +50,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.98994948"
-     inkscape:cx="84.246309"
-     inkscape:cy="-190.62637"
+     inkscape:zoom="1.4"
+     inkscape:cx="108.10736"
+     inkscape:cy="49.042704"
      inkscape:document-units="mm"
      inkscape:current-layer="layer3"
      inkscape:document-rotation="0"
@@ -80,12 +80,12 @@
      id="layer3"
      inkscape:label="Слой 3">
     <rect
-       style="fill:url(#linearGradient860);fill-opacity:1;stroke:#ffffff;stroke-width:0.12701"
+       style="fill:url(#linearGradient860);fill-opacity:1;stroke:#ffffff;stroke-width:0.129039"
        id="rect838"
-       width="133.68947"
-       height="42.734562"
-       x="-20.337866"
-       y="-6.6770701" />
+       width="135.82559"
+       height="43.417385"
+       x="-18.257982"
+       y="-7.0540304" />
   </g>
   <g
      inkscape:label="Слой 1"
@@ -100,12 +100,12 @@
      id="layer2"
      inkscape:label="Слой 2">
     <rect
-       style="fill:#1a1a1a;stroke:#ffffff;stroke-width:0.264583"
+       style="fill:#1a1a1a;stroke:#ffffff;stroke-width:0.27549"
        id="rect839"
-       width="15.780505"
-       height="4.5357141"
-       x="26.859236"
-       y="15.60773" />
+       width="16.431057"
+       height="4.7226987"
+       x="26.864689"
+       y="15.613184" />
     <text
        xml:space="preserve"
        style="font-size:14.8687px;line-height:1.25;font-family:'Franklin Gothic Medium Cond';-inkscape-font-specification:'Franklin Gothic Medium Cond';stroke-width:0.371718"
@@ -119,14 +119,14 @@
          style="stroke-width:0.371718">HELIA</tspan></text>
     <text
        xml:space="preserve"
-       style="font-size:4.75031px;line-height:1.25;font-family:'Franklin Gothic Medium Cond';-inkscape-font-specification:'Franklin Gothic Medium Cond';fill:#ffcc00;stroke-width:0.118758"
-       x="27.218937"
-       y="19.544876"
+       style="font-size:4.94614px;line-height:1.25;font-family:'Franklin Gothic Medium Cond';-inkscape-font-specification:'Franklin Gothic Medium Cond';fill:#ffcc00;stroke-width:0.123654"
+       x="27.23922"
+       y="19.712639"
        id="text868"><tspan
          sodipodi:role="line"
          id="tspan866"
-         x="27.218937"
-         y="19.544876"
-         style="fill:#ffcc00;stroke-width:0.118758">CANARY</tspan></text>
+         x="27.23922"
+         y="19.712639"
+         style="fill:#ffcc00;stroke-width:0.123654">CANARY</tspan></text>
   </g>
 </svg>
