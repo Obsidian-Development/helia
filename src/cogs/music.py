@@ -266,7 +266,7 @@ class Music(commands.Cog, wavelink.WavelinkMixin, name='Music'):
         player = self.get_player(ctx)
         await player.teardown()
         
-        logger.info(f"[MUSIC]Voice channel quit requested by {ctx.author} in {ctx.message.guild}")
+        #logger.info(f"[MUSIC]Voice channel quit requested by {ctx.author} in {ctx.message.guild}")
 
     @commands.command(name="play", brief = "play music.",aliases=["p","pl","игратьмузыку"])
     async def play_command(self, ctx, *, query: t.Optional[str]):
