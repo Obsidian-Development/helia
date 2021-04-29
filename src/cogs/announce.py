@@ -14,11 +14,16 @@ class broadcast(commands.Cog):
   @commands.command(description='Global Announcement from bot owner')
   @commands.is_owner()
   async def announce(self, ctx: SlashContext, *, content):
-    announcement = discord.Embed(color=0x3B88C3)
+    s = await Settings(ctx.guild.id)
+    lang = await s.get_field('locale', CONFIG['default_locale'])
+    prefix = await s.get_field('prefix', CONFIG['default_prefix'])
+    STRINGS = Strings(lang)
+    announcement = discord.Embed(title=STRINGS['general']['announcestitle'], description=STRINGS['general']['announcesdesc'],color=0x3B88C3)
     author_name = f'{ctx.message.author}'
     announcement.set_author(name=author_name, url=ctx.message.author.avatar_url)
-    announcement.add_field(name=f'🌐 Global  Announcement', value=content)
-    announcement.set_footer(text=f'Announced from {ctx.message.guild.name}', icon_url=ctx.message.guild.icon_url)
+    announcement.add_field(name=STRINGS['general']['announcesfieldtitle'], value=f"{ctx.message.guild.name}", inline=False)
+    announcement.add_field(name=STRINGS['general']['announcesfielddesc'], value=content, inline=True)
+    announcement.set_footer(text=STRINGS['general']['announcesfooter'], icon_url=ctx.message.guild.icon_url)
     sent_counter = 0
     text_channel_list = []
     embed=discord.Embed(title="Global Announcement System 🌐", description="✅ Announcement sending/sent to guilds.")
