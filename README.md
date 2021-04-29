@@ -1,5 +1,4 @@
-
-<src="https://raw.githubusercontent.com/pieckenst/helia/canary/bitmapcanary.png">
+<img align="center" src="https://raw.githubusercontent.com/pieckenst/helia/canary/bitmapcanary.png" height="300" width="1000">
 
 # Helia
 [![GitHub last commit](https://img.shields.io/github/last-commit/pieckenst/helia?style=for-the-badge)](https://github.com/pieckenst/helia/commits/master)
