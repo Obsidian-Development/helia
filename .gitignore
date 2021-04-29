@@ -11,6 +11,6 @@ pyproject.tmp
 *.sh
 setup.py
 tests.py
-# dont bring in backups
+# dont bring in backups or music logs
 bak/
 src/logs/music.log
