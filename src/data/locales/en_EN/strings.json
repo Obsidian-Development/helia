@@ -222,7 +222,14 @@
         "nomoremembersfordjswap": "No more members to swap to.",
         "djsetone": "{member.mention} is now the DJ.",
         "djsettwo": "{member.mention} is now the DJ.",
-		"botleavevc": "Leaving the voice channel"
+		"botleavevc": "Leaving the voice channel",
+        "looptitlemain": "Loop",
+        "loopdesc": "Enabling the queue/song loop",
+        "looptitleone": "Loop mode",
+        "looptitletwo": "Loop requested by",
+        "loopmodeinvalidtitle": "Error",
+        "loopmodeinvaliddesc": "Invalid loop mode",
+        "validloopmodestitle": "Valid loop modes"
     },
     "bot_log": {
         "info": "[{0}] [?] {1}",

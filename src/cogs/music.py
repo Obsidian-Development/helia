@@ -109,11 +109,11 @@ class Queue:
         self._queue.extend(upcoming)
 
     def set_repeat_mode(self, mode):
-        if mode == "Yok":
+        if mode == "noloop":
             self.repeat_mode = RepeatMode.NONE
-        elif mode == "1":
+        elif mode == "onesong":
             self.repeat_mode = RepeatMode.ONE
-        elif mode == "Tümü":
+        elif mode == "entirequeue":
             self.repeat_mode = RepeatMode.ALL
 
     def empty(self):
@@ -436,15 +436,17 @@ class Music(commands.Cog, wavelink.WavelinkMixin, name='Music'):
         lang = await s.get_field('locale', CONFIG['default_locale'])
         STRINGS = Strings(lang)
         mode = mode.title()
-        if mode not in ("Yok", "1", "Tümü"):
+        if mode not in ("noloop", "onesong", "entirequeue"):
             raise InvalidRepeatMode
         player = self.get_player(ctx)
         
         if player.queue.is_empty:
             raise QueueIsEmpty
         player.queue.set_repeat_mode(mode)
-        repeatEmbed=discord.Embed(title=f"Tekrarlama modu {mode} olarak ayarlandı.",colour=0xffd500)
-        repeatEmbed.set_footer(text=f"Tarafından: {ctx.author}", icon_url=ctx.author.avatar_url)
+        repeatEmbed=discord.Embed(title=STRINGS['music']['looptitlemain'], description=STRINGS['music']['loopdesc'], color=0xffb164)
+        repeatEmbed.add_field(name=STRINGS['music']['looptitleone'], value=f"{mode}", inline=True)
+        repeatEmbed.add_field(name=STRINGS['music']['looptitletwo'], value=f"{ctx.author}", inline=True)
+        repeatEmbed.set_footer(text=STRINGS['music']['embed_controler_footer'])
         
         await ctx.send(embed=repeatEmbed)
         
@@ -453,7 +455,12 @@ class Music(commands.Cog, wavelink.WavelinkMixin, name='Music'):
     @repeat_command.error
     async def repeat_command_error(self, ctx, exc):
         if isinstance(exc, InvalidRepeatMode):
-            repeatEmbed_2=discord.Embed(title="Hatalı Tekrarlama Modu",description="Tekrarlama Modları\n1-Yok\n2-1 (Mevcut Parça)\n3-Tümü",colour=0xffd500)
+            s = await Settings(ctx.guild.id)
+            lang = await s.get_field('locale', CONFIG['default_locale'])
+            STRINGS = Strings(lang)
+            repeatEmbed_2=discord.Embed(title=STRINGS['music']['loopmodeinvalidtitle'], description=STRINGS['music']['loopmodeinvaliddesc'], color=0xffb164)
+            repeatEmbed_2.add_field(name=STRINGS['music']['validloopmodestitle'], value="noloop,onesong,entirequeue", inline=True)
+            repeatEmbed_2.set_footer(text=STRINGS['music']['embed_controler_footer'])
             await ctx.send(embed=repeatEmbed_2)
         elif isinstance(exc, QueueIsEmpty):
             s = await Settings(ctx.guild.id)
