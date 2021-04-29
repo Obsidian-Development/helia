@@ -1,5 +1,14 @@
 # -*- coding: utf-8 -*-
-
+#/********************************************************************************
+# * Copyright (c) 2021 Middlle#7488
+# *
+# * This program and the accompanying materials are made available under the
+# * terms of the Eclipse Public License 2.0 which is available at
+# * http://www.eclipse.org/legal/epl-2.0, or the Mozilla Public License, Version 2.0
+# * which is available at https://www.mozilla.org/en-US/MPL/2.0/
+# *
+# * SPDX-License-Identifier: EPL-2.0 OR MPL-2.0
+# ********************************************************************************/
 
 
 from typing import NoReturn
@@ -30,6 +39,8 @@ STRINGS = Strings(CONFIG['default_locale'])
 
 filepath = dirname(abspath(__file__))
 
+load_dotenv()
+TOKEN = os.getenv("DISCORD_TOKEN")
 
 cprint(STRINGS['etc']['info']['art'], 'white')
 
@@ -106,4 +117,4 @@ async def on_ready() -> NoReturn:
 
 
 
-bot.run(CONFIG['token'])
+bot.run(TOKEN) #securize token in a .env - safer compared to storing in config.json
