@@ -8,7 +8,7 @@ import asyncio
 import random
 import re
 from cogs.utils import Logger, Settings, Config, Commands, Strings, Utils
-from logging_files.music_log import logger
+#from logging_files.music_log import logger
 
 CONFIG = Config()
 
