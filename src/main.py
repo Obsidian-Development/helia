@@ -48,7 +48,9 @@ cprint('Default locale is {0}'.format(
     CONFIG['default_locale']), 'green')
 
 
-bot = AutoShardedBot(command_prefix=Utils.get_prefix, help_command=None)
+bot = AutoShardedBot(command_prefix=Utils.get_prefix, help_command=None, intents=discord.Intents.default())
+slash = SlashCommand(bot, override_type = True)
+Slashify(bot)
 
 @tasks.loop(seconds=80)
 async def changeStatus():
