@@ -54,7 +54,6 @@ class Queue:
     def __init__(self):
         self._queue = []
         self.position = 0
-        self.repeat_mode = RepeatMode.NONE
 
     @property
     def is_empty(self):
@@ -147,6 +146,12 @@ class Player(wavelink.Player):
             raise NoTracksFound
         if isinstance(tracks, wavelink.TrackPlaylist):
             self.queue.add(*tracks.tracks)
+            playEmbedplaylist = discord.Embed(title=STRINGS['music']['embed_controler_title'],description=STRINGS['music']['embed_controler_desc'], color=0xff8000)
+            playEmbedplaylist.add_field(name=STRINGS['music']['embed_controler_playlistadd'], value=STRINGS['music']['embed_controler_playlistadddesc'],inline=True)
+            playEmbedplaylist.add_field(name=STRINGS['music']['embed_controler_req'], value=f"{ctx.author}", inline=True)
+            playEmbedplaylist.set_footer(text=STRINGS['music']['embed_controler_footer'])
+
+            await ctx.send(embed=playEmbedplaylist)
         elif len(tracks) == 1:
             self.queue.add(tracks[0])
             playEmbed = discord.Embed(title=STRINGS['music']['embed_controler_title'], description=STRINGS['music']['embed_controler_desc'], color=0xff8000)
@@ -429,46 +434,6 @@ class Music(commands.Cog, wavelink.WavelinkMixin, name='Music'):
             shuffleEmbed_2=discord.Embed(title=STRINGS['music']['queueerror'],description=STRINGS['music']['queueerrordesc'],colour=0xffd500)
             shuffleEmbed_2.set_footer(text=STRINGS['music']['embed_controler_footer'])
             await ctx.send(embed=shuffleEmbed_2)
-
-    @commands.command(name="loop", brief = "Sets music to repeat",aliases=["repeat","повтор"])
-    async def repeat_command(self, ctx, mode: str):
-        s = await Settings(ctx.guild.id)
-        lang = await s.get_field('locale', CONFIG['default_locale'])
-        STRINGS = Strings(lang)
-        mode = mode.title()
-        if mode not in ("noloop", "onesong", "entirequeue"):
-            raise InvalidRepeatMode
-        player = self.get_player(ctx)
-        
-        if player.queue.is_empty:
-            raise QueueIsEmpty
-        player.queue.set_repeat_mode(mode)
-        repeatEmbed=discord.Embed(title=STRINGS['music']['looptitlemain'], description=STRINGS['music']['loopdesc'], color=0xffb164)
-        repeatEmbed.add_field(name=STRINGS['music']['looptitleone'], value=f"{mode}", inline=True)
-        repeatEmbed.add_field(name=STRINGS['music']['looptitletwo'], value=f"{ctx.author}", inline=True)
-        repeatEmbed.set_footer(text=STRINGS['music']['embed_controler_footer'])
-        
-        await ctx.send(embed=repeatEmbed)
-        
-        logger.info(f"[MUSIC]Loop tracks requested by {ctx.author} in {ctx.message.guild}")
-
-    @repeat_command.error
-    async def repeat_command_error(self, ctx, exc):
-        if isinstance(exc, InvalidRepeatMode):
-            s = await Settings(ctx.guild.id)
-            lang = await s.get_field('locale', CONFIG['default_locale'])
-            STRINGS = Strings(lang)
-            repeatEmbed_2=discord.Embed(title=STRINGS['music']['loopmodeinvalidtitle'], description=STRINGS['music']['loopmodeinvaliddesc'], color=0xffb164)
-            repeatEmbed_2.add_field(name=STRINGS['music']['validloopmodestitle'], value="noloop,onesong,entirequeue", inline=True)
-            repeatEmbed_2.set_footer(text=STRINGS['music']['embed_controler_footer'])
-            await ctx.send(embed=repeatEmbed_2)
-        elif isinstance(exc, QueueIsEmpty):
-            s = await Settings(ctx.guild.id)
-            lang = await s.get_field('locale', CONFIG['default_locale'])
-            STRINGS = Strings(lang)
-            repeatEmbed_3=discord.Embed(title=STRINGS['music']['queueerror'],description=STRINGS['music']['queueerrordesc'],colour=0xffd500)
-            repeatEmbed_3.set_footer(text=STRINGS['music']['embed_controler_footer'])
-            await ctx.send(embed=repeatEmbed_3)
 
     @commands.command(name="queue", brief = "Lists the songs in queue.",aliases=["q","ochered","очередь"])
     async def queue_command(self, ctx):

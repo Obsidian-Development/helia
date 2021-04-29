@@ -154,6 +154,8 @@
         "embed_controler_title": "Music Controller",
         "embed_controler_desc": "Starting music playback",
 		"embed_controler_secdesc": "TRACK:",
+        "embed_controler_playlistadd": "Playlist added",
+        "embed_controler_playlistadddesc": "For checking song list use queue",
         "embed_controler_dur": "Duration",
         "embed_controler_qleng": "Queue Length",
         "embed_controler_req": "Requested By",
