@@ -1,3 +1,8 @@
+requests
+termcolor
+aiofile
+jishaku
+asyncinit
 discord.py
 discord.py[voice]
 discord-py-slash-command
