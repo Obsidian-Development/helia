@@ -26,7 +26,7 @@
         "announcesfieldtitle": "Announced from",
         "announcesfielddesc": "Description",
         "announcesfooter": "\uD83C\uDF10 Thank you for listening",
-        "announceaway": "✅ Announcement sending/sent to guilds."
+        "announceaway": ":white_check_mark: Announcement sending/sent to guilds."
     },
     "helpsystemfirstpage": {
         "gemtitle": "**general**",
