@@ -2,8 +2,10 @@ import discord
 import asyncio
 import os
 from discord.ext import commands
+from cogs.utils import Logger, Settings, Config, Strings
 from discord_slash import cog_ext, SlashContext
 
+CONFIG = Config()
 
 class broadcast(commands.Cog):
   def __init__(self,bot):

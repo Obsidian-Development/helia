@@ -233,6 +233,17 @@
         "loopmodeinvaliddesc": "Invalid loop mode",
         "validloopmodestitle": "Valid loop modes"
     },
+    "wallpaper": {
+        "wallpaperembedtitle": "Wallpaper command",
+        "wallpaperdesc": "Used to view desktop wallpapers. ",
+        "wallpaperusageanimetitle": "Anime wallpapers",
+        "wallpaperusagenaturetitle": "Nature wallpapers",
+        "wallpaperusagestarwarstitle": "Star wars wallpapers",
+        "wallpaperanimetitle": "Nope",
+        "wallpaperanimefooter": "No anime here",
+        "wallpapernaturetitle": "Nature Wallpapers",
+        "wallpaperstarwarstitle": "Star Wars Wallpapers"
+    },
     "bot_log": {
         "info": "[{0}] [?] {1}",
         "warn": "[{0}] [!] {1}",
