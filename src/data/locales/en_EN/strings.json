@@ -204,6 +204,8 @@
         "volumeset": "Volume Settings",
         "volumesetdesc": "Setting volume value",
         "volumesetvalue": "Volume value",
+        "invalidvolumevalue": "Error",
+        "invalidvolumevaluedesc": "Invalid value provided- Please enter a value between 1 and 100.",
         "shufflewarn": "Add more songs to the queue before shuffling.",
         "adminshuffle": "An admin or DJ has shuffled the playlist.",
         "voteshufflepass": "Vote to shuffle passed. Shuffling the playlist.",

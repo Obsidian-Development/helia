@@ -502,7 +502,10 @@ class Music(commands.Cog, wavelink.WavelinkMixin, name='Music'):
         
         if player.queue.is_empty:
             raise QueueIsEmpty
-        
+        if not 0 < value < 101:
+            volumeEmbed_3 = discord.Embed(title=STRINGS['music']['invalidvolumevalue'], description=STRINGS['music']['invalidvolumevaluedesc'],colour=0xffd500)
+            return await await ctx.send(embed=volumeEmbed_3)
+
         await player.set_volume(value)
         volumeEmbed=discord.Embed(title=STRINGS['music']['volumeset'], description=STRINGS['music']['volumesetdesc'], color=0xff8040)
         volumeEmbed.add_field(name=STRINGS['music']['volumesetvalue'], value=f"{value} ", inline=True)
@@ -521,9 +524,6 @@ class Music(commands.Cog, wavelink.WavelinkMixin, name='Music'):
             volumeEmbed_2=discord.Embed(title=STRINGS['music']['queueerror'],description=STRINGS['music']['queueerrordesc'],colour=0xffd500)
             volumeEmbed_2.set_footer(text=STRINGS['music']['embed_controler_footer'])
             await ctx.send(embed=volumeEmbed_2)
-        else :    
-            volumeEmbed_3=discord.Embed(title="Lütfen 0 - 1000 aralığında bir tamsayı giriniz.",colour=0xffd500)
-            await ctx.send(embed=volumeEmbed_3)
 
 def setup(bot):
     bot.add_cog(Music(bot))
