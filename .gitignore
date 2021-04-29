@@ -2,6 +2,7 @@ __pycache__/
 nohup.out
 # Ignore token file in this repository - should only be put in private repository for heroku host
 .env
+src/.env
 # no need for poetry crap in public repo
 poetry.lock
 pyproject.toml
