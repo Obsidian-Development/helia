@@ -13,3 +13,4 @@ setup.py
 tests.py
 # dont bring in backups
 bak/
+src/logs/music.log
