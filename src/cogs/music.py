@@ -163,7 +163,7 @@ class Player(wavelink.Player):
             
             await ctx.send(embed=playEmbed)
             
-            logger.info(f"[MUSIC]Tracks added by {ctx.author} in {ctx.message.guild}")
+            #logger.info(f"[MUSIC]Tracks added by {ctx.author} in {ctx.message.guild}")
         else:
             if (track := await self.choose_track(ctx, tracks)) is not None:
                 self.queue.add(track)
@@ -176,7 +176,7 @@ class Player(wavelink.Player):
                 
                 await ctx.send(embed=playEmbed_2)
                 
-                logger.info(f"[MUSIC]Tracks added by {ctx.author} in {ctx.message.guild}")
+                #logger.info(f"[MUSIC]Tracks added by {ctx.author} in {ctx.message.guild}")
         if not self.is_playing and not self.queue.is_empty:
             await self.start_playback()
 
@@ -324,7 +324,7 @@ class Music(commands.Cog, wavelink.WavelinkMixin, name='Music'):
         
         await ctx.send(embed=pauseEmbed)
         
-        logger.info(f"[MUSIC]Music paused by {ctx.author} in {ctx.message.guild}")
+        #logger.info(f"[MUSIC]Music paused by {ctx.author} in {ctx.message.guild}")
 
     @pause_command.error
     async def pause_command_error(self, ctx, exc):
@@ -345,7 +345,7 @@ class Music(commands.Cog, wavelink.WavelinkMixin, name='Music'):
         
         await ctx.send(embed=stopEmbed)
         
-        logger.info(f"[MUSIC]Music stopped by {ctx.author} in {ctx.message.guild}")
+        #logger.info(f"[MUSIC]Music stopped by {ctx.author} in {ctx.message.guild}")
 
     @commands.command(name="skip", brief = "Skips currently playing song.",aliases=["next","s","скип"])
     async def next_command(self, ctx):
@@ -362,7 +362,7 @@ class Music(commands.Cog, wavelink.WavelinkMixin, name='Music'):
         
         await ctx.send(embed=nextEmbed)
         
-        logger.info(f"[MUSIC]Next song requested by {ctx.author} in {ctx.message.guild}")
+        #logger.info(f"[MUSIC]Next song requested by {ctx.author} in {ctx.message.guild}")
 
     @next_command.error
     async def next_command_error(self, ctx, exc):
@@ -396,7 +396,7 @@ class Music(commands.Cog, wavelink.WavelinkMixin, name='Music'):
         
         await ctx.send(embed=previousEmbed)
         
-        logger.info(f"[MUSIC]Previous song requested by {ctx.author} in {ctx.message.guild}")
+        #logger.info(f"[MUSIC]Previous song requested by {ctx.author} in {ctx.message.guild}")
 
     @previous_command.error
     async def previous_command_error(self, ctx, exc):
@@ -424,7 +424,7 @@ class Music(commands.Cog, wavelink.WavelinkMixin, name='Music'):
         
         await ctx.send(embed=shuffleEmbed)
         
-        logger.info(f"[MUSIC]Playlist shuffle requested by {ctx.author} in {ctx.message.guild}")
+        #logger.info(f"[MUSIC]Playlist shuffle requested by {ctx.author} in {ctx.message.guild}")
 
     @shuffle_command.error
     async def shuffle_command_error(self, ctx, exc):
@@ -454,7 +454,7 @@ class Music(commands.Cog, wavelink.WavelinkMixin, name='Music'):
         
         await ctx.send(embed=queueEmbed)
         
-        logger.info(f"[MUSIC]Queue requested by {ctx.author} in {ctx.message.guild}")
+        #logger.info(f"[MUSIC]Queue requested by {ctx.author} in {ctx.message.guild}")
 
     @queue_command.error
     async def queue_command_error(self, ctx, exc):
@@ -486,7 +486,7 @@ class Music(commands.Cog, wavelink.WavelinkMixin, name='Music'):
         
         await ctx.send(embed=volumeEmbed)
         
-        logger.info(f"[MUSIC]Volume change requested by {ctx.author} in {ctx.message.guild}")
+        #logger.info(f"[MUSIC]Volume change requested by {ctx.author} in {ctx.message.guild}")
 
     @volume_command.error
     async def volume_command_error(self,ctx,exc):
