@@ -54,6 +54,7 @@ class Queue:
     def __init__(self):
         self._queue = []
         self.position = 0
+        self.repeat_mode = RepeatMode.NONE
 
     @property
     def is_empty(self):
