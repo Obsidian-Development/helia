@@ -27,7 +27,7 @@ Russian Description
 
 # BOT HOSTING GUIDE
 1. Create .env file in src folder with this content
-DISCORD_TOKEN=your token without quoute symbols or anything
+DISCORD_TOKEN=your token without quote symbols or anything
 2. If you want to host localy then just launch the bot with py main.py otherwise follow next steps
 3. For hosting in heroku do this
 Follow step 1 
