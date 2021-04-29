@@ -504,7 +504,7 @@ class Music(commands.Cog, wavelink.WavelinkMixin, name='Music'):
             raise QueueIsEmpty
         if not 0 < value < 101:
             volumeEmbed_3 = discord.Embed(title=STRINGS['music']['invalidvolumevalue'], description=STRINGS['music']['invalidvolumevaluedesc'],colour=0xffd500)
-            return await await ctx.send(embed=volumeEmbed_3)
+            return await ctx.send(embed=volumeEmbed_3)
 
         await player.set_volume(value)
         volumeEmbed=discord.Embed(title=STRINGS['music']['volumeset'], description=STRINGS['music']['volumesetdesc'], color=0xff8040)
