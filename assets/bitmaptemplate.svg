@@ -8,9 +8,9 @@
    xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="320"
-   height="50"
-   viewBox="0 0 84.666666 13.229167"
+   width="720"
+   height="258"
+   viewBox="0 0 190.5 68.262502"
    version="1.1"
    id="svg8"
    inkscape:export-filename="H:\canary\helia\bitmapcanary.png"
@@ -41,7 +41,7 @@
        x2="361.73773"
        y2="153.81944"
        gradientUnits="userSpaceOnUse"
-       gradientTransform="matrix(0.30740704,0,0,0.17688255,-24.735461,-21.039218)" />
+       gradientTransform="matrix(0.70798713,0,0,0.80769629,-55.885746,-89.965306)" />
   </defs>
   <sodipodi:namedview
      id="base"
@@ -50,9 +50,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.4"
-     inkscape:cx="56.267393"
-     inkscape:cy="-28.057931"
+     inkscape:zoom="0.7"
+     inkscape:cx="227.4938"
+     inkscape:cy="-15.52923"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      inkscape:document-rotation="0"
@@ -80,33 +80,33 @@
      inkscape:groupmode="layer"
      id="layer1">
     <rect
-       style="fill:url(#linearGradient860);fill-opacity:1;stroke:#ffffff;stroke-width:0.0616966"
+       style="fill:url(#linearGradient860);fill-opacity:1;stroke:#ffffff;stroke-width:0.200077"
        id="rect838"
-       width="86.912018"
-       height="15.510914"
-       x="-0.48742825"
-       y="-1.5866961" />
+       width="200.1665"
+       height="70.827271"
+       x="-0.040261216"
+       y="-1.1395314" />
     <text
        xml:space="preserve"
-       style="font-size:9.49513px;line-height:1.25;font-family:'Franklin Gothic Medium Cond';-inkscape-font-specification:'Franklin Gothic Medium Cond';stroke-width:0.237379"
-       x="31.664398"
-       y="7.9608879"
+       style="font-size:31.5098px;line-height:1.25;font-family:'Franklin Gothic Medium Cond';-inkscape-font-specification:'Franklin Gothic Medium Cond';stroke-width:0.787747"
+       x="63.557167"
+       y="38.210106"
        id="text864"><tspan
          sodipodi:role="line"
          id="tspan862"
-         x="31.664398"
-         y="7.9608879"
-         style="stroke-width:0.237379">HELIA</tspan></text>
+         x="63.557167"
+         y="38.210106"
+         style="stroke-width:0.787747">HELIA</tspan></text>
     <text
        xml:space="preserve"
-       style="font-size:3.03355px;line-height:1.25;font-family:'Franklin Gothic Medium Cond';-inkscape-font-specification:'Franklin Gothic Medium Cond';fill:#ffcc00;stroke-width:0.0758388"
-       x="32.18605"
-       y="10.804729"
+       style="font-size:10.0669px;line-height:1.25;font-family:'Franklin Gothic Medium Cond';-inkscape-font-specification:'Franklin Gothic Medium Cond';fill:#ffcc00;stroke-width:0.251672"
+       x="65.288277"
+       y="47.647453"
        id="text868"><tspan
          sodipodi:role="line"
          id="tspan866"
-         x="32.18605"
-         y="10.804729"
-         style="fill:#ffcc00;stroke-width:0.0758388">CANARY</tspan></text>
+         x="65.288277"
+         y="47.647453"
+         style="fill:#ffcc00;stroke-width:0.251672">CANARY</tspan></text>
   </g>
 </svg>
