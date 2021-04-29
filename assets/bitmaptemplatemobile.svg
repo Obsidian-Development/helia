@@ -41,7 +41,7 @@
        x2="361.73773"
        y2="153.81944"
        gradientUnits="userSpaceOnUse"
-       gradientTransform="matrix(0.46152521,0,0,0.47565394,-56.795558,-59.901736)" />
+       gradientTransform="matrix(0.47285842,0,0,0.4873341,-57.687992,-61.184731)" />
   </defs>
   <sodipodi:namedview
      id="base"
@@ -50,9 +50,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.24748737"
-     inkscape:cx="-99.618582"
-     inkscape:cy="38.57948"
+     inkscape:zoom="0.98994948"
+     inkscape:cx="275.1017"
+     inkscape:cy="37.260517"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      inkscape:document-rotation="0"
@@ -71,7 +71,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -80,12 +80,12 @@
      inkscape:groupmode="layer"
      id="layer1">
     <rect
-       style="fill:url(#linearGradient860);fill-opacity:1;stroke:#ffffff;stroke-width:0.123966"
+       style="fill:url(#linearGradient860);fill-opacity:1;stroke:#ffffff;stroke-width:0.12701"
        id="rect838"
-       width="130.48528"
-       height="41.710323"
-       x="-20.390806"
-       y="-7.592062" />
+       width="133.68947"
+       height="42.734562"
+       x="-20.389284"
+       y="-7.5905399" />
     <text
        xml:space="preserve"
        style="font-size:14.8687px;line-height:1.25;font-family:'Franklin Gothic Medium Cond';-inkscape-font-specification:'Franklin Gothic Medium Cond';stroke-width:0.371718"
