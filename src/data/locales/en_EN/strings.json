@@ -169,14 +169,14 @@
         }
     },
     "music": {
-        "embed_controler_title": "Music Controller",
+        "embed_controler_title": "Music Controller ",
         "embed_controler_desc": "Starting music playback/ Queuing more tracks",
-		"embed_controler_secdesc": "TRACK:",
-        "embed_controler_playlistadd": "Playlist added",
+		"embed_controler_secdesc": "TRACK: ",
+        "embed_controler_playlistadd": "Playlist added ",
         "embed_controler_playlistadddesc": "For checking song list use queue",
         "embed_controler_dur": "Duration",
         "embed_controler_qleng": "Queue Length",
-        "embed_controler_req": "Requested By",
+        "embed_controler_req": "Requested By: ",
         "embed_controler_vol": "Volume **`{self.volume}%`**" ,
         "embed_controler_dj": "DJ",
         "embed_controler_musicurl": "Video URL",
