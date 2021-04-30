@@ -1,3 +1,5 @@
+# Its ass code - most likely hard to get it to autheficate the danging app inside the account
+
 import os
 from typing import List
 from dotenv import load_dotenv
