@@ -92,11 +92,12 @@ class General(commands.Cog, name='General'):
         lang = await s.get_field('locale', CONFIG['default_locale'])
         prefix = await s.get_field('prefix', CONFIG['default_prefix'])
         STRINGS = Strings(lang)
-        if blacklist.list in content:
-            await ctx.message.delete()
-            embed = discord.Embed(title=STRINGS['general']['blacklistwarntitle'],description=STRINGS['general']['blacklistwarndesc'], color=0xff0000)
-            embed.set_footer(text=STRINGS['general']['blacklistwarnfooter'])
-            await ctx.send(embed=embed)
+        for item in blacklist.list:
+            if content in item:
+                await ctx.message.delete()
+                embed = discord.Embed(title=STRINGS['general']['blacklistwarntitle'],description=STRINGS['general']['blacklistwarndesc'], color=0xff0000)
+                embed.set_footer(text=STRINGS['general']['blacklistwarnfooter'])
+                return await ctx.send(embed=embed)
         else:
             return await ctx.send(content)
 
@@ -107,12 +108,12 @@ class General(commands.Cog, name='General'):
         lang = await s.get_field('locale', CONFIG['default_locale'])
         prefix = await s.get_field('prefix', CONFIG['default_prefix'])
         STRINGS = Strings(lang)
-        if blacklist.list in content:
-            await ctx.message.delete()
-            embed = discord.Embed(title=STRINGS['general']['blacklistwarntitle'],
-                                  description=STRINGS['general']['blacklistwarndesc'], color=0xff0000)
-            embed.set_footer(text=STRINGS['general']['blacklistwarnfooter'])
-            await ctx.send(embed=embed)
+        for item in blacklist.list:
+            if content in item:
+                await ctx.message.delete()
+                embed = discord.Embed(title=STRINGS['general']['blacklistwarntitle'],description=STRINGS['general']['blacklistwarndesc'], color=0xff0000)
+                embed.set_footer(text=STRINGS['general']['blacklistwarnfooter'])
+                return await ctx.send(embed=embed)
         else:
             creator = discord.Embed(title=name, description=content)
             await ctx.send(embed=creator)
@@ -139,7 +140,7 @@ class General(commands.Cog, name='General'):
         s = await Settings(ctx.guild.id)
         lang = await s.get_field('locale', CONFIG['default_locale'])
         STRINGS = Strings(lang)
-        path = "scripts/version.txt"
+        path = "src/scripts/version.txt"
         with open(path, "r") as file:
             ver = file.readline()
         embed = discord.Embed(title=STRINGS['general']['abouttitle'], description=STRINGS['general']['aboutdesc'], color=0xff6900)

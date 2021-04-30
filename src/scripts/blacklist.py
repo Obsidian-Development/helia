@@ -1,1 +1,2 @@
-list = ("@everyone" or "@here" or "@Пользователи")
+list = ['@everyone','@here']
+# please work in here
