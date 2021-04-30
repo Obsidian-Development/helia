@@ -147,7 +147,7 @@ class Player(wavelink.Player):
             raise NoTracksFound
         if isinstance(tracks, wavelink.TrackPlaylist):
             self.queue.add(*tracks.tracks)
-            playEmbedplaylist = discord.Embed(title=STRINGS['music']['embed_controler_title'],description=STRINGS['music']['embed_controler_desc'], color=0xff8000)
+            playEmbedplaylist = discord.Embed(title=STRINGS['music']['embed_controler_title'], description=STRINGS['music']['embed_controler_desc'], color=0xff8000)
             playEmbedplaylist.add_field(name=STRINGS['music']['embed_controler_playlistadd'], value=STRINGS['music']['embed_controler_playlistadddesc'],inline=True)
             playEmbedplaylist.add_field(name=STRINGS['music']['embed_controler_req'], value=f"{ctx.author}", inline=True)
             playEmbedplaylist.set_footer(text=STRINGS['music']['embed_controler_footer'])
