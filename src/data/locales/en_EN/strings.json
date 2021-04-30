@@ -67,7 +67,7 @@
     },
     "utilities": {
         "user_info_title": "User @{0}#{1}",
-        "user_info": "**ID:** {0}\n**Registered:** {1}\n**Joined:** {2}\n**Role Color:** {3}",
+        "user_info": "**ID:** {0}\n**Registered:** {1}\n**Joined:** {2}\n**Online Status:** {3}\n**Member Status:** {4}\n**Role Color:** {5}",
         "channel_info_title": "Channel #{0}",
         "channel_info": "**ID:** {0}\n**Type:** {1}\n**Created:** {2}\n**NSFW:** {3}",
         "emoji_info_title": "Emoji :{0}:",

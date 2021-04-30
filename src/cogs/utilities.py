@@ -41,11 +41,13 @@ class Utilities(commands.Cog):
         tag = member.discriminator
         joined_at = member.joined_at.strftime('%d.%m.%Y %H:%M')
         created_at = member.created_at.strftime('%d.%m.%Y %H:%M')
+        stat = member.status
+        activ = member.activity
         color = member.color
         avatar = member.avatar_url_as()
 
         embed = discord.Embed(description=STRINGS['utilities']['user_info'].format(
-            id, created_at, joined_at, color), color=color)
+            id, created_at, joined_at, stat, activ, color), color=color)
         embed.set_author(
             name=STRINGS['utilities']['user_info_title'].format(name, tag))
         embed.set_thumbnail(url=avatar)
