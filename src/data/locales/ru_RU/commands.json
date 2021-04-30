@@ -129,7 +129,7 @@
                 "usage": "volume [громкость между 1 и 100]",
 				"description": "Настройка громкости",
 				"aliases": []
-			}
+			},
 			"queue":	{
                 "usage": "queue",
 				"description": "Просмотр списка очереди",
