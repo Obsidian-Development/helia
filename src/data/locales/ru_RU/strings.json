@@ -173,7 +173,7 @@
         "embed_controler_desc": "Начинаем проигрывать музыку/ Cтавим Трек в очередь",
 		"embed_controler_secdesc": "Трек:",
         "embed_controler_playlistadd": "Добавлен Плейлист",
-        "embed_controler_playlistadddesc": "Используйте m.queue для просмотра списка треков ",
+        "embed_controler_playlistadddesc": "Используйте queue для просмотра списка треков ",
         "embed_controler_dur": "Длительность",
         "embed_controler_qleng": "Длина Очереди",
         "embed_controler_req": "Трек Запросил",
