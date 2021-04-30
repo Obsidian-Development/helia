@@ -114,6 +114,26 @@
 				"usage": "resume",
 				"description": "Resumes playback of track",
 				"aliases": []
+			},
+			"stop": {
+				"usage": "stop",
+				"description": "Stops playback",
+				"aliases": []
+			},
+            "skip":	{
+                "usage": "skip",
+				"description": "Skips current track",
+				"aliases": []
+			},
+			"volume":	{
+                "usage": "volume [volume between 1 and 100]",
+				"description": "Change volume",
+				"aliases": []
+			}
+			"queue":	{
+                "usage": "queue",
+				"description": "Look at queue list ",
+				"aliases": []
 			}
 		}
 	},	
