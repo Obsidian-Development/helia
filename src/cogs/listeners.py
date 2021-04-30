@@ -29,10 +29,12 @@ class Listeners(commands.Cog, name='Listeners'):
         """
         STRINGS = Strings(CONFIG['default_locale'])
 
-        embed = discord.Embed(color=0x00FF47, title=STRINGS['etc']['info']['name'],
-                              description=STRINGS['general']['about'])
-        embed.set_thumbnail(
-            url=self.bot.user.avatar_url_as())
+        embed = discord.Embed(title=STRINGS['general']['abouttitle'], description=STRINGS['general']['aboutdesc'], color=0xff6900)
+        embed.add_field(name=STRINGS['general']['aboutver'], value=ver, inline=True)
+        embed.add_field(name=STRINGS['general']['aboutauthoroninvitetitle'],value=STRINGS['general']['aboutauthoroninvite'],inline=True)
+        embed.add_field(name=STRINGS['general']['abouthosting'], value=STRINGS['general']['abouthostingvalue'], inline=True)
+        #embed.add_field(name=STRINGS['general']['aboutthanks'], value=STRINGS['general']['aboutthankstext'],inline=False)
+        embed.set_footer(text=self.bot.user.name, icon_url=self.bot.user.avatar_url)
 
         for channel in guild.text_channels:
             if channel.permissions_for(guild.me).send_messages:
