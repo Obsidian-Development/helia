@@ -170,7 +170,7 @@
     },
     "music": {
         "embed_controler_title": "Управление Музыкой",
-        "embed_controler_desc": "Начинаем проигрывать музыку",
+        "embed_controler_desc": "Начинаем проигрывать музыку/ Cтавим Трек в очередь",
 		"embed_controler_secdesc": "Трек:",
         "embed_controler_playlistadd": "Добавлен Плейлист",
         "embed_controler_playlistadddesc": "Используйте m.queue для просмотра списка треков ",
