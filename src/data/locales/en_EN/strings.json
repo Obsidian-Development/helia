@@ -170,7 +170,7 @@
     },
     "music": {
         "embed_controler_title": "Music Controller",
-        "embed_controler_desc": "Starting music playback",
+        "embed_controler_desc": "Starting music playback/ Queuing more tracks",
 		"embed_controler_secdesc": "TRACK:",
         "embed_controler_playlistadd": "Playlist added",
         "embed_controler_playlistadddesc": "For checking song list use queue",
