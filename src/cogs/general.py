@@ -60,7 +60,7 @@ class General(commands.Cog, name='General'):
                 for j in COMMANDS[i]['commands']:
                     if command == j:
                         embed = discord.Embed(
-                            title=STRINGS['general']['help'].format(f'`{prefix}{j}`'), color=0xef940b)
+                            title=STRINGS['general']['helpsystemtitle'].format(f'`{prefix}{j}`'), color=0xef940b)
 
                         embed.add_field(
                             name=STRINGS['general']['description'], value=COMMANDS[i]['commands'][j]['description'], inline=False)
