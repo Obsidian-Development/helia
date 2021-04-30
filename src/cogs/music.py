@@ -358,7 +358,8 @@ class Music(commands.Cog, wavelink.WavelinkMixin, name='Music'):
             raise NoMoreTracks
         await player.stop()
         nextEmbed=discord.Embed(title=STRINGS['music']['skipsongtext'],colour=0xffd500)
-        nextEmbed.add_field(name=STRINGS['music']['queuenextinline'],description=player.queue.current_track.title)
+        if upcoming := player.queue.upcoming:
+            nextEmbed.add_field(name=STRINGS['music']['queuenextinline'],description=("\n".join(f"**{i+2}.** {t.title}"for i, t in enumerate(upcoming[:19]))),inline=False)
         nextEmbed.set_footer(text=STRINGS['music']['embed_controler_footer'])
         
         await ctx.send(embed=nextEmbed)
