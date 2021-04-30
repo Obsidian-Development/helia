@@ -16,7 +16,7 @@ os.environ["OAUTHLIB_INSECURE_TRANSPORT"] = "true"      # !! Only in development
 
 app.config["DISCORD_CLIENT_ID"] = 671612079106424862    # Discord client ID.
 app.config["DISCORD_CLIENT_SECRET"] = "put your own"                # Discord client secret.
-app.config["DISCORD_REDIRECT_URI"] = "http://127.0.0.1:5000/callback"                 # URL to your callback endpoint.
+app.config["DISCORD_REDIRECT_URI"] = "http://127.0.0.1:5000/callback"  # URL to your callback endpoint.
 app.config["DISCORD_BOT_TOKEN"] = TOKENBOT                    # Required to access BOT resources.
 
 discordoauth = DiscordOAuth2Session(app)
