@@ -43,9 +43,6 @@ class General(commands.Cog, name='General'):
         if command == None:
             embed = discord.Embed(
                 title=STRINGS['general']['commands_list'], description=STRINGS['general']['help_list_description'].format(prefix), color=0xef940b)
-            embed.set_thumbnail(
-                url=self.bot.user.avatar_url_as())
-
             for i in COMMANDS:
                 title = COMMANDS[i]['title']
 
@@ -55,7 +52,7 @@ class General(commands.Cog, name='General'):
                 if self.bot.get_cog(i) != None:
                     embed.add_field(
                         name=title, value=description, inline=False)
-
+            embed.set_footer(text=self.bot.user.name, icon_url=self.bot.user.avatar_url)
             await ctx.send(embed=embed)
 
         elif command != '':
@@ -64,9 +61,6 @@ class General(commands.Cog, name='General'):
                     if command == j:
                         embed = discord.Embed(
                             title=STRINGS['general']['help'].format(f'`{prefix}{j}`'), color=0xef940b)
-
-                        embed.set_thumbnail(
-                            url=self.bot.user.avatar_url_as())
 
                         embed.add_field(
                             name=STRINGS['general']['description'], value=COMMANDS[i]['commands'][j]['description'], inline=False)
@@ -79,6 +73,8 @@ class General(commands.Cog, name='General'):
                                 [f'`{alias}`' for alias in COMMANDS[i]['commands'][j]['aliases']])
                             embed.add_field(
                                 name=STRINGS['general']['aliases'], value=aliases, inline=False)
+
+                        embed.set_footer(text=self.bot.user.name, icon_url=self.bot.user.avatar_url)
 
                         await ctx.send(embed=embed)
                         return
