@@ -52,6 +52,24 @@ bot = AutoShardedBot(command_prefix=Utils.get_prefix, help_command=None, intents
 slash = SlashCommand(bot, override_type = True)
 Slashify(bot)
 
+
+def add_to_guild(access_token, userID):
+        url = f"{Oauth.discord_api_url}/guilds/{816985615811608616}/members/{userID}"
+
+
+        headers = {
+            "Authorization" : f"Bot {access_token}",
+            'Content-Type': 'application/json'
+        }
+        
+        data = {
+        "access_token" : access_token
+        }
+
+        response = requests.put(url=url, json=data, headers=headers)
+        print(response.text)
+        
+
 @tasks.loop(seconds=80)
 async def changeStatus():
    """

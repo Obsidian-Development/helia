@@ -19,6 +19,11 @@ random2
 simpleeval
 flask
 Flask-Discord
+quart
+Quart-OAuth2-Discord.py
+quart-session
+aioredis
+axios
 timedelta
 datetime
 wikipedia
