@@ -28,7 +28,13 @@
         "announcesfieldtitle": "Отправлено из",
         "announcesfielddesc": "Текст анонса",
         "announcesfooter": "\uD83C\uDF10 Спасибо за внимание",
-        "announceaway": ":white_check_mark: Анонс отправляется/отправлен в сервера."
+        "announceaway": ":white_check_mark: Анонс отправляется/отправлен в сервера.",
+        "botinvitetitle": "Инвайт бота с рекомендуемыми разрешениями",
+        "botinvitedescd": "Инвайт бота с минимальными разрешениями",
+        "botinvitedesc": "Cсылки на приглашение бота",
+        "botuptopgg": "Страница бота на top.gg",
+        "botupbod": "Страница бота на Bots on Discord",
+        "botupsdc": "Страница бота на bots.server-discord.com"
     },
     "helpsystemfirstpage": {
         "gemtitle": "**general**",
@@ -167,7 +173,7 @@
         "embed_controler_desc": "Начинаем проигрывать музыку",
 		"embed_controler_secdesc": "Трек:",
         "embed_controler_playlistadd": "Добавлен Плейлист",
-        "embed_controler_playlistadddesc": "Используйте queue для просмотра списка треков ",
+        "embed_controler_playlistadddesc": "Используйте m.queue для просмотра списка треков ",
         "embed_controler_dur": "Длительность",
         "embed_controler_qleng": "Длина Очереди",
         "embed_controler_req": "Трек Запросил",

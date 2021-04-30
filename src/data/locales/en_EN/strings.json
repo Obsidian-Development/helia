@@ -28,7 +28,13 @@
         "announcesfieldtitle": "Announced from",
         "announcesfielddesc": "Description",
         "announcesfooter": "\uD83C\uDF10 Thank you for listening",
-        "announceaway": ":white_check_mark: Announcement sending/sent to guilds."
+        "announceaway": ":white_check_mark: Announcement sending/sent to guilds.",
+        "botinvitetitle": "Invite the bot with recommended permissions",
+        "botinvitedescd": "Invite the bot with minimal permissions",
+        "botinvitedesc": "Bot pages listed below",
+        "botuptopgg": "Bot page on top.gg",
+        "botupbod": "Bot page on Bots on Discord",
+        "botupsdc": "Bot page on bots.server-discord.com"
     },
     "helpsystemfirstpage": {
         "gemtitle": "**general**",

@@ -8,7 +8,7 @@ from discord.ext import commands
 from discord.ext.commands import Bot, Context
 from discord_slash import cog_ext, SlashContext
 
-from cogs.utils import Config, Logger, Strings, Utils
+from cogs.utils import Config, Logger, Strings, Utils,Settings
 
 
 CONFIG = Config()
@@ -119,6 +119,9 @@ class Admin(commands.Cog, name='Admin'):
 
     @commands.command(description='Bot invite links')
     async def invite(self, ctx: SlashContext):
+        s = await Settings(ctx.guild.id)
+        lang = await s.get_field('locale', CONFIG['default_locale'])
+        STRINGS = Strings(lang)
         embed = discord.Embed(title="Recomended Functionality Bot Invite", colour=discord.Colour(0xff6900),url="https://discord.com/api/oauth2/authorize?client_id=666304823934844938&permissions=204859462&scope=applications.commands%20bot",description="Bot invite Links")
         embed.set_author(name="Basic Functionality Bot Invite",url="https://discord.com/oauth2/authorize?client_id=666304823934844938&scope=bot&permissions=204557314")
         embed.add_field(name="Bot up on bots.server-discord.com",value="https://bots.server-discord.com/666304823934844938", inline=True)
