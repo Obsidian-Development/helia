@@ -249,7 +249,8 @@
         "looptitletwo": "Loop requested by",
         "loopmodeinvalidtitle": "Error",
         "loopmodeinvaliddesc": "Invalid loop mode",
-        "validloopmodestitle": "Valid loop modes"
+        "validloopmodestitle": "Valid loop modes",
+        "listshuffled": "Music playlist has been shuffled"
     },
     "wallpaper": {
         "wallpaperembedtitle": "Wallpaper command",

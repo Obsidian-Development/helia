@@ -421,8 +421,8 @@ class Music(commands.Cog, wavelink.WavelinkMixin, name='Music'):
         STRINGS = Strings(lang)
         player = self.get_player(ctx)
         player.queue.shuffle()
-        shuffleEmbed=discord.Embed(title="Liste karıştırıldı.",colour=0xffd500)
-        shuffleEmbed.set_footer(text=f"Tarafından: {ctx.author}", icon_url=ctx.author.avatar_url)
+        shuffleEmbed=discord.Embed(title=STRINGS['music']['listshuffled'],colour=0xffd500)
+        shuffleEmbed.set_footer(text=STRINGS['music']['embed_controler_footer'])
         
         await ctx.send(embed=shuffleEmbed)
         
