@@ -18,6 +18,7 @@ aiohttp
 random2
 simpleeval
 flask
+Flask-Discord
 timedelta
 datetime
 wikipedia
