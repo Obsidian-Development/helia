@@ -124,7 +124,7 @@ class Admin(commands.Cog, name='Admin'):
         STRINGS = Strings(lang)
         embed = discord.Embed(title=STRINGS['general']['botinvitetitle'], colour=discord.Colour(0xff6900),url="https://discord.com/api/oauth2/authorize?client_id=666304823934844938&permissions=204859462&scope=applications.commands%20bot",description=STRINGS['general']['botinvitedesc'])
         embed.set_author(name=STRINGS['general']['botinvitedescd'],url="https://discord.com/oauth2/authorize?client_id=666304823934844938&scope=bot&permissions=204557314")
-        embed.add_field(name=STRINGS['general']['canaryver'], value="https://discord.com/oauth2/authorize?client_id=671612079106424862&scope=bot&permissions=204557314",inline=True)
+        embed.add_field(name=STRINGS['general']['canaryver'], value="https://discord.com/oauth2/authorize?client_id=671612079106424862&scope=bot&permissions=204557314",inline=False)
         embed.add_field(name=STRINGS['general']['botupsdc'], value="https://bots.server-discord.com/666304823934844938",inline=True)
         embed.add_field(name=STRINGS['general']['botuptopgg'], value="https://top.gg/bot/666304823934844938",inline=True)
         embed.add_field(name=STRINGS['general']['botupbod'], value="https://bots.ondiscord.xyz/bots/666304823934844938",inline=True)
