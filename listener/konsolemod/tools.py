@@ -57,7 +57,8 @@ class tools(commands.Cog):
                 await ctx.send("bot: Not Enough Permissions , Mention another role ")
                 
     @commands.command(description='Search Wikipedia')
-    async def wiki(self,ctx: SlashContext,*, searcher=None):
+    @commands.is_nsfw()
+    async def wiki(self, ctx: SlashContext, *, searcher=None):
         try:
             wikipedia.set_lang("en")
             req = wikipedia.page(searcher)
@@ -66,6 +67,8 @@ class tools(commands.Cog):
             await ctx.send(embed=wikip)
         except wikipedia.exceptions.PageError:
             await ctx.send("Wikipedia: No page with that name")
+        except commands.errors.NSFWChannelRequired:
+            await ctx.send("Locked to nsfw channels")
         except:
             await ctx.send("bot: Missing argument or permissions to do the command")
 
