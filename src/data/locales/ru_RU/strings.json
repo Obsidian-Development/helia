@@ -34,7 +34,8 @@
         "botinvitedesc": "Cсылки на приглашение бота",
         "botuptopgg": "Страница бота на top.gg",
         "botupbod": "Страница бота на Bots on Discord",
-        "botupsdc": "Страница бота на bots.server-discord.com"
+        "botupsdc": "Страница бота на bots.server-discord.com",
+		"canaryver": "Для приглашения тестовой версии Helia Используйте следующию ссылку"
     },
     "helpsystemfirstpage": {
         "gemtitle": "**general**",

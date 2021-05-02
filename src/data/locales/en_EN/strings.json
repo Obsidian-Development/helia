@@ -34,7 +34,8 @@
         "botinvitedesc": "Bot pages listed below",
         "botuptopgg": "Bot page on top.gg",
         "botupbod": "Bot page on Bots on Discord",
-        "botupsdc": "Bot page on bots.server-discord.com"
+        "botupsdc": "Bot page on bots.server-discord.com",
+		"canaryver": "For inviting the canary version of Helia use this link"
     },
     "helpsystemfirstpage": {
         "gemtitle": "**general**",
@@ -67,7 +68,7 @@
     },
     "utilities": {
         "user_info_title": "User @{0}#{1}",
-        "user_info": "**ID:** {0}\n**Registered:** {1}\n**Joined:** {2}\n**Online Status:** {3}\n**Member Status:** {4}\n**Role Color:** {5}",
+        "user_info": "**ID:** {0}\n**Registered:** {1}\n**Joined:** {2}\n**Nickname:** {3}\n**Online Status:** {4}\n**Member Status:** {5}\n**Role Color:** {6}",
         "channel_info_title": "Channel #{0}",
         "channel_info": "**ID:** {0}\n**Type:** {1}\n**Created:** {2}\n**NSFW:** {3}",
         "emoji_info_title": "Emoji :{0}:",
