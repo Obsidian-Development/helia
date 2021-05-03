@@ -76,7 +76,7 @@ async def changeStatus():
    Functionality to cycle bot status
    """
    while True:
-    await bot.change_presence(status=discord.Status.online, activity=discord.Activity(type=discord.ActivityType.watching, name=f"{len(bot.guilds)} servers "))
+    await bot.change_presence(status=discord.Status.online, activity=discord.Activity(type=discord.ActivityType.watching, name=f"{len(bot.guilds)} servers | {len(bot.shards)} shards "))
     print("---------------------------")
     print("Status changed to status 1!")
     print("---------------------------")
@@ -131,8 +131,10 @@ async def on_ready() -> NoReturn:
     #await bot.change_presence(activity=discord.Game(name='HELIA CANARY BRANCH - INTERNAL TEST ONLY'))
     bot.load_extension('jishaku')
     print("---------------------------")
-    print("[SUCCESS] Started Helia discord bot")  # Вывод информации о запуске
+    print("[SUCCESS] Started Helia discord bot")  # launch information thing
+    #print("[DB] Database Present and ready")
     print("---------------------------")
+    #db.control()
     changeStatus.start()
 
 
