@@ -2,7 +2,9 @@
 <img align="center" src="https://raw.githubusercontent.com/pieckenst/helia/canary/heliacircle.png" height="140" width="140">
 </p>
 
+<p align="center">
 <img align="center" src="https://raw.githubusercontent.com/pieckenst/helia/canary/bitmapcanarym.png" height="100" width="320">
+</p>
 
 [![forthebadge](https://forthebadge.com/images/badges/made-with-python.svg)](https://forthebadge.com)
 [![GitHub last commit](https://img.shields.io/github/last-commit/pieckenst/helia?style=for-the-badge)](https://github.com/pieckenst/helia/commits/master)
