@@ -119,7 +119,7 @@ class Listeners(commands.Cog, name='Listeners'):
                 Logger.warn(str(error))
 
             msg = await ctx.send(embed=embed)
-            await asyncio.sleep(30)
+            await asyncio.sleep(20)
             await msg.delete()
 
 
