@@ -1,5 +1,7 @@
 <img align="center" src="https://raw.githubusercontent.com/pieckenst/helia/canary/bitmapcanarym.png" height="100" width="320">
 
+<img align="right" src="https://raw.githubusercontent.com/pieckenst/helia/canary/smallbitmap.png" height="140" width="140">
+
 [![forthebadge](https://forthebadge.com/images/badges/made-with-python.svg)](https://forthebadge.com)
 [![GitHub last commit](https://img.shields.io/github/last-commit/pieckenst/helia?style=for-the-badge)](https://github.com/pieckenst/helia/commits/master)
 [![GitHub](https://img.shields.io/github/license/pieckenst/helia?style=for-the-badge)](https://github.com/pieckenst/helia/blob/master/LICENSE)
