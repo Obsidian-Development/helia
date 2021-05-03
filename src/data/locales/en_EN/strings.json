@@ -105,7 +105,11 @@
         "on_error_title": "Oops!",
         "on_error_text": "An unexpected error has occurred! All information about the error has already been sent on to the developers! Mini traceback:\n```{0}```",
         "command_not_found": "The command was not found.",
-        "already_muted": "The user is already muted."
+        "already_muted": "The user is already muted.",
+		"nsfwnotcorrectspot": "You are trying to use a command blocked for nsfw channels",
+		"nsfwerrortitle": "NSFW command error",
+		"nsfwlogerror": "Details of the error are given below! All information about the error has already been sent on to the developers!"
+		"nsfwtraceback": "Mini traceback:\n```{0}```"
     },
     "etc": {
         "on_mention": "<@!{0}>, my prefix on this server: `{1}`",

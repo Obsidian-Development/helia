@@ -106,6 +106,10 @@ class Listeners(commands.Cog, name='Listeners'):
                 embed = Utils.error_embed(
                     STRINGS['error']['cooldown']
                     .format(error.retry_after))
+            
+            elif isinstance(error, commands.errors.NSFWChannelRequired):
+                   embed=discord.Embed(title=STRINGS['error']['nsfwerrortitle'], description=STRINGS['error']['nsfwnotcorrectspot'], color=0xff0000)
+                   embed.add_field(name=STRINGS['error']['nsfwlogerror'], value=STRINGS['error']['nsfwtraceback'].format(str(error)), inline=False)            
 
             else:
                 embed = discord.Embed(color=0xdd0000)
@@ -115,7 +119,7 @@ class Listeners(commands.Cog, name='Listeners'):
                 Logger.warn(str(error))
 
             msg = await ctx.send(embed=embed)
-            await asyncio.sleep(15)
+            await asyncio.sleep(30)
             await msg.delete()
 
 

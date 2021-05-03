@@ -124,9 +124,10 @@ class General(commands.Cog, name='General'):
             wikip.set_thumbnail(url=req.images[0])
             await ctx.send(embed=wikip)        
         except wikipedia.exceptions.PageError:
-            await ctx.send("Wikipedia: No page with that name")
-        except commands.errors.NSFWChannelRequired:
-            await ctx.send("Locked to nsfw channels")
+            wikierror=discord.Embed(title="Wikipedia Error", description="Page not found or some other error")
+            wikierror.add_field(name="If you are still having this error", value="Report the issue on github or ask in bot support server about it", inline=True)
+            wikierror.set_footer(text="Try again ")
+            await ctx.send(embed=wikierror)
         except:
             await ctx.send("bot: Missing argument or permissions to do the command")
 
