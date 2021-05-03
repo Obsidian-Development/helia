@@ -49,6 +49,7 @@ cprint('Default locale is {0}'.format(
 
 
 bot = AutoShardedBot(command_prefix=Utils.get_prefix, help_command=None, intents=discord.Intents.default())
+#intents.members = True # preparation for reenabling welcome and goodbye functionality
 slash = SlashCommand(bot, override_type = True)
 Slashify(bot)
 
