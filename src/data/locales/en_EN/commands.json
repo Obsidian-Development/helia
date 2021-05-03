@@ -147,7 +147,7 @@
             },
             "locale": {
                 "usage": "{0}locale [language]",
-                "description": "This command sets the bot language on the server. Available: **en_EN**, **ru_RU**.",
+                "description": "This command sets the bot language on the server. Available: **en_EN**, **ru_RU**, **bel_BY**.",
                 "aliases": [
                     "setlang",
                     "lang"
