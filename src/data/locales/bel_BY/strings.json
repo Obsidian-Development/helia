@@ -135,11 +135,11 @@
             "extreme": "Самы высокі"
         },
         "permissions": {
-            "kick_members": "Выгонять участнков",
-            "ban_members": "Блокировать участнков",
-            "administrator": "Администратор",
-            "manage_channels": "Управлять каналами",
-            "manage_guild": "Управлять сервером",
+            "kick_members": "Выганяць удзельнікаў",
+            "ban_members": "Блакаваць удзельнікаў",
+            "administrator": "Адміністратар",
+            "manage_channels": "Кіраваць каналамі",
+            "manage_guild": "Кіраваць серверам",
             "add_reactions": "Добавлять реакции",
             "view_audit_log": "Просмотр журнала аудита",
             "priority_speaker": "Приоритетный голос",
