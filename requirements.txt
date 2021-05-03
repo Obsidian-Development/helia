@@ -23,7 +23,6 @@ quart
 Quart-OAuth2-Discord.py
 quart-session
 aioredis
-axios
 timedelta
 datetime
 wikipedia
@@ -32,3 +31,8 @@ slashify
 python-dotenv
 wavelink
 discord-ext-menus
+pandas
+numpy
+matplotlib
+lxml
+html5lib
