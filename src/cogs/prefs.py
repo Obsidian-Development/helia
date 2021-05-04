@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-
+import discord
 from typing import NoReturn
 
 from discord.ext import commands
@@ -59,7 +59,7 @@ class Prefs(commands.Cog, name='Prefs'):
 
         # FIXME
         embed=discord.Embed(title=STRINGS['error']['on_error_title'], description=STRINGS['error']['localeerrortext'], color=0xff0000)
-        embed.add_field(name=STRINGS['error']['generictracebackforothercommand'], value=STRINGS['error']['localeerrorstring'], inline=True)
+        embed.add_field(name=STRINGS['error']['generictracebackforothercommand'], value=STRINGS['error']['localerrrorstring'], inline=True)
         await ctx.send(embed=embed)
 
 
