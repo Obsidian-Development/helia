@@ -16,6 +16,7 @@
 <h3 align="center">Main bot features</h3>
 <h3 align="center"> Music </h3>
 <h3 align="center"> Moderation </h3>
+<h3 align="center"> Information Commands and wikipedia Search</h3>
 </div>
 
 Moderation features ( like ban, kick , clear mute , and unmute ) You can also view user information and profile picture
