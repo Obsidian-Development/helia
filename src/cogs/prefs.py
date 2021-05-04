@@ -46,6 +46,8 @@ class Prefs(commands.Cog, name='Prefs'):
 
         """
         s = await Settings(ctx.guild.id)
+        lang = await s.get_field('locale', CONFIG['default_locale'])
+        STRINGS = Strings(lang)
         locales = Utils.get_locales_list()
 
         for _locale in locales:
@@ -56,7 +58,9 @@ class Prefs(commands.Cog, name='Prefs'):
                 return
 
         # FIXME
-        await ctx.send("нет такой локали какбы")
+        embed=discord.Embed(title=STRINGS['error']['on_error_title'], description=STRINGS['error']['localeerrortext'], color=0xff0000)
+        embed.add_field(name=STRINGS['error']['generictracebackforothercommand'], value=STRINGS['error']['localeerrorstring'], inline=True)
+        await ctx.send(embed=embed)
 
 
 def setup(bot: Bot) -> NoReturn:
