@@ -8,8 +8,8 @@
 
 [![forthebadge](https://forthebadge.com/images/badges/made-with-python.svg)](https://forthebadge.com)
 [![GitHub last commit](https://img.shields.io/github/last-commit/pieckenst/helia?style=for-the-badge)](https://github.com/pieckenst/helia/commits/current)
-![GitHub last commit (branch)](https://img.shields.io/github/last-commit/pieckenst/helia/canary?color=ff4500&label=CANARY%3ALAST%20COMMIT&style=for-the-badge)
-[![GitHub](https://img.shields.io/github/license/pieckenst/helia?style=for-the-badge)](https://github.com/pieckenst/helia/blob/master/LICENSE)](https://github.com/pieckenst/helia/commits/canary)
+[![GitHub last commit (branch)](https://img.shields.io/github/last-commit/pieckenst/helia/canary?color=ff4500&label=CANARY%3ALAST%20COMMIT&style=for-the-badge)](https://github.com/pieckenst/helia/commits/canary)
+[![GitHub](https://img.shields.io/github/license/pieckenst/helia?style=for-the-badge)](https://github.com/pieckenst/helia/blob/master/LICENSE)
 [![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)](https://forthebadge.com)
 
 <div align="center">
