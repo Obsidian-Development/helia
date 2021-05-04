@@ -109,7 +109,10 @@
 		"nsfwnotcorrectspot": "You are trying to use a command blocked for nsfw channels",
 		"nsfwerrortitle": "NSFW command error",
 		"nsfwlogerror": "Details of the error are given below! All information about the error has already been sent on to the developers!",
-		"nsfwtraceback": "Mini traceback:\n```{0}```"
+		"nsfwtraceback": "Mini traceback:\n```{0}```",
+		"generictracebackforothercommand": "Mini traceback:",
+		"localeerrortext": "An error occurred while executing the command",
+		"localerrrorstring": "Wrong localization given! Available: ```en_EN, ru_RU, bel_BY```"
     },
     "etc": {
         "on_mention": "<@!{0}>, my prefix on this server: `{1}`",
