@@ -1,6 +1,6 @@
 {
   "sdc_token": "",
-  "default_prefix": "$",
+  "default_prefix": "//",
   "default_locale": "en_EN",
   "yes_emoji": "<:Yes:836681084124921878>",
   "no_emoji": "<:No:836681064423358545>",
