@@ -1,3 +1,8 @@
+requests
+termcolor
+aiofile
+jishaku
+asyncinit
 discord.py
 discord.py[voice]
 discord-py-slash-command
@@ -13,6 +18,11 @@ aiohttp
 random2
 simpleeval
 flask
+Flask-Discord
+quart
+Quart-OAuth2-Discord.py
+quart-session
+aioredis
 timedelta
 datetime
 wikipedia
@@ -21,3 +31,8 @@ slashify
 python-dotenv
 wavelink
 discord-ext-menus
+pandas
+numpy
+matplotlib
+lxml
+html5lib
