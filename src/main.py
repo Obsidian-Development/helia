@@ -137,7 +137,7 @@ async def on_ready() -> NoReturn:
     #print("[DB] Database Present and ready")
     print("---------------------------")
     changeStatus.start()
-    #db.control() # change order
+    #db.control() # order change
 
 
 
