@@ -3,7 +3,7 @@
 </p>
 
 <p align="center">
-<img align="center" src="https://raw.githubusercontent.com/pieckenst/helia/current/bitmapm.png" height="100" width="320">
+<img align="center" src="https://raw.githubusercontent.com/pieckenst/helia/current/bitmapcanarym.png" height="100" width="320">
 </p>
 
 [![forthebadge](https://forthebadge.com/images/badges/made-with-python.svg)](https://forthebadge.com)
