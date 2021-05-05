@@ -1,5 +1,5 @@
 
-<img align="right" src="https://raw.githubusercontent.com/pieckenst/helia/master/bitmap.png" height="140" width="140">
+<img align="right" src="https://raw.githubusercontent.com/pieckenst/helia/master/smallbitmap.png" height="140" width="140">
 
 # Helia
 [![GitHub last commit](https://img.shields.io/github/last-commit/pieckenst/helia?style=for-the-badge)](https://github.com/pieckenst/helia/commits/master)
