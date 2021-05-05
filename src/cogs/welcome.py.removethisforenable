@@ -1,3 +1,4 @@
+# remove .removethisforenable in file name for this cog to load
 import discord
 import asyncio
 import functools
