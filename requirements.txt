@@ -31,6 +31,7 @@ slashify
 python-dotenv
 wavelink
 discord-ext-menus
+jishaku
 pandas
 numpy
 matplotlib
