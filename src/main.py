@@ -136,8 +136,8 @@ async def on_ready() -> NoReturn:
     print("[SUCCESS] Started Helia discord bot")  # launch information thing
     #print("[DB] Database Present and ready")
     print("---------------------------")
-    #db.control()
     changeStatus.start()
+    #db.control() # order change
 
 
 
