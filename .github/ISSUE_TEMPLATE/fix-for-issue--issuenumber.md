@@ -2,7 +2,7 @@
 name: 'Fix for issue #issuenumber'
 about: 'Working on fixing the #issuenumber'
 title: "[FIX]"
-labels: ''
+labels: pullthefix
 assignees: ''
 
 ---
