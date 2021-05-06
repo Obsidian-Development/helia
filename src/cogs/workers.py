@@ -25,10 +25,22 @@ class Workers(commands.Cog):
 
         """
         while True:
-            requests.post(f'https://api.server-discord.com/v2/bots/{bot.user.id}/stats',
-                          headers={
-                              "Authorization": CONFIG['sdc_token']},
-                          data={"servers": len(bot.guilds), "shards": 0})
+            print("[SDC] Looping update request")
+            print("Debug information")
+            print("Number of guilds:")
+            print(len(bot.guilds))
+            print("Client ID:")
+            print(bot.user.id)
+            print("Proceeding to authorize")
+            headers={
+            "Authorization": CONFIG['sdc_token']
+            }
+            r = requests.post(f'https://api.server-discord.com/v2/bots/{bot.user.id}/stats',
+                          headers=headers,
+                          data={"servers":len(bot.guilds), "shards":1})
+            print(r.content)
+            print("[SDC] Authorization completed")
+            print("[SDC] Request sent")
             await asyncio.sleep(3600)
 
 
