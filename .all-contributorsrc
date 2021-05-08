@@ -1,0 +1,25 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "arslee07",
+      "name": "Arsenii Liunsha",
+      "avatar_url": "https://avatars.githubusercontent.com/u/50916030?v=4",
+      "profile": "http://arslee.tk",
+      "contributions": [
+        "code",
+        "translation"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "helia",
+  "projectOwner": "Helia-Developers",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "skipCi": true
+}
