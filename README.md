@@ -77,6 +77,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <!-- markdownlint-disable -->
 <table>
   <tr>
+    <td align="center"><a href="https://github.com/pieckenst"><img src="https://avatars.githubusercontent.com/u/46422808?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Andrey Savich </b></sub></a><br /><a href="https://github.com/Helia-Developers/helia/commits?author=pieckenst" title="Code">💻</a> <a href="#design-pieckenst" title="Design">🎨</a></td>
     <td align="center"><a href="https://github.com/Sviat946"><img src="https://avatars.githubusercontent.com/u/83779551?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Sviat946</b></sub></a><br /><a href="#ideas-Sviat946" title="Ideas, Planning, & Feedback">🤔</a></td>
     <td align="center"><a href="https://discord.gg/5JEb7ju"><img src="https://avatars.githubusercontent.com/u/52179357?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Nigaman</b></sub></a><br /><a href="https://github.com/Helia-Developers/helia/commits?author=NigamanRPG" title="Code">💻</a></td>
     <td align="center"><a href="http://arslee.tk"><img src="https://avatars.githubusercontent.com/u/50916030?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Arsenii Liunsha</b></sub></a><br /><a href="https://github.com/Helia-Developers/helia/commits?author=arslee07" title="Code">💻</a> <a href="#translation-arslee07" title="Translation">🌍</a></td>
