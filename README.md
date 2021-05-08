@@ -1,4 +1,3 @@
-
 <p align="center">
 <img align="center" src="https://raw.githubusercontent.com/pieckenst/helia/current/heliacircle.png" height="140" width="140">
 </p>
@@ -65,4 +64,3 @@ DISCORD_TOKEN=your token without quote symbols or anything
 21. Click the little edit icon near our apps' name to enable our dynos
 22. Enable it and hit confirm
 23. Congrats you now have your own helia instance
-
