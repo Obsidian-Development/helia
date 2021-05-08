@@ -6,6 +6,7 @@
   "commit": false,
   "contributors": [
     {
+
       "login": "pieckenst",
       "name": "Andrey Savich ",
       "avatar_url": "https://avatars.githubusercontent.com/u/46422808?v=4",
@@ -13,6 +14,26 @@
       "contributions": [
         "code",
         "design"
+      "login": "Sviat946",
+      "name": "Sviat946",
+      "avatar_url": "https://avatars.githubusercontent.com/u/83779551?v=4",
+      "profile": "https://github.com/Sviat946",
+      "contributions": [
+        "ideas"
+      "login": "NigamanRPG",
+      "name": "Nigaman",
+      "avatar_url": "https://avatars.githubusercontent.com/u/52179357?v=4",
+      "profile": "https://discord.gg/5JEb7ju",
+      "contributions": [
+        "code"
+      "login": "arslee07",
+      "name": "Arsenii Liunsha",
+      "avatar_url": "https://avatars.githubusercontent.com/u/50916030?v=4",
+      "profile": "http://arslee.tk",
+      "contributions": [
+        "code",
+        "translation"
+
       ]
     }
   ],
