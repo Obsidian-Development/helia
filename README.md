@@ -1,14 +1,13 @@
 <p align="center">
-<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-5-orange.svg?style=flat-square)](#contributors-)
-<!-- ALL-CONTRIBUTORS-BADGE:END -->
 <img align="center" src="https://raw.githubusercontent.com/pieckenst/helia/current/heliacircle.png" height="140" width="140">
 </p>
 
 <p align="center">
 <img align="center" src="https://raw.githubusercontent.com/pieckenst/helia/current/bitmapm.png" height="100" width="320">
 </p>
-
+<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+[![All Contributors](https://img.shields.io/badge/all_contributors-5-orange.svg?style=flat-square)](#contributors-)
+<!-- ALL-CONTRIBUTORS-BADGE:END -->
 [![forthebadge](https://forthebadge.com/images/badges/made-with-python.svg)](https://forthebadge.com)
 [![GitHub last commit](https://img.shields.io/github/last-commit/pieckenst/helia?style=for-the-badge)](https://github.com/pieckenst/helia/commits/current)
 [![GitHub last commit (branch)](https://img.shields.io/github/last-commit/pieckenst/helia/canary?color=ff4500&label=CANARY%3ALAST%20COMMIT&style=for-the-badge)](https://github.com/pieckenst/helia/commits/canary)
