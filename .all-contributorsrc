@@ -4,9 +4,7 @@
   ],
   "imageSize": 100,
   "commit": false,
-  "contributors": [
-    "contributors": [
-    {
+  "contributors": [{
       "login": "pieckenst",
       "name": "Andrey Savich ",
       "avatar_url": "https://avatars.githubusercontent.com/u/46422808?v=4",
