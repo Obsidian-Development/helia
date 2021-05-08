@@ -1,6 +1,6 @@
 <p align="center">
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-0-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-5-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 <img align="center" src="https://raw.githubusercontent.com/pieckenst/helia/current/heliacircle.png" height="140" width="140">
 </p>
@@ -75,8 +75,19 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->
 <!-- markdownlint-disable -->
+<table>
+  <tr>
+    <td align="center"><a href="https://github.com/pieckenst"><img src="https://avatars.githubusercontent.com/u/46422808?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Andrey Savich </b></sub></a><br /><a href="https://github.com/helia-developers/helia/commits?author=pieckenst" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/Sviat946"><img src="https://avatars.githubusercontent.com/u/83779551?v=4?s=100" width="100px;" alt=""/><br /><sub><b>sviat946</b></sub></a><br /><a href="#ideas-Sviat946" title="Ideas, Planning, & Feedback">🤔</a></td>
+    <td align="center"><a href="https://discord.gg/5JEb7ju"><img src="https://avatars.githubusercontent.com/u/52179357?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Nigaman</b></sub></a><br /><a href="https://github.com/helia-developers/helia/commits?author=NigamanRPG" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/arslee07"><img src="https://avatars.githubusercontent.com/u/50916030?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Arsenii Liunsha</b></sub></a><br /><a href="https://github.com/helia-developers/helia/commits?author=arslee07" title="Code">💻</a> <a href="#translation-arslee07" title="Translation">🌍</a></td>
+    <td align="center"><a href="https://github.com/eaxecx"><img src="https://avatars.githubusercontent.com/u/61050197?v=4?s=100" width="100px;" alt=""/><br /><sub><b>eax-ebx</b></sub></a><br /><a href="#talk-eaxecx" title="Talks">📢</a> <a href="#example-eaxecx" title="Examples">💡</a> <a href="https://github.com/helia-developers/helia/commits?author=eaxecx" title="Code">💻</a> <a href="#question-eaxecx" title="Answering Questions">💬</a></td>
+  </tr>
+</table>
+
 <!-- markdownlint-restore -->
 <!-- prettier-ignore-end -->
+
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
