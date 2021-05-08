@@ -1,6 +1,6 @@
 
 <p align="center">
-<img align="center" src="https://raw.githubusercontent.com/pieckenst/helia/current/bitmapm.png" height="100" width="320">
+<img align="center" src="https://raw.githubusercontent.com/pieckenst/helia/current/heliacircle.png" height="140" width="140">
 </p>
 
 <p align="center">
