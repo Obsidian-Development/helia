@@ -1,0 +1,24 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "NigamanRPG",
+      "name": "Nigaman",
+      "avatar_url": "https://avatars.githubusercontent.com/u/52179357?v=4",
+      "profile": "https://discord.gg/5JEb7ju",
+      "contributions": [
+        "code"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "helia",
+  "projectOwner": "Helia-Developers",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "skipCi": true
+}
