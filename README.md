@@ -1,7 +1,7 @@
-<p align="center">
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 [![All Contributors](https://img.shields.io/badge/all_contributors-5-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
+<p align="center">
 <img align="center" src="https://raw.githubusercontent.com/pieckenst/helia/current/heliacircle.png" height="140" width="140">
 </p>
 
