@@ -112,7 +112,7 @@
 		    "nsfwtraceback": "Мини-трейсбек:\n```{0}```",
 		    "generictracebackthing": "Мини-трейсбек:",
 		    "localeerrortext": "Произошла ошибка при выполнении данной команды",
-		    "localerrrorstring": "Дана неправильная локализация! Доступные: en_EN, ru_RU, bel_BY, ua_UA"
+		    "localerrrorstring": "Дана неправильная локализация! Доступные:\n```**en_EN**, **ru_RU**, **bel_BY**, **ua_UA**.```"
     },
     "etc": {
         "on_mention": "<@!{0}>, мой префкс на этом сервере: `{1}`",

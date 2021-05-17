@@ -112,7 +112,7 @@
 	      "nsfwtraceback": "Mini traceback:\n```{0}```",
 		    "generictracebackthing": "Mini traceback:",
 		    "localeerrortext": "An error occurred while executing the command",
-		    "localerrrorstring": "Wrong localization given! Available: en_EN, ru_RU, bel_BY, ua_UA"
+		    "localerrrorstring": "Wrong localization given! Available:\n```**en_EN**, **ru_RU**, **bel_BY**, **ua_UA**.```"
     },
     "etc": {
         "on_mention": "<@!{0}>, my prefix on this server: `{1}`",

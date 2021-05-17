@@ -112,7 +112,7 @@
 		    "nsfwtraceback": "Міні-трекбек:\n```{0}```",
 		    "generictracebackforothercommand": "Міні-трекбек:",
 	 	    "localeerrortext": "Під час виконання команди сталася помилка",
-		    "localerrrorstring": "Дана неправильна локалізація! Доступні: en_EN, ru_RU, bel_BY, ua_UA"
+		    "localerrrorstring": "Дана неправильна локалізація! Доступні:\n```**en_EN**, **ru_RU**, **bel_BY**, **ua_UA**.```"
     },
     "etc": {
         "on_mention": "<@!{0}>, мій префікс на цьому сервері: `{1}`",
