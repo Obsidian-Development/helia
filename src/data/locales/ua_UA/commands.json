@@ -147,7 +147,7 @@
             },
             "locale": {
                 "usage": "{0} lang [мова]",
-                "description": "Ця команда встановлює мову бота на сервері. Доступні: **en_EN**, **ru_RU**, **bel_BY**, **ua_UA**.",
+                "description": "Ця команда встановлює мову бота на сервері. Доступні:\n```**en_EN**, **ru_RU**, **bel_BY**, **ua_UA**.```",
                 "aliases": [
                     "setlang",
                     "locale"
