@@ -4,6 +4,7 @@
         "fieldhelpsystem": ":books: **Комманды**",
         "help_list_description": "Больше подробностей: ``help <команда>``",
         "commands_list": "Список команд:",
+        "nocommanddescription": "___________",
         "usage": "Использоване::",
         "description": "Описание:",
         "aliases": "Альт. названия:",
