@@ -40,7 +40,7 @@ class HelpMenu(ListPageSource):
 					  description=STRINGS['general']['commands_list'].format(prefix),
 					  colour=self.ctx.author.colour)
         #embed.set_thumbnail(url=self.ctx.guild.me.avatar_url)
-        embed.set_footer(text=f"{self.ctx.guild.me.name}: {offset:,} - {min(len_data, offset+self.per_page-1):,} of {len_data:,} commands.", icon_url=self.ctx.guild.me.avatar_url)
+        embed.set_footer(text=f"{self.ctx.guild.me.name}", icon_url=self.ctx.guild.me.avatar_url)
 
         for name, value in fields:
             embed.add_field(name=name, value=value, inline=False)
@@ -70,7 +70,7 @@ class Help(Cog):
         lang = await s.get_field('locale', CONFIG['default_locale'])
         prefix = await s.get_field('prefix', CONFIG['default_prefix'])
         STRINGS = Strings(lang)
-        embed = Embed(title=f"Help with `{command}`",description=syntax(command),colour=ctx.author.colour)
+        embed = Embed(title=STRINGS['general']['usage'].format(command),description=syntax(command),colour=ctx.author.colour)
         embed.add_field(name=STRINGS['general']['description'], value=command.help)
         await ctx.send(embed=embed)
 
@@ -87,7 +87,7 @@ class Help(Cog):
             if (command := get(self.bot.commands, name=cmd)):
                 await self.cmd_help(ctx, command)
             else:
-                await ctx.send("That command does not exist.")
+                await ctx.send("That command does not exist.") # PENDING EMBED CONVERSION 
 
     @Cog.listener()
     async def on_ready(self):
