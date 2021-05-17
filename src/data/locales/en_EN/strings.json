@@ -2,7 +2,7 @@
     "general": {
         "helpsystemtitle": "Help System",
         "fieldhelpsystem": ":books: **Commands**",
-        "help_list_description": "More Information: ``help [Module]``",
+        "help_list_description": "More Information: ``help [command]``",
         "commands_list": "List of commands:",
         "usage": "Using:",
         "description": "Description:",
@@ -35,7 +35,7 @@
         "botuptopgg": "Bot page on top.gg",
         "botupbod": "Bot page on Bots on Discord",
         "botupsdc": "Bot page on bots.server-discord.com",
-		"canaryver": "For inviting the canary version of Helia use this link"
+		    "canaryver": "For inviting the canary version of Helia use this link"
     },
     "helpsystemfirstpage": {
         "gemtitle": "**general**",
@@ -106,13 +106,13 @@
         "on_error_text": "An unexpected error has occurred! All information about the error has already been sent on to the developers! Mini traceback:\n```{0}```",
         "command_not_found": "The command was not found.",
         "already_muted": "The user is already muted.",
-		"nsfwnotcorrectspot": "You are trying to use a command blocked for nsfw channels",
-		"nsfwerrortitle": "NSFW command error",
-		"nsfwlogerror": "Details of the error are given below! All information about the error has already been sent on to the developers!",
-		"nsfwtraceback": "Mini traceback:\n```{0}```",
-		"generictracebackforothercommand": "Mini traceback:",
-		"localeerrortext": "An error occurred while executing the command",
-		"localerrrorstring": "Wrong localization given! Available: en_EN, ru_RU, bel_BY"
+		    "nsfwnotcorrectspot": "You are trying to use a command blocked for nsfw channels",
+		    "nsfwerrortitle": "NSFW command error",
+		    "nsfwlogerror": "Details of the error are given below! All information about the error has already been sent on to the developers!",
+	      "nsfwtraceback": "Mini traceback:\n```{0}```",
+		    "generictracebackthing": "Mini traceback:",
+		    "localeerrortext": "An error occurred while executing the command",
+		    "localerrrorstring": "Wrong localization given! Available: en_EN, ru_RU, bel_BY, ua_UA"
     },
     "etc": {
         "on_mention": "<@!{0}>, my prefix on this server: `{1}`",
