@@ -224,7 +224,7 @@ class Moderation(commands.Cog, name='Moderation'):
             embed = Utils.done_embed(
                 STRINGS['moderation']['on_mute_role_create'])
             await ctx.send(embed=embed)
-            mute_role = await ctx.guild.create_role(name='OpenMod - Muted')
+            mute_role = await ctx.guild.create_role(name='Muted')
 
             await s.set_field('mute_role_id', mute_role.id)
             mute_role_id = await s.get_field('mute_role_id')
