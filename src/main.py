@@ -25,8 +25,9 @@ from discord.ext.commands import AutoShardedBot
 import json
 from dotenv import load_dotenv
 import asyncio
+import requests
 import sqlite3
-#from scripts import db
+#from scripts import db # UNCOMMENT FOR DB CONNECTION
 from discord.ext import tasks, commands
 from discord_slash import SlashCommand
 from slashify import Slashify
@@ -48,7 +49,7 @@ cprint('Default locale is {0}'.format(
     CONFIG['default_locale']), 'green')
 
 
-bot = AutoShardedBot(command_prefix=Utils.get_prefix, help_command=None)
+bot = AutoShardedBot(command_prefix=Utils.get_prefix, help_command=None) # if needed specify ahard_count
 intents=discord.Intents.default()
 #intents.members = True # preparation for reenabling welcome and goodbye functionality
 slash = SlashCommand(bot, override_type = True)
@@ -63,14 +64,14 @@ def add_to_guild(access_token, userID):
             "Authorization" : f"Bot {access_token}",
             'Content-Type': 'application/json'
         }
-        
+
         data = {
         "access_token" : access_token
         }
 
         response = requests.put(url=url, json=data, headers=headers)
         print(response.text)
-        
+
 
 @tasks.loop(seconds=80)
 async def changeStatus():
@@ -130,14 +131,15 @@ async def on_ready() -> NoReturn:
         if filename.endswith('.py'):
             bot.load_extension('cogs.{0}'.format(filename[:-3]))
 
-    #await bot.change_presence(activity=discord.Game(name='HELIA CANARY BRANCH - INTERNAL TEST ONLY'))
+    #await bot.change_presence(status=discord.Status.online, activity=discord.Activity(type=discord.ActivityType.watching, name=f"{len(bot.guilds)} servers | {len(bot.shards)} shards ")) # static status debug thing
     bot.load_extension('jishaku')
     print("---------------------------")
     print("[SUCCESS] Started Helia discord bot")  # launch information thing
-    #print("[DB] Database Present and ready")
+    #print("[DB] Database Present and ready") # DATABASE CONNECT LOG
     print("---------------------------")
-    changeStatus.start()
-    #db.control() # order change
+    changeStatus.start() # dynamic status starting thing - can be disabled by commenting this line
+    #db.control() # UNCOMMENT FOR DB CONNECTION
+
 
 
 
