@@ -1,0 +1,75 @@
+{
+  "projectName": "helia",
+  "projectOwner": "helia-developers",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "commitConvention": "ember",
+  "contributors": [
+    {
+      "login": "pieckenst",
+      "name": "Andrey Savich ",
+      "avatar_url": "https://avatars.githubusercontent.com/u/46422808?v=4",
+      "profile": "https://github.com/pieckenst",
+      "contributions": [
+        "code",
+        "design",
+        "translation"
+      ]
+    },
+    {
+      "login": "Sviat946",
+      "name": "sviat946",
+      "avatar_url": "https://avatars.githubusercontent.com/u/83779551?v=4",
+      "profile": "https://github.com/Sviat946",
+      "contributions": [
+        "ideas"
+      ]
+    },
+    {
+      "login": "NigamanRPG",
+      "name": "Nigaman",
+      "avatar_url": "https://avatars.githubusercontent.com/u/52179357?v=4",
+      "profile": "https://discord.gg/5JEb7ju",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "arslee07",
+      "name": "Arsenii Liunsha",
+      "avatar_url": "https://avatars.githubusercontent.com/u/50916030?v=4",
+      "profile": "https://github.com/arslee07",
+      "contributions": [
+        "code",
+        "translation"
+      ]
+    },
+    {
+      "login": "eaxecx",
+      "name": "eax-ebx",
+      "avatar_url": "https://avatars.githubusercontent.com/u/61050197?v=4",
+      "profile": "https://github.com/eaxecx",
+      "contributions": [
+        "talk",
+        "example",
+        "code",
+        "question"
+      ]
+    },
+    {
+      "login": "DoggieLicc",
+      "name": "DoggieLicc",
+      "avatar_url": "https://avatars.githubusercontent.com/u/76987398?v=4",
+      "profile": "https://github.com/DoggieLicc",
+      "contributions": [
+        "code"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7
+}

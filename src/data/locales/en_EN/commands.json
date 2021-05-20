@@ -136,7 +136,7 @@
 				"aliases": []
 			}
 		}
-	},	
+	},
     "Prefs": {
         "title": "Preferences",
         "commands": {
@@ -147,7 +147,7 @@
             },
             "locale": {
                 "usage": "{0}locale [language]",
-                "description": "This command sets the bot language on the server. Available: **en_EN**, **ru_RU**, **bel_BY**.",
+                "description": "This command sets the bot language on the server. Available:\n```**en_EN**, **ru_RU**, **bel_BY**, **ua_UA**.```",
                 "aliases": [
                     "setlang",
                     "lang"

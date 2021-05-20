@@ -59,7 +59,8 @@ class Prefs(commands.Cog, name='Prefs'):
 
         # FIXME
         embed=discord.Embed(title=STRINGS['error']['on_error_title'], description=STRINGS['error']['localeerrortext'], color=0xff0000)
-        embed.add_field(name=STRINGS['error']['generictracebackforothercommand'], value=STRINGS['error']['localerrrorstring'], inline=True)
+        embed.add_field(name=STRINGS['error']['generictracebackthing'], value=STRINGS['error']['localerrrorstring'], inline=False)
+        print(f"Wrong localization given on {ctx.message.guild}")
         await ctx.send(embed=embed)
 
 
