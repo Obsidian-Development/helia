@@ -30,7 +30,7 @@ Wikipeida commands as well, such as wikipedia search. You can use //wiki to sear
 More info on bot features can be seen in //help and you can always contribute to betterment of the bot if you know python by heading to the bot repository on github at https://github.com/pieckenst/helia and following our contributing guidelines at https://github.com/pieckenst/helia/blob/master/CONTRIBUTING
 Source code on public github can be a bit behind hosted version since updates to it are pushed when enough changes pile up
 
-Russian Description
+#Russian Description
 
 Бот с открытым исходным кодом для модерации и музыки Основные возможности бота Музыка (может иногда ломаться) Бот может воспроизводить музыку с YouTube, пропускать ее, есть очередь, обычные вещи для музыкальных ботов в целом
 
