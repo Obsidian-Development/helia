@@ -1,5 +1,5 @@
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-6-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-7-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 <p align="center">
 <img align="center" src="https://raw.githubusercontent.com/pieckenst/helia/current/heliacircle.png" height="140" width="140">
@@ -16,16 +16,16 @@
 [![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)](https://forthebadge.com)
 
 <div align="center">
-<h3 align="center">An opensource music and moderation bot made for your pleasure)</h3>  
+<h3 align="center">An open-source music and moderation bot made for your pleasure</h3>  
 <h3 align="center">Main bot features</h3>
 <h3 align="center"> Music </h3>
 <h3 align="center"> Moderation </h3>
 <h3 align="center"> Information Commands and wikipedia Search</h3>
 </div>
 
-Moderation features ( like ban, kick , clear mute , and unmute ) You can also view user information and profile picture
+Moderation features such as ban, kick, purge, mute and unmute. You can also view user information and profile pictures.
 
-Wiki commands as well as wikipedia search You can use //wiki to search on wikipedia As well as the bot includes some commands to see short bits of info on a few of linux distributions
+Wikipeida commands as well, such as wikipedia search. You can use //wiki to search on Wikipedia. The bot also includes some commands to see short bits of info on a few of Linux distributions.
 
 More info on bot features can be seen in //help and you can always contribute to betterment of the bot if you know python by heading to the bot repository on github at https://github.com/pieckenst/helia and following our contributing guidelines at https://github.com/pieckenst/helia/blob/master/CONTRIBUTING
 Source code on public github can be a bit behind hosted version since updates to it are pushed when enough changes pile up
@@ -41,36 +41,36 @@ Russian Description
 Более подробную информацию о функциях бота можно увидеть в //help, и вы всегда можете внести свой вклад в улучшение бота, если знаете python, перейдя в репозиторий бота на github по адресу https://github.com/pieckenst/helia и сделать изменения сответствуя нашим требованиям для пул реквестов на https://github.com/pieckenst/helia/blob/master/CONTRIBUTING. Исходный код на общедоступном github может немного отставать от захосченной версии, поскольку обновления в него отправляются, когда накапливается достаточно изменений
 
 # BOT HOSTING GUIDE
-1. Create .env file in src folder with this content
-DISCORD_TOKEN=your token without quote symbols or anything
-2. If you want to host localy then just launch the bot with py main.py otherwise follow next steps
-3. Heroku cli setup
+1. Create an .env file in src folder with this content
+DISCORD_TOKEN=your token without quotes, symbols, or anything
+2. If you want to host locally then just launch the bot with python, file main.py, otherwise follow the next steps
+3. Heroku CLI setup
 4. Follow step 1 
 5. Go to heroku.com and Sign Up or Log In if already have an account.
 6. For command line setup install Git and do git init when inside your directory
-7. Install heroku cli
-8. Then do heroku apps:create name_of_app and heroku buildpacks:set heroku/python
+7. Install Heroku CLI
+8. Then do Heroku apps:create name_of_app and heroku buildpacks:set heroku/python
 9. Finally, do git push heroku master or git push heroku branch_name:master if you want to only push one branch
 10. For heroku gui setup do
 11. Go to heroku.com and Sign Up or Log In if already have an account.
 12. Go to Heroku Dashboard
-13. Hit New. Now give the application on heroku a unique name
-14. Click on Connect to Github. You might need to Authorize the app. If so Do It. 
+13. Hit New. Now give the application on Heroku a unique name
+14. Click on Connect to Github. You might need to authorize the app. If so, do that. 
 15. Create a private repository on github 
 16. Upload bot files into your private repository and edit gitignore and remove .env file mentions from there
 17. Create .env file in src folder of your private repository with this content
-DISCORD_TOKEN=your token without quote symbols or anything
-18. Now go back to heroku and link your private repository there by entering your name of private repository. Hit search and then connect.
+DISCORD_TOKEN=your token without quotes, symbols, or anything
+18. Now go back to Heroku and link your private repository there by entering your name of private repository. Hit search and then connect.
 19. Now scroll down below and Enable Auto Deploy. Now Scroll a little more and hit Deploy Branch.
 # Enabling the bot to launch in heroku
 20. Go to Resources Tab once the bot deployement is finished
 21. Click the little edit icon near our apps' name to enable our dynos
 22. Enable it and hit confirm
-23. Congrats you now have your own helia instance
+23. Congratulations, you now have your own Helia instance
 
 ## Contributors ✨
 
-Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+Credits goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->
@@ -83,6 +83,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://github.com/arslee07"><img src="https://avatars.githubusercontent.com/u/50916030?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Arsenii Liunsha</b></sub></a><br /><a href="https://github.com/helia-developers/helia/commits?author=arslee07" title="Code">💻</a> <a href="#translation-arslee07" title="Translation">🌍</a></td>
     <td align="center"><a href="https://github.com/eaxecx"><img src="https://avatars.githubusercontent.com/u/61050197?v=4?s=100" width="100px;" alt=""/><br /><sub><b>eax-ebx</b></sub></a><br /><a href="#talk-eaxecx" title="Talks">📢</a> <a href="#example-eaxecx" title="Examples">💡</a> <a href="https://github.com/helia-developers/helia/commits?author=eaxecx" title="Code">💻</a> <a href="#question-eaxecx" title="Answering Questions">💬</a></td>
     <td align="center"><a href="https://github.com/DoggieLicc"><img src="https://avatars.githubusercontent.com/u/76987398?v=4?s=100" width="100px;" alt=""/><br /><sub><b>DoggieLicc</b></sub></a><br /><a href="https://github.com/helia-developers/helia/commits?author=DoggieLicc" title="Code">💻</a></td>
+    <td align="center"><a href="https://shadidev.tk/"><img src="https://avatars.githubusercontent.com/u/66328589?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Shadi Alostaz</b></sub></a><br /><a href="#maintenance-SilentSerenityy" title="Maintenance">🚧</a> <a href="https://github.com/helia-developers/helia/commits?author=SilentSerenityy" title="Documentation">📖</a></td>
   </tr>
 </table>
 

@@ -69,6 +69,16 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "SilentSerenityy",
+      "name": "Shadi Alostaz",
+      "avatar_url": "https://avatars.githubusercontent.com/u/66328589?v=4",
+      "profile": "https://shadidev.tk/",
+      "contributions": [
+        "maintenance",
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7
