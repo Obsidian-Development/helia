@@ -60,6 +60,15 @@
         "code",
         "question"
       ]
+    },
+    {
+      "login": "DoggieLicc",
+      "name": "DoggieLicc",
+      "avatar_url": "https://avatars.githubusercontent.com/u/76987398?v=4",
+      "profile": "https://github.com/DoggieLicc",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7
