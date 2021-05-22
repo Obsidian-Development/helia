@@ -88,7 +88,10 @@ class Admin(commands.Cog, name='Admin'):
         valid_users = ["540142383270985738", "573123021598883850", "584377789969596416", "106451437839499264",
                        "237984877604110336", "579750505736044574", "497406228364787717"]
         if str(author.id) in valid_users:
-            embed = discord.Embed(title="Service command", description="Bot is going for shutdown/restart - wait patiently", color=0xff8000)
+            s = await Settings(ctx.guild.id)
+            lang = await s.get_field('locale', CONFIG['default_locale'])
+            STRINGS = Strings(lang)
+            embed = discord.Embed(title=STRINGS['moderation']['shutdownembedtitle'], description=STRINGS['moderation']['shutdownembeddesc'], color=0xff8000)
             embed.set_footer(text=self.bot.user.name, icon_url=self.bot.user.avatar_url)
             await ctx.send(embed=embed)
             await ctx.bot.change_presence(activity=discord.Game(name="Shutting down for either reboot or update "))
@@ -109,8 +112,11 @@ class Admin(commands.Cog, name='Admin'):
                        "237984877604110336", "579750505736044574", "497406228364787717"]
         if str(author.id) in valid_users:
             await self.bot.change_presence(activity=discord.Game(" ".join(args)))
-            embed = discord.Embed(title="Рапорт", description="Ваш приказ выполнен о владыка ", color=0xff8000)
-            embed.add_field(name="English", value="Your orders were done My Lord", inline=True)
+            s = await Settings(ctx.guild.id)
+            lang = await s.get_field('locale', CONFIG['default_locale'])
+            STRINGS = Strings(lang)
+            embed=discord.Embed(title=STRINGS['moderation']['setstatustext'], description=STRINGS['moderation']['setstatusdesc'], color=0xff8000)
+            embed.add_field(name=STRINGS['moderation']['setstatusfieldtext'], value=STRINGS['moderation']['setstatusfielddesc'], inline=True)
             embed.set_footer(text=self.bot.user.name, icon_url=self.bot.user.avatar_url)
             await ctx.send(embed=embed)
         else:
@@ -130,6 +136,11 @@ class Admin(commands.Cog, name='Admin'):
         embed.add_field(name=STRINGS['general']['botupbod'], value="https://bots.ondiscord.xyz/bots/666304823934844938",inline=True)
         embed.set_footer(text=self.bot.user.name, icon_url=self.bot.user.avatar_url)
         await ctx.send(embed=embed)
+
+    #@commands.command()
+    #@commands.is_owner()
+    #async def guildlist(self, ctx: SlashContext, bot : Bot):
+        #await ctx.send(bot.guilds)
 
 
 def setup(bot: Bot) -> NoReturn:
