@@ -264,7 +264,12 @@ class Music(commands.Cog, wavelink.WavelinkMixin, name='Music'):
     @commands.command(name="leave", brief = "L.",aliases=["fuck_off","buggerout","disconnect","lv","пшелвон","fuckoff","отключиться"])
     async def disconnect_command(self, ctx):
         player = self.get_player(ctx)
+        s = await Settings(ctx.guild.id)
+        lang = await s.get_field('locale', CONFIG['default_locale'])
+        STRINGS = Strings(lang)
         await player.teardown()
+        embed=discord.Embed(title=STRINGS['music']['botleavevc'], color=0x808000)
+        await ctx.send(embed=embed)
 
         #logger.info(f"[MUSIC]Voice channel quit requested by {ctx.author} in {ctx.message.guild}")
 
