@@ -251,10 +251,22 @@ class Music(commands.Cog, wavelink.WavelinkMixin, name='Music'):
                 "password": "youshallnotpass",
                 "identifier": "MAIN",
                 "region": "us",
+            },
+            "BACKUP": {
+                "host": "lava.link",
+                "port": 80,
+                "rest_uri": "https://lava.link",
+                "password": "youshallnotpass",
+                "identifier": "BACKUP",
+                "region": "us",
             }
         }
         for node in nodes.values():
             await self.wavelink.initiate_node(**node)
+
+    @wavelink.WavelinkMixin.listener()
+    async def on_node_ready(self, node: wavelink.Node):
+        print(f'Node {node.identifier} is ready!')
 
     def get_player(self, obj):
         if isinstance(obj, commands.Context):
