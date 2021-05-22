@@ -264,6 +264,7 @@ class Moderation(commands.Cog, name='Moderation'):
     @commands.guild_only()
     @commands.bot_has_permissions(manage_channels=True)
     @commands.has_permissions(manage_channels=True)
+    @commands.cooldown(1, 30, commands.BucketType.user)
     async def lockdownrole(self, ctx, role: discord.Role): # `RoleConverter` will automatically convert it to a `discord.Role` instance
       s = await Settings(ctx.guild.id)
       lang = await s.get_field('locale', CONFIG['default_locale'])
@@ -277,6 +278,7 @@ class Moderation(commands.Cog, name='Moderation'):
     @commands.guild_only()
     @commands.bot_has_permissions(manage_channels=True)
     @commands.has_permissions(manage_channels=True)
+    @commands.cooldown(1, 30, commands.BucketType.user)
     async def unlockrole(self, ctx, role: discord.Role):
       s = await Settings(ctx.guild.id)
       lang = await s.get_field('locale', CONFIG['default_locale'])
@@ -290,6 +292,7 @@ class Moderation(commands.Cog, name='Moderation'):
     @commands.guild_only()
     @commands.bot_has_permissions(manage_channels=True)
     @commands.has_permissions(manage_channels=True)
+    @commands.cooldown(1, 30, commands.BucketType.user)
     async def lockdown(self,ctx):
       s = await Settings(ctx.guild.id)
       lang = await s.get_field('locale', CONFIG['default_locale'])
@@ -303,6 +306,7 @@ class Moderation(commands.Cog, name='Moderation'):
     @commands.guild_only()
     @commands.bot_has_permissions(manage_channels=True)
     @commands.has_permissions(manage_channels=True)
+    @commands.cooldown(1, 30, commands.BucketType.user)
     async def unlock(self,ctx):
       s = await Settings(ctx.guild.id)
       lang = await s.get_field('locale', CONFIG['default_locale'])
@@ -316,6 +320,7 @@ class Moderation(commands.Cog, name='Moderation'):
     @commands.guild_only()
     @commands.bot_has_permissions(manage_channels=True)
     @commands.has_permissions(manage_channels=True)
+    @commands.cooldown(1, 30, commands.BucketType.user)
     async def channellock(self,ctx):
       s = await Settings(ctx.guild.id)
       lang = await s.get_field('locale', CONFIG['default_locale'])
@@ -328,6 +333,7 @@ class Moderation(commands.Cog, name='Moderation'):
     @commands.guild_only()
     @commands.bot_has_permissions(manage_channels=True)
     @commands.has_permissions(manage_channels=True)
+    @commands.cooldown(1, 30, commands.BucketType.user)
     async def channelunlock(self,ctx):
       s = await Settings(ctx.guild.id)
       lang = await s.get_field('locale', CONFIG['default_locale'])
