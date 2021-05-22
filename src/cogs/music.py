@@ -191,7 +191,7 @@ class Player(wavelink.Player):
         s = await Settings(ctx.guild.id)
         lang = await s.get_field('locale', CONFIG['default_locale'])
         STRINGS = Strings(lang)
-        chooseTrackEmbed = discord.Embed(description=("\n".join(f"**{i+1}.** {t.title} ({t.length//60000}:{str(t.length%60).zfill(2)})"for i, t in enumerate(tracks[:5]))),colour=0xffd500,timestamp=ctx.message.created_at)
+        chooseTrackEmbed = discord.Embed(description=("\n".join(f"**{i+1}.** {t.title} ({t.length//60000}:{str(t.length%60).zfill(2)})"for i, t in enumerate(tracks[:5]))),colour=0x6AA84F,timestamp=ctx.message.created_at)
         chooseTrackEmbed.set_author(name=STRINGS['music']['embed_controler_searchresults'])
         chooseTrackEmbed.set_footer(text=STRINGS['music']['embed_controler_footer'])
         msg = await ctx.send(embed=chooseTrackEmbed)
@@ -304,7 +304,7 @@ class Music(commands.Cog, wavelink.WavelinkMixin, name='Music'):
                 raise QueueIsEmpty
             elif player.is_paused :
                 await player.set_pause(False)
-                playEmbed=discord.Embed(title=STRINGS['music']['playresume'],colour=0xffd500)
+                playEmbed=discord.Embed(title=STRINGS['music']['playresume'],colour=0x6AA84F)
                 playEmbed.set_footer(text=STRINGS['music']['embed_controler_footer'])
 
                 await ctx.send(embed=playEmbed)
@@ -321,13 +321,13 @@ class Music(commands.Cog, wavelink.WavelinkMixin, name='Music'):
     @play_command.error
     async def play_command_error(self, ctx, exc):
         if isinstance(exc, PlayerIsAlreadyPlaying):
-            playEmbed_2=discord.Embed(title=STRINGS['music']['playererrorone'],colour=0xffd500)
+            playEmbed_2=discord.Embed(title=STRINGS['music']['playererrorone'],colour=0x6AA84F)
             await ctx.send(embed=playEmbed_2)
         elif isinstance(exc, QueueIsEmpty):
             s = await Settings(ctx.guild.id)
             lang = await s.get_field('locale', CONFIG['default_locale'])
             STRINGS = Strings(lang)
-            playEmbed_3=discord.Embed(title=STRINGS['music']['queueerror'],description=STRINGS['music']['queueerrordesc'],colour=0xffd500)
+            playEmbed_3=discord.Embed(title=STRINGS['music']['queueerror'],description=STRINGS['music']['queueerrordesc'],colour=0x6AA84F)
             playEmbed_3.set_footer(text=STRINGS['music']['embed_controler_footer'])
             await ctx.send(embed=playEmbed_3)
 
@@ -340,7 +340,7 @@ class Music(commands.Cog, wavelink.WavelinkMixin, name='Music'):
         if player.is_paused:
             raise PlayerIsAlreadyPaused
         await player.set_pause(True)
-        pauseEmbed=discord.Embed(title=STRINGS['music']['pausetracktext'],colour=0xffd500)
+        pauseEmbed=discord.Embed(title=STRINGS['music']['pausetracktext'],colour=0x6AA84F)
         pauseEmbed.set_footer(text=STRINGS['music']['embed_controler_footer'])
 
         await ctx.send(embed=pauseEmbed)
@@ -350,7 +350,7 @@ class Music(commands.Cog, wavelink.WavelinkMixin, name='Music'):
     @pause_command.error
     async def pause_command_error(self, ctx, exc):
         if isinstance(exc, PlayerIsAlreadyPaused):
-            pauseer_embed=discord.Embed(title=STRINGS['music']['pauseerror'],colour=0xffd500)
+            pauseer_embed=discord.Embed(title=STRINGS['music']['pauseerror'],colour=0x6AA84F)
             await ctx.send(embed=pauseer_embed)
 
     @commands.command(name="stop", brief = "Stops music playback.",aliases=["sp","стоп"])
@@ -361,7 +361,7 @@ class Music(commands.Cog, wavelink.WavelinkMixin, name='Music'):
         player = self.get_player(ctx)
         player.queue.empty()
         await player.stop()
-        stopEmbed=discord.Embed(title=STRINGS['music']['stoptext'],colour=0xffd500)
+        stopEmbed=discord.Embed(title=STRINGS['music']['stoptext'],colour=0x6AA84F)
         stopEmbed.set_footer(text=STRINGS['music']['embed_controler_footer'])
 
         await ctx.send(embed=stopEmbed)
@@ -378,7 +378,7 @@ class Music(commands.Cog, wavelink.WavelinkMixin, name='Music'):
         if not player.queue.upcoming:
             raise NoMoreTracks
         await player.stop()
-        nextEmbed=discord.Embed(title=STRINGS['music']['skipsongtext'],colour=0xffd500)
+        nextEmbed=discord.Embed(title=STRINGS['music']['skipsongtext'],colour=0x6AA84F)
         if upcoming := player.queue.upcoming:
             nextEmbed.add_field(name=STRINGS['music']['queuenextinline'],value=("\n".join(f"**{i + 2}.** {t.title}" for i, t in enumerate(upcoming[:19]))),inline=False)
         nextEmbed.set_footer(text=STRINGS['music']['embed_controler_footer'])
@@ -393,14 +393,14 @@ class Music(commands.Cog, wavelink.WavelinkMixin, name='Music'):
             s = await Settings(ctx.guild.id)
             lang = await s.get_field('locale', CONFIG['default_locale'])
             STRINGS = Strings(lang)
-            nextEmbed_2=discord.Embed(title=STRINGS['music']['queueerror'],description=STRINGS['music']['queueerrordesc'],colour=0xffd500)
+            nextEmbed_2=discord.Embed(title=STRINGS['music']['queueerror'],description=STRINGS['music']['queueerrordesc'],colour=0x6AA84F)
             nextEmbed_2.set_footer(text=STRINGS['music']['embed_controler_footer'])
             await ctx.send(embed=nextEmbed_2)
         elif isinstance(exc, NoMoreTracks):
             s = await Settings(ctx.guild.id)
             lang = await s.get_field('locale', CONFIG['default_locale'])
             STRINGS = Strings(lang)
-            nextEmbed_3=discord.Embed(title=STRINGS['music']['nomoretrackstext'],description=STRINGS['music']['nomoretrackdesc'],colour=0xffd500)
+            nextEmbed_3=discord.Embed(title=STRINGS['music']['nomoretrackstext'],description=STRINGS['music']['nomoretrackdesc'],colour=0x6AA84F)
             nextEmbed_3.set_footer(text=STRINGS['music']['embed_controler_footer'])
             await ctx.send(embed=nextEmbed_3)
 
@@ -414,7 +414,7 @@ class Music(commands.Cog, wavelink.WavelinkMixin, name='Music'):
             raise NoPreviousTracks
         player.queue.position -= 2
         await player.stop()
-        previousEmbed=discord.Embed(title=STRINGS['music']['previoustext'],colour=0xffd500)
+        previousEmbed=discord.Embed(title=STRINGS['music']['previoustext'],colour=0x6AA84F)
         previousEmbed.set_footer(text=STRINGS['music']['embed_controler_footer'])
 
         await ctx.send(embed=previousEmbed)
@@ -427,11 +427,11 @@ class Music(commands.Cog, wavelink.WavelinkMixin, name='Music'):
             s = await Settings(ctx.guild.id)
             lang = await s.get_field('locale', CONFIG['default_locale'])
             STRINGS = Strings(lang)
-            previousEmbed_2=discord.Embed(title=STRINGS['music']['queueerror'],description=STRINGS['music']['queueerrordesc'],colour=0xffd500)
+            previousEmbed_2=discord.Embed(title=STRINGS['music']['queueerror'],description=STRINGS['music']['queueerrordesc'],colour=0x6AA84F)
             previousEmbed_2.set_footer(text=STRINGS['music']['embed_controler_footer'])
             await ctx.send(embed=previousEmbed_2)
         elif isinstance(exc, NoPreviousTracks):
-            previousEmbed_3=discord.Embed(title=STRINGS['music']['nomoretrackstext'],description=STRINGS['music']['nomoretracksprevdesc'],colour=0xffd500)
+            previousEmbed_3=discord.Embed(title=STRINGS['music']['nomoretrackstext'],description=STRINGS['music']['nomoretracksprevdesc'],colour=0x6AA84F)
             previousEmbed_3.set_footer(text=STRINGS['music']['embed_controler_footer'])
             await ctx.send(embed=previousEmbed_3)
 
@@ -442,7 +442,7 @@ class Music(commands.Cog, wavelink.WavelinkMixin, name='Music'):
         STRINGS = Strings(lang)
         player = self.get_player(ctx)
         player.queue.shuffle()
-        shuffleEmbed=discord.Embed(title=STRINGS['music']['listshuffled'],colour=0xffd500)
+        shuffleEmbed=discord.Embed(title=STRINGS['music']['listshuffled'],colour=0x6AA84F)
         shuffleEmbed.set_footer(text=STRINGS['music']['embed_controler_footer'])
 
         await ctx.send(embed=shuffleEmbed)
@@ -455,7 +455,7 @@ class Music(commands.Cog, wavelink.WavelinkMixin, name='Music'):
             s = await Settings(ctx.guild.id)
             lang = await s.get_field('locale', CONFIG['default_locale'])
             STRINGS = Strings(lang)
-            shuffleEmbed_2=discord.Embed(title=STRINGS['music']['queueerror'],description=STRINGS['music']['queueerrordesc'],colour=0xffd500)
+            shuffleEmbed_2=discord.Embed(title=STRINGS['music']['queueerror'],description=STRINGS['music']['queueerrordesc'],colour=0x6AA84F)
             shuffleEmbed_2.set_footer(text=STRINGS['music']['embed_controler_footer'])
             await ctx.send(embed=shuffleEmbed_2)
 
@@ -468,7 +468,7 @@ class Music(commands.Cog, wavelink.WavelinkMixin, name='Music'):
 
         if player.queue.is_empty:
             raise QueueIsEmpty
-        queueEmbed = discord.Embed(title=STRINGS['music']['queuelisttext'],colour=0xffd500)
+        queueEmbed = discord.Embed(title=STRINGS['music']['queuelisttext'],colour=0x6AA84F)
         queueEmbed.add_field(name=STRINGS['music']['queuelistcurrentlyplaying'], value=player.queue.current_track.title, inline=False)
 
         if upcoming := player.queue.upcoming:
@@ -485,7 +485,7 @@ class Music(commands.Cog, wavelink.WavelinkMixin, name='Music'):
             s = await Settings(ctx.guild.id)
             lang = await s.get_field('locale', CONFIG['default_locale'])
             STRINGS = Strings(lang)
-            queueEmbed_2=discord.Embed(title=STRINGS['music']['queueerror'],description=STRINGS['music']['queueerrordesc'],colour=0xffd500)
+            queueEmbed_2=discord.Embed(title=STRINGS['music']['queueerror'],description=STRINGS['music']['queueerrordesc'],colour=0x6AA84F)
             queueEmbed_2.set_footer(text=STRINGS['music']['embed_controler_footer'])
             await ctx.send(embed=queueEmbed_2)
 
@@ -499,7 +499,7 @@ class Music(commands.Cog, wavelink.WavelinkMixin, name='Music'):
         if player.queue.is_empty:
             raise QueueIsEmpty
         if not 0 < value < 101:
-            volumeEmbed_3 = discord.Embed(title=STRINGS['music']['invalidvolumevalue'], description=STRINGS['music']['invalidvolumevaluedesc'],colour=0xffd500)
+            volumeEmbed_3 = discord.Embed(title=STRINGS['music']['invalidvolumevalue'], description=STRINGS['music']['invalidvolumevaluedesc'],colour=0x6AA84F)
             return await ctx.send(embed=volumeEmbed_3)
 
         await player.set_volume(value)
@@ -517,7 +517,7 @@ class Music(commands.Cog, wavelink.WavelinkMixin, name='Music'):
             s = await Settings(ctx.guild.id)
             lang = await s.get_field('locale', CONFIG['default_locale'])
             STRINGS = Strings(lang)
-            volumeEmbed_2=discord.Embed(title=STRINGS['music']['queueerror'],description=STRINGS['music']['queueerrordesc'],colour=0xffd500)
+            volumeEmbed_2=discord.Embed(title=STRINGS['music']['queueerror'],description=STRINGS['music']['queueerrordesc'],colour=0x6AA84F)
             volumeEmbed_2.set_footer(text=STRINGS['music']['embed_controler_footer'])
             await ctx.send(embed=volumeEmbed_2)
 
