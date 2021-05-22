@@ -192,7 +192,7 @@
     "music": {
         "embed_controler_title": "Music Controller ",
         "embed_controler_desc": "Starting music playback/ Queuing more tracks",
-		    "embed_controler_secdesc": "TRACK: ",
+        "embed_controler_secdesc": "TRACK: ",
         "embed_controler_playlistadd": "Playlist added ",
         "embed_controler_playlistadddesc": "For checking song list use queue",
         "embed_controler_dur": "Duration",
@@ -263,7 +263,7 @@
         "nomoremembersfordjswap": "No more members to swap to.",
         "djsetone": "{member.mention} is now the DJ.",
         "djsettwo": "{member.mention} is now the DJ.",
-		    "botleavevc": "Leaving the voice channel",
+        "botleavevc": "Leaving the voice channel",
         "looptitlemain": "Loop",
         "loopdesc": "Enabling the queue/song loop",
         "looptitleone": "Loop mode",
