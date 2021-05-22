@@ -266,7 +266,9 @@ class Music(commands.Cog, wavelink.WavelinkMixin, name='Music'):
 
     @wavelink.WavelinkMixin.listener()
     async def on_node_ready(self, node: wavelink.Node):
-        print(f'Node {node.identifier} is ready!')
+        print('---------------------------')
+        print(f'[MUSIC]Node {node.identifier} is ready!')
+        print('---------------------------')
 
     def get_player(self, obj):
         if isinstance(obj, commands.Context):
