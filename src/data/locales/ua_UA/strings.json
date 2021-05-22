@@ -271,7 +271,8 @@
         "loopmodeinvalidtitle": "Помилка",
         "loopmodeinvaliddesc": "Неправильний режим повтору",
         "validloopmodestitle": "Виправте режими повторення",
-        "listshuffled": "Доріжки перемішували у випадковому порядку"
+        "listshuffled": "Доріжки перемішували у випадковому порядку",
+        "previoustext": "Відтворюється попередня доріжка з черги."
     },
     "wallpaper": {
         "wallpaperembedtitle": "Шпалери",

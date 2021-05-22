@@ -393,8 +393,8 @@ class Music(commands.Cog, wavelink.WavelinkMixin, name='Music'):
             raise NoPreviousTracks
         player.queue.position -= 2
         await player.stop()
-        previousEmbed=discord.Embed(title="Listedeki mevcut sıradan bir önceki parça çalınıyor.",colour=0xffd500)
-        previousEmbed.set_footer(text=f"Tarafından: {ctx.author}", icon_url=ctx.author.avatar_url)
+        previousEmbed=discord.Embed(title=STRINGS['music']['previoustext'],colour=0xffd500)
+        previousEmbed.set_footer(text=STRINGS['music']['embed_controler_footer'])
 
         await ctx.send(embed=previousEmbed)
 

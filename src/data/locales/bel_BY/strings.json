@@ -272,7 +272,8 @@
         "loopmodeinvalidtitle": "Памылка",
         "loopmodeinvaliddesc": "Няправільны рэжым паўтору",
         "validloopmodestitle": "Правільныя рэжымы паўтору",
-        "listshuffled": "Трэкі былі перамяшаныя ў рандомизированом парадку"
+        "listshuffled": "Трэкі былі перамяшаныя ў рандомизированом парадку",
+        "previoustext": "Папярэдні трэк з чаргі гуляецца."
     },
     "wallpaper": {
         "wallpaperembedtitle": "Шпалеры",

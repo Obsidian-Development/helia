@@ -271,7 +271,8 @@
         "loopmodeinvalidtitle": "Ошибка",
         "loopmodeinvaliddesc": "Неправильный режим повтора",
         "validloopmodestitle": "Правильные режимы повтора",
-        "listshuffled": "Треки были перемешаны в рандомизированом порядке"
+        "listshuffled": "Треки были перемешаны в рандомизированом порядке",
+        "previoustext": "Воспроизводим предыдущий трек из очереди."
     },
     "wallpaper": {
         "wallpaperembedtitle": "Обои",
