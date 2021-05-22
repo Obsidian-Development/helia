@@ -36,7 +36,7 @@
         "botuptopgg": "Страница бота на top.gg",
         "botupbod": "Страница бота на Bots on Discord",
         "botupsdc": "Страница бота на bots.server-discord.com",
-		    "canaryver": "Для приглашения тестовой версии Helia Используйте следующую ссылку"
+	"canaryver": "Для приглашения тестовой версии Helia Используйте следующую ссылку"
     },
     "helpsystemfirstpage": {
         "gemtitle": "**general**",
@@ -119,13 +119,13 @@
         "on_error_text": "Прозошла непредвиденная ошибка! Вся информаця об ошибке уже была передана разработчкам! Мини-трейсбек:\n```{0}```",
         "command_not_found": "Команда не найдена.",
         "already_muted": "Пользователь уже замьючен.",
-		    "nsfwnotcorrectspot": "Вы пытаетесь использовать команду, заблокированную для каналов nsfw",
-		    "nsfwerrortitle": "Ошибка команды NSFW",
-		    "nsfwlogerror": "Подробности ошибки приведены ниже!  Вся информаця об ошибке уже была передана разработчкам!",
-		    "nsfwtraceback": "Мини-трейсбек:\n```{0}```",
-		    "generictracebackthing": "Мини-трейсбек:",
-		    "localeerrortext": "Произошла ошибка при выполнении данной команды",
-		    "localerrrorstring": "Дана неправильная локализация! Доступные:\n```**en_EN**, **ru_RU**, **bel_BY**, **ua_UA**.```"
+        "nsfwnotcorrectspot": "Вы пытаетесь использовать команду, заблокированную для каналов nsfw",
+        "nsfwerrortitle": "Ошибка команды NSFW",
+        "nsfwlogerror": "Подробности ошибки приведены ниже!  Вся информаця об ошибке уже была передана разработчкам!",
+        "nsfwtraceback": "Мини-трейсбек:\n```{0}```",
+        "generictracebackthing": "Мини-трейсбек:",
+        "localeerrortext": "Произошла ошибка при выполнении данной команды",
+        "localerrrorstring": "Дана неправильная локализация! Доступные:\n```**en_EN**, **ru_RU**, **bel_BY**, **ua_UA**.```"
     },
     "etc": {
         "on_mention": "<@!{0}>, мой префкс на этом сервере: `{1}`",
@@ -192,7 +192,7 @@
     "music": {
         "embed_controler_title": "Управление Музыкой",
         "embed_controler_desc": "Начинаем проигрывать музыку/ Cтавим Трек в очередь",
-		    "embed_controler_secdesc": "Трек:",
+        "embed_controler_secdesc": "Трек:",
         "embed_controler_playlistadd": "Добавлен Плейлист",
         "embed_controler_playlistadddesc": "Используйте queue для просмотра списка треков ",
         "embed_controler_dur": "Длительность",
@@ -263,7 +263,7 @@
         "nomoremembersfordjswap": "А больше то людей нету.",
         "djsetone": "{member.mention} теперь DJ..",
         "djsettwo": "{member.mention} теперь DJ..",
-		    "botleavevc": "Выхожу из голосового канала",
+        "botleavevc": "Выхожу из голосового канала",
         "looptitlemain": "Повтора",
         "loopdesc": "Включаю повтор очереди/песни",
         "looptitleone": "Режим повтора",
