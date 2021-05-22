@@ -260,6 +260,90 @@ class Moderation(commands.Cog, name='Moderation'):
             await member.remove_roles(mute_role)
             await ctx.message.add_reaction(CONFIG['yes_emoji'])
 
+    @commands.command()
+    @commands.guild_only()
+    @commands.bot_has_permissions(manage_channels=True)
+    @commands.has_permissions(manage_channels=True)
+    @commands.cooldown(1, 30, commands.BucketType.user)
+    async def lockdownrole(self, ctx, role: discord.Role): # `RoleConverter` will automatically convert it to a `discord.Role` instance
+      s = await Settings(ctx.guild.id)
+      lang = await s.get_field('locale', CONFIG['default_locale'])
+      STRINGS = Strings(lang)
+      for channel in ctx.guild.channels:
+        await channel.set_permissions(role, send_messages=False)
+      embed=discord.Embed(title=STRINGS['moderation']['lockdowntitleone'], description=STRINGS['moderation']['lockdowndescone'])
+      await ctx.send(embed=embed)
+
+    @commands.command()
+    @commands.guild_only()
+    @commands.bot_has_permissions(manage_channels=True)
+    @commands.has_permissions(manage_channels=True)
+    @commands.cooldown(1, 30, commands.BucketType.user)
+    async def unlockrole(self, ctx, role: discord.Role):
+      s = await Settings(ctx.guild.id)
+      lang = await s.get_field('locale', CONFIG['default_locale'])
+      STRINGS = Strings(lang)
+      for channel in ctx.guild.channels:
+        await channel.set_permissions(role, send_messages=True)
+      embed=discord.Embed(title=STRINGS['moderation']['lockdownliftedtitleone'], description=STRINGS['moderation']['lockdownlifteddescone'], color=0x6e8f5d)
+      await ctx.send(embed=embed)
+
+    @commands.command()
+    @commands.guild_only()
+    @commands.bot_has_permissions(manage_channels=True)
+    @commands.has_permissions(manage_channels=True)
+    @commands.cooldown(1, 30, commands.BucketType.user)
+    async def lockdown(self,ctx):
+      s = await Settings(ctx.guild.id)
+      lang = await s.get_field('locale', CONFIG['default_locale'])
+      STRINGS = Strings(lang)
+      for channel in ctx.guild.channels:
+        await channel.set_permissions(ctx.guild.default_role, send_messages=False)
+      embed=discord.Embed(title=STRINGS['moderation']['lockdowntitleone'], description=STRINGS['moderation']['lockdowndescone'])
+      await ctx.send(embed=embed)
+
+    @commands.command()
+    @commands.guild_only()
+    @commands.bot_has_permissions(manage_channels=True)
+    @commands.has_permissions(manage_channels=True)
+    @commands.cooldown(1, 30, commands.BucketType.user)
+    async def unlock(self,ctx):
+      s = await Settings(ctx.guild.id)
+      lang = await s.get_field('locale', CONFIG['default_locale'])
+      STRINGS = Strings(lang)
+      for channel in ctx.guild.channels:
+        await channel.set_permissions(ctx.guild.default_role, send_messages=True)
+      embed=discord.Embed(title=STRINGS['moderation']['lockdownliftedtitleone'], description=STRINGS['moderation']['lockdownlifteddescone'], color=0x6e8f5d)
+      await ctx.send(embed=embed)
+
+    @commands.command()
+    @commands.guild_only()
+    @commands.bot_has_permissions(manage_channels=True)
+    @commands.has_permissions(manage_channels=True)
+    @commands.cooldown(1, 30, commands.BucketType.user)
+    async def channellock(self,ctx):
+      s = await Settings(ctx.guild.id)
+      lang = await s.get_field('locale', CONFIG['default_locale'])
+      STRINGS = Strings(lang)
+      await ctx.channel.set_permissions(ctx.guild.default_role,send_messages=False)
+      embed=discord.Embed(title=STRINGS['moderation']['channellockdowntitle'], description=STRINGS['moderation']['channellockdowndesc'], color=0x000000)
+      await ctx.send(embed=embed)
+
+    @commands.command()
+    @commands.guild_only()
+    @commands.bot_has_permissions(manage_channels=True)
+    @commands.has_permissions(manage_channels=True)
+    @commands.cooldown(1, 30, commands.BucketType.user)
+    async def channelunlock(self,ctx):
+      s = await Settings(ctx.guild.id)
+      lang = await s.get_field('locale', CONFIG['default_locale'])
+      STRINGS = Strings(lang)
+      await ctx.channel.set_permissions(ctx.guild.default_role,send_messages=True)
+      embed=discord.Embed(title=STRINGS['moderation']['channellockdownliftedtitle'], description=STRINGS['moderation']['channellockdownlifteddesc'], color=0x6e8f5d)
+      await ctx.send(embed=embed)
+
+
+
 
 def setup(bot: Bot) -> NoReturn:
     bot.add_cog(Moderation(bot))

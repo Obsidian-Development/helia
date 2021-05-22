@@ -65,7 +65,15 @@
         "on_not_full_multiban": "Failed to block the following users: {0}",
         "on_mute_role_create": "A role has been created on the server, which will be issued to users who are caught in the mute. You can customize it in the server settings. The bot sets all permissions for it automaticaly.",
         "shutdownembedtitle": "Service command",
-        "shutdownembeddesc": "Bot is going for shutdown/restart - wait patiently"
+        "shutdownembeddesc": "Bot is going for shutdown/restart - wait patiently",
+        "lockdowntitleone": "Server lockdown initiated",
+        "lockdowndescone": "Channels are now locked down for writing untill further notice",
+        "lockdownliftedtitleone":"Server lockdown lifted",
+        "lockdownlifteddescone": "Lockdown is now lifted , thank you for your patience",
+        "channellockdowntitle": "Initiating channel lockdown",
+        "channellockdowndesc": "This channel is locked down untill further notice",
+        "channellockdownliftedtitle": "Channel lockdown lifted",
+        "channellockdownlifteddesc": "Lockdown is now lifted , thank you for your patience"
     },
     "utilities": {
         "user_info_title": "User @{0}#{1}",
