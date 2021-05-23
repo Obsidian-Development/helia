@@ -6,6 +6,7 @@ import typing as t
 import wavelink
 import asyncio
 import random
+import humanize
 import re
 from cogs.utils import Logger, Settings, Config, Commands, Strings, Utils
 #from logging_files.music_log import logger
@@ -252,7 +253,7 @@ class Music(commands.Cog, wavelink.WavelinkMixin, name='Music'):
                 "rest_uri": "https://heroku-lavalink-heliaservice.herokuapp.com",
                 "password": "youshallnotpass",
                 "identifier": "MAIN",
-                "region": "us",
+                "region": "us_central",
             },
             "BACKUP": {
                 "host": "lava.link",
@@ -260,7 +261,15 @@ class Music(commands.Cog, wavelink.WavelinkMixin, name='Music'):
                 "rest_uri": "https://lava.link",
                 "password": "youshallnotpass",
                 "identifier": "BACKUP",
-                "region": "us",
+                "region": "us_central",
+            },
+            "EUROPEANLAVA": {
+                "host": "backup-lavalink-servics.herokuapp.com",
+                "port": 80,
+                "rest_uri": "https://backup-lavalink-servics.herokuapp.com",
+                "password": "youshallnotpass",
+                "identifier": "EULAVA",
+                "region": "europe",
             }
         }
         for node in nodes.values():
@@ -291,10 +300,10 @@ class Music(commands.Cog, wavelink.WavelinkMixin, name='Music'):
 
     @commands.command(name="play", brief = "play music.",aliases=["p","pl","игратьмузыку"])
     async def play_command(self, ctx, *, query: t.Optional[str]):
-        player = self.get_player(ctx)
         s = await Settings(ctx.guild.id)
         lang = await s.get_field('locale', CONFIG['default_locale'])
         STRINGS = Strings(lang)
+        player = self.get_player(ctx)
         if not player.is_connected:
             await player.connect(ctx)
 
@@ -355,25 +364,24 @@ class Music(commands.Cog, wavelink.WavelinkMixin, name='Music'):
 
     @commands.command(name="stop", brief = "Stops music playback.",aliases=["sp","стоп"])
     async def stop_command(self, ctx):
+        player = self.get_player(ctx)
         s = await Settings(ctx.guild.id)
         lang = await s.get_field('locale', CONFIG['default_locale'])
         STRINGS = Strings(lang)
-        player = self.get_player(ctx)
-        player.queue.empty()
-        await player.stop()
         stopEmbed=discord.Embed(title=STRINGS['music']['stoptext'],colour=0x6AA84F)
         stopEmbed.set_footer(text=STRINGS['music']['embed_controler_footer'])
-
+        player.queue.empty()
+        await player.stop()
         await ctx.send(embed=stopEmbed)
 
         #logger.info(f"[MUSIC]Music stopped by {ctx.author} in {ctx.message.guild}")
 
     @commands.command(name="skip", brief = "Skips currently playing song.",aliases=["next","s","скип"])
     async def next_command(self, ctx):
+        player = self.get_player(ctx)
         s = await Settings(ctx.guild.id)
         lang = await s.get_field('locale', CONFIG['default_locale'])
         STRINGS = Strings(lang)
-        player = self.get_player(ctx)
 
         if not player.queue.upcoming:
             raise NoMoreTracks
@@ -406,10 +414,10 @@ class Music(commands.Cog, wavelink.WavelinkMixin, name='Music'):
 
     @commands.command(name="previous", brief = "Returns to the previous song in the list.",aliases=["prev","предыдущая"])
     async def previous_command(self, ctx):
+        player = self.get_player(ctx)
         s = await Settings(ctx.guild.id)
         lang = await s.get_field('locale', CONFIG['default_locale'])
         STRINGS = Strings(lang)
-        player = self.get_player(ctx)
         if not player.queue.history:
             raise NoPreviousTracks
         player.queue.position -= 2
@@ -437,10 +445,10 @@ class Music(commands.Cog, wavelink.WavelinkMixin, name='Music'):
 
     @commands.command(name="shuffle", brief = "Shuffles queue.",aliases=["randomize","рандомизацияплейлиста"])
     async def shuffle_command(self, ctx):
+        player = self.get_player(ctx)
         s = await Settings(ctx.guild.id)
         lang = await s.get_field('locale', CONFIG['default_locale'])
         STRINGS = Strings(lang)
-        player = self.get_player(ctx)
         player.queue.shuffle()
         shuffleEmbed=discord.Embed(title=STRINGS['music']['listshuffled'],colour=0x6AA84F)
         shuffleEmbed.set_footer(text=STRINGS['music']['embed_controler_footer'])
@@ -491,10 +499,10 @@ class Music(commands.Cog, wavelink.WavelinkMixin, name='Music'):
 
     @commands.command(name="volume", brief = "Sets bot volume.",aliases=["vol","громкость"])
     async def volume_command(self,ctx,value:int):
+        player = self.get_player(ctx)
         s = await Settings(ctx.guild.id)
         lang = await s.get_field('locale', CONFIG['default_locale'])
         STRINGS = Strings(lang)
-        player = self.get_player(ctx)
 
         if player.queue.is_empty:
             raise QueueIsEmpty
