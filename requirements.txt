@@ -36,3 +36,4 @@ numpy
 matplotlib
 lxml
 html5lib
+humanize

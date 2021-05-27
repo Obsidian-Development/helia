@@ -36,7 +36,7 @@
         "botuptopgg": "Страница бота на top.gg",
         "botupbod": "Страница бота на Bots on Discord",
         "botupsdc": "Страница бота на bots.server-discord.com",
-		    "canaryver": "Для приглашения тестовой версии Helia Используйте следующую ссылку"
+	"canaryver": "Для приглашения тестовой версии Helia Используйте следующую ссылку"
     },
     "helpsystemfirstpage": {
         "gemtitle": "**general**",
@@ -65,7 +65,11 @@
         "on_not_full_multiban": "Не удалось заблокировать следующих пользователей: {0}",
         "on_mute_role_create": "На сервере была создана роль, которая будет выдаваться пользователям, попавшим в мут. Кастомизровать ее вы можете в настройках сервера. Все права для нее бот выставляет сам.",
         "shutdownembedtitle": "Сервисная команда",
-        "shutdownembeddesc": "Бот заходит на выключение/перезагрузку - ожидайте",
+        "shutdownembeddesc": "Бот заходит на выключение или перезагрузку - ожидайте",
+        "setstatustext": "Установка статуса",
+        "setstatusdesc": "Статус бота изменился",
+        "setstatusfieldtext": "Памятка",
+        "setstatusfielddesc": "Благодаря динамическому статусу, возможен сброс до одного из значений по умолчанию.",
         "lockdowntitleone": "Инициирована блокировка сервера",
         "lockdowndescone": "Теперь каналы заблокированы для записи до дальнейшего уведомления.",
         "lockdownliftedtitleone":"Блокировка сервера снята",
@@ -115,13 +119,13 @@
         "on_error_text": "Прозошла непредвиденная ошибка! Вся информаця об ошибке уже была передана разработчкам! Мини-трейсбек:\n```{0}```",
         "command_not_found": "Команда не найдена.",
         "already_muted": "Пользователь уже замьючен.",
-		    "nsfwnotcorrectspot": "Вы пытаетесь использовать команду, заблокированную для каналов nsfw",
-		    "nsfwerrortitle": "Ошибка команды NSFW",
-		    "nsfwlogerror": "Подробности ошибки приведены ниже!  Вся информаця об ошибке уже была передана разработчкам!",
-		    "nsfwtraceback": "Мини-трейсбек:\n```{0}```",
-		    "generictracebackthing": "Мини-трейсбек:",
-		    "localeerrortext": "Произошла ошибка при выполнении данной команды",
-		    "localerrrorstring": "Дана неправильная локализация! Доступные:\n```**en_EN**, **ru_RU**, **bel_BY**, **ua_UA**.```"
+        "nsfwnotcorrectspot": "Вы пытаетесь использовать команду, заблокированную для каналов nsfw",
+        "nsfwerrortitle": "Ошибка команды NSFW",
+        "nsfwlogerror": "Подробности ошибки приведены ниже!  Вся информаця об ошибке уже была передана разработчкам!",
+        "nsfwtraceback": "Мини-трейсбек:\n```{0}```",
+        "generictracebackthing": "Мини-трейсбек:",
+        "localeerrortext": "Произошла ошибка при выполнении данной команды",
+        "localerrrorstring": "Дана неправильная локализация! Доступные:\n```**en_EN**, **ru_RU**, **bel_BY**, **ua_UA**.```"
     },
     "etc": {
         "on_mention": "<@!{0}>, мой префкс на этом сервере: `{1}`",
@@ -188,7 +192,7 @@
     "music": {
         "embed_controler_title": "Управление Музыкой",
         "embed_controler_desc": "Начинаем проигрывать музыку/ Cтавим Трек в очередь",
-		    "embed_controler_secdesc": "Трек:",
+        "embed_controler_secdesc": "Трек:",
         "embed_controler_playlistadd": "Добавлен Плейлист",
         "embed_controler_playlistadddesc": "Используйте queue для просмотра списка треков ",
         "embed_controler_dur": "Длительность",
@@ -259,7 +263,7 @@
         "nomoremembersfordjswap": "А больше то людей нету.",
         "djsetone": "{member.mention} теперь DJ..",
         "djsettwo": "{member.mention} теперь DJ..",
-		    "botleavevc": "Выхожу из голосового канала",
+        "botleavevc": "Выхожу из голосового канала",
         "looptitlemain": "Повтора",
         "loopdesc": "Включаю повтор очереди/песни",
         "looptitleone": "Режим повтора",
@@ -267,7 +271,8 @@
         "loopmodeinvalidtitle": "Ошибка",
         "loopmodeinvaliddesc": "Неправильный режим повтора",
         "validloopmodestitle": "Правильные режимы повтора",
-        "listshuffled": "Треки были перемешаны в рандомизированом порядке"
+        "listshuffled": "Треки были перемешаны в рандомизированом порядке",
+        "previoustext": "Воспроизводим предыдущий трек из очереди."
     },
     "wallpaper": {
         "wallpaperembedtitle": "Обои",

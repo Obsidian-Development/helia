@@ -65,7 +65,11 @@
         "on_not_full_multiban": "Failed to block the following users: {0}",
         "on_mute_role_create": "A role has been created on the server, which will be issued to users who are caught in the mute. You can customize it in the server settings. The bot sets all permissions for it automaticaly.",
         "shutdownembedtitle": "Service command",
-        "shutdownembeddesc": "Bot is going for shutdown/restart - wait patiently",
+        "shutdownembeddesc": "Bot is going for shutdown or restart - wait patiently",
+        "setstatustext": "Setting the status",
+        "setstatusdesc": "Bot status changed",
+        "setstatusfieldtext": "Note",
+        "setstatusfielddesc": "Due to the dynamic status it may be reset to one of the default ones",
         "lockdowntitleone": "Server lockdown initiated",
         "lockdowndescone": "Channels are now locked down for writing untill further notice",
         "lockdownliftedtitleone":"Server lockdown lifted",
@@ -188,7 +192,7 @@
     "music": {
         "embed_controler_title": "Music Controller ",
         "embed_controler_desc": "Starting music playback/ Queuing more tracks",
-		"embed_controler_secdesc": "TRACK: ",
+        "embed_controler_secdesc": "TRACK: ",
         "embed_controler_playlistadd": "Playlist added ",
         "embed_controler_playlistadddesc": "For checking song list use queue",
         "embed_controler_dur": "Duration",
@@ -259,7 +263,7 @@
         "nomoremembersfordjswap": "No more members to swap to.",
         "djsetone": "{member.mention} is now the DJ.",
         "djsettwo": "{member.mention} is now the DJ.",
-		"botleavevc": "Leaving the voice channel",
+        "botleavevc": "Leaving the voice channel",
         "looptitlemain": "Loop",
         "loopdesc": "Enabling the queue/song loop",
         "looptitleone": "Loop mode",
@@ -267,7 +271,8 @@
         "loopmodeinvalidtitle": "Error",
         "loopmodeinvaliddesc": "Invalid loop mode",
         "validloopmodestitle": "Valid loop modes",
-        "listshuffled": "Music playlist has been shuffled"
+        "listshuffled": "Music playlist has been shuffled",
+        "previoustext": "Playing previous track from queue."
     },
     "wallpaper": {
         "wallpaperembedtitle": "Wallpaper command",
