@@ -21,7 +21,7 @@ from os.path import abspath
 
 from cogs.utils import Config, Strings, Utils, Logger
 from discord.ext import tasks, commands
-from discord.ext.commands import AutoShardedBot asb
+from discord.ext.commands import AutoShardedBot
 import json
 from dotenv import load_dotenv
 import asyncio
@@ -42,7 +42,9 @@ class Helia(asb):
             command_prefix=Utils.get_prefix,
             case_insensitive=True,
             help_command=None,
-            intents=discord.Intents.all() # make sure to enable ALL intents in the dev portal, if you dont wanna do this just remove this line.
+            intents=discord.Intents.default() # Default intent specified - verified bots will refuse to start with all intents requested.
+            # intents.members = True # Commented line for requesting members privileged intent - uncomment for enabling 
+            # intents.presences = True # Commented line for requesting presence privileged intent - uncomment for enabling
         )
 
         self.CONFIG = Config()
