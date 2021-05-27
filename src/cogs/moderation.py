@@ -262,8 +262,8 @@ class Moderation(commands.Cog, name='Moderation'):
 
     @commands.command()
     @commands.guild_only()
-    #@commands.bot_has_permissions(manage_channels=True)
-    @commands.has_permissions(manage_channels=True)
+    @commands.bot_has_permissions(manage_roles=True)
+    @commands.has_permissions(manage_roles=True)
     @commands.cooldown(1, 30, commands.BucketType.user)
     async def lockdownrole(self, ctx, role: discord.Role): # `RoleConverter` will automatically convert it to a `discord.Role` instance
       s = await Settings(ctx.guild.id)
@@ -276,8 +276,8 @@ class Moderation(commands.Cog, name='Moderation'):
 
     @commands.command()
     @commands.guild_only()
-    #@commands.bot_has_permissions(manage_channels=True)
-    @commands.has_permissions(manage_channels=True)
+    @commands.bot_has_permissions(manage_roles=True)
+    @commands.has_permissions(manage_roles=True)
     @commands.cooldown(1, 30, commands.BucketType.user)
     async def unlockrole(self, ctx, role: discord.Role):
       s = await Settings(ctx.guild.id)
@@ -290,8 +290,8 @@ class Moderation(commands.Cog, name='Moderation'):
 
     @commands.command()
     @commands.guild_only()
-    #@commands.bot_has_permissions(manage_channels=True)
-    @commands.has_permissions(manage_channels=True)
+    @commands.bot_has_permissions(manage_roles=True)
+    @commands.has_permissions(manage_roles=True)
     @commands.cooldown(1, 30, commands.BucketType.user)
     async def lockdown(self,ctx):
       s = await Settings(ctx.guild.id)
@@ -304,8 +304,8 @@ class Moderation(commands.Cog, name='Moderation'):
 
     @commands.command()
     @commands.guild_only()
-    #@commands.bot_has_permissions(manage_channels=True)
-    @commands.has_permissions(manage_channels=True)
+    @commands.bot_has_permissions(manage_roles=True)
+    @commands.has_permissions(manage_roles=True)
     @commands.cooldown(1, 30, commands.BucketType.user)
     async def unlock(self,ctx):
       s = await Settings(ctx.guild.id)
@@ -318,8 +318,8 @@ class Moderation(commands.Cog, name='Moderation'):
 
     @commands.command()
     @commands.guild_only()
-    #@commands.bot_has_permissions(manage_channels=True)
-    @commands.has_permissions(manage_channels=True)
+    @commands.bot_has_permissions(manage_roles=True)
+    @commands.has_permissions(manage_roles=True)
     @commands.cooldown(1, 30, commands.BucketType.user)
     async def channellock(self,ctx):
       s = await Settings(ctx.guild.id)
@@ -331,8 +331,8 @@ class Moderation(commands.Cog, name='Moderation'):
 
     @commands.command()
     @commands.guild_only()
-    #@commands.bot_has_permissions(manage_channels=True)
-    @commands.has_permissions(manage_channels=True)
+    @commands.bot_has_permissions(manage_roles=True)
+    @commands.has_permissions(manage_roles=True)
     @commands.cooldown(1, 30, commands.BucketType.user)
     async def channelunlock(self,ctx):
       s = await Settings(ctx.guild.id)
