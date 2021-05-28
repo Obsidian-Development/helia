@@ -21,7 +21,7 @@ from os.path import abspath
 
 from cogs.utils import Config, Strings, Utils, Logger
 from discord.ext import tasks, commands
-from discord.ext.commands import AutoShardedBot
+from discord.ext.commands import AutoShardedBot asb
 import json
 from dotenv import load_dotenv
 import asyncio
