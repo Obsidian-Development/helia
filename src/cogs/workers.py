@@ -28,16 +28,16 @@ class Workers(commands.Cog):
             print("[SDC] Looping update request")
             print("Debug information")
             print("Number of guilds:")
-            print(len(bot.guilds))
+            print(len(self.bot.guilds))
             print("Client ID:")
-            print(bot.user.id)
+            print(self.bot.user.id)
             print("Proceeding to authorize")
             headers={
             "Authorization": CONFIG['sdc_token']
             }
-            r = requests.post(f'https://api.server-discord.com/v2/bots/{bot.user.id}/stats',
+            r = requests.post(f'https://api.server-discord.com/v2/bots/{self.bot.user.id}/stats',
                           headers=headers,
-                          data={"servers":len(bot.guilds), "shards":1})
+                          data={"servers":len(self.bot.guilds), "shards":1})
             print(r.content)
             print("[SDC] Authorization completed")
             print("[SDC] Request sent")
