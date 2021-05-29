@@ -333,6 +333,9 @@ class Music(commands.Cog, wavelink.WavelinkMixin, name='Music'):
     @play_command.error
     async def play_command_error(self, ctx, exc):
         if isinstance(exc, PlayerIsAlreadyPlaying):
+            s = await Settings(ctx.guild.id)
+            lang = await s.get_field('locale', CONFIG['default_locale'])
+            STRINGS = Strings(lang)
             playEmbed_2=discord.Embed(title=STRINGS['music']['playererrorone'],colour=0x6AA84F)
             await ctx.send(embed=playEmbed_2)
         elif isinstance(exc, QueueIsEmpty):
@@ -442,6 +445,9 @@ class Music(commands.Cog, wavelink.WavelinkMixin, name='Music'):
             previousEmbed_2.set_footer(text=STRINGS['music']['embed_controler_footer'])
             await ctx.send(embed=previousEmbed_2)
         elif isinstance(exc, NoPreviousTracks):
+            s = await Settings(ctx.guild.id)
+            lang = await s.get_field('locale', CONFIG['default_locale'])
+            STRINGS = Strings(lang)
             previousEmbed_3=discord.Embed(title=STRINGS['music']['nomoretrackstext'],description=STRINGS['music']['nomoretracksprevdesc'],colour=0x6AA84F)
             previousEmbed_3.set_footer(text=STRINGS['music']['embed_controler_footer'])
             await ctx.send(embed=previousEmbed_3)
