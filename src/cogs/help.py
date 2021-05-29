@@ -11,12 +11,11 @@ CONFIG = Config()
 
 def syntax(command):
     cmd_and_aliases = "|".join([str(command), *command.aliases])
-    params = [
-        f"[{key}]" if "NoneType" in str(value) else f"<{key}>"
-        for key, value in command.params.items()
-        if key not in ("self", "ctx")
-    ]
-
+    params = []
+	
+    for key, value in command.params.items():
+        if key not in ("self", "ctx"):
+            params.append(f"[{key}]" if "NoneType" in str(value) else f"<{key}>")
 
     params = " ".join(params)
 
