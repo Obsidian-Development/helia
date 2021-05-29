@@ -48,16 +48,15 @@ class HelpMenu(ListPageSource):
         return embed
 
     async def format_page(self, menu, entries):
+        fields = []
         s = await Settings(self.ctx.guild.id)
         lang = await s.get_field('locale', CONFIG['default_locale'])
         prefix = await s.get_field('prefix', CONFIG['default_prefix'])
         STRINGS = Strings(lang)
         COMMANDS = Commands(lang)
 
-        fields = [
-            (STRINGS['general']['nocommanddescription'], syntax(entry))
-            for entry in entries
-        ]
+        for entry in entries:
+            fields.append((STRINGS['general']['nocommanddescription'], syntax(entry)))
 
         return await self.write_page(menu, fields)
 
