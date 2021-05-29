@@ -11,11 +11,12 @@ CONFIG = Config()
 
 def syntax(command):
     cmd_and_aliases = "|".join([str(command), *command.aliases])
-    params = []
-	
-    for key, value in command.params.items():
-        if key not in ("self", "ctx"):
-            params.append(f"[{key}]" if "NoneType" in str(value) else f"<{key}>")
+    params = [
+        f"[{key}]" if "NoneType" in str(value) else f"<{key}>"
+        for key, value in command.params.items()
+        if key not in ("self", "ctx")
+    ]
+
 
     params = " ".join(params)
 
@@ -48,15 +49,16 @@ class HelpMenu(ListPageSource):
         return embed
 
     async def format_page(self, menu, entries):
-        fields = []
         s = await Settings(self.ctx.guild.id)
         lang = await s.get_field('locale', CONFIG['default_locale'])
         prefix = await s.get_field('prefix', CONFIG['default_prefix'])
         STRINGS = Strings(lang)
         COMMANDS = Commands(lang)
 
-        for entry in entries:
-            fields.append((STRINGS['general']['nocommanddescription'], syntax(entry)))
+        fields = [
+            (STRINGS['general']['nocommanddescription'], syntax(entry))
+            for entry in entries
+        ]
 
         return await self.write_page(menu, fields)
 
