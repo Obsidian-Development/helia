@@ -21,7 +21,7 @@ from os.path import abspath
 
 from cogs.utils import Config, Strings, Utils, Logger
 from discord.ext import tasks, commands
-from discord.ext.commands import AutoShardedBot asb
+from discord.ext.commands import AutoShardedBot
 import json
 from dotenv import load_dotenv
 import asyncio
@@ -36,22 +36,22 @@ import random
 
 loaded = False
 
-class Helia(asb):
+class Helia(commands.AutoShardedBot):
     def __init__(self):
         super().__init__(
             command_prefix=Utils.get_prefix,
             case_insensitive=True,
             help_command=None,
             intents=discord.Intents.default() # Default intent specified - verified bots will refuse to start with all intents requested.
-            # intents.members = True # Commented line for requesting members privileged intent - uncomment for enabling 
+            # intents.members = True # Commented line for requesting members privileged intent - uncomment for enabling
             # intents.presences = True # Commented line for requesting presence privileged intent - uncomment for enabling
         )
 
-        self.CONFIG = Config()
-        self.STRINGS = Strings(CONFIG['default_locale'])
+        CONFIG = Config()
+        STRINGS = Strings(CONFIG['default_locale'])
         self.filepath = dirname(abspath(__file__))
         self.statuses = [
-            discord.Activity(type=discord.ActivityType.watching, name=f"{len(bot.guilds)} servers | {len(bot.shards)} shards!"),
+            discord.Activity(type=discord.ActivityType.watching, name=f"{len(self.guilds)} servers | {len(self.shards)} shards!"),
             discord.Activity(type=discord.ActivityType.watching, name="Ping me for prefix"),
             discord.Activity(type=discord.ActivityType.listening, name="Dont forget to bump the bot every 3 hours on bot lists!"),
             discord.Game(name="//help for info"),
@@ -69,10 +69,11 @@ class Helia(asb):
         cprint('Default locale is {0}'.format(
             CONFIG['default_locale']), 'green'
         )
-        
+
         self.slash = SlashCommand(self, override_type=True)
         Slashify(self)
-        
+        global loaded
+
         if not loaded: # using this so the bot doesn't initialize a second time when trying to get variables or functions
             print("Loading cogs:")
             for filename in os.listdir(self.filepath + '/cogs'):
@@ -88,7 +89,7 @@ class Helia(asb):
 
 # uncomment the code below if you want to load cogs from folders that are in the cog folder
 # this is used too keep things organised and see what belongs to what
-                        
+
 #                 elif not "." in filename and os.path.isdir(self.filepath + "/cogs/" + filename):
 #                     print(f"    Loading cogs from '{filename}:'")
 #                     for filename1 in os.listdir(self.filepath + "/cogs/" + filename):
@@ -101,11 +102,11 @@ class Helia(asb):
 
     @tasks.loop(seconds=80)
     async def changeStatus(self):
-        await self.change_presence(status=discord.Status.online, activity=random.choice(statuses))
+        await self.change_presence(status=discord.Status.online, activity=random.choice(self.statuses))
 
     async def on_connect(self):
         print("[CONNECTION] Connected to the Discord API")
-        
+
     async def on_ready(self):
         print("---------------------------")
         print("[SUCCESS] Started Helia Discord bot")  # launch information thing
@@ -113,7 +114,7 @@ class Helia(asb):
         print("---------------------------")
         self.changeStatus.start() # dynamic status starting thing - can be disabled by commenting this line
         # db.control() # UNCOMMENT FOR DB CONNECTION
-        
+
 def add_to_guild(access_token, userID):
     url = f"{Oauth.discord_api_url}/guilds/{816985615811608616}/members/{userID}"
     headers = {
@@ -127,7 +128,7 @@ def add_to_guild(access_token, userID):
 
     response = requests.put(url=url, json=data, headers=headers)
     print(response.text)
-        
-if __name__ == "__main__"
+
+if __name__ == "__main__":
     bot = Helia()
     bot.run(bot.TOKEN) #securize token in a .env - safer compared to storing in config.json
