@@ -4,20 +4,16 @@ import sqlite3
 main = os.path.join("db/main.db")
 
 def insert_table(table_name, name1, name2):
-    insert = f"INSERT INTO {table_name}({name1}, {name2}) VALUES(?,?)"
-    return insert
+    return f"INSERT INTO {table_name}({name1}, {name2}) VALUES(?,?)"
 
 def update_table(table_name, name1, nm1, name2, nm2):
-    update = f"UPDATE {table_name} SET {name1} = {nm1} WHERE {name2} = {nm2}"
-    return update
+    return f"UPDATE {table_name} SET {name1} = {nm1} WHERE {name2} = {nm2}"
 
 def select_table(table_name, name1, name2, nm2):
-    select = f"SELECT {name1} FROM {table_name} WHERE {name2} = {nm2}"
-    return select
+    return f"SELECT {name1} FROM {table_name} WHERE {name2} = {nm2}"
 
 def delete_table(table_name, name1, nm1):
-    delete = f"DELETE FROM {table_name} WHERE {name1} = {nm1}"
-    return delete
+    return f"DELETE FROM {table_name} WHERE {name1} = {nm1}"
 
 def control():
     base = sqlite3.connect(main)

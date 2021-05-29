@@ -57,15 +57,14 @@ class mod(commands.Cog):
             if author.guild_permissions.manage_messages:
                 if number <= 0:
                     return await ctx.send("bot: Enter a number of messages to be purged starting from 1")
-                else:
-                    number = number + 1
-                    await ctx.channel.purge(limit=number)
-                    msg = await ctx.send(f"bot: Cleared the amount of messages")
-                    await asyncio.sleep(2)
-                    await discord.Message.delete(msg)
+                number += 1
+                await ctx.channel.purge(limit=number)
+                msg = await ctx.send(f"bot: Cleared the amount of messages")
+                await asyncio.sleep(2)
+                await discord.Message.delete(msg)
             else:
-               embed=discord.Embed(title="🔴 Error", description="You need the permission: **Manage Messages** to do this.", color=0xff0000)
-               await ctx.send(embed=embed)
+                embed=discord.Embed(title="🔴 Error", description="You need the permission: **Manage Messages** to do this.", color=0xff0000)
+                await ctx.send(embed=embed)
         except discord.errors.Forbidden:
             embed=discord.Embed(title="🔴 Error", description="I need the ``Manage Messages`` permission to do this.", color=0xdd2e44,)
             await ctx.send(embed=embed)
