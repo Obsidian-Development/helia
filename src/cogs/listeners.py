@@ -62,7 +62,11 @@ class Listeners(commands.Cog, name='Listeners'):
         except AttributeError:
             pass
         else:
-            if message.content == f'<@!{self.bot.user.id}>' or message.content == f'<@{self.bot.user.id}>' or message.content == f'@{self.bot.user}':
+            if message.content in [
+                f'<@!{self.bot.user.id}>',
+                f'<@{self.bot.user.id}>',
+                f'@{self.bot.user}',
+            ]:
                 await message.channel.send(STRINGS['etc']['on_mention'].format(message.author.id, prefix))
 
     @commands.Cog.listener()
@@ -81,46 +85,49 @@ class Listeners(commands.Cog, name='Listeners'):
 
         if isinstance(error, commands.CommandNotFound):
             return
+        await ctx.message.add_reaction(CONFIG['no_emoji'])
+
+        if isinstance(error, commands.MissingRequiredArgument):
+            prefix = await s.get_field('prefix', CONFIG['default_prefix'])
+
+            if ctx.command.cog.name != 'Jishaku':
+                embed = Utils.error_embed(STRINGS['etc']['usage']
+                                          .format(COMMANDS[ctx.command.cog.name]['commands'][ctx.command.name]['usage']
+                                                  .format(prefix)))
+        elif isinstance(error, commands.MissingPermissions):
+            embed = Utils.error_embed(
+                STRINGS['error']['missing_perms'])
+
+        elif isinstance(error, commands.BotMissingPermissions):
+            embed = Utils.error_embed(
+                STRINGS['error']['missing_bot_perms'].format(
+                    ' '.join(
+                        '+ ' + STRINGS['etc']['permissions'][f'{perm}']
+                        for perm in error.missing_perms
+                    )
+                )
+            )
+
+
+        elif isinstance(error, commands.CommandOnCooldown):
+            embed = Utils.error_embed(
+                STRINGS['error']['cooldown']
+                .format(error.retry_after))
+
+        elif isinstance(error, commands.errors.NSFWChannelRequired):
+               embed=discord.Embed(title=STRINGS['error']['nsfwerrortitle'], description=STRINGS['error']['nsfwnotcorrectspot'], color=0xff0000)
+               embed.add_field(name=STRINGS['error']['nsfwlogerror'], value=STRINGS['error']['nsfwtraceback'].format(str(error)), inline=False)            
+
         else:
-            await ctx.message.add_reaction(CONFIG['no_emoji'])
+            embed = discord.Embed(color=0xdd0000)
+            embed.title = STRINGS['error']['on_error_title']
+            embed.description = STRINGS['error']['on_error_text'].format(
+                str(error))
+            Logger.warn(str(error))
 
-            if isinstance(error, commands.MissingRequiredArgument):
-                prefix = await s.get_field('prefix', CONFIG['default_prefix'])
-
-                if ctx.command.cog.name != 'Jishaku':
-                    embed = Utils.error_embed(STRINGS['etc']['usage']
-                                              .format(COMMANDS[ctx.command.cog.name]['commands'][ctx.command.name]['usage']
-                                                      .format(prefix)))
-                else:
-                    pass
-
-            elif isinstance(error, commands.MissingPermissions):
-                embed = Utils.error_embed(
-                    STRINGS['error']['missing_perms'])
-
-            elif isinstance(error, commands.BotMissingPermissions):
-                embed = Utils.error_embed(STRINGS['error']['missing_bot_perms'].format(' '.join(
-                    ['+ ' + STRINGS['etc']['permissions'][f'{perm}'] for perm in error.missing_perms])))
-
-            elif isinstance(error, commands.CommandOnCooldown):
-                embed = Utils.error_embed(
-                    STRINGS['error']['cooldown']
-                    .format(error.retry_after))
-            
-            elif isinstance(error, commands.errors.NSFWChannelRequired):
-                   embed=discord.Embed(title=STRINGS['error']['nsfwerrortitle'], description=STRINGS['error']['nsfwnotcorrectspot'], color=0xff0000)
-                   embed.add_field(name=STRINGS['error']['nsfwlogerror'], value=STRINGS['error']['nsfwtraceback'].format(str(error)), inline=False)            
-
-            else:
-                embed = discord.Embed(color=0xdd0000)
-                embed.title = STRINGS['error']['on_error_title']
-                embed.description = STRINGS['error']['on_error_text'].format(
-                    str(error))
-                Logger.warn(str(error))
-
-            msg = await ctx.send(embed=embed)
-            await asyncio.sleep(20)
-            await msg.delete()
+        msg = await ctx.send(embed=embed)
+        await asyncio.sleep(20)
+        await msg.delete()
 
 
 def setup(bot: Bot) -> NoReturn:

@@ -229,11 +229,14 @@ class Music(commands.Cog, wavelink.WavelinkMixin, name='Music'):
 
     @commands.Cog.listener()
     async def on_voice_state_update(self,member, before, after):
-        if not member.bot and after.channel is None:
-            if not [m for m in before.channel.members if not m.bot]:
-                print('---------------------------')
-                print(f"[MUSIC]Someone left voice chat")
-                print('---------------------------')
+        if (
+            not member.bot
+            and after.channel is None
+            and not [m for m in before.channel.members if not m.bot]
+        ):
+            print('---------------------------')
+            print(f"[MUSIC]Someone left voice chat")
+            print('---------------------------')
 
     @wavelink.WavelinkMixin.listener("on_track_stuck")
     @wavelink.WavelinkMixin.listener("on_track_end")
