@@ -27,120 +27,108 @@ from dotenv import load_dotenv
 import asyncio
 import requests
 import sqlite3
-#from scripts import db # UNCOMMENT FOR DB CONNECTION
+# from scripts import db # UNCOMMENT FOR DB CONNECTION
 from discord.ext import tasks, commands
 from discord_slash import SlashCommand
 from slashify import Slashify
 import discord
+import random
 
+loaded = False
 
+class Helia(commands.AutoShardedBot):
+    def __init__(self):
+        super().__init__(
+            command_prefix=Utils.get_prefix,
+            case_insensitive=True,
+            help_command=None,
+            intents=discord.Intents.default() # Default intent specified - verified bots will refuse to start with all intents requested.
+            # intents.members = True # Commented line for requesting members privileged intent - uncomment for enabling
+            # intents.presences = True # Commented line for requesting presence privileged intent - uncomment for enabling
+        )
 
-CONFIG = Config()
-STRINGS = Strings(CONFIG['default_locale'])
+        CONFIG = Config()
+        STRINGS = Strings(CONFIG['default_locale'])
+        self.filepath = dirname(abspath(__file__))
+        self.statuses = [
+            discord.Activity(type=discord.ActivityType.watching, name=f"{len(self.guilds)} servers | {len(self.shards)} shards!"),
+            discord.Activity(type=discord.ActivityType.watching, name="Ping me for prefix"),
+            discord.Activity(type=discord.ActivityType.listening, name="Dont forget to bump the bot every 3 hours on bot lists!"),
+            discord.Game(name="//help for info"),
+            discord.Activity(type=discord.ActivityType.listening, name="to my creator Middlle#7488"),
+            discord.Game(name="Final Fantasy XIV"),
+            discord.Activity(type=discord.ActivityType.watching, name="our support server https://discord.gg/7uUBM8mKbu"),
+            discord.Game(name="Deep inside, we're nothing more than scions and sinners"),
+            discord.Activity(type=discord.ActivityType.watching, name="headbanging")
+        ]
 
-filepath = dirname(abspath(__file__))
+        load_dotenv()
+        self.TOKEN = os.getenv("DISCORD_TOKEN")
 
-load_dotenv()
-TOKEN = os.getenv("DISCORD_TOKEN")
+        cprint(STRINGS['etc']['info']['art'], 'white')
+        cprint('Default locale is {0}'.format(
+            CONFIG['default_locale']), 'green'
+        )
 
-cprint(STRINGS['etc']['info']['art'], 'white')
+        self.slash = SlashCommand(self, override_type=True)
+        Slashify(self)
+        global loaded
 
-cprint('Default locale is {0}'.format(
-    CONFIG['default_locale']), 'green')
+        if not loaded: # using this so the bot doesn't initialize a second time when trying to get variables or functions
+            print("Loading cogs:")
+            for filename in os.listdir(self.filepath + '/cogs'):
+                if filename.endswith('.py'):
+                    try:
+                        self.load_extension('cogs.{0}'.format(filename[:-3]))
+                        print(f"    Loaded '{filename}'")
+                    except Exception as e:
+                        print(str(e))
+            self.load_extension('jishaku')
+            print("    Loaded 'jishaku.py'")
+            loaded = True
 
+# uncomment the code below if you want to load cogs from folders that are in the cog folder
+# this is used too keep things organised and see what belongs to what
 
-bot = AutoShardedBot(command_prefix=Utils.get_prefix, help_command=None) # if needed specify ahard_count
-intents=discord.Intents.default()
-#intents.members = True # preparation for reenabling welcome and goodbye functionality
-slash = SlashCommand(bot, override_type = True)
-Slashify(bot)
+#                 elif not "." in filename and os.path.isdir(self.filepath + "/cogs/" + filename):
+#                     print(f"    Loading cogs from '{filename}:'")
+#                     for filename1 in os.listdir(self.filepath + "/cogs/" + filename):
+#                         if filename1.endswith(".py"):
+#                             try:
+#                                 self.load_extension(f"cogs.{filename}.{filename1}")
+#                                 print(f"        Loaded '{filename1}'")
+#                             except Exception as e1:
+#                                 print(str(e1))
 
+    @tasks.loop(seconds=80)
+    async def changeStatus(self):
+        await self.change_presence(status=discord.Status.online, activity=random.choice(self.statuses))
+
+    async def on_connect(self):
+        print("[CONNECTION] Connected to the Discord API")
+
+    async def on_ready(self):
+        print("---------------------------")
+        print("[SUCCESS] Started Helia Discord bot")  # launch information thing
+        # print("[DB] Database Present and ready") # DATABASE CONNECT LOG
+        print("---------------------------")
+        self.changeStatus.start() # dynamic status starting thing - can be disabled by commenting this line
+        # db.control() # UNCOMMENT FOR DB CONNECTION
 
 def add_to_guild(access_token, userID):
-        url = f"{Oauth.discord_api_url}/guilds/{816985615811608616}/members/{userID}"
+    url = f"{Oauth.discord_api_url}/guilds/{816985615811608616}/members/{userID}"
+    headers = {
+        "Authorization" : f"Bot {access_token}",
+        'Content-Type': 'application/json'
+    }
 
-
-        headers = {
-            "Authorization" : f"Bot {access_token}",
-            'Content-Type': 'application/json'
-        }
-
-        data = {
+    data = {
         "access_token" : access_token
-        }
+    }
 
-        response = requests.put(url=url, json=data, headers=headers)
-        print(response.text)
+    response = requests.put(url=url, json=data, headers=headers)
+    print(response.text)
 
-
-@tasks.loop(seconds=80)
-async def changeStatus():
-   """
-   Functionality to cycle bot status
-   """
-   while True:
-    await bot.change_presence(status=discord.Status.online, activity=discord.Activity(type=discord.ActivityType.watching, name=f"{len(bot.guilds)} servers | {len(bot.shards)} shards "))
-    print("---------------------------")
-    print("Status changed to status 1!")
-    print("---------------------------")
-    await asyncio.sleep(80)
-    await bot.change_presence(status=discord.Status.online,activity=discord.Activity(type=discord.ActivityType.watching,name="Ping me for prefix"))
-    print("---------------------------")
-    print("Status changed to status 2!")
-    print("---------------------------")
-    await asyncio.sleep(80)
-    await bot.change_presence(status=discord.Status.online, activity=discord.Activity(type=discord.ActivityType.listening,name="Dont forget to bump the bot every 3 hours on bot lists!"))
-    print("---------------------------")
-    print("Status changed to status 3!")
-    print("---------------------------")
-    await asyncio.sleep(80)
-    await bot.change_presence(activity=discord.Game(name="//help for info"))
-    print("---------------------------")
-    print("Status changed to status 4!")
-    print("---------------------------")
-    await asyncio.sleep(80)
-    await bot.change_presence(status=discord.Status.online, activity=discord.Activity(type=discord.ActivityType.listening,name="to my creator Middlle#7488"))
-    print("---------------------------")
-    print("Status changed to status 5!")
-    print("---------------------------")
-    await asyncio.sleep(80)
-    await bot.change_presence(activity=discord.Game(name="Final Fantasy XIV"))
-    print("---------------------------")
-    print("Status changed to status 6!")
-    print("---------------------------")
-    await asyncio.sleep(80)
-    await bot.change_presence(status=discord.Status.online, activity=discord.Activity(type=discord.ActivityType.watching, name="our support server https://discord.gg/7uUBM8mKbu"))
-    print("---------------------------")
-    print("Status changed to tell about our support server!(STATUS 7)")
-    print("---------------------------")
-    await asyncio.sleep(80)
-    await bot.change_presence(activity=discord.Game(name="Deep inside, we're nothing more than scions and sinners"))
-    print("---------------------------")
-    print("Status changed to status 8!")
-    print("---------------------------")
-    await asyncio.sleep(80)
-    await bot.change_presence(status=discord.Status.online, activity=discord.Activity(type=discord.ActivityType.watching, name="headbanging"))
-    print("---------------------------")
-    print("Status changed to status 9!")
-    print("---------------------------")
-    await asyncio.sleep(100)
-
-@bot.event
-async def on_ready() -> NoReturn:
-    for filename in os.listdir(filepath + '/cogs/'):
-        if filename.endswith('.py'):
-            bot.load_extension('cogs.{0}'.format(filename[:-3]))
-
-    #await bot.change_presence(status=discord.Status.online, activity=discord.Activity(type=discord.ActivityType.watching, name=f"{len(bot.guilds)} servers | {len(bot.shards)} shards ")) # static status debug thing
-    bot.load_extension('jishaku')
-    print("---------------------------")
-    print("[SUCCESS] Started Helia discord bot")  # launch information thing
-    #print("[DB] Database Present and ready") # DATABASE CONNECT LOG
-    print("---------------------------")
-    changeStatus.start() # dynamic status starting thing - can be disabled by commenting this line
-    #db.control() # UNCOMMENT FOR DB CONNECTION
-
-
-
-
-bot.run(TOKEN) #securize token in a .env - safer compared to storing in config.json
+if __name__ == "__main__":
+    bot = Helia()
+    bot.run(bot.TOKEN) #securize token in a .env - safer compared to storing in config.json
