@@ -202,9 +202,7 @@ class Player(wavelink.Player):
                 return False
             if u.id == self.bot.user.id or r.message.id != self.controller_message.id:
                 return False
-            if u not in self.bot.get_channel(int(self.channel_id)).members:
-                return False
-            return True
+            return u in self.bot.get_channel(int(self.channel_id)).members
 
         while self.controller_message:
             if self.channel_id is None:
@@ -265,9 +263,7 @@ class Player(wavelink.Player):
 
         bucket = cmd._buckets.get_bucket(ctx)
         retry_after = bucket.update_rate_limit()
-        if retry_after:
-            return False
-        return True
+        return not retry_after
 
     async def is_current_fresh(self, channel: discord.TextChannel) -> bool:
         """Check whether our controller is fresh in message history."""

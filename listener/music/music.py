@@ -355,9 +355,8 @@ class Music(commands.Cog, wavelink.WavelinkMixin):
             for m in channel.members:
                 if m.bot:
                     continue
-                else:
-                    player.dj = m
-                    return
+                player.dj = m
+                return
 
         elif after.channel == channel and player.dj not in channel.members:
             player.dj = member
@@ -384,10 +383,9 @@ class Music(commands.Cog, wavelink.WavelinkMixin):
         """
         player: Player = self.bot.wavelink.get_player(ctx.guild.id, cls=Player, context=ctx)
 
-        if player.context:
-            if player.context.channel != ctx.channel:
-                await ctx.send(f'{ctx.author.mention}, you must be in {player.context.channel.mention} for this session.')
-                raise IncorrectChannelError
+        if player.context and player.context.channel != ctx.channel:
+            await ctx.send(f'{ctx.author.mention}, you must be in {player.context.channel.mention} for this session.')
+            raise IncorrectChannelError
 
         if ctx.command.name == 'connect' and not player.context:
             return
@@ -401,10 +399,9 @@ class Music(commands.Cog, wavelink.WavelinkMixin):
         if not channel:
             return
 
-        if player.is_connected:
-            if ctx.author not in channel.members:
-                await ctx.send(f'{ctx.author.mention}, you must be in `{channel.name}` to use voice commands.')
-                raise IncorrectChannelError
+        if player.is_connected and ctx.author not in channel.members:
+            await ctx.send(f'{ctx.author.mention}, you must be in `{channel.name}` to use voice commands.')
+            raise IncorrectChannelError
 
     def required(self, ctx: commands.Context):
         """Method which returns required votes based on amount of members in a channel."""
@@ -412,9 +409,8 @@ class Music(commands.Cog, wavelink.WavelinkMixin):
         channel = self.bot.get_channel(int(player.channel_id))
         required = math.ceil((len(channel.members) - 1) / 2.5)
 
-        if ctx.command.name == 'stop':
-            if len(channel.members) == 3:
-                required = 2
+        if ctx.command.name == 'stop' and len(channel.members) == 3:
+            required = 2
 
         return required
 
@@ -725,9 +721,8 @@ class Music(commands.Cog, wavelink.WavelinkMixin):
         for m in members:
             if m == player.dj or m.bot:
                 continue
-            else:
-                player.dj = m
-                return await ctx.send(f'{member.mention} is now the DJ.')
+            player.dj = m
+            return await ctx.send(f'{member.mention} is now the DJ.')
 
 
 def setup(bot: commands.Bot):

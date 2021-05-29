@@ -15,20 +15,19 @@ class welcome(commands.Cog):
         try:
             connect = sqlite3.connect(db.main)
             cursor = connect.cursor()
-            cursor.execute(db.select_table("welcome", "channel_id", "guild_id", member.guild.id)) 
+            cursor.execute(db.select_table("welcome", "channel_id", "guild_id", member.guild.id))
             chan = cursor.fetchone()
             if chan is None:
                 return
-            else:
-                cursor.execute(db.select_table("welcome", "text", "guild_id", member.guild.id))
-                desc = cursor.fetchone()
-                if desc is None: 
-                    desc = f" Hi there {MEMBER} and welcome to our humble community"
-                hello = discord.Embed(title="Hello there", description=(desc[0]).format(MEMBER=member, MENTION=member.mention), color=0x00ff00)
-                hello.set_author(name=f"{member.guild}", icon_url=f"{member.guild.icon_url}")
-                hello.set_thumbnail(url=f"{member.avatar_url}")
-                channel = self.bot.get_channel(id=int(chan[0]))
-                await channel.send(embed=hello)      
+            cursor.execute(db.select_table("welcome", "text", "guild_id", member.guild.id))
+            desc = cursor.fetchone()
+            if desc is None: 
+                desc = f" Hi there {MEMBER} and welcome to our humble community"
+            hello = discord.Embed(title="Hello there", description=(desc[0]).format(MEMBER=member, MENTION=member.mention), color=0x00ff00)
+            hello.set_author(name=f"{member.guild}", icon_url=f"{member.guild.icon_url}")
+            hello.set_thumbnail(url=f"{member.avatar_url}")
+            channel = self.bot.get_channel(id=int(chan[0]))
+            await channel.send(embed=hello)
             cursor.close()
             connect.close()
         except:

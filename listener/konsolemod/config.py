@@ -59,11 +59,11 @@ class config(commands.Cog):
             for u in range(rng):
                 u = str(random.randint(0, 9))
                 d.text((indent, random.randint(0, 10)), u, font=fnt, fill=(0, 0, 0))
-                passcode = passcode + u
-                indent = indent + 26 
-            path = f'captcha/captcha-{ctx.message.author.id}.png'            
+                passcode += u
+                indent += 26
+            path = f'captcha/captcha-{ctx.message.author.id}.png'
             img.save(path)
-            await ctx.send(file=discord.File(path)) 
+            await ctx.send(file=discord.File(path))
             msg = await self.bot.wait_for('message', check=lambda msg: msg.author == ctx.author and msg.channel == ctx.channel, timeout=50.0)
             if int(msg.content) == int(passcode):
                 await ctx.message.author.add_roles(role)
