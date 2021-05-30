@@ -2,10 +2,13 @@ import asyncio
 import os
 
 import discord
+from cogs.utils import Config
+from cogs.utils import Logger
+from cogs.utils import Settings
+from cogs.utils import Strings
 from discord.ext import commands
-from discord_slash import SlashContext, cog_ext
-
-from cogs.utils import Config, Logger, Settings, Strings
+from discord_slash import cog_ext
+from discord_slash import SlashContext
 
 CONFIG = Config()
 
