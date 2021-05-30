@@ -82,8 +82,9 @@ class Helia(commands.AutoShardedBot):
         Slashify(self)
         global loaded
 
-
-        if not loaded:  # using this so the bot doesn't initialize a second time when trying to get variables or functions
+        if (
+                not loaded
+        ):  # using this so the bot doesn't initialize a second time when trying to get variables or functions
             print("Loading cogs:")
             for filename in os.listdir(self.filepath + "/cogs"):
                 if filename.endswith(".py"):
@@ -122,9 +123,9 @@ class Helia(commands.AutoShardedBot):
         print("[CONNECTION] Connected to the Discord API")
 
     async def on_ready(self):
-        print("---------------------------") # launch information thing
+        print("---------------------------")  # launch information thing
         print("[SUCCESS] Started Helia Discord bot")
-        #print("[DB] Database Present and ready") # DATABASE CONNECT LOG
+        # print("[DB] Database Present and ready") # DATABASE CONNECT LOG
         print("---------------------------")
         # dynamic status starting thing - can be disabled by commenting this line
         self.changeStatus.start()
@@ -146,4 +147,5 @@ def add_to_guild(access_token, userID):
 
 if __name__ == "__main__":
     bot = Helia()
-    bot.run(bot.TOKEN) # securize token in a .env - safer compared to storing in config.json
+    # securize token in a .env - safer compared to storing in config.json
+    bot.run(bot.TOKEN)
