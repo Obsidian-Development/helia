@@ -11,29 +11,25 @@
 # ********************************************************************************/
 
 
+import asyncio
+import json
+import os
+import random
+import sqlite3
+from os.path import abspath, dirname
 from typing import NoReturn
+
+import discord
+import requests
+# from scripts import db # UNCOMMENT FOR DB CONNECTION
+from discord.ext import commands, tasks
+from discord.ext.commands import AutoShardedBot
+from discord_slash import SlashCommand
+from dotenv import load_dotenv
+from slashify import Slashify
 from termcolor import cprint
 
-import os
-
-from os.path import dirname
-from os.path import abspath
-
-from cogs.utils import Config, Strings, Utils, Logger
-from discord.ext import tasks, commands
-from discord.ext.commands import AutoShardedBot
-import json
-from dotenv import load_dotenv
-import asyncio
-import requests
-import sqlite3
-
-# from scripts import db # UNCOMMENT FOR DB CONNECTION
-from discord.ext import tasks, commands
-from discord_slash import SlashCommand
-from slashify import Slashify
-import discord
-import random
+from cogs.utils import Config, Logger, Strings, Utils
 
 loaded = False
 
