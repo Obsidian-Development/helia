@@ -1,5 +1,5 @@
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-7-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-8-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 <p align="center">
 <img align="center" src="https://raw.githubusercontent.com/pieckenst/helia/current/heliacircle.png" height="140" width="140">
@@ -84,6 +84,9 @@ Credits goes to these wonderful people ([emoji key](https://allcontributors.org/
     <td align="center"><a href="https://github.com/eaxecx"><img src="https://avatars.githubusercontent.com/u/61050197?v=4?s=100" width="100px;" alt=""/><br /><sub><b>eax-ebx</b></sub></a><br /><a href="#talk-eaxecx" title="Talks">📢</a> <a href="#example-eaxecx" title="Examples">💡</a> <a href="https://github.com/helia-developers/helia/commits?author=eaxecx" title="Code">💻</a> <a href="#question-eaxecx" title="Answering Questions">💬</a></td>
     <td align="center"><a href="https://github.com/DoggieLicc"><img src="https://avatars.githubusercontent.com/u/76987398?v=4?s=100" width="100px;" alt=""/><br /><sub><b>DoggieLicc</b></sub></a><br /><a href="https://github.com/helia-developers/helia/commits?author=DoggieLicc" title="Code">💻</a></td>
     <td align="center"><a href="https://shadidev.tk/"><img src="https://avatars.githubusercontent.com/u/66328589?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Shadi Alostaz</b></sub></a><br /><a href="#maintenance-SilentSerenityy" title="Maintenance">🚧</a> <a href="https://github.com/helia-developers/helia/commits?author=SilentSerenityy" title="Documentation">📖</a></td>
+  </tr>
+  <tr>
+    <td align="center"><a href="https://blacktooth-bot.com/"><img src="https://avatars.githubusercontent.com/u/71964154?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Kye</b></sub></a><br /><a href="https://github.com/helia-developers/helia/commits?author=kyelmao" title="Code">💻</a> <a href="#talk-kyelmao" title="Talks">📢</a></td>
   </tr>
 </table>
 
