@@ -1,13 +1,12 @@
 # -*- coding: utf-8 -*-
 
+import asyncio
+
+import requests
 from discord.ext import commands
 from discord.ext.commands import Bot
 
-import asyncio
-import requests
-
 from cogs.utils import Config, Logger
-
 
 CONFIG = Config()
 
@@ -15,13 +14,11 @@ CONFIG = Config()
 class Workers(commands.Cog):
     def __init__(self, bot: Bot) -> None:
         self.bot = bot
-        self.name = 'Workers'
+        self.name = "Workers"
         bot.loop.create_task(Workers.sdc_updater(self))
 
     async def sdc_updater(self):
-        """Updates bot information on bots.servers-discord.com
-
-        """
+        """Updates bot information on bots.servers-discord.com"""
         while True:
             await asyncio.sleep(65)
             print("[SDC] Looping update request")
@@ -31,16 +28,14 @@ class Workers(commands.Cog):
             print("Client ID:")
             print(self.bot.user.id)
             print("Proceeding to authorize")
-            headers={
-                "Authorization": CONFIG['sdc_token']
-            }
+            headers = {"Authorization": CONFIG["sdc_token"]}
             r = requests.post(
-                f'https://api.server-discord.com/v2/bots/{self.bot.user.id}/stats',
+                f"https://api.server-discord.com/v2/bots/{self.bot.user.id}/stats",
                 headers=headers,
                 data={
                     "servers": len(self.bot.guilds),
                     "shards": 1
-                }
+                },
             )
             print(r.content)
             print("[SDC] Authorization completed")
@@ -50,4 +45,4 @@ class Workers(commands.Cog):
 
 def setup(bot):
     bot.add_cog(Workers(bot))
-    Logger.cog_loaded(bot.get_cog('Workers').name)
+    Logger.cog_loaded(bot.get_cog("Workers").name)
