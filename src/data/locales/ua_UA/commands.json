@@ -40,9 +40,7 @@
       "purge": {
         "usage": "{0}purge [кількість повідомлень.]",
         "description": "Ця команда видаляє певну кількість повідомлень у поточному каналі.",
-        "aliases": [
-          "clear"
-        ]
+        "aliases": ["clear"]
       },
       "mute": {
         "usage": "{0}mute [@користувач || ID]",
@@ -57,11 +55,7 @@
       "setname": {
         "usage": "{0}setname [@користувач || ID] [псевдонім]",
         "description": "Ця команда встановлює користувачеві псевдонім.",
-        "aliases": [
-          "setnick",
-          "setname",
-          "nick"
-        ]
+        "aliases": ["setnick", "setname", "nick"]
       }
     }
   },
@@ -81,9 +75,7 @@
       "server": {
         "usage": "{0}server",
         "description": "Ця команда відображає інформацію про сервер.",
-        "aliases": [
-          "guild"
-        ]
+        "aliases": ["guild"]
       },
       "emoji": {
         "usage": "{0}emoji [смайлик]",
@@ -148,10 +140,7 @@
       "locale": {
         "usage": "{0} lang [мова]",
         "description": "Ця команда встановлює мову бота на сервері. Доступні:\n```**en_EN**, **ru_RU**, **bel_BY**, **ua_UA**.```",
-        "aliases": [
-          "setlang",
-          "locale"
-        ]
+        "aliases": ["setlang", "locale"]
       }
     }
   },
