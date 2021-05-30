@@ -1,5 +1,7 @@
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+
 [![All Contributors](https://img.shields.io/badge/all_contributors-8-orange.svg?style=flat-square)](#contributors-)
+
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 <p align="center">
 <img align="center" src="https://raw.githubusercontent.com/pieckenst/helia/current/heliacircle.png" height="140" width="140">
@@ -23,51 +25,80 @@
 <h3 align="center"> Information Commands and wikipedia Search</h3>
 </div>
 
-Moderation features such as ban, kick, purge, mute and unmute. You can also view user information and profile pictures.
+Moderation features such as ban, kick, purge, mute and unmute. You can also view
+user information and profile pictures.
 
-Wikipeida commands as well, such as wikipedia search. You can use //wiki to search on Wikipedia. The bot also includes some commands to see short bits of info on a few of Linux distributions.
+Wikipeida commands as well, such as wikipedia search. You can use //wiki to
+search on Wikipedia. The bot also includes some commands to see short bits of
+info on a few of Linux distributions.
 
-More info on bot features can be seen in //help and you can always contribute to betterment of the bot if you know python by heading to the bot repository on github at https://github.com/pieckenst/helia and following our contributing guidelines at https://github.com/pieckenst/helia/blob/master/CONTRIBUTING
-Source code on public github can be a bit behind hosted version since updates to it are pushed when enough changes pile up
+More info on bot features can be seen in //help and you can always contribute to
+betterment of the bot if you know python by heading to the bot repository on
+github at https://github.com/pieckenst/helia and following our contributing
+guidelines at https://github.com/pieckenst/helia/blob/master/CONTRIBUTING Source
+code on public github can be a bit behind hosted version since updates to it are
+pushed when enough changes pile up
 
 # Russian Description
 
-Бот с открытым исходным кодом для модерации и музыки Основные возможности бота Музыка (может иногда ломаться) Бот может воспроизводить музыку с YouTube, пропускать ее, есть очередь, обычные вещи для музыкальных ботов в целом
+Бот с открытым исходным кодом для модерации и музыки Основные возможности бота
+Музыка (может иногда ломаться) Бот может воспроизводить музыку с YouTube,
+пропускать ее, есть очередь, обычные вещи для музыкальных ботов в целом
 
-Функции модерации (например, ban,kick,mute,unmute).  Имеется возможность просматривать информацию о пользователе и смотреть аватарку профиля.
+Функции модерации (например, ban,kick,mute,unmute). Имеется возможность
+просматривать информацию о пользователе и смотреть аватарку профиля.
 
-Информационные команды а также поиск в википедии. Вы можете использовать //wiki для поиска в википедии. Кроме того, бот включает несколько команд для просмотра короткой информации о некоторых дистрибутивах Linux.
+Информационные команды а также поиск в википедии. Вы можете использовать //wiki
+для поиска в википедии. Кроме того, бот включает несколько команд для просмотра
+короткой информации о некоторых дистрибутивах Linux.
 
-Более подробную информацию о функциях бота можно увидеть в //help, и вы всегда можете внести свой вклад в улучшение бота, если знаете python, перейдя в репозиторий бота на github по адресу https://github.com/pieckenst/helia и сделать изменения сответствуя нашим требованиям для пул реквестов на https://github.com/pieckenst/helia/blob/master/CONTRIBUTING. Исходный код на общедоступном github может немного отставать от захосченной версии, поскольку обновления в него отправляются, когда накапливается достаточно изменений
+Более подробную информацию о функциях бота можно увидеть в //help, и вы всегда
+можете внести свой вклад в улучшение бота, если знаете python, перейдя в
+репозиторий бота на github по адресу https://github.com/pieckenst/helia и
+сделать изменения сответствуя нашим требованиям для пул реквестов на
+https://github.com/pieckenst/helia/blob/master/CONTRIBUTING. Исходный код на
+общедоступном github может немного отставать от захосченной версии, поскольку
+обновления в него отправляются, когда накапливается достаточно изменений
 
 # CROWDIN
 
-Wamt to help us translate the bot to your language? 
-We appreciate your enthusiasm so head over to https://crwd.in/helia to start helping us translate the bot 
+Wamt to help us translate the bot to your language? We appreciate your
+enthusiasm so head over to https://crwd.in/helia to start helping us translate
+the bot
 
 # BOT HOSTING GUIDE
-1. Create an .env file in src folder with this content
-DISCORD_TOKEN=your token without quotes, symbols, or anything
-2. If you want to host locally then just launch the bot with python, file main.py, otherwise follow the next steps
+
+1. Create an .env file in src folder with this content DISCORD_TOKEN=your token
+   without quotes, symbols, or anything
+2. If you want to host locally then just launch the bot with python, file
+   main.py, otherwise follow the next steps
 3. Heroku CLI setup
-4. Follow step 1 
+4. Follow step 1
 5. Go to heroku.com and Sign Up or Log In if already have an account.
 6. For command line setup install Git and do git init when inside your directory
 7. Install Heroku CLI
-8. Then do Heroku apps:create name_of_app and heroku buildpacks:set heroku/python
-9. Finally, do git push heroku master or git push heroku branch_name:master if you want to only push one branch
+8. Then do Heroku apps:create name_of_app and heroku buildpacks:set
+   heroku/python
+9. Finally, do git push heroku master or git push heroku branch_name:master if
+   you want to only push one branch
 10. For heroku gui setup do
 11. Go to heroku.com and Sign Up or Log In if already have an account.
 12. Go to Heroku Dashboard
 13. Hit New. Now give the application on Heroku a unique name
-14. Click on Connect to Github. You might need to authorize the app. If so, do that. 
-15. Create a private repository on github 
-16. Upload bot files into your private repository and edit gitignore and remove .env file mentions from there
+14. Click on Connect to Github. You might need to authorize the app. If so, do
+    that.
+15. Create a private repository on github
+16. Upload bot files into your private repository and edit gitignore and remove
+    .env file mentions from there
 17. Create .env file in src folder of your private repository with this content
-DISCORD_TOKEN=your token without quotes, symbols, or anything
-18. Now go back to Heroku and link your private repository there by entering your name of private repository. Hit search and then connect.
-19. Now scroll down below and Enable Auto Deploy. Now Scroll a little more and hit Deploy Branch.
+    DISCORD_TOKEN=your token without quotes, symbols, or anything
+18. Now go back to Heroku and link your private repository there by entering
+    your name of private repository. Hit search and then connect.
+19. Now scroll down below and Enable Auto Deploy. Now Scroll a little more and
+    hit Deploy Branch.
+
 # Enabling the bot to launch in heroku
+
 20. Go to Resources Tab once the bot deployement is finished
 21. Click the little edit icon near our apps' name to enable our dynos
 22. Enable it and hit confirm
@@ -75,7 +106,8 @@ DISCORD_TOKEN=your token without quotes, symbols, or anything
 
 ## Contributors ✨
 
-Credits goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+Credits goes to these wonderful people
+([emoji key](https://allcontributors.org/docs/en/emoji-key)):
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->
@@ -100,4 +132,6 @@ Credits goes to these wonderful people ([emoji key](https://allcontributors.org/
 
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
-This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
+This project follows the
+[all-contributors](https://github.com/all-contributors/all-contributors)
+specification. Contributions of any kind welcome!
