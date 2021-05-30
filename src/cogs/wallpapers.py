@@ -2,11 +2,16 @@ import asyncio
 import random
 
 import discord
+from cogs.utils import Config
+from cogs.utils import Logger
+from cogs.utils import Settings
+from cogs.utils import Strings
 from discord.ext import commands
-from discord_slash import SlashContext, cog_ext
-
-from cogs.utils import Config, Logger, Settings, Strings
-from scripts import desAnime, desNature, desStarwars
+from discord_slash import cog_ext
+from discord_slash import SlashContext
+from scripts import desAnime
+from scripts import desNature
+from scripts import desStarwars
 
 CONFIG = Config()
 
