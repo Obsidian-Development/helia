@@ -40,9 +40,7 @@
       "purge": {
         "usage": "{0}purge [number of messages]",
         "description": "This command deletes a certain number of messages in the current channel.",
-        "aliases": [
-          "clear"
-        ]
+        "aliases": ["clear"]
       },
       "mute": {
         "usage": "{0}mute [@user || ID]",
@@ -57,11 +55,7 @@
       "setname": {
         "usage": "{0}setname [@user || ID] [nick]",
         "description": "This command sets a nickname for the user.",
-        "aliases": [
-          "setnick",
-          "setname",
-          "nick"
-        ]
+        "aliases": ["setnick", "setname", "nick"]
       }
     }
   },
@@ -81,9 +75,7 @@
       "server": {
         "usage": "{0}server",
         "description": "This command displays information about the server.",
-        "aliases": [
-          "guild"
-        ]
+        "aliases": ["guild"]
       },
       "emoji": {
         "usage": "{0}emoji [emoji]",
@@ -148,10 +140,7 @@
       "locale": {
         "usage": "{0}locale [language]",
         "description": "This command sets the bot language on the server. Available:\n```**en_EN**, **ru_RU**, **bel_BY**, **ua_UA**.```",
-        "aliases": [
-          "setlang",
-          "lang"
-        ]
+        "aliases": ["setlang", "lang"]
       }
     }
   },
