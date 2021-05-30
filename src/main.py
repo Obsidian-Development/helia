@@ -56,7 +56,7 @@ class Helia(commands.AutoShardedBot):
                 type=discord.ActivityType.listening,
                 name="Dont forget to bump the bot every 3 hours on bot lists!",
             ),
-            discord.Game(name=f"{Utils.get_prefix}help for info"),
+            discord.Game(name=f"{command_prefix}help for info"),
             discord.Activity(type=discord.ActivityType.listening,
                              name="to my creator Middlle#7488"),
             discord.Game(name="Final Fantasy XIV"),
