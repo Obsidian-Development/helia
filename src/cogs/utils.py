@@ -79,11 +79,11 @@ class Settings:
             await self.create_empty_field(field)
             val = self.settings[str(self.guild_id)][field]
 
-        if val == None and default_value != None:
-            await self.set_field(field, default_value)
-            return default_value
-        else:
+        if val is not None or default_value is None:
             return self.settings[str(self.guild_id)][field]
+
+        await self.set_field(field, default_value)
+        return default_value
 
     async def set_field(self, field: AnyStr, value) -> NoReturn:
         try:

@@ -118,22 +118,22 @@ class Admin(commands.Cog, name='Admin'):
             embed=discord.Embed(title=STRINGS['moderation']['setstatustext'], description=STRINGS['moderation']['setstatusdesc'], color=0xff8000)
             embed.add_field(name=STRINGS['moderation']['setstatusfieldtext'], value=STRINGS['moderation']['setstatusfielddesc'], inline=True)
             embed.set_footer(text=self.bot.user.name, icon_url=self.bot.user.avatar_url)
-            await ctx.send(embed=embed)
         else:
             embed = discord.Embed(title="You failed", description="Need Permission : Bot Owner", color=0xff0000)
-            await ctx.send(embed=embed)
+
+        await ctx.send(embed=embed)
 
     @commands.command(description='Bot invite links')
     async def invite(self, ctx: SlashContext):
         s = await Settings(ctx.guild.id)
         lang = await s.get_field('locale', CONFIG['default_locale'])
         STRINGS = Strings(lang)
-        embed = discord.Embed(title=STRINGS['general']['botinvitetitle'], colour=discord.Colour(0xff6900),url="https://discord.com/api/oauth2/authorize?client_id=666304823934844938&permissions=204859462&scope=applications.commands%20bot",description=STRINGS['general']['botinvitedesc'])
-        embed.set_author(name=STRINGS['general']['botinvitedescd'],url="https://discord.com/oauth2/authorize?client_id=666304823934844938&scope=bot&permissions=204557314")
-        embed.add_field(name=STRINGS['general']['canaryver'], value="https://discord.com/oauth2/authorize?client_id=671612079106424862&scope=bot&permissions=204557314",inline=False)
-        embed.add_field(name=STRINGS['general']['botupsdc'], value="https://bots.server-discord.com/666304823934844938",inline=True)
-        embed.add_field(name=STRINGS['general']['botuptopgg'], value="https://top.gg/bot/666304823934844938",inline=True)
-        embed.add_field(name=STRINGS['general']['botupbod'], value="https://bots.ondiscord.xyz/bots/666304823934844938",inline=True)
+        embed = discord.Embed(title=STRINGS['general']['botinvitetitle'], colour=discord.Colour(0xff6900),url=f"https://discord.com/api/oauth2/authorize?client_id={self.bot.user.id}&permissions=204859462&scope=applications.commands%20bot",description=STRINGS['general']['botinvitedesc'])
+        embed.set_author(name=STRINGS['general']['botinvitedescd'],url=f"https://discord.com/oauth2/authorize?client_id={self.bot.user.id}&scope=bot&permissions=204557314")
+        embed.add_field(name=STRINGS['general']['canaryver'], value=f"https://discord.com/oauth2/authorize?client_id=671612079106424862&scope=bot&permissions=204557314",inline=False) # mostly useful for helia canary invite but still why not have it be there - comment if your self hosted version will not have canary branch 
+        embed.add_field(name=STRINGS['general']['botupsdc'], value=f"https://bots.server-discord.com/{self.bot.user.id}",inline=True)
+        embed.add_field(name=STRINGS['general']['botuptopgg'], value=f"https://top.gg/bot/{self.bot.user.id}",inline=True)
+        embed.add_field(name=STRINGS['general']['botupbod'], value=f"https://bots.ondiscord.xyz/bots/{self.bot.user.id}",inline=True)
         embed.set_footer(text=self.bot.user.name, icon_url=self.bot.user.avatar_url)
         await ctx.send(embed=embed)
 
