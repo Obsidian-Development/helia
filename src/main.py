@@ -102,7 +102,7 @@ class Helia(commands.AutoShardedBot):
 
     @tasks.loop(seconds=80)
     async def changeStatus(self):
-        await asyncio.sleep(65)
+        await asyncio.sleep(40)
         print("---------------------------")
         print("[DYNAMIC-STATUS] Starting the dynamic status loop")
         print("---------------------------")
