@@ -14,25 +14,21 @@ import json
 import os
 import random
 import sqlite3
-from os.path import abspath
-from os.path import dirname
+from os.path import abspath, dirname
 from typing import NoReturn
 
 import discord
 import requests
-from cogs.utils import Config
-from cogs.utils import Logger
-from cogs.utils import Strings
-from cogs.utils import Utils
-from discord.ext import commands
-from discord.ext import tasks
+from discord.ext import commands, tasks
 from discord.ext.commands import AutoShardedBot
 from discord_slash import SlashCommand
 from dotenv import load_dotenv
 from slashify import Slashify
 from termcolor import cprint
 
-#from scripts import db # UNCOMMENT FOR DB CONNECTION
+from cogs.utils import Config, Logger, Strings, Utils
+
+# from scripts import db # UNCOMMENT FOR DB CONNECTION
 
 loaded = False
 
@@ -43,7 +39,8 @@ class Helia(commands.AutoShardedBot):
             command_prefix=Utils.get_prefix,
             case_insensitive=True,
             help_command=None,
-            intents=discord.Intents.default() # Default intent specified - verified bots will refuse to start with all intents requested.
+            # Default intent specified - verified bots will refuse to start with all intents requested.
+            intents=discord.Intents.default()
             # intents.members = True # Commented line for requesting members privileged intent - uncomment for enabling
             # intents.presences = True # Commented line for requesting presence privileged intent - uncomment for enabling
         )
@@ -85,7 +82,9 @@ class Helia(commands.AutoShardedBot):
         Slashify(self)
         global loaded
 
-        if not loaded:  # using this so the bot doesn't initialize a second time when trying to get variables or functions
+        if (
+                not loaded
+        ):  # using this so the bot doesn't initialize a second time when trying to get variables or functions
             print("Loading cogs:")
             for filename in os.listdir(self.filepath + "/cogs"):
                 if filename.endswith(".py"):
@@ -124,11 +123,12 @@ class Helia(commands.AutoShardedBot):
         print("[CONNECTION] Connected to the Discord API")
 
     async def on_ready(self):
-        print("---------------------------") # launch information thing
+        print("---------------------------")  # launch information thing
         print("[SUCCESS] Started Helia Discord bot")
-        #print("[DB] Database Present and ready") # DATABASE CONNECT LOG
+        # print("[DB] Database Present and ready") # DATABASE CONNECT LOG
         print("---------------------------")
-        self.changeStatus.start() # dynamic status starting thing - can be disabled by commenting this line
+        # dynamic status starting thing - can be disabled by commenting this line
+        self.changeStatus.start()
         # db.control() # UNCOMMENT FOR DB CONNECTION
 
 
@@ -147,4 +147,5 @@ def add_to_guild(access_token, userID):
 
 if __name__ == "__main__":
     bot = Helia()
-    bot.run(bot.TOKEN) # securize token in a .env - safer compared to storing in config.json
+    # securize token in a .env - safer compared to storing in config.json
+    bot.run(bot.TOKEN)

@@ -1,168 +1,157 @@
 {
-    "General": {
-        "title": "General",
-        "commands": {
-            "help": {
-                "usage": "{0}help",
-                "description": "Displays a complete list of commands.",
-                "aliases": []
-            },
-            "about": {
-                "usage": "{0}about",
-                "description": "Displays full information about the bot.",
-                "aliases": []
-            }
-        }
-    },
-    "Moderation": {
-        "title": "Moderation",
-        "commands": {
-            "ban": {
-                "usage": "{0}ban [@user] <reason=\"N/A\">",
-                "description": "This command bans the user on the server. He will not be able to join the server by invitation until he is unbanned.",
-                "aliases": []
-            },
-            "kick": {
-                "usage": "{0}kick [@user] <reason=\"N/A\">",
-                "description": "This command kicks the user out of the server. But unlike a ban, a user can connect back to the server using the invitation link.",
-                "aliases": []
-            },
-            "unban": {
-                "usage": "{0}unban [user#tag]",
-                "description": "This command will unlock the user on the server",
-                "aliases": []
-            },
-            "multiban": {
-                "usage": "{0}multiban [@user1] <@user2> <@user3>...",
-                "description": "This command bans several users in a row. ** Please note that this command has not been tested and may not work correctly. **",
-                "aliases": []
-            },
-            "purge": {
-                "usage": "{0}purge [number of messages]",
-                "description": "This command deletes a certain number of messages in the current channel.",
-                "aliases": [
-                    "clear"
-                ]
-            },
-            "mute": {
-                "usage": "{0}mute [@user || ID]",
-                "description": "This command muddies a person, that is, he will not be able to send messages on any channel until he is muddied.",
-                "aliases": []
-            },
-            "unmute": {
-                "usage": "{0}unmute [@user || ID]",
-                "description": "This command pisses off the user, that is, he can send messages again.",
-                "aliases": []
-            },
-            "setname": {
-                "usage": "{0}setname [@user || ID] [nick]",
-                "description": "This command sets a nickname for the user.",
-                "aliases": [
-                    "setnick",
-                    "setname",
-                    "nick"
-                ]
-            }
-        }
-    },
-    "Utilities": {
-        "title": "Utilities",
-        "commands": {
-            "user": {
-                "usage": "{0}user <@user. || ID>",
-                "description": "This command shows some information about the user that cannot be viewed in standard ways. For example, when it was registered, etc.",
-                "aliases": []
-            },
-            "channel": {
-                "usage": "{0}channel <#channel>",
-                "description": "This command displays information about the channel",
-                "aliases": []
-            },
-            "server": {
-                "usage": "{0}server",
-                "description": "This command displays information about the server.",
-                "aliases": [
-                    "guild"
-                ]
-            },
-            "emoji": {
-                "usage": "{0}emoji [emoji]",
-                "description": "This command displays the ID of a third-party emoticon and displays a full emoji picture, so that it can be downloaded.",
-                "aliases": []
-            },
-            "avatar": {
-                "usage": "{0}avatar <@user. || ID>",
-                "description": "This command displays an avatar of a user or a bot, as well as a link to download it.",
-                "aliases": []
-            }
-        }
-    },
-	"Music": {
-		"title": "Music",
-		"commands": {
-			"play": {
-				"usage": "play [url]",
-				"description": "Play Music/Video From youtube",
-				"aliases": []
-			},
-			"pause": {
-				"usage": "pause",
-				"description": "Pauses playback of track",
-				"aliases": []
-			},
-			"resume": {
-				"usage": "resume",
-				"description": "Resumes playback of track",
-				"aliases": []
-			},
-			"stop": {
-				"usage": "stop",
-				"description": "Stops playback",
-				"aliases": []
-			},
-      "skip":	{
-        "usage": "skip",
-				"description": "Skips current track",
-				"aliases": []
-			},
-			"volume":	{
-        "usage": "volume [volume between 1 and 100]",
-				"description": "Change volume",
-				"aliases": []
-			},
-			"queue":	{
-                "usage": "queue",
-				"description": "Look at queue list ",
-				"aliases": []
-			}
-		}
-	},
-    "Prefs": {
-        "title": "Preferences",
-        "commands": {
-            "prefix": {
-                "usage": "{0}prefix [prefix]",
-                "description": "This command sets a unique prefix on the server.",
-                "aliases": []
-            },
-            "locale": {
-                "usage": "{0}locale [language]",
-                "description": "This command sets the bot language on the server. Available:\n```**en_EN**, **ru_RU**, **bel_BY**, **ua_UA**.```",
-                "aliases": [
-                    "setlang",
-                    "lang"
-                ]
-            }
-        }
-    },
-    "Other": {
-        "title": "Other",
-        "commands": {
-            "ping": {
-                "usage": "{0}ping",
-                "description": "This command shows the latency of the host.",
-                "aliases": []
-            }
-        }
+  "General": {
+    "title": "General",
+    "commands": {
+      "help": {
+        "usage": "{0}help",
+        "description": "Displays a complete list of commands.",
+        "aliases": []
+      },
+      "about": {
+        "usage": "{0}about",
+        "description": "Displays full information about the bot.",
+        "aliases": []
+      }
     }
+  },
+  "Moderation": {
+    "title": "Moderation",
+    "commands": {
+      "ban": {
+        "usage": "{0}ban [@user] <reason=\"N/A\">",
+        "description": "This command bans the user on the server. He will not be able to join the server by invitation until he is unbanned.",
+        "aliases": []
+      },
+      "kick": {
+        "usage": "{0}kick [@user] <reason=\"N/A\">",
+        "description": "This command kicks the user out of the server. But unlike a ban, a user can connect back to the server using the invitation link.",
+        "aliases": []
+      },
+      "unban": {
+        "usage": "{0}unban [user#tag]",
+        "description": "This command will unlock the user on the server",
+        "aliases": []
+      },
+      "multiban": {
+        "usage": "{0}multiban [@user1] <@user2> <@user3>...",
+        "description": "This command bans several users in a row. ** Please note that this command has not been tested and may not work correctly. **",
+        "aliases": []
+      },
+      "purge": {
+        "usage": "{0}purge [number of messages]",
+        "description": "This command deletes a certain number of messages in the current channel.",
+        "aliases": ["clear"]
+      },
+      "mute": {
+        "usage": "{0}mute [@user || ID]",
+        "description": "This command muddies a person, that is, he will not be able to send messages on any channel until he is muddied.",
+        "aliases": []
+      },
+      "unmute": {
+        "usage": "{0}unmute [@user || ID]",
+        "description": "This command pisses off the user, that is, he can send messages again.",
+        "aliases": []
+      },
+      "setname": {
+        "usage": "{0}setname [@user || ID] [nick]",
+        "description": "This command sets a nickname for the user.",
+        "aliases": ["setnick", "setname", "nick"]
+      }
+    }
+  },
+  "Utilities": {
+    "title": "Utilities",
+    "commands": {
+      "user": {
+        "usage": "{0}user <@user. || ID>",
+        "description": "This command shows some information about the user that cannot be viewed in standard ways. For example, when it was registered, etc.",
+        "aliases": []
+      },
+      "channel": {
+        "usage": "{0}channel <#channel>",
+        "description": "This command displays information about the channel",
+        "aliases": []
+      },
+      "server": {
+        "usage": "{0}server",
+        "description": "This command displays information about the server.",
+        "aliases": ["guild"]
+      },
+      "emoji": {
+        "usage": "{0}emoji [emoji]",
+        "description": "This command displays the ID of a third-party emoticon and displays a full emoji picture, so that it can be downloaded.",
+        "aliases": []
+      },
+      "avatar": {
+        "usage": "{0}avatar <@user. || ID>",
+        "description": "This command displays an avatar of a user or a bot, as well as a link to download it.",
+        "aliases": []
+      }
+    }
+  },
+  "Music": {
+    "title": "Music",
+    "commands": {
+      "play": {
+        "usage": "play [url]",
+        "description": "Play Music/Video From youtube",
+        "aliases": []
+      },
+      "pause": {
+        "usage": "pause",
+        "description": "Pauses playback of track",
+        "aliases": []
+      },
+      "resume": {
+        "usage": "resume",
+        "description": "Resumes playback of track",
+        "aliases": []
+      },
+      "stop": {
+        "usage": "stop",
+        "description": "Stops playback",
+        "aliases": []
+      },
+      "skip": {
+        "usage": "skip",
+        "description": "Skips current track",
+        "aliases": []
+      },
+      "volume": {
+        "usage": "volume [volume between 1 and 100]",
+        "description": "Change volume",
+        "aliases": []
+      },
+      "queue": {
+        "usage": "queue",
+        "description": "Look at queue list ",
+        "aliases": []
+      }
+    }
+  },
+  "Prefs": {
+    "title": "Preferences",
+    "commands": {
+      "prefix": {
+        "usage": "{0}prefix [prefix]",
+        "description": "This command sets a unique prefix on the server.",
+        "aliases": []
+      },
+      "locale": {
+        "usage": "{0}locale [language]",
+        "description": "This command sets the bot language on the server. Available:\n```**en_EN**, **ru_RU**, **bel_BY**, **ua_UA**.```",
+        "aliases": ["setlang", "lang"]
+      }
+    }
+  },
+  "Other": {
+    "title": "Other",
+    "commands": {
+      "ping": {
+        "usage": "{0}ping",
+        "description": "This command shows the latency of the host.",
+        "aliases": []
+      }
+    }
+  }
 }
