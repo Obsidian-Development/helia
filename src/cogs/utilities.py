@@ -67,7 +67,7 @@ class Utilities(commands.Cog):
         STRINGS = Strings(lang)
 
         format = r"png" if re.sub(r"[\<]", r"",
-                                 emoji.split(":")[0]) == "" else "gif"
+                                  emoji.split(":")[0]) == "" else "gif"
         name = emoji.split(":")[1]
         id = re.sub(r"[\>]", r"", emoji.split(r":")[2])
 
