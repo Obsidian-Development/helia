@@ -16,7 +16,7 @@ class Workers(commands.Cog):
     def __init__(self, bot: Bot) -> None:
         self.bot = bot
         self.name = 'Workers'
-        bot.loop.create_task(Workers.sdc_updater(self, bot))
+        bot.loop.create_task(Workers.sdc_updater(self))
 
     async def sdc_updater(self):
         """Updates bot information on bots.servers-discord.com
