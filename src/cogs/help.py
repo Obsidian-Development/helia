@@ -1,11 +1,17 @@
 from typing import Optional
 
+from cogs.utils import Commands
+from cogs.utils import Config
+from cogs.utils import Logger
+from cogs.utils import Settings
+from cogs.utils import Strings
+from cogs.utils import Utils
 from discord import Embed
-from discord.ext.commands import Cog, command
-from discord.ext.menus import ListPageSource, MenuPages
+from discord.ext.commands import Cog
+from discord.ext.commands import command
+from discord.ext.menus import ListPageSource
+from discord.ext.menus import MenuPages
 from discord.utils import get
-
-from cogs.utils import Commands, Config, Logger, Settings, Strings, Utils
 
 CONFIG = Config()
 
