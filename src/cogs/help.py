@@ -29,7 +29,9 @@ class HelpMenu(ListPageSource):
 
         super().__init__(data, per_page=5)
 
-    async def write_page(self, menu, fields=[]):
+    async def write_page(self, menu, fields=None):
+        if fields is None:
+            fields = []
         offset = (menu.current_page*self.per_page) + 1
         len_data = len(self.entries)
         s = await Settings(self.ctx.guild.id)
