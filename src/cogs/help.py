@@ -20,8 +20,7 @@ def syntax(command):
     cmd_and_aliases = "|".join([str(command), *command.aliases])
     params = [
         f"[{key}]" if "NoneType" in str(value) else f"<{key}>"
-        for key, value in command.params.items()
-        if key not in ("self", "ctx")
+        for key, value in command.params.items() if key not in ("self", "ctx")
     ]
 
     params = " ".join(params)
@@ -51,9 +50,8 @@ class HelpMenu(ListPageSource):
             colour=self.ctx.author.colour,
         )
         # embed.set_thumbnail(url=self.ctx.guild.me.avatar_url)
-        embed.set_footer(
-            text=f"{self.ctx.guild.me.name}", icon_url=self.ctx.guild.me.avatar_url
-        )
+        embed.set_footer(text=f"{self.ctx.guild.me.name}",
+                         icon_url=self.ctx.guild.me.avatar_url)
 
         for name, value in fields:
             embed.add_field(name=name, value=value, inline=False)
@@ -67,10 +65,8 @@ class HelpMenu(ListPageSource):
         STRINGS = Strings(lang)
         COMMANDS = Commands(lang)
 
-        fields = [
-            (STRINGS["general"]["nocommanddescription"], syntax(entry))
-            for entry in entries
-        ]
+        fields = [(STRINGS["general"]["nocommanddescription"], syntax(entry))
+                  for entry in entries]
 
         return await self.write_page(menu, fields)
 
@@ -90,7 +86,8 @@ class Help(Cog):
             description=syntax(command),
             colour=ctx.author.colour,
         )
-        embed.add_field(name=STRINGS["general"]["description"], value=command.help)
+        embed.add_field(name=STRINGS["general"]["description"],
+                        value=command.help)
         await ctx.send(embed=embed)
 
     @command(name="help")
