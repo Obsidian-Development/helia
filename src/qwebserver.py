@@ -1,13 +1,17 @@
 # Its ass code - most likely hard to get it to autheficate the danging app inside the account
-
 import os
 from typing import List
 
 import requests
 from dotenv import load_dotenv
-from quart import (Quart, redirect, render_template_string, request, session,
-                   url_for)
-from quart_oauth2_discord_py import DiscordOauth2Client, Guild
+from quart import Quart
+from quart import redirect
+from quart import render_template_string
+from quart import request
+from quart import session
+from quart import url_for
+from quart_oauth2_discord_py import DiscordOauth2Client
+from quart_oauth2_discord_py import Guild
 from quart_session import Session
 from requests_oauthlib import OAuth2Session
 

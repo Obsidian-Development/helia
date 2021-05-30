@@ -1,10 +1,10 @@
 # LOCALIZATION SUPPORT NEEDS IMPLEMENTING
-
 import asyncio
 
 import discord
 from discord.ext import commands
-from discord_slash import SlashContext, cog_ext
+from discord_slash import cog_ext
+from discord_slash import SlashContext
 
 
 class gnulinux(commands.Cog):

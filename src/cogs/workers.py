@@ -1,12 +1,11 @@
 # -*- coding: utf-8 -*-
-
 import asyncio
 
 import requests
+from cogs.utils import Config
+from cogs.utils import Logger
 from discord.ext import commands
 from discord.ext.commands import Bot
-
-from cogs.utils import Config, Logger
 
 CONFIG = Config()
 
