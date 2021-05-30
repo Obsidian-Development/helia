@@ -1,62 +1,62 @@
 {
     "General": {
-        "title": "General",
+        "title": "Агульныя",
         "commands": {
             "help": {
                 "usage": "{0}help",
-                "description": "Displays a complete list of commands.",
+                "description": "Выснова поўнага спісу каманд.",
                 "aliases": []
             },
             "about": {
                 "usage": "{0}about",
-                "description": "Displays full information about the bot.",
+                "description": "Выснова поўнай інфармацыі а боте",
                 "aliases": []
             }
         }
     },
     "Moderation": {
-        "title": "Moderation",
+        "title": "Мадэрацыя",
         "commands": {
             "ban": {
-                "usage": "{0}ban [@user] <reason=\"N/A\">",
-                "description": "This command bans the user on the server. He will not be able to join the server by invitation until he is unbanned.",
+                "usage": "{0}ban [@карыстальнік.] <прычына =\"N/A\">",
+                "description": "Дадзеная каманда банит карыстальніка на сэрвэры.  Ён не зможа падпісалася да сервера па запрашэнні, пакуль яго не разбанят.",
                 "aliases": []
             },
             "kick": {
-                "usage": "{0}kick [@user] <reason=\"N/A\">",
-                "description": "This command kicks the user out of the server. But unlike a ban, a user can connect back to the server using the invitation link.",
+                "usage": "{0}kick [@карыстальнік.] <прычына=\"N/A\">",
+                "description": "Дадзеная каманда выганяе карыстальніка з сервера .Але ў адрозненні ад бана, карыстальнік можа назад далучыцца да сервера па спасылцы-запрашэнні,",
                 "aliases": []
             },
             "unban": {
-                "usage": "{0}unban [user#tag]",
-                "description": "This command will unlock the user on the server",
+                "usage": "{0}unban [карыстальнік#тэг]",
+                "description": "Дадзеная каманда разблакуе карыстальніка на сэрвэры",
                 "aliases": []
             },
             "multiban": {
-                "usage": "{0}multiban [@user1] <@user2> <@user3>...",
-                "description": "This command bans several users in a row. ** Please note that this command has not been tested and may not work correctly. **",
+                "usage": "{0}multiban [@карыстальнік.1] <@карыстальнік.2> <@карыстальнік.3>...",
+                "description": "Дадзеная каманда банит некалькі карыстальнікаў запар.  ** Звярніце ўвагу, што дадзеная каманда ня пратэставаная і можа працаваць неккоректно. **",
                 "aliases": []
             },
             "purge": {
-                "usage": "{0}purge [number of messages]",
-                "description": "This command deletes a certain number of messages in the current channel.",
+                "usage": "{0}purge [колькасць паведамленняў.]",
+                "description": "Дадзеная каманда выдаляе пэўнае кол-у паведамленняў у бягучым канале.",
                 "aliases": [
                     "clear"
                 ]
             },
             "mute": {
-                "usage": "{0}mute [@user || ID]",
-                "description": "This command muddies a person, that is, he will not be able to send messages on any channel until he is muddied.",
+                "usage": "{0}mute [@карыстальнік || ID]",
+                "description": "Дадзеная каманда каламуціць чалавека, гэта значыць ён не зможа адпраўляць паведамленні ў любым канале да таго часу, пакуль яго не размутят. ",
                 "aliases": []
             },
             "unmute": {
-                "usage": "{0}unmute [@user || ID]",
-                "description": "This command pisses off the user, that is, he can send messages again.",
+                "usage": "{0}unmute [@карыстальнік || ID]",
+                "description": "Дадзеная каманда размучивает карыстальніка, гэта значыць ён зноў зможа адпраўляць паведамленні.",
                 "aliases": []
             },
             "setname": {
-                "usage": "{0}setname [@user || ID] [nick]",
-                "description": "This command sets a nickname for the user.",
+                "usage": "{0}setname [@карыстальнік || ID] [нікнэйм]",
+                "description": "Дадзеная каманда ўсталёўвае карыстачу нікнэйм.",
                 "aliases": [
                     "setnick",
                     "setname",
@@ -66,101 +66,101 @@
         }
     },
     "Utilities": {
-        "title": "Utilities",
+        "title": "Ўтыліты",
         "commands": {
             "user": {
-                "usage": "{0}user <@user. || ID>",
-                "description": "This command shows some information about the user that cannot be viewed in standard ways. For example, when it was registered, etc.",
+                "usage": "{0}user <@карыстальнік. || ID>",
+                "description": "Дадзеная каманда паказвае некаторую інфармацыю пра карыстальніка, якую нельга паглядзець штатным спосабамі. Напрмер, калі ён быў зарэгістраваны і г.д.",
                 "aliases": []
             },
             "channel": {
-                "usage": "{0}channel <#channel>",
-                "description": "This command displays information about the channel",
+                "usage": "{0}channel <#канал>",
+                "description": "Дадзеная каманда выводзіць інфармацыю аб канале",
                 "aliases": []
             },
             "server": {
                 "usage": "{0}server",
-                "description": "This command displays information about the server.",
+                "description": "Дадзеная каманда выводзіць інфармацыю аб серверы.",
                 "aliases": [
                     "guild"
                 ]
             },
             "emoji": {
-                "usage": "{0}emoji [emoji]",
-                "description": "This command displays the ID of a third-party emoticon and displays a full emoji picture, so that it can be downloaded.",
+                "usage": "{0}emoji [эмодзи]",
+                "description": "Дадзеная каманда выводзіць ID іншага смайліка і выдае поўную картнку эмодзи, дзякуючы чаму яе можна будзе спампаваць.",
                 "aliases": []
             },
             "avatar": {
-                "usage": "{0}avatar <@user. || ID>",
-                "description": "This command displays an avatar of a user or a bot, as well as a link to download it.",
+                "usage": "{0}avatar <@карыстальнік. || ID>",
+                "description": "Дадзеная каманда выводзіць аватар карыстальніка ці бота, а таксама спасылку на яе запампоўка.",
                 "aliases": []
             }
         }
     },
     "Music": {
-        "title": "Music",
+        "title": "Музыка",
         "commands": {
             "play": {
-                "usage": "play [url]",
-                "description": "Play Music/Video From youtube",
+                "usage": "play [спасылка на ютуб]",
+                "description": "Граць музыку з Youtube",
                 "aliases": []
             },
             "pause": {
                 "usage": "pause",
-                "description": "Pauses playback of track",
+                "description": "Прыпыніць прайграванне трэка",
                 "aliases": []
             },
             "resume": {
                 "usage": "resume",
-                "description": "Resumes playback of track",
+                "description": "Аднавіць прайграванне трэка",
                 "aliases": []
             },
             "stop": {
                 "usage": "stop",
-                "description": "Stops playback",
+                "description": "Выключае плэер і ачышчае чаргу",
                 "aliases": []
             },
             "skip": {
                 "usage": "skip",
-                "description": "Skips current track",
+                "description": "Пропуск бягучага трэка",
                 "aliases": []
             },
             "volume": {
-                "usage": "volume [volume between 1 and 100]",
-                "description": "Change volume",
+                "usage": "volume [гучнасць паміж 1 і 100]",
+                "description": "Налады гучнасці",
                 "aliases": []
             },
             "queue": {
                 "usage": "queue",
-                "description": "Look at queue list ",
+                "description": "Прагляд спісу чаргі",
                 "aliases": []
             }
         }
     },
     "Prefs": {
-        "title": "Preferences",
+        "title": "Налады",
         "commands": {
             "prefix": {
-                "usage": "{0}prefix [prefix]",
-                "description": "This command sets a unique prefix on the server.",
+                "usage": "{0} prefix [прэфікс]",
+                "description": "Дадзеная каманда ўсталёўвае унікальны прэфікс на сэрвэры.",
                 "aliases": []
             },
             "locale": {
-                "usage": "{0}locale [language]",
-                "description": "This command sets the bot language on the server. Available:\n```**en_EN**, **ru_RU**, **bel_BY**, **ua_UA**.```",
+                "usage": "{0} lang [мова]",
+                "description": "Дадзеная каманда ўсталёўвае мова бота на сэрвэры. Даступныя:\n```**en_EN**, **ru_RU**, **bel_BY**, **ua_UA**.```",
                 "aliases": [
                     "setlang",
-                    "lang"
+                    "locale"
                 ]
             }
         }
     },
     "Other": {
-        "title": "Other",
+        "title": "Прочее",
         "commands": {
             "ping": {
                 "usage": "{0}ping",
-                "description": "This command shows the latency of the host.",
+                "description": "Дадзеная каманда паказвае затрымку хаста.",
                 "aliases": []
             }
         }
