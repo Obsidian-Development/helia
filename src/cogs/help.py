@@ -90,12 +90,9 @@ class Help(Cog):
             if (command := get(self.bot.commands, name=cmd)):
                 await self.cmd_help(ctx, command)
             else:
-                await ctx.send("That command does not exist.") # PENDING EMBED CONVERSION 
+                await ctx.send("That command does not exist.") # PENDING EMBED CONVERSION
 
-    @Cog.listener()
-    async def on_ready(self):
-        if not self.bot.ready:
-            self.bot.cogs_ready.ready_up("help")
+
 
 
 def setup(bot):
