@@ -40,6 +40,11 @@ Source code on public github can be a bit behind hosted version since updates to
 
 Более подробную информацию о функциях бота можно увидеть в //help, и вы всегда можете внести свой вклад в улучшение бота, если знаете python, перейдя в репозиторий бота на github по адресу https://github.com/pieckenst/helia и сделать изменения сответствуя нашим требованиям для пул реквестов на https://github.com/pieckenst/helia/blob/master/CONTRIBUTING. Исходный код на общедоступном github может немного отставать от захосченной версии, поскольку обновления в него отправляются, когда накапливается достаточно изменений
 
+# CROWDIN
+
+Wamt to help us translate the bot to your language? 
+We appreciate your enthusiasm so head over to https://crowdin.com/project/helia to start helping us translate the bot 
+
 # BOT HOSTING GUIDE
 1. Create an .env file in src folder with this content
 DISCORD_TOKEN=your token without quotes, symbols, or anything
