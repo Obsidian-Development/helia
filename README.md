@@ -18,7 +18,7 @@
 [![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)](https://forthebadge.com)
 
 <div align="center">
-<h3 align="center">An open-source music and moderation bot made for your pleasure</h3>  
+<h3 align="center">An open-source music and moderation bot made for your pleasure</h3>
 <h3 align="center">Main bot features</h3>
 <h3 align="center"> Music </h3>
 <h3 align="center"> Moderation </h3>
