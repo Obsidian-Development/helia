@@ -31,6 +31,7 @@ from discord_slash import SlashCommand
 from dotenv import load_dotenv
 from slashify import Slashify
 from termcolor import cprint
+
 # from scripts import db # UNCOMMENT FOR DB CONNECTION
 
 loaded = False
