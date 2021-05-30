@@ -19,9 +19,7 @@ class Utilities(commands.Cog):
 
     @commands.command()
     @commands.guild_only()
-    async def user(self,
-                   ctx: Context,
-                   member: discord.Member = None) -> NoReturn:
+    async def user(self, ctx: Context, member: discord.Member = None) -> NoReturn:
         """Shows user information.
 
         Attributes:
@@ -49,11 +47,11 @@ class Utilities(commands.Cog):
 
         embed = discord.Embed(
             description=STRINGS["utilities"]["user_info"].format(
-                id, created_at, joined_at, username, stat, activ, color),
+                id, created_at, joined_at, username, stat, activ, color
+            ),
             color=color,
         )
-        embed.set_author(
-            name=STRINGS["utilities"]["user_info_title"].format(name, tag))
+        embed.set_author(name=STRINGS["utilities"]["user_info_title"].format(name, tag))
         embed.set_thumbnail(url=avatar)
 
         await ctx.send(embed=embed)
@@ -66,14 +64,13 @@ class Utilities(commands.Cog):
         lang = await s.get_field("locale", CONFIG["default_locale"])
         STRINGS = Strings(lang)
 
-        format = r"png" if re.sub(r"[\<]", r"",
-                                  emoji.split(":")[0]) == "" else "gif"
+        format = r"png" if re.sub(r"[\<]", r"", emoji.split(":")[0]) == "" else "gif"
         name = emoji.split(":")[1]
         id = re.sub(r"[\>]", r"", emoji.split(r":")[2])
 
         embed = discord.Embed(
-            title=STRINGS["utilities"]["emoji_info_title"].format(name),
-            color=0xEDA84E)
+            title=STRINGS["utilities"]["emoji_info_title"].format(name), color=0xEDA84E
+        )
         embed.set_image(url=f"https://cdn.discordapp.com/emojis/{id}.{format}")
         embed.set_footer(text=STRINGS["utilities"]["emoji_info"].format(id))
 
@@ -89,13 +86,13 @@ class Utilities(commands.Cog):
 
         if re.search(r"[@&\:]", channel) is None:
 
-            channel = discord.utils.get(ctx.guild.channels,
-                                        id=int(re.sub("[<#>]", "", channel)))
+            channel = discord.utils.get(
+                ctx.guild.channels, id=int(re.sub("[<#>]", "", channel))
+            )
 
-            if (channel.type
-                    == discord.ChannelType.text) or channel.type not in [
-                        discord.ChannelType.voice,
-                        discord.ChannelType.news,
+            if (channel.type == discord.ChannelType.text) or channel.type not in [
+                discord.ChannelType.voice,
+                discord.ChannelType.news,
             ]:
                 type = STRINGS["etc"]["channel_type"]["text"]
             elif channel.type == discord.ChannelType.voice:
@@ -113,11 +110,13 @@ class Utilities(commands.Cog):
 
             embed = discord.Embed(
                 description=STRINGS["utilities"]["channel_info"].format(
-                    id, type, created_at, is_nsfw),
+                    id, type, created_at, is_nsfw
+                ),
                 color=0xEDA84E,
             )
             embed.set_author(
-                name=STRINGS["utilities"]["channel_info_title"].format(name))
+                name=STRINGS["utilities"]["channel_info_title"].format(name)
+            )
             await ctx.send(embed=embed)
 
         else:
@@ -125,9 +124,7 @@ class Utilities(commands.Cog):
 
     @commands.command()
     @commands.guild_only()
-    async def avatar(self,
-                     ctx: Context,
-                     member: discord.Member = None) -> NoReturn:
+    async def avatar(self, ctx: Context, member: discord.Member = None) -> NoReturn:
         """Shows user's avatar.
 
         Attributes:
@@ -149,8 +146,7 @@ class Utilities(commands.Cog):
         embed = discord.Embed(
             color=0xEDA84E,
             title=STRINGS["utilities"]["avatar_info_title"].format(name, tag),
-            description=STRINGS["utilities"]["avatar_info"].format(
-                hash, avatar),
+            description=STRINGS["utilities"]["avatar_info"].format(hash, avatar),
         )
         embed.set_image(url=avatar)
 
@@ -208,11 +204,11 @@ class Utilities(commands.Cog):
 
         embed = discord.Embed(
             description=STRINGS["utilities"]["guild_info"].format(
-                id, created_at, members, f"<@!{owner.id}>", vf, cf),
+                id, created_at, members, f"<@!{owner.id}>", vf, cf
+            ),
             color=0xEDA84E,
         )
-        embed.set_author(
-            name=STRINGS["utilities"]["guild_info_title"].format(guild))
+        embed.set_author(name=STRINGS["utilities"]["guild_info_title"].format(guild))
         embed.set_thumbnail(url=icon)
         embed.set_image(url=banner)
 
