@@ -4,7 +4,8 @@ from typing import List
 
 import requests
 from dotenv import load_dotenv
-from quart import Quart, redirect, render_template_string, request, session, url_for
+from quart import (Quart, redirect, render_template_string, request, session,
+                   url_for)
 from quart_oauth2_discord_py import DiscordOauth2Client, Guild
 from quart_session import Session
 from requests_oauthlib import OAuth2Session
