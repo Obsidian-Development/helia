@@ -14,19 +14,23 @@ import json
 import os
 import random
 import sqlite3
-from os.path import abspath, dirname
+from os.path import abspath
+from os.path import dirname
 from typing import NoReturn
 
 import discord
 import requests
-from discord.ext import commands, tasks
+from cogs.utils import Config
+from cogs.utils import Logger
+from cogs.utils import Strings
+from cogs.utils import Utils
+from discord.ext import commands
+from discord.ext import tasks
 from discord.ext.commands import AutoShardedBot
 from discord_slash import SlashCommand
 from dotenv import load_dotenv
 from slashify import Slashify
 from termcolor import cprint
-
-from cogs.utils import Config, Logger, Strings, Utils
 
 # from scripts import db # UNCOMMENT FOR DB CONNECTION
 
