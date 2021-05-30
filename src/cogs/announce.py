@@ -27,16 +27,15 @@ class broadcast(commands.Cog):
             color=0x3B88C3,
         )
         author_name = f"{ctx.message.author}"
-        announcement.set_author(name=author_name,
-                                url=ctx.message.author.avatar_url)
+        announcement.set_author(name=author_name, url=ctx.message.author.avatar_url)
         announcement.add_field(
             name=STRINGS["general"]["announcesfieldtitle"],
             value=f"{ctx.message.guild.name}",
             inline=False,
         )
-        announcement.add_field(name=STRINGS["general"]["announcesfielddesc"],
-                               value=content,
-                               inline=True)
+        announcement.add_field(
+            name=STRINGS["general"]["announcesfielddesc"], value=content, inline=True
+        )
         announcement.set_footer(
             text=STRINGS["general"]["announcesfooter"],
             icon_url=ctx.message.guild.icon_url,

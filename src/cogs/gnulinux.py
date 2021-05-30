@@ -24,9 +24,9 @@ class gnulinux(commands.Cog):
         archl.set_thumbnail(
             url="https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Archlinux-vert-dark.svg/1280px-Archlinux-vert-dark.svg.png"
         )
-        archl.add_field(name="Suggestions",
-                        value="Install it yourself without gui",
-                        inline=True)
+        archl.add_field(
+            name="Suggestions", value="Install it yourself without gui", inline=True
+        )
         await ctx.send(embed=archl)
 
     @commands.command(description="Ubuntu linux description")
@@ -90,9 +90,9 @@ class gnulinux(commands.Cog):
         manjaro1.set_thumbnail(
             url="https://fost.ws/uploads/posts/2019-05/1557568788_manjaro-logo.png"
         )
-        manjaro1.add_field(name="Suggestions",
-                           value="Good for not complete noobs",
-                           inline=True)
+        manjaro1.add_field(
+            name="Suggestions", value="Good for not complete noobs", inline=True
+        )
         await ctx.send(embed=manjaro1)
 
     @commands.command(description="Linux Mint description")
@@ -106,9 +106,9 @@ class gnulinux(commands.Cog):
             color=0xB1EA77,
         )
         mint1.set_thumbnail(url="https://i.imgur.com/cyRjcbp.png")
-        mint1.add_field(name="Commentary",
-                        value="For housewives and noobs",
-                        inline=True)
+        mint1.add_field(
+            name="Commentary", value="For housewives and noobs", inline=True
+        )
         await ctx.send(embed=mint1)
 
 
