@@ -1,0 +1,3 @@
+files:
+  - source: src/data/locales
+    translation: src/data/locales/%locale_with_underscore%/
