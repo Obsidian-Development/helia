@@ -3,17 +3,11 @@ import asyncio
 from typing import NoReturn
 
 import discord
-from cogs.utils import Config
-from cogs.utils import Logger
-from cogs.utils import Settings
-from cogs.utils import Strings
-from cogs.utils import Utils
-from discord import Member
-from discord import User
+from discord import Member, User
 from discord.ext import commands
-from discord.ext.commands import Bot
-from discord.ext.commands import Context
-from discord.ext.commands import Greedy
+from discord.ext.commands import Bot, Context, Greedy
+
+from cogs.utils import Config, Logger, Settings, Strings, Utils
 
 CONFIG = Config()
 
