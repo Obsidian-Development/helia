@@ -4,17 +4,11 @@ import datetime
 from typing import NoReturn
 
 import discord
-from cogs.utils import Commands
-from cogs.utils import Config
-from cogs.utils import Logger
-from cogs.utils import Settings
-from cogs.utils import Strings
-from cogs.utils import Utils
-from discord import Guild
-from discord import Message
+from discord import Guild, Message
 from discord.ext import commands
-from discord.ext.commands import Bot
-from discord.ext.commands import Context
+from discord.ext.commands import Bot, Context
+
+from cogs.utils import Commands, Config, Logger, Settings, Strings, Utils
 
 CONFIG = Config()
 
