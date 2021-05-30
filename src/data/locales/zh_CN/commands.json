@@ -1,153 +1,153 @@
 {
     "General": {
-        "title": "General",
+        "title": "纵览",
         "commands": {
             "help": {
                 "usage": "{0}help",
-                "description": "Displays a complete list of commands.",
+                "description": "显示一个完整的命令列表。",
                 "aliases": []
             },
             "about": {
                 "usage": "{0}about",
-                "description": "Displays full information about the bot.",
+                "description": "显示关于机器人的完整信息。",
                 "aliases": []
             }
         }
     },
     "Moderation": {
-        "title": "Moderation",
+        "title": "调试",
         "commands": {
             "ban": {
                 "usage": "{0}ban [@user] <reason=\"N/A\">",
-                "description": "This command bans the user on the server. He will not be able to join the server by invitation until he is unbanned.",
+                "description": "此命令禁止服务器上的用户。他将无法通过邀请加入服务器，除非他被解除了禁令。",
                 "aliases": []
             },
             "kick": {
                 "usage": "{0}kick [@user] <reason=\"N/A\">",
-                "description": "This command kicks the user out of the server. But unlike a ban, a user can connect back to the server using the invitation link.",
+                "description": "此命令将用户踢出服务器。但与禁止不同，用户可以使用邀请链接重新连接到服务器。",
                 "aliases": []
             },
             "unban": {
                 "usage": "{0}unban [user#tag]",
-                "description": "This command will unlock the user on the server",
+                "description": "这个命令将解锁服务器上的用户",
                 "aliases": []
             },
             "multiban": {
                 "usage": "{0}multiban [@user1] <@user2> <@user3>...",
-                "description": "This command bans several users in a row. ** Please note that this command has not been tested and may not work correctly. **",
+                "description": "此命令禁止连续使用几个用户。** 请注意，此命令尚未测试，可能无法正常工作**",
                 "aliases": []
             },
             "purge": {
                 "usage": "{0}purge [number of messages]",
-                "description": "This command deletes a certain number of messages in the current channel.",
+                "description": "此命令删除当前频道中的一定数量的消息。",
                 "aliases": [
                     "clear"
                 ]
             },
             "mute": {
                 "usage": "{0}mute [@user || ID]",
-                "description": "This command muddies a person, that is, he will not be able to send messages on any channel until he is muddied.",
+                "description": "这个命令使一个人受到骚扰，即他在任何频道上都不能发出消息，直到他被人被骚扰为止。",
                 "aliases": []
             },
             "unmute": {
                 "usage": "{0}unmute [@user || ID]",
-                "description": "This command pisses off the user, that is, he can send messages again.",
+                "description": "这个命令将用户关闭，也就是说，他可以再次发送消息。",
                 "aliases": []
             },
             "setname": {
                 "usage": "{0}setname [@user || ID] [nick]",
-                "description": "This command sets a nickname for the user.",
+                "description": "此命令为用户设置一个昵称",
                 "aliases": [
                     "setnick",
                     "setname",
-                    "nick"
+                    "昵称"
                 ]
             }
         }
     },
     "Utilities": {
-        "title": "Utilities",
+        "title": "实用程序",
         "commands": {
             "user": {
                 "usage": "{0}user <@user. || ID>",
-                "description": "This command shows some information about the user that cannot be viewed in standard ways. For example, when it was registered, etc.",
+                "description": "此命令显示一些关于用户的信息，不能以标准方式查看。例如，当它被注册时等等。",
                 "aliases": []
             },
             "channel": {
                 "usage": "{0}channel <#channel>",
-                "description": "This command displays information about the channel",
+                "description": "此命令显示有关频道的信息",
                 "aliases": []
             },
             "server": {
                 "usage": "{0}server",
-                "description": "This command displays information about the server.",
+                "description": "此命令显示关于服务器的信息。",
                 "aliases": [
                     "guild"
                 ]
             },
             "emoji": {
                 "usage": "{0}emoji [emoji]",
-                "description": "This command displays the ID of a third-party emoticon and displays a full emoji picture, so that it can be downloaded.",
+                "description": "此命令显示第三方表情的ID并显示完整的表情图片，以便可以下载。",
                 "aliases": []
             },
             "avatar": {
                 "usage": "{0}avatar <@user. || ID>",
-                "description": "This command displays an avatar of a user or a bot, as well as a link to download it.",
+                "description": "此命令显示一个用户或机器人的头像以及下载它的链接。",
                 "aliases": []
             }
         }
     },
-	"Music": {
-		"title": "Music",
-		"commands": {
-			"play": {
-				"usage": "play [url]",
-				"description": "Play Music/Video From youtube",
-				"aliases": []
-			},
-			"pause": {
-				"usage": "pause",
-				"description": "Pauses playback of track",
-				"aliases": []
-			},
-			"resume": {
-				"usage": "resume",
-				"description": "Resumes playback of track",
-				"aliases": []
-			},
-			"stop": {
-				"usage": "stop",
-				"description": "Stops playback",
-				"aliases": []
-			},
-      "skip":	{
-        "usage": "skip",
-				"description": "Skips current track",
-				"aliases": []
-			},
-			"volume":	{
-        "usage": "volume [volume between 1 and 100]",
-				"description": "Change volume",
-				"aliases": []
-			},
-			"queue":	{
+    "Music": {
+        "title": "音乐",
+        "commands": {
+            "play": {
+                "usage": "play [url]",
+                "description": "从年轻人开始音乐/视频",
+                "aliases": []
+            },
+            "pause": {
+                "usage": "pause",
+                "description": "暂停播放曲目",
+                "aliases": []
+            },
+            "resume": {
+                "usage": "resume",
+                "description": "恢复播放曲目",
+                "aliases": []
+            },
+            "stop": {
+                "usage": "stop",
+                "description": "停止回放",
+                "aliases": []
+            },
+            "skip": {
+                "usage": "skip",
+                "description": "跳过当前曲目",
+                "aliases": []
+            },
+            "volume": {
+                "usage": "卷[1至100之间]",
+                "description": "变更音量",
+                "aliases": []
+            },
+            "queue": {
                 "usage": "queue",
-				"description": "Look at queue list ",
-				"aliases": []
-			}
-		}
-	},
+                "description": "查看队列列表 ",
+                "aliases": []
+            }
+        }
+    },
     "Prefs": {
-        "title": "Preferences",
+        "title": "偏好设置",
         "commands": {
             "prefix": {
                 "usage": "{0}prefix [prefix]",
-                "description": "This command sets a unique prefix on the server.",
+                "description": "此命令在服务器上设置一个唯一的前缀",
                 "aliases": []
             },
             "locale": {
                 "usage": "{0}locale [language]",
-                "description": "This command sets the bot language on the server. Available:\n```**en_EN**, **ru_RU**, **bel_BY**, **ua_UA**.```",
+                "description": "此命令设置服务器上的机器人语言。可用：\n```**en_EN**、**ru_RU**、**bel_BY**、**ua_UA**```",
                 "aliases": [
                     "setlang",
                     "lang"
@@ -156,11 +156,11 @@
         }
     },
     "Other": {
-        "title": "Other",
+        "title": "其它",
         "commands": {
             "ping": {
                 "usage": "{0}ping",
-                "description": "This command shows the latency of the host.",
+                "description": "这个命令显示主机的延迟性。",
                 "aliases": []
             }
         }
