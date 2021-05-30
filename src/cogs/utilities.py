@@ -66,10 +66,10 @@ class Utilities(commands.Cog):
         lang = await s.get_field("locale", CONFIG["default_locale"])
         STRINGS = Strings(lang)
 
-        format = "png" if re.sub("[\<]", "",
+        format = r"png" if re.sub(r"[\<]", r"",
                                  emoji.split(":")[0]) == "" else "gif"
         name = emoji.split(":")[1]
-        id = re.sub("[\>]", "", emoji.split(":")[2])
+        id = re.sub(r"[\>]", r"", emoji.split(r":")[2])
 
         embed = discord.Embed(
             title=STRINGS["utilities"]["emoji_info_title"].format(name),
@@ -87,7 +87,7 @@ class Utilities(commands.Cog):
         lang = await s.get_field("locale", CONFIG["default_locale"])
         STRINGS = Strings(lang)
 
-        if re.search("[@&\:]", channel) is None:
+        if re.search(r"[@&\:]", channel) is None:
 
             channel = discord.utils.get(ctx.guild.channels,
                                         id=int(re.sub("[<#>]", "", channel)))
