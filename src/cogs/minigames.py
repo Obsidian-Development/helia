@@ -24,9 +24,8 @@ class minigames(commands.Cog):
         lang = await s.get_field("locale", CONFIG["default_locale"])
         STRINGS = Strings(lang)
         kuboid = random.choice(games.kubik)
-        embedkub = discord.Embed(
-            title=STRINGS["other"]["rollcubetitle"], color=0x00FF00
-        )
+        embedkub = discord.Embed(title=STRINGS["other"]["rollcubetitle"],
+                                 color=0x00FF00)
         embedkub.add_field(name="You Got:", value=kuboid, inline=False)
         await ctx.send(embed=embedkub)
 
@@ -36,9 +35,8 @@ class minigames(commands.Cog):
         lang = await s.get_field("locale", CONFIG["default_locale"])
         STRINGS = Strings(lang)
         mon = random.choice(games.monet)
-        embedmonet = discord.Embed(
-            title=STRINGS["other"]["cointosstitle"], color=0x00FF00
-        )
+        embedmonet = discord.Embed(title=STRINGS["other"]["cointosstitle"],
+                                   color=0x00FF00)
         embedmonet.add_field(name="You Got:", value=mon, inline=False)
         await ctx.send(embed=embedmonet)
 
@@ -50,10 +48,17 @@ class minigames(commands.Cog):
         kasino1 = random.choice(games.casin_obj1)
         kasino2 = random.choice(games.casin_obj2)
         kasino3 = random.choice(games.casin_obj3)
-        embedkas = discord.Embed(title=STRINGS["other"]["casinotitle"], color=0x00FF00)
-        embedkas.add_field(name=STRINGS["other"]["rolled"], value=kasino1, inline=True)
-        embedkas.add_field(name=STRINGS["other"]["rolled"], value=kasino2, inline=True)
-        embedkas.add_field(name=STRINGS["other"]["rolled"], value=kasino3, inline=True)
+        embedkas = discord.Embed(title=STRINGS["other"]["casinotitle"],
+                                 color=0x00FF00)
+        embedkas.add_field(name=STRINGS["other"]["rolled"],
+                           value=kasino1,
+                           inline=True)
+        embedkas.add_field(name=STRINGS["other"]["rolled"],
+                           value=kasino2,
+                           inline=True)
+        embedkas.add_field(name=STRINGS["other"]["rolled"],
+                           value=kasino3,
+                           inline=True)
         await ctx.send(embed=embedkas)
 
 

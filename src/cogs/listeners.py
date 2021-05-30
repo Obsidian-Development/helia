@@ -37,7 +37,9 @@ class Listeners(commands.Cog, name="Listeners"):
             description=STRINGS["general"]["aboutdesc"],
             color=0xFF6900,
         )
-        embed.add_field(name=STRINGS["general"]["aboutver"], value=ver, inline=True)
+        embed.add_field(name=STRINGS["general"]["aboutver"],
+                        value=ver,
+                        inline=True)
         embed.add_field(
             name=STRINGS["general"]["aboutauthoroninvitetitle"],
             value=STRINGS["general"]["aboutauthoroninvite"],
@@ -49,7 +51,8 @@ class Listeners(commands.Cog, name="Listeners"):
             inline=True,
         )
         # embed.add_field(name=STRINGS['general']['aboutthanks'], value=STRINGS['general']['aboutthankstext'],inline=False)
-        embed.set_footer(text=self.bot.user.name, icon_url=self.bot.user.avatar_url)
+        embed.set_footer(text=self.bot.user.name,
+                         icon_url=self.bot.user.avatar_url)
 
         for channel in guild.text_channels:
             if channel.permissions_for(guild.me).send_messages:
@@ -59,7 +62,8 @@ class Listeners(commands.Cog, name="Listeners"):
     @commands.Cog.listener()
     async def on_command(self, ctx: Context) -> NoReturn:
         """Logging commands to the console."""
-        Logger.command_used(ctx.message.author, ctx.command.name, ctx.message.guild)
+        Logger.command_used(ctx.message.author, ctx.command.name,
+                            ctx.message.guild)
 
     @commands.Cog.listener()
     async def on_message(self, message: Message) -> NoReturn:
@@ -73,16 +77,16 @@ class Listeners(commands.Cog, name="Listeners"):
             pass
         else:
             if message.content in [
-                f"<@!{self.bot.user.id}>",
-                f"<@{self.bot.user.id}>",
-                f"@{self.bot.user}",
+                    f"<@!{self.bot.user.id}>",
+                    f"<@{self.bot.user.id}>",
+                    f"@{self.bot.user}",
             ]:
-                await message.channel.send(
-                    STRINGS["etc"]["on_mention"].format(message.author.id, prefix)
-                )
+                await message.channel.send(STRINGS["etc"]["on_mention"].format(
+                    message.author.id, prefix))
 
     @commands.Cog.listener()
-    async def on_command_error(self, ctx: Context, error: Exception) -> NoReturn:
+    async def on_command_error(self, ctx: Context,
+                               error: Exception) -> NoReturn:
         """If an unexpected error occurs, it displays an... error message?
 
         Attributes:
@@ -103,30 +107,21 @@ class Listeners(commands.Cog, name="Listeners"):
             prefix = await s.get_field("prefix", CONFIG["default_prefix"])
 
             if ctx.command.cog.name != "Jishaku":
-                embed = Utils.error_embed(
-                    STRINGS["etc"]["usage"].format(
-                        COMMANDS[ctx.command.cog.name]["commands"][ctx.command.name][
-                            "usage"
-                        ].format(prefix)
-                    )
-                )
+                embed = Utils.error_embed(STRINGS["etc"]["usage"].format(
+                    COMMANDS[ctx.command.cog.name]["commands"][
+                        ctx.command.name]["usage"].format(prefix)))
         elif isinstance(error, commands.MissingPermissions):
             embed = Utils.error_embed(STRINGS["error"]["missing_perms"])
 
         elif isinstance(error, commands.BotMissingPermissions):
             embed = Utils.error_embed(
-                STRINGS["error"]["missing_bot_perms"].format(
-                    " ".join(
-                        "+ " + STRINGS["etc"]["permissions"][f"{perm}"]
-                        for perm in error.missing_perms
-                    )
-                )
-            )
+                STRINGS["error"]["missing_bot_perms"].format(" ".join(
+                    "+ " + STRINGS["etc"]["permissions"][f"{perm}"]
+                    for perm in error.missing_perms)))
 
         elif isinstance(error, commands.CommandOnCooldown):
-            embed = Utils.error_embed(
-                STRINGS["error"]["cooldown"].format(error.retry_after)
-            )
+            embed = Utils.error_embed(STRINGS["error"]["cooldown"].format(
+                error.retry_after))
 
         elif isinstance(error, commands.errors.NSFWChannelRequired):
             embed = discord.Embed(
@@ -143,7 +138,8 @@ class Listeners(commands.Cog, name="Listeners"):
         else:
             embed = discord.Embed(color=0xDD0000)
             embed.title = STRINGS["error"]["on_error_title"]
-            embed.description = STRINGS["error"]["on_error_text"].format(str(error))
+            embed.description = STRINGS["error"]["on_error_text"].format(
+                str(error))
             Logger.warn(str(error))
 
         msg = await ctx.send(embed=embed)
