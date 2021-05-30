@@ -102,6 +102,7 @@ class Helia(commands.AutoShardedBot):
 
     @tasks.loop(seconds=80)
     async def changeStatus(self):
+        await asyncio.sleep(65)
         await self.change_presence(status=discord.Status.online, activity=random.choice(self.statuses))
 
     async def on_connect(self):
