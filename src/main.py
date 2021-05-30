@@ -104,7 +104,7 @@ class Helia(commands.AutoShardedBot):
     async def changeStatus(self):
         await asyncio.sleep(40)
         print("---------------------------")
-        print("[DYNAMIC-STATUS] Starting the dynamic status loop")
+        print("[DYNAMIC-STATUS] Dynamic status changed")
         print("---------------------------")
         await self.change_presence(status=discord.Status.online, activity=random.choice(self.statuses))
 
