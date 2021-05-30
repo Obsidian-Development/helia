@@ -40,7 +40,9 @@
       "purge": {
         "usage": "{0}purge [number of messages]",
         "description": "此命令删除当前频道中的一定数量的消息。",
-        "aliases": ["clear"]
+        "aliases": [
+          "clear"
+        ]
       },
       "mute": {
         "usage": "{0}mute [@user || ID]",
@@ -55,7 +57,11 @@
       "setname": {
         "usage": "{0}setname [@user || ID] [nick]",
         "description": "此命令为用户设置一个昵称",
-        "aliases": ["setnick", "setname", "昵称"]
+        "aliases": [
+          "setnick",
+          "setname",
+          "昵称"
+        ]
       }
     }
   },
@@ -75,7 +81,9 @@
       "server": {
         "usage": "{0}server",
         "description": "此命令显示关于服务器的信息。",
-        "aliases": ["guild"]
+        "aliases": [
+          "guild"
+        ]
       },
       "emoji": {
         "usage": "{0}emoji [emoji]",
@@ -140,7 +148,10 @@
       "locale": {
         "usage": "{0}locale [language]",
         "description": "此命令设置服务器上的机器人语言。可用：\n```**en_EN**、**ru_RU**、**bel_BY**、**ua_UA**```",
-        "aliases": ["setlang", "lang"]
+        "aliases": [
+          "setlang",
+          "lang"
+        ]
       }
     }
   },
