@@ -2,9 +2,12 @@
 import os
 
 from dotenv import load_dotenv
-from flask import Flask, redirect, url_for
-from flask_discord import (DiscordOAuth2Session, Unauthorized,
-                           requires_authorization)
+from flask import Flask
+from flask import redirect
+from flask import url_for
+from flask_discord import DiscordOAuth2Session
+from flask_discord import requires_authorization
+from flask_discord import Unauthorized
 
 app = Flask(__name__)
 
