@@ -23,6 +23,7 @@ class Workers(commands.Cog):
 
         """
         while True:
+            await asyncio.sleep(65)
             print("[SDC] Looping update request")
             print("Debug information")
             print("Number of guilds:")
