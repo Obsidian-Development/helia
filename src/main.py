@@ -54,7 +54,7 @@ class Helia(commands.AutoShardedBot):
             discord.Activity(type=discord.ActivityType.watching, name=f"{len(self.guilds)} servers | {len(self.shards)} shards!"),
             discord.Activity(type=discord.ActivityType.watching, name="Ping me for prefix"),
             discord.Activity(type=discord.ActivityType.listening, name="Dont forget to bump the bot every 3 hours on bot lists!"),
-            discord.Game(name="//help for info"),
+            discord.Game(name=f"{self.command_prefix}help for info"),
             discord.Activity(type=discord.ActivityType.listening, name="to my creator Middlle#7488"),
             discord.Game(name="Final Fantasy XIV"),
             discord.Activity(type=discord.ActivityType.watching, name="our support server https://discord.gg/7uUBM8mKbu"),
