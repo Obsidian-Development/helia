@@ -1,20 +1,14 @@
 # -*- coding: utf-8 -*-
 import asyncio
-from os.path import abspath
-from os.path import dirname
+from os.path import abspath, dirname
 from typing import NoReturn
 
 import discord
-from cogs.utils import Config
-from cogs.utils import Logger
-from cogs.utils import Settings
-from cogs.utils import Strings
-from cogs.utils import Utils
 from discord.ext import commands
-from discord.ext.commands import Bot
-from discord.ext.commands import Context
-from discord_slash import cog_ext
-from discord_slash import SlashContext
+from discord.ext.commands import Bot, Context
+from discord_slash import SlashContext, cog_ext
+
+from cogs.utils import Config, Logger, Settings, Strings, Utils
 
 CONFIG = Config()
 STRINGS = Strings(CONFIG["default_locale"])
