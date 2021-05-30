@@ -1,5 +1,4 @@
 # LOCALIZATION SUPPORT NEEDS IMPLEMENTING
-
 import asyncio
 
 import discord
