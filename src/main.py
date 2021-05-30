@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-#/********************************************************************************
+# /********************************************************************************
 # * Copyright (c) 2021 Middlle#7488
 # *
 # * This program and the accompanying materials are made available under the
@@ -36,13 +36,15 @@ import random
 
 loaded = False
 
+
 class Helia(commands.AutoShardedBot):
     def __init__(self):
         super().__init__(
             command_prefix=Utils.get_prefix,
             case_insensitive=True,
             help_command=None,
-            intents=discord.Intents.default() # Default intent specified - verified bots will refuse to start with all intents requested.
+            # Default intent specified - verified bots will refuse to start with all intents requested.
+            intents=discord.Intents.default()
             # intents.members = True # Commented line for requesting members privileged intent - uncomment for enabling
             # intents.presences = True # Commented line for requesting presence privileged intent - uncomment for enabling
         )
@@ -51,15 +53,21 @@ class Helia(commands.AutoShardedBot):
         STRINGS = Strings(CONFIG['default_locale'])
         self.filepath = dirname(abspath(__file__))
         self.statuses = [
-            #discord.Activity(type=discord.ActivityType.watching, name=f"{len(self.bot.guilds)} servers | {len(self.bot.shards)} shards!"), # bugged status - uncomment after fix
-            discord.Activity(type=discord.ActivityType.watching, name="Ping me for prefix"),
-            discord.Activity(type=discord.ActivityType.listening, name="Dont forget to bump the bot every 3 hours on bot lists!"),
+            # discord.Activity(type=discord.ActivityType.watching, name=f"{len(self.bot.guilds)} servers | {len(self.bot.shards)} shards!"), # bugged status - uncomment after fix
+            discord.Activity(type=discord.ActivityType.watching,
+                             name="Ping me for prefix"),
+            discord.Activity(type=discord.ActivityType.listening,
+                             name="Dont forget to bump the bot every 3 hours on bot lists!"),
             discord.Game(name=f"{Utils.get_prefix}help for info"),
-            discord.Activity(type=discord.ActivityType.listening, name="to my creator Middlle#7488"),
+            discord.Activity(type=discord.ActivityType.listening,
+                             name="to my creator Middlle#7488"),
             discord.Game(name="Final Fantasy XIV"),
-            discord.Activity(type=discord.ActivityType.watching, name="our support server https://discord.gg/7uUBM8mKbu"),
-            discord.Game(name="Deep inside, we're nothing more than scions and sinners"),
-            discord.Activity(type=discord.ActivityType.watching, name="headbanging")
+            discord.Activity(type=discord.ActivityType.watching,
+                             name="our support server https://discord.gg/7uUBM8mKbu"),
+            discord.Game(
+                name="Deep inside, we're nothing more than scions and sinners"),
+            discord.Activity(
+                type=discord.ActivityType.watching, name="headbanging")
         ]
 
         load_dotenv()
@@ -74,7 +82,7 @@ class Helia(commands.AutoShardedBot):
         Slashify(self)
         global loaded
 
-        if not loaded: # using this so the bot doesn't initialize a second time when trying to get variables or functions
+        if not loaded:  # using this so the bot doesn't initialize a second time when trying to get variables or functions
             print("Loading cogs:")
             for filename in os.listdir(self.filepath + '/cogs'):
                 if filename.endswith('.py'):
@@ -113,26 +121,31 @@ class Helia(commands.AutoShardedBot):
 
     async def on_ready(self):
         print("---------------------------")
-        print("[SUCCESS] Started Helia Discord bot")  # launch information thing
+        # launch information thing
+        print("[SUCCESS] Started Helia Discord bot")
         # print("[DB] Database Present and ready") # DATABASE CONNECT LOG
         print("---------------------------")
-        self.changeStatus.start() # dynamic status starting thing - can be disabled by commenting this line
+        # dynamic status starting thing - can be disabled by commenting this line
+        self.changeStatus.start()
         # db.control() # UNCOMMENT FOR DB CONNECTION
+
 
 def add_to_guild(access_token, userID):
     url = f"{Oauth.discord_api_url}/guilds/{816985615811608616}/members/{userID}"
     headers = {
-        "Authorization" : f"Bot {access_token}",
+        "Authorization": f"Bot {access_token}",
         'Content-Type': 'application/json'
     }
 
     data = {
-        "access_token" : access_token
+        "access_token": access_token
     }
 
     response = requests.put(url=url, json=data, headers=headers)
     print(response.text)
 
+
 if __name__ == "__main__":
     bot = Helia()
-    bot.run(bot.TOKEN) #securize token in a .env - safer compared to storing in config.json
+    # securize token in a .env - safer compared to storing in config.json
+    bot.run(bot.TOKEN)
