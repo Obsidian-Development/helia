@@ -51,7 +51,7 @@ class Helia(commands.AutoShardedBot):
         STRINGS = Strings(CONFIG['default_locale'])
         self.filepath = dirname(abspath(__file__))
         self.statuses = [
-            discord.Activity(type=discord.ActivityType.watching, name=f"{len(self.guilds)} servers | {len(self.shards)} shards!"),
+            #discord.Activity(type=discord.ActivityType.watching, name=f"{len(self.bot.guilds)} servers | {len(self.bot.shards)} shards!"), # bugged status - uncomment after fix
             discord.Activity(type=discord.ActivityType.watching, name="Ping me for prefix"),
             discord.Activity(type=discord.ActivityType.listening, name="Dont forget to bump the bot every 3 hours on bot lists!"),
             discord.Game(name=f"{self.command_prefix}help for info"),
