@@ -79,6 +79,16 @@
         "maintenance",
         "doc"
       ]
+    },
+    {
+      "login": "kyelmao",
+      "name": "Kye",
+      "avatar_url": "https://avatars.githubusercontent.com/u/71964154?v=4",
+      "profile": "https://blacktooth-bot.com/",
+      "contributions": [
+        "code",
+        "talk"
+      ]
     }
   ],
   "contributorsPerLine": 7

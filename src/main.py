@@ -51,10 +51,10 @@ class Helia(commands.AutoShardedBot):
         STRINGS = Strings(CONFIG['default_locale'])
         self.filepath = dirname(abspath(__file__))
         self.statuses = [
-            discord.Activity(type=discord.ActivityType.watching, name=f"{len(self.guilds)} servers | {len(self.shards)} shards!"),
+            #discord.Activity(type=discord.ActivityType.watching, name=f"{len(self.bot.guilds)} servers | {len(self.bot.shards)} shards!"), # bugged status - uncomment after fix
             discord.Activity(type=discord.ActivityType.watching, name="Ping me for prefix"),
             discord.Activity(type=discord.ActivityType.listening, name="Dont forget to bump the bot every 3 hours on bot lists!"),
-            discord.Game(name="//help for info"),
+            discord.Game(name=f"{self.command_prefix}help for info"),
             discord.Activity(type=discord.ActivityType.listening, name="to my creator Middlle#7488"),
             discord.Game(name="Final Fantasy XIV"),
             discord.Activity(type=discord.ActivityType.watching, name="our support server https://discord.gg/7uUBM8mKbu"),
@@ -104,7 +104,7 @@ class Helia(commands.AutoShardedBot):
     async def changeStatus(self):
         await asyncio.sleep(40)
         print("---------------------------")
-        print("[DYNAMIC-STATUS] Starting the dynamic status loop")
+        print("[DYNAMIC-STATUS] Dynamic status changed")
         print("---------------------------")
         await self.change_presence(status=discord.Status.online, activity=random.choice(self.statuses))
 
