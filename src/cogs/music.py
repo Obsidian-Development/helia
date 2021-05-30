@@ -8,13 +8,9 @@ from enum import Enum
 import discord
 import humanize
 import wavelink
-from cogs.utils import Commands
-from cogs.utils import Config
-from cogs.utils import Logger
-from cogs.utils import Settings
-from cogs.utils import Strings
-from cogs.utils import Utils
 from discord.ext import commands
+
+from cogs.utils import Commands, Config, Logger, Settings, Strings, Utils
 
 # from logging_files.music_log import logger
 
