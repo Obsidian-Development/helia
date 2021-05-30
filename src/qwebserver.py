@@ -19,8 +19,7 @@ load_dotenv()
 TOKENBOT = os.getenv("DISCORD_TOKEN")
 app = Quart(__name__)
 app.secret_key = (
-    b"\x92\xc2\x11\x9a\x87\xa85\t:iLjX\xd4\xe3\xbf\x9b\xf8s\x0b\xa7,\xda\xc4"
-)
+    b"\x92\xc2\x11\x9a\x87\xa85\t:iLjX\xd4\xe3\xbf\x9b\xf8s\x0b\xa7,\xda\xc4")
 app.config["DISCORD_CLIENT_ID"] = "671612079106424862"
 app.config["DISCORD_CLIENT_SECRET"] = "put your own"
 app.config["SCOPES"] = ["identify", "guilds"]
@@ -49,12 +48,12 @@ async def callback():
     await client.callback()
     code = request.args.get("code")
     print(code)
-    oauth = OAuth2Session(
-        app.config["DISCORD_CLIENT_ID"], redirect_uri=app.config["DISCORD_REDIRECT_URI"]
-    )
+    oauth = OAuth2Session(app.config["DISCORD_CLIENT_ID"],
+                          redirect_uri=app.config["DISCORD_REDIRECT_URI"])
     token = oauth.fetch_token(
-        token_url, client_secret=app.config["DISCORD_CLIENT_SECRET"], code=code
-    )
+        token_url,
+        client_secret=app.config["DISCORD_CLIENT_SECRET"],
+        code=code)
     print(token)
     data = {
         "client_id": app.config["DISCORD_CLIENT_ID"],
@@ -78,27 +77,19 @@ async def callback():
 def return_guild_names_owner(guilds_: List[Guild]):
     # print(list(sorted([fetch_guild.name for fetch_guild in guilds_ if fetch_guild.is_owner_of_guild()])))
     return list(
-        sorted(
-            [
-                fetch_guild.name
-                for fetch_guild in guilds_
-                if fetch_guild.is_owner_of_guild()
-            ]
-        )
-    )
+        sorted([
+            fetch_guild.name for fetch_guild in guilds_
+            if fetch_guild.is_owner_of_guild()
+        ]))
 
 
 def search_guilds_for_name(guilds_, query):
     # print(list(sorted([fetch_guild.name for fetch_guild in guilds_ if fetch_guild.is_owner_of_guild() and fetch_guild.name == query])))
     return list(
-        sorted(
-            [
-                fetch_guild.name
-                for fetch_guild in guilds_
-                if fetch_guild.is_owner_of_guild() and fetch_guild.name == query
-            ]
-        )
-    )
+        sorted([
+            fetch_guild.name for fetch_guild in guilds_
+            if fetch_guild.is_owner_of_guild() and fetch_guild.name == query
+        ]))
 
 
 @app.route("/guilds")
@@ -123,9 +114,8 @@ async def guilds():
     if request.args.get("guild_name"):
         return await render_template_string(
             template_string,
-            guild_names=search_guilds_for_name(
-                await client.fetch_guilds(), request.args.get("guild_name")
-            ),
+            guild_names=search_guilds_for_name(await client.fetch_guilds(),
+                                               request.args.get("guild_name")),
         )
     return await render_template_string(
         template_string,
