@@ -103,11 +103,11 @@ class Admin(commands.Cog, name="Admin"):
                 description=STRINGS["moderation"]["shutdownembeddesc"],
                 color=0xFF8000,
             )
-            embed.set_footer(text=self.bot.user.name,
-                             icon_url=self.bot.user.avatar_url)
+            embed.set_footer(text=self.bot.user.name, icon_url=self.bot.user.avatar_url)
             await ctx.send(embed=embed)
-            await ctx.bot.change_presence(activity=discord.Game(
-                name="Shutting down for either reboot or update "))
+            await ctx.bot.change_presence(
+                activity=discord.Game(name="Shutting down for either reboot or update ")
+            )
             await asyncio.sleep(5)
             print("---------------------------")
             print("[SHUTDOWN] Shutdown requested by bot owner")
@@ -137,8 +137,7 @@ class Admin(commands.Cog, name="Admin"):
             "497406228364787717",
         ]
         if str(author.id) in valid_users:
-            await self.bot.change_presence(
-                activity=discord.Game(" ".join(args)))
+            await self.bot.change_presence(activity=discord.Game(" ".join(args)))
             embed = discord.Embed(
                 title=STRINGS["moderation"]["setstatustext"],
                 description=STRINGS["moderation"]["setstatusdesc"],
@@ -149,8 +148,7 @@ class Admin(commands.Cog, name="Admin"):
                 value=STRINGS["moderation"]["setstatusfielddesc"],
                 inline=True,
             )
-            embed.set_footer(text=self.bot.user.name,
-                             icon_url=self.bot.user.avatar_url)
+            embed.set_footer(text=self.bot.user.name, icon_url=self.bot.user.avatar_url)
         else:
             embed = discord.Embed(
                 title="You failed",
@@ -196,8 +194,7 @@ class Admin(commands.Cog, name="Admin"):
             value=f"https://bots.ondiscord.xyz/bots/{self.bot.user.id}",
             inline=True,
         )
-        embed.set_footer(text=self.bot.user.name,
-                         icon_url=self.bot.user.avatar_url)
+        embed.set_footer(text=self.bot.user.name, icon_url=self.bot.user.avatar_url)
         await ctx.send(embed=embed)
 
     # @commands.command()
