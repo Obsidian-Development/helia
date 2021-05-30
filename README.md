@@ -43,7 +43,7 @@ Source code on public github can be a bit behind hosted version since updates to
 # CROWDIN
 
 Wamt to help us translate the bot to your language? 
-We appreciate your enthusiasm so head over to https://crowdin.com/project/helia to start helping us translate the bot 
+We appreciate your enthusiasm so head over to https://crwd.in/helia to start helping us translate the bot 
 
 # BOT HOSTING GUIDE
 1. Create an .env file in src folder with this content
