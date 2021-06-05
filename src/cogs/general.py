@@ -193,7 +193,7 @@ class General(commands.Cog, name="General"):
                               color=0xFF8040)
         embed.add_field(
             name="Terminology",
-            value="Server Administrator \n Any user who has the permission, ability, or access to add or configure our bot on the server. \n Server Member \n Any user who is a member of a server where Helia is present on.",
+            value="Server Administrator \n Any user who has the permission, ability, or access to add or configure our bot on the server. \nServer Member \n Any user who is a member of a server where Helia is present on.",
             inline=True,
         )
         embed.add_field(
@@ -213,7 +213,7 @@ class General(commands.Cog, name="General"):
         )
         embed.add_field(
             name="Security",
-            value="I value your trust in providing us your Personal Information, thus we are striving to use commercially acceptable means of protecting it. But remember that no method of transmission over the internet, or method of electronic storage is 100% secure and         reliable, and I cannot guarantee its absolute security.",
+            value="I value your trust in providing us your Personal Information, thus we are striving to use commercially acceptable means of protecting it. But remember that no method of transmission over the internet, or method of electronic storage is 100% secure and reliable, and I cannot guarantee its absolute security.",
             inline=True,
         )
         embed.add_field(
