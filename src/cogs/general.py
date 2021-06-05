@@ -14,7 +14,6 @@ from scripts import blacklist
 
 CONFIG = Config()
 
-
 class General(commands.Cog, name="General"):
     def __init__(self, bot) -> None:
         self.bot = bot
@@ -160,7 +159,7 @@ class General(commands.Cog, name="General"):
         s = await Settings(ctx.guild.id)
         lang = await s.get_field("locale", CONFIG["default_locale"])
         STRINGS = Strings(lang)
-        path = "src/scripts/version.txt"
+        path = "scripts/version.txt"
         with open(path, "r") as file:
             ver = file.readline()
         embed = discord.Embed(
@@ -185,8 +184,20 @@ class General(commands.Cog, name="General"):
         embed.set_footer(text=self.bot.user.name,
                          icon_url=self.bot.user.avatar_url)
         await ctx.send(embed=embed)
-
-
+    
+    @commands.guild_only()
+    @commands.command()
+    async def privacy(self, ctx: Context):
+        embed=discord.Embed(title="Information", description=":sunny: Privacy Policy", color=0xff8040)
+        embed.add_field(name="Terminology", value="Server Administrator \n Any user who has the permission, ability, or access to add or configure our bot           on the server. \n Server Member \n Any user who is a member of a server where Helia is present on.", inline=True)
+        embed.add_field(name="Data Collected for server configuration", value="The following may be collected when you use the server administrator commands         to set up the bot the way you see fit", inline=True)
+        embed.add_field(name="\u2800", value="Server configurations (guild_id,channel_id, role_id, bot locale , custom prefix setting) - Which are used for         setting your welcome and goodbye channels , your server prefix and setting the language you wish the bot to speak", inline=True)
+        embed.add_field(name="Logging", value="We log the following things about you \n Commands you use in your server ( which means , server name and the         nickname of command invoker are stored - this is stored temporarily in the bot console and will be not visible to us after a couple hours)",                 inline=True)
+        embed.add_field(name="Security", value="I value your trust in providing us your Personal Information, thus we are striving to use commercially               acceptable means of protecting it. But remember that no method of transmission over the internet, or method of electronic storage is 100% secure and         reliable, and I cannot guarantee its absolute security.", inline=True)
+        embed.add_field(name="Data deletion Policy", value="If you wish to get the data stored removed pm me at Middlle#7488 in discord or send a email at           heliadevelopersgithuborg@gmail.com and ill manually remove the info in files where it is stored", inline=True)
+        embed.set_footer(text="Helia")
+        await ctx.send(embed=embed)
+        
 def setup(bot: Bot) -> NoReturn:
     bot.add_cog(General(bot))
     Logger.cog_loaded(bot.get_cog("General").name)
