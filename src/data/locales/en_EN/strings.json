@@ -296,10 +296,10 @@
 	"loggingtitle": "Logging",
 	"loggingdesc": "We log the following things about you \n Commands you use in your server ( which means , server name and the nickname of command invoker are stored - this is stored temporarily in the bot console and will be not visible to us after a couple hours)",
 	"securitytitle": "Security",
-	"securitydesc": "I value your trust in providing us your Personal Information, thus we are striving to use commercially acceptable means of protecting it. But remember that no method of transmission over the internet, or method of electronic storage is 100% secure and  reliable, and I cannot guarantee its absolute security.",
+	"securitydesc": "I value your trust in providing us your Personal Information, thus we are striving to use commercially acceptable means of protecting it. But remember that no method of transmission over the internet, or method of electronic storage is 100% secure and  reliable, and I cannot guarantee absolute security.",
 	"datadeletepoltitle": "Data deletion Policy",
 	"datadeletepoldesc": "If you wish to get the data stored removed pm me at Middlle#7488 in discord or send a email at heliadevelopersgithuborg@gmail.com and ill manually remove the info in files where it is stored"
-  }
+  },
   "bot_log": {
     "info": "[{0}] [?] {1}",
     "warn": "[{0}] [!] {1}",

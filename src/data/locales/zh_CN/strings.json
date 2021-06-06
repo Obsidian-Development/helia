@@ -284,12 +284,28 @@
     "wallpapernaturetitle": "大自然壁纸",
     "wallpaperstarwarstitle": "星球大战壁纸"
   },
+  "privacy": {
+    "privtitle": "系统信息",
+    "privdesc": ":sunny: 隐私政策",
+    "terminologytitle": "术语",
+    "terminologydesc": "服务器管理员 \n 任何具有在服务器上添加或配置我们的机器人的权限、能力或访问权限的用户。\n服务器成员\n 作为 Helia 所在服务器的成员的任何用户。",
+    "datacollecttitle": "为服务器配置收集的数据",
+    "datacollectdesc": "当您使用服务器管理员命令以您认为合适的方式设置机器人时，可能会收集以下内容",
+    "dctitlecont": "⠀",
+    "datacollectcont": "服务器配置(guild_id、channel_id、role_id、bot locale、自定义前缀设置) - 用于设置您的欢迎和再见频道、您的服务器前缀和设置您希望机器人说的语言",
+    "loggingtitle": "日志",
+    "loggingdesc": "我们记录以下有关您的信息 \n 您在服务器中使用的命令(这意味着存储了服务器名称和命令调用者的昵称 - 这是临时存储在机器人控制台中的，几个小时后我们将看不到)",
+    "securitytitle": "加密方法",
+    "securitydesc": "我重视您向我们提供您的个人信息的信任，因此我们正在努力使用商业上可接受的方式来保护它。 但请记住，没有任何通过互联网传输的方法或电子存储方法是 100% 安全可靠的，我不能保证其绝对安全。",
+    "datadeletepoltitle": "数据删除政策",
+    "datadeletepoldesc": "如果您希望删除存储的数据，请在不和谐中在 Middlle#7488 向我发送消息，或者您可以发送电子邮件至 heliadevelopersgithuborg@gmail.com，我将手动删除存储它的文件中的信息"
+  },
   "bot_log": {
     "info": "[{0}] [?] {1}",
     "warn": "[{0}] [!] {1}",
     "logged_as": "该漫游器已成功在标签“ {0}”下启动！",
-    "log_cmd": "[{0}] @{1}使用的命令{2}在服务器上{3}",
-    "cog_loaded": "模块{0}已成功加载",
+    "log_cmd": "[{0}] @{1} 使用的命令{2} 在服务器上{3}",
+    "cog_loaded": "模块{0} 已成功加载",
     "cog_unloaded": "模块{0}已成功卸载"
   }
 }
