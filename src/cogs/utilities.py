@@ -2,6 +2,8 @@
 import re
 from typing import NoReturn
 
+import random
+import math
 import discord
 from discord.ext import commands
 from discord.ext.commands import Bot, Context
