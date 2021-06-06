@@ -14,7 +14,6 @@ from scripts import blacklist
 
 CONFIG = Config()
 
-
 class General(commands.Cog, name="General"):
     def __init__(self, bot) -> None:
         self.bot = bot
@@ -143,7 +142,8 @@ class General(commands.Cog, name="General"):
             )
             wikierror.add_field(
                 name="If you are still having this error",
-                value="Report the issue on github or ask in bot support server about it",
+                value=
+                "Report the issue on github or ask in bot support server about it",
                 inline=True,
             )
             wikierror.set_footer(text="Try again ")
@@ -184,7 +184,7 @@ class General(commands.Cog, name="General"):
         embed.set_footer(text=self.bot.user.name,
                          icon_url=self.bot.user.avatar_url)
         await ctx.send(embed=embed)
-
+    
     @commands.guild_only()
     @commands.command()
     async def privacy(self, ctx: Context):
@@ -213,7 +213,7 @@ class General(commands.Cog, name="General"):
         )
         embed.add_field(
             name="Security",
-            value="I value your trust in providing us your Personal Information, thus we are striving to use commercially acceptable means of protecting it. But remember that no method of transmission over the internet, or method of electronic storage is 100% secure and reliable, and I cannot guarantee its absolute security.",
+            value="I value your trust in providing us your Personal Information, thus we are striving to use commercially acceptable means of protecting it. But remember that no method of transmission over the internet, or method of electronic storage is 100% secure and  reliable, and I cannot guarantee its absolute security.",
             inline=True,
         )
         embed.add_field(
@@ -223,8 +223,7 @@ class General(commands.Cog, name="General"):
         )
         embed.set_footer(text="Helia")
         await ctx.send(embed=embed)
-
-
+        
 def setup(bot: Bot) -> NoReturn:
     bot.add_cog(General(bot))
     Logger.cog_loaded(bot.get_cog("General").name)
