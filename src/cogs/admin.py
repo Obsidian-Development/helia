@@ -197,6 +197,11 @@ class Admin(commands.Cog, name="Admin"):
             value=f"https://bots.ondiscord.xyz/bots/{self.bot.user.id}",
             inline=True,
         )
+        embed.add_field(
+            name=STRINGS["general"]["botupdblco"],
+            value=f"https://discordbotslist.co/bot/{self.bot.user.id}",
+            inline=True,
+        )
         embed.set_footer(text=self.bot.user.name,
                          icon_url=self.bot.user.avatar_url)
         await ctx.send(embed=embed)
