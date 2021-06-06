@@ -184,46 +184,50 @@ class General(commands.Cog, name="General"):
         embed.set_footer(text=self.bot.user.name,
                          icon_url=self.bot.user.avatar_url)
         await ctx.send(embed=embed)
-    
+
     @commands.guild_only()
     @commands.command()
     async def privacy(self, ctx: Context):
-        embed = discord.Embed(title="Information",
-                              description=":sunny: Privacy Policy",
+        s = await Settings(ctx.guild.id)
+        lang = await s.get_field("locale", CONFIG["default_locale"])
+        STRINGS = Strings(lang)
+        embed = discord.Embed(title=STRINGS["privacy"]["privtitle"],
+                              description=STRINGS["privacy"]["privdesc"],
                               color=0xFF8040)
         embed.add_field(
-            name="Terminology",
-            value="Server Administrator \n Any user who has the permission, ability, or access to add or configure our bot on the server. \nServer Member \n Any user who is a member of a server where Helia is present on.",
+            name=STRINGS["privacy"]["terminologytitle"],
+            value=STRINGS["privacy"]["terminologydesc"],
             inline=True,
         )
         embed.add_field(
-            name="Data Collected for server configuration",
-            value="The following may be collected when you use the server administrator commands to set up the bot the way you see fit",
+            name=STRINGS["privacy"]["datacollecttitle"],
+            value=STRINGS["privacy"]["datacollectdesc"],
             inline=True,
         )
         embed.add_field(
-            name="\u2800",
-            value="Server configurations (guild_id,channel_id, role_id, bot locale , custom prefix setting) - Which are used for setting your welcome and goodbye channels , your server prefix and setting the language you wish the bot to speak",
+            name=STRINGS["privacy"]["dctitlecont"],
+            value=STRINGS["privacy"]["datacollectcont"],
             inline=True,
         )
         embed.add_field(
-            name="Logging",
-            value="We log the following things about you \n Commands you use in your server ( which means , server name and the nickname of command invoker are stored - this is stored temporarily in the bot console and will be not visible to us after a couple hours)",
+            name=STRINGS["privacy"]["loggingtitle"],
+            value=STRINGS["privacy"]["loggingdesc"],
             inline=True,
         )
         embed.add_field(
-            name="Security",
-            value="I value your trust in providing us your Personal Information, thus we are striving to use commercially acceptable means of protecting it. But remember that no method of transmission over the internet, or method of electronic storage is 100% secure and  reliable, and I cannot guarantee its absolute security.",
+            name=STRINGS["privacy"]["securitytitle"],
+            value=STRINGS["privacy"]["securitydesc"],
             inline=True,
         )
         embed.add_field(
-            name="Data deletion Policy",
-            value="If you wish to get the data stored removed pm me at Middlle#7488 in discord or send a email at heliadevelopersgithuborg@gmail.com and ill manually remove the info in files where it is stored",
+            name=STRINGS["privacy"]["datadeletepoltitle"],
+            value=STRINGS["privacy"]["datadeletepoldesc"],
             inline=True,
         )
-        embed.set_footer(text="Helia")
+        embed.set_footer(text=self.bot.user.name,
+                         icon_url=self.bot.user.avatar_url)
         await ctx.send(embed=embed)
-        
+
 def setup(bot: Bot) -> NoReturn:
     bot.add_cog(General(bot))
     Logger.cog_loaded(bot.get_cog("General").name)
