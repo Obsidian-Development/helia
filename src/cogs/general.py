@@ -14,6 +14,7 @@ from scripts import blacklist
 
 CONFIG = Config()
 
+
 class General(commands.Cog, name="General"):
     def __init__(self, bot) -> None:
         self.bot = bot
@@ -93,8 +94,7 @@ class General(commands.Cog, name="General"):
                     description=STRINGS["general"]["blacklistwarndesc"],
                     color=0xFF0000,
                 )
-                embed.set_footer(
-                    text=STRINGS["general"]["blacklistwarnfooter"])
+                embed.set_footer(text=STRINGS["general"]["blacklistwarnfooter"])
                 return await ctx.send(embed=embed)
         else:
             return await ctx.send(content)
@@ -114,8 +114,7 @@ class General(commands.Cog, name="General"):
                     description=STRINGS["general"]["blacklistwarndesc"],
                     color=0xFF0000,
                 )
-                embed.set_footer(
-                    text=STRINGS["general"]["blacklistwarnfooter"])
+                embed.set_footer(text=STRINGS["general"]["blacklistwarnfooter"])
                 return await ctx.send(embed=embed)
         else:
             creator = discord.Embed(title=name, description=content)
@@ -142,15 +141,13 @@ class General(commands.Cog, name="General"):
             )
             wikierror.add_field(
                 name="If you are still having this error",
-                value=
-                "Report the issue on github or ask in bot support server about it",
+                value="Report the issue on github or ask in bot support server about it",
                 inline=True,
             )
             wikierror.set_footer(text="Try again ")
             await ctx.send(embed=wikierror)
         except:
-            await ctx.send(
-                "bot: Missing argument or permissions to do the command")
+            await ctx.send("bot: Missing argument or permissions to do the command")
 
     @commands.guild_only()
     @commands.command()
@@ -167,9 +164,7 @@ class General(commands.Cog, name="General"):
             description=STRINGS["general"]["aboutdesc"],
             color=0xFF6900,
         )
-        embed.add_field(name=STRINGS["general"]["aboutver"],
-                        value=ver,
-                        inline=True)
+        embed.add_field(name=STRINGS["general"]["aboutver"], value=ver, inline=True)
         embed.add_field(
             name=STRINGS["general"]["aboutauthor"],
             value=STRINGS["general"]["aboutauthortext"],
@@ -181,8 +176,7 @@ class General(commands.Cog, name="General"):
             inline=True,
         )
         # embed.add_field(name=STRINGS['general']['aboutthanks'], value=STRINGS['general']['aboutthankstext'],inline=False)
-        embed.set_footer(text=self.bot.user.name,
-                         icon_url=self.bot.user.avatar_url)
+        embed.set_footer(text=self.bot.user.name, icon_url=self.bot.user.avatar_url)
         await ctx.send(embed=embed)
 
     @commands.guild_only()
@@ -191,9 +185,11 @@ class General(commands.Cog, name="General"):
         s = await Settings(ctx.guild.id)
         lang = await s.get_field("locale", CONFIG["default_locale"])
         STRINGS = Strings(lang)
-        embed = discord.Embed(title=STRINGS["privacy"]["privtitle"],
-                              description=STRINGS["privacy"]["privdesc"],
-                              color=0xFF8040)
+        embed = discord.Embed(
+            title=STRINGS["privacy"]["privtitle"],
+            description=STRINGS["privacy"]["privdesc"],
+            color=0xFF8040,
+        )
         embed.add_field(
             name=STRINGS["privacy"]["terminologytitle"],
             value=STRINGS["privacy"]["terminologydesc"],
@@ -224,9 +220,9 @@ class General(commands.Cog, name="General"):
             value=STRINGS["privacy"]["datadeletepoldesc"],
             inline=True,
         )
-        embed.set_footer(text=self.bot.user.name,
-                         icon_url=self.bot.user.avatar_url)
+        embed.set_footer(text=self.bot.user.name, icon_url=self.bot.user.avatar_url)
         await ctx.send(embed=embed)
+
 
 def setup(bot: Bot) -> NoReturn:
     bot.add_cog(General(bot))
