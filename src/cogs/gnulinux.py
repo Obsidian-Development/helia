@@ -76,7 +76,7 @@ class gnulinux(commands.Cog):
         deepin1 = discord.Embed(
             title="Deepin",
             url="https://www.deepin.org",
-            description=STRINGS["gnulinuxx"]["deepindesc"],
+            description=STRINGS["gnulinuxx"]["deeepindesc"],
             color=0x1793D1,
         )
         deepin1.set_thumbnail(
