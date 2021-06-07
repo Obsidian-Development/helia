@@ -314,12 +314,12 @@
     "valmath": "值必须在 1 到 5000 之间"
   },
   "gnulinuxx": {
-	"archdesc": "Arch Linux 是一个独立的通用 GNU/Linux 发行版，针对 x86-64 架构进行了优化，旨在提供遵循滚动发布模型的最新稳定版本软件。 默认情况下，为用户提供了一个简约的基本系统，用户可以在其中添加他需要的内容。 Pacman 包管理器用于安装、卸载和更新包。",
+    "archdesc": "Arch Linux 是一个独立的通用 GNU/Linux 发行版，针对 x86-64 架构进行了优化，旨在提供遵循滚动发布模型的最新稳定版本软件。 默认情况下，为用户提供了一个简约的基本系统，用户可以在其中添加他需要的内容。 Pacman 包管理器用于安装、卸载和更新包。",
     "ubuntudesc": "Ubuntu 是一个基于 Debian GNU/Linux 的操作系统。 主要开发商和赞助商是 Canonical。 目前，该项目得到了免费社区的积极开发和支持。",
     "debiandesc": "Debian 是一个开源操作系统。 目前，Debian GNU/Linux 是最受欢迎和最重要的 GNU/Linux 发行版之一，其主要形式对整个此类操作系统的开发产生了重大影响。 还有一个基于不同内核的项目：Debian GNU / Hurd。 Debian 可用作服务器和工作站的操作系统。",
     "deeepindesc": "Deepin（风格化为 deepin；以前称为 Linux Deepin 和 Hiweed Linux）是一个基于 Debian 稳定分支的 Linux 发行版。 它具有 DDE，即深度桌面环境，基于 Qt 构建，可用于 Manjaro、Arch 或 Fedora 等各种发行版。 从 15.10 版本开始，它还使用 dde-kwin，这是一组 KDE Plasma 窗口管理器的补丁。 2019年，华为开始出货预装深度操作系统的Linux笔记本电脑。",
     "manjarodesc": "Manjaro Linux 或 Manjaro 是一个 Arch Linux GNU / Linux 发行版，它使用滚动发布更新模型。 官方提供了几个版本：XFCE、KDE 或 GNOME 桌面。",
-    "mintdesc": "Linux Mint 是基于 Ubuntu 和 Debian 的社区开发的免费 Linux 发行版，旨在为用户提供“现代、优雅且用户友好的操作系统，既强大又易于使用”。 Linux Mint 全面支持各种多媒体格式，包括一些专有程序，并带有大量开源应用程序。 该项目的创始人是 Clement Lefebvre，开发团队（Mint Linux Team）和用户社区也积极参与开发。"	
+    "mintdesc": "Linux Mint 是基于 Ubuntu 和 Debian 的社区开发的免费 Linux 发行版，旨在为用户提供“现代、优雅且用户友好的操作系统，既强大又易于使用”。 Linux Mint 全面支持各种多媒体格式，包括一些专有程序，并带有大量开源应用程序。 该项目的创始人是 Clement Lefebvre，开发团队（Mint Linux Team）和用户社区也积极参与开发。"
   },
   "bot_log": {
     "info": "[{0}] [?] {1}",
