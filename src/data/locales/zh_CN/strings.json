@@ -302,16 +302,16 @@
     "datadeletepoldesc": "如果您希望删除存储的数据，请在不和谐中在 Middlle#7488 向我发送消息，或者您可以发送电子邮件至 heliadevelopersgithuborg@gmail.com，我将手动删除存储它的文件中的信息"
   },
   "generictext": {
-	  "result": "结果",
-	  "entered": "你登录了",
-	  "invalidvalue": "无效值",
-	  "sqsqrt": "平方根",
-	  "math": "数学",
-	  "numberone": "1号",
-	  "numbertwo": "2号",
-	  "descgenermath": "结果如下",
-	  "randinttitle": "随机数生成",
-	  "valmath": "值必须在 1 到 5000 之间"
+    "result": "结果",
+    "entered": "你登录了",
+    "invalidvalue": "无效值",
+    "sqsqrt": "平方根",
+    "math": "数学",
+    "numberone": "1号",
+    "numbertwo": "2号",
+    "descgenermath": "结果如下",
+    "randinttitle": "随机数生成",
+    "valmath": "值必须在 1 到 5000 之间"
   },
   "bot_log": {
     "info": "[{0}] [?] {1}",
