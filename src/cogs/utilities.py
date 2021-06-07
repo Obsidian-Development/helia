@@ -163,9 +163,11 @@ class Utilities(commands.Cog):
     @commands.command(description="Random number generator")
     async def randint(self, ctx: SlashContext, stc1: int, stc2: int):
         result = random.randint(stc1, stc2)
-        await ctx.send(
-            f"Randome number geneation between {stc1} and {stc2} equals ``{result}``"
-        )
+        embed=discord.Embed(title="Random Number generation", description="Results are below")
+        embed.add_field(name="Number 1", value=f"```{stc1}```", inline=True)
+        embed.add_field(name="Number 2", value=f"```{stc2}```", inline=True)
+        embed.add_field(name="Result", value=f"```{result}```", inline=False)
+        await ctx.send(embed=embed)
 
     @commands.command(description="Count square root")
     async def sqrt(self, ctx: SlashContext, num: int):
@@ -181,7 +183,10 @@ class Utilities(commands.Cog):
          return
         else:
          result = math.sqrt(num)
-         await ctx.send(f"Square root of {num} equals ``{result}``")
+         embed=discord.Embed(title="Square Root", description="Math")
+         embed.add_field(name="You entered", value=f"```{num}```", inline=False)
+         embed.add_field(name="Square root of num", value=f"```{result}```", inline=True)
+         await ctx.send(embed=embed)
 
     @commands.command(aliases=["server"])
     @commands.guild_only()
