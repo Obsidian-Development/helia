@@ -162,30 +162,36 @@ class Utilities(commands.Cog):
 
     @commands.command(description="Random number generator")
     async def randint(self, ctx: SlashContext, stc1: int, stc2: int):
+        s = await Settings(ctx.guild.id)
+        lang = await s.get_field("locale", CONFIG["default_locale"])
+        STRINGS = Strings(lang)
         result = random.randint(stc1, stc2)
-        embed=discord.Embed(title="Random Number generation", description="Results are below")
-        embed.add_field(name="Number 1", value=f"```{stc1}```", inline=True)
-        embed.add_field(name="Number 2", value=f"```{stc2}```", inline=True)
-        embed.add_field(name="Result", value=f"```{result}```", inline=False)
+        embed=discord.Embed(title=STRINGS["generictext"]["randinttitle"], description=STRINGS["generictext"]["descgenermath"])
+        embed.add_field(name=STRINGS["generictext"]["numberone"], value=f"```{stc1}```", inline=True)
+        embed.add_field(name=STRINGS["generictext"]["numbertwo"], value=f"```{stc2}```", inline=True)
+        embed.add_field(name=STRINGS["generictext"]["result"], value=f"```{result}```", inline=False)
         await ctx.send(embed=embed)
 
     @commands.command(description="Count square root")
     async def sqrt(self, ctx: SlashContext, num: int):
+        s = await Settings(ctx.guild.id)
+        lang = await s.get_field("locale", CONFIG["default_locale"])
+        STRINGS = Strings(lang)
         if num > 5000:
-         embed = discord.Embed(title = "Error", description="Invalid value", color=0xff0000)
-         embed.add_field(name="-",value="Value must be between 1 and 5000", inline=False)
+         embed = discord.Embed(title = STRINGS["error"]["on_error_title"], description=STRINGS["error"]["localeerrortext"], color=0xff0000)
+         embed.add_field(name=STRINGS["generictext"]["invalidvalue"],value=STRINGS["generictext"]["valmath"], inline=False)
          await ctx.send(embed=embed)
          return
         elif num < 0:
-         embed = discord.Embed(title = "Error", description="Invalid value", color=0xff0000)
-         embed.add_field(name="-",value="Value must be between 1 and 5000", inline=False)
+         embed = discord.Embed(title = STRINGS["error"]["on_error_title"], description=STRINGS["error"]["localeerrortext"], color=0xff0000)
+         embed.add_field(name=STRINGS["generictext"]["invalidvalue"],value=STRINGS["generictext"]["valmath"], inline=False)
          await ctx.send(embed=embed)
          return
         else:
          result = math.sqrt(num)
-         embed=discord.Embed(title="Square Root", description="Math")
-         embed.add_field(name="You entered", value=f"```{num}```", inline=False)
-         embed.add_field(name="Result", value=f"```{result}```", inline=True)
+         embed=discord.Embed(title=STRINGS["generictext"]["sqsqrt"], description=STRINGS["generictext"]["math"])
+         embed.add_field(name=STRINGS["generictext"]["entered"], value=f"```{num}```", inline=False)
+         embed.add_field(name=STRINGS["generictext"]["result"], value=f"```{result}```", inline=True)
          await ctx.send(embed=embed)
 
     @commands.command(aliases=["server"])
