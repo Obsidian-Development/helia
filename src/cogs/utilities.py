@@ -185,7 +185,7 @@ class Utilities(commands.Cog):
          result = math.sqrt(num)
          embed=discord.Embed(title="Square Root", description="Math")
          embed.add_field(name="You entered", value=f"```{num}```", inline=False)
-         embed.add_field(name="Square root of num", value=f"```{result}```", inline=True)
+         embed.add_field(name="Result", value=f"```{result}```", inline=True)
          await ctx.send(embed=embed)
 
     @commands.command(aliases=["server"])
