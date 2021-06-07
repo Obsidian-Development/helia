@@ -4,8 +4,6 @@ import random
 import re
 from typing import NoReturn
 
-import math
-import random
 import discord
 from discord.ext import commands
 from discord.ext.commands import Bot, Context
@@ -163,7 +161,8 @@ class Utilities(commands.Cog):
     @commands.command(description="Random number generator")
     async def randint(self, ctx: SlashContext, stc1: int, stc2: int):
         result = random.randint(stc1, stc2)
-        embed=discord.Embed(title="Random Number generation", description="Results are below")
+        embed = discord.Embed(title="Random Number generation",
+                              description="Results are below")
         embed.add_field(name="Number 1", value=f"```{stc1}```", inline=True)
         embed.add_field(name="Number 2", value=f"```{stc2}```", inline=True)
         embed.add_field(name="Result", value=f"```{result}```", inline=False)
@@ -172,21 +171,33 @@ class Utilities(commands.Cog):
     @commands.command(description="Count square root")
     async def sqrt(self, ctx: SlashContext, num: int):
         if num > 5000:
-         embed = discord.Embed(title = "Error", description="Invalid value", color=0xff0000)
-         embed.add_field(name="-",value="Value must be between 1 and 5000", inline=False)
-         await ctx.send(embed=embed)
-         return
+            embed = discord.Embed(title="Error",
+                                  description="Invalid value",
+                                  color=0xFF0000)
+            embed.add_field(name="-",
+                            value="Value must be between 1 and 5000",
+                            inline=False)
+            await ctx.send(embed=embed)
+            return
         elif num < 0:
-         embed = discord.Embed(title = "Error", description="Invalid value", color=0xff0000)
-         embed.add_field(name="-",value="Value must be between 1 and 5000", inline=False)
-         await ctx.send(embed=embed)
-         return
+            embed = discord.Embed(title="Error",
+                                  description="Invalid value",
+                                  color=0xFF0000)
+            embed.add_field(name="-",
+                            value="Value must be between 1 and 5000",
+                            inline=False)
+            await ctx.send(embed=embed)
+            return
         else:
-         result = math.sqrt(num)
-         embed=discord.Embed(title="Square Root", description="Math")
-         embed.add_field(name="You entered", value=f"```{num}```", inline=False)
-         embed.add_field(name="Square root of num", value=f"```{result}```", inline=True)
-         await ctx.send(embed=embed)
+            result = math.sqrt(num)
+            embed = discord.Embed(title="Square Root", description="Math")
+            embed.add_field(name="You entered",
+                            value=f"```{num}```",
+                            inline=False)
+            embed.add_field(name="Square root of num",
+                            value=f"```{result}```",
+                            inline=True)
+            await ctx.send(embed=embed)
 
     @commands.command(aliases=["server"])
     @commands.guild_only()
