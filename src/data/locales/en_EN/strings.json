@@ -302,16 +302,16 @@
     "datadeletepoldesc": "If you wish to get the data stored removed pm me at Middlle#7488 in discord or send a email at heliadevelopersgithuborg@gmail.com and ill manually remove the info in files where it is stored"
   },
   "generictext": {
-	  "result": "Result",
-	  "entered": "You entered",
-	  "invalidvalue": "Invalid Value",
-	  "sqsqrt": "Square Root",
-	  "math": "Mathematics",
-	  "numberone": "Number 1",
-	  "numbertwo": "Number 2",
-	  "descgenermath": "Results are below",
-	  "randinttitle": "Random Number generation",
-	  "valmath": "Value must be between 1 and 5000"
+    "result": "Result",
+    "entered": "You entered",
+    "invalidvalue": "Invalid Value",
+    "sqsqrt": "Square Root",
+    "math": "Mathematics",
+    "numberone": "Number 1",
+    "numbertwo": "Number 2",
+    "descgenermath": "Results are below",
+    "randinttitle": "Random Number generation",
+    "valmath": "Value must be between 1 and 5000"
   },
   "bot_log": {
     "info": "[{0}] [?] {1}",
