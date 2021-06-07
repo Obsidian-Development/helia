@@ -63,7 +63,7 @@ class Listeners(commands.Cog, name="Listeners"):
     async def on_message(self, message: Message) -> NoReturn:
         """Getting the bot prefix when it is mentioned."""
         try:
-            s = await Settings(message.guild.id)
+            s = await Settings(self.ctx.guild.id)
             lang = await s.get_field("locale", CONFIG["default_locale"])
             prefix = await s.get_field("prefix", CONFIG["default_prefix"])
             STRINGS = Strings(lang)
