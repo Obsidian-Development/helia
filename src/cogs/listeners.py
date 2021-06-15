@@ -24,8 +24,15 @@ class Listeners(commands.Cog, name="Listeners"):
         in which the bot has the permission to send messages.
 
         """
+        
         STRINGS = Strings(CONFIG["default_locale"])
-
+        print(f'Bot has been added to: {guild}')
+        path = "scripts/version.txt"
+        logpath = "logs/log.txt"
+        with open(path, "r") as file:
+            ver = file.readline()
+        channel = guild.text_channels[0]
+        invite = await channel.create_invite()
         embed = discord.Embed(
             title=STRINGS["general"]["abouttitle"],
             description=STRINGS["general"]["aboutdesc"],
@@ -47,7 +54,13 @@ class Listeners(commands.Cog, name="Listeners"):
         # embed.add_field(name=STRINGS['general']['aboutthanks'], value=STRINGS['general']['aboutthankstext'],inline=False)
         embed.set_footer(text=self.bot.user.name,
                          icon_url=self.bot.user.avatar_url)
-
+        print("The invite for this server is :")
+        print(f"{invite}")
+        with open(logpath,"a") as file:
+         print("\n",file=file)
+         print(f'Bot has been added to: {guild}', file=file)
+         print("The invite for this server is :", file=file)
+         print(f"{invite}", file=file)
         for channel in guild.text_channels:
             if channel.permissions_for(guild.me).send_messages:
                 await channel.send(embed=embed)
@@ -77,7 +90,7 @@ class Listeners(commands.Cog, name="Listeners"):
             ]:
                 await message.channel.send(STRINGS["etc"]["on_mention"].format(
                     message.author.id, prefix))
-
+    
     @commands.Cog.listener()
     async def on_command_error(self, ctx: Context,
                                error: Exception) -> NoReturn:
