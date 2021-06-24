@@ -14,20 +14,25 @@ import json
 import os
 import random
 import sqlite3
-from os.path import abspath, dirname
+from os.path import abspath
+from os.path import dirname
 from typing import NoReturn
 
 import discord
 import requests
-from discord.ext import commands, tasks
+from cogs.utils import Config
+from cogs.utils import Logger
+from cogs.utils import Strings
+from cogs.utils import Utils
+from discord.ext import commands
+from discord.ext import tasks
 from discord.ext.commands import AutoShardedBot
+from discord_components import Button
+from discord_components import DiscordComponents
 from discord_slash import SlashCommand
 from dotenv import load_dotenv
 from slashify import Slashify
 from termcolor import cprint
-from discord_components import DiscordComponents, Button
-
-from cogs.utils import Config, Logger, Strings, Utils
 
 # from scripts import db # UNCOMMENT FOR DB CONNECTION
 
@@ -57,7 +62,7 @@ class Helia(commands.AutoShardedBot):
                 type=discord.ActivityType.listening,
                 name="Dont forget to bump the bot every 3 hours on bot lists!",
             ),
-            #discord.Game(name=f"{command_prefix}help for info"),
+            # discord.Game(name=f"{command_prefix}help for info"),
             discord.Activity(type=discord.ActivityType.listening,
                              name="to my creator Middlle#7488"),
             discord.Game(name="Final Fantasy XIV"),

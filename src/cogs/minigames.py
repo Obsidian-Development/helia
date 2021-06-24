@@ -2,10 +2,13 @@ import asyncio
 import random
 
 import discord
+from cogs.utils import Config
+from cogs.utils import Logger
+from cogs.utils import Settings
+from cogs.utils import Strings
 from discord.ext import commands
-from discord_slash import SlashContext, cog_ext
-
-from cogs.utils import Config, Logger, Settings, Strings
+from discord_slash import cog_ext
+from discord_slash import SlashContext
 from scripts import games
 
 CONFIG = Config()
@@ -23,7 +26,9 @@ class minigames(commands.Cog):
         kuboid = random.choice(games.kubik)
         embedkub = discord.Embed(title=STRINGS["other"]["rollcubetitle"],
                                  color=0x00FF00)
-        embedkub.add_field(name=STRINGS["other"]["rolled"], value=kuboid, inline=False)
+        embedkub.add_field(name=STRINGS["other"]["rolled"],
+                           value=kuboid,
+                           inline=False)
         await ctx.send(embed=embedkub)
 
     @commands.command(description="Coin throw")
@@ -34,7 +39,9 @@ class minigames(commands.Cog):
         mon = random.choice(games.monet)
         embedmonet = discord.Embed(title=STRINGS["other"]["cointosstitle"],
                                    color=0x00FF00)
-        embedmonet.add_field(name=STRINGS["other"]["rolled"], value=mon, inline=False)
+        embedmonet.add_field(name=STRINGS["other"]["rolled"],
+                             value=mon,
+                             inline=False)
         await ctx.send(embed=embedmonet)
 
     @commands.command(description="Casino")

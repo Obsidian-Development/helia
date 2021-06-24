@@ -5,14 +5,21 @@ from typing import NoReturn
 
 import discord
 import wikipedia
+from cogs.utils import Commands
+from cogs.utils import Config
+from cogs.utils import Logger
+from cogs.utils import Settings
+from cogs.utils import Strings
+from cogs.utils import Utils
 from discord.ext import commands
-from discord.ext.commands import Bot, Context
-from discord_slash import SlashContext, cog_ext
-
-from cogs.utils import Commands, Config, Logger, Settings, Strings, Utils
+from discord.ext.commands import Bot
+from discord.ext.commands import Context
+from discord_slash import cog_ext
+from discord_slash import SlashContext
 from scripts import blacklist
 
 CONFIG = Config()
+
 
 class General(commands.Cog, name="General"):
     def __init__(self, bot) -> None:
@@ -191,9 +198,11 @@ class General(commands.Cog, name="General"):
         s = await Settings(ctx.guild.id)
         lang = await s.get_field("locale", CONFIG["default_locale"])
         STRINGS = Strings(lang)
-        embed = discord.Embed(title=STRINGS["privacy"]["privtitle"],
-                              description=STRINGS["privacy"]["privdesc"],
-                              color=0xFF8040)
+        embed = discord.Embed(
+            title=STRINGS["privacy"]["privtitle"],
+            description=STRINGS["privacy"]["privdesc"],
+            color=0xFF8040,
+        )
         embed.add_field(
             name=STRINGS["privacy"]["terminologytitle"],
             value=STRINGS["privacy"]["terminologydesc"],
@@ -227,6 +236,7 @@ class General(commands.Cog, name="General"):
         embed.set_footer(text=self.bot.user.name,
                          icon_url=self.bot.user.avatar_url)
         await ctx.send(embed=embed)
+
 
 def setup(bot: Bot) -> NoReturn:
     bot.add_cog(General(bot))

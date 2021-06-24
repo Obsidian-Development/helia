@@ -4,11 +4,17 @@ import datetime
 from typing import NoReturn
 
 import discord
-from discord import Guild, Message
+from cogs.utils import Commands
+from cogs.utils import Config
+from cogs.utils import Logger
+from cogs.utils import Settings
+from cogs.utils import Strings
+from cogs.utils import Utils
+from discord import Guild
+from discord import Message
 from discord.ext import commands
-from discord.ext.commands import Bot, Context
-
-from cogs.utils import Commands, Config, Logger, Settings, Strings, Utils
+from discord.ext.commands import Bot
+from discord.ext.commands import Context
 
 CONFIG = Config()
 
@@ -24,9 +30,9 @@ class Listeners(commands.Cog, name="Listeners"):
         in which the bot has the permission to send messages.
 
         """
-        
+
         STRINGS = Strings(CONFIG["default_locale"])
-        print(f'Bot has been added to: {guild}')
+        print(f"Bot has been added to: {guild}")
         path = "scripts/version.txt"
         logpath = "logs/log.txt"
         with open(path, "r") as file:
@@ -52,15 +58,16 @@ class Listeners(commands.Cog, name="Listeners"):
             inline=True,
         )
         # embed.add_field(name=STRINGS['general']['aboutthanks'], value=STRINGS['general']['aboutthankstext'],inline=False)
+
         embed.set_footer(text=self.bot.user.name,
                          icon_url=self.bot.user.avatar_url)
         print("The invite for this server is :")
         print(f"{invite}")
-        with open(logpath,"a") as file:
-         print("\n",file=file)
-         print(f'Bot has been added to: {guild}', file=file)
-         print("The invite for this server is :", file=file)
-         print(f"{invite}", file=file)
+        with open(logpath, "a") as file:
+            print("\n", file=file)
+            print(f"Bot has been added to: {guild}", file=file)
+            print("The invite for this server is :", file=file)
+            print(f"{invite}", file=file)
         for channel in guild.text_channels:
             if channel.permissions_for(guild.me).send_messages:
                 await channel.send(embed=embed)
@@ -88,9 +95,10 @@ class Listeners(commands.Cog, name="Listeners"):
                     f"<@{self.bot.user.id}>",
                     f"@{self.bot.user}",
             ]:
+
                 await message.channel.send(STRINGS["etc"]["on_mention"].format(
                     message.author.id, prefix))
-    
+
     @commands.Cog.listener()
     async def on_command_error(self, ctx: Context,
                                error: Exception) -> NoReturn:

@@ -4,14 +4,16 @@ import random
 import re
 from typing import NoReturn
 
-import math
-import random
 import discord
+from cogs.utils import Config
+from cogs.utils import Logger
+from cogs.utils import Settings
+from cogs.utils import Strings
 from discord.ext import commands
-from discord.ext.commands import Bot, Context
-from discord_slash import SlashContext, cog_ext
-
-from cogs.utils import Config, Logger, Settings, Strings
+from discord.ext.commands import Bot
+from discord.ext.commands import Context
+from discord_slash import cog_ext
+from discord_slash import SlashContext
 
 CONFIG = Config()
 
@@ -100,7 +102,7 @@ class Utilities(commands.Cog):
                     == discord.ChannelType.text) or channel.type not in [
                         discord.ChannelType.voice,
                         discord.ChannelType.news,
-            ]:
+                    ]:
                 type = STRINGS["etc"]["channel_type"]["text"]
             elif channel.type == discord.ChannelType.voice:
                 type = STRINGS["etc"]["channel_type"]["voice"]
@@ -186,20 +188,7 @@ class Utilities(commands.Cog):
         s = await Settings(ctx.guild.id)
         lang = await s.get_field("locale", CONFIG["default_locale"])
         STRINGS = Strings(lang)
-        if num > 5000:
-            embed = discord.Embed(
-                title=STRINGS["error"]["on_error_title"],
-                description=STRINGS["error"]["localeerrortext"],
-                color=0xFF0000,
-            )
-            embed.add_field(
-                name=STRINGS["generictext"]["invalidvalue"],
-                value=STRINGS["generictext"]["valmath"],
-                inline=False,
-            )
-            await ctx.send(embed=embed)
-            return
-        elif num < 0:
+        if num > 5000 or num < 0:
             embed = discord.Embed(
                 title=STRINGS["error"]["on_error_title"],
                 description=STRINGS["error"]["localeerrortext"],
