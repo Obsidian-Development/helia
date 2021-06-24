@@ -5,11 +5,17 @@ from typing import NoReturn
 
 import discord
 import wikipedia
+from cogs.utils import Commands
+from cogs.utils import Config
+from cogs.utils import Logger
+from cogs.utils import Settings
+from cogs.utils import Strings
+from cogs.utils import Utils
 from discord.ext import commands
-from discord.ext.commands import Bot, Context
-from discord_slash import SlashContext, cog_ext
-
-from cogs.utils import Commands, Config, Logger, Settings, Strings, Utils
+from discord.ext.commands import Bot
+from discord.ext.commands import Context
+from discord_slash import cog_ext
+from discord_slash import SlashContext
 from scripts import blacklist
 
 CONFIG = Config()
@@ -143,7 +149,8 @@ class General(commands.Cog, name="General"):
             )
             wikierror.add_field(
                 name="If you are still having this error",
-                value="Report the issue on github or ask in bot support server about it",
+                value=
+                "Report the issue on github or ask in bot support server about it",
                 inline=True,
             )
             wikierror.set_footer(text="Try again ")
