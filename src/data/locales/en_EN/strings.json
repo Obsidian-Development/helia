@@ -37,9 +37,8 @@
     "botupbod": "Bot page on Bots on Discord",
     "botupsdc": "Bot page on bots.server-discord.com",
     "botupdblco": "Bot page on discordbotslist.co",
-	  "invitedescd": "Bot invite links",
+    "invitedescd": "Bot invite links",
     "canaryver": "Canary Version Invite"
-
   },
   "helpsystemfirstpage": {
     "gemtitle": "**general**",
@@ -294,7 +293,7 @@
     "terminologydesc": "Server Administrator \n Any user who has the permission, ability, or access to add or configure our bot on the server. \nServer Member \n Any user who is a member of a server where Helia is present on.",
     "datacollecttitle": "Data Collected for server configuration",
     "datacollectdesc": "The following may be collected when you use the server administrator commands to set up the bot the way you see fit",
-    "dctitlecont": "\u2800",
+    "dctitlecont": "⠀",
     "datacollectcont": "Server configurations (guild_id,channel_id, role_id, bot locale , custom prefix setting) - Which are used for setting your welcome and goodbye channels , your server prefix and setting the language you wish the bot to speak",
     "loggingtitle": "Logging",
     "loggingdesc": "We log the following things about you \n Commands you use in your server ( which means , server name and the nickname of command invoker are stored - this is stored temporarily in the bot console and will be not visible to us after a couple hours)",
@@ -316,7 +315,6 @@
     "valmath": "Value must be between 1 and 5000"
   },
   "gnulinuxx": {
-
     "archdesc": "Arch Linux is an independent general purpose GNU / Linux distribution optimized for the x86-64 architecture, which aims to provide the latest stable versions of software following the rolling release model. By default, the user is provided with a minimalistic basic system in which the user can add what he needs. Pacman package manager is used to install, uninstall and update packages.",
     "ubuntudesc": "Ubuntu is an operating system based on Debian GNU / Linux. The main developer and sponsor is Canonical. Currently, the project is actively developed and supported by the free community.",
     "debiandesc": "Debian is an open source operating system. Currently, Debian GNU / Linux is one of the most popular and important GNU / Linux distributions, which in its primary form has had a significant impact on the development of this type of OS as a whole. There is also a project based on a different kernel: Debian GNU / Hurd. Debian can be used as an operating system for both servers and workstations.",
