@@ -1,12 +1,9 @@
-
 # -*- coding: utf-8 -*-
 import math
 import random
 import re
 from typing import NoReturn
 
-import math
-import random
 import discord
 from discord.ext import commands
 from discord.ext.commands import Bot, Context
