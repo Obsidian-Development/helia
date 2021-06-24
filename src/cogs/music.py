@@ -8,13 +8,9 @@ from enum import Enum
 import discord
 import humanize
 import wavelink
-from cogs.utils import Commands
-from cogs.utils import Config
-from cogs.utils import Logger
-from cogs.utils import Settings
-from cogs.utils import Strings
-from cogs.utils import Utils
 from discord.ext import commands
+
+from cogs.utils import Commands, Config, Logger, Settings, Strings, Utils
 
 # from logging_files.music_log import logger
 
@@ -204,8 +200,7 @@ class Player(wavelink.Player):
             )
             playEmbed.add_field(
                 name=STRINGS["music"]["embed_controler_dur"],
-                value=
-                f"**({tracks[0].length//60000}:{str(tracks[0].length%60).zfill(2)})**",
+                value=f"**({tracks[0].length//60000}:{str(tracks[0].length%60).zfill(2)})**",
                 inline=True,
             )
             playEmbed.add_field(
@@ -234,8 +229,7 @@ class Player(wavelink.Player):
                 )
                 playEmbed_2.add_field(
                     name=STRINGS["music"]["embed_controler_dur"],
-                    value=
-                    f"**({tracks[0].length // 60000}:{str(tracks[0].length % 60).zfill(2)})**",
+                    value=f"**({tracks[0].length // 60000}:{str(tracks[0].length % 60).zfill(2)})**",
                     inline=True,
                 )
                 playEmbed_2.add_field(

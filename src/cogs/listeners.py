@@ -4,17 +4,11 @@ import datetime
 from typing import NoReturn
 
 import discord
-from cogs.utils import Commands
-from cogs.utils import Config
-from cogs.utils import Logger
-from cogs.utils import Settings
-from cogs.utils import Strings
-from cogs.utils import Utils
-from discord import Guild
-from discord import Message
+from discord import Guild, Message
 from discord.ext import commands
-from discord.ext.commands import Bot
-from discord.ext.commands import Context
+from discord.ext.commands import Bot, Context
+
+from cogs.utils import Commands, Config, Logger, Settings, Strings, Utils
 
 CONFIG = Config()
 
@@ -58,7 +52,6 @@ class Listeners(commands.Cog, name="Listeners"):
             inline=True,
         )
         # embed.add_field(name=STRINGS['general']['aboutthanks'], value=STRINGS['general']['aboutthankstext'],inline=False)
-
         embed.set_footer(text=self.bot.user.name,
                          icon_url=self.bot.user.avatar_url)
         print("The invite for this server is :")
@@ -95,7 +88,6 @@ class Listeners(commands.Cog, name="Listeners"):
                     f"<@{self.bot.user.id}>",
                     f"@{self.bot.user}",
             ]:
-
                 await message.channel.send(STRINGS["etc"]["on_mention"].format(
                     message.author.id, prefix))
 
