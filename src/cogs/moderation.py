@@ -211,14 +211,13 @@ class Moderation(commands.Cog, name="Moderation"):
         if len(name) > 32:
             embed = Utils.error_embed(STRINGS["error"]["too_long_name"])
             await ctx.send(embed=embed)
+        elif (ctx.message.author.guild_permissions.manage_nicknames
+              or member == ctx.message.author):
+            await member.edit(nick=name)
+            await ctx.message.add_reaction(CONFIG["yes_emoji"])
         else:
-            if (ctx.message.author.guild_permissions.manage_nicknames
-                    or member == ctx.message.author):
-                await member.edit(nick=name)
-                await ctx.message.add_reaction(CONFIG["yes_emoji"])
-            else:
-                embed = Utils.error_embed(STRINGS["error"]["missing_perms"])
-                await ctx.send(embed=embed)
+            embed = Utils.error_embed(STRINGS["error"]["missing_perms"])
+            await ctx.send(embed=embed)
 
     @commands.command()
     @commands.guild_only()
