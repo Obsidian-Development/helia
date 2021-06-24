@@ -1,4 +1,3 @@
-
 # -*- coding: utf-8 -*-
 import math
 import random
@@ -14,6 +13,7 @@ from cogs.utils import Commands, Config, Logger, Settings, Strings, Utils
 from scripts import blacklist
 
 CONFIG = Config()
+
 
 class General(commands.Cog, name="General"):
     def __init__(self, bot) -> None:
@@ -143,8 +143,7 @@ class General(commands.Cog, name="General"):
             )
             wikierror.add_field(
                 name="If you are still having this error",
-                value=
-                "Report the issue on github or ask in bot support server about it",
+                value="Report the issue on github or ask in bot support server about it",
                 inline=True,
             )
             wikierror.set_footer(text="Try again ")
@@ -192,9 +191,11 @@ class General(commands.Cog, name="General"):
         s = await Settings(ctx.guild.id)
         lang = await s.get_field("locale", CONFIG["default_locale"])
         STRINGS = Strings(lang)
-        embed = discord.Embed(title=STRINGS["privacy"]["privtitle"],
-                              description=STRINGS["privacy"]["privdesc"],
-                              color=0xFF8040)
+        embed = discord.Embed(
+            title=STRINGS["privacy"]["privtitle"],
+            description=STRINGS["privacy"]["privdesc"],
+            color=0xFF8040,
+        )
         embed.add_field(
             name=STRINGS["privacy"]["terminologytitle"],
             value=STRINGS["privacy"]["terminologydesc"],
@@ -229,7 +230,7 @@ class General(commands.Cog, name="General"):
                          icon_url=self.bot.user.avatar_url)
         await ctx.send(embed=embed)
 
+
 def setup(bot: Bot) -> NoReturn:
     bot.add_cog(General(bot))
     Logger.cog_loaded(bot.get_cog("General").name)
-
