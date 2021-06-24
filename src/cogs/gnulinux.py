@@ -10,7 +10,6 @@ from cogs.utils import Config, Logger, Settings, Strings
 CONFIG = Config()
 
 
-
 class gnulinux(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
