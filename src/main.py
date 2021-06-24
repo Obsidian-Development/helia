@@ -21,11 +21,11 @@ import discord
 import requests
 from discord.ext import commands, tasks
 from discord.ext.commands import AutoShardedBot
+from discord_components import Button, DiscordComponents
 from discord_slash import SlashCommand
 from dotenv import load_dotenv
 from slashify import Slashify
 from termcolor import cprint
-from discord_components import DiscordComponents, Button
 
 from cogs.utils import Config, Logger, Strings, Utils
 
@@ -57,7 +57,7 @@ class Helia(commands.AutoShardedBot):
                 type=discord.ActivityType.listening,
                 name="Dont forget to bump the bot every 3 hours on bot lists!",
             ),
-            #discord.Game(name=f"{command_prefix}help for info"),
+            # discord.Game(name=f"{command_prefix}help for info"),
             discord.Activity(type=discord.ActivityType.listening,
                              name="to my creator Middlle#7488"),
             discord.Game(name="Final Fantasy XIV"),
