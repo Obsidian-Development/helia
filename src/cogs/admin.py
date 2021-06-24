@@ -6,8 +6,7 @@ from typing import NoReturn
 import discord
 from discord.ext import commands
 from discord.ext.commands import Bot, Context
-from discord_components import (Button, ButtonStyle, DiscordComponents,
-                                InteractionType)
+from discord_components import Button, ButtonStyle, DiscordComponents, InteractionType
 from discord_slash import SlashContext, cog_ext
 
 from cogs.utils import Config, Logger, Settings, Strings, Utils
@@ -104,11 +103,11 @@ class Admin(commands.Cog, name="Admin"):
                 description=STRINGS["moderation"]["shutdownembeddesc"],
                 color=0xFF8000,
             )
-            embed.set_footer(text=self.bot.user.name,
-                             icon_url=self.bot.user.avatar_url)
+            embed.set_footer(text=self.bot.user.name, icon_url=self.bot.user.avatar_url)
             await ctx.send(embed=embed)
-            await ctx.bot.change_presence(activity=discord.Game(
-                name="Shutting down for either reboot or update "))
+            await ctx.bot.change_presence(
+                activity=discord.Game(name="Shutting down for either reboot or update ")
+            )
             await asyncio.sleep(5)
             print("---------------------------")
             print("[SHUTDOWN] Shutdown requested by bot owner")
@@ -138,8 +137,7 @@ class Admin(commands.Cog, name="Admin"):
             "497406228364787717",
         ]
         if str(author.id) in valid_users:
-            await self.bot.change_presence(
-                activity=discord.Game(" ".join(args)))
+            await self.bot.change_presence(activity=discord.Game(" ".join(args)))
             embed = discord.Embed(
                 title=STRINGS["moderation"]["setstatustext"],
                 description=STRINGS["moderation"]["setstatusdesc"],
@@ -150,8 +148,7 @@ class Admin(commands.Cog, name="Admin"):
                 value=STRINGS["moderation"]["setstatusfielddesc"],
                 inline=True,
             )
-            embed.set_footer(text=self.bot.user.name,
-                             icon_url=self.bot.user.avatar_url)
+            embed.set_footer(text=self.bot.user.name, icon_url=self.bot.user.avatar_url)
         else:
             embed = discord.Embed(
                 title="You failed",
@@ -166,47 +163,51 @@ class Admin(commands.Cog, name="Admin"):
         s = await Settings(ctx.guild.id)
         lang = await s.get_field("locale", CONFIG["default_locale"])
         STRINGS = Strings(lang)
-        menu_components = [[
-            Button(
-                style=ButtonStyle.URL,
-                label=STRINGS["general"]["botinvitetitle"],
-                url=f"https://discord.com/api/oauth2/authorize?client_id={self.bot.user.id}&permissions=204859462&scope=applications.commands%20bot",
-            ),
-            Button(
-                style=ButtonStyle.URL,
-                label=STRINGS["general"]["botinvitedescd"],
-                url=f"https://discord.com/oauth2/authorize?client_id={self.bot.user.id}&scope=bot&permissions=204557314",
-            ),
-            Button(
-                style=ButtonStyle.URL,
-                label=STRINGS["general"]["canaryver"],
-                url=f"https://discord.com/oauth2/authorize?client_id=671612079106424862&scope=bot&permissions=204557314",
-            ),
-            Button(
-                style=ButtonStyle.URL,
-                label=STRINGS["general"]["botupsdc"],
-                url=f"https://bots.server-discord.com/{self.bot.user.id}",
-            ),
-            Button(
-                style=ButtonStyle.URL,
-                label=STRINGS["general"]["botuptopgg"],
-                url=f"https://top.gg/bot/{self.bot.user.id}",
-            ),
-            # Button(style=ButtonStyle.URL, label=STRINGS["general"]["botupbod"], url=f"https://bots.ondiscord.xyz/bots/{self.bot.user.id}"),
-            # Button(style=ButtonStyle.URL, label=STRINGS["general"]["botupdblco"], url=f"https://discordbotslist.co/bot/{self.bot.user.id}"),
-        ]]
-        menuer_components = [[
-            Button(
-                style=ButtonStyle.URL,
-                label=STRINGS["general"]["botupbod"],
-                url=f"https://bots.ondiscord.xyz/bots/{self.bot.user.id}",
-            ),
-            Button(
-                style=ButtonStyle.URL,
-                label=STRINGS["general"]["botupdblco"],
-                url=f"https://discordbotslist.co/bot/{self.bot.user.id}",
-            ),
-        ]]
+        menu_components = [
+            [
+                Button(
+                    style=ButtonStyle.URL,
+                    label=STRINGS["general"]["botinvitetitle"],
+                    url=f"https://discord.com/api/oauth2/authorize?client_id={self.bot.user.id}&permissions=204859462&scope=applications.commands%20bot",
+                ),
+                Button(
+                    style=ButtonStyle.URL,
+                    label=STRINGS["general"]["botinvitedescd"],
+                    url=f"https://discord.com/oauth2/authorize?client_id={self.bot.user.id}&scope=bot&permissions=204557314",
+                ),
+                Button(
+                    style=ButtonStyle.URL,
+                    label=STRINGS["general"]["canaryver"],
+                    url=f"https://discord.com/oauth2/authorize?client_id=671612079106424862&scope=bot&permissions=204557314",
+                ),
+                Button(
+                    style=ButtonStyle.URL,
+                    label=STRINGS["general"]["botupsdc"],
+                    url=f"https://bots.server-discord.com/{self.bot.user.id}",
+                ),
+                Button(
+                    style=ButtonStyle.URL,
+                    label=STRINGS["general"]["botuptopgg"],
+                    url=f"https://top.gg/bot/{self.bot.user.id}",
+                ),
+                # Button(style=ButtonStyle.URL, label=STRINGS["general"]["botupbod"], url=f"https://bots.ondiscord.xyz/bots/{self.bot.user.id}"),
+                # Button(style=ButtonStyle.URL, label=STRINGS["general"]["botupdblco"], url=f"https://discordbotslist.co/bot/{self.bot.user.id}"),
+            ]
+        ]
+        menuer_components = [
+            [
+                Button(
+                    style=ButtonStyle.URL,
+                    label=STRINGS["general"]["botupbod"],
+                    url=f"https://bots.ondiscord.xyz/bots/{self.bot.user.id}",
+                ),
+                Button(
+                    style=ButtonStyle.URL,
+                    label=STRINGS["general"]["botupdblco"],
+                    url=f"https://discordbotslist.co/bot/{self.bot.user.id}",
+                ),
+            ]
+        ]
 
         embed = discord.Embed(
             title=STRINGS["general"]["invitedescd"],
@@ -247,11 +248,9 @@ class Admin(commands.Cog, name="Admin"):
         # value=f"https://discordbotslist.co/bot/{self.bot.user.id}",
         # inline=True,
         # )
-        embed.set_footer(text=self.bot.user.name,
-                         icon_url=self.bot.user.avatar_url)
+        embed.set_footer(text=self.bot.user.name, icon_url=self.bot.user.avatar_url)
 
-        embedcont = discord.Embed(title="-----",
-                                  colour=discord.Colour(0xFF6900))
+        embedcont = discord.Embed(title="-----", colour=discord.Colour(0xFF6900))
         await ctx.send(embed=embed, components=menu_components)
         await ctx.send("`----`", components=menuer_components)
 
