@@ -1,3 +1,4 @@
+
 # -*- coding: utf-8 -*-
 import math
 import random
@@ -231,3 +232,4 @@ class General(commands.Cog, name="General"):
 def setup(bot: Bot) -> NoReturn:
     bot.add_cog(General(bot))
     Logger.cog_loaded(bot.get_cog("General").name)
+

@@ -32,12 +32,14 @@
     "announceaway": ":white_check_mark: Announcement sending/sent to guilds.",
     "botinvitetitle": "Invite the bot with recommended permissions",
     "botinvitedescd": "Invite the bot with minimal permissions",
-    "botinvitedesc": "Bot pages listed below",
+    "botinvitedesc": "All bot pages are listed in the buttons below",
     "botuptopgg": "Bot page on top.gg",
     "botupbod": "Bot page on Bots on Discord",
     "botupsdc": "Bot page on bots.server-discord.com",
     "botupdblco": "Bot page on discordbotslist.co",
-    "canaryver": "For inviting the canary version of Helia use this link"
+	  "invitedescd": "Bot invite links",
+    "canaryver": "Canary Version Invite"
+
   },
   "helpsystemfirstpage": {
     "gemtitle": "**general**",
@@ -314,6 +316,7 @@
     "valmath": "Value must be between 1 and 5000"
   },
   "gnulinuxx": {
+
     "archdesc": "Arch Linux is an independent general purpose GNU / Linux distribution optimized for the x86-64 architecture, which aims to provide the latest stable versions of software following the rolling release model. By default, the user is provided with a minimalistic basic system in which the user can add what he needs. Pacman package manager is used to install, uninstall and update packages.",
     "ubuntudesc": "Ubuntu is an operating system based on Debian GNU / Linux. The main developer and sponsor is Canonical. Currently, the project is actively developed and supported by the free community.",
     "debiandesc": "Debian is an open source operating system. Currently, Debian GNU / Linux is one of the most popular and important GNU / Linux distributions, which in its primary form has had a significant impact on the development of this type of OS as a whole. There is also a project based on a different kernel: Debian GNU / Hurd. Debian can be used as an operating system for both servers and workstations.",

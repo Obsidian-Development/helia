@@ -25,8 +25,9 @@ class Listeners(commands.Cog, name="Listeners"):
 
         """
 
+        
         STRINGS = Strings(CONFIG["default_locale"])
-        print(f"Bot has been added to: {guild}")
+        print(f'Bot has been added to: {guild}')
         path = "scripts/version.txt"
         logpath = "logs/log.txt"
         with open(path, "r") as file:
@@ -50,6 +51,7 @@ class Listeners(commands.Cog, name="Listeners"):
             inline=True,
         )
         # embed.add_field(name=STRINGS['general']['aboutthanks'], value=STRINGS['general']['aboutthankstext'],inline=False)
+
         embed.set_footer(text=self.bot.user.name, icon_url=self.bot.user.avatar_url)
         print("The invite for this server is :")
         print(f"{invite}")
@@ -84,6 +86,7 @@ class Listeners(commands.Cog, name="Listeners"):
                 f"<@{self.bot.user.id}>",
                 f"@{self.bot.user}",
             ]:
+
                 await message.channel.send(
                     STRINGS["etc"]["on_mention"].format(message.author.id, prefix)
                 )

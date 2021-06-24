@@ -1,3 +1,4 @@
+
 import asyncio
 import random
 
@@ -61,3 +62,4 @@ class minigames(commands.Cog):
 
 def setup(client):
     client.add_cog(minigames(client))
+
