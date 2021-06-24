@@ -21,7 +21,7 @@
     "aboutthanks": "Thanks",
     "aboutthankstext": "NigamanRPG#6937(Now deleted account) for konsolebot code on https://computerteam.tk:4600/ , Plastik#5004 for setname command code , and other opensource projects for snippets of code",
     "abouthosting": "Hosting",
-    "abouthostingvalue": "<:heroku:833426074289438730>Heroku",
+    "abouthostingvalue": "<:vps:854357778683396096> Danbot Hosting",
     "botownererrorembedtitle": "Error",
     "botownererrorembeddesc": "You need the ``Bot Owner`` permission to do this.",
     "announcestitle": "Global Announcement System 🌐",
@@ -32,11 +32,13 @@
     "announceaway": ":white_check_mark: Announcement sending/sent to guilds.",
     "botinvitetitle": "Invite the bot with recommended permissions",
     "botinvitedescd": "Invite the bot with minimal permissions",
-    "botinvitedesc": "Bot pages listed below",
+    "botinvitedesc": "All bot pages are listed in the buttons below",
     "botuptopgg": "Bot page on top.gg",
     "botupbod": "Bot page on Bots on Discord",
     "botupsdc": "Bot page on bots.server-discord.com",
-    "canaryver": "For inviting the canary version of Helia use this link"
+    "botupdblco": "Bot page on discordbotslist.co",
+	"invitedescd": "Bot invite links",
+    "canaryver": "Canary Version Invite"
   },
   "helpsystemfirstpage": {
     "gemtitle": "**general**",
@@ -283,6 +285,42 @@
     "wallpaperanimefooter": "No anime here",
     "wallpapernaturetitle": "Nature Wallpapers",
     "wallpaperstarwarstitle": "Star Wars Wallpapers"
+  },
+  "privacy": {
+    "privtitle": "Information",
+    "privdesc": ":sunny: Privacy Policy",
+    "terminologytitle": "Terminology",
+    "terminologydesc": "Server Administrator \n Any user who has the permission, ability, or access to add or configure our bot on the server. \nServer Member \n Any user who is a member of a server where Helia is present on.",
+    "datacollecttitle": "Data Collected for server configuration",
+    "datacollectdesc": "The following may be collected when you use the server administrator commands to set up the bot the way you see fit",
+    "dctitlecont": "\u2800",
+    "datacollectcont": "Server configurations (guild_id,channel_id, role_id, bot locale , custom prefix setting) - Which are used for setting your welcome and goodbye channels , your server prefix and setting the language you wish the bot to speak",
+    "loggingtitle": "Logging",
+    "loggingdesc": "We log the following things about you \n Commands you use in your server ( which means , server name and the nickname of command invoker are stored - this is stored temporarily in the bot console and will be not visible to us after a couple hours)",
+    "securitytitle": "Security",
+    "securitydesc": "I value your trust in providing us your Personal Information, thus we are striving to use commercially acceptable means of protecting it. But remember that no method of transmission over the internet, or method of electronic storage is 100% secure and  reliable, and I cannot guarantee absolute security.",
+    "datadeletepoltitle": "Data deletion Policy",
+    "datadeletepoldesc": "If you wish to get the data stored removed pm me at Middlle#7488 in discord or send a email at heliadevelopersgithuborg@gmail.com and ill manually remove the info in files where it is stored"
+  },
+  "generictext": {
+    "result": "Result",
+    "entered": "You entered",
+    "invalidvalue": "Invalid Value",
+    "sqsqrt": "Square Root",
+    "math": "Mathematics",
+    "numberone": "Number 1",
+    "numbertwo": "Number 2",
+    "descgenermath": "Results are below",
+    "randinttitle": "Random Number generation",
+    "valmath": "Value must be between 1 and 5000"
+  },
+  "gnulinuxx": {
+	"archdesc": "Arch Linux is an independent general purpose GNU / Linux distribution optimized for the x86-64 architecture, which aims to provide the latest stable versions of software following the rolling release model. By default, the user is provided with a minimalistic basic system in which the user can add what he needs. Pacman package manager is used to install, uninstall and update packages.",
+    "ubuntudesc": "Ubuntu is an operating system based on Debian GNU / Linux. The main developer and sponsor is Canonical. Currently, the project is actively developed and supported by the free community.",
+    "debiandesc": "Debian is an open source operating system. Currently, Debian GNU / Linux is one of the most popular and important GNU / Linux distributions, which in its primary form has had a significant impact on the development of this type of OS as a whole. There is also a project based on a different kernel: Debian GNU / Hurd. Debian can be used as an operating system for both servers and workstations.",
+    "deeepindesc": "Deepin (stylized as deepin; formerly known as Linux Deepin and Hiweed Linux) is a Linux distribution based on Debian's stable branch. It features DDE, the Deepin Desktop Environment, built on Qt and available for various distributions like Manjaro, Arch or Fedora. As of version 15.10 it also uses dde-kwin, a set of patches for KDE Plasma's window manager. In 2019, Huawei started to ship Linux laptops pre-installed with deepin. ",
+    "manjarodesc": "Manjaro Linux or Manjaro is an Arch Linux GNU / Linux distribution that uses the rolling release update model. Several versions are officially available: with the XFCE, KDE, or GNOME desktop.",
+    "mintdesc": "Linux Mint is a community-developed free Linux distribution based on Ubuntu and Debian that aims to provide the user with a “modern, elegant and user-friendly operating system that is both powerful and easy to use.” Linux Mint provides full support for a variety of multimedia formats, includes some proprietary programs, and comes with an extensive set of open source applications. The founder of the project is Clement Lefebvre, the development team (Mint Linux Team) and the user community are also actively involved in the development. "	
   },
   "bot_log": {
     "info": "[{0}] [?] {1}",

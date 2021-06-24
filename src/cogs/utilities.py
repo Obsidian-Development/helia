@@ -1,7 +1,11 @@
 # -*- coding: utf-8 -*-
+import math
+import random
 import re
 from typing import NoReturn
 
+import math
+import random
 import discord
 from discord.ext import commands
 from discord.ext.commands import Bot, Context
@@ -96,7 +100,7 @@ class Utilities(commands.Cog):
                     == discord.ChannelType.text) or channel.type not in [
                         discord.ChannelType.voice,
                         discord.ChannelType.news,
-                    ]:
+            ]:
                 type = STRINGS["etc"]["channel_type"]["text"]
             elif channel.type == discord.ChannelType.voice:
                 type = STRINGS["etc"]["channel_type"]["voice"]
@@ -158,15 +162,73 @@ class Utilities(commands.Cog):
 
     @commands.command(description="Random number generator")
     async def randint(self, ctx: SlashContext, stc1: int, stc2: int):
+        s = await Settings(ctx.guild.id)
+        lang = await s.get_field("locale", CONFIG["default_locale"])
+        STRINGS = Strings(lang)
         result = random.randint(stc1, stc2)
-        await ctx.send(
-            f"Randome number geneation between {stc1} and {stc2} equals ``{result}``"
+        embed = discord.Embed(
+            title=STRINGS["generictext"]["randinttitle"],
+            description=STRINGS["generictext"]["descgenermath"],
         )
+        embed.add_field(name=STRINGS["generictext"]["numberone"],
+                        value=f"```{stc1}```",
+                        inline=True)
+        embed.add_field(name=STRINGS["generictext"]["numbertwo"],
+                        value=f"```{stc2}```",
+                        inline=True)
+        embed.add_field(name=STRINGS["generictext"]["result"],
+                        value=f"```{result}```",
+                        inline=False)
+        await ctx.send(embed=embed)
 
     @commands.command(description="Count square root")
     async def sqrt(self, ctx: SlashContext, num: int):
-        result = math.sqrt(num)
-        await ctx.send(f"Square root of {num} equals ``{result}``")
+        s = await Settings(ctx.guild.id)
+        lang = await s.get_field("locale", CONFIG["default_locale"])
+        STRINGS = Strings(lang)
+        if num > 5000:
+            embed = discord.Embed(
+                title=STRINGS["error"]["on_error_title"],
+                description=STRINGS["error"]["localeerrortext"],
+                color=0xFF0000,
+            )
+            embed.add_field(
+                name=STRINGS["generictext"]["invalidvalue"],
+                value=STRINGS["generictext"]["valmath"],
+                inline=False,
+            )
+            await ctx.send(embed=embed)
+            return
+        elif num < 0:
+            embed = discord.Embed(
+                title=STRINGS["error"]["on_error_title"],
+                description=STRINGS["error"]["localeerrortext"],
+                color=0xFF0000,
+            )
+            embed.add_field(
+                name=STRINGS["generictext"]["invalidvalue"],
+                value=STRINGS["generictext"]["valmath"],
+                inline=False,
+            )
+            await ctx.send(embed=embed)
+            return
+        else:
+            result = math.sqrt(num)
+            embed = discord.Embed(
+                title=STRINGS["generictext"]["sqsqrt"],
+                description=STRINGS["generictext"]["math"],
+            )
+            embed.add_field(
+                name=STRINGS["generictext"]["entered"],
+                value=f"```{num}```",
+                inline=False,
+            )
+            embed.add_field(
+                name=STRINGS["generictext"]["result"],
+                value=f"```{result}```",
+                inline=True,
+            )
+            await ctx.send(embed=embed)
 
     @commands.command(aliases=["server"])
     @commands.guild_only()

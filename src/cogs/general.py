@@ -14,7 +14,6 @@ from scripts import blacklist
 
 CONFIG = Config()
 
-
 class General(commands.Cog, name="General"):
     def __init__(self, bot) -> None:
         self.bot = bot
@@ -160,7 +159,7 @@ class General(commands.Cog, name="General"):
         s = await Settings(ctx.guild.id)
         lang = await s.get_field("locale", CONFIG["default_locale"])
         STRINGS = Strings(lang)
-        path = "src/scripts/version.txt"
+        path = "scripts/version.txt"
         with open(path, "r") as file:
             ver = file.readline()
         embed = discord.Embed(
@@ -186,6 +185,48 @@ class General(commands.Cog, name="General"):
                          icon_url=self.bot.user.avatar_url)
         await ctx.send(embed=embed)
 
+    @commands.guild_only()
+    @commands.command()
+    async def privacy(self, ctx: Context):
+        s = await Settings(ctx.guild.id)
+        lang = await s.get_field("locale", CONFIG["default_locale"])
+        STRINGS = Strings(lang)
+        embed = discord.Embed(title=STRINGS["privacy"]["privtitle"],
+                              description=STRINGS["privacy"]["privdesc"],
+                              color=0xFF8040)
+        embed.add_field(
+            name=STRINGS["privacy"]["terminologytitle"],
+            value=STRINGS["privacy"]["terminologydesc"],
+            inline=True,
+        )
+        embed.add_field(
+            name=STRINGS["privacy"]["datacollecttitle"],
+            value=STRINGS["privacy"]["datacollectdesc"],
+            inline=True,
+        )
+        embed.add_field(
+            name=STRINGS["privacy"]["dctitlecont"],
+            value=STRINGS["privacy"]["datacollectcont"],
+            inline=True,
+        )
+        embed.add_field(
+            name=STRINGS["privacy"]["loggingtitle"],
+            value=STRINGS["privacy"]["loggingdesc"],
+            inline=True,
+        )
+        embed.add_field(
+            name=STRINGS["privacy"]["securitytitle"],
+            value=STRINGS["privacy"]["securitydesc"],
+            inline=True,
+        )
+        embed.add_field(
+            name=STRINGS["privacy"]["datadeletepoltitle"],
+            value=STRINGS["privacy"]["datadeletepoldesc"],
+            inline=True,
+        )
+        embed.set_footer(text=self.bot.user.name,
+                         icon_url=self.bot.user.avatar_url)
+        await ctx.send(embed=embed)
 
 def setup(bot: Bot) -> NoReturn:
     bot.add_cog(General(bot))
