@@ -39,6 +39,10 @@ guidelines at https://github.com/pieckenst/helia/blob/master/CONTRIBUTING Source
 code on public github can be a bit behind hosted version since updates to it are
 pushed when enough changes pile up
 
+# Gitee mirror for mainland china /面向中国大陆的 Gitee 镜子 
+We have a complete copy of this repository for mainland china folk up at gitee , the address of which is located at https://gitee.com/pieckenst/helia
+我们在 gitee 上为居住在中国大陆的人提供了此存储库的完整副本，其地址位于 https://gitee.com/pieckenst/helia 。
+
 # Russian Description
 
 Бот с открытым исходным кодом для модерации и музыки Основные возможности бота
