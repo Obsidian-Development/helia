@@ -23,9 +23,7 @@ class minigames(commands.Cog):
         kuboid = random.choice(games.kubik)
         embedkub = discord.Embed(title=STRINGS["other"]["rollcubetitle"],
                                  color=0x00FF00)
-        embedkub.add_field(name=STRINGS["other"]["rolled"],
-                           value=kuboid,
-                           inline=False)
+        embedkub.add_field(name=STRINGS["other"]["rolled"], value=kuboid, inline=False)
         await ctx.send(embed=embedkub)
 
     @commands.command(description="Coin throw")
@@ -36,9 +34,7 @@ class minigames(commands.Cog):
         mon = random.choice(games.monet)
         embedmonet = discord.Embed(title=STRINGS["other"]["cointosstitle"],
                                    color=0x00FF00)
-        embedmonet.add_field(name=STRINGS["other"]["rolled"],
-                             value=mon,
-                             inline=False)
+        embedmonet.add_field(name=STRINGS["other"]["rolled"], value=mon, inline=False)
         await ctx.send(embed=embedmonet)
 
     @commands.command(description="Casino")

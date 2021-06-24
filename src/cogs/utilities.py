@@ -4,6 +4,8 @@ import random
 import re
 from typing import NoReturn
 
+import math
+import random
 import discord
 from discord.ext import commands
 from discord.ext.commands import Bot, Context
@@ -184,7 +186,20 @@ class Utilities(commands.Cog):
         s = await Settings(ctx.guild.id)
         lang = await s.get_field("locale", CONFIG["default_locale"])
         STRINGS = Strings(lang)
-        if num > 5000 or num < 0:
+        if num > 5000:
+            embed = discord.Embed(
+                title=STRINGS["error"]["on_error_title"],
+                description=STRINGS["error"]["localeerrortext"],
+                color=0xFF0000,
+            )
+            embed.add_field(
+                name=STRINGS["generictext"]["invalidvalue"],
+                value=STRINGS["generictext"]["valmath"],
+                inline=False,
+            )
+            await ctx.send(embed=embed)
+            return
+        elif num < 0:
             embed = discord.Embed(
                 title=STRINGS["error"]["on_error_title"],
                 description=STRINGS["error"]["localeerrortext"],
