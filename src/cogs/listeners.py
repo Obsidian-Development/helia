@@ -25,7 +25,6 @@ class Listeners(commands.Cog, name="Listeners"):
 
         """
 
-        
         STRINGS = Strings(CONFIG["default_locale"])
         print(f'Bot has been added to: {guild}')
         path = "scripts/version.txt"
@@ -39,7 +38,8 @@ class Listeners(commands.Cog, name="Listeners"):
             description=STRINGS["general"]["aboutdesc"],
             color=0xFF6900,
         )
-        embed.add_field(name=STRINGS["general"]["aboutver"], value=ver, inline=True)
+        embed.add_field(name=STRINGS["general"]
+                        ["aboutver"], value=ver, inline=True)
         embed.add_field(
             name=STRINGS["general"]["aboutauthoroninvitetitle"],
             value=STRINGS["general"]["aboutauthoroninvite"],
@@ -52,7 +52,8 @@ class Listeners(commands.Cog, name="Listeners"):
         )
         # embed.add_field(name=STRINGS['general']['aboutthanks'], value=STRINGS['general']['aboutthankstext'],inline=False)
 
-        embed.set_footer(text=self.bot.user.name, icon_url=self.bot.user.avatar_url)
+        embed.set_footer(text=self.bot.user.name,
+                         icon_url=self.bot.user.avatar_url)
         print("The invite for this server is :")
         print(f"{invite}")
         with open(logpath, "a") as file:
@@ -68,7 +69,8 @@ class Listeners(commands.Cog, name="Listeners"):
     @commands.Cog.listener()
     async def on_command(self, ctx: Context) -> NoReturn:
         """Logging commands to the console."""
-        Logger.command_used(ctx.message.author, ctx.command.name, ctx.message.guild)
+        Logger.command_used(ctx.message.author,
+                            ctx.command.name, ctx.message.guild)
 
     @commands.Cog.listener()
     async def on_message(self, message: Message) -> NoReturn:
@@ -88,7 +90,8 @@ class Listeners(commands.Cog, name="Listeners"):
             ]:
 
                 await message.channel.send(
-                    STRINGS["etc"]["on_mention"].format(message.author.id, prefix)
+                    STRINGS["etc"]["on_mention"].format(
+                        message.author.id, prefix)
                 )
 
     @commands.Cog.listener()
@@ -153,7 +156,8 @@ class Listeners(commands.Cog, name="Listeners"):
         else:
             embed = discord.Embed(color=0xDD0000)
             embed.title = STRINGS["error"]["on_error_title"]
-            embed.description = STRINGS["error"]["on_error_text"].format(str(error))
+            embed.description = STRINGS["error"]["on_error_text"].format(
+                str(error))
             Logger.warn(str(error))
 
         msg = await ctx.send(embed=embed)
