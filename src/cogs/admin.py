@@ -6,8 +6,9 @@ from typing import NoReturn
 import discord
 from discord.ext import commands
 from discord.ext.commands import Bot, Context
+from discord_components import (Button, ButtonStyle, DiscordComponents,
+                                InteractionType)
 from discord_slash import SlashContext, cog_ext
-from discord_components import DiscordComponents, Button, ButtonStyle, InteractionType
 
 from cogs.utils import Config, Logger, Settings, Strings, Utils
 
