@@ -6,6 +6,7 @@ import discord
 from discord import Member, User
 from discord.ext import commands
 from discord.ext.commands import Bot, Context, Greedy
+from discord_components import Button, ButtonStyle, DiscordComponents, InteractionType
 
 from cogs.utils import Config, Logger, Settings, Strings, Utils
 
@@ -38,13 +39,65 @@ class Moderation(commands.Cog, name="Moderation"):
         s = await Settings(ctx.guild.id)
         lang = await s.get_field("locale", CONFIG["default_locale"])
         STRINGS = Strings(lang)
-
+        
+        select_components = [
+            [
+                Button(style=ButtonStyle.green, label="✓"),
+                Button(style=ButtonStyle.red, label="X"),
+            ]
+        ]
+        done_components = [
+            [
+                Button(style=ButtonStyle.grey, label="·", disabled=True),
+            ]
+        ]
+        
+        embedconfirm = discord.Embed(
+            title="Ban Command",
+            description="```Do you want to ban this member?```",
+        )
+        await ctx.send(embed=embedconfirm, components=select_components)
+        response = await self.bot.wait_for(
+            "button_click", check=lambda message: message.author == ctx.author
+        )
         try:
-            embed = Utils.error_embed(STRINGS["moderation"]["dm_ban"].format(
+          if response.component.label == "✓":
+             await response.respond(
+                type=7,
+                embed=discord.Embed(
+                    title="Action confirmed",
+                    description=f"Banning {member} for {reason}",
+                    color=0xFF8000,
+                ),
+                components=done_components,
+             )
+             await asyncio.sleep(5)
+             await member.ban(reason=reason)
+          elif response.component.label == "✓" and not member.bot:
+             await response.respond(
+                type=7,
+                embed=discord.Embed(
+                    title="Action confirmed",
+                    description=f"Banning {member} for {reason}",
+                    color=0xFF8000,
+                ),
+                components=done_components,
+             )
+             embed = Utils.error_embed(STRINGS["moderation"]["dm_ban"].format(
                 ctx.guild.name, reason))
-            await member.send(embed=embed)
-            await asyncio.sleep(5)
-            await member.ban(reason=reason)
+             await member.send(embed=embed)
+             await asyncio.sleep(5)
+             await member.ban(reason=reason)
+          else:
+            await response.respond(
+                type=7,
+                embed=discord.Embed(
+                    title="Action Aborted",
+                    description="The action was aborted by clicking the no button",
+                    color=0xDD2E44,
+                ),
+                components=done_components,
+            )
 
         except discord.Forbidden:
             await ctx.message.add_reaction(CONFIG["no_emoji"])
@@ -69,7 +122,7 @@ class Moderation(commands.Cog, name="Moderation"):
     @commands.bot_has_permissions(ban_members=True)
     @commands.has_permissions(ban_members=True)
     @commands.cooldown(1, 5, commands.BucketType.user)
-    async def unban(self, ctx: Context, *, user: User) -> NoReturn:
+    async def unban(self, ctx, *, member) -> NoReturn:
         """Unbans the user.
 
         Attributes:
@@ -80,17 +133,68 @@ class Moderation(commands.Cog, name="Moderation"):
         s = await Settings(ctx.guild.id)
         lang = await s.get_field("locale", CONFIG["default_locale"])
         STRINGS = Strings(lang)
+        
+        select_components = [
+            [
+                Button(style=ButtonStyle.green, label="✓"),
+                Button(style=ButtonStyle.red, label="X"),
+            ]
+        ]
+        done_components = [
+            [
+                Button(style=ButtonStyle.grey, label="·", disabled=True),
+            ]
+        ]
+        
+        embedconfirm = discord.Embed(
+            title="Unban Command",
+            description="```Do you want to unban this member?```",
+        )
+        await ctx.send(embed=embedconfirm, components=select_components)
+        response = await self.bot.wait_for(
+            "button_click", check=lambda message: message.author == ctx.author
+        )
 
-        banned_users = await ctx.guild.bans()
-        member_name, member_discriminator = user.split("#")
-
-        for ban_entry in banned_users:
-            user = ban_entry.user
-            if (user.name, user.discriminator) == (member_name,
-                                                   member_discriminator):
-                await ctx.guild.unban(user)
-                await ctx.message.add_reaction(CONFIG["yes_emoji"])
-                return
+        if "#" in ctx.message.content and response.component.label == "✓":
+            banned_users = await ctx.guild.bans()
+            for ban_entry in banned_users: 
+                    member_name, member_discriminator = member.split('#')
+                    user = ban_entry.user
+                    if (user.name, user.discriminator) == (member_name, member_discriminator):
+                      await ctx.guild.unban(user)
+                      await response.respond(
+                        type=7,
+                        embed=discord.Embed(
+                          title="Action confirmed",
+                          description=f"Unbanned {user}",
+                          color=0xFF8000,
+                        ),
+                        components=done_components,
+                      )
+                      
+            return
+        elif response.component.label == "✓":
+            member = await self.client.fetch_user(int(member))
+            await ctx.guild.unban(member)
+            await response.respond(
+                type=7,
+                embed=discord.Embed(
+                    title="Action confirmed",
+                    description=f"Unbanned {member}",
+                    color=0xFF8000,
+                ),
+                components=done_components,
+            )
+        else:
+            await response.respond(
+                type=7,
+                embed=discord.Embed(
+                    title="Action Aborted",
+                    description="The action was aborted by clicking the no button",
+                    color=0xDD2E44,
+                ),
+                components=done_components,
+            )
 
         await ctx.message.add_reaction(CONFIG["no_emoji"])
         embed = Utils.error_embed(STRINGS["error"]["user_not_found"])
@@ -122,6 +226,9 @@ class Moderation(commands.Cog, name="Moderation"):
         for member in members:
             try:
                 await member.ban(reason=reason)
+                await ctx.send("Members banned")
+                  
+                    
             except discord.Forbidden:
                 not_banned_members.append(member.mention)
 
@@ -142,7 +249,7 @@ class Moderation(commands.Cog, name="Moderation"):
                 Utils.warn_embed(
                     STRINGS["moderation"]["on_not_full_multiban"].format(
                         ", ".join(not_banned_members))))
-            await asyncio.sleep(10)
+            await asyncio.sleep(30)
             await msg.delete()
 
     @commands.command()
@@ -166,13 +273,67 @@ class Moderation(commands.Cog, name="Moderation"):
         s = await Settings(ctx.guild.id)
         lang = await s.get_field("locale", CONFIG["default_locale"])
         STRINGS = Strings(lang)
-
-        embed = Utils.error_embed(STRINGS["moderation"]["dm_kick"].format(
+        
+        select_components = [
+            [
+                Button(style=ButtonStyle.green, label="✓"),
+                Button(style=ButtonStyle.red, label="X"),
+            ]
+        ]
+        done_components = [
+            [
+                Button(style=ButtonStyle.grey, label="·", disabled=True),
+            ]
+        ]
+        
+        embedconfirm = discord.Embed(
+            title="Kick Command",
+            description="```Do you want to kick this member?```",
+        )
+        await ctx.send(embed=embedconfirm, components=select_components)
+        response = await self.bot.wait_for(
+            "button_click", check=lambda message: message.author == ctx.author
+        )
+        if response.component.label == "✓":
+          await response.respond(
+            type=7,
+            embed=discord.Embed(
+                title="Action Completed",
+                description=f"Kicked {member} for {reason}",
+                color=0xDD2E44,
+            ),
+            components=done_components,
+          )
+          await asyncio.sleep(5)
+          await member.kick()
+          await ctx.message.add_reaction(CONFIG["yes_emoji"])
+        elif response.component.label == "✓" and not member.bot:
+          embed = Utils.error_embed(STRINGS["moderation"]["dm_kick"].format(
             ctx.guild, reason))
-        await member.send(embed=embed)
-        await asyncio.sleep(5)
-        await member.kick()
-        await ctx.message.add_reaction(CONFIG["yes_emoji"])
+          await member.send(embed=embed)
+          await asyncio.sleep(5)
+          await member.kick()
+          await response.respond(
+            type=7,
+            embed=discord.Embed(
+                title="Action Completed",
+                description=f"Kicked {member} for {reason}",
+                color=0xDD2E44,
+            ),
+            components=done_components,
+          )
+          await ctx.message.add_reaction(CONFIG["yes_emoji"])
+        else:
+                    await response.respond(
+                       type=7,
+                       embed=discord.Embed(
+                          title="Action Aborted",
+                          description="The action was aborted by clicking the no button",
+                          color=0xDD2E44,
+                       ),
+                       components=done_components,
+                    )
+                    return
 
     @commands.command(aliases=["clear"])
     @commands.guild_only()
@@ -190,12 +351,53 @@ class Moderation(commands.Cog, name="Moderation"):
         s = await Settings(ctx.guild.id)
         lang = await s.get_field("locale", CONFIG["default_locale"])
         STRINGS = Strings(lang)
-
-        deleted = await ctx.channel.purge(limit=number + 1)
-
-        embed = Utils.done_embed(STRINGS["moderation"]["on_clear"].format(
-            len(deleted)))
-        msg = await ctx.send(embed=embed, delete_after=10)
+        
+        select_components = [
+            [
+                Button(style=ButtonStyle.green, label="✓"),
+                Button(style=ButtonStyle.red, label="X"),
+            ]
+        ]
+        done_components = [
+            [
+                Button(style=ButtonStyle.grey, label="·", disabled=True),
+            ]
+        ]
+        
+        embedconfirm = discord.Embed(
+            title="Clear Command",
+            description=f"```Do you want to remove {number} messages?```",
+        )
+        await ctx.send(embed=embedconfirm, components=select_components)
+        response = await self.bot.wait_for(
+            "button_click", check=lambda message: message.author == ctx.author
+        )
+        
+        if response.component.label == "✓":
+          await response.respond(
+            type=7,
+            embed=discord.Embed(
+                title="Action Completed",
+                description=f"Purging {number} messages",
+                color=0xDD2E44,
+            ),
+            components=done_components,
+          )
+          await asyncio.sleep(10)
+          deleted = await ctx.channel.purge(limit=number + 1)
+          
+        else:
+                    await response.respond(
+                       type=7,
+                       embed=discord.Embed(
+                          title="Action Aborted",
+                          description="The action was aborted by clicking the no button",
+                          color=0xDD2E44,
+                       ),
+                       components=done_components,
+                    )
+                    return
+          
 
     @commands.command(aliases=["setnick, setname"])
     @commands.guild_only()
