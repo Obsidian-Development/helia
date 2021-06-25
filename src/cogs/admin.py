@@ -97,16 +97,36 @@ class Admin(commands.Cog, name="Admin"):
             "237984877604110336",
             "579750505736044574",
             "497406228364787717",
+            "353049432037523467",
         ]
-        if str(author.id) in valid_users:
-            embed = discord.Embed(
+        select_components = [
+            [
+                Button(style=ButtonStyle.green, label="✓"),
+                Button(style=ButtonStyle.red, label="X"),
+            ]
+        ]
+        done_components = [
+            [
+                Button(style=ButtonStyle.grey, label="·", disabled=True),
+            ]
+        ]
+        
+        
+        embedconfirm=discord.Embed(title=STRINGS["moderation"]["shutdownembedtitle"], description=STRINGS["moderation"]["shutdownconfirm"])
+        await ctx.send(embed=embedconfirm, components=select_components)
+        response = await self.bot.wait_for('button_click', check = lambda message: message.author == ctx.author)
+        if str(author.id) in valid_users and response.component.label == '✓':
+            await response.respond(
+               type=7,
+               embed = discord.Embed(
                 title=STRINGS["moderation"]["shutdownembedtitle"],
                 description=STRINGS["moderation"]["shutdownembeddesc"],
                 color=0xFF8000,
+               ),
+               components=done_components,
             )
-            embed.set_footer(text=self.bot.user.name,
-                             icon_url=self.bot.user.avatar_url)
-            await ctx.send(embed=embed)
+
+  
             await ctx.bot.change_presence(activity=discord.Game(
                 name="Shutting down for either reboot or update "))
             await asyncio.sleep(5)
@@ -115,12 +135,15 @@ class Admin(commands.Cog, name="Admin"):
             print("---------------------------")
             await ctx.bot.close()
         else:
-            embed2 = discord.Embed(
-                title="🔴 Error",
-                description="You need the ``Bot Owner`` permission to do this.",
+            await response.respond(
+               type=7,
+               embed = discord.Embed(
+                title=STRINGS["moderation"]["shutdownaborttitle"],
+                description=STRINGS["moderation"]["shutdownabortdesc"],
                 color=0xDD2E44,
+               ),
+               components=done_components,
             )
-            await ctx.send(embed=embed2)
 
     @commands.command(description="Set bot status")
     async def set_status(self, ctx, *args):
