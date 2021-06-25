@@ -283,12 +283,10 @@ class Admin(commands.Cog, name="Admin"):
       
       @commands.command(brief = "Gives the bot's uptime")
       async def uptime(self, ctx):
-         delta_uptime = datetime.utcnow() - self.bot.look.launch_time
          delta_uptime = datetime.datetime.utcnow() - self.bot.look.launch_time
          hours, remainder = divmod(int(delta_uptime.total_seconds()), 3600)
          minutes, seconds = divmod(remainder, 60)
          days, hours = divmod(hours, 24)
-         await ctx.send(f"{days}d, {hours}h, {minutes}m, {seconds}s")
          await ctx.send(f"Days: {days}d, \nHours: {hours}h, \nMinutes: {minutes}m, \nSeconds: {seconds}s")
       
     # @commands.command()
