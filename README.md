@@ -45,6 +45,8 @@ We have a complete copy of this repository for mainland china folk up at gitee ,
 
 我们在 gitee 上为居住在中国大陆的人提供了此存储库的完整副本，其地址位于 https://gitee.com/pieckenst/helia 。
 
+[![pieckenst/helia](https://gitee.com/pieckenst/helia/widgets/widget_card.svg?colors=ffffff,1e252b,323d47,455059,d7deea,99a0ae)](https://gitee.com/pieckenst/helia)
+
 # Russian Description
 
 Бот с открытым исходным кодом для модерации и музыки Основные возможности бота
