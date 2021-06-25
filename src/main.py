@@ -52,17 +52,15 @@ class Helia(commands.AutoShardedBot):
         self.filepath = dirname(abspath(__file__))
         self.statuses = [
             # discord.Activity(type=discord.ActivityType.watching, name=f"{len(self.bot.guilds)} servers | {len(self.bot.shards)} shards!"), # bugged status - uncomment after fix
-            discord.Activity(
-                type=discord.ActivityType.watching, name="Ping me for prefix"
-            ),
+            discord.Activity(type=discord.ActivityType.watching,
+                             name="Ping me for prefix"),
             discord.Activity(
                 type=discord.ActivityType.listening,
                 name="Dont forget to bump the bot every 3 hours on bot lists!",
             ),
             # discord.Game(name=f"{command_prefix}help for info"),
-            discord.Activity(
-                type=discord.ActivityType.listening, name="to my creator Middlle#7488"
-            ),
+            discord.Activity(type=discord.ActivityType.listening,
+                             name="to my creator Middlle#7488"),
             discord.Game(name="Final Fantasy XIV"),
             discord.Activity(
                 type=discord.ActivityType.watching,
@@ -71,14 +69,16 @@ class Helia(commands.AutoShardedBot):
             discord.Game(
                 name="Deep inside, we're nothing more than scions and sinners"
             ),
-            discord.Activity(type=discord.ActivityType.watching, name="headbanging"),
+            discord.Activity(type=discord.ActivityType.watching,
+                             name="headbanging"),
         ]
 
         load_dotenv()
         self.TOKEN = os.getenv("DISCORD_TOKEN")
 
         cprint(STRINGS["etc"]["info"]["art"], "white")
-        cprint("Default locale is {0}".format(CONFIG["default_locale"]), "green")
+        cprint("Default locale is {0}".format(CONFIG["default_locale"]),
+               "green")
 
         self.slash = SlashCommand(self, override_type=True)
         Slashify(self)
@@ -86,7 +86,7 @@ class Helia(commands.AutoShardedBot):
         look.launch_time = datetime.datetime.utcnow()
 
         if (
-            not loaded
+                not loaded
         ):  # using this so the bot doesn't initialize a second time when trying to get variables or functions
             print("Loading cogs:")
             for filename in os.listdir(self.filepath + "/cogs"):
@@ -119,9 +119,8 @@ class Helia(commands.AutoShardedBot):
         print("---------------------------")
         print("[DYNAMIC-STATUS] Dynamic status changed")
         print("---------------------------")
-        await self.change_presence(
-            status=discord.Status.online, activity=random.choice(self.statuses)
-        )
+        await self.change_presence(status=discord.Status.online,
+                                   activity=random.choice(self.statuses))
 
     async def on_connect(self):
         print("[CONNECTION] Connected to the Discord API")
