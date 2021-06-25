@@ -11,6 +11,7 @@
 # ********************************************************************************/
 import asyncio
 import json
+import datetime
 import os
 import random
 import sqlite3
@@ -45,6 +46,7 @@ class Helia(commands.AutoShardedBot):
             # intents.members = True # Commented line for requesting members privileged intent - uncomment for enabling
             # intents.presences = True # Commented line for requesting presence privileged intent - uncomment for enabling
         )
+
 
         CONFIG = Config()
         STRINGS = Strings(CONFIG["default_locale"])
@@ -82,6 +84,7 @@ class Helia(commands.AutoShardedBot):
         self.slash = SlashCommand(self, override_type=True)
         Slashify(self)
         global loaded
+        look.launch_time = datetime.datetime.utcnow()
 
         if (
                 not loaded
