@@ -59,8 +59,7 @@ class Calculator(commands.Cog, name="Calculator"):
                 # expression += "²"
                 # elif res.component.label == "x³":
                 # expression += "³"
-                elif (expression == "100000" or len(expression) == 7
-                      or len(expression) > 7 or expression.count("²") >= 4
+                elif (len(expression) > 8 or expression.count("²") >= 4
                       or expression.count("³") >= 4
                       or expression.count("²²") > 1
                       or expression.count("³³") > 1
@@ -92,7 +91,7 @@ class Calculator(commands.Cog, name="Calculator"):
                             type=7,
                             embed=discord.Embed(
                                 title="Closing down",
-                                description="You have entered a number that is 7 or more in length or some enormous calculation - for the stability of the bot and crash prevention we will close down this calculator session",
+                                description="You have entered a number that is 8 or more in length or some enormous calculation - for the stability of the bot and crash prevention we will close down this calculator session",
                                 color=0xDD2E44,
                             ),
                             components=done,
@@ -110,7 +109,7 @@ class Calculator(commands.Cog, name="Calculator"):
                             type=7,
                             embed=discord.Embed(
                                 title="Closing down",
-                                description="You have entered a number more that is 7 or more in length or some enormous calculation - for the stability of the bot and crash prevention we will close down this calculator session",
+                                description="You have entered a number more that is 8 or more in length or some enormous calculation - for the stability of the bot and crash prevention we will close down this calculator session",
                                 color=0xDD2E44,
                             ),
                             components=done,
