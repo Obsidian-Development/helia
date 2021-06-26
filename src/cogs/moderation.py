@@ -6,7 +6,8 @@ import discord
 from discord import Member, User
 from discord.ext import commands
 from discord.ext.commands import Bot, Context, Greedy
-from discord_components import Button, ButtonStyle, DiscordComponents, InteractionType
+from discord_components import (Button, ButtonStyle, DiscordComponents,
+                                InteractionType)
 
 from cogs.utils import Config, Logger, Settings, Strings, Utils
 
@@ -23,9 +24,11 @@ class Moderation(commands.Cog, name="Moderation"):
     @commands.bot_has_permissions(ban_members=True)
     @commands.has_permissions(ban_members=True)
     @commands.cooldown(1, 5, commands.BucketType.user)
-    async def ban(
-        self, ctx: Context, member: Member, *, reason: str = "N/A"
-    ) -> NoReturn:
+    async def ban(self,
+                  ctx: Context,
+                  member: Member,
+                  *,
+                  reason: str = "N/A") -> NoReturn:
         """Bans the user.
 
         Attributes:
@@ -38,17 +41,13 @@ class Moderation(commands.Cog, name="Moderation"):
         lang = await s.get_field("locale", CONFIG["default_locale"])
         STRINGS = Strings(lang)
 
-        select_components = [
-            [
-                Button(style=ButtonStyle.green, label="✓"),
-                Button(style=ButtonStyle.red, label="X"),
-            ]
-        ]
-        done_components = [
-            [
-                Button(style=ButtonStyle.grey, label="·", disabled=True),
-            ]
-        ]
+        select_components = [[
+            Button(style=ButtonStyle.green, label="✓"),
+            Button(style=ButtonStyle.red, label="X"),
+        ]]
+        done_components = [[
+            Button(style=ButtonStyle.grey, label="·", disabled=True),
+        ]]
 
         embedconfirm = discord.Embed(
             title="Ban Command",
@@ -56,8 +55,7 @@ class Moderation(commands.Cog, name="Moderation"):
         )
         await ctx.send(embed=embedconfirm, components=select_components)
         response = await self.bot.wait_for(
-            "button_click", check=lambda message: message.author == ctx.author
-        )
+            "button_click", check=lambda message: message.author == ctx.author)
         try:
             if response.component.label == "✓":
                 await response.respond(
@@ -92,8 +90,8 @@ class Moderation(commands.Cog, name="Moderation"):
         else:
             try:
                 embed = Utils.error_embed(
-                    STRINGS["moderation"]["dm_ban"].format(ctx.guild.name, reason)
-                )
+                    STRINGS["moderation"]["dm_ban"].format(
+                        ctx.guild.name, reason))
                 await member.send(embed=embed)
             except:
                 pass
@@ -117,17 +115,13 @@ class Moderation(commands.Cog, name="Moderation"):
         lang = await s.get_field("locale", CONFIG["default_locale"])
         STRINGS = Strings(lang)
 
-        select_components = [
-            [
-                Button(style=ButtonStyle.green, label="✓"),
-                Button(style=ButtonStyle.red, label="X"),
-            ]
-        ]
-        done_components = [
-            [
-                Button(style=ButtonStyle.grey, label="·", disabled=True),
-            ]
-        ]
+        select_components = [[
+            Button(style=ButtonStyle.green, label="✓"),
+            Button(style=ButtonStyle.red, label="X"),
+        ]]
+        done_components = [[
+            Button(style=ButtonStyle.grey, label="·", disabled=True),
+        ]]
 
         embedconfirm = discord.Embed(
             title="Unban Command",
@@ -135,8 +129,7 @@ class Moderation(commands.Cog, name="Moderation"):
         )
         await ctx.send(embed=embedconfirm, components=select_components)
         response = await self.bot.wait_for(
-            "button_click", check=lambda message: message.author == ctx.author
-        )
+            "button_click", check=lambda message: message.author == ctx.author)
 
         if "#" in ctx.message.content and response.component.label == "✓":
             banned_users = await ctx.guild.bans()
@@ -144,8 +137,8 @@ class Moderation(commands.Cog, name="Moderation"):
                 member_name, member_discriminator = member.split("#")
                 user = ban_entry.user
                 if (user.name, user.discriminator) == (
-                    member_name,
-                    member_discriminator,
+                        member_name,
+                        member_discriminator,
                 ):
                     await ctx.guild.unban(user)
                     await response.respond(
@@ -191,9 +184,11 @@ class Moderation(commands.Cog, name="Moderation"):
     @commands.bot_has_permissions(ban_members=True)
     @commands.has_permissions(ban_members=True)
     @commands.cooldown(1, 5, commands.BucketType.user)
-    async def multiban(
-        self, ctx: Context, members: Greedy[Member], *, reason: str = "N/A"
-    ) -> NoReturn:
+    async def multiban(self,
+                       ctx: Context,
+                       members: Greedy[Member],
+                       *,
+                       reason: str = "N/A") -> NoReturn:
         """Bans multiple users.
 
         Attributes:
@@ -218,8 +213,8 @@ class Moderation(commands.Cog, name="Moderation"):
             else:
                 try:
                     embed = Utils.error_embed(
-                        STRINGS["moderation"]["dm_ban"].format(ctx.guild.name, reason)
-                    )
+                        STRINGS["moderation"]["dm_ban"].format(
+                            ctx.guild.name, reason))
                     await member.send(embed=embed)
                 except:
                     pass
@@ -231,10 +226,7 @@ class Moderation(commands.Cog, name="Moderation"):
             msg = await ctx.send(
                 Utils.warn_embed(
                     STRINGS["moderation"]["on_not_full_multiban"].format(
-                        ", ".join(not_banned_members)
-                    )
-                )
-            )
+                        ", ".join(not_banned_members))))
             await asyncio.sleep(30)
             await msg.delete()
 
@@ -243,9 +235,11 @@ class Moderation(commands.Cog, name="Moderation"):
     @commands.bot_has_permissions(kick_members=True)
     @commands.has_permissions(kick_members=True)
     @commands.cooldown(1, 5, commands.BucketType.user)
-    async def kick(
-        self, ctx: Context, member: Member, *, reason: str = "N/A"
-    ) -> NoReturn:
+    async def kick(self,
+                   ctx: Context,
+                   member: Member,
+                   *,
+                   reason: str = "N/A") -> NoReturn:
         """Kicks the user.
 
         Attributes:
@@ -258,17 +252,13 @@ class Moderation(commands.Cog, name="Moderation"):
         lang = await s.get_field("locale", CONFIG["default_locale"])
         STRINGS = Strings(lang)
 
-        select_components = [
-            [
-                Button(style=ButtonStyle.green, label="✓"),
-                Button(style=ButtonStyle.red, label="X"),
-            ]
-        ]
-        done_components = [
-            [
-                Button(style=ButtonStyle.grey, label="·", disabled=True),
-            ]
-        ]
+        select_components = [[
+            Button(style=ButtonStyle.green, label="✓"),
+            Button(style=ButtonStyle.red, label="X"),
+        ]]
+        done_components = [[
+            Button(style=ButtonStyle.grey, label="·", disabled=True),
+        ]]
 
         embedconfirm = discord.Embed(
             title="Kick Command",
@@ -276,8 +266,7 @@ class Moderation(commands.Cog, name="Moderation"):
         )
         await ctx.send(embed=embedconfirm, components=select_components)
         response = await self.bot.wait_for(
-            "button_click", check=lambda message: message.author == ctx.author
-        )
+            "button_click", check=lambda message: message.author == ctx.author)
         if response.component.label == "✓":
             await response.respond(
                 type=7,
@@ -320,17 +309,13 @@ class Moderation(commands.Cog, name="Moderation"):
         lang = await s.get_field("locale", CONFIG["default_locale"])
         STRINGS = Strings(lang)
 
-        select_components = [
-            [
-                Button(style=ButtonStyle.green, label="✓"),
-                Button(style=ButtonStyle.red, label="X"),
-            ]
-        ]
-        done_components = [
-            [
-                Button(style=ButtonStyle.grey, label="·", disabled=True),
-            ]
-        ]
+        select_components = [[
+            Button(style=ButtonStyle.green, label="✓"),
+            Button(style=ButtonStyle.red, label="X"),
+        ]]
+        done_components = [[
+            Button(style=ButtonStyle.grey, label="·", disabled=True),
+        ]]
 
         embedconfirm = discord.Embed(
             title="Clear Command",
@@ -338,8 +323,7 @@ class Moderation(commands.Cog, name="Moderation"):
         )
         await ctx.send(embed=embedconfirm, components=select_components)
         response = await self.bot.wait_for(
-            "button_click", check=lambda message: message.author == ctx.author
-        )
+            "button_click", check=lambda message: message.author == ctx.author)
 
         if response.component.label == "✓":
             await response.respond(
@@ -371,7 +355,8 @@ class Moderation(commands.Cog, name="Moderation"):
     @commands.bot_has_permissions(manage_nicknames=True)
     @commands.has_permissions(manage_roles=True)
     @commands.cooldown(1, 5, commands.BucketType.user)
-    async def setname(self, ctx: Context, member: Member, *, name: str) -> NoReturn:
+    async def setname(self, ctx: Context, member: Member, *,
+                      name: str) -> NoReturn:
         s = await Settings(ctx.guild.id)
         lang = await s.get_field("locale", CONFIG["default_locale"])
         STRINGS = Strings(lang)
@@ -379,10 +364,8 @@ class Moderation(commands.Cog, name="Moderation"):
         if len(name) > 32:
             embed = Utils.error_embed(STRINGS["error"]["too_long_name"])
             await ctx.send(embed=embed)
-        elif (
-            ctx.message.author.guild_permissions.manage_nicknames
-            or member == ctx.message.author
-        ):
+        elif (ctx.message.author.guild_permissions.manage_nicknames
+              or member == ctx.message.author):
             await member.edit(nick=name)
             await ctx.message.add_reaction(CONFIG["yes_emoji"])
         else:
@@ -393,19 +376,20 @@ class Moderation(commands.Cog, name="Moderation"):
     @commands.guild_only()
     @commands.bot_has_permissions(manage_roles=True)
     @commands.cooldown(1, 5, commands.BucketType.user)
-    async def mute(
-        self, ctx: Context, member: Member, *, reason: str = "N/A"
-    ) -> NoReturn:
+    async def mute(self,
+                   ctx: Context,
+                   member: Member,
+                   *,
+                   reason: str = "N/A") -> NoReturn:
         s = await Settings(ctx.guild.id)
         lang = await s.get_field("locale", CONFIG["default_locale"])
         STRINGS = Strings(lang)
         mute_role_id = await s.get_field("mute_role_id")
 
-        if (
-            mute_role_id is None
-            or discord.utils.get(ctx.guild.roles, id=mute_role_id) is None
-        ):
-            embed = Utils.done_embed(STRINGS["moderation"]["on_mute_role_create"])
+        if (mute_role_id is None or
+                discord.utils.get(ctx.guild.roles, id=mute_role_id) is None):
+            embed = Utils.done_embed(
+                STRINGS["moderation"]["on_mute_role_create"])
             await ctx.send(embed=embed)
             mute_role = await ctx.guild.create_role(name="Muted")
 
@@ -417,14 +401,16 @@ class Moderation(commands.Cog, name="Moderation"):
 
             for user_role in member.roles:
                 if user_role == mute_role:
-                    embed = Utils.error_embed(STRINGS["error"]["already_muted"])
+                    embed = Utils.error_embed(
+                        STRINGS["error"]["already_muted"])
                     await ctx.send(embed=embed)
                     return
 
         for channel in ctx.guild.text_channels:
-            await channel.set_permissions(
-                mute_role, read_messages=True, send_messages=False, speak=False
-            )
+            await channel.set_permissions(mute_role,
+                                          read_messages=True,
+                                          send_messages=False,
+                                          speak=False)
 
         await member.add_roles(mute_role)
         await ctx.message.add_reaction(CONFIG["yes_emoji"])
@@ -434,12 +420,14 @@ class Moderation(commands.Cog, name="Moderation"):
     @commands.bot_has_permissions(manage_roles=True)
     @commands.has_permissions(manage_roles=True)
     @commands.cooldown(1, 5, commands.BucketType.user)
-    async def unmute(
-        self, ctx: Context, member: Member, *, reason: str = "N/A"
-    ) -> NoReturn:
-        mute_role = discord.utils.get(
-            ctx.guild.roles, id=Utils.get_mute_role(None, ctx.message)
-        )
+    async def unmute(self,
+                     ctx: Context,
+                     member: Member,
+                     *,
+                     reason: str = "N/A") -> NoReturn:
+        mute_role = discord.utils.get(ctx.guild.roles,
+                                      id=Utils.get_mute_role(
+                                          None, ctx.message))
         if mute_role is None:
             # FIXME
             await ctx.send("нету роли мута ок да\n\n\nок")
@@ -493,7 +481,8 @@ class Moderation(commands.Cog, name="Moderation"):
         lang = await s.get_field("locale", CONFIG["default_locale"])
         STRINGS = Strings(lang)
         for channel in ctx.guild.channels:
-            await channel.set_permissions(ctx.guild.default_role, send_messages=False)
+            await channel.set_permissions(ctx.guild.default_role,
+                                          send_messages=False)
         embed = discord.Embed(
             title=STRINGS["moderation"]["lockdowntitleone"],
             description=STRINGS["moderation"]["lockdowndescone"],
@@ -510,7 +499,8 @@ class Moderation(commands.Cog, name="Moderation"):
         lang = await s.get_field("locale", CONFIG["default_locale"])
         STRINGS = Strings(lang)
         for channel in ctx.guild.channels:
-            await channel.set_permissions(ctx.guild.default_role, send_messages=True)
+            await channel.set_permissions(ctx.guild.default_role,
+                                          send_messages=True)
         embed = discord.Embed(
             title=STRINGS["moderation"]["lockdownliftedtitleone"],
             description=STRINGS["moderation"]["lockdownlifteddescone"],
@@ -527,7 +517,8 @@ class Moderation(commands.Cog, name="Moderation"):
         s = await Settings(ctx.guild.id)
         lang = await s.get_field("locale", CONFIG["default_locale"])
         STRINGS = Strings(lang)
-        await ctx.channel.set_permissions(ctx.guild.default_role, send_messages=False)
+        await ctx.channel.set_permissions(ctx.guild.default_role,
+                                          send_messages=False)
         embed = discord.Embed(
             title=STRINGS["moderation"]["channellockdowntitle"],
             description=STRINGS["moderation"]["channellockdowndesc"],
@@ -544,7 +535,8 @@ class Moderation(commands.Cog, name="Moderation"):
         s = await Settings(ctx.guild.id)
         lang = await s.get_field("locale", CONFIG["default_locale"])
         STRINGS = Strings(lang)
-        await ctx.channel.set_permissions(ctx.guild.default_role, send_messages=True)
+        await ctx.channel.set_permissions(ctx.guild.default_role,
+                                          send_messages=True)
         embed = discord.Embed(
             title=STRINGS["moderation"]["channellockdownliftedtitle"],
             description=STRINGS["moderation"]["channellockdownlifteddesc"],
