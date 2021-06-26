@@ -27,7 +27,7 @@ class Calculator(commands.Cog, name="Calculator"):
             timestamp=delta,
             color=discord.Colour.blurple(),
         )
-        await m.edit(components=buttons, embed=e)
+        await m.edit(content="", components=buttons, embed=e)
         done = [
           [
             Button(style=ButtonStyle.grey, label="·", disabled=True),
@@ -60,21 +60,51 @@ class Calculator(commands.Cog, name="Calculator"):
                     expression = "None"
                 elif res.component.label == "=":
                     expression = calculate(expression)
-                elif res.component.label == "x²":
-                    expression += "²"
-                elif res.component.label == "x³":
-                    expression += "³"
-                elif expression == "100000" or expression == "9999²²³³³" or expression == "9125³³³³²" or expression == "9125²" or expression == "9999²" and res.component.label == "1" or res.component.label == "2" or res.component.label == "3" or res.component.label == "4" or or res.component.label == "5" or res.component.label == "6" or res.component.label == "7" or res.component.label == "8" or res.component.label == "9" or res.component.label == "00" or res.component.label == "0" or res.component.label == "." or res.component.label == "(" or res.component.label == ")" or res.component.label == "π" or res.component.label == "x²" :
-                    await res.respond(
-                       type=7,
-                       embed=discord.Embed(
-                          title="Closing down",
-                          description="You have entered a number more than 100000 or some enormous calculation - for the stability of the bot and crash prevention we will close down this calculator session",
-                          color=0xDD2E44,
-                       ),
-                       components=done,
-                    )
-                    break
+                #elif res.component.label == "x²":
+                    #expression += "²"
+                #elif res.component.label == "x³":
+                    #expression += "³"
+                elif expression == "100000" or len(expression) == 7  or len(expression) > 7 or expression.count("²") >= 4 or expression.count("³") >= 4  or expression.count("²²") > 1 or expression.count("³³") > 1 or expression.count("²²³³") >= 1:
+                    allowed = ["1","2","3","4","5","6","7","8","9","00","0",".","(",")","π","x²","x³"]
+                    if res.component.label in allowed:
+                        await m.edit(content="Preparing to tear down the buttons")
+                    
+                        await res.respond(
+                            type=7,
+                            embed=discord.Embed(
+                                title="Closing down",
+                                description="You have entered a number that is 7 or more in length or some enormous calculation - for the stability of the bot and crash prevention we will close down this calculator session",
+                                color=0xDD2E44,
+                            ),
+                            components=done,
+                        )
+                        break
+                    elif expression.count("²") == 4 or expression.count("³") == 4  or expression.count("²²") > 1 or expression.count("³³") > 1 or expression.count("²²³³") >= 1:
+                        await m.edit(content="Preparing to tear down the buttons")
+                    
+                        await res.respond(
+                            type=7,
+                            embed=discord.Embed(
+                                title="Closing down",
+                                description="You have entered a number more that is 7 or more in length or some enormous calculation - for the stability of the bot and crash prevention we will close down this calculator session",
+                                color=0xDD2E44,
+                            ),
+                            components=done,
+                        )
+                        break
+                    else:
+                        await m.edit(content="Preparing to tear down the buttons")
+                    
+                        await res.respond(
+                            type=7,
+                            embed=discord.Embed(
+                                title="Closing down",
+                                description="You have entered a number more that is 7 or more in length or some enormous calculation - for the stability of the bot and crash prevention we will close down this calculator session",
+                                color=0xDD2E44,
+                            ),
+                            components=done,
+                        )
+                        break
                 else:
                     expression += res.component.label
                 f = discord.Embed(
