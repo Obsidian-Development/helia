@@ -71,22 +71,6 @@ class Moderation(commands.Cog, name="Moderation"):
                 )
                 await asyncio.sleep(5)
                 await member.ban(reason=reason)
-            elif response.component.label == "✓" and not member.bot:
-                await response.respond(
-                    type=7,
-                    embed=discord.Embed(
-                        title="Action confirmed",
-                        description=f"Banning {member} for {reason}",
-                        color=0xFF8000,
-                    ),
-                    components=done_components,
-                )
-                embed = Utils.error_embed(
-                    STRINGS["moderation"]["dm_ban"].format(ctx.guild.name, reason)
-                )
-                await member.send(embed=embed)
-                await asyncio.sleep(5)
-                await member.ban(reason=reason)
             else:
                 await response.respond(
                     type=7,
@@ -306,23 +290,6 @@ class Moderation(commands.Cog, name="Moderation"):
             )
             await asyncio.sleep(5)
             await member.kick()
-            await ctx.message.add_reaction(CONFIG["yes_emoji"])
-        elif response.component.label == "✓" and not member.bot:
-            embed = Utils.error_embed(
-                STRINGS["moderation"]["dm_kick"].format(ctx.guild, reason)
-            )
-            await member.send(embed=embed)
-            await asyncio.sleep(5)
-            await member.kick()
-            await response.respond(
-                type=7,
-                embed=discord.Embed(
-                    title="Action Completed",
-                    description=f"Kicked {member} for {reason}",
-                    color=0xDD2E44,
-                ),
-                components=done_components,
-            )
             await ctx.message.add_reaction(CONFIG["yes_emoji"])
         else:
             await response.respond(
