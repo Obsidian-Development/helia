@@ -1,5 +1,5 @@
-
 import math
+
 from discord_components import Button, ButtonStyle
 
 buttons = [
@@ -39,8 +39,6 @@ buttons = [
         Button(style=ButtonStyle.grey, label="x³"),
     ],
 ]
-
-
 
 
 def calculate(exp):
