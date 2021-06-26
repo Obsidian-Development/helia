@@ -5,6 +5,10 @@ from typing import NoReturn
 
 import discord
 import wikipedia
+import psutil
+import os
+import platform
+from datetime import datetime
 from discord.ext import commands
 from discord.ext.commands import Bot, Context
 from discord_slash import SlashContext, cog_ext
@@ -19,6 +23,7 @@ class General(commands.Cog, name="General"):
     def __init__(self, bot) -> None:
         self.bot = bot
         self.name = "General"
+        self.process = psutil.Process(os.getpid())
 
     # @commands.command()
     # @commands.guild_only()
@@ -162,14 +167,21 @@ class General(commands.Cog, name="General"):
         path = "scripts/version.txt"
         with open(path, "r") as file:
             ver = file.readline()
+        ramUsage = self.process.memory_full_info().rss / 1024**2
+        pythonVersion = platform.python_version()
+        dpyVersion = discord.__version__
         embed = discord.Embed(
             title=STRINGS["general"]["abouttitle"],
             description=STRINGS["general"]["aboutdesc"],
             color=0xFF6900,
         )
         embed.add_field(name=STRINGS["general"]["aboutver"],
-                        value=ver,
+                        value=f"```{ver}```",
                         inline=True)
+        embed.add_field(name='Python Version:', value=f"```{pythonVersion}```", inline=True)
+        embed.add_field(name="Library", value="```discord.py```", inline=True)
+        embed.add_field(name='Discord.Py Version', value=f"```{dpyVersion}```")
+        embed.add_field(name="RAM", value=f"```{ramUsage:.2f} MB```", inline=True)
         embed.add_field(
             name=STRINGS["general"]["aboutauthor"],
             value=STRINGS["general"]["aboutauthortext"],
