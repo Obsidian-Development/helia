@@ -1,5 +1,5 @@
-import math
 
+import math
 from discord_components import Button, ButtonStyle
 
 buttons = [
@@ -35,18 +35,20 @@ buttons = [
         Button(style=ButtonStyle.grey, label="("),
         Button(style=ButtonStyle.grey, label=")"),
         Button(style=ButtonStyle.grey, label="π"),
-        Button(style=ButtonStyle.grey, label="x²"),
-        Button(style=ButtonStyle.grey, label="x³"),
+        #Button(style=ButtonStyle.grey, label="x²"),
+        #Button(style=ButtonStyle.grey, label="x³"),
     ],
 ]
+
+
 
 
 def calculate(exp):
     o = exp.replace("×", "*")
     o = o.replace("÷", "/")
     o = o.replace("π", str(math.pi))
-    o = o.replace("²", "**2")
-    o = o.replace("³", "**3")
+    #o = o.replace("²", "**2")
+    #o = o.replace("³", "**3")
     result = ""
     try:
         result = str(eval(o))
