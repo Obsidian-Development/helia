@@ -1,14 +1,14 @@
 # -*- coding: utf-8 -*-
 import math
-import os
-import platform
 import random
-from datetime import datetime
 from typing import NoReturn
 
 import discord
-import psutil
 import wikipedia
+import psutil
+import os
+import platform
+from datetime import datetime
 from discord.ext import commands
 from discord.ext.commands import Bot, Context
 from discord_slash import SlashContext, cog_ext
@@ -178,14 +178,10 @@ class General(commands.Cog, name="General"):
         embed.add_field(name=STRINGS["general"]["aboutver"],
                         value=f"```{ver}```",
                         inline=True)
-        embed.add_field(name="Python Version:",
-                        value=f"```{pythonVersion}```",
-                        inline=True)
+        embed.add_field(name='Python Version:', value=f"```{pythonVersion}```", inline=True)
         embed.add_field(name="Library", value="```discord.py```", inline=True)
-        embed.add_field(name="Discord.Py Version", value=f"```{dpyVersion}```")
-        embed.add_field(name="RAM",
-                        value=f"```{ramUsage:.2f} MB```",
-                        inline=True)
+        embed.add_field(name='Discord.Py Version', value=f"```{dpyVersion}```")
+        embed.add_field(name="RAM", value=f"```{ramUsage:.2f} MB```", inline=True)
         embed.add_field(
             name=STRINGS["general"]["aboutauthor"],
             value=STRINGS["general"]["aboutauthortext"],
