@@ -83,7 +83,7 @@ class Helia(commands.AutoShardedBot):
         self.slash = SlashCommand(self, override_type=True)
         Slashify(self)
         global loaded
-        look.launch_time = datetime.datetime.utcnow()
+        self.launch_time = datetime.datetime.utcnow()
 
         if (
             not loaded
