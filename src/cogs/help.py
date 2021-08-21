@@ -4,103 +4,150 @@ from discord import Embed
 from discord.ext.commands import Cog, command
 from discord.ext.menus import ListPageSource, MenuPages
 from discord.utils import get
+from discord_components import (
+    Button,
+    ButtonStyle,
+    Select,
+    SelectOption,
+)
 
 from cogs.utils import Commands, Config, Logger, Settings, Strings, Utils
 
 CONFIG = Config()
 
 
-def syntax(command):
-    cmd_and_aliases = "|".join([str(command), *command.aliases])
-    params = [
-        f"[{key}]" if "NoneType" in str(value) else f"<{key}>"
-        for key, value in command.params.items() if key not in ("self", "ctx")
-    ]
 
-    params = " ".join(params)
-
-    return f"```{cmd_and_aliases} {params}```"
-
-
-class HelpMenu(ListPageSource):
-    def __init__(self, ctx, data):
-        self.ctx = ctx
-
-        super().__init__(data, per_page=5)
-
-    async def write_page(self, menu, fields=None):
-        if fields is None:
-            fields = []
-        offset = (menu.current_page * self.per_page) + 1
-        len_data = len(self.entries)
-        s = await Settings(self.ctx.guild.id)
-        lang = await s.get_field("locale", CONFIG["default_locale"])
-        prefix = await s.get_field("prefix", CONFIG["default_prefix"])
-        STRINGS = Strings(lang)
-
-        embed = Embed(
-            title=STRINGS["general"]["helpsystemtitle"],
-            description=STRINGS["general"]["commands_list"].format(prefix),
-            colour=self.ctx.author.colour,
-        )
-        # embed.set_thumbnail(url=self.ctx.guild.me.avatar_url)
-        embed.set_footer(text=f"{self.ctx.guild.me.name}",
-                         icon_url=self.ctx.guild.me.avatar_url)
-
-        for name, value in fields:
-            embed.add_field(name=name, value=value, inline=False)
-
-        return embed
-
-    async def format_page(self, menu, entries):
-        s = await Settings(self.ctx.guild.id)
-        lang = await s.get_field("locale", CONFIG["default_locale"])
-        prefix = await s.get_field("prefix", CONFIG["default_prefix"])
-        STRINGS = Strings(lang)
-        COMMANDS = Commands(lang)
-
-        fields = [(STRINGS["general"]["nocommanddescription"], syntax(entry))
-                  for entry in entries]
-
-        return await self.write_page(menu, fields)
 
 
 class Help(Cog):
     def __init__(self, bot):
         self.bot = bot
         self.bot.remove_command("help")
-
-    async def cmd_help(self, ctx, command):
-        s = await Settings(ctx.guild.id)
-        lang = await s.get_field("locale", CONFIG["default_locale"])
-        prefix = await s.get_field("prefix", CONFIG["default_prefix"])
-        STRINGS = Strings(lang)
-        embed = Embed(
-            title=STRINGS["general"]["usage"].format(command),
-            description=syntax(command),
-            colour=ctx.author.colour,
-        )
-        embed.add_field(name=STRINGS["general"]["description"],
-                        value=command.help)
-        await ctx.send(embed=embed)
-
+     
+# no localization for now - since i do not want constantly braindead bot
     @command(name="help")
     async def show_help(self, ctx, cmd: Optional[str]):
-        """Shows this message."""
-        if cmd is None:
-            menu = MenuPages(
-                source=HelpMenu(ctx, list(self.bot.commands)),
-                delete_message_after=True,
-                timeout=60.0,
-            )
-            await menu.start(ctx)
+        embed=discord.Embed(title="SELECTION TEST", description="Testing our embeds", color=0xff8000)
+        embede=discord.Embed(title=":books: Help System", description=f"Welcome To {self.bot.user.name} Help System")
+        embede.set_footer(text="Temporarily in testing")
+        components = [
+             Select(
+                placeholder = "Main Page",
+                options = [
+                    SelectOption(label = "General", value = "General"),
+                    SelectOption(label = "Moderation", value = "Moderation"),
+                    SelectOption(label = "Utilities", value = "Utilities"),
+                    SelectOption(label = "Music", value = "Music"),
+                    SelectOption(label = "Preferences", value = "Preferences"),
+                    SelectOption(label = "Other", value = "Other"),
+                    SelectOption(label = "Close", value = "Close")
+                ]
+             )
+        ]
+        done_components = [[
+            Button(style=ButtonStyle.grey, label="·", disabled=True),
+        ]]
+        async def callback(interaction):
+            await interaction.send(embed=embed)
 
-        else:
-            if command := get(self.bot.commands, name=cmd):
-                await self.cmd_help(ctx, command)
-            else:
-                # PENDING EMBED CONVERSION
-                await ctx.send("That command does not exist.")
+        await ctx.send(
+            embed=embede,components=components
+            
+        )
+
+        while True:
+            interaction = await self.bot.wait_for("select_option")
+            label=interaction.values[0]
+            if label == "General":
+              x = []
+              for y in self.bot.commands:
+               if y.cog and y.cog.qualified_name == 'General':
+                x.append(y.name)
+              formatlistprep = ":\n```.```".join(x)
+              await interaction.respond(
+                type=7,
+                embed=discord.Embed(
+                    title=":beginner: General",
+                    description=f"Here is the list of general commands we have \n ```{formatlistprep}```",
+                ).set_author(name="Help System")
+              )
+            if label == "Moderation":
+              x = []
+              for y in self.bot.commands:
+               if y.cog and y.cog.qualified_name == 'Moderation':
+                x.append(y.name)
+              formatlistprep = ":\n```.```".join(x)
+              
+              await interaction.respond(
+                type=7,
+                embed=discord.Embed(
+                    title=":hammer_pick: Moderation",
+                    description=f"Here is the list of moderation commands we have \n ```{formatlistprep}```",
+                ).set_author(name="Help System")
+                
+              )
+            if label == "Utilities":
+              x = []
+              for y in self.bot.commands:
+               if y.cog and y.cog.qualified_name == 'Utilities':
+                x.append(y.name)
+              formatlistprep = ":\n```.```".join(x)
+              await interaction.respond(
+                type=7,
+                embed=discord.Embed(
+                    title=":wrench: Utilities",
+                    description=f"Here is the list of utilities commands we have \n ```{formatlistprep}```",
+                ).set_author(name="Help System")
+                
+              )
+            if label == "Music":
+              x = []
+              for y in self.bot.commands:
+               if y.cog and y.cog.qualified_name == 'Music':
+                x.append(y.name)
+              formatlistprep = ":\n```.```".join(x)
+              await interaction.respond(
+                type=7,
+                embed=discord.Embed(
+                    title=":headphones: Music",
+                    description=f"Here is the list of music commands we have \n ```{formatlistprep}```",
+                ).set_author(name="Help System")
+                
+              )
+            if label == "Preferences":
+              x = []
+              for y in self.bot.commands:
+               if y.cog and y.cog.qualified_name == 'Prefs':
+                x.append(y.name)
+              formatlistprep = ":\n```.```".join(x)
+              await interaction.respond(
+                type=7,
+                embed=discord.Embed(
+                    title=":tools: Preferences",
+                    description=f"Here is the list of bot configuration commands \n ```{formatlistprep}```",
+                ).set_author(name="Help System")
+                
+              )
+            if label == "Other":
+              x = []
+              for y in self.bot.commands:
+               if y.cog and y.cog.qualified_name == 'Other':
+                x.append(y.name)
+              formatlistprep = ":\n```.```".join(x)
+              await interaction.respond(
+                type=7,
+                embed=discord.Embed(
+                    title=":hourglass: Other",
+                    description=f"Here is the list of miscellaneous commads \n ```{formatlistprep}```",
+                ).set_author(name="Help System")
+                
+              )
+            if label == "Close":
+              await interaction.respond(
+                type=7,
+                embed=embede,
+                components=done_components
+              )
 
 
 def setup(bot):
