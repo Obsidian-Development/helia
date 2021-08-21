@@ -1,16 +1,19 @@
-from flask import Flask
-from flask import render_template
 from threading import Thread
 
-app = Flask('')
+from flask import Flask, render_template
 
-@app.route('/')
+app = Flask("")
+
+
+@app.route("/")
 def main():
-  return render_template("404.html")
+    return render_template("404.html")
+
 
 def run():
-  app.run(host="0.0.0.0", port=8000)
+    app.run(host="0.0.0.0", port=8000)
+
 
 def keep_alive():
-  server = Thread(target=run)
-  server.start()
+    server = Thread(target=run)
+    server.start()
