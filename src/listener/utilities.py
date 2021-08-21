@@ -7,7 +7,6 @@ from typing import NoReturn
 import discord
 from discord.ext import commands
 from discord.ext.commands import Bot, Context
-from discord.ext.commands import Bot, Context
 
 from listener.utils import Config, Logger, Settings, Strings
 
