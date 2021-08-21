@@ -26,6 +26,12 @@ class welcome(commands.Cog):
             chan = cursor.fetchone()
             if chan is None:
                 return
+            cursor.execute(
+                db.select_table("welcome", "text", "guild_id",
+                                member.guild.id))
+            desc = cursor.fetchone()
+            if desc is None:
+                desc = f" Hi there {MEMBER} and welcome to our humble community"
             else:
                 cursor.execute(
                     db.select_table("welcome", "text", "guild_id",
@@ -142,7 +148,7 @@ class welcome(commands.Cog):
                 connect.commit()
                 cursor.close()
                 connect.close()
-                await ctx.send(f"bot: Set the welcome message text")
+                await ctx.send("bot: Set the welcome message text")
             else:
                 await ctx.send(
                     "bot: You do not have enough permissions - :You require **Manage Channels**."

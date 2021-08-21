@@ -204,7 +204,7 @@ class Admin(commands.Cog, name="Admin"):
             Button(
                 style=ButtonStyle.URL,
                 label=STRINGS["general"]["canaryver"],
-                url=f"https://discord.com/oauth2/authorize?client_id=671612079106424862&scope=bot&permissions=204557314",
+                url="https://discord.com/oauth2/authorize?client_id=671612079106424862&scope=bot&permissions=204557314",
             ),
             Button(
                 style=ButtonStyle.URL,
@@ -215,10 +215,9 @@ class Admin(commands.Cog, name="Admin"):
                 style=ButtonStyle.URL,
                 label=STRINGS["general"]["botuptopgg"],
                 url=f"https://top.gg/bot/{self.bot.user.id}",
-            )
-            # Button(style=ButtonStyle.URL, label=STRINGS["general"]["botupbod"], url=f"https://bots.ondiscord.xyz/bots/{self.bot.user.id}"),
-            # Button(style=ButtonStyle.URL, label=STRINGS["general"]["botupdblco"], url=f"https://discordbotslist.co/bot/{self.bot.user.id}"),
+            ),
         ]
+
         menuer_components = [
             Button(
                 style=ButtonStyle.URL,

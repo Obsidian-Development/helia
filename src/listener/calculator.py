@@ -36,7 +36,7 @@ class Calculator(commands.Cog, name="Calculator"):
             if (res.author.id == ctx.author.id
                     and res.message.embeds[0].timestamp < delta):
                 expression = res.message.embeds[0].description[6:-3]
-                if expression == "None" or expression == "An error occurred.":
+                if expression in ["None", "An error occurred."]:
                     expression = ""
                 if res.component.label == "Exit":
                     await res.respond(
@@ -55,10 +55,6 @@ class Calculator(commands.Cog, name="Calculator"):
                     expression = "None"
                 elif res.component.label == "=":
                     expression = calculate(expression)
-                # elif res.component.label == "x²":
-                # expression += "²"
-                # elif res.component.label == "x³":
-                # expression += "³"
                 elif (len(expression) > 9 or expression.count("²") >= 4
                       or expression.count("³") >= 4
                       or expression.count("²²") > 1
