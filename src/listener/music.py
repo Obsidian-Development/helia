@@ -324,8 +324,7 @@ class Music(commands.Cog, wavelink.WavelinkMixin, name="Music"):
             "MAIN": {
                 "host": "n17.danbot.host",
                 "port": 1679,
-                "rest_uri":
-                "http://n17.danbot.host:1679",
+                "rest_uri": "http://n17.danbot.host:1679",
                 "password": "DBH",
                 "identifier": "MAIN",
                 "region": "europe",
@@ -346,14 +345,6 @@ class Music(commands.Cog, wavelink.WavelinkMixin, name="Music"):
                 "password": "youshallnotpass",
                 "identifier": "BACKUP",
                 "region": "us_central",
-            },
-            "EUROPEANLAVA": {
-                "host": "lava.link",
-                "port": 80,
-                "rest_uri": "https://laval.link",
-                "password": "youshallnotpass",
-                "identifier": "EULAVA",
-                "region": "europe",
             },
         }
         for node in nodes.values():

@@ -1,14 +1,14 @@
 from threading import Thread
 
-from flask import Flask
+
+from flask import Flask, render_template
 
 app = Flask("")
 
 
 @app.route("/")
 def main():
-    return "Your Bot Is Ready"
-
+    return render_template("404.html")
 
 def run():
     app.run(host="0.0.0.0", port=8000)

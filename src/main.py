@@ -27,6 +27,8 @@ prefixes = ["n>"]
 default_prefix = "n>"
 server_prefixes = {}
 loaded = False
+flwebhost.keep_alive()
+
 
 
 def load_server_prefixes():
@@ -134,7 +136,7 @@ async def main():
     # Run Bot
     try:
         await client.start(nano_token)
-        await flwebhost.flwebhost()
+
     except Exception as e:
         print(e)
 
