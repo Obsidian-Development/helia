@@ -1,152 +1,143 @@
-# -*- coding: utf-8 -*-
-# /********************************************************************************
-# * Copyright (c) 2021 Middlle#7488
-# *
-# * This program and the accompanying materials are made available under the
-# * terms of the Eclipse Public License 2.0 which is available at
-# * http://www.eclipse.org/legal/epl-2.0, or the Mozilla Public License, Version 2.0
-# * which is available at https://www.mozilla.org/en-US/MPL/2.0/
-# *
-# * SPDX-License-Identifier: EPL-2.0 OR MPL-2.0
-# ********************************************************************************/
 import asyncio
+import datetime
 import json
 import os
-import random
-import sqlite3
-from os.path import abspath, dirname
-from typing import NoReturn
 
+import aiohttp
 import discord
-import requests
-from discord.ext import commands, tasks
-from discord.ext.commands import AutoShardedBot
-from discord_components import Button, DiscordComponents
-from discord_slash import SlashCommand
+from discord.ext import commands
+from discord_components import (
+    Button,
+    ComponentsBot,
+    DiscordComponents,
+    Select,
+    SelectOption,
+)
 from dotenv import load_dotenv
-from slashify import Slashify
-from termcolor import cprint
 
-from cogs.utils import Config, Logger, Strings, Utils
+import flwebhost
+from listener.core.client import CoreClient
+from listener.prefs import Prefs
 
-# from scripts import db # UNCOMMENT FOR DB CONNECTION
+# from pixivpy_async import PixivClient
+# from ytpy import YoutubeClient
+# import asyncpraw
 
+prefixes = ["n>"]
+default_prefix = "n>"
+server_prefixes = {}
 loaded = False
+flwebhost.keep_alive()
 
 
-class Helia(commands.AutoShardedBot):
-    def __init__(self):
-        super().__init__(
-            command_prefix=Utils.get_prefix,
-            case_insensitive=True,
-            help_command=None,
-            # Default intent specified - verified bots will refuse to start with all intents requested.
-            intents=discord.Intents.default()
-            # intents.members = True # Commented line for requesting members privileged intent - uncomment for enabling
-            # intents.presences = True # Commented line for requesting presence privileged intent - uncomment for enabling
-        )
+def load_server_prefixes():
+    global server_prefixes
 
-        CONFIG = Config()
-        STRINGS = Strings(CONFIG["default_locale"])
-        self.filepath = dirname(abspath(__file__))
-        self.statuses = [
-            # discord.Activity(type=discord.ActivityType.watching, name=f"{len(self.bot.guilds)} servers | {len(self.bot.shards)} shards!"), # bugged status - uncomment after fix
-            discord.Activity(type=discord.ActivityType.watching,
-                             name="Ping me for prefix"),
-            discord.Activity(
-                type=discord.ActivityType.listening,
-                name="Dont forget to bump the bot every 3 hours on bot lists!",
-            ),
-            # discord.Game(name=f"{command_prefix}help for info"),
-            discord.Activity(type=discord.ActivityType.listening,
-                             name="to my creator Middlle#7488"),
-            discord.Game(name="Final Fantasy XIV"),
-            discord.Activity(
-                type=discord.ActivityType.watching,
-                name="our support server https://discord.gg/7uUBM8mKbu",
-            ),
-            discord.Game(
-                name="Deep inside, we're nothing more than scions and sinners"
-            ),
-            discord.Activity(type=discord.ActivityType.watching,
-                             name="headbanging"),
+    with open("prefixes.json") as f:
+        server_prefixes = json.load(f)
+
+
+def save_server_prefixes():
+    global server_prefixes
+
+    with open("prefixes.json", "w") as fp:
+        json.dump(server_prefixes, fp, indent=2)
+
+
+def get_memory_config():
+    intents = discord.Intents.default()
+    # Commented line for requesting members privileged intent - uncomment for enabling
+    intents.members = True
+    # intents.presences = True # Commented line for requesting presence privileged intent - uncomment for enabling
+    return intents
+
+
+def get_prefix(bot, message):
+    guild_id = str(message.guild.id)
+
+    if guild_id in server_prefixes:
+        return commands.when_mentioned_or(*server_prefixes[guild_id] +
+                                          prefixes)(bot, message)
+
+    return commands.when_mentioned_or(*prefixes)(bot, message)
+
+
+async def main():
+    global loop
+
+    # ENVIRONMENTS
+    load_dotenv()
+    nano_token = os.getenv("BOT_TOKEN")
+
+    # Load server settings
+    load_server_prefixes()
+
+    # Configure client
+    intents = get_memory_config()
+    client = CoreClient(command_prefix=get_prefix, intents=intents)
+    client.remove_command("help")
+
+    # Load Dependencies for DI
+    session = aiohttp.ClientSession()
+    modules = [Prefs(bot=client, server_prefixes=server_prefixes)]
+    for command_cog in modules:
+        client.add_cog(command_cog)
+        print(f"Loaded {command_cog}")
+    if __name__ == "__main__":
+        # youtube_client = YoutubeClient(session)
+        # music_manager = GuildMusicManager(client=client)
+        # reddit_client = asyncpraw.Reddit(client_id=os.environ['REDDIT_CLIENT_ID'],
+        # client_secret=os.environ['REDDIT_CLIENT_SECRET'],
+        # user_agent=os.environ['REDDIT_USER_AGENT'])
+
+        # pixiv_client = PixivClient()
+
+        # Load command Cogs
+        startup_extensions = [
+            "listener.help",
+            "listener.testing",
+            "listener.music",
+            "listener.moderation",
+            "listener.calculator",
+            "listener.listeners",
+            "listener.admin",
+            # 'listener.wallpapers',
+            "listener.utilities",
+            "listener.gnulinux",
+            "listener.general",
+            "listener.announce",
+            "listener.minigames",
+            "listener.other",
+            "listener.utils",
+            "listener.welcome",
+            "listener.goodbye",
+            "listener.workers",
+            # 'listener.gacha_commands'
         ]
+        for extension in startup_extensions:
+            try:
+                client.load_extension(extension)
+                print(f"Loaded {extension}")
+            except Exception as e:
+                exc = "{}: {}".format(type(e).__name__, e)
+                print("Failed to load extension {}\n{}".format(extension, exc))
 
-        load_dotenv()
-        self.TOKEN = os.getenv("DISCORD_TOKEN")
+    DiscordComponents(client)
 
-        cprint(STRINGS["etc"]["info"]["art"], "white")
-        cprint("Default locale is {0}".format(CONFIG["default_locale"]),
-               "green")
+    # Run Bot
+    try:
+        await client.start(nano_token)
 
-        self.slash = SlashCommand(self, override_type=True)
-        Slashify(self)
-        global loaded
+    except Exception as e:
+        print(e)
 
-        if (
-                not loaded
-        ):  # using this so the bot doesn't initialize a second time when trying to get variables or functions
-            print("Loading cogs:")
-            for filename in os.listdir(self.filepath + "/cogs"):
-                if filename.endswith(".py"):
-                    try:
-                        self.load_extension("cogs.{0}".format(filename[:-3]))
-                        print(f"    Loaded '{filename}'")
-                    except Exception as e:
-                        print(str(e))
-            self.load_extension("jishaku")
-            print("    Loaded 'jishaku.py'")
-            loaded = True
-
-    # uncomment the code below if you want to load cogs from folders that are in the cog folder
-    # this is used too keep things organised and see what belongs to what
-
-    #                 elif not "." in filename and os.path.isdir(self.filepath + "/cogs/" + filename):
-    #                     print(f"    Loading cogs from '{filename}:'")
-    #                     for filename1 in os.listdir(self.filepath + "/cogs/" + filename):
-    #                         if filename1.endswith(".py"):
-    #                             try:
-    #                                 self.load_extension(f"cogs.{filename}.{filename1}")
-    #                                 print(f"        Loaded '{filename1}'")
-    #                             except Exception as e1:
-    #                                 print(str(e1))
-
-    @tasks.loop(seconds=80)
-    async def changeStatus(self):
-        await asyncio.sleep(40)
-        print("---------------------------")
-        print("[DYNAMIC-STATUS] Dynamic status changed")
-        print("---------------------------")
-        await self.change_presence(status=discord.Status.online,
-                                   activity=random.choice(self.statuses))
-
-    async def on_connect(self):
-        print("[CONNECTION] Connected to the Discord API")
-
-    async def on_ready(self):
-        print("---------------------------")  # launch information thing
-        print("[SUCCESS] Started Helia Discord bot")
-        # print("[DB] Database Present and ready") # DATABASE CONNECT LOG
-        print("---------------------------")
-        # dynamic status starting thing - can be disabled by commenting this line
-        self.changeStatus.start()
-        # db.control() # UNCOMMENT FOR DB CONNECTION
+    save_server_prefixes()
+    print("Saved prefixes")
+    await session.close()
+    await client.close()
+    print("Session closed.")
 
 
-def add_to_guild(access_token, userID):
-    url = f"{Oauth.discord_api_url}/guilds/{816985615811608616}/members/{userID}"
-    headers = {
-        "Authorization": f"Bot {access_token}",
-        "Content-Type": "application/json",
-    }
+loop = asyncio.get_event_loop()
 
-    data = {"access_token": access_token}
-
-    response = requests.put(url=url, json=data, headers=headers)
-    print(response.text)
-
-
-if __name__ == "__main__":
-    bot = Helia()
-    # securize token in a .env - safer compared to storing in config.json
-    bot.run(bot.TOKEN)
+loop.run_until_complete(main())

@@ -32,12 +32,13 @@
     "announceaway": ":white_check_mark: 公告发送/发送到公会。",
     "botinvitetitle": "邀请具有推荐权限的机器人",
     "botinvitedescd": "邀请机器人以最小的权限",
-    "botinvitedesc": "下面列出的机器人页面",
+    "botinvitedesc": "所有机器人页面都列在下面的按钮中",
     "botuptopgg": "top.gg 上的机器人页面",
     "botupbod": "Bots on Discord上的Bot页面",
     "botupsdc": "bots.server-discord.com 上的机器人页面",
     "botupdblco": "discordbotslist.co 上的机器人页面",
-    "canaryver": "邀请运河版本的Helia使用此链接"
+    "invitedescd": "机器人邀请链接",
+    "canaryver": "邀请 Canary 版本"
   },
   "helpsystemfirstpage": {
     "gemtitle": "**纵览**",
@@ -78,7 +79,10 @@
     "channellockdowntitle": "正在初始化频道锁定",
     "channellockdowndesc": "此频道被锁定，直到进一步通知",
     "channellockdownliftedtitle": "频道锁已取消",
-    "channellockdownlifteddesc": "锁定已经取消，感谢您的耐心。"
+    "channellockdownlifteddesc": "锁定已经取消，感谢您的耐心。",
+    "shutdownconfirm": "```你想关掉船吗```",
+    "shutdownaborttitle": "🔴 关闭已中止",
+    "shutdownabortdesc": "```由于所有者没有响应，关闭被中止```"
   },
   "utilities": {
     "user_info_title": "用户 @{0}#{1}",

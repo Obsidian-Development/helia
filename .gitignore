@@ -22,3 +22,4 @@ cogs/__pycache__/
 logging_files/__pycache__/
 logs/__pycache__/
 data/__pycache__/
+src/prefixes.json

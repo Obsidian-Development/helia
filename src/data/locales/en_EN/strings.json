@@ -79,7 +79,10 @@
     "channellockdowntitle": "Initiating channel lockdown",
     "channellockdowndesc": "This channel is locked down untill further notice",
     "channellockdownliftedtitle": "Channel lockdown lifted",
-    "channellockdownlifteddesc": "Lockdown is now lifted , thank you for your patience"
+    "channellockdownlifteddesc": "Lockdown is now lifted , thank you for your patience",
+    "shutdownconfirm": "```Do you want to turn off the bot```",
+    "shutdownaborttitle": "🔴 Shutdown Canceled",
+    "shutdownabortdesc": "```Shutdown was aborted due to the owner responding with no```"
   },
   "utilities": {
     "user_info_title": "User @{0}#{1}",
