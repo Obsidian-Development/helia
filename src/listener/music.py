@@ -347,14 +347,7 @@ class Music(commands.Cog, wavelink.WavelinkMixin, name="Music"):
                 "identifier": "BACKUP",
                 "region": "us_central",
             },
-            "EUROPEANLAVA": {
-                "host": "lava.link",
-                "port": 80,
-                "rest_uri": "https://laval.link",
-                "password": "youshallnotpass",
-                "identifier": "EULAVA",
-                "region": "europe",
-            },
+            
         }
         for node in nodes.values():
             await self.wavelink.initiate_node(**node)
