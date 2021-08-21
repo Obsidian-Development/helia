@@ -45,18 +45,9 @@ def save_server_prefixes():
 
 
 def get_memory_config():
-    intents = discord.Intents(messages=True, guilds=True)
-
-    intents.voice_states = True
-    intents.typing = False
-    intents.presences = False
-    intents.members = False
-    intents.bans = False
-    intents.integrations = False
-    intents.invites = False
-    intents.dm_messages = False
-    intents.guild_reactions = False
-
+    intents = discord.Intents.default()
+    intents.members = True # Commented line for requesting members privileged intent - uncomment for enabling
+    #intents.presences = True # Commented line for requesting presence privileged intent - uncomment for enabling
     return intents
 
 
