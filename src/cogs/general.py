@@ -11,7 +11,7 @@ import psutil
 import wikipedia
 from discord.ext import commands
 from discord.ext.commands import Bot, Context
-from discord_slash import SlashContext, cog_ext
+from discord.ext.commands import Bot, Context
 
 from cogs.utils import Commands, Config, Logger, Settings, Strings, Utils
 from scripts import blacklist
@@ -86,7 +86,7 @@ class General(commands.Cog, name="General"):
 
     @commands.guild_only()
     @commands.command(description="Echo Commands")
-    async def echo(self, ctx: SlashContext, *, content):
+    async def echo(self, ctx: Context, *, content):
         s = await Settings(ctx.guild.id)
         lang = await s.get_field("locale", CONFIG["default_locale"])
         prefix = await s.get_field("prefix", CONFIG["default_prefix"])
@@ -107,7 +107,7 @@ class General(commands.Cog, name="General"):
 
     @commands.guild_only()
     @commands.command(description="Generate Embed")
-    async def embed(self, ctx: SlashContext, name, *, content):
+    async def embed(self, ctx: Context, name, *, content):
         s = await Settings(ctx.guild.id)
         lang = await s.get_field("locale", CONFIG["default_locale"])
         prefix = await s.get_field("prefix", CONFIG["default_prefix"])
@@ -129,7 +129,7 @@ class General(commands.Cog, name="General"):
 
     @commands.command(description="Search Wikipedia")
     @commands.is_nsfw()
-    async def wiki(self, ctx: SlashContext, *, searcher=None):
+    async def wiki(self, ctx: Context, *, searcher=None):
         try:
             wikipedia.set_lang("en")
             req = wikipedia.page(searcher)

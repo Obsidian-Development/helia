@@ -3,7 +3,7 @@ import os
 
 import discord
 from discord.ext import commands
-from discord_slash import SlashContext, cog_ext
+from discord.ext.commands import Bot, Context
 
 from cogs.utils import Config, Logger, Settings, Strings
 
@@ -16,7 +16,7 @@ class broadcast(commands.Cog):
 
     @commands.command(description="Global Announcement from bot owner")
     @commands.is_owner()
-    async def announce(self, ctx: SlashContext, *, content):
+    async def announce(self, ctx: Context, *, content):
         s = await Settings(ctx.guild.id)
         lang = await s.get_field("locale", CONFIG["default_locale"])
         prefix = await s.get_field("prefix", CONFIG["default_prefix"])
@@ -60,7 +60,7 @@ class broadcast(commands.Cog):
 
     # @commands.command(description='Debug info')
     # @commands.is_owner()
-    # async def debug(self, ctx: SlashContext):
+    # async def debug(self, ctx: Context):
     # voice_states = ctx.bot.voice_clients
     # await ctx.send(f'I am currently in {len(voice_states)} voice channels')
 

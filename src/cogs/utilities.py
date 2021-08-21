@@ -7,7 +7,7 @@ from typing import NoReturn
 import discord
 from discord.ext import commands
 from discord.ext.commands import Bot, Context
-from discord_slash import SlashContext, cog_ext
+from discord.ext.commands import Bot, Context
 
 from cogs.utils import Config, Logger, Settings, Strings
 
@@ -159,7 +159,7 @@ class Utilities(commands.Cog):
         await ctx.send(embed=embed)
 
     @commands.command(description="Random number generator")
-    async def randint(self, ctx: SlashContext, stc1: int, stc2: int):
+    async def randint(self, ctx: Context, stc1: int, stc2: int):
         s = await Settings(ctx.guild.id)
         lang = await s.get_field("locale", CONFIG["default_locale"])
         STRINGS = Strings(lang)
@@ -180,7 +180,7 @@ class Utilities(commands.Cog):
         await ctx.send(embed=embed)
 
     @commands.command(description="Count square root")
-    async def sqrt(self, ctx: SlashContext, num: int):
+    async def sqrt(self, ctx: Context, num: int):
         s = await Settings(ctx.guild.id)
         lang = await s.get_field("locale", CONFIG["default_locale"])
         STRINGS = Strings(lang)

@@ -1,4 +1,3 @@
-
 import discord
 from discord.ext import commands
 
@@ -8,21 +7,34 @@ from discord_components import (
     Select,
     SelectOption,
 )
-
-class Help(commands.Cog):
+class testingCOG(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-     
+
+    @commands.guild_only()
+    @commands.command(description="BUTTON TEST")
+    async def button(self, ctx):
+        async def callback(interaction):
+            await interaction.send(content="Yay")
+
+        await ctx.send(
+            "Button callbacks!",
+            components=[
+                self.bot.components_manager.add_callback(
+                    Button(style=ButtonStyle.blue, label="Click this"), callback
+                ),
+            ],
+        )
 
     @commands.guild_only()
     @commands.command(description="SELECT TEST")
-    async def help(self, ctx):
+    async def select(self, ctx):
         embed=discord.Embed(title="SELECTION TEST", description="Testing our embeds", color=0xff8000)
         embede=discord.Embed(title=":books: Help System", description=f"Welcome To {self.bot.user.name} Help System")
         embede.set_footer(text="Temporarily in testing")
         components = [
              Select(
-                placeholder = "Select a category",
+                placeholder = "Main Page",
                 options = [
                     SelectOption(label = "General", value = "General"),
                     SelectOption(label = "Moderation", value = "Moderation"),
@@ -34,14 +46,15 @@ class Help(commands.Cog):
                 ]
              )
         ]
-        done_components = [
+        done_components = [[
             Button(style=ButtonStyle.grey, label="·", disabled=True),
-        ]
+        ]]
         async def callback(interaction):
             await interaction.send(embed=embed)
 
         await ctx.send(
             embed=embede, components=components
+            
         )
 
         while True:
@@ -137,7 +150,8 @@ class Help(commands.Cog):
                 embed=embede,
                 components=done_components
               )
+        
 
 
 def setup(bot):
-    bot.add_cog(Help(bot))
+    bot.add_cog(testingCOG(bot))

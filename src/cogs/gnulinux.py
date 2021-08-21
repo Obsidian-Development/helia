@@ -3,7 +3,7 @@ import asyncio
 
 import discord
 from discord.ext import commands
-from discord_slash import SlashContext, cog_ext
+from discord.ext.commands import Bot, Context
 
 from cogs.utils import Config, Logger, Settings, Strings
 
@@ -16,7 +16,7 @@ class gnulinux(commands.Cog):
 
     # GNU/Linux Distr Wiki
     @commands.command(description="Arch Linux Description")
-    async def arch(self, ctx: SlashContext):
+    async def arch(self, ctx: Context):
         s = await Settings(ctx.guild.id)
         lang = await s.get_field("locale", CONFIG["default_locale"])
         STRINGS = Strings(lang)
@@ -33,7 +33,7 @@ class gnulinux(commands.Cog):
         await ctx.send(embed=archl)
 
     @commands.command(description="Ubuntu linux description")
-    async def ubuntu(self, ctx: SlashContext):  # Ubuntu
+    async def ubuntu(self, ctx: Context):  # Ubuntu
         s = await Settings(ctx.guild.id)
         lang = await s.get_field("locale", CONFIG["default_locale"])
         STRINGS = Strings(lang)
@@ -48,7 +48,7 @@ class gnulinux(commands.Cog):
         await ctx.send(embed=ubuntu1)
 
     @commands.command(description="Debian Linux Description")
-    async def debian(self, ctx: SlashContext):  # Debian
+    async def debian(self, ctx: Context):  # Debian
         s = await Settings(ctx.guild.id)
         lang = await s.get_field("locale", CONFIG["default_locale"])
         STRINGS = Strings(lang)
@@ -65,7 +65,7 @@ class gnulinux(commands.Cog):
         await ctx.send(embed=debian1)
 
     @commands.command(description="Deepin linux description")
-    async def deepin(self, ctx: SlashContext):  # Deepin
+    async def deepin(self, ctx: Context):  # Deepin
         s = await Settings(ctx.guild.id)
         lang = await s.get_field("locale", CONFIG["default_locale"])
         STRINGS = Strings(lang)
@@ -82,7 +82,7 @@ class gnulinux(commands.Cog):
         await ctx.send(embed=deepin1)
 
     @commands.command(description="Manjaro linux description")
-    async def manjaro(self, ctx: SlashContext):  # Manjaro
+    async def manjaro(self, ctx: Context):  # Manjaro
         s = await Settings(ctx.guild.id)
         lang = await s.get_field("locale", CONFIG["default_locale"])
         STRINGS = Strings(lang)
@@ -99,7 +99,7 @@ class gnulinux(commands.Cog):
         await ctx.send(embed=manjaro1)
 
     @commands.command(description="Linux Mint description")
-    async def mint(self, ctx: SlashContext):  # Mint
+    async def mint(self, ctx: Context):  # Mint
         s = await Settings(ctx.guild.id)
         lang = await s.get_field("locale", CONFIG["default_locale"])
         STRINGS = Strings(lang)

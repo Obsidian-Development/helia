@@ -6,7 +6,7 @@ import discord
 from discord import Member, User
 from discord.ext import commands
 from discord.ext.commands import Bot, Context, Greedy
-from discord_components import Button, ButtonStyle, DiscordComponents, InteractionType
+from discord_components import Button, ButtonStyle, DiscordComponents
 
 from cogs.utils import Config, Logger, Settings, Strings, Utils
 

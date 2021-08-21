@@ -6,7 +6,7 @@ import os
 import sqlite3
 from scripts import db
 from discord.ext import commands
-from discord_slash import cog_ext, SlashContext
+from discord.ext.commands import Bot, Contextcog_ext, Context
 class welcome(commands.Cog):
     def __init__(self,bot):
         self.bot = bot
@@ -40,11 +40,11 @@ class welcome(commands.Cog):
 
         
     @commands.group(invoke_without_command=True)
-    async def welcome(self, ctx: SlashContext):
+    async def welcome(self, ctx: Context):
         await ctx.send("No help information temporarily")
 
     @welcome.command(pass_context=True)
-    async def channel(self, ctx: SlashContext, chan: discord.TextChannel=None):
+    async def channel(self, ctx: Context, chan: discord.TextChannel=None):
         try:
             author = ctx.message.author     
             if author.guild_permissions.manage_channels:
@@ -68,7 +68,7 @@ class welcome(commands.Cog):
 
 
     @welcome.command(pass_context=True)
-    async def clear(self, ctx: SlashContext):
+    async def clear(self, ctx: Context):
         try:
             author = ctx.message.author
             if author.guild_permissions.manage_channels:
@@ -90,7 +90,7 @@ class welcome(commands.Cog):
             await ctx.send("bot: Error")
     
     @welcome.command(pass_context=True)
-    async def text(self, ctx: SlashContext,*,content=None):
+    async def text(self, ctx: Context,*,content=None):
         try:    
             author = ctx.message.author
             if author.guild_permissions.manage_channels:

@@ -3,7 +3,7 @@ import random
 
 import discord
 from discord.ext import commands
-from discord_slash import SlashContext, cog_ext
+from discord.ext.commands import Bot, Context
 
 from cogs.utils import Config, Logger, Settings, Strings
 from scripts import games
@@ -16,7 +16,7 @@ class minigames(commands.Cog):
         self.bot = bot
 
     @commands.command(description="Random cube")
-    async def kubik(self, ctx: SlashContext):  # кубик рандом
+    async def kubik(self, ctx: Context):  # кубик рандом
         s = await Settings(ctx.guild.id)
         lang = await s.get_field("locale", CONFIG["default_locale"])
         STRINGS = Strings(lang)
@@ -29,7 +29,7 @@ class minigames(commands.Cog):
         await ctx.send(embed=embedkub)
 
     @commands.command(description="Coin throw")
-    async def monetka(self, ctx: SlashContext):
+    async def monetka(self, ctx: Context):
         s = await Settings(ctx.guild.id)
         lang = await s.get_field("locale", CONFIG["default_locale"])
         STRINGS = Strings(lang)
@@ -42,7 +42,7 @@ class minigames(commands.Cog):
         await ctx.send(embed=embedmonet)
 
     @commands.command(description="Casino")
-    async def casino(self, ctx: SlashContext):
+    async def casino(self, ctx: Context):
         s = await Settings(ctx.guild.id)
         lang = await s.get_field("locale", CONFIG["default_locale"])
         STRINGS = Strings(lang)

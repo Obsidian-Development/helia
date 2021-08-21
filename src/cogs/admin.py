@@ -7,14 +7,13 @@ from typing import NoReturn
 import discord
 from discord.ext import commands
 from discord.ext.commands import Bot, Context
-from discord_components import (Button, ButtonStyle, DiscordComponents,
-                                InteractionType)
-from discord_slash import SlashContext, cog_ext
+from discord_components import (Button, ButtonStyle, DiscordComponents)
+#from discord.ext.commands import Bot, Context
 
 from cogs.utils import Config, Logger, Settings, Strings, Utils
 
 CONFIG = Config()
-STRINGS = Strings(CONFIG["default_locale"])
+#STRINGS = Strings(CONFIG["default_locale"])
 
 
 class Admin(commands.Cog, name="Admin"):
@@ -85,7 +84,7 @@ class Admin(commands.Cog, name="Admin"):
             await ctx.message.add_reaction(CONFIG["yes_emoji"])
 
     @commands.command(description="Bot restart/shutdown")
-    async def shutdown(self, ctx: SlashContext):  # Команда для выключения бота
+    async def shutdown(self, ctx: Context):  # Команда для выключения бота
         s = await Settings(ctx.guild.id)
         lang = await s.get_field("locale", CONFIG["default_locale"])
         STRINGS = Strings(lang)
@@ -102,13 +101,13 @@ class Admin(commands.Cog, name="Admin"):
             "717822288375971900",
             "168422909482762240",
         ]
-        select_components = [[
+        select_components = [
             Button(style=ButtonStyle.green, label="✓"),
-            Button(style=ButtonStyle.red, label="X"),
-        ]]
-        done_components = [[
-            Button(style=ButtonStyle.grey, label="·", disabled=True),
-        ]]
+            Button(style=ButtonStyle.red, label="X")
+        ]
+        done_components = [
+            Button(style=ButtonStyle.grey, label="·", disabled=True)
+        ]
 
         embedconfirm = discord.Embed(
             title=STRINGS["moderation"]["shutdownembedtitle"],
@@ -186,11 +185,11 @@ class Admin(commands.Cog, name="Admin"):
         await ctx.send(embed=embed)
 
     @commands.command(description="Bot invite links")
-    async def invite(self, ctx: SlashContext):
+    async def invite(self, ctx: Context):
         s = await Settings(ctx.guild.id)
         lang = await s.get_field("locale", CONFIG["default_locale"])
         STRINGS = Strings(lang)
-        menu_components = [[
+        menu_components = [
             Button(
                 style=ButtonStyle.URL,
                 label=STRINGS["general"]["botinvitetitle"],
@@ -215,11 +214,11 @@ class Admin(commands.Cog, name="Admin"):
                 style=ButtonStyle.URL,
                 label=STRINGS["general"]["botuptopgg"],
                 url=f"https://top.gg/bot/{self.bot.user.id}",
-            ),
+            )
             # Button(style=ButtonStyle.URL, label=STRINGS["general"]["botupbod"], url=f"https://bots.ondiscord.xyz/bots/{self.bot.user.id}"),
             # Button(style=ButtonStyle.URL, label=STRINGS["general"]["botupdblco"], url=f"https://discordbotslist.co/bot/{self.bot.user.id}"),
-        ]]
-        menuer_components = [[
+        ]
+        menuer_components = [
             Button(
                 style=ButtonStyle.URL,
                 label=STRINGS["general"]["botupbod"],
@@ -229,8 +228,8 @@ class Admin(commands.Cog, name="Admin"):
                 style=ButtonStyle.URL,
                 label=STRINGS["general"]["botupdblco"],
                 url=f"https://discordbotslist.co/bot/{self.bot.user.id}",
-            ),
-        ]]
+            )
+        ]
 
         embed = discord.Embed(
             title=STRINGS["general"]["invitedescd"],
@@ -298,11 +297,10 @@ class Admin(commands.Cog, name="Admin"):
 
     # @commands.command()
     # @commands.is_owner()
-    # async def guildlist(self, ctx: SlashContext, bot : Bot):
+    # async def guildlist(self, ctx: Context, bot : Bot):
     # await ctx.send(bot.guilds)
 
 
 def setup(bot: Bot) -> NoReturn:
-    DiscordComponents(bot)
     bot.add_cog(Admin(bot))
     Logger.cog_loaded(bot.get_cog("Admin").name)
