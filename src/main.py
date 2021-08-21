@@ -46,8 +46,9 @@ def save_server_prefixes():
 
 def get_memory_config():
     intents = discord.Intents.default()
-    intents.members = True # Commented line for requesting members privileged intent - uncomment for enabling
-    #intents.presences = True # Commented line for requesting presence privileged intent - uncomment for enabling
+    # Commented line for requesting members privileged intent - uncomment for enabling
+    intents.members = True
+    # intents.presences = True # Commented line for requesting presence privileged intent - uncomment for enabling
     return intents
 
 
