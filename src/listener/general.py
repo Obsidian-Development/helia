@@ -196,8 +196,7 @@ class General(commands.Cog, name="General"):
             value=STRINGS["general"]["aboutauthortext"],
             inline=True,
         )
-        
-        
+
         # embed.add_field(name=STRINGS['general']['aboutthanks'], value=STRINGS['general']['aboutthankstext'],inline=False)
         embed.set_footer(text=self.bot.user.name,
                          icon_url=self.bot.user.avatar_url)
