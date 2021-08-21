@@ -7,13 +7,14 @@ from typing import NoReturn
 import discord
 from discord.ext import commands
 from discord.ext.commands import Bot, Context
-from discord_components import (Button, ButtonStyle, DiscordComponents)
-#from discord.ext.commands import Bot, Context
+from discord_components import Button, ButtonStyle, DiscordComponents
 
 from cogs.utils import Config, Logger, Settings, Strings, Utils
 
+# from discord.ext.commands import Bot, Context
+
 CONFIG = Config()
-#STRINGS = Strings(CONFIG["default_locale"])
+# STRINGS = Strings(CONFIG["default_locale"])
 
 
 class Admin(commands.Cog, name="Admin"):
@@ -103,7 +104,7 @@ class Admin(commands.Cog, name="Admin"):
         ]
         select_components = [
             Button(style=ButtonStyle.green, label="✓"),
-            Button(style=ButtonStyle.red, label="X")
+            Button(style=ButtonStyle.red, label="X"),
         ]
         done_components = [
             Button(style=ButtonStyle.grey, label="·", disabled=True)
@@ -228,7 +229,7 @@ class Admin(commands.Cog, name="Admin"):
                 style=ButtonStyle.URL,
                 label=STRINGS["general"]["botupdblco"],
                 url=f"https://discordbotslist.co/bot/{self.bot.user.id}",
-            )
+            ),
         ]
 
         embed = discord.Embed(

@@ -5,7 +5,6 @@ from discord.ext import commands
 from discord.ext.commands import Bot, Context
 from discord_components import Button, ButtonStyle, DiscordComponents
 
-from discord.ext.commands import Bot, Context
 from scripts.calculator import buttons, calculate
 
 
