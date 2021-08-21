@@ -141,7 +141,7 @@ class welcome(commands.Cog):
                 connect.commit()
                 cursor.close()
                 connect.close()
-                await ctx.send('bot: Set the welcome message text')
+                await ctx.send("bot: Set the welcome message text")
             else:
                 await ctx.send(
                     "bot: You do not have enough permissions - :You require **Manage Channels**."

@@ -204,7 +204,7 @@ class Admin(commands.Cog, name="Admin"):
             Button(
                 style=ButtonStyle.URL,
                 label=STRINGS["general"]["canaryver"],
-                url='https://discord.com/oauth2/authorize?client_id=671612079106424862&scope=bot&permissions=204557314',
+                url="https://discord.com/oauth2/authorize?client_id=671612079106424862&scope=bot&permissions=204557314",
             ),
             Button(
                 style=ButtonStyle.URL,

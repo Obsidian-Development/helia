@@ -305,7 +305,7 @@ class Music(commands.Cog, wavelink.WavelinkMixin, name="Music"):
         if (not member.bot and after.channel is None
                 and not [m for m in before.channel.members if not m.bot]):
             print("---------------------------")
-            print('[MUSIC]Someone left voice chat')
+            print("[MUSIC]Someone left voice chat")
             print("---------------------------")
 
     @wavelink.WavelinkMixin.listener("on_track_stuck")

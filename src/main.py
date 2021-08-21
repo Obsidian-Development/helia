@@ -1,7 +1,5 @@
 import asyncio
-
 import datetime
-
 import json
 import os
 
@@ -30,8 +28,6 @@ default_prefix = "n>"
 server_prefixes = {}
 loaded = False
 flwebhost.keep_alive()
-
-
 
 
 def load_server_prefixes():
