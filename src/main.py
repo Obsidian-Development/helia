@@ -3,6 +3,7 @@ import os
 import json
 
 import aiohttp
+import datetime
 import discord
 from discord.ext import commands
 #from pixivpy_async import PixivClient
@@ -123,6 +124,7 @@ async def main():
 
     
     DiscordComponents(client)
+    
 
     # Run Bot
     try:
