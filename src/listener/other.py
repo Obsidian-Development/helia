@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
+import random
 from typing import NoReturn
 
 import discord
-import random
 from discord.ext import commands
 from discord.ext.commands import Bot, Context
 
