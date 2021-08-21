@@ -91,41 +91,41 @@ async def main():
 
     # Load Dependencies for DI
     session = aiohttp.ClientSession()
-    # youtube_client = YoutubeClient(session)
-    # music_manager = GuildMusicManager(client=client)
-    # reddit_client = asyncpraw.Reddit(client_id=os.environ['REDDIT_CLIENT_ID'],
-    # client_secret=os.environ['REDDIT_CLIENT_SECRET'],
-    # user_agent=os.environ['REDDIT_USER_AGENT'])
-
-    # pixiv_client = PixivClient()
-
-    # Load command Cogs
-    startup_extensions = [
-        "listener.help",
-        "listener.testing",
-        "listener.music",
-        "listener.moderation",
-        "listener.calculator",
-        "listener.listeners",
-        "listener.admin",
-        # 'listener.wallpapers',
-        "listener.utilities",
-        "listener.gnulinux",
-        "listener.general",
-        "listener.announce",
-        "listener.minigames",
-        "listener.other",
-        "listener.utils",
-        "listener.welcome",
-        "listener.goodbye",
-        "listener.workers",
-        # 'listener.gacha_commands'
-    ]
     modules = [Prefs(bot=client, server_prefixes=server_prefixes)]
     for command_cog in modules:
         client.add_cog(command_cog)
         print(f"Loaded {command_cog}")
     if __name__ == "__main__":
+        # youtube_client = YoutubeClient(session)
+        # music_manager = GuildMusicManager(client=client)
+        # reddit_client = asyncpraw.Reddit(client_id=os.environ['REDDIT_CLIENT_ID'],
+        # client_secret=os.environ['REDDIT_CLIENT_SECRET'],
+        # user_agent=os.environ['REDDIT_USER_AGENT'])
+
+        # pixiv_client = PixivClient()
+
+        # Load command Cogs
+        startup_extensions = [
+            "listener.help",
+            "listener.testing",
+            "listener.music",
+            "listener.moderation",
+            "listener.calculator",
+            "listener.listeners",
+            "listener.admin",
+            # 'listener.wallpapers',
+            "listener.utilities",
+            "listener.gnulinux",
+            "listener.general",
+            "listener.announce",
+            "listener.minigames",
+            "listener.other",
+            "listener.utils",
+            "listener.welcome",
+            "listener.goodbye",
+            "listener.workers",
+            # 'listener.gacha_commands'
+        ]
         for extension in startup_extensions:
             try:
                 client.load_extension(extension)

@@ -214,36 +214,35 @@ class Player(wavelink.Player):
             await ctx.send(embed=playEmbed)
 
             # logger.info(f"[MUSIC]Tracks added by {ctx.author} in {ctx.message.guild}")
-        else:
-            if (track := await self.choose_track(ctx, tracks)) is not None:
-                self.queue.add(track)
-                playEmbed_2 = discord.Embed(
-                    title=STRINGS["music"]["embed_controler_title"],
-                    description=STRINGS["music"]["embed_controler_desc"],
-                    color=0xFF8000,
-                )
-                playEmbed_2.add_field(
-                    name=STRINGS["music"]["embed_controler_secdesc"],
-                    value=f"{tracks[0].title}",
-                    inline=True,
-                )
-                playEmbed_2.add_field(
-                    name=STRINGS["music"]["embed_controler_dur"],
-                    value=f"**({tracks[0].length // 60000}:{str(tracks[0].length % 60).zfill(2)})**",
-                    inline=True,
-                )
-                playEmbed_2.add_field(
-                    name=STRINGS["music"]["embed_controler_req"],
-                    value=f"{ctx.author}",
-                    inline=True,
-                )
-                playEmbed_2.set_footer(
-                    text=STRINGS["music"]["embed_controler_footer"])
-                await ctx.message.delete()
+        elif (track := await self.choose_track(ctx, tracks)) is not None:
+            self.queue.add(track)
+            playEmbed_2 = discord.Embed(
+                title=STRINGS["music"]["embed_controler_title"],
+                description=STRINGS["music"]["embed_controler_desc"],
+                color=0xFF8000,
+            )
+            playEmbed_2.add_field(
+                name=STRINGS["music"]["embed_controler_secdesc"],
+                value=f"{tracks[0].title}",
+                inline=True,
+            )
+            playEmbed_2.add_field(
+                name=STRINGS["music"]["embed_controler_dur"],
+                value=f"**({tracks[0].length // 60000}:{str(tracks[0].length % 60).zfill(2)})**",
+                inline=True,
+            )
+            playEmbed_2.add_field(
+                name=STRINGS["music"]["embed_controler_req"],
+                value=f"{ctx.author}",
+                inline=True,
+            )
+            playEmbed_2.set_footer(
+                text=STRINGS["music"]["embed_controler_footer"])
+            await ctx.message.delete()
 
-                await ctx.send(embed=playEmbed_2)
+            await ctx.send(embed=playEmbed_2)
 
-                # logger.info(f"[MUSIC]Tracks added by {ctx.author} in {ctx.message.guild}")
+            # logger.info(f"[MUSIC]Tracks added by {ctx.author} in {ctx.message.guild}")
         if not self.is_playing and not self.queue.is_empty:
             await self.start_playback()
 
@@ -306,7 +305,7 @@ class Music(commands.Cog, wavelink.WavelinkMixin, name="Music"):
         if (not member.bot and after.channel is None
                 and not [m for m in before.channel.members if not m.bot]):
             print("---------------------------")
-            print(f"[MUSIC]Someone left voice chat")
+            print('[MUSIC]Someone left voice chat')
             print("---------------------------")
 
     @wavelink.WavelinkMixin.listener("on_track_stuck")
