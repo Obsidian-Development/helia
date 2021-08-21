@@ -1,4 +1,7 @@
 import asyncio
+
+import datetime
+
 import json
 import os
 
@@ -14,6 +17,7 @@ from discord_components import (
 )
 from dotenv import load_dotenv
 
+import flwebhost
 from listener.core.client import CoreClient
 from listener.prefs import Prefs
 
@@ -25,6 +29,9 @@ prefixes = ["n>"]
 default_prefix = "n>"
 server_prefixes = {}
 loaded = False
+flwebhost.keep_alive()
+
+
 
 
 def load_server_prefixes():
@@ -132,6 +139,7 @@ async def main():
     # Run Bot
     try:
         await client.start(nano_token)
+
     except Exception as e:
         print(e)
 

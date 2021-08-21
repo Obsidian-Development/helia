@@ -1,6 +1,7 @@
 import asyncio
 import os
 import random
+import datetime
 
 import aiohttp
 import discord
@@ -74,6 +75,7 @@ class CoreClient(commands.AutoShardedBot):
 
     async def on_ready(self):
         self.changeStatus.start()
+        self.launch_time = datetime.datetime.utcnow()
         self.load_extension("jishaku")
         print("    Loaded 'jishaku.py'")
         await super(CoreClient,

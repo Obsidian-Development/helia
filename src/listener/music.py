@@ -346,22 +346,6 @@ class Music(commands.Cog, wavelink.WavelinkMixin, name="Music"):
                 "identifier": "BACKUP",
                 "region": "us_central",
             },
-            "JDSERV": {
-                "host": "n17.danbot.host",
-                "port": 1456,
-                "rest_uri": "http://n17.danbot.host:1456",
-                "password": "danbot.host",
-                "identifier": "JDSERV",
-                "region": "us_central",
-            },
-            "EUROPEANLAVA": {
-                "host": "lava.link",
-                "port": 80,
-                "rest_uri": "https://laval.link",
-                "password": "youshallnotpass",
-                "identifier": "EULAVA",
-                "region": "europe",
-            },
         }
         for node in nodes.values():
             await self.wavelink.initiate_node(**node)
