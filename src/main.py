@@ -5,6 +5,7 @@ import json
 import aiohttp
 import datetime
 import discord
+import flwebhost
 from discord.ext import commands
 #from pixivpy_async import PixivClient
 #from ytpy import YoutubeClient
@@ -129,6 +130,7 @@ async def main():
     # Run Bot
     try:
         await client.start(nano_token)
+        await flwebhost.flwebhost()
     except Exception as e:
         print(e)
 
