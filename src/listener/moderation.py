@@ -250,9 +250,11 @@ class Moderation(commands.Cog, name="Moderation"):
     @commands.bot_has_permissions(kick_members=True)
     @commands.has_permissions(kick_members=True)
     @commands.cooldown(1, 5, commands.BucketType.user)
-    async def kick(
-        self, ctx: Context, member: Member, *, reason: str = "N/A"
-    ) -> NoReturn:
+    async def kick(self,
+                   ctx: Context,
+                   member: Member,
+                   *,
+                   reason: str = "N/A") -> NoReturn:
         """Kicks the user.
 
         Attributes:
@@ -265,17 +267,13 @@ class Moderation(commands.Cog, name="Moderation"):
         lang = await s.get_field("locale", CONFIG["default_locale"])
         STRINGS = Strings(lang)
 
-        select_components = [
-            [
-                Button(style=ButtonStyle.green, label="✓"),
-                Button(style=ButtonStyle.red, label="X"),
-            ]
-        ]
-        done_components = [
-            [
-                Button(style=ButtonStyle.grey, label="·", disabled=True),
-            ]
-        ]
+        select_components = [[
+            Button(style=ButtonStyle.green, label="✓"),
+            Button(style=ButtonStyle.red, label="X"),
+        ]]
+        done_components = [[
+            Button(style=ButtonStyle.grey, label="·", disabled=True),
+        ]]
 
         embedconfirm = discord.Embed(
             title="Kick Command",
@@ -283,8 +281,7 @@ class Moderation(commands.Cog, name="Moderation"):
         )
         await ctx.send(embed=embedconfirm, components=select_components)
         response = await self.bot.wait_for(
-            "button_click", check=lambda message: message.author == ctx.author
-        )
+            "button_click", check=lambda message: message.author == ctx.author)
         if response.component.label == "✓":
             await response.respond(
                 type=7,
@@ -299,9 +296,8 @@ class Moderation(commands.Cog, name="Moderation"):
             await member.kick()
             await ctx.message.add_reaction(CONFIG["yes_emoji"])
         elif response.component.label == "✓" and not member.bot:
-            embed = Utils.error_embed(
-                STRINGS["moderation"]["dm_kick"].format(ctx.guild, reason)
-            )
+            embed = Utils.error_embed(STRINGS["moderation"]["dm_kick"].format(
+                ctx.guild, reason))
             await member.send(embed=embed)
             await asyncio.sleep(5)
             await member.kick()
@@ -326,6 +322,7 @@ class Moderation(commands.Cog, name="Moderation"):
                 components=done_components,
             )
             return
+
     @commands.command(aliases=["clear"])
     @commands.guild_only()
     @commands.bot_has_permissions(manage_messages=True)
