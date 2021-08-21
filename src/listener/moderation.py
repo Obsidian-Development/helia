@@ -23,9 +23,11 @@ class Moderation(commands.Cog, name="Moderation"):
     @commands.bot_has_permissions(ban_members=True)
     @commands.has_permissions(ban_members=True)
     @commands.cooldown(1, 5, commands.BucketType.user)
-    async def ban(
-        self, ctx: Context, member: Member, *, reason: str = "N/A"
-    ) -> NoReturn:
+    async def ban(self,
+                  ctx: Context,
+                  member: Member,
+                  *,
+                  reason: str = "N/A") -> NoReturn:
         """Bans the user.
 
         Attributes:
@@ -38,17 +40,13 @@ class Moderation(commands.Cog, name="Moderation"):
         lang = await s.get_field("locale", CONFIG["default_locale"])
         STRINGS = Strings(lang)
 
-        select_components = [
-            [
-                Button(style=ButtonStyle.green, label="✓"),
-                Button(style=ButtonStyle.red, label="X"),
-            ]
-        ]
-        done_components = [
-            [
-                Button(style=ButtonStyle.grey, label="·", disabled=True),
-            ]
-        ]
+        select_components = [[
+            Button(style=ButtonStyle.green, label="✓"),
+            Button(style=ButtonStyle.red, label="X"),
+        ]]
+        done_components = [[
+            Button(style=ButtonStyle.grey, label="·", disabled=True),
+        ]]
 
         embedconfirm = discord.Embed(
             title="Ban Command",
@@ -56,8 +54,7 @@ class Moderation(commands.Cog, name="Moderation"):
         )
         await ctx.send(embed=embedconfirm, components=select_components)
         response = await self.bot.wait_for(
-            "button_click", check=lambda message: message.author == ctx.author
-        )
+            "button_click", check=lambda message: message.author == ctx.author)
         try:
             if response.component.label == "✓":
                 await response.respond(
@@ -82,8 +79,8 @@ class Moderation(commands.Cog, name="Moderation"):
                     components=done_components,
                 )
                 embed = Utils.error_embed(
-                    STRINGS["moderation"]["dm_ban"].format(ctx.guild.name, reason)
-                )
+                    STRINGS["moderation"]["dm_ban"].format(
+                        ctx.guild.name, reason))
                 await member.send(embed=embed)
                 await asyncio.sleep(5)
                 await member.ban(reason=reason)
@@ -108,8 +105,8 @@ class Moderation(commands.Cog, name="Moderation"):
         else:
             try:
                 embed = Utils.error_embed(
-                    STRINGS["moderation"]["dm_ban"].format(ctx.guild.name, reason)
-                )
+                    STRINGS["moderation"]["dm_ban"].format(
+                        ctx.guild.name, reason))
                 await member.send(embed=embed)
             except:
                 pass
