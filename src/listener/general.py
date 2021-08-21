@@ -11,7 +11,6 @@ import psutil
 import wikipedia
 from discord.ext import commands
 from discord.ext.commands import Bot, Context
-from discord.ext.commands import Bot, Context
 
 from listener.utils import Commands, Config, Logger, Settings, Strings, Utils
 from scripts import blacklist

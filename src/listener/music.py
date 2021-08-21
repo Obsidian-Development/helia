@@ -324,8 +324,7 @@ class Music(commands.Cog, wavelink.WavelinkMixin, name="Music"):
             "MAIN": {
                 "host": "n17.danbot.host",
                 "port": 1679,
-                "rest_uri":
-                "http://n17.danbot.host:1679",
+                "rest_uri": "http://n17.danbot.host:1679",
                 "password": "DBH",
                 "identifier": "MAIN",
                 "region": "europe",

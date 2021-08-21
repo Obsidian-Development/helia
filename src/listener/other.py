@@ -5,7 +5,6 @@ from discord.ext import commands
 from discord.ext.commands import Bot, Context
 
 from listener.utils import Config, Logger, Settings, Strings, Utils
-
 from scripts import desAnime, desNature, desStarwars
 
 CONFIG = Config()
