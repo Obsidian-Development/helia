@@ -169,6 +169,7 @@ class General(commands.Cog, name="General"):
         ramUsage = self.process.memory_full_info().rss / 1024**2
         pythonVersion = platform.python_version()
         dpyVersion = discord.__version__
+        servercount = len(self.bot.guilds)
         embed = discord.Embed(
             title=STRINGS["general"]["abouttitle"],
             description=STRINGS["general"]["aboutdesc"],
@@ -182,14 +183,20 @@ class General(commands.Cog, name="General"):
                         inline=True)
         embed.add_field(name="Library", value="```discord.py```", inline=True)
         embed.add_field(name="Discord.Py Version", value=f"```{dpyVersion}```")
-        embed.add_field(name="RAM",
+        embed.add_field(name="RAM Usage",
                         value=f"```{ramUsage:.2f} MB```",
                         inline=True)
+        embed.add_field(
+            name="Servers",
+            value=f"```{servercount}```",
+            inline=True,
+        )
         embed.add_field(
             name=STRINGS["general"]["aboutauthor"],
             value=STRINGS["general"]["aboutauthortext"],
             inline=True,
         )
+        
         
         # embed.add_field(name=STRINGS['general']['aboutthanks'], value=STRINGS['general']['aboutthankstext'],inline=False)
         embed.set_footer(text=self.bot.user.name,
