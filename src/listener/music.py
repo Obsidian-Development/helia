@@ -324,8 +324,7 @@ class Music(commands.Cog, wavelink.WavelinkMixin, name="Music"):
             "MAIN": {
                 "host": "n17.danbot.host",
                 "port": 1679,
-                "rest_uri":
-                "http://n17.danbot.host:1679",
+                "rest_uri": "http://n17.danbot.host:1679",
                 "password": "DBH",
                 "identifier": "MAIN",
                 "region": "europe",
@@ -347,7 +346,6 @@ class Music(commands.Cog, wavelink.WavelinkMixin, name="Music"):
                 "identifier": "BACKUP",
                 "region": "us_central",
             },
-            
         }
         for node in nodes.values():
             await self.wavelink.initiate_node(**node)
