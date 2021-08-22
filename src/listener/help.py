@@ -17,7 +17,7 @@ class Help(commands.Cog):
             title=":books: Help System",
             description=f"Welcome To {self.bot.user.name} Help System",
         )
-        embede.set_footer(text="Temporarily in testing")
+        embede.set_footer(text="Developed with ❤️ by Middlle")
         components = [
             Select(
                 placeholder="Select a category",
