@@ -223,13 +223,24 @@ class Utilities(commands.Cog):
         STRINGS = Strings(lang)
 
         member = ctx.message.author
-        servinfo = discord.Embed(title="Server Info", color=0x00ff00)
-        servinfo.set_author(name=f"{member.guild}", icon_url=f"{member.guild.icon_url}")
-        servinfo.add_field(name="Region", value=f"{member.guild.region}", inline=True)
+        servinfo = discord.Embed(title="Server Info", color=0x00FF00)
+        servinfo.set_author(name=f"{member.guild}",
+                            icon_url=f"{member.guild.icon_url}")
+        servinfo.add_field(name="Region",
+                           value=f"{member.guild.region}",
+                           inline=True)
         servinfo.set_thumbnail(url=f"{member.guild.icon_url}")
-        servinfo.add_field(name="Owner", value=f"{member.guild.owner}", inline=True)
-        servinfo.add_field(name="Verification Level", value=f"{member.guild.verification_level}", inline=False)
-        servinfo.add_field(name="Member Count", value=f"{member.guild.member_count}", inline=True)
+        servinfo.add_field(name="Owner",
+                           value=f"{member.guild.owner}",
+                           inline=True)
+        servinfo.add_field(
+            name="Verification Level",
+            value=f"{member.guild.verification_level}",
+            inline=False,
+        )
+        servinfo.add_field(name="Member Count",
+                           value=f"{member.guild.member_count}",
+                           inline=True)
         servinfo.add_field(name="ID", value=f"{member.guild.id}", inline=False)
         await ctx.send(embed=servinfo)
 
