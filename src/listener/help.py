@@ -1,6 +1,9 @@
 import discord
 from discord.ext import commands
-from discord_components import Button, ButtonStyle, Select, SelectOption
+from discord_components import Button
+from discord_components import ButtonStyle
+from discord_components import Select
+from discord_components import SelectOption
 
 
 class Help(commands.Cog):
