@@ -235,12 +235,12 @@ class Utilities(commands.Cog):
         servinfo.add_field(
             name="Verification Level",
             value=f"{member.guild.verification_level}",
-            inline=False,
+            inline=True,
         )
         servinfo.add_field(name="Member Count",
                            value=f"{member.guild.member_count}",
                            inline=True)
-        servinfo.add_field(name="ID", value=f"{member.guild.id}", inline=False)
+        servinfo.add_field(name="ID", value=f"{member.guild.id}", inline=True)
         await ctx.send(embed=servinfo)
 
 
