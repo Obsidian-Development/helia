@@ -23,24 +23,26 @@ class goodbye(commands.Cog):
             connect = sqlite3.connect(db.main)
             cursor = connect.cursor()
             cursor.execute(
-                db.select_table("goodbye", "channel_id", "guild_id", member.guild.id)
-            )
+                db.select_table("goodbye", "channel_id", "guild_id",
+                                member.guild.id))
             chan = cursor.fetchone()
             if chan is None:
                 return
             cursor.execute(
-                db.select_table("goodbye", "text", "guild_id", member.guild.id)
-            )
+                db.select_table("goodbye", "text", "guild_id",
+                                member.guild.id))
             desc = cursor.fetchone()
             if desc is None:
                 desc = f"{MEMBER} goodbye "
             gb = discord.Embed(
                 title="User Left The Channel",
-                description=(desc[0]).format(MEMBER=member, MENTION=member.mention),
+                description=(desc[0]).format(MEMBER=member,
+                                             MENTION=member.mention),
                 color=0xF4211A,
             )
             # gb.add_field(name="Время", value=time, inline=False)
-            gb.set_author(name=f"{member.guild}", icon_url=f"{member.guild.icon_url}")
+            gb.set_author(name=f"{member.guild}",
+                          icon_url=f"{member.guild.icon_url}")
             gb.set_thumbnail(url=f"{member.avatar_url}")
             channel = self.bot.get_channel(id=int(chan[0]))
             cursor.close()
@@ -63,14 +65,14 @@ class goodbye(commands.Cog):
                 connect = sqlite3.connect(db.main)
                 cursor = connect.cursor()
                 cursor.execute(
-                    db.select_table("goodbye", "channel_id", "guild_id", ctx.guild.id)
-                )
+                    db.select_table("goodbye", "channel_id", "guild_id",
+                                    ctx.guild.id))
                 result = cursor.fetchone()
                 if result is None:
                     val = (ctx.guild.id, channel.id)
                     cursor.execute(
-                        db.insert_table("goodbye", "guild_id", "channel_id"), val
-                    )
+                        db.insert_table("goodbye", "guild_id", "channel_id"),
+                        val)
                 else:
                     cursor.execute(
                         db.update_table(
@@ -79,12 +81,12 @@ class goodbye(commands.Cog):
                             channel.id,
                             "guild_id",
                             ctx.guild.id,
-                        )
-                    )
+                        ))
                 connect.commit()
                 cursor.close()
                 connect.close()
-                await ctx.send(f"bot: Set the goodbye channel to  {channel.mention}")
+                await ctx.send(
+                    f"bot: Set the goodbye channel to  {channel.mention}")
             else:
                 await ctx.send(
                     "bot: You do not have enough permissions - :You require **Administrator**"
@@ -100,15 +102,16 @@ class goodbye(commands.Cog):
                 connect = sqlite3.connect(db.main)
                 cursor = connect.cursor()
                 cursor.execute(
-                    db.select_table("goodbye", "channel_id", "guild_id", ctx.guild.id)
-                )
+                    db.select_table("goodbye", "channel_id", "guild_id",
+                                    ctx.guild.id))
                 result = cursor.fetchone()
                 if result is None:
                     await ctx.send(
                         "bot: Do not have a table for the goodbye channel - Check Database."
                     )
                 else:
-                    cursor.execute(db.delete_table("goodbye", "guild_id", ctx.guild.id))
+                    cursor.execute(
+                        db.delete_table("goodbye", "guild_id", ctx.guild.id))
                     await ctx.send("bot: Cleared the table")
                 connect.commit()
                 cursor.close()
@@ -132,17 +135,17 @@ class goodbye(commands.Cog):
                 connect = sqlite3.connect(db.main)
                 cursor = connect.cursor()
                 cursor.execute(
-                    db.select_table("goodbye", "text", "guild_id", ctx.guild.id)
-                )
+                    db.select_table("goodbye", "text", "guild_id",
+                                    ctx.guild.id))
                 res = cursor.fetchone()
                 if res is None:
                     val = (ctx.guild.id, content)
-                    cursor.execute(db.insert_table("goodbye", "guild_id", "text"), val)
+                    cursor.execute(
+                        db.insert_table("goodbye", "guild_id", "text"), val)
                 else:
                     val = (content, ctx.guild.id)
                     cursor.execute(
-                        "UPDATE goodbye SET text = ? WHERE guild_id = ?", val
-                    )
+                        "UPDATE goodbye SET text = ? WHERE guild_id = ?", val)
                 connect.commit()
                 cursor.close()
                 connect.close()
