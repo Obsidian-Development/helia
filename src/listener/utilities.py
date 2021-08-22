@@ -222,47 +222,16 @@ class Utilities(commands.Cog):
         lang = await s.get_field("locale", CONFIG["default_locale"])
         STRINGS = Strings(lang)
 
-        specguild = ctx.guild
-        guildedid = ctx.guild.id
-        banner = specguild.banner_url_as()
-        icon = specguild.icon_url_as()
-        created_at = specguild.created_at.strftime("%d.%m.%Y %H:%M")
-        members = len(specguild.members)
-        owner = specguild.owner
-
-        if specguild.verification_level == discord.VerificationLevel.none:
-            vf = STRINGS["etc"]["levels"]["none"]
-        elif specguild.verification_level == discord.VerificationLevel.low:
-            vf = STRINGS["etc"]["levels"]["low"]
-        elif specguild.verification_level == discord.VerificationLevel.medium:
-            vf = STRINGS["etc"]["levels"]["medium"]
-        elif specguild.verification_level == discord.VerificationLevel.high:
-            vf = STRINGS["etc"]["levels"]["high"]
-        elif specguild.verification_level == discord.VerificationLevel.extreme:
-            vf = STRINGS["etc"]["levels"]["extreme"]
-        else:
-            vf = STRINGS["etc"]["levels"]["unknown"]
-
-        if specguild.explicit_content_filter == discord.ContentFilter.disabled:
-            cf = STRINGS["etc"]["levels"]["none"]
-        elif specguild.explicit_content_filter == discord.ContentFilter.no_role:
-            cf = STRINGS["etc"]["levels"]["medium"]
-        elif specguild.explicit_content_filter == discord.ContentFilter.all_members:
-            cf = STRINGS["etc"]["levels"]["high"]
-        else:
-            cf = STRINGS["etc"]["levels"]["unknown"]
-
-        embed = discord.Embed(
-            description=STRINGS["utilities"]["guild_info"].format(
-                id, created_at, members, f"<@!{owner.id}>", vf, cf),
-            color=0xEDA84E,
-        )
-        embed.set_author(
-            name=STRINGS["utilities"]["guild_info_title"].format(specguild))
-        embed.set_thumbnail(url=icon)
-        embed.set_image(url=banner)
-
-        await ctx.send(embed=embed)
+        member = ctx.message.author
+        servinfo = discord.Embed(title="Информация о сервере", color=0x00ff00)
+        servinfo.set_author(name=f"{member.guild}", icon_url=f"{member.guild.icon_url}")
+        servinfo.add_field(name="Регион", value=f"{member.guild.region}", inline=True)
+        servinfo.set_thumbnail(url=f"{member.guild.icon_url}")
+        servinfo.add_field(name="Владелец", value=f"{member.guild.owner.mention}", inline=True)
+        servinfo.add_field(name="Уровень защиты", value=f"{member.guild.verification_level}", inline=False)
+        servinfo.add_field(name="Пользователей", value=f"{member.guild.member_count}", inline=True)
+        servinfo.add_field(name="ID", value=f"{member.guild.id}", inline=False)
+        await ctx.send(embed=servinfo)
 
 
 def setup(bot: Bot) -> NoReturn:
