@@ -10,9 +10,9 @@ class Help(commands.Cog):
     @commands.guild_only()
     @commands.command(description="SELECT TEST")
     async def help(self, ctx):
-        embed = discord.Embed(title="SELECTION TEST",
-                              description="Testing our embeds",
-                              color=0xFF8000)
+        embed = discord.Embed(
+            title="SELECTION TEST", description="Testing our embeds", color=0xFF8000
+        )
         embede = discord.Embed(
             title=":books: Help System",
             description=f"Welcome To {self.bot.user.name} Help System",
@@ -124,9 +124,9 @@ class Help(commands.Cog):
                     ).set_author(name="Help System"),
                 )
             if label == "Close":
-                await interaction.respond(type=7,
-                                          embed=embede,
-                                          components=done_components)
+                await interaction.respond(
+                    type=7, embed=embede, components=done_components
+                )
 
 
 def setup(bot):
