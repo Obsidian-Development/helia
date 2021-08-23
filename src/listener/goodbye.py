@@ -29,12 +29,15 @@ class goodbye(commands.Cog):
         # print(f" Channel id fetch - {chan[0]}")
         if chan is None:
             return
-        #cursor.execute(db.select_table("goodbye", "text", "guild_id",member.guild.id))
-        #desc = cursor.fetchone()
+        # cursor.execute(db.select_table("goodbye", "text", "guild_id",member.guild.id))
+        # desc = cursor.fetchone()
         desc = f", due to one reason or the other "
-        gb = discord.Embed(title="User left the server", description="Details Below")
+        gb = discord.Embed(title="User left the server",
+                           description="Details Below")
         gb.set_author(name="Goodbye System")
-        gb.add_field(name=f"Someone left", value=f" our {member.guild}", inline=True)
+        gb.add_field(name=f"Someone left",
+                     value=f" our {member.guild}",
+                     inline=True)
         gb.add_field(name="\u2800", value=f"{desc}", inline=True)
         channel = self.bot.get_channel(id=int(chan[0]))
         cursor.close()

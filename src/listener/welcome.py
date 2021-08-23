@@ -29,12 +29,15 @@ class welcome(commands.Cog):
             return
 
         else:
-            #cursor.execute(db.select_table("welcome", "text", "guild_id",member.guild.id))
-            #desc = cursor.fetchone()
+            # cursor.execute(db.select_table("welcome", "text", "guild_id",member.guild.id))
+            # desc = cursor.fetchone()
             desc = f"and say hello to him"
-            hello = discord.Embed(title="User joined the server", description="Details Below")
+            hello = discord.Embed(title="User joined the server",
+                                  description="Details Below")
             hello.set_author(name="Welcome System")
-            hello.add_field(name=f"Welcome new {member}", value=f" to {member.guild} ", inline=True)
+            hello.add_field(name=f"Welcome new {member}",
+                            value=f" to {member.guild} ",
+                            inline=True)
             hello.add_field(name="\u2800", value=f"{desc}", inline=True)
 
             channel = self.bot.get_channel(id=int(chan[0]))
