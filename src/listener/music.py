@@ -19,7 +19,11 @@ CONFIG = Config()
 URL_REGEX = r"(?i)\b((?:https?://|www\d{0,3}[.]|[a-z0-9.\-]+[.][a-z]{2,4}/)(?:[^\s()<>]+|\(([^\s()<>]+|(\([^\s()<>]+\)))*\))+(?:\(([^\s()<>]+|(\([^\s()<>]+\)))*\)|[^\s`!()\[\]{};:'\".,<>?«»“”‘’]))"
 
 OPTIONS = {
-    "1️⃣": 0,"2️⃣": 1,"3️⃣": 2,"4️⃣": 3,"5️⃣": 4,
+    "1️⃣": 0,
+    "2️⃣": 1,
+    "3️⃣": 2,
+    "4️⃣": 3,
+    "5️⃣": 4,
 }
 
 
@@ -244,11 +248,8 @@ class Player(wavelink.Player):
 
     async def choose_track(self, ctx, tracks):
         def _check(r, u):
-            return (
-                r.emoji in OPTIONS.keys()
-                and u == ctx.author
-                and r.message.id == msg.id
-            )
+            return (r.emoji in OPTIONS.keys() and u == ctx.author
+                    and r.message.id == msg.id)
 
         s = await Settings(ctx.guild.id)
         lang = await s.get_field("locale", CONFIG["default_locale"])
@@ -268,7 +269,9 @@ class Player(wavelink.Player):
         for emoji in list(OPTIONS.keys())[:min(len(tracks), len(OPTIONS))]:
             await msg.add_reaction(emoji)
         try:
-            reaction, _ = await self.bot.wait_for("reaction_add", timeout=60.0, check=_check)
+            reaction, _ = await self.bot.wait_for("reaction_add",
+                                                  timeout=60.0,
+                                                  check=_check)
         except asyncio.TimeoutError:
             await msg.delete()
         else:
