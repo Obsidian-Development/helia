@@ -103,7 +103,8 @@ class General(commands.Cog, name="General"):
                     description=STRINGS["general"]["blacklistwarndesc"],
                     color=0xFF0000,
                 )
-                embed.set_footer(text=STRINGS["general"]["blacklistwarnfooter"])
+                embed.set_footer(
+                    text=STRINGS["general"]["blacklistwarnfooter"])
                 return await ctx.send(embed=embed)
         else:
             return await ctx.send(content)
@@ -123,7 +124,8 @@ class General(commands.Cog, name="General"):
                     description=STRINGS["general"]["blacklistwarndesc"],
                     color=0xFF0000,
                 )
-                embed.set_footer(text=STRINGS["general"]["blacklistwarnfooter"])
+                embed.set_footer(
+                    text=STRINGS["general"]["blacklistwarnfooter"])
                 return await ctx.send(embed=embed)
         else:
             creator = discord.Embed(title=name, description=content)
@@ -150,13 +152,15 @@ class General(commands.Cog, name="General"):
             )
             wikierror.add_field(
                 name="If you are still having this error",
-                value="Report the issue on github or ask in bot support server about it",
+                value=
+                "Report the issue on github or ask in bot support server about it",
                 inline=True,
             )
             wikierror.set_footer(text="Try again ")
             await ctx.send(embed=wikierror)
         except:
-            await ctx.send("bot: Missing argument or permissions to do the command")
+            await ctx.send(
+                "bot: Missing argument or permissions to do the command")
 
     @commands.guild_only()
     @commands.command()
@@ -168,7 +172,7 @@ class General(commands.Cog, name="General"):
         path = "scripts/version.txt"
         with open(path, "r") as file:
             ver = file.readline()
-        ramUsage = self.process.memory_full_info().rss / 1024 ** 2
+        ramUsage = self.process.memory_full_info().rss / 1024**2
         pythonVersion = platform.python_version()
         dpyVersion = discord.__version__
         servercount = len(self.bot.guilds)
@@ -177,15 +181,17 @@ class General(commands.Cog, name="General"):
             description=STRINGS["general"]["aboutdesc"],
             color=0xFF6900,
         )
-        embed.add_field(
-            name=STRINGS["general"]["aboutver"], value=f"```{ver}```", inline=True
-        )
-        embed.add_field(
-            name="Python Version:", value=f"```{pythonVersion}```", inline=True
-        )
+        embed.add_field(name=STRINGS["general"]["aboutver"],
+                        value=f"```{ver}```",
+                        inline=True)
+        embed.add_field(name="Python Version:",
+                        value=f"```{pythonVersion}```",
+                        inline=True)
         embed.add_field(name="Library", value="```discord.py```", inline=True)
         embed.add_field(name="Discord.Py Version", value=f"```{dpyVersion}```")
-        embed.add_field(name="RAM Usage", value=f"```{ramUsage:.2f} MB```", inline=True)
+        embed.add_field(name="RAM Usage",
+                        value=f"```{ramUsage:.2f} MB```",
+                        inline=True)
         embed.add_field(
             name="Servers",
             value=f"```{servercount}```",
@@ -198,7 +204,8 @@ class General(commands.Cog, name="General"):
         )
 
         # embed.add_field(name=STRINGS['general']['aboutthanks'], value=STRINGS['general']['aboutthankstext'],inline=False)
-        embed.set_footer(text=self.bot.user.name, icon_url=self.bot.user.avatar_url)
+        embed.set_footer(text=self.bot.user.name,
+                         icon_url=self.bot.user.avatar_url)
         await ctx.send(embed=embed)
 
     @commands.guild_only()
@@ -242,7 +249,8 @@ class General(commands.Cog, name="General"):
             value=STRINGS["privacy"]["datadeletepoldesc"],
             inline=True,
         )
-        embed.set_footer(text=self.bot.user.name, icon_url=self.bot.user.avatar_url)
+        embed.set_footer(text=self.bot.user.name,
+                         icon_url=self.bot.user.avatar_url)
         await ctx.send(embed=embed)
 
 
