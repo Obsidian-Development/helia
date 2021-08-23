@@ -33,7 +33,7 @@ class welcome(commands.Cog):
                 db.select_table("welcome", "text", "guild_id",
                                 member.guild.id))
             desc = cursor.fetchone()
-            descdef = f"Give him a warm welcome and say hello to him"
+            descdef = f"Give them a warm welcome and say hello to him"
 
             hello = discord.Embed(title="User joined the server",
                                   description=f"```Welcome {member} to {member.guild}```")
@@ -131,7 +131,7 @@ class welcome(commands.Cog):
             if author.guild_permissions.manage_channels:
                 if content is None:
                     await ctx.send("Setting default message")
-                    content = "Give him a warm welcome and say hello to him"
+                    content = "Give them a warm welcome and say hello to him"
                 connect = sqlite3.connect(db.main)
                 cursor = connect.cursor()
                 cursor.execute(
