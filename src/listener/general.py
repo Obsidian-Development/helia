@@ -147,8 +147,7 @@ class General(commands.Cog, name="General"):
             )
             wikierror.add_field(
                 name="If you are still having this error",
-                value=
-                "Report the issue on github or ask in bot support server about it",
+                value="Report the issue on github or ask in bot support server about it",
                 inline=True,
             )
             wikierror.set_footer(text="Try again ")

@@ -87,8 +87,7 @@ class Calculator(commands.Cog, name="Calculator"):
                             type=7,
                             embed=discord.Embed(
                                 title="Closing down",
-                                description=
-                                "You have entered a number that is 9 or more in length or some enormous calculation - for the stability of the bot and crash prevention we will close down this calculator session",
+                                description="You have entered a number that is 9 or more in length or some enormous calculation - for the stability of the bot and crash prevention we will close down this calculator session",
                                 color=0xDD2E44,
                             ),
                             components=done,
@@ -106,8 +105,7 @@ class Calculator(commands.Cog, name="Calculator"):
                             type=7,
                             embed=discord.Embed(
                                 title="Closing down",
-                                description=
-                                "You have entered a number that is 9 or more in length or some enormous calculation - for the stability of the bot and crash prevention we will close down this calculator session",
+                                description="You have entered a number that is 9 or more in length or some enormous calculation - for the stability of the bot and crash prevention we will close down this calculator session",
                                 color=0xDD2E44,
                             ),
                             components=done,
@@ -121,8 +119,7 @@ class Calculator(commands.Cog, name="Calculator"):
                             type=7,
                             embed=discord.Embed(
                                 title="Closing down",
-                                description=
-                                "You have entered a number that is 9 or more in length or some enormous calculation - for the stability of the bot and crash prevention we will close down this calculator session",
+                                description="You have entered a number that is 9 or more in length or some enormous calculation - for the stability of the bot and crash prevention we will close down this calculator session",
                                 color=0xDD2E44,
                             ),
                             components=done,
