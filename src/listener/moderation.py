@@ -2,20 +2,12 @@ import asyncio
 from typing import NoReturn
 
 import discord
-from discord import Member
-from discord import User
+from discord import Member, User
 from discord.ext import commands
-from discord.ext.commands import Bot
-from discord.ext.commands import Context
-from discord.ext.commands import Greedy
-from discord_components import Button
-from discord_components import ButtonStyle
-from discord_components import DiscordComponents
-from listener.utils import Config
-from listener.utils import Logger
-from listener.utils import Settings
-from listener.utils import Strings
-from listener.utils import Utils
+from discord.ext.commands import Bot, Context, Greedy
+from discord_components import Button, ButtonStyle, DiscordComponents
+
+from listener.utils import Config, Logger, Settings, Strings, Utils
 
 CONFIG = Config()
 
@@ -85,8 +77,7 @@ class Moderation(commands.Cog, name="Moderation"):
                     type=7,
                     embed=discord.Embed(
                         title="Action Aborted",
-                        description=
-                        "The action was aborted by clicking the no button",
+                        description="The action was aborted by clicking the no button",
                         color=0xDD2E44,
                     ),
                     components=done_components,
@@ -181,8 +172,7 @@ class Moderation(commands.Cog, name="Moderation"):
                 type=7,
                 embed=discord.Embed(
                     title="Action Aborted",
-                    description=
-                    "The action was aborted by clicking the no button",
+                    description="The action was aborted by clicking the no button",
                     color=0xDD2E44,
                 ),
                 components=done_components,
@@ -302,8 +292,7 @@ class Moderation(commands.Cog, name="Moderation"):
                 type=7,
                 embed=discord.Embed(
                     title="Action Aborted",
-                    description=
-                    "The action was aborted by clicking the no button",
+                    description="The action was aborted by clicking the no button",
                     color=0xDD2E44,
                 ),
                 components=done_components,
@@ -361,8 +350,7 @@ class Moderation(commands.Cog, name="Moderation"):
                 type=7,
                 embed=discord.Embed(
                     title="Action Aborted",
-                    description=
-                    "The action was aborted by clicking the no button",
+                    description="The action was aborted by clicking the no button",
                     color=0xDD2E44,
                 ),
                 components=done_components,
