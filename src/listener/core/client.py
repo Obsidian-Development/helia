@@ -35,7 +35,7 @@ class CoreClient(commands.AutoShardedBot):
         # self.BASE_URL = "https://discordbots.org/api/bots/458298539517411328/stats"
         # self.headers = {"Authorization": self.dbl_token}
 
-    @tasks.loop(seconds=80)
+    @tasks.loop(seconds=110)
     async def changeStatus(self):
         statuses = [
             # discord.Activity(type=discord.ActivityType.watching, name=f"{len(self.bot.guilds)} servers | {len(self.bot.shards)} shards!"), # bugged status - uncomment after fix
