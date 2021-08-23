@@ -42,7 +42,9 @@ class goodbye(commands.Cog):
         if desc is not None:
             gb.add_field(name="Server message", value=desc[0], inline=True)
         else:
-            gb.add_field(name="Server message", value=f"{descdef}", inline=True)
+            gb.add_field(name="Server message",
+                         value=f"{descdef}",
+                         inline=True)
         channel = self.bot.get_channel(id=int(chan[0]))
         cursor.close()
         connect.close()
