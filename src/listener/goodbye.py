@@ -39,7 +39,6 @@ class goodbye(commands.Cog):
         )
         gb.set_author(name="Goodbye System")
 
-
         if desc is None:
             gb.add_field(name="Server message",
                          value=f"{descdef}",
@@ -55,7 +54,30 @@ class goodbye(commands.Cog):
 
     @commands.group(invoke_without_command=True)
     async def goodbye(self, ctx: Context):
-        await ctx.send("No help information temporarily")
+        descwelcgood = """
+                Here is the list of commands related to server join and leave messages
+                ```welcome - Displays this message```
+                .
+                ```welcome channel [#channel mention] - Set welcome channel```
+                .
+                ```welcome clear - Remove the set welcome channel```
+                .
+                ```welcome text {Optionally enter text - otherwise the default will be set} - Set welcome text```
+                .
+                ```goodbye - Displays this message```
+                .
+                ```goodbye channel [#channel mention] - Set goodbye channel```
+                .
+                ```goodbye clear - Remove the set goodbye channel```
+                .
+                ```goodbye text {Optionally enter text - otherwise the default will be set} - Set goodbye text```
+
+                """
+        goodbyehelp = discord.Embed(
+            title=":wave: Welcome & Goodbye Messages",
+            description=f"{descwelcgood}",
+        ).set_author(name="Help System")
+        await ctx.send(embed=goodbyehelp)
 
     @goodbye.command()
     async def channel(self, ctx: Context, channel: discord.TextChannel = None):

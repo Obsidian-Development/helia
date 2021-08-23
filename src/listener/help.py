@@ -27,6 +27,10 @@ class Help(commands.Cog):
                     SelectOption(label="Utilities", value="Utilities"),
                     SelectOption(label="Music", value="Music"),
                     SelectOption(label="Preferences", value="Preferences"),
+                    SelectOption(
+                        label="Welcome & Goodbye Messages",
+                        value="Welcome & Goodbye Messages",
+                    ),
                     SelectOption(label="Other", value="Other"),
                     SelectOption(label="Close", value="Close"),
                 ],
@@ -110,6 +114,34 @@ class Help(commands.Cog):
                         description=f"Here is the list of bot configuration commands \n ```{formatlistprep}```",
                     ).set_author(name="Help System"),
                 )
+
+            if label == "Welcome & Goodbye Messages":
+                descwelcgood = """
+                Here is the list of commands related to server join and leave messages
+                ```welcome - Displays this message```
+                .
+                ```welcome channel [#channel mention] - Set welcome channel```
+                .
+                ```welcome clear - Remove the set welcome channel```
+                .
+                ```welcome text {Optionally enter text - otherwise the default will be set} - Set welcome text```
+                .
+                ```goodbye - Displays this message```
+                .
+                ```goodbye channel [#channel mention] - Set goodbye channel```
+                .
+                ```goodbye clear - Remove the set goodbye channel```
+                .
+                ```goodbye text {Optionally enter text - otherwise the default will be set} - Set goodbye text```
+
+                """
+                await interaction.respond(
+                    type=7,
+                    embed=discord.Embed(
+                        title=":wave: Welcome & Goodbye Messages",
+                        description=f"{descwelcgood}",
+                    ).set_author(name="Help System"),
+                )
             if label == "Other":
                 x = []
                 for y in self.bot.commands:
@@ -120,7 +152,7 @@ class Help(commands.Cog):
                     type=7,
                     embed=discord.Embed(
                         title=":hourglass: Other",
-                        description=f"Here is the list of miscellaneous commads \n ```{formatlistprep}```",
+                        description=f"Here is the list of miscellaneous commands \n ```{formatlistprep}```",
                     ).set_author(name="Help System"),
                 )
             if label == "Close":
