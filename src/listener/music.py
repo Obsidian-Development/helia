@@ -19,11 +19,11 @@ CONFIG = Config()
 URL_REGEX = r"(?i)\b((?:https?://|www\d{0,3}[.]|[a-z0-9.\-]+[.][a-z]{2,4}/)(?:[^\s()<>]+|\(([^\s()<>]+|(\([^\s()<>]+\)))*\))+(?:\(([^\s()<>]+|(\([^\s()<>]+\)))*\)|[^\s`!()\[\]{};:'\".,<>?«»“”‘’]))"
 
 OPTIONS = {
-    "1️⃣": 1,
-    "2️⃣": 2,
-    "3️⃣": 3,
-    "4️⃣": 4,
-    "5️⃣": 5,
+    "1️⃣": 0,
+    "2️⃣": 1,
+    "3️⃣": 2,
+    "4️⃣": 3,
+    "5️⃣": 4,
 }
 
 
@@ -274,7 +274,6 @@ class Player(wavelink.Player):
                                                   check=_check)
         except asyncio.TimeoutError:
             await msg.delete()
-            await ctx.message.delete()
         else:
             await msg.delete()
             return tracks[OPTIONS[reaction.emoji]]

@@ -7,6 +7,8 @@ import aiohttp
 import discord
 from discord.ext import commands, tasks
 
+from scripts import db  # UNCOMMENT FOR DB CONNECTION
+
 
 class NanoContext(commands.Context):
     @property
@@ -35,7 +37,7 @@ class CoreClient(commands.AutoShardedBot):
         # self.BASE_URL = "https://discordbots.org/api/bots/458298539517411328/stats"
         # self.headers = {"Authorization": self.dbl_token}
 
-    @tasks.loop(seconds=80)
+    @tasks.loop(seconds=110)
     async def changeStatus(self):
         statuses = [
             # discord.Activity(type=discord.ActivityType.watching, name=f"{len(self.bot.guilds)} servers | {len(self.bot.shards)} shards!"), # bugged status - uncomment after fix
@@ -81,7 +83,9 @@ class CoreClient(commands.AutoShardedBot):
         await super(CoreClient,
                     self).change_presence(status=discord.Status.online)
         # await self.update_status_on_dbl()
-        print("Logged in as {}".format(super(CoreClient, self).user))
+        print("[LAUNCH] Logged in as {}".format(super(CoreClient, self).user))
+        db.control()  # UNCOMMENT FOR DB CONNECTION
+        print("[DB] Database Present and ready")  # DATABASE CONNECT LOG
 
         # async def on_guild_join(self, guild):
         """Updates DBL when client joins a guild"""

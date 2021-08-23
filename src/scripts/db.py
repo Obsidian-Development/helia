@@ -22,6 +22,7 @@ def delete_table(table_name, name1, nm1):
 
 def control():
     base = sqlite3.connect(main)
+    print("[DB] Connected to sqlite")
     cursor = base.cursor()
     tables = ["welcome", "goodbye"]
     for table in tables:
