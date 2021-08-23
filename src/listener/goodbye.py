@@ -34,7 +34,7 @@ class goodbye(commands.Cog):
         desc = f", due to one reason or the other "
         gb = discord.Embed(title="User left the server", description="Details Below")
         gb.set_author(name="Goodbye System")
-        gb.add_field(name=f"Someone left", value=f" our {member.guild}", inline=True)
+        gb.add_field(name=f"Someone left", value=f" the server named {member.guild}", inline=True)
         gb.add_field(name="\u2800", value=f"{desc}", inline=True)
         channel = self.bot.get_channel(id=int(chan[0]))
         cursor.close()
