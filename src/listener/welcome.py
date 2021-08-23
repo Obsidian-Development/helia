@@ -17,22 +17,25 @@ class welcome(commands.Cog):
 
     @commands.Cog.listener()
     async def on_member_join(self, member):
-        
+
         connect = sqlite3.connect(db.main)
         cursor = connect.cursor()
         cursor.execute(
-        db.select_table("welcome", "channel_id", "guild_id",
-                        member.guild.id))
+            db.select_table("welcome", "channel_id", "guild_id",
+                            member.guild.id))
         chan = cursor.fetchone()
-        #print(f" Channel id fetch - {chan[0]}")
+        # print(f" Channel id fetch - {chan[0]}")
         if chan is None:
             return
-        cursor.execute(db.select_table("welcome", "text", "guild_id",member.guild.id))
+        cursor.execute(
+            db.select_table("welcome", "text", "guild_id", member.guild.id))
         desc = cursor.fetchone()
         if desc is None:
             desc = f" Hi there {MEMBER} and welcome to our humble community"
         else:
-            cursor.execute(db.select_table("welcome", "text", "guild_id",member.guild.id))
+            cursor.execute(
+                db.select_table("welcome", "text", "guild_id",
+                                member.guild.id))
             desc = cursor.fetchone()
             if desc is None:
                 desc = f" Hi there {member} and welcome to our humble community"
@@ -41,13 +44,13 @@ class welcome(commands.Cog):
                 description=(f"{desc[0]}"),
                 color=0x00FF00,
             )
-            hello.set_author(name=f"{member.guild}",icon_url=f"{member.guild.icon_url}")
+            hello.set_author(name=f"{member.guild}",
+                             icon_url=f"{member.guild.icon_url}")
             hello.set_thumbnail(url=f"{member.avatar_url}")
             channel = self.bot.get_channel(id=int(chan[0]))
             await channel.send(embed=hello)
         cursor.close()
         connect.close()
-        
 
     @commands.group(invoke_without_command=True)
     async def welcome(self, ctx: Context):
@@ -82,7 +85,8 @@ class welcome(commands.Cog):
                 cursor.close()
                 connect.close()
                 await ctx.send(
-                    f"Set the welcome channel in guild {ctx.message.guild} to {chan.mention} ,the id of it being {chan.id} and id of guild being {ctx.message.guild.id}")
+                    f"Set the welcome channel in guild {ctx.message.guild} to {chan.mention} ,the id of it being {chan.id} and id of guild being {ctx.message.guild.id}"
+                )
             else:
                 await ctx.send(
                     "You do not have enough permissions - :You require **Manage Channels**."
