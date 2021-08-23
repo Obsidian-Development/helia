@@ -36,18 +36,15 @@ class welcome(commands.Cog):
             descdef = f"Give him a warm welcome and say hello to him"
 
             hello = discord.Embed(title="User joined the server",
-                                  description="Details Below")
+                                  description=f"```Welcome {member} to {member.guild}```")
             hello.set_author(name="Welcome System")
-            hello.add_field(name=f"Welcome {member}",
-                            value=f" to {member.guild} ",
-                            inline=True)
             if desc == None:
                 hello.add_field(name="Server message",
-                                value=f"{descdef}",
+                                value=f"```{descdef}```",
                                 inline=True)
             else:
                 hello.add_field(name="Server message",
-                                value=desc[0],
+                                value=f"```{desc[0]}```",
                                 inline=True)
 
             channel = self.bot.get_channel(id=int(chan[0]))
