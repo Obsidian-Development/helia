@@ -69,7 +69,8 @@ class testingCOG(commands.Cog):
                     type=7,
                     embed=discord.Embed(
                         title=":beginner: General",
-                        description=f"Here is the list of general commands we have \n ```{formatlistprep}```",
+                        description=
+                        f"Here is the list of general commands we have \n ```{formatlistprep}```",
                     ).set_author(name="Help System"),
                 )
             if label == "Moderation":
@@ -83,7 +84,8 @@ class testingCOG(commands.Cog):
                     type=7,
                     embed=discord.Embed(
                         title=":hammer_pick: Moderation",
-                        description=f"Here is the list of moderation commands we have \n ```{formatlistprep}```",
+                        description=
+                        f"Here is the list of moderation commands we have \n ```{formatlistprep}```",
                     ).set_author(name="Help System"),
                 )
             if label == "Utilities":
@@ -96,7 +98,8 @@ class testingCOG(commands.Cog):
                     type=7,
                     embed=discord.Embed(
                         title=":wrench: Utilities",
-                        description=f"Here is the list of utilities commands we have \n ```{formatlistprep}```",
+                        description=
+                        f"Here is the list of utilities commands we have \n ```{formatlistprep}```",
                     ).set_author(name="Help System"),
                 )
             if label == "Music":
@@ -109,7 +112,8 @@ class testingCOG(commands.Cog):
                     type=7,
                     embed=discord.Embed(
                         title=":headphones: Music",
-                        description=f"Here is the list of music commands we have \n ```{formatlistprep}```",
+                        description=
+                        f"Here is the list of music commands we have \n ```{formatlistprep}```",
                     ).set_author(name="Help System"),
                 )
             if label == "Preferences":
@@ -122,7 +126,8 @@ class testingCOG(commands.Cog):
                     type=7,
                     embed=discord.Embed(
                         title=":tools: Preferences",
-                        description=f"Here is the list of bot configuration commands \n ```{formatlistprep}```",
+                        description=
+                        f"Here is the list of bot configuration commands \n ```{formatlistprep}```",
                     ).set_author(name="Help System"),
                 )
             if label == "Other":
@@ -135,7 +140,8 @@ class testingCOG(commands.Cog):
                     type=7,
                     embed=discord.Embed(
                         title=":hourglass: Other",
-                        description=f"Here is the list of miscellaneous commads \n ```{formatlistprep}```",
+                        description=
+                        f"Here is the list of miscellaneous commads \n ```{formatlistprep}```",
                     ).set_author(name="Help System"),
                 )
             if label == "Close":
