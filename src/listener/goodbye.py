@@ -29,7 +29,8 @@ class goodbye(commands.Cog):
         # print(f" Channel id fetch - {chan[0]}")
         if chan is None:
             return
-        cursor.execute(db.select_table("goodbye", "text", "guild_id",member.guild.id))
+        cursor.execute(
+            db.select_table("goodbye", "text", "guild_id", member.guild.id))
         desc = cursor.fetchone()
         if desc is None:
             desc = f"The one who left was {member}, who knows his/hers reasons for leaving but we will welcome him with open arms if he returns "
