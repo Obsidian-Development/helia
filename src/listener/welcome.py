@@ -34,7 +34,7 @@ class welcome(commands.Cog):
                                 member.guild.id))
             desc = cursor.fetchone()
             descdef = f"Give him a warm welcome and say hello to him"
-                
+
             hello = discord.Embed(title="User joined the server",
                                   description="Details Below")
             hello.set_author(name="Welcome System")
@@ -42,11 +42,13 @@ class welcome(commands.Cog):
                             value=f" to {member.guild} ",
                             inline=True)
             if desc == None:
-                hello.add_field(name="Server message", value=f"{descdef}", inline=True)
+                hello.add_field(name="Server message",
+                                value=f"{descdef}",
+                                inline=True)
             else:
-                hello.add_field(name="Server message", value=desc[0], inline=True)
-                
-            
+                hello.add_field(name="Server message",
+                                value=desc[0],
+                                inline=True)
 
             channel = self.bot.get_channel(id=int(chan[0]))
             await channel.send(embed=hello)
