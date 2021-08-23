@@ -19,7 +19,6 @@ CONFIG = Config()
 
 class Admin(commands.Cog, name="Admin"):
     """A module required to administer the bot. Only works for its owners."""
-
     def __init__(self, bot: Bot) -> None:
         self.bot = bot
         self.name = "Admin"
@@ -194,17 +193,20 @@ class Admin(commands.Cog, name="Admin"):
             Button(
                 style=ButtonStyle.URL,
                 label=STRINGS["general"]["botinvitetitle"],
-                url=f"https://discord.com/api/oauth2/authorize?client_id={self.bot.user.id}&permissions=204859462&scope=applications.commands%20bot",
+                url=
+                f"https://discord.com/api/oauth2/authorize?client_id={self.bot.user.id}&permissions=204859462&scope=applications.commands%20bot",
             ),
             Button(
                 style=ButtonStyle.URL,
                 label=STRINGS["general"]["botinvitedescd"],
-                url=f"https://discord.com/oauth2/authorize?client_id={self.bot.user.id}&scope=bot&permissions=204557314",
+                url=
+                f"https://discord.com/oauth2/authorize?client_id={self.bot.user.id}&scope=bot&permissions=204557314",
             ),
             Button(
                 style=ButtonStyle.URL,
                 label=STRINGS["general"]["canaryver"],
-                url="https://discord.com/oauth2/authorize?client_id=671612079106424862&scope=bot&permissions=204557314",
+                url=
+                "https://discord.com/oauth2/authorize?client_id=671612079106424862&scope=bot&permissions=204557314",
             ),
             Button(
                 style=ButtonStyle.URL,
