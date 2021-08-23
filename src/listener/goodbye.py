@@ -36,8 +36,8 @@ class goodbye(commands.Cog):
         gb = discord.Embed(title="User left the server",
                            description=f"```Someone left {member.guild}```")
         gb.set_author(name="Goodbye System")
-        
-        if desc == None:
+
+        if desc is None:
             gb.add_field(name="Server message",
                          value=f"{descdef}",
                          inline=True)
@@ -127,7 +127,8 @@ class goodbye(commands.Cog):
             if author.guild_permissions.manage_channels:
                 if content is None:
                     await ctx.send("Setting default message")
-                    content = f"A person left, who knows his/hers reasons for leaving but we will welcome them with open arms if they return "
+                    content = 'A person left, who knows his/hers reasons for leaving but we will welcome them with open arms if they return '
+
                 connect = sqlite3.connect(db.main)
                 cursor = connect.cursor()
                 cursor.execute(
