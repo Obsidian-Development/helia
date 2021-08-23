@@ -28,29 +28,27 @@ class welcome(commands.Cog):
         if chan is None:
             return
 
+        cursor.execute(
+            db.select_table("welcome", "text", "guild_id", member.guild.id))
+        desc = cursor.fetchone()
+        hello = discord.Embed(
+            title="User joined the server",
+            description=f"```Welcome {member} to {member.guild}```",
+        )
+        hello.set_author(name="Welcome System")
+        if desc is None:
+            descdef = "Give them a warm welcome and say hello to them"
+
+            hello.add_field(name="Server message",
+                            value=f"```{descdef}```",
+                            inline=True)
         else:
-            cursor.execute(
-                db.select_table("welcome", "text", "guild_id",
-                                member.guild.id))
-            desc = cursor.fetchone()
-            descdef = f"Give them a warm welcome and say hello to them"
+            hello.add_field(name="Server message",
+                            value=f"```{desc[0]}```",
+                            inline=True)
 
-            hello = discord.Embed(
-                title="User joined the server",
-                description=f"```Welcome {member} to {member.guild}```",
-            )
-            hello.set_author(name="Welcome System")
-            if desc == None:
-                hello.add_field(name="Server message",
-                                value=f"```{descdef}```",
-                                inline=True)
-            else:
-                hello.add_field(name="Server message",
-                                value=f"```{desc[0]}```",
-                                inline=True)
-
-            channel = self.bot.get_channel(id=int(chan[0]))
-            await channel.send(embed=hello)
+        channel = self.bot.get_channel(id=int(chan[0]))
+        await channel.send(embed=hello)
         cursor.close()
         connect.close()
 
