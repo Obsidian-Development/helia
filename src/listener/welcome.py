@@ -27,18 +27,14 @@ class welcome(commands.Cog):
         #print(f" Channel id fetch - {chan[0]}")
         if chan is None:
             return
-        cursor.execute(db.select_table("welcome", "text", "guild_id",member.guild.id))
-        desc = cursor.fetchone()
-        if desc is None:
-            desc = f" Hi there {MEMBER} and welcome to our humble community"
+        
         else:
-            cursor.execute(db.select_table("welcome", "text", "guild_id",member.guild.id))
-            desc = cursor.fetchone()
-            if desc is None:
-                desc = f" Hi there {member} and welcome to our humble community"
+            #cursor.execute(db.select_table("welcome", "text", "guild_id",member.guild.id))
+            #desc = cursor.fetchone()
+            desc = f" Hi there {member} and welcome to our humble community"
             hello = discord.Embed(
                 title="Hello there",
-                description=(f"{desc[0]}"),
+                description=(f"{desc}"),
                 color=0x00FF00,
             )
             hello.set_author(name=f"{member.guild}",icon_url=f"{member.guild.icon_url}")
