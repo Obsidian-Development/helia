@@ -108,13 +108,13 @@ class welcome(commands.Cog):
                 res = cursor.fetchone()
                 if res is None:
                     await ctx.send(
-                        "bot: Do not have a table for the welcome channel - Check Database."
+                        " Do not have a table for the welcome channel - Check Database."
                     )
                 else:
                     cursor.execute(
                         db.delete_table("welcome", "guild_id",
                                         ctx.message.guild.id))
-                    await ctx.send("bot: Cleared the table")
+                    await ctx.send(" Cleared the table")
                 connect.commit()
                 cursor.close()
                 connect.close()
@@ -123,7 +123,7 @@ class welcome(commands.Cog):
                     "You do not have enough permissions - :You require **Manage Channels**."
                 )
         except:
-            await ctx.send("bot: Error")
+            await ctx.send("Failed to remove welcome channel setting")
 
     @welcome.command(pass_context=True)
     async def text(self, ctx: Context, *, content=None):
@@ -152,13 +152,13 @@ class welcome(commands.Cog):
                 connect.commit()
                 cursor.close()
                 connect.close()
-                await ctx.send("bot: Set the welcome message text")
+                await ctx.send("Set the welcome message text")
             else:
                 await ctx.send(
-                    "bot: You do not have enough permissions - :You require **Manage Channels**."
+                    "You do not have enough permissions - :You require **Manage Channels**."
                 )
         except:
-            await ctx.send("bot: Error , argument may be invalid")
+            await ctx.send("Error , argument may be invalid")
 
 
 def setup(bot):
