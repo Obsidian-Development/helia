@@ -79,8 +79,7 @@ class Calculator(commands.Cog, name="Calculator"):
                         "x²",
                         "x³",
                     ]
-                    await m.edit(
-                        content="Preparing to tear down the buttons")
+                    await m.edit(content="Preparing to tear down the buttons")
 
                     await res.respond(
                         type=7,
