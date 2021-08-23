@@ -90,13 +90,13 @@ class welcome(commands.Cog):
                 cursor.close()
                 connect.close()
                 await ctx.send(
-                    f"bot: Set the welcome channel in guild {ctx.message.guild} to {chan.mention} ,the id of it being {chan.id} and id of guild being {ctx.message.guild.id}")
+                    f"Set the welcome channel in guild {ctx.message.guild} to {chan.mention} ,the id of it being {chan.id} and id of guild being {ctx.message.guild.id}")
             else:
                 await ctx.send(
                     "You do not have enough permissions - :You require **Manage Channels**."
                 )
         except:
-            await ctx.send("bot: Error")
+            await ctx.send("Failed to set channel")
 
     @welcome.command(pass_context=True)
     async def clear(self, ctx: Context):

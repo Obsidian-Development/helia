@@ -86,13 +86,13 @@ class goodbye(commands.Cog):
                 cursor.close()
                 connect.close()
                 await ctx.send(
-                    f"bot: Set the goodbye in guild {ctx.message.guild} to {channel.mention} ,the id of it being {channel.id} and id of guild being {ctx.message.guild.id}")
+                    f"Set the goodbye in guild {ctx.message.guild} to {channel.mention} ,the id of it being {channel.id} and id of guild being {ctx.message.guild.id}")
             else:
                 await ctx.send(
-                    "bot: You do not have enough permissions - :You require **Administrator**"
+                    "You do not have enough permissions - :You require **Administrator**"
                 )
         except:
-            await ctx.send("bot: Error")
+            await ctx.send("Failed to set channel")
 
     @goodbye.command()
     async def clear(self, ctx: Context):
