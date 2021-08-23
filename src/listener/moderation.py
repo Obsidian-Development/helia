@@ -73,7 +73,8 @@ class Moderation(commands.Cog, name="Moderation"):
                     type=7,
                     embed=discord.Embed(
                         title="Action Aborted",
-                        description="The action was aborted by clicking the no button",
+                        description=
+                        "The action was aborted by clicking the no button",
                         color=0xDD2E44,
                     ),
                     components=done_components,
@@ -168,7 +169,8 @@ class Moderation(commands.Cog, name="Moderation"):
                 type=7,
                 embed=discord.Embed(
                     title="Action Aborted",
-                    description="The action was aborted by clicking the no button",
+                    description=
+                    "The action was aborted by clicking the no button",
                     color=0xDD2E44,
                 ),
                 components=done_components,
@@ -284,7 +286,8 @@ class Moderation(commands.Cog, name="Moderation"):
                 type=7,
                 embed=discord.Embed(
                     title="Action Aborted",
-                    description="The action was aborted by clicking the no button",
+                    description=
+                    "The action was aborted by clicking the no button",
                     color=0xDD2E44,
                 ),
                 components=done_components,
@@ -342,7 +345,8 @@ class Moderation(commands.Cog, name="Moderation"):
                 type=7,
                 embed=discord.Embed(
                     title="Action Aborted",
-                    description="The action was aborted by clicking the no button",
+                    description=
+                    "The action was aborted by clicking the no button",
                     color=0xDD2E44,
                 ),
                 components=done_components,
