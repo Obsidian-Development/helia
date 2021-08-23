@@ -1,5 +1,9 @@
 # -*- coding: utf-8 -*-
+import asyncio
+import functools
+import os
 import random
+import sqlite3
 from typing import NoReturn
 
 import discord
@@ -7,13 +11,7 @@ from discord.ext import commands
 from discord.ext.commands import Bot, Context
 
 from listener.utils import Config, Logger, Settings, Strings, Utils
-from scripts import desAnime, desNature, desStarwars
-import asyncio
-import functools
-import os
-import sqlite3
-
-from scripts import db
+from scripts import db, desAnime, desNature, desStarwars
 
 CONFIG = Config()
 
@@ -102,7 +100,7 @@ class Other(commands.Cog, name="Other"):
         )
         embedstarwars.set_image(url=imgstarwars)
         await ctx.send(embed=embedstarwars)
-    
+
     @commands.Cog.listener()
     async def on_member_join(self, member):
 
@@ -244,7 +242,7 @@ class Other(commands.Cog, name="Other"):
                 )
         except:
             await ctx.send("Error , argument may be invalid")
-    
+
     @commands.Cog.listener()
     async def on_member_remove(self, member):
 
@@ -268,7 +266,6 @@ class Other(commands.Cog, name="Other"):
             description=f"```Someone left {member.guild}```",
         )
         gb.set_author(name="Goodbye System")
-
 
         if desc is None:
             gb.add_field(name="Server message",
