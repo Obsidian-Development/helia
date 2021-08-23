@@ -38,7 +38,7 @@ class welcome(commands.Cog):
                 desc = f" Hi there {member} and welcome to our humble community"
             hello = discord.Embed(
                 title="Hello there",
-                description=(desc[0]),
+                description=(f"{desc[0]}"),
                 color=0x00FF00,
             )
             hello.set_author(name=f"{member.guild}",icon_url=f"{member.guild.icon_url}")

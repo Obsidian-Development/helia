@@ -33,7 +33,7 @@ class goodbye(commands.Cog):
             desc = f"It seems {member} decided to leave , oh well "
         gb = discord.Embed(
             title="User Left The Channel",
-            description=(desc[0]),
+            description=(f"{desc[0]}"),
             color=0xF4211A,
         )
             # gb.add_field(name="Время", value=time, inline=False)
