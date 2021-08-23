@@ -6,7 +6,8 @@ import random
 import aiohttp
 import discord
 from discord.ext import commands, tasks
-from scripts import db # UNCOMMENT FOR DB CONNECTION
+
+from scripts import db  # UNCOMMENT FOR DB CONNECTION
 
 
 class NanoContext(commands.Context):
@@ -83,8 +84,8 @@ class CoreClient(commands.AutoShardedBot):
                     self).change_presence(status=discord.Status.online)
         # await self.update_status_on_dbl()
         print("[LAUNCH] Logged in as {}".format(super(CoreClient, self).user))
-        db.control() # UNCOMMENT FOR DB CONNECTION
-        print("[DB] Database Present and ready") # DATABASE CONNECT LOG
+        db.control()  # UNCOMMENT FOR DB CONNECTION
+        print("[DB] Database Present and ready")  # DATABASE CONNECT LOG
 
         # async def on_guild_join(self, guild):
         """Updates DBL when client joins a guild"""
