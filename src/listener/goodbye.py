@@ -32,8 +32,7 @@ class goodbye(commands.Cog):
         cursor.execute(
             db.select_table("goodbye", "text", "guild_id", member.guild.id))
         desc = cursor.fetchone()
-        if desc is None:
-            desc = f"The one who left was {member}, who knows his/hers reasons for leaving but we will welcome him with open arms if he returns "
+        descdef = f"The one who left was {member}, who knows his/hers reasons for leaving but we will welcome him with open arms if he returns "
         gb = discord.Embed(title="User left the server",
                            description="Details Below")
         gb.set_author(name="Goodbye System")
@@ -43,7 +42,7 @@ class goodbye(commands.Cog):
         if desc is not None:
             gb.add_field(name="Server message", value=desc[0], inline=True)
         else:
-            gb.add_field(name="Server message", value=f"{desc}", inline=True)
+            gb.add_field(name="Server message", value=f"{descdef}", inline=True)
         channel = self.bot.get_channel(id=int(chan[0]))
         cursor.close()
         connect.close()

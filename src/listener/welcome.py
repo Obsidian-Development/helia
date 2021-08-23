@@ -33,8 +33,8 @@ class welcome(commands.Cog):
                 db.select_table("welcome", "text", "guild_id",
                                 member.guild.id))
             desc = cursor.fetchone()
-            if desc is None:
-                desc = f"Give him a warm welcome and say hello to him"
+            descdef = f"Give him a warm welcome and say hello to him"
+                
             hello = discord.Embed(title="User joined the server",
                                   description="Details Below")
             hello.set_author(name="Welcome System")
@@ -44,7 +44,7 @@ class welcome(commands.Cog):
             if desc is not None:
                 hello.add_field(name="Server message", value=desc[0], inline=True)
             else:
-                hello.add_field(name="Server message", value=f"{desc}", inline=True)
+                hello.add_field(name="Server message", value=f"{descdef}", inline=True)
             
 
             channel = self.bot.get_channel(id=int(chan[0]))
