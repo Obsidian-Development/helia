@@ -39,6 +39,7 @@ class goodbye(commands.Cog):
         )
         gb.set_author(name="Goodbye System")
 
+
         if desc is None:
             gb.add_field(name="Server message",
                          value=f"{descdef}",
