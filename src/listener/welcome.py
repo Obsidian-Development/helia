@@ -35,8 +35,10 @@ class welcome(commands.Cog):
             desc = cursor.fetchone()
             descdef = f"Give him a warm welcome and say hello to him"
 
-            hello = discord.Embed(title="User joined the server",
-                                  description=f"```Welcome {member} to {member.guild}```")
+            hello = discord.Embed(
+                title="User joined the server",
+                description=f"```Welcome {member} to {member.guild}```",
+            )
             hello.set_author(name="Welcome System")
             if desc == None:
                 hello.add_field(name="Server message",
