@@ -24,6 +24,7 @@ class welcome(commands.Cog):
                 db.select_table("welcome", "channel_id", "guild_id",
                                 member.guild.id))
             chan = cursor.fetchone()
+            print(f" Channel id fetch - {chan[0]}")
             if chan is None:
                 return
             cursor.execute(
