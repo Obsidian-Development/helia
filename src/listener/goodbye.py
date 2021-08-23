@@ -31,7 +31,7 @@ class goodbye(commands.Cog):
         #desc = cursor.fetchone()
         desc = f"It seems {member} decided to leave , oh well "
         gb = discord.Embed(
-            title="User Left The Channel",
+            title="User left the server",
             description=(f"{desc}"),
             color=0xF4211A,
         )

@@ -33,7 +33,7 @@ class welcome(commands.Cog):
             #desc = cursor.fetchone()
             desc = f" Hi there {member} and welcome to our humble community"
             hello = discord.Embed(
-                title="Hello there",
+                title="User joined the server",
                 description=(f"{desc}"),
                 color=0x00FF00,
             )
