@@ -30,10 +30,10 @@ class goodbye(commands.Cog):
         cursor.execute(db.select_table("goodbye", "text", "guild_id",member.guild.id))
         desc = cursor.fetchone()
         if desc is None:
-            desc = f"{MEMBER} goodbye "
+            desc = f"It seems {MEMBER} decided to leave , oh well "
         gb = discord.Embed(
             title="User Left The Channel",
-            description=(desc[0]).format(MEMBER=member,MENTION=member.mention),
+            description=(desc[0]).format(MEMBER=member),
             color=0xF4211A,
         )
             # gb.add_field(name="Время", value=time, inline=False)

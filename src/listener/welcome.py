@@ -35,10 +35,10 @@ class welcome(commands.Cog):
             cursor.execute(db.select_table("welcome", "text", "guild_id",member.guild.id))
             desc = cursor.fetchone()
             if desc is None:
-                esc = f" Hi there {MEMBER} and welcome to our humble community"
+                desc = f" Hi there {MEMBER} and welcome to our humble community"
             hello = discord.Embed(
                 title="Hello there",
-                description=(desc[0]).format(MEMBER=member,MENTION=member.mention),
+                description=(desc[0]).format(MEMBER=member),
                 color=0x00FF00,
             )
             hello.set_author(name=f"{member.guild}",icon_url=f"{member.guild.icon_url}")
