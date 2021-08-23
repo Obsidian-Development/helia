@@ -23,8 +23,8 @@ from listener.prefs import Prefs
 # from ytpy import YoutubeClient
 # import asyncpraw
 
-prefixes = ["n>"]
-default_prefix = "n>"
+prefixes = ["//"]
+default_prefix = "//"
 server_prefixes = {}
 loaded = False
 flwebhost.keep_alive()
