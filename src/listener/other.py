@@ -27,9 +27,9 @@ class Other(commands.Cog, name="Other"):
         latency = "%.0fms" % (self.client.latency * 100)
         embed = discord.Embed(
             title="{} Latency'".format(self.client.name),
-            type='rich',
+            type="rich",
             description=":hourglass_flowing_sand:" + latency,
-            colour=discord.Colour(value=11735575).orange()
+            colour=discord.Colour(value=11735575).orange(),
         )
         await ctx.send(embed=embed)
 
