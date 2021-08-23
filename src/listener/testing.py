@@ -17,17 +17,17 @@ class testingCOG(commands.Cog):
             "Button callbacks!",
             components=[
                 self.bot.components_manager.add_callback(
-                    Button(style=ButtonStyle.blue, label="Click this"),
-                    callback),
+                    Button(style=ButtonStyle.blue, label="Click this"), callback
+                ),
             ],
         )
 
     @commands.guild_only()
     @commands.command(description="SELECT TEST")
     async def select(self, ctx):
-        embed = discord.Embed(title="SELECTION TEST",
-                              description="Testing our embeds",
-                              color=0xFF8000)
+        embed = discord.Embed(
+            title="SELECTION TEST", description="Testing our embeds", color=0xFF8000
+        )
         embede = discord.Embed(
             title=":books: Help System",
             description=f"Welcome To {self.bot.user.name} Help System",
@@ -47,9 +47,11 @@ class testingCOG(commands.Cog):
                 ],
             )
         ]
-        done_components = [[
-            Button(style=ButtonStyle.grey, label="·", disabled=True),
-        ]]
+        done_components = [
+            [
+                Button(style=ButtonStyle.grey, label="·", disabled=True),
+            ]
+        ]
 
         async def callback(interaction):
             await interaction.send(embed=embed)
@@ -139,9 +141,9 @@ class testingCOG(commands.Cog):
                     ).set_author(name="Help System"),
                 )
             if label == "Close":
-                await interaction.respond(type=7,
-                                          embed=embede,
-                                          components=done_components)
+                await interaction.respond(
+                    type=7, embed=embede, components=done_components
+                )
 
 
 def setup(bot):

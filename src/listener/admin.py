@@ -106,9 +106,7 @@ class Admin(commands.Cog, name="Admin"):
             Button(style=ButtonStyle.green, label="✓"),
             Button(style=ButtonStyle.red, label="X"),
         ]
-        done_components = [
-            Button(style=ButtonStyle.grey, label="·", disabled=True)
-        ]
+        done_components = [Button(style=ButtonStyle.grey, label="·", disabled=True)]
 
         embedconfirm = discord.Embed(
             title=STRINGS["moderation"]["shutdownembedtitle"],
@@ -116,7 +114,8 @@ class Admin(commands.Cog, name="Admin"):
         )
         await ctx.send(embed=embedconfirm, components=select_components)
         response = await self.bot.wait_for(
-            "button_click", check=lambda message: message.author == ctx.author)
+            "button_click", check=lambda message: message.author == ctx.author
+        )
         if str(author.id) in valid_users and response.component.label == "✓":
             await response.respond(
                 type=7,
@@ -128,8 +127,9 @@ class Admin(commands.Cog, name="Admin"):
                 components=done_components,
             )
 
-            await ctx.bot.change_presence(activity=discord.Game(
-                name="Shutting down for either reboot or update "))
+            await ctx.bot.change_presence(
+                activity=discord.Game(name="Shutting down for either reboot or update ")
+            )
             await asyncio.sleep(5)
             print("---------------------------")
             print("[SHUTDOWN] Shutdown requested by bot owner")
@@ -162,8 +162,7 @@ class Admin(commands.Cog, name="Admin"):
             "497406228364787717",
         ]
         if str(author.id) in valid_users:
-            await self.bot.change_presence(
-                activity=discord.Game(" ".join(args)))
+            await self.bot.change_presence(activity=discord.Game(" ".join(args)))
             embed = discord.Embed(
                 title=STRINGS["moderation"]["setstatustext"],
                 description=STRINGS["moderation"]["setstatusdesc"],
@@ -174,8 +173,7 @@ class Admin(commands.Cog, name="Admin"):
                 value=STRINGS["moderation"]["setstatusfielddesc"],
                 inline=True,
             )
-            embed.set_footer(text=self.bot.user.name,
-                             icon_url=self.bot.user.avatar_url)
+            embed.set_footer(text=self.bot.user.name, icon_url=self.bot.user.avatar_url)
         else:
             embed = discord.Embed(
                 title="You failed",
@@ -270,11 +268,9 @@ class Admin(commands.Cog, name="Admin"):
         # value=f"https://discordbotslist.co/bot/{self.bot.user.id}",
         # inline=True,
         # )
-        embed.set_footer(text=self.bot.user.name,
-                         icon_url=self.bot.user.avatar_url)
+        embed.set_footer(text=self.bot.user.name, icon_url=self.bot.user.avatar_url)
 
-        embedcont = discord.Embed(title="-----",
-                                  colour=discord.Colour(0xFF6900))
+        embedcont = discord.Embed(title="-----", colour=discord.Colour(0xFF6900))
         await ctx.send(embed=embed, components=menu_components)
         await ctx.send("`----`", components=menuer_components)
 
@@ -287,12 +283,8 @@ class Admin(commands.Cog, name="Admin"):
         embed = discord.Embed(title="Bot uptime")
         embed.add_field(name="Days", value=f"```{days}d```", inline=True)
         embed.add_field(name="Hours", value=f"```{hours}h```", inline=True)
-        embed.add_field(name="Minutes",
-                        value=f"```{minutes}m```",
-                        inline=False)
-        embed.add_field(name="Seconds",
-                        value=f"```{seconds}s```",
-                        inline=False)
+        embed.add_field(name="Minutes", value=f"```{minutes}m```", inline=False)
+        embed.add_field(name="Seconds", value=f"```{seconds}s```", inline=False)
         await ctx.send(embed=embed)
 
     # @commands.command()
