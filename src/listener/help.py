@@ -27,7 +27,10 @@ class Help(commands.Cog):
                     SelectOption(label="Utilities", value="Utilities"),
                     SelectOption(label="Music", value="Music"),
                     SelectOption(label="Preferences", value="Preferences"),
-                    SelectOption(label="Welcome & Goodbye Messages", value="Welcome & Goodbye Messages"),
+                    SelectOption(
+                        label="Welcome & Goodbye Messages",
+                        value="Welcome & Goodbye Messages",
+                    ),
                     SelectOption(label="Other", value="Other"),
                     SelectOption(label="Close", value="Close"),
                 ],
