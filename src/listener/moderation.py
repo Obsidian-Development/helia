@@ -282,6 +282,10 @@ class Moderation(commands.Cog, name="Moderation"):
                 ),
                 components=done_components,
             )
+            if not member.bot:
+             embed = Utils.error_embed(STRINGS["moderation"]["dm_kick"].format(
+                ctx.guild, reason))
+             await member.send(embed=embed)
             await asyncio.sleep(5)
             await member.kick()
             await ctx.message.add_reaction(CONFIG["yes_emoji"])
