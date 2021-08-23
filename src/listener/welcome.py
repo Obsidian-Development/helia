@@ -29,8 +29,7 @@ class welcome(commands.Cog):
             return
 
         cursor.execute(
-            db.select_table("welcome", "text", "guild_id",
-                            member.guild.id))
+            db.select_table("welcome", "text", "guild_id", member.guild.id))
         desc = cursor.fetchone()
         hello = discord.Embed(
             title="User joined the server",
@@ -38,7 +37,7 @@ class welcome(commands.Cog):
         )
         hello.set_author(name="Welcome System")
         if desc is None:
-            descdef = 'Give them a warm welcome and say hello to them'
+            descdef = "Give them a warm welcome and say hello to them"
 
             hello.add_field(name="Server message",
                             value=f"```{descdef}```",
