@@ -115,37 +115,21 @@ class Help(commands.Cog):
             if label == "Welcome & Goodbye Messages":
                 descwelcgood = """
                 Here is the list of commands related to server join and leave messages
-                ```
-                welcome - Displays this message
-                ```
+                ```welcome - Displays this message```
                 .
-                ```
-                welcome channel [#channel mention] - Set welcome channel
-                ```
+                ```welcome channel [#channel mention] - Set welcome channel```
                 .
-                ```
-                welcome clear - Remove the set welcome channel
-                ```
+                ```welcome clear - Remove the set welcome channel```
                 .
-                ```
-                welcome text {Optionally enter text - otherwise the default will be set} - Set welcome text
-                ```
+                ```welcome text {Optionally enter text - otherwise the default will be set} - Set welcome text```
                 .
-                ```
-                goodbye - Displays this message
-                ```
+                ```goodbye - Displays this message```
                 .
-                ```
-                goodbye channel [#channel mention] - Set goodbye channel
-                ```
+                ```goodbye channel [#channel mention] - Set goodbye channel```
                 .
-                ```
-                goodbye clear - Remove the set goodbye channel
-                ```
+                ```goodbye clear - Remove the set goodbye channel```
                 .
-                ```
-                goodbye text {Optionally enter text - otherwise the default will be set} - Set goodbye text
-                ```
+                ```goodbye text {Optionally enter text - otherwise the default will be set} - Set goodbye text```
 
                 """
                 await interaction.respond(
