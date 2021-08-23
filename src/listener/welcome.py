@@ -17,46 +17,37 @@ class welcome(commands.Cog):
 
     @commands.Cog.listener()
     async def on_member_join(self, member):
-        try:
-            connect = sqlite3.connect(db.main)
-            cursor = connect.cursor()
-            cursor.execute(
-                db.select_table("welcome", "channel_id", "guild_id",
-                                member.guild.id))
-            chan = cursor.fetchone()
-            print(f" Channel id fetch - {chan[0]}")
-            if chan is None:
-                return
-            cursor.execute(
-                db.select_table("welcome", "text", "guild_id",
-                                member.guild.id))
+        
+        connect = sqlite3.connect(db.main)
+        cursor = connect.cursor()
+        cursor.execute(
+        db.select_table("welcome", "channel_id", "guild_id",
+                        member.guild.id))
+        chan = cursor.fetchone()
+        print(f" Channel id fetch - {chan[0]}")
+        if chan is None:
+            return
+        cursor.execute(db.select_table("welcome", "text", "guild_id",member.guild.id))
+        desc = cursor.fetchone()
+        if desc is None:
+            desc = f" Hi there {MEMBER} and welcome to our humble community"
+        else:
+            cursor.execute(db.select_table("welcome", "text", "guild_id",member.guild.id))
             desc = cursor.fetchone()
             if desc is None:
-                desc = f" Hi there {MEMBER} and welcome to our humble community"
-            else:
-                cursor.execute(
-                    db.select_table("welcome", "text", "guild_id",
-                                    member.guild.id))
-                desc = cursor.fetchone()
-                if desc is None:
-                    desc = f" Hi there {MEMBER} and welcome to our humble community"
-                hello = discord.Embed(
-                    title="Hello there",
-                    description=(desc[0]).format(MEMBER=member,
-                                                 MENTION=member.mention),
-                    color=0x00FF00,
-                )
-                hello.set_author(name=f"{member.guild}",
-                                 icon_url=f"{member.guild.icon_url}")
-                hello.set_thumbnail(url=f"{member.avatar_url}")
-                channel = self.bot.get_channel(id=int(chan[0]))
-                await channel.send(embed=hello)
-            cursor.close()
-            connect.close()
-        except:
-            print(
-                f"The server  {member.guild.id} encountered an unknown error. Perhaps the welcome channel was removed."
+                esc = f" Hi there {MEMBER} and welcome to our humble community"
+            hello = discord.Embed(
+                title="Hello there",
+                description=(desc[0]).format(MEMBER=member,MENTION=member.mention),
+                color=0x00FF00,
             )
+            hello.set_author(name=f"{member.guild}",icon_url=f"{member.guild.icon_url}")
+            hello.set_thumbnail(url=f"{member.avatar_url}")
+            channel = self.bot.get_channel(id=int(chan[0]))
+            await channel.send(embed=hello)
+        cursor.close()
+        connect.close()
+        
 
     @commands.group(invoke_without_command=True)
     async def welcome(self, ctx: Context):
