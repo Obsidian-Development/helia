@@ -24,16 +24,16 @@ class goodbye(commands.Cog):
         cursor = connect.cursor()
         cursor.execute(db.select_table("goodbye", "channel_id", "guild_id", member.guild.id))
         chan = cursor.fetchone()
-        print(f" Channel id fetch - {chan[0]}")
+        #print(f" Channel id fetch - {chan[0]}")
         if chan is None:
             return
         cursor.execute(db.select_table("goodbye", "text", "guild_id",member.guild.id))
         desc = cursor.fetchone()
         if desc is None:
-            desc = f"It seems {MEMBER} decided to leave , oh well "
+            desc = f"It seems {member} decided to leave , oh well "
         gb = discord.Embed(
             title="User Left The Channel",
-            description=(desc[0]).format(MEMBER=member),
+            description=(desc[0]),
             color=0xF4211A,
         )
             # gb.add_field(name="Время", value=time, inline=False)
