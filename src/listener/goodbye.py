@@ -111,7 +111,8 @@ class goodbye(commands.Cog):
                     )
                 else:
                     cursor.execute(
-                        db.delete_table("goodbye", "guild_id", ctx.message.guild.id))
+                        db.delete_table("goodbye", "guild_id",
+                                        ctx.message.guild.id))
                     await ctx.send("bot: Cleared the table")
                 connect.commit()
                 cursor.close()
