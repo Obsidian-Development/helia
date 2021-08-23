@@ -66,10 +66,10 @@ class goodbye(commands.Cog):
                 cursor = connect.cursor()
                 cursor.execute(
                     db.select_table("goodbye", "channel_id", "guild_id",
-                                    ctx.guild.id))
+                                    ctx.message.guild.id))
                 result = cursor.fetchone()
                 if result is None:
-                    val = (ctx.guild.id, channel.id)
+                    val = (ctx.message.guild.id, channel.id)
                     cursor.execute(
                         db.insert_table("goodbye", "guild_id", "channel_id"),
                         val)
@@ -80,7 +80,7 @@ class goodbye(commands.Cog):
                             "channel_id",
                             channel.id,
                             "guild_id",
-                            ctx.guild.id,
+                            ctx.message.guild.id,
                         ))
                 connect.commit()
                 cursor.close()
@@ -103,7 +103,7 @@ class goodbye(commands.Cog):
                 cursor = connect.cursor()
                 cursor.execute(
                     db.select_table("goodbye", "channel_id", "guild_id",
-                                    ctx.guild.id))
+                                    ctx.message.guild.id))
                 result = cursor.fetchone()
                 if result is None:
                     await ctx.send(
@@ -111,7 +111,7 @@ class goodbye(commands.Cog):
                     )
                 else:
                     cursor.execute(
-                        db.delete_table("goodbye", "guild_id", ctx.guild.id))
+                        db.delete_table("goodbye", "guild_id", ctx.message.guild.id))
                     await ctx.send("bot: Cleared the table")
                 connect.commit()
                 cursor.close()
@@ -136,14 +136,14 @@ class goodbye(commands.Cog):
                 cursor = connect.cursor()
                 cursor.execute(
                     db.select_table("goodbye", "text", "guild_id",
-                                    ctx.guild.id))
+                                    ctx.message.guild.id))
                 res = cursor.fetchone()
                 if res is None:
-                    val = (ctx.guild.id, content)
+                    val = (ctx.message.guild.id, content)
                     cursor.execute(
                         db.insert_table("goodbye", "guild_id", "text"), val)
                 else:
-                    val = (content, ctx.guild.id)
+                    val = (content, ctx.message.guild.id)
                     cursor.execute(
                         "UPDATE goodbye SET text = ? WHERE guild_id = ?", val)
                 connect.commit()
