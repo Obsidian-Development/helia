@@ -41,10 +41,11 @@ class welcome(commands.Cog):
             hello.add_field(name=f"Welcome {member}",
                             value=f" to {member.guild} ",
                             inline=True)
-            if desc is not None:
-                hello.add_field(name="Server message", value=desc[0], inline=True)
-            else:
+            if desc is None:
                 hello.add_field(name="Server message", value=f"{descdef}", inline=True)
+            else:
+                hello.add_field(name="Server message", value=desc[0], inline=True)
+                
             
 
             channel = self.bot.get_channel(id=int(chan[0]))
