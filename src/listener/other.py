@@ -24,9 +24,12 @@ class Other(commands.Cog, name="Other"):
         s = await Settings(ctx.guild.id)
         lang = await s.get_field("locale", CONFIG["default_locale"])
         STRINGS = Strings(lang)
-        latency = int(round(self.bot.latency * 100, 1))
-
-        embed = Utils.done_embed(STRINGS["other"]["pong"].format(str(latency)))
+        latency = "%.0fms" % (self.bot.latency * 100)
+        embed = discord.Embed(
+            title="{} Latency".format(self.bot.name),
+            description=f":hourglass_flowing_sand: {latency} ",
+            color=0xFF8000,
+        )
         await ctx.send(embed=embed)
 
     @commands.group(invoke_without_command=True)
