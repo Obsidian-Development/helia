@@ -58,7 +58,7 @@ class goodbye(commands.Cog):
     async def channel(self, ctx: Context, channel: discord.TextChannel = None):
         try:
             author = ctx.message.author
-            if author.guild_permissions.administrator:
+            if author.guild_permissions.manage_channels:
                 connect = sqlite3.connect(db.main)
                 cursor = connect.cursor()
                 cursor.execute(
@@ -87,7 +87,7 @@ class goodbye(commands.Cog):
                 )
             else:
                 await ctx.send(
-                    "You do not have enough permissions - :You require **Administrator**"
+                    "You do not have enough permissions - :You require **Manage Channels**"
                 )
         except:
             await ctx.send("Failed to set channel")
@@ -96,7 +96,7 @@ class goodbye(commands.Cog):
     async def clear(self, ctx: Context):
         try:
             author = ctx.message.author
-            if author.guild_permissions.administrator:
+            if author.guild_permissions.manage_channels:
                 connect = sqlite3.connect(db.main)
                 cursor = connect.cursor()
                 cursor.execute(
@@ -117,7 +117,7 @@ class goodbye(commands.Cog):
                 connect.close()
             else:
                 await ctx.send(
-                    "You do not have enough permissions - :You require **Administrator**."
+                    "You do not have enough permissions - :You require **Manage Channels**."
                 )
         except:
             await ctx.send("Failed to remove goodbye channel setting")
@@ -126,7 +126,7 @@ class goodbye(commands.Cog):
     async def text(self, ctx: Context, *, content=None):
         try:
             author = ctx.message.author
-            if author.guild_permissions.administrator:
+            if author.guild_permissions.manage_channels:
                 if content is None:
                     await ctx.send("Setting default message")
                     content = f"A person left, who knows his/hers reasons for leaving but we will welcome them with open arms if they return "
@@ -150,7 +150,7 @@ class goodbye(commands.Cog):
                 await ctx.send(" Set the goodbye message text")
             else:
                 await ctx.send(
-                    " You do not have enough permissions - :You require **Administrator**."
+                    "You do not have enough permissions - :You require **Manage Channels**."
                 )
         except:
             await ctx.send(" Error , argument may be invalid")
