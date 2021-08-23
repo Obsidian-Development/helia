@@ -32,7 +32,7 @@ class goodbye(commands.Cog):
         cursor.execute(
             db.select_table("goodbye", "text", "guild_id", member.guild.id))
         desc = cursor.fetchone()
-        descdef = f"The one who left was {member}, who knows his/hers reasons for leaving but we will welcome him with open arms if he returns "
+        descdef = f"The one who left was {member}, who knows his/hers reasons for leaving but we will welcome them with open arms if they return "
         gb = discord.Embed(title="User left the server",
                            description="Details Below")
         gb.set_author(name="Goodbye System")
@@ -126,9 +126,10 @@ class goodbye(commands.Cog):
             author = ctx.message.author
             if author.guild_permissions.administrator:
                 if content is None:
-                    return await ctx.send(
-                        "bot: Please type the text you wish for the goodbye message"
+                    await ctx.send(
+                        "Setting default message"
                     )
+                    content = f"A person left, who knows his/hers reasons for leaving but we will welcome them with open arms if they return "
                 connect = sqlite3.connect(db.main)
                 cursor = connect.cursor()
                 cursor.execute(

@@ -131,9 +131,10 @@ class welcome(commands.Cog):
             author = ctx.message.author
             if author.guild_permissions.manage_channels:
                 if content is None:
-                    return await ctx.send(
-                        "bot: Please type the text you wish for the welcome message"
+                    await ctx.send(
+                        "Setting default message"
                     )
+                    content = "Give him a warm welcome and say hello to him"
                 connect = sqlite3.connect(db.main)
                 cursor = connect.cursor()
                 cursor.execute(
