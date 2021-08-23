@@ -17,17 +17,17 @@ class welcome(commands.Cog):
 
     @commands.Cog.listener()
     async def on_member_join(self, member):
-        
+
         connect = sqlite3.connect(db.main)
         cursor = connect.cursor()
         cursor.execute(
-        db.select_table("welcome", "channel_id", "guild_id",
-                        member.guild.id))
+            db.select_table("welcome", "channel_id", "guild_id",
+                            member.guild.id))
         chan = cursor.fetchone()
-        #print(f" Channel id fetch - {chan[0]}")
+        # print(f" Channel id fetch - {chan[0]}")
         if chan is None:
             return
-        
+
         else:
             #cursor.execute(db.select_table("welcome", "text", "guild_id",member.guild.id))
             #desc = cursor.fetchone()
@@ -36,11 +36,11 @@ class welcome(commands.Cog):
             hello.set_author(name="Welcome System")
             hello.add_field(name=f"Welcome new {member}", value=f" to {member.guild} ", inline=True)
             hello.add_field(name="\u2800", value=f"{desc}", inline=True)
+
             channel = self.bot.get_channel(id=int(chan[0]))
             await channel.send(embed=hello)
         cursor.close()
         connect.close()
-        
 
     @commands.group(invoke_without_command=True)
     async def welcome(self, ctx: Context):
@@ -75,7 +75,8 @@ class welcome(commands.Cog):
                 cursor.close()
                 connect.close()
                 await ctx.send(
-                    f"Set the welcome channel in guild {ctx.message.guild} to {chan.mention} ,the id of it being {chan.id} and id of guild being {ctx.message.guild.id}")
+                    f"Set the welcome channel in guild {ctx.message.guild} to {chan.mention} ,the id of it being {chan.id} and id of guild being {ctx.message.guild.id}"
+                )
             else:
                 await ctx.send(
                     "You do not have enough permissions - :You require **Manage Channels**."
