@@ -65,10 +65,11 @@ class Moderation(commands.Cog, name="Moderation"):
                     ),
                     components=done_components,
                 )
-                if not member. bot:
-                 embed = Utils.error_embed(STRINGS["moderation"]["dm_kick"].format(
-                                          ctx.guild, reason))
-                 await member.send(embed=embed)
+                if not member.bot:
+                    embed = Utils.error_embed(
+                        STRINGS["moderation"]["dm_kick"].format(
+                            ctx.guild, reason))
+                    await member.send(embed=embed)
                 await asyncio.sleep(5)
                 await member.ban(reason=reason)
             else:
