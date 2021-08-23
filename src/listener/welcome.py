@@ -41,7 +41,7 @@ class welcome(commands.Cog):
             hello.add_field(name=f"Welcome {member}",
                             value=f" to {member.guild} ",
                             inline=True)
-            if desc is None:
+            if desc == None:
                 hello.add_field(name="Server message", value=f"{descdef}", inline=True)
             else:
                 hello.add_field(name="Server message", value=desc[0], inline=True)

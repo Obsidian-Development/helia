@@ -39,7 +39,7 @@ class goodbye(commands.Cog):
         gb.add_field(name=f"Someone left",
                      value=f" {member.guild}",
                      inline=True)
-        if desc is None:
+        if desc == None:
             gb.add_field(name="Server message", value=f"{descdef}", inline=True)
         else:
             gb.add_field(name="Server message", value=desc[0], inline=True)
