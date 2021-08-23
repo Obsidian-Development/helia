@@ -40,7 +40,9 @@ class goodbye(commands.Cog):
                      value=f" {member.guild}",
                      inline=True)
         if desc == None:
-            gb.add_field(name="Server message", value=f"{descdef}", inline=True)
+            gb.add_field(name="Server message",
+                         value=f"{descdef}",
+                         inline=True)
         else:
             gb.add_field(name="Server message", value=desc[0], inline=True)
         channel = self.bot.get_channel(id=int(chan[0]))
@@ -126,9 +128,7 @@ class goodbye(commands.Cog):
             author = ctx.message.author
             if author.guild_permissions.administrator:
                 if content is None:
-                    await ctx.send(
-                        "Setting default message"
-                    )
+                    await ctx.send("Setting default message")
                     content = f"A person left, who knows his/hers reasons for leaving but we will welcome them with open arms if they return "
                 connect = sqlite3.connect(db.main)
                 cursor = connect.cursor()
