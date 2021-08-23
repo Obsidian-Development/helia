@@ -97,7 +97,7 @@ class Utilities(commands.Cog):
                     == discord.ChannelType.text) or channel.type not in [
                         discord.ChannelType.voice,
                         discord.ChannelType.news,
-            ]:
+                    ]:
                 type = STRINGS["etc"]["channel_type"]["text"]
             elif channel.type == discord.ChannelType.voice:
                 type = STRINGS["etc"]["channel_type"]["voice"]
