@@ -109,6 +109,8 @@ async def main():
             "listener.minigames",
             "listener.other",
             "listener.utils",
+            "listener.welcome",
+            "listener.goodbye",
             "listener.workers",
             # 'listener.gacha_commands'
         ]
