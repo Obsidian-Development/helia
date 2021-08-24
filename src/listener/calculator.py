@@ -79,34 +79,19 @@ class Calculator(commands.Cog, name="Calculator"):
                         "x²",
                         "x³",
                     ]
-                    if res.component.label in allowed:
-                        await m.edit(
-                            content="Preparing to tear down the buttons")
+                    await m.edit(
+                        content="Preparing to tear down the buttons")
 
-                        await res.respond(
-                            type=7,
-                            embed=discord.Embed(
-                                title="Closing down",
-                                description="You have entered a number that is 9 or more in length or some enormous calculation - for the stability of the bot and crash prevention we will close down this calculator session",
-                                color=0xDD2E44,
-                            ),
-                            components=done,
-                        )
-                        break
-                    else:
-                        await m.edit(
-                            content="Preparing to tear down the buttons")
-
-                        await res.respond(
-                            type=7,
-                            embed=discord.Embed(
-                                title="Closing down",
-                                description="You have entered a number that is 9 or more in length or some enormous calculation - for the stability of the bot and crash prevention we will close down this calculator session",
-                                color=0xDD2E44,
-                            ),
-                            components=done,
-                        )
-                        break
+                    await res.respond(
+                        type=7,
+                        embed=discord.Embed(
+                            title="Closing down",
+                            description="You have entered a number that is 9 or more in length or some enormous calculation - for the stability of the bot and crash prevention we will close down this calculator session",
+                            color=0xDD2E44,
+                        ),
+                        components=done,
+                    )
+                    break
                 else:
                     expression += res.component.label
                 f = discord.Embed(
