@@ -93,24 +93,6 @@ class Calculator(commands.Cog, name="Calculator"):
                             components=done,
                         )
                         break
-                    elif (expression.count("²") == 4
-                          or expression.count("³") == 4
-                          or expression.count("²²") > 1
-                          or expression.count("³³") > 1
-                          or expression.count("²²³³") >= 1):
-                        await m.edit(
-                            content="Preparing to tear down the buttons")
-
-                        await res.respond(
-                            type=7,
-                            embed=discord.Embed(
-                                title="Closing down",
-                                description="You have entered a number that is 9 or more in length or some enormous calculation - for the stability of the bot and crash prevention we will close down this calculator session",
-                                color=0xDD2E44,
-                            ),
-                            components=done,
-                        )
-                        break
                     else:
                         await m.edit(
                             content="Preparing to tear down the buttons")
