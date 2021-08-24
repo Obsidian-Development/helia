@@ -31,6 +31,25 @@ class Calculator(commands.Cog, name="Calculator"):
         done = [[
             Button(style=ButtonStyle.grey, label="·", disabled=True),
         ]]
+        allowed = [
+                        "1",
+                        "2",
+                        "3",
+                        "4",
+                        "5",
+                        "6",
+                        "7",
+                        "8",
+                        "9",
+                        "00",
+                        "0",
+                        ".",
+                        "(",
+                        ")",
+                        "π",
+                        "x²",
+                        "x³",
+                    ]
         while m.created_at < delta:
             res = await self.bot.wait_for("button_click")
             if (res.author.id == ctx.author.id
@@ -55,30 +74,13 @@ class Calculator(commands.Cog, name="Calculator"):
                     expression = "None"
                 elif res.component.label == "=":
                     expression = calculate(expression)
-                elif (len(expression) > 9 or expression.count("²") >= 4
+                
+                elif res.component.label in allowed or (len(expression) > 9 or expression.count("²") >= 4
                       or expression.count("³") >= 4
                       or expression.count("²²") > 1
                       or expression.count("³³") > 1
                       or expression.count("²²³³") >= 1):
-                    allowed = [
-                        "1",
-                        "2",
-                        "3",
-                        "4",
-                        "5",
-                        "6",
-                        "7",
-                        "8",
-                        "9",
-                        "00",
-                        "0",
-                        ".",
-                        "(",
-                        ")",
-                        "π",
-                        "x²",
-                        "x³",
-                    ]
+                    
                     if res.component.label in allowed:
                         await m.edit(
                             content="Preparing to tear down the buttons")
