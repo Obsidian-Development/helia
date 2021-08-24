@@ -96,13 +96,13 @@ class Calculator(commands.Cog, name="Calculator"):
                     break
                 else:
                     expression += res.component.label
-                f = discord.Embed(
-                    title=f"{ctx.author.name}'s calculator",
-                    description=f"```xl\n{expression}```",
-                    timestamp=delta,
-                    color=discord.Colour.blurple(),
-                )
-                await res.respond(content="",
+                    f = discord.Embed(
+                      title=f"{ctx.author.name}'s calculator",
+                      description=f"```xl\n{expression}```",
+                      timestamp=delta,
+                      color=discord.Colour.blurple(),
+                    )
+                    await res.respond(content="",
                                   embed=f,
                                   components=buttons,
                                   type=7)
