@@ -31,11 +31,9 @@ class Calculator(commands.Cog, name="Calculator"):
             color=discord.Colour.blurple(),
         )
         await m.edit(content="", components=buttons, embed=e)
-        done = [
-            [
-                Button(style=ButtonStyle.grey, label="·", disabled=True),
-            ]
-        ]
+        done = [[
+            Button(style=ButtonStyle.grey, label="·", disabled=True),
+        ]]
         allowed = [
             "1",
             "2",
@@ -57,10 +55,8 @@ class Calculator(commands.Cog, name="Calculator"):
         ]
         while m.created_at < delta:
             res = await self.bot.wait_for("button_click")
-            if (
-                res.author.id == ctx.author.id
-                and res.message.embeds[0].timestamp < delta
-            ):
+            if (res.author.id == ctx.author.id
+                    and res.message.embeds[0].timestamp < delta):
                 expression = res.message.embeds[0].description[6:-3]
                 if expression in ["None", "An error occurred."]:
                     expression = ""
@@ -83,13 +79,11 @@ class Calculator(commands.Cog, name="Calculator"):
                     expression = calculate(expression)
 
                 elif res.component.label in allowed or (
-                    len(expression) > 9
-                    or expression.count("²") >= 4
-                    or expression.count("³") >= 4
-                    or expression.count("²²") > 1
-                    or expression.count("³³") > 1
-                    or expression.count("²²³³") >= 1
-                ):
+                        len(expression) > 9 or expression.count("²") >= 4
+                        or expression.count("³") >= 4
+                        or expression.count("²²") > 1
+                        or expression.count("³³") > 1
+                        or expression.count("²²³³") >= 1):
 
                     await m.edit(content="Preparing to tear down the buttons")
 
@@ -97,7 +91,8 @@ class Calculator(commands.Cog, name="Calculator"):
                         type=7,
                         embed=discord.Embed(
                             title="Closing down",
-                            description="You have entered a number that is 9 or more in length or some enormous calculation - for the stability of the bot and crash prevention we will close down this calculator session",
+                            description=
+                            "You have entered a number that is 9 or more in length or some enormous calculation - for the stability of the bot and crash prevention we will close down this calculator session",
                             color=0xDD2E44,
                         ),
                         components=done,
@@ -111,7 +106,10 @@ class Calculator(commands.Cog, name="Calculator"):
                         timestamp=delta,
                         color=discord.Colour.blurple(),
                     )
-                    await res.respond(content="", embed=f, components=buttons, type=7)
+                    await res.respond(content="",
+                                      embed=f,
+                                      components=buttons,
+                                      type=7)
 
 
 def setup(bot):
