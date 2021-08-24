@@ -32,24 +32,24 @@ class Calculator(commands.Cog, name="Calculator"):
             Button(style=ButtonStyle.grey, label="·", disabled=True),
         ]]
         allowed = [
-                        "1",
-                        "2",
-                        "3",
-                        "4",
-                        "5",
-                        "6",
-                        "7",
-                        "8",
-                        "9",
-                        "00",
-                        "0",
-                        ".",
-                        "(",
-                        ")",
-                        "π",
-                        "x²",
-                        "x³",
-                    ]
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "00",
+            "0",
+            ".",
+            "(",
+            ")",
+            "π",
+            "x²",
+            "x³",
+        ]
         while m.created_at < delta:
             res = await self.bot.wait_for("button_click")
             if (res.author.id == ctx.author.id
@@ -75,14 +75,14 @@ class Calculator(commands.Cog, name="Calculator"):
                 elif res.component.label == "=":
                     expression = calculate(expression)
 
-                elif res.component.label in allowed or (len(expression) > 9 or expression.count("²") >= 4
-                      or expression.count("³") >= 4
-                      or expression.count("²²") > 1
-                      or expression.count("³³") > 1
-                      or expression.count("²²³³") >= 1):
-                    
-                    await m.edit(
-                        content="Preparing to tear down the buttons")
+                elif res.component.label in allowed or (
+                        len(expression) > 9 or expression.count("²") >= 4
+                        or expression.count("³") >= 4
+                        or expression.count("²²") > 1
+                        or expression.count("³³") > 1
+                        or expression.count("²²³³") >= 1):
+
+                    await m.edit(content="Preparing to tear down the buttons")
 
                     await res.respond(
                         type=7,
