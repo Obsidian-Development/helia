@@ -31,6 +31,25 @@ class Calculator(commands.Cog, name="Calculator"):
         done = [[
             Button(style=ButtonStyle.grey, label="·", disabled=True),
         ]]
+        allowed = [
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "00",
+            "0",
+            ".",
+            "(",
+            ")",
+            "π",
+            "x²",
+            "x³",
+        ]
         while m.created_at < delta:
             res = await self.bot.wait_for("button_click")
             if (res.author.id == ctx.author.id
@@ -55,88 +74,38 @@ class Calculator(commands.Cog, name="Calculator"):
                     expression = "None"
                 elif res.component.label == "=":
                     expression = calculate(expression)
-                elif (len(expression) > 9 or expression.count("²") >= 4
-                      or expression.count("³") >= 4
-                      or expression.count("²²") > 1
-                      or expression.count("³³") > 1
-                      or expression.count("²²³³") >= 1):
-                    allowed = [
-                        "1",
-                        "2",
-                        "3",
-                        "4",
-                        "5",
-                        "6",
-                        "7",
-                        "8",
-                        "9",
-                        "00",
-                        "0",
-                        ".",
-                        "(",
-                        ")",
-                        "π",
-                        "x²",
-                        "x³",
-                    ]
-                    if res.component.label in allowed:
-                        await m.edit(
-                            content="Preparing to tear down the buttons")
 
-                        await res.respond(
-                            type=7,
-                            embed=discord.Embed(
-                                title="Closing down",
-                                description="You have entered a number that is 9 or more in length or some enormous calculation - for the stability of the bot and crash prevention we will close down this calculator session",
-                                color=0xDD2E44,
-                            ),
-                            components=done,
-                        )
-                        break
-                    elif (expression.count("²") == 4
-                          or expression.count("³") == 4
-                          or expression.count("²²") > 1
-                          or expression.count("³³") > 1
-                          or expression.count("²²³³") >= 1):
-                        await m.edit(
-                            content="Preparing to tear down the buttons")
+                elif res.component.label in allowed or (
+                        len(expression) > 9 or expression.count("²") >= 4
+                        or expression.count("³") >= 4
+                        or expression.count("²²") > 1
+                        or expression.count("³³") > 1
+                        or expression.count("²²³³") >= 1):
 
-                        await res.respond(
-                            type=7,
-                            embed=discord.Embed(
-                                title="Closing down",
-                                description="You have entered a number that is 9 or more in length or some enormous calculation - for the stability of the bot and crash prevention we will close down this calculator session",
-                                color=0xDD2E44,
-                            ),
-                            components=done,
-                        )
-                        break
-                    else:
-                        await m.edit(
-                            content="Preparing to tear down the buttons")
+                    await m.edit(content="Preparing to tear down the buttons")
 
-                        await res.respond(
-                            type=7,
-                            embed=discord.Embed(
-                                title="Closing down",
-                                description="You have entered a number that is 9 or more in length or some enormous calculation - for the stability of the bot and crash prevention we will close down this calculator session",
-                                color=0xDD2E44,
-                            ),
-                            components=done,
-                        )
-                        break
+                    await res.respond(
+                        type=7,
+                        embed=discord.Embed(
+                            title="Closing down",
+                            description="You have entered a number that is 9 or more in length or some enormous calculation - for the stability of the bot and crash prevention we will close down this calculator session",
+                            color=0xDD2E44,
+                        ),
+                        components=done,
+                    )
+                    break
                 else:
                     expression += res.component.label
-                f = discord.Embed(
-                    title=f"{ctx.author.name}'s calculator",
-                    description=f"```xl\n{expression}```",
-                    timestamp=delta,
-                    color=discord.Colour.blurple(),
-                )
-                await res.respond(content="",
-                                  embed=f,
-                                  components=buttons,
-                                  type=7)
+                    f = discord.Embed(
+                        title=f"{ctx.author.name}'s calculator",
+                        description=f"```xl\n{expression}```",
+                        timestamp=delta,
+                        color=discord.Colour.blurple(),
+                    )
+                    await res.respond(content="",
+                                      embed=f,
+                                      components=buttons,
+                                      type=7)
 
 
 def setup(bot):
