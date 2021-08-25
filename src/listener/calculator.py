@@ -14,27 +14,27 @@ class Calculator(commands.Cog, name="Calculator"):
         self.bot = bot
         self.name = "Calculator"
         self.dc = DiscordComponents(self.bot)
-    
+
     def calculate(self, exp):
-     ox = str(exp)
-     o = ox.replace("×", "*")
-     o = o.replace("÷", "/")
-     o = o.replace("π", str(math.pi))
-     # o = o.replace("²", "**2")
-     # o = o.replace("³", "**3")
-     result = ""
-     try:
-        result = str(eval(o))
+        ox = str(exp)
+        o = ox.replace("×", "*")
+        o = o.replace("÷", "/")
+        o = o.replace("π", str(math.pi))
+        # o = o.replace("²", "**2")
+        # o = o.replace("³", "**3")
+        result = ""
+        try:
+            result = str(eval(o))
 
-     except BaseException:
-        result = "An error occurred."
+        except BaseException:
+            result = "An error occurred."
 
-     return result
+        return result
 
     @commands.guild_only()
     @commands.command(description="Calculator command")
     async def calculator(self, ctx):
-        
+
         m = await ctx.send(content="Loading Calculators...")
         expression = "None"
         delta = datetime.datetime.utcnow() + datetime.timedelta(minutes=5)
