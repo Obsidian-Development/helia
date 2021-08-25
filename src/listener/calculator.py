@@ -15,7 +15,7 @@ class Calculator(commands.Cog, name="Calculator"):
         self.name = "Calculator"
         self.dc = DiscordComponents(self.bot)
     
-    def calculate(exp):
+    def calculate(self, exp):
      ox = str(exp)
      o = ox.replace("×", "*")
      o = o.replace("÷", "/")
@@ -125,8 +125,8 @@ class Calculator(commands.Cog, name="Calculator"):
                             components=done,
                         )
                         break
-                    elif res.component.label == "=":
-                        expression = self.calculate(expression)
+                    #elif res.component.label == "=":
+                        #expression = self.calculate(expression)
 
                 else:
                     expression += res.component.label
