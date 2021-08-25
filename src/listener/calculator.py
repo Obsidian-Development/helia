@@ -94,6 +94,12 @@ class Calculator(commands.Cog, name="Calculator"):
                     expression = "None"
                 elif res.component.label == "=":
                     expression = calculate(expression)
+                    while true:
+                      await res.respond(
+                        type=7,
+                        embed=e,
+                        components=buttons,
+                      )
 
                 elif (len(expression) > 9 or expression.count("²") >= 4
                       or expression.count("³") >= 4
