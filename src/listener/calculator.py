@@ -47,10 +47,6 @@ class Calculator(commands.Cog, name="Calculator"):
             "(",
             ")",
             "π",
-            "×",
-            "÷",
-            "+",
-            "-",
             "x²",
             "x³",
         ]
