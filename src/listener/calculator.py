@@ -83,7 +83,8 @@ class Calculator(commands.Cog, name="Calculator"):
                       or expression.count("³") >= 4
                       or expression.count("²²") > 1
                       or expression.count("³³") > 1
-                      or expression.count("²²³³") >= 1 or expression.count("×") > 1):
+                      or expression.count("²²³³") >= 1
+                      or expression.count("×") > 1):
                     if res.component.label in allowed:
                         await m.edit(
                             content="Preparing to tear down the buttons")
