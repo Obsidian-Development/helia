@@ -33,7 +33,7 @@ class Calculator(commands.Cog, name="Calculator"):
     @commands.guild_only()
     @commands.command(description="Calculator command")
     async def calculator(self, ctx):
-        global calculate
+        
         m = await ctx.send(content="Loading Calculators...")
         expression = "None"
         delta = datetime.datetime.utcnow() + datetime.timedelta(minutes=5)
@@ -89,7 +89,7 @@ class Calculator(commands.Cog, name="Calculator"):
                 elif res.component.label == "Clear":
                     expression = "None"
                 elif res.component.label == "=":
-                    expression = calculate(expression)
+                    expression = self.calculate(expression)
 
                 elif (len(expression) > 9 or expression.count("²") >= 4
                       or expression.count("³") >= 4
@@ -125,7 +125,7 @@ class Calculator(commands.Cog, name="Calculator"):
                         )
                         break
                     elif res.component.label == "=":
-                        expression = calculate(expression)
+                        expression = self.calculate(expression)
 
                 else:
                     expression += res.component.label
