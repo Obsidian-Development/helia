@@ -33,6 +33,7 @@ class Calculator(commands.Cog, name="Calculator"):
     @commands.guild_only()
     @commands.command(description="Calculator command")
     async def calculator(self, ctx):
+        global calculate
         m = await ctx.send(content="Loading Calculators...")
         expression = "None"
         delta = datetime.datetime.utcnow() + datetime.timedelta(minutes=5)
