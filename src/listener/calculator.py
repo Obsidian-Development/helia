@@ -1,10 +1,10 @@
 import datetime
+import math
 
 import discord
 from discord.ext import commands
 from discord.ext.commands import Bot, Context
 from discord_components import Button, ButtonStyle, DiscordComponents
-import math
 
 # from discord_slash import cog_ext
 from scripts.calculator import buttons
@@ -126,8 +126,8 @@ class Calculator(commands.Cog, name="Calculator"):
                             components=done,
                         )
                         break
-                    #elif res.component.label == "=":
-                        #expression = self.calculate(expression)
+                    # elif res.component.label == "=":
+                    # expression = self.calculate(expression)
 
                 else:
                     expression += res.component.label
