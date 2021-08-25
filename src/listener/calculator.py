@@ -125,8 +125,8 @@ class Calculator(commands.Cog, name="Calculator"):
                             components=done,
                         )
                         break
-                    #elif res.component.label == "=":
-                        #expression = self.calculate(expression)
+                    # elif res.component.label == "=":
+                    # expression = self.calculate(expression)
 
                 else:
                     expression += res.component.label
