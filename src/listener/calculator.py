@@ -4,10 +4,10 @@ import discord
 from discord.ext import commands
 from discord.ext.commands import Bot, Context
 from discord_components import Button, ButtonStyle, DiscordComponents
-import math
 
 # from discord_slash import cog_ext
 from scripts.calculator import buttons
+
 
 
 class Calculator(commands.Cog, name="Calculator"):
@@ -16,25 +16,25 @@ class Calculator(commands.Cog, name="Calculator"):
         self.name = "Calculator"
         self.dc = DiscordComponents(self.bot)
 
-    def calculate(self, exp):
-        ox = str(exp)
-        o = ox.replace("×", "*")
-        o = o.replace("÷", "/")
-        o = o.replace("π", str(math.pi))
-        # o = o.replace("²", "**2")
-        # o = o.replace("³", "**3")
-        result = ""
-        try:
-            result = str(eval(o))
-
-        except BaseException:
-            result = "An error occurred."
-
-        return result
-
+    
     @commands.guild_only()
     @commands.command(description="Calculator command")
     async def calculator(self, ctx):
+        def calculate(self, exp):
+         ox = str(exp)
+         o = ox.replace("×", "*")
+         o = o.replace("÷", "/")
+         o = o.replace("π", str(math.pi))
+         # o = o.replace("²", "**2")
+         # o = o.replace("³", "**3")
+         result = ""
+         try:
+            result = str(eval(o))
+
+         except BaseException:
+            result = "An error occurred."
+
+        return result
 
         m = await ctx.send(content="Loading Calculators...")
         expression = "None"
