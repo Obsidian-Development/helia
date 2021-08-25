@@ -20,7 +20,7 @@ class Calculator(commands.Cog, name="Calculator"):
     @commands.guild_only()
     @commands.command(description="Calculator command")
     async def calculator(self, ctx):
-        def calculate(self, exp):
+        def calculate(exp):
          ox = str(exp)
          o = ox.replace("×", "*")
          o = o.replace("÷", "/")
