@@ -4,6 +4,7 @@ import discord
 from discord.ext import commands
 from discord.ext.commands import Bot, Context
 from discord_components import Button, ButtonStyle, DiscordComponents
+import math
 
 # from discord_slash import cog_ext
 from scripts.calculator import buttons
