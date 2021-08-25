@@ -16,7 +16,8 @@ class Calculator(commands.Cog, name="Calculator"):
         self.dc = DiscordComponents(self.bot)
     
     def calculate(exp):
-     o = exp.replace("×", "*")
+     ox = str(exp)
+     o = ox.replace("×", "*")
      o = o.replace("÷", "/")
      o = o.replace("π", str(math.pi))
      # o = o.replace("²", "**2")
