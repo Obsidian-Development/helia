@@ -34,7 +34,7 @@ class Calculator(commands.Cog, name="Calculator"):
          except BaseException:
             result = "An error occurred."
 
-        return result
+         return result
 
         m = await ctx.send(content="Loading Calculators...")
         expression = "None"
