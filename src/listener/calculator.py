@@ -91,7 +91,7 @@ class Calculator(commands.Cog, name="Calculator"):
                 elif res.component.label == "Clear":
                     expression = "None"
                 elif res.component.label == "=":
-                    expression = self.calculate(expression)
+                    expression = calculate(expression)
 
                 elif (len(expression) > 9 or expression.count("²") >= 4
                       or expression.count("³") >= 4
@@ -127,7 +127,7 @@ class Calculator(commands.Cog, name="Calculator"):
                         )
                         break
                     #elif res.component.label == "=":
-                        #expression = self.calculate(expression)
+                        #expression = calculate(expression)
 
                 else:
                     expression += res.component.label
