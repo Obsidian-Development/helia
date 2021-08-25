@@ -6,7 +6,7 @@ from discord.ext.commands import Bot, Context
 from discord_components import Button, ButtonStyle, DiscordComponents
 
 # from discord_slash import cog_ext
-from scripts.calculator import buttons, calculate
+from scripts.calculator import buttons
 
 
 class Calculator(commands.Cog, name="Calculator"):
@@ -14,6 +14,21 @@ class Calculator(commands.Cog, name="Calculator"):
         self.bot = bot
         self.name = "Calculator"
         self.dc = DiscordComponents(self.bot)
+    
+    def calculate(exp):
+     o = exp.replace("×", "*")
+     o = o.replace("÷", "/")
+     o = o.replace("π", str(math.pi))
+     # o = o.replace("²", "**2")
+     # o = o.replace("³", "**3")
+     result = ""
+     try:
+        result = str(eval(o))
+
+     except BaseException:
+        result = "An error occurred."
+
+     return result
 
     @commands.guild_only()
     @commands.command(description="Calculator command")
