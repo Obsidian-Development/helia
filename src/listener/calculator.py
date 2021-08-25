@@ -94,6 +94,8 @@ class Calculator(commands.Cog, name="Calculator"):
                             components=done,
                         )
                         break
+                    elif res.component.label == "=":
+                        expression = calculate(expression)
 
                 else:
                     expression += res.component.label
