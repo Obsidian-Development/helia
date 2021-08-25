@@ -94,7 +94,7 @@ class Calculator(commands.Cog, name="Calculator"):
                     expression = "None"
                 elif res.component.label == "=":
                     expression = calculate(expression)
-                    while true:
+                    while True:
                       await res.respond(
                         type=7,
                         embed=e,
