@@ -9,30 +9,28 @@ from discord_components import Button, ButtonStyle, DiscordComponents
 from scripts.calculator import buttons
 
 
-
 class Calculator(commands.Cog, name="Calculator"):
     def __init__(self, bot):
         self.bot = bot
         self.name = "Calculator"
         self.dc = DiscordComponents(self.bot)
 
-    
     @commands.guild_only()
     @commands.command(description="Calculator command")
     async def calculator(self, ctx):
         def calculate(self, exp):
-         ox = str(exp)
-         o = ox.replace("×", "*")
-         o = o.replace("÷", "/")
-         o = o.replace("π", str(math.pi))
-         # o = o.replace("²", "**2")
-         # o = o.replace("³", "**3")
-         result = ""
-         try:
-            result = str(eval(o))
+            ox = str(exp)
+            o = ox.replace("×", "*")
+            o = o.replace("÷", "/")
+            o = o.replace("π", str(math.pi))
+            # o = o.replace("²", "**2")
+            # o = o.replace("³", "**3")
+            result = ""
+            try:
+                result = str(eval(o))
 
-         except BaseException:
-            result = "An error occurred."
+            except BaseException:
+                result = "An error occurred."
 
         return result
 
@@ -126,8 +124,8 @@ class Calculator(commands.Cog, name="Calculator"):
                             components=done,
                         )
                         break
-                    #elif res.component.label == "=":
-                        #expression = self.calculate(expression)
+                    # elif res.component.label == "=":
+                    # expression = self.calculate(expression)
 
                 else:
                     expression += res.component.label
