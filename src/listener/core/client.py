@@ -42,7 +42,9 @@ class CoreClient(commands.AutoShardedBot):
         statuses = [
             # discord.Activity(type=discord.ActivityType.watching, name=f"{len(self.bot.guilds)} servers | {len(self.bot.shards)} shards!"), # bugged status - uncomment after fix
             discord.Activity(type=discord.ActivityType.watching,
-                             name="Ping me for prefix"),
+                             name="for bot breakage"),
+            discord.Activity(type=discord.ActivityType.watching,
+                             name="the discord.py deprecation"),
             discord.Activity(
                 type=discord.ActivityType.listening,
                 name="Dont forget to bump the bot every 3 hours on bot lists!",
