@@ -55,7 +55,7 @@ class CoreClient(commands.AutoShardedBot):
             discord.Game(name="Final Fantasy XIV"),
             discord.Activity(
                 type=discord.ActivityType.watching,
-                name="our support server https://discord.gg/7uUBM8mKbu",
+                name="our support server https://discord.gg/xUaWU2AQVm",
             ),
             discord.Game(
                 name="Deep inside, we're nothing more than scions and sinners"
