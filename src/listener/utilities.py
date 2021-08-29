@@ -226,7 +226,7 @@ class Utilities(commands.Cog):
         if guild_id is not None and await self.bot.is_owner(ctx.author):
             guild = self.bot.get_guild(guild_id)
             if guild is None:
-                return await ctx.send(f"Invalid Guild ID given.")
+                return await ctx.send('Invalid Guild ID given.')
         else:
             guild = ctx.guild
 
@@ -277,7 +277,6 @@ class Utilities(commands.Cog):
             else:
                 channel_info.append(f"{emoji} {total}")
 
-        info = []
         features = set(guild.features)
         all_features = {
             "PARTNERED": "Partnered",
@@ -296,9 +295,11 @@ class Utilities(commands.Cog):
             "BANNER": "Banner",
         }
 
-        for feature, label in all_features.items():
-            if feature in features:
-                info.append(f'{CONFIG["yes_emoji"]}: {label}')
+        info = [
+            f'{CONFIG["yes_emoji"]}: {label}'
+            for feature, label in all_features.items()
+            if feature in features
+        ]
 
         if info:
             e.add_field(name="Features", value="\n".join(info))
