@@ -1,6 +1,7 @@
 import math
 
-from discord_components import Button, ButtonStyle
+from discord_components import Button
+from discord_components import ButtonStyle
 
 buttons = [
     [
