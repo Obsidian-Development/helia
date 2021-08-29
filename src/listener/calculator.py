@@ -95,10 +95,10 @@ class Calculator(commands.Cog, name="Calculator"):
                     await res.respond(
                         type=7,
                         embed=discord.Embed(
-                            title="{ctx.author.name}'s calculator",
+                            title=f"{ctx.author.name}'s calculator",
                             description=f"```The expression you entered has a result of : {expression}```",
                             color=discord.Colour.blurple(),
-                        ).footer(text="Restart calculator if you need to do anything else!"),
+                        ),
                         components=done,
                     )
 
