@@ -42,7 +42,9 @@ class CoreClient(commands.AutoShardedBot):
         statuses = [
             # discord.Activity(type=discord.ActivityType.watching, name=f"{len(self.bot.guilds)} servers | {len(self.bot.shards)} shards!"), # bugged status - uncomment after fix
             discord.Activity(type=discord.ActivityType.watching,
-                             name="Ping me for prefix"),
+                             name="for bot breakage"),
+            discord.Activity(type=discord.ActivityType.watching,
+                             name="the discord.py deprecation"),
             discord.Activity(
                 type=discord.ActivityType.listening,
                 name="Dont forget to bump the bot every 3 hours on bot lists!",
@@ -53,7 +55,7 @@ class CoreClient(commands.AutoShardedBot):
             discord.Game(name="Final Fantasy XIV"),
             discord.Activity(
                 type=discord.ActivityType.watching,
-                name="our support server https://discord.gg/7uUBM8mKbu",
+                name="our support server https://discord.gg/xUaWU2AQVm",
             ),
             discord.Game(
                 name="Deep inside, we're nothing more than scions and sinners"

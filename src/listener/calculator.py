@@ -1,4 +1,5 @@
 import datetime
+import math
 
 import discord
 from discord.ext import commands
@@ -6,7 +7,7 @@ from discord.ext.commands import Bot, Context
 from discord_components import Button, ButtonStyle, DiscordComponents
 
 # from discord_slash import cog_ext
-from scripts.calculator import buttons, calculate
+from scripts.calculator import buttons
 
 
 class Calculator(commands.Cog, name="Calculator"):
@@ -18,6 +19,22 @@ class Calculator(commands.Cog, name="Calculator"):
     @commands.guild_only()
     @commands.command(description="Calculator command")
     async def calculator(self, ctx):
+        def calculate(exp):
+            ox = str(exp)
+            o = ox.replace("×", "*")
+            o = o.replace("÷", "/")
+            o = o.replace("π", str(math.pi))
+            # o = o.replace("²", "**2")
+            # o = o.replace("³", "**3")
+            result = ""
+            try:
+                result = str(eval(o))
+
+            except BaseException:
+                result = "An error occurred."
+
+            return result
+
         m = await ctx.send(content="Loading Calculators...")
         expression = "None"
         delta = datetime.datetime.utcnow() + datetime.timedelta(minutes=5)
@@ -88,12 +105,28 @@ class Calculator(commands.Cog, name="Calculator"):
                             type=7,
                             embed=discord.Embed(
                                 title="Closing down",
-                                description="You have entered a number that is 9 or more in length or some enormous calculation - for the stability of the bot and crash prevention we will close down this calculator session",
+                                description="You have entered a number that is 9 or more in length or some calculation prone to crashing the bot - for the stability of the bot and crash prevention we will close down this calculator session",
                                 color=0xDD2E44,
                             ),
                             components=done,
                         )
                         break
+                    elif expression.count("××") > 1:
+                        await m.edit(
+                            content="Preparing to tear down the buttons")
+
+                        await res.respond(
+                            type=7,
+                            embed=discord.Embed(
+                                title="Closing down",
+                                description="You have entered a number that is 9 or more in length or some calculation prone to crashing the bot - for the stability of the bot and crash prevention we will close down this calculator session",
+                                color=0xDD2E44,
+                            ),
+                            components=done,
+                        )
+                        break
+                    # elif res.component.label == "=":
+                    # expression = calculate(expression)
 
                 else:
                     expression += res.component.label

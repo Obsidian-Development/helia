@@ -41,17 +41,4 @@ buttons = [
 ]
 
 
-def calculate(exp):
-    o = exp.replace("×", "*")
-    o = o.replace("÷", "/")
-    o = o.replace("π", str(math.pi))
-    # o = o.replace("²", "**2")
-    # o = o.replace("³", "**3")
-    result = ""
-    try:
-        result = str(eval(o))
 
-    except BaseException:
-        result = "An error occurred."
-
-    return result
