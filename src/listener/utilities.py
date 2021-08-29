@@ -257,7 +257,10 @@ class Utilities(commands.Cog):
         e = discord.Embed()
         e.title = guild.name
         e.description = f"**ID**: {guild.id}\n**Owner**: {guild.owner}"
-        e.set_thumbnail(url =f"{guild.icon.url}" if guild.icon else "https://cdn.discordapp.com/embed/avatars/1.png")
+        if guild.icon:
+          e.set_thumbnail(url=f"{guild.icon.url}")
+        else:
+          e.set_thumbnail(url="https://cdn.discordapp.com/embed/avatars/1.png")
 
 
         channel_info = []
