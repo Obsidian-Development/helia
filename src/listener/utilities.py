@@ -2,19 +2,14 @@
 import math
 import random
 import re
-from collections import Counter
-from collections import deque
-from collections import OrderedDict
+from collections import Counter, OrderedDict, deque
 from typing import NoReturn
 
 import discord
 from discord.ext import commands
-from discord.ext.commands import Bot
-from discord.ext.commands import Context
-from listener.utils import Config
-from listener.utils import Logger
-from listener.utils import Settings
-from listener.utils import Strings
+from discord.ext.commands import Bot, Context
+
+from listener.utils import Config, Logger, Settings, Strings
 
 CONFIG = Config()
 
@@ -103,7 +98,7 @@ class Utilities(commands.Cog):
                     == discord.ChannelType.text) or channel.type not in [
                         discord.ChannelType.voice,
                         discord.ChannelType.news,
-                    ]:
+            ]:
                 type = STRINGS["etc"]["channel_type"]["text"]
             elif channel.type == discord.ChannelType.voice:
                 type = STRINGS["etc"]["channel_type"]["voice"]
