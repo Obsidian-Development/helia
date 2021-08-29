@@ -3,12 +3,11 @@ import math
 
 import discord
 from discord.ext import commands
-from discord.ext.commands import Bot
-from discord.ext.commands import Context
-from discord_components import Button
-from discord_components import ButtonStyle
-from discord_components import DiscordComponents
+from discord.ext.commands import Bot, Context
+from discord_components import Button, ButtonStyle, DiscordComponents
+
 from scripts.calculator import buttons
+
 # from discord_slash import cog_ext
 
 
@@ -81,8 +80,7 @@ class Calculator(commands.Cog, name="Calculator"):
                         type=7,
                         embed=discord.Embed(
                             title=f"{ctx.author.name}'s calculator",
-                            description=
-                            f"```The expression you entered has a result of : {expression}```",
+                            description=f"```The expression you entered has a result of : {expression}```",
                             color=discord.Colour.blurple(),
                         ),
                         components=done,
@@ -99,8 +97,7 @@ class Calculator(commands.Cog, name="Calculator"):
                         type=7,
                         embed=discord.Embed(
                             title=f"{ctx.author.name}'s calculator",
-                            description=
-                            f"```The expression you entered has a result of : {expression}```",
+                            description=f"```The expression you entered has a result of : {expression}```",
                             color=discord.Colour.blurple(),
                         ),
                         components=done,
@@ -119,8 +116,7 @@ class Calculator(commands.Cog, name="Calculator"):
                             type=7,
                             embed=discord.Embed(
                                 title="Closing down",
-                                description=
-                                "You have entered a number that is 9 or more in length or some calculation prone to crashing the bot - for the stability of the bot and crash prevention we will close down this calculator session",
+                                description="You have entered a number that is 9 or more in length or some calculation prone to crashing the bot - for the stability of the bot and crash prevention we will close down this calculator session",
                                 color=0xDD2E44,
                             ),
                             components=done,
@@ -134,8 +130,7 @@ class Calculator(commands.Cog, name="Calculator"):
                             type=7,
                             embed=discord.Embed(
                                 title="Closing down",
-                                description=
-                                "You have entered a number that is 9 or more in length or some calculation prone to crashing the bot - for the stability of the bot and crash prevention we will close down this calculator session",
+                                description="You have entered a number that is 9 or more in length or some calculation prone to crashing the bot - for the stability of the bot and crash prevention we will close down this calculator session",
                                 color=0xDD2E44,
                             ),
                             components=done,
