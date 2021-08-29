@@ -21,9 +21,7 @@ class Utilities(commands.Cog):
 
     @commands.command()
     @commands.guild_only()
-    async def user(self,
-                   ctx: Context,
-                   member: discord.Member = None) -> NoReturn:
+    async def user(self, ctx: Context, member: discord.Member = None) -> NoReturn:
         """Shows user information.
 
         Attributes:
@@ -51,11 +49,11 @@ class Utilities(commands.Cog):
 
         embed = discord.Embed(
             description=STRINGS["utilities"]["user_info"].format(
-                id, created_at, joined_at, username, stat, activ, color),
+                id, created_at, joined_at, username, stat, activ, color
+            ),
             color=color,
         )
-        embed.set_author(
-            name=STRINGS["utilities"]["user_info_title"].format(name, tag))
+        embed.set_author(name=STRINGS["utilities"]["user_info_title"].format(name, tag))
         embed.set_thumbnail(url=avatar)
 
         await ctx.send(embed=embed)
@@ -68,14 +66,13 @@ class Utilities(commands.Cog):
         lang = await s.get_field("locale", CONFIG["default_locale"])
         STRINGS = Strings(lang)
 
-        format = r"png" if re.sub(r"[\<]", r"",
-                                  emoji.split(":")[0]) == "" else "gif"
+        format = r"png" if re.sub(r"[\<]", r"", emoji.split(":")[0]) == "" else "gif"
         name = emoji.split(":")[1]
         id = re.sub(r"[\>]", r"", emoji.split(r":")[2])
 
         embed = discord.Embed(
-            title=STRINGS["utilities"]["emoji_info_title"].format(name),
-            color=0xEDA84E)
+            title=STRINGS["utilities"]["emoji_info_title"].format(name), color=0xEDA84E
+        )
         embed.set_image(url=f"https://cdn.discordapp.com/emojis/{id}.{format}")
         embed.set_footer(text=STRINGS["utilities"]["emoji_info"].format(id))
 
@@ -91,13 +88,13 @@ class Utilities(commands.Cog):
 
         if re.search(r"[@&\:]", channel) is None:
 
-            channel = discord.utils.get(ctx.guild.channels,
-                                        id=int(re.sub("[<#>]", "", channel)))
+            channel = discord.utils.get(
+                ctx.guild.channels, id=int(re.sub("[<#>]", "", channel))
+            )
 
-            if (channel.type
-                    == discord.ChannelType.text) or channel.type not in [
-                        discord.ChannelType.voice,
-                        discord.ChannelType.news,
+            if (channel.type == discord.ChannelType.text) or channel.type not in [
+                discord.ChannelType.voice,
+                discord.ChannelType.news,
             ]:
                 type = STRINGS["etc"]["channel_type"]["text"]
             elif channel.type == discord.ChannelType.voice:
@@ -115,11 +112,13 @@ class Utilities(commands.Cog):
 
             embed = discord.Embed(
                 description=STRINGS["utilities"]["channel_info"].format(
-                    id, type, created_at, is_nsfw),
+                    id, type, created_at, is_nsfw
+                ),
                 color=0xEDA84E,
             )
             embed.set_author(
-                name=STRINGS["utilities"]["channel_info_title"].format(name))
+                name=STRINGS["utilities"]["channel_info_title"].format(name)
+            )
             await ctx.send(embed=embed)
 
         else:
@@ -127,9 +126,7 @@ class Utilities(commands.Cog):
 
     @commands.command()
     @commands.guild_only()
-    async def avatar(self,
-                     ctx: Context,
-                     member: discord.Member = None) -> NoReturn:
+    async def avatar(self, ctx: Context, member: discord.Member = None) -> NoReturn:
         """Shows user's avatar.
 
         Attributes:
@@ -151,8 +148,7 @@ class Utilities(commands.Cog):
         embed = discord.Embed(
             color=0xEDA84E,
             title=STRINGS["utilities"]["avatar_info_title"].format(name, tag),
-            description=STRINGS["utilities"]["avatar_info"].format(
-                hash, avatar),
+            description=STRINGS["utilities"]["avatar_info"].format(hash, avatar),
         )
         embed.set_image(url=avatar)
 
@@ -168,15 +164,15 @@ class Utilities(commands.Cog):
             title=STRINGS["generictext"]["randinttitle"],
             description=STRINGS["generictext"]["descgenermath"],
         )
-        embed.add_field(name=STRINGS["generictext"]["numberone"],
-                        value=f"```{stc1}```",
-                        inline=True)
-        embed.add_field(name=STRINGS["generictext"]["numbertwo"],
-                        value=f"```{stc2}```",
-                        inline=True)
-        embed.add_field(name=STRINGS["generictext"]["result"],
-                        value=f"```{result}```",
-                        inline=False)
+        embed.add_field(
+            name=STRINGS["generictext"]["numberone"], value=f"```{stc1}```", inline=True
+        )
+        embed.add_field(
+            name=STRINGS["generictext"]["numbertwo"], value=f"```{stc2}```", inline=True
+        )
+        embed.add_field(
+            name=STRINGS["generictext"]["result"], value=f"```{result}```", inline=False
+        )
         await ctx.send(embed=embed)
 
     @commands.command(description="Count square root")
@@ -243,15 +239,14 @@ class Utilities(commands.Cog):
         totals = Counter()
         for channel in guild.channels:
             allow, deny = channel.overwrites_for(everyone).pair()
-            perms = discord.Permissions((everyone_perms & ~deny.value)
-                                        | allow.value)
+            perms = discord.Permissions((everyone_perms & ~deny.value) | allow.value)
             channel_type = type(channel)
             totals[channel_type] += 1
             if not perms.read_messages:
                 secret[channel_type] += 1
-            elif isinstance(channel,
-                            discord.VoiceChannel) and (not perms.connect
-                                                       or not perms.speak):
+            elif isinstance(channel, discord.VoiceChannel) and (
+                not perms.connect or not perms.speak
+            ):
                 secret[channel_type] += 1
 
         e = discord.Embed()
@@ -297,7 +292,8 @@ class Utilities(commands.Cog):
 
         info = [
             f'{CONFIG["yes_emoji"]}: {label}'
-            for feature, label in all_features.items() if feature in features
+            for feature, label in all_features.items()
+            if feature in features
         ]
 
         if info:
@@ -318,8 +314,7 @@ class Utilities(commands.Cog):
         e.add_field(name="Members", value=fmt, inline=False)
         e.add_field(
             name="Roles",
-            value=", ".join(roles)
-            if len(roles) < 10 else f"{len(roles)} roles",
+            value=", ".join(roles) if len(roles) < 10 else f"{len(roles)} roles",
         )
 
         emoji_stats = Counter()
@@ -331,8 +326,10 @@ class Utilities(commands.Cog):
                 emoji_stats["regular"] += 1
                 emoji_stats["disabled"] += not emoji.available
 
-        fmt = (f'Regular: {emoji_stats["regular"]}/{guild.emoji_limit}\n'
-               f'Animated: {emoji_stats["animated"]}/{guild.emoji_limit}\n')
+        fmt = (
+            f'Regular: {emoji_stats["regular"]}/{guild.emoji_limit}\n'
+            f'Animated: {emoji_stats["animated"]}/{guild.emoji_limit}\n'
+        )
         if emoji_stats["disabled"] or emoji_stats["animated_disabled"]:
             fmt = f'{fmt}Disabled: {emoji_stats["disabled"]} regular, {emoji_stats["animated_disabled"]} animated\n'
 
