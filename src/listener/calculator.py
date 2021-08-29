@@ -78,19 +78,29 @@ class Calculator(commands.Cog, name="Calculator"):
                     await res.respond(
                         type=7,
                         embed=discord.Embed(
-                            title="Closing down",
-                            description="Calculator was terminated",
-                            color=0xDD2E44,
+                            title=f"{ctx.author.name}'s calculator",
+                            description=f"```The expression you entered has a result of : {expression}```",
+                            color=discord.Colour.blurple(),
                         ),
                         components=done,
                     )
                     break
                 elif res.component.label == "←":
                     expression = expression[:-1]
+                    
                 elif res.component.label == "Clear":
                     expression = "None"
                 elif res.component.label == "=":
                     expression = calculate(expression)
+                    await res.respond(
+                        type=7,
+                        embed=discord.Embed(
+                            title="{ctx.author.name}'s calculator",
+                            description=f"```The expression you entered has a result of : {expression}```",
+                            color=discord.Colour.blurple(),
+                        ).footer(text="Restart calculator if you need to do anything else!"),
+                        components=done,
+                    )
 
                 elif (len(expression) > 9 or expression.count("²") >= 4
                       or expression.count("³") >= 4
