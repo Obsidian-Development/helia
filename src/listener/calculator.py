@@ -3,11 +3,13 @@ import math
 
 import discord
 from discord.ext import commands
-from discord.ext.commands import Bot, Context
-from discord_components import Button, ButtonStyle, DiscordComponents
-
-# from discord_slash import cog_ext
+from discord.ext.commands import Bot
+from discord.ext.commands import Context
+from discord_components import Button
+from discord_components import ButtonStyle
+from discord_components import DiscordComponents
 from scripts.calculator import buttons
+# from discord_slash import cog_ext
 
 
 class Calculator(commands.Cog, name="Calculator"):
