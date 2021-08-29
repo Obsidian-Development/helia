@@ -87,7 +87,7 @@ class Calculator(commands.Cog, name="Calculator"):
                     break
                 elif res.component.label == "←":
                     expression = expression[:-1]
-                    
+
                 elif res.component.label == "Clear":
                     expression = "None"
                 elif res.component.label == "=":
@@ -98,7 +98,9 @@ class Calculator(commands.Cog, name="Calculator"):
                             title="{ctx.author.name}'s calculator",
                             description=f"```The expression you entered has a result of : {expression}```",
                             color=discord.Colour.blurple(),
-                        ).footer(text="Restart calculator if you need to do anything else!"),
+                        ).footer(
+                            text="Restart calculator if you need to do anything else!"
+                        ),
                         components=done,
                     )
 
