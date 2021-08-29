@@ -254,8 +254,8 @@ class Utilities(commands.Cog):
         e = discord.Embed()
         e.title = guild.name
         e.description = f'**ID**: {guild.id}\n**Owner**: {guild.owner}'
-        if guild.icon:
-            e.set_thumbnail(url=guild.icon.url)
+        #if guild.icon:
+            #e.set_thumbnail(url=guild.icon.url)
 
         channel_info = []
         key_to_emoji = {
@@ -295,22 +295,22 @@ class Utilities(commands.Cog):
 
         for feature, label in all_features.items():
             if feature in features:
-                info.append(f'{ctx.tick(True)}: {label}')
+                info.append(f'{CONFIG["yes_emoji"]}: {label}')
 
         if info:
             e.add_field(name='Features', value='\n'.join(info))
 
         e.add_field(name='Channels', value='\n'.join(channel_info))
 
-        if guild.premium_tier != 0:
-            boosts = f'Level {guild.premium_tier}\n{guild.premium_subscription_count} boosts'
-            last_boost = max(guild.members, key=lambda m: m.premium_since or guild.created_at)
-            if last_boost.premium_since is not None:
-                boosts = f'{boosts}\nLast Boost: {last_boost} ({time.format_relative(last_boost.premium_since)})'
-            e.add_field(name='Boosts', value=boosts, inline=False)
+        #if guild.premium_tier != 0:
+            #boosts = f'Level {guild.premium_tier}\n{guild.premium_subscription_count} boosts'
+            #last_boost = max(guild.members, key=lambda m: m.premium_since or guild.created_at)
+            #if last_boost.premium_since is not None:
+                #boosts = f'{boosts}\nLast Boost: {last_boost} ({time.format_relative(last_boost.premium_since)})'
+            #e.add_field(name='Boosts', value=boosts, inline=False)
 
         bots = sum(m.bot for m in guild.members)
-        fmt = f'Total: {guild.member_count} ({formats.plural(bots):bot})'
+        fmt = f'Total: {guild.member_count} '
 
         e.add_field(name='Members', value=fmt, inline=False)
         e.add_field(name='Roles', value=', '.join(roles) if len(roles) < 10 else f'{len(roles)} roles')
@@ -333,7 +333,7 @@ class Utilities(commands.Cog):
 
         fmt = f'{fmt}Total Emoji: {len(guild.emojis)}/{guild.emoji_limit*2}'
         e.add_field(name='Emoji', value=fmt, inline=False)
-        e.set_footer(text='Created').timestamp = guild.created_at
+        #e.set_footer(text='Created').timestamp = guild.created_at
         await ctx.send(embed=e)
 
 
