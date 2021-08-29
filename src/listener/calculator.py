@@ -78,9 +78,9 @@ class Calculator(commands.Cog, name="Calculator"):
                     await res.respond(
                         type=7,
                         embed=discord.Embed(
-                            title="Closing down",
-                            description="Calculator was terminated",
-                            color=0xDD2E44,
+                            title=f"{ctx.author.name}'s calculator",
+                            description=f"```The expression you entered has a result of : {expression}```",
+                            color=discord.Colour.blurple(),
                         ),
                         components=done,
                     )
