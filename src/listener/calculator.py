@@ -87,7 +87,7 @@ class Calculator(commands.Cog, name="Calculator"):
                     break
                 elif res.component.label == "←":
                     expression = expression[:-1]
-                    
+
                 elif res.component.label == "Clear":
                     expression = "None"
                 elif res.component.label == "=":
