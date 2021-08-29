@@ -39,6 +39,3 @@ buttons = [
         # Button(style=ButtonStyle.grey, label="x³"),
     ],
 ]
-
-
-
