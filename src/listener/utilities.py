@@ -259,8 +259,8 @@ class Utilities(commands.Cog):
 
         channel_info = []
         key_to_emoji = {
-            discord.TextChannel: '<:text_channel:586339098172850187>',
-            discord.VoiceChannel: '<:voice_channel:586339098524909604>',
+            discord.TextChannel: ':bookmark_tabs:',
+            discord.VoiceChannel: ':speaker:',
         }
         for key, total in totals.items():
             secrets = secret[key]
