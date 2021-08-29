@@ -257,8 +257,10 @@ class Utilities(commands.Cog):
         e = discord.Embed()
         e.title = guild.name
         e.description = f"**ID**: {guild.id}\n**Owner**: {guild.owner}"
-        # if guild.icon:
-        # e.set_thumbnail(url=guild.icon.url)
+        if guild.icon:
+          e.set_thumbnail(url=f"{guild.icon_url}")
+        else:
+          e.set_thumbnail(url="https://cdn.discordapp.com/embed/avatars/1.png")
 
         channel_info = []
         key_to_emoji = {
@@ -315,7 +317,7 @@ class Utilities(commands.Cog):
         bots = sum(m.bot for m in guild.members)
         fmt = f"Total: {guild.member_count} "
 
-        e.add_field(name="Members", value=fmt, inline=False)
+        e.add_field(name="Members", value=fmt, inline=True)
         e.add_field(
             name="Roles",
             value=", ".join(roles)
@@ -337,7 +339,7 @@ class Utilities(commands.Cog):
             fmt = f'{fmt}Disabled: {emoji_stats["disabled"]} regular, {emoji_stats["animated_disabled"]} animated\n'
 
         fmt = f"{fmt}Total Emoji: {len(guild.emojis)}/{guild.emoji_limit*2}"
-        e.add_field(name="Emoji", value=fmt, inline=False)
+        e.add_field(name="Emoji", value=fmt, inline=True)
         # e.set_footer(text='Created').timestamp = guild.created_at
         await ctx.send(embed=e)
 
