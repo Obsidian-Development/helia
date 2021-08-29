@@ -226,7 +226,7 @@ class Utilities(commands.Cog):
         if guild_id is not None and await self.bot.is_owner(ctx.author):
             guild = self.bot.get_guild(guild_id)
             if guild is None:
-                return await ctx.send('Invalid Guild ID given.')
+                return await ctx.send("Invalid Guild ID given.")
         else:
             guild = ctx.guild
 
@@ -297,8 +297,7 @@ class Utilities(commands.Cog):
 
         info = [
             f'{CONFIG["yes_emoji"]}: {label}'
-            for feature, label in all_features.items()
-            if feature in features
+            for feature, label in all_features.items() if feature in features
         ]
 
         if info:
