@@ -201,7 +201,7 @@ class Player(wavelink.Player):
             playEmbed.add_field(
                 name=STRINGS["music"]["embed_controler_req"],
                 value=f"{ctx.author}",
-                inline=False,
+                inline=True,
             )
             playEmbed.add_field(
                 name=STRINGS["music"]["embed_controler_dur"],
