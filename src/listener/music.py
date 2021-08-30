@@ -208,7 +208,9 @@ class Player(wavelink.Player):
                 value=f"**({tracks[0].length//60000}:{str(tracks[0].length%60).zfill(2)})**",
                 inline=True,
             )
-            playEmbed.add_field(name="Server:", value=f"{ctx.guild.name}", inline=False)
+            playEmbed.add_field(name="Server:",
+                                value=f"{ctx.guild.name}",
+                                inline=False)
 
             await ctx.send(embed=playEmbed)
 
