@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>detekt report</title>
+    <style>
+h2 {
+  background-color: #666666;
+  padding: 0.2em;
+  color: #ffffff;
+}
+h3 {
+  background-color:#f8dfdf;
+  padding:0.5em;
+}
+.rule {
+  background-color: #dddddd;
+  padding: 0.3em;
+  font-weight: bold;
+}
+.description {
+  color:#000000;
+  padding:0.3em;
+}
+.location {
+  color: #690505;
+  font-family: monospace;
+  display: block;
+}
+.message {
+  font-size: 0.8em;
+  color: #444444;
+  display: block;
+  margin-top: 1pt;
+}
+.rule-container {
+  border: 0.1em dashed #dddddd;
+  padding: 0.1em;
+  line-height: 1.5em;
+  margin-bottom: 8px;
+  margin-top: 8px;
+}
+pre {
+  border: 1px solid #e0e0e0;
+  overflow: scroll;
+}
+.lineno {
+  color: #999999;
+  background-color: #f0f0f0;
+}
+.error {
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH4AwCFR4T/3uLMgAAADxJREFUCNdNyLERQEAABMCjL4lQwIzcjErpguAL+C9AvgKJDbeD/PRpLdm35Hm+MU+cB+tCKaJW4L4YBy+CAiLJrFs9mgAAAABJRU5ErkJggg==) bottom repeat-x;
+}
+.exception {
+  color: #b60808;
+  display: inline-block;
+  background-color: #ecdada;
+  border-color: #b60808;
+  border-radius: 10px;
+  border: solid 2px;
+  padding-left: 16px;
+  padding-right: 16px;
+  margin-bottom: 16px;
+}
+</style>
+</head>
+<body>
+
+<h1>detekt report</h1>
+
+<h2>Metrics</h2>
+
+<div>
+  <ul></ul>
+</div>
+
+
+<h2>Complexity Report</h2>
+
+<div>
+  <ul>
+    <li>147 lines of code (loc)</li>
+    <li>98 source lines of code (sloc)</li>
+    <li>62 logical lines of code (lloc)</li>
+    <li>14 comment lines of code (cloc)</li>
+    <li>7 cyclomatic complexity (mcc)</li>
+    <li>10 cognitive complexity</li>
+    <li>16 number of total code smells</li>
+    <li>14% comment source ratio</li>
+    <li>112 mcc per 1,000 lloc</li>
+    <li>258 code smells per 1,000 lloc</li>
+  </ul>
+</div>
+
+
+<h2>Findings</h2>
+<div>Total: 16
+  <h3>formatting: 12</h3>
+  <details id="ImportOrdering" open="open">
+    <summary class="rule-container"><span class="rule">ImportOrdering: 2 </span><span class="description">Detects imports in non default order</span></summary>
+    <ul>
+      <li><span class="location">C:/Users/Andrey Savich/IdeaProjects/helia-kotlin/src/main/kotlin/helia/App.kt:6:1</span><span class="message">Imports must be ordered in lexicographic order without any empty lines in-between with &quot;java&quot;, &quot;javax&quot;, &quot;kotlin&quot; and aliases in the end</span>
+        <pre><code><span class="lineno">   3 </span> */
+<span class="lineno">   4 </span>package helia
+<span class="lineno">   5 </span>
+<span class="lineno">   6 </span><span class="error">import com.kotlindiscord.kord.extensions.ExtensibleBot</span>
+<span class="lineno">   7 </span><span class="error">import com.kotlindiscord.kord.extensions.utils.env</span>
+<span class="lineno">   8 </span><span class="error">import dev.kord.common.entity.Snowflake</span>
+<span class="lineno">   9 </span><span class="error"></span>
+</code></pre>
+      </li>
+      <li><span class="location">C:/Users/Andrey Savich/IdeaProjects/helia-kotlin/src/main/kotlin/helia/extensions/TestExtension.kt:3:1</span><span class="message">Imports must be ordered in lexicographic order without any empty lines in-between with &quot;java&quot;, &quot;javax&quot;, &quot;kotlin&quot; and aliases in the end</span>
+        <pre><code><span class="lineno">   1 </span>package helia.extensions
+<span class="lineno">   2 </span>
+<span class="lineno">   3 </span><span class="error">import com.kotlindiscord.kord.extensions.commands.converters.impl.defaultingCoalescingString</span>
+<span class="lineno">   4 </span><span class="error">import com.kotlindiscord.kord.extensions.commands.converters.impl.defaultingString</span>
+<span class="lineno">   5 </span><span class="error">import com.kotlindiscord.kord.extensions.commands.converters.impl.member</span>
+<span class="lineno">   6 </span><span class="error">import com.kotlindiscord.kord.extensions.commands.converters.impl.user</span>
+</code></pre>
+      </li>
+    </ul>
+  </details>
+  <details id="NoBlankLineBeforeRbrace" open="open">
+    <summary class="rule-container"><span class="rule">NoBlankLineBeforeRbrace: 4 </span><span class="description">Detects blank lines before rbraces</span></summary>
+    <ul>
+      <li><span class="location">C:/Users/Andrey Savich/IdeaProjects/helia-kotlin/src/main/kotlin/helia/extensions/TestExtension.kt:37:1</span><span class="message">Unexpected blank line(s) before &quot;}&quot;</span>
+        <pre><code><span class="lineno">  34 </span>                    message.respond(&quot;Ahem do not try kicking yourself!&quot;)
+<span class="lineno">  35 </span>                } else {
+<span class="lineno">  36 </span>                    message.getGuild().kick(arguments.target.id)
+<span class="lineno">  37 </span><span class="error"></span>
+<span class="lineno">  38 </span><span class="error"></span>
+<span class="lineno">  39 </span><span class="error"></span>
+<span class="lineno">  40 </span><span class="error">                }</span>
+</code></pre>
+      </li>
+      <li><span class="location">C:/Users/Andrey Savich/IdeaProjects/helia-kotlin/src/main/kotlin/helia/extensions/TestExtension.kt:42:1</span><span class="message">Unexpected blank line(s) before &quot;}&quot;</span>
+        <pre><code><span class="lineno">  39 </span>
+<span class="lineno">  40 </span>                }
+<span class="lineno">  41 </span>                message.respond(&quot;*kicking ${realTarget?.toString()} with the reason being ${arguments.reason}*&quot;)
+<span class="lineno">  42 </span><span class="error"></span>
+<span class="lineno">  43 </span><span class="error">            }</span>
+<span class="lineno">  44 </span>        }
+<span class="lineno">  45 </span>
+</code></pre>
+      </li>
+      <li><span class="location">C:/Users/Andrey Savich/IdeaProjects/helia-kotlin/src/main/kotlin/helia/extensions/TestExtension.kt:66:1</span><span class="message">Unexpected blank line(s) before &quot;}&quot;</span>
+        <pre><code><span class="lineno">  63 </span>                    }
+<span class="lineno">  64 </span>                } else {
+<span class="lineno">  65 </span>                    arguments.target.kick(reason = arguments.reason )
+<span class="lineno">  66 </span><span class="error"></span>
+<span class="lineno">  67 </span><span class="error"></span>
+<span class="lineno">  68 </span><span class="error">                }</span>
+<span class="lineno">  69 </span>                publicFollowUp {
+</code></pre>
+      </li>
+      <li><span class="location">C:/Users/Andrey Savich/IdeaProjects/helia-kotlin/src/main/kotlin/helia/extensions/TestExtension.kt:72:1</span><span class="message">Unexpected blank line(s) before &quot;}&quot;</span>
+        <pre><code><span class="lineno">  69 </span>                publicFollowUp {
+<span class="lineno">  70 </span>                    this.content = &quot;*kicking ${realTarget?.toString()} with the reason being ${arguments.reason}*&quot;
+<span class="lineno">  71 </span>                }
+<span class="lineno">  72 </span><span class="error"></span>
+<span class="lineno">  73 </span><span class="error">            }</span>
+<span class="lineno">  74 </span>        }
+<span class="lineno">  75 </span>    }
+</code></pre>
+      </li>
+    </ul>
+  </details>
+  <details id="NoConsecutiveBlankLines" open="open">
+    <summary class="rule-container"><span class="rule">NoConsecutiveBlankLines: 4 </span><span class="description">Reports consecutive blank lines</span></summary>
+    <ul>
+      <li><span class="location">C:/Users/Andrey Savich/IdeaProjects/helia-kotlin/src/main/kotlin/helia/extensions/TestExtension.kt:15:1</span><span class="message">Needless blank line(s)</span>
+        <pre><code><span class="lineno">  12 </span>
+<span class="lineno">  13 </span>import helia.TEST_SERVER_ID
+<span class="lineno">  14 </span>
+<span class="lineno">  15 </span><span class="error"></span>
+<span class="lineno">  16 </span><span class="error">@O</span>ptIn(KordPreview::class)
+<span class="lineno">  17 </span>class TestExtension : Extension() {
+<span class="lineno">  18 </span>    override val name = &quot;test&quot;
+</code></pre>
+      </li>
+      <li><span class="location">C:/Users/Andrey Savich/IdeaProjects/helia-kotlin/src/main/kotlin/helia/extensions/TestExtension.kt:20:1</span><span class="message">Needless blank line(s)</span>
+        <pre><code><span class="lineno">  17 </span>class TestExtension : Extension() {
+<span class="lineno">  18 </span>    override val name = &quot;test&quot;
+<span class="lineno">  19 </span>
+<span class="lineno">  20 </span><span class="error"></span>
+<span class="lineno">  21 </span><span class="error">    ov</span>erride suspend fun setup() {
+<span class="lineno">  22 </span>        command(::kickArgs) {
+<span class="lineno">  23 </span>            name = &quot;kick&quot;
+</code></pre>
+      </li>
+      <li><span class="location">C:/Users/Andrey Savich/IdeaProjects/helia-kotlin/src/main/kotlin/helia/extensions/TestExtension.kt:38:1</span><span class="message">Needless blank line(s)</span>
+        <pre><code><span class="lineno">  35 </span>                } else {
+<span class="lineno">  36 </span>                    message.getGuild().kick(arguments.target.id)
+<span class="lineno">  37 </span>
+<span class="lineno">  38 </span><span class="error"></span>
+<span class="lineno">  39 </span><span class="error"></span>
+<span class="lineno">  40 </span><span class="error">                }</span>
+<span class="lineno">  41 </span>                message.respond(&quot;*kicking ${realTarget?.toString()} with the reason being ${arguments.reason}*&quot;)
+</code></pre>
+      </li>
+      <li><span class="location">C:/Users/Andrey Savich/IdeaProjects/helia-kotlin/src/main/kotlin/helia/extensions/TestExtension.kt:67:1</span><span class="message">Needless blank line(s)</span>
+        <pre><code><span class="lineno">  64 </span>                } else {
+<span class="lineno">  65 </span>                    arguments.target.kick(reason = arguments.reason )
+<span class="lineno">  66 </span>
+<span class="lineno">  67 </span><span class="error"></span>
+<span class="lineno">  68 </span><span class="error">                }</span>
+<span class="lineno">  69 </span>                publicFollowUp {
+<span class="lineno">  70 </span>                    this.content = &quot;*kicking ${realTarget?.toString()} with the reason being ${arguments.reason}*&quot;
+</code></pre>
+      </li>
+    </ul>
+  </details>
+  <details id="NoUnusedImports" open="open">
+    <summary class="rule-container"><span class="rule">NoUnusedImports: 1 </span><span class="description">Detects unused imports</span></summary>
+    <ul>
+      <li><span class="location">C:/Users/Andrey Savich/IdeaProjects/helia-kotlin/src/main/kotlin/helia/extensions/TestExtension.kt:6:1</span><span class="message">Unused import</span>
+        <pre><code><span class="lineno">   3 </span>import com.kotlindiscord.kord.extensions.commands.converters.impl.defaultingCoalescingString
+<span class="lineno">   4 </span>import com.kotlindiscord.kord.extensions.commands.converters.impl.defaultingString
+<span class="lineno">   5 </span>import com.kotlindiscord.kord.extensions.commands.converters.impl.member
+<span class="lineno">   6 </span><span class="error">import com.kotlindiscord.kord.extensions.commands.converters.impl.user</span>
+<span class="lineno">   7 </span>import com.kotlindiscord.kord.extensions.commands.parser.Arguments
+<span class="lineno">   8 </span>import com.kotlindiscord.kord.extensions.commands.slash.AutoAckType
+<span class="lineno">   9 </span>import com.kotlindiscord.kord.extensions.extensions.Extension
+</code></pre>
+      </li>
+    </ul>
+  </details>
+  <details id="SpacingAroundParens" open="open">
+    <summary class="rule-container"><span class="rule">SpacingAroundParens: 1 </span><span class="description">Reports spaces around parentheses</span></summary>
+    <ul>
+      <li><span class="location">C:/Users/Andrey Savich/IdeaProjects/helia-kotlin/src/main/kotlin/helia/extensions/TestExtension.kt:65:68</span><span class="message">Unexpected spacing before &quot;)&quot;</span>
+        <pre><code><span class="lineno">  62 </span>                        content = &quot;Ahem do not try kicking yourself!&quot;
+<span class="lineno">  63 </span>                    }
+<span class="lineno">  64 </span>                } else {
+<span class="lineno">  65 </span>                    arguments.target.kick(reason = arguments.reason<span class="error"> </span>)
+<span class="lineno">  66 </span>
+<span class="lineno">  67 </span>
+<span class="lineno">  68 </span>                }
+</code></pre>
+      </li>
+    </ul>
+  </details>
+  <h3>naming: 2</h3>
+  <details id="ClassNaming" open="open">
+    <summary class="rule-container"><span class="rule">ClassNaming: 2 </span><span class="description">A class or object's name should fit the naming pattern defined in the projects configuration.</span></summary>
+    <ul>
+      <li><span class="location">C:/Users/Andrey Savich/IdeaProjects/helia-kotlin/src/main/kotlin/helia/extensions/TestExtension.kt:77:17</span><span class="message">Class and Object names should match the pattern: [A-Z$][a-zA-Z0-9$]*</span>
+        <pre><code><span class="lineno">  74 </span>        }
+<span class="lineno">  75 </span>    }
+<span class="lineno">  76 </span>
+<span class="lineno">  77 </span>    inner class <span class="error">kickArgs</span> : Arguments() {
+<span class="lineno">  78 </span>        val target by member(&quot;target&quot;, description = &quot;Person you want to kick&quot;)
+<span class="lineno">  79 </span>
+<span class="lineno">  80 </span>        val reason by defaultingCoalescingString(
+</code></pre>
+      </li>
+      <li><span class="location">C:/Users/Andrey Savich/IdeaProjects/helia-kotlin/src/main/kotlin/helia/extensions/TestExtension.kt:88:17</span><span class="message">Class and Object names should match the pattern: [A-Z$][a-zA-Z0-9$]*</span>
+        <pre><code><span class="lineno">  85 </span>        )
+<span class="lineno">  86 </span>    }
+<span class="lineno">  87 </span>
+<span class="lineno">  88 </span>    inner class <span class="error">kickSlashArgs</span> : Arguments() {
+<span class="lineno">  89 </span>        val target by member(&quot;target&quot;, description = &quot;Person you want to kick&quot;)
+<span class="lineno">  90 </span>
+<span class="lineno">  91 </span>        // Coalesced strings are not currently supported by slash commands
+</code></pre>
+      </li>
+    </ul>
+  </details>
+  <h3>style: 2</h3>
+  <details id="SpacingBetweenPackageAndImports" open="open">
+    <summary class="rule-container"><span class="rule">SpacingBetweenPackageAndImports: 1 </span><span class="description">Violation of the package declaration style.</span></summary>
+    <ul>
+      <li><span class="location">C:/Users/Andrey Savich/IdeaProjects/helia-kotlin/src/main/kotlin/helia/extensions/TestExtension.kt:13:28</span><span class="message">There should be exactly one empty line in between the list of imports and the declaration of TestExtension.</span>
+        <pre><code><span class="lineno">  10 </span>import com.kotlindiscord.kord.extensions.utils.respond
+<span class="lineno">  11 </span>import dev.kord.common.annotation.KordPreview
+<span class="lineno">  12 </span>
+<span class="lineno">  13 </span>import helia.TEST_SERVER_ID<span class="error"></span>
+<span class="lineno">  14 </span><span class="error"></span>
+<span class="lineno">  15 </span><span class="error"></span>
+<span class="lineno">  16 </span>@OptIn(KordPreview::class)
+</code></pre>
+      </li>
+    </ul>
+  </details>
+  <details id="UnusedImports" open="open">
+    <summary class="rule-container"><span class="rule">UnusedImports: 1 </span><span class="description">Unused Imports are dead code and should be removed.</span></summary>
+    <ul>
+      <li><span class="location">C:/Users/Andrey Savich/IdeaProjects/helia-kotlin/src/main/kotlin/helia/extensions/TestExtension.kt:6:1</span><span class="message">The import 'com.kotlindiscord.kord.extensions.commands.converters.impl.user' is unused.</span>
+        <pre><code><span class="lineno">   3 </span>import com.kotlindiscord.kord.extensions.commands.converters.impl.defaultingCoalescingString
+<span class="lineno">   4 </span>import com.kotlindiscord.kord.extensions.commands.converters.impl.defaultingString
+<span class="lineno">   5 </span>import com.kotlindiscord.kord.extensions.commands.converters.impl.member
+<span class="lineno">   6 </span><span class="error">import com.kotlindiscord.kord.extensions.commands.converters.impl.user</span>
+<span class="lineno">   7 </span>import com.kotlindiscord.kord.extensions.commands.parser.Arguments
+<span class="lineno">   8 </span>import com.kotlindiscord.kord.extensions.commands.slash.AutoAckType
+<span class="lineno">   9 </span>import com.kotlindiscord.kord.extensions.extensions.Extension
+</code></pre>
+      </li>
+    </ul>
+  </details>
+</div>
+
+
+generated with <a href="https://detekt.github.io/">detekt version 1.18.0</a> on 2021-08-31 08:08:53 UTC.
+
+</body>
+</html>
