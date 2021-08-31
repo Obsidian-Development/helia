@@ -1,5 +1,4 @@
 package helia.extensions
-
 import com.kotlindiscord.kord.extensions.commands.converters.impl.defaultingCoalescingString
 import com.kotlindiscord.kord.extensions.commands.converters.impl.defaultingString
 import com.kotlindiscord.kord.extensions.commands.converters.impl.member
@@ -9,46 +8,50 @@ import com.kotlindiscord.kord.extensions.commands.slash.AutoAckType
 import com.kotlindiscord.kord.extensions.extensions.Extension
 import com.kotlindiscord.kord.extensions.utils.respond
 import dev.kord.common.annotation.KordPreview
+import dev.kord.core.behavior.ban
 import dev.kord.rest.builder.message.create.embed
 
 import helia.TEST_SERVER_ID
 
 
 @OptIn(KordPreview::class)
-class KickCommandH : Extension() {
-    override val name = "kick"
+class BanCommandH : Extension()  {
+    override val name = "ban"
 
 
     override suspend fun setup() {
-        command(::kickArgs) {
-            name = "kick"
-            description = "Ask the bot to kick a user"
+        command(::banArgs) {
+            name = "ban"
+            description = "Ask the bot to ban a user"
 
             check { failIf(event.message.author == null) }
 
             action {
                 // Because of the DslMarker annotation KordEx uses, we need to grab Kord explicitly
-                val kord = this@KickCommandH.kord
+                val kord = this@BanCommandH.kord
 
-                // Don't kick ourselves on request, kick the requested user!
+                // Don't ban ourselves on request, ban the requested user!
                 val realTarget = if (arguments.target.id == kord.selfId) {
-                    message.respond("Ahem do not try kicking yourself!")
+                    message.respond("Ahem do not try baning yourself!")
                 } else {
-                    message.getGuild().kick(arguments.target.id)
+
+                    arguments.target.ban({
+                        reason = arguments.reason
+                    })
                 }
                 message.respond {
                     embed {
-                        title = "Kicking the member"
-                        description = "Reason ${arguments.reason} , Member being kicked ${arguments.target.mention} :"
+                        title = "baning the member"
+                        description = "Reason ${arguments.reason} , Member being baned ${arguments.target.mention} :"
                     }
                 }
 
             }
         }
 
-        slashCommand(::kickSlashArgs) {
-            name = "kick"
-            description = "Ask the bot to kick a user"
+        slashCommand(::banSlashArgs) {
+            name = "ban"
+            description = "Ask the bot to ban a user"
 
             // We want to send a public follow-up - KordEx will handle the rest
             autoAck = AutoAckType.PUBLIC
@@ -57,22 +60,24 @@ class KickCommandH : Extension() {
 
             action {
                 // Because of the DslMarker annotation KordEx uses, we need to grab Kord explicitly
-                val kord = this@KickCommandH.kord
+                val kord = this@BanCommandH.kord
 
 
 
-                // Don't kick ourselves on request, kick the requested user!
+                // Don't ban ourselves on request, ban the requested user!
                 val realTarget = if (arguments.target.id == kord.selfId) {
                     publicFollowUp {
-                        content = "Ahem do not try kicking yourself!"
+                        content = "Ahem do not try baning yourself!"
                     }
                 } else {
-                    arguments.target.kick(reason = arguments.reason )
+                    arguments.target.ban({
+                        reason = arguments.reason
+                    })
                 }
                 publicFollowUp {
                     embed {
-                        title = "Kicking the member"
-                        description = "Reason ${arguments.reason} , Member being kicked ${arguments.target.mention} :"
+                        title = "baning the member"
+                        description = "Reason ${arguments.reason} , Member being baned ${arguments.target.mention} :"
                     }
                 }
 
@@ -80,26 +85,26 @@ class KickCommandH : Extension() {
         }
     }
 
-    inner class kickArgs : Arguments() {
-        val target by member("target", description = "Person you want to kick")
+    inner class banArgs : Arguments() {
+        val target by member("target", description = "Person you want to ban")
 
         val reason by defaultingCoalescingString(
             "reason",
 
             defaultValue = "Nothing",
-            description = "What's the reason you want to kick a person for"
+            description = "What's the reason you want to ban a person for"
         )
     }
 
-    inner class kickSlashArgs : Arguments() {
-        val target by member("target", description = "Person you want to kick")
+    inner class banSlashArgs : Arguments() {
+        val target by member("target", description = "Person you want to ban")
 
         // Coalesced strings are not currently supported by slash commands
         val reason by defaultingString(
             "reason",
 
             defaultValue = "Nothing",
-            description = "What's the reason you want to kick a person for"
+            description = "What's the reason you want to ban a person for"
         )
     }
 }
