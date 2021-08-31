@@ -1,5 +1,4 @@
 package helia.extensions
-
 import com.kotlindiscord.kord.extensions.commands.converters.impl.defaultingCoalescingString
 import com.kotlindiscord.kord.extensions.commands.converters.impl.defaultingString
 import com.kotlindiscord.kord.extensions.commands.converters.impl.member
@@ -15,5 +14,5 @@ import dev.kord.rest.builder.message.create.embed
 import helia.TEST_SERVER_ID
 
 @OptIn(KordPreview::class)
-class CalculatorCommandH : Extension()   {
+class GuildCommandHCommandH : Extension()   {
 }
