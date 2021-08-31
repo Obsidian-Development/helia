@@ -32,7 +32,7 @@ class BanCommandH : Extension()  {
 
                 // Don't ban ourselves on request, ban the requested user!
                 val realTarget = if (arguments.target.id == kord.selfId) {
-                    message.respond("Ahem do not try baning yourself!")
+                    message.respond("Ahem do not try banning yourself!")
                 } else {
 
                     arguments.target.ban({
@@ -42,7 +42,7 @@ class BanCommandH : Extension()  {
                 message.respond {
                     embed {
                         title = "baning the member"
-                        description = "Reason ${arguments.reason} , Member being baned ${arguments.target.mention} :"
+                        description = "Reason ${arguments.reason} , Member being banned ${arguments.target.mention} :"
                     }
                 }
 
@@ -67,7 +67,7 @@ class BanCommandH : Extension()  {
                 // Don't ban ourselves on request, ban the requested user!
                 val realTarget = if (arguments.target.id == kord.selfId) {
                     publicFollowUp {
-                        content = "Ahem do not try baning yourself!"
+                        content = "Ahem do not try banning yourself!"
                     }
                 } else {
                     arguments.target.ban({
@@ -77,7 +77,7 @@ class BanCommandH : Extension()  {
                 publicFollowUp {
                     embed {
                         title = "baning the member"
-                        description = "Reason ${arguments.reason} , Member being baned ${arguments.target.mention} :"
+                        description = "Reason ${arguments.reason} , Member being banned ${arguments.target.mention} :"
                     }
                 }
 
