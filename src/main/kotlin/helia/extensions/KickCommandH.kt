@@ -53,7 +53,7 @@ class KickCommandH : Extension() {
             // We want to send a public follow-up - KordEx will handle the rest
             autoAck = AutoAckType.PUBLIC
 
-            guild(TEST_SERVER_ID)  // Otherwise it'll take an hour to update
+            //guild(TEST_SERVER_ID)  // it'll take an hour to show publically
 
             action {
                 // Because of the DslMarker annotation KordEx uses, we need to grab Kord explicitly
