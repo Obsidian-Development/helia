@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project version="4">
-  <component name="ExportableFileheliaSettings">
-    <default_helias>
-      <helia name="KordEx Extension.kt" file-name="${DIR_PATH}/${NAME}Extension" reformat="true" live-helia-enabled="false" />
-    </default_helias>
-  </component>
-</project>
