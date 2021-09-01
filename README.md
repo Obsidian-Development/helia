@@ -11,7 +11,8 @@
 <img align="center" src="https://raw.githubusercontent.com/pieckenst/helia/current/bitmapm.png" height="100" width="320">
 </p>
 
-[![forthebadge](https://forthebadge.com/images/badges/made-with-python.svg)](https://forthebadge.com)
+[![Kotlin](https://img.shields.io/badge/kotlin-%230095D5.svg?style=for-the-badge&logo=kotlin&logoColor=white)](https://kotlinlang.org/)
+![IntelliJ IDEA](https://img.shields.io/badge/IntelliJIDEA-000000.svg?style=for-the-badge&logo=intellij-idea&logoColor=white)
 [![GitHub last commit](https://img.shields.io/github/last-commit/pieckenst/helia?style=for-the-badge)](https://github.com/pieckenst/helia/commits/current)
 [![GitHub last commit (branch)](https://img.shields.io/github/last-commit/pieckenst/helia/canary?color=ff4500&label=CANARY%3ALAST%20COMMIT&style=for-the-badge)](https://github.com/pieckenst/helia/commits/canary)
 [![GitHub](https://img.shields.io/github/license/pieckenst/helia?style=for-the-badge)](https://github.com/pieckenst/helia/blob/master/LICENSE)
@@ -21,8 +22,7 @@
 <h3 align="center">An open-source music and moderation bot made for your pleasure</h3>
 <h3 align="center">Main bot features</h3>
 <h3 align="center"> Music </h3>
-<h3 align="center"> Moderation </h3>
-<h3 align="center"> Information Commands and wikipedia Search</h3>
+<h3 align="center"> Moderation ( Work in progress) </h3>
 </div>
 
 Moderation features such as ban, kick, purge, mute and unmute. You can also view
