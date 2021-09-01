@@ -15,5 +15,6 @@ import dev.kord.rest.builder.message.create.embed
 import helia.TEST_SERVER_ID
 
 @OptIn(KordPreview::class)
-class CalculatorCommandH : Extension()   {
+abstract class CalculatorCommandH : Extension()   {
+    override val name = "calculator"
 }
