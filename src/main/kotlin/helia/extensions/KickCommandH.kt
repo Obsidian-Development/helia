@@ -28,7 +28,7 @@ class KickCommandH : Extension() {
 
 
 
-            check { hasPermission(Permission.KickMembers) }
+            check { hasPermission(Permission.KickMembers); message= "You are missing the required permissions"  }
 
             action {
                 // Because of the DslMarker annotation KordEx uses, we need to grab Kord explicitly
@@ -59,7 +59,8 @@ class KickCommandH : Extension() {
 
             //guild(TEST_SERVER_ID)  // it'll take an hour to show publically
 
-            check { hasPermission(Permission.KickMembers) }
+            check { hasPermission(Permission.KickMembers) ; message= "You are missing the required permissions"}
+
 
             action {
                 // Because of the DslMarker annotation KordEx uses, we need to grab Kord explicitly
