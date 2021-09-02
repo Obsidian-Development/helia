@@ -59,6 +59,8 @@ class KickCommandH : Extension() {
 
             //guild(TEST_SERVER_ID)  // it'll take an hour to show publically
 
+            check { hasPermission(Permission.KickMembers) }
+
             action {
                 // Because of the DslMarker annotation KordEx uses, we need to grab Kord explicitly
                 val kord = this@KickCommandH.kord

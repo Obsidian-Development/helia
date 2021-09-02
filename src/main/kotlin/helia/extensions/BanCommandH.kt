@@ -59,6 +59,7 @@ class BanCommandH : Extension()  {
             autoAck = AutoAckType.PUBLIC
 
             //guild(TEST_SERVER_ID)  // it'll take an hour to show publically
+            check { hasPermission(Permission.BanMembers) }
 
             action {
                 // Because of the DslMarker annotation KordEx uses, we need to grab Kord explicitly
