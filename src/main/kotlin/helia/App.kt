@@ -11,6 +11,7 @@ import dev.kord.common.entity.Snowflake
 import helia.extensions.KickCommandH
 import helia.extensions.BanCommandH
 import helia.extensions.GuildCommandH
+import helia.extensions.InviteCommandH
 
 val TEST_SERVER_ID = Snowflake(
     env("TEST_SERVER")?.toLong()  // Get the test server ID from the env vars or a .env file
@@ -44,6 +45,7 @@ suspend fun main() {
             add(::KickCommandH)
             add(::BanCommandH)
             add(::GuildCommandH)
+            add(::InviteCommandH)
         }
         presence {
             status = PresenceStatus.Online

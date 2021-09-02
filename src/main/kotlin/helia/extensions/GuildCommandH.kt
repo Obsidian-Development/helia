@@ -58,6 +58,7 @@ class GuildCommandH : Extension()   {
                             value = "${message.getGuild().memberCount}"
                             inline = true
                         }
+
                     }
                 }
 
@@ -106,6 +107,7 @@ class GuildCommandH : Extension()   {
                             value = "${guild!!.memberCount}"
                             inline = true
                         }
+
                     }
                 }
 
