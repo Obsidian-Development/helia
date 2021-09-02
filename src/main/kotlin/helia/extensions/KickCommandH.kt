@@ -1,5 +1,6 @@
 package helia.extensions
 
+import com.kotlindiscord.kord.extensions.checks.hasPermission
 import com.kotlindiscord.kord.extensions.commands.converters.impl.defaultingCoalescingString
 import com.kotlindiscord.kord.extensions.commands.converters.impl.defaultingString
 import com.kotlindiscord.kord.extensions.commands.converters.impl.member
@@ -9,6 +10,7 @@ import com.kotlindiscord.kord.extensions.commands.slash.AutoAckType
 import com.kotlindiscord.kord.extensions.extensions.Extension
 import com.kotlindiscord.kord.extensions.utils.respond
 import dev.kord.common.annotation.KordPreview
+import dev.kord.common.entity.Permission
 import dev.kord.rest.builder.message.create.embed
 
 import helia.TEST_SERVER_ID
@@ -24,7 +26,9 @@ class KickCommandH : Extension() {
             name = "kick"
             description = "Ask the bot to kick a user"
 
-            check { failIf(event.message.author == null) }
+
+
+            check { hasPermission(Permission.KickMembers) }
 
             action {
                 // Because of the DslMarker annotation KordEx uses, we need to grab Kord explicitly
