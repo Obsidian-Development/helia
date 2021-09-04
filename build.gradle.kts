@@ -61,6 +61,11 @@ tasks.jar {
         )
     }
 }
+tasks.getByName("check") {
+    this.setDependsOn(this.dependsOn.filterNot {
+        it is TaskProvider<*> && it.name == "detekt"
+    })
+}
 
 java {
     // Current LTS version of Java
@@ -68,7 +73,4 @@ java {
     targetCompatibility = JavaVersion.VERSION_11
 }
 
-detekt {
-    buildUponDefaultConfig = true
-    config = rootProject.files("detekt.yml")
-}
+
