@@ -30,20 +30,24 @@ class CalculatorCommandH : Extension()   {
 
                 message.respond {
                     embed {
-                        title = "Bot invite links"
-                        description = "Here you can see bot invite links"
+                        title = "test"
+                        description = "test"
                         components() {
-                            linkButton {
-                                label = "Recommended permissions invite"  // You can provide both a label and emoji if you like
-                                emoji("🔗")
+                            interactiveButton {
+                                label = "test"
+                                // Style defaults to `Primary`
 
-                                url = "https://discord.com/api/oauth2/authorize?client_id=666304823934844938&permissions=204859462&scope=applications.commands%20bot"
+                                action { // Easy button actions
+                                    respond("Button one pressed!")
+                                }
                             }
-                            linkButton {
-                                label = "Minimal permissions invite"  // You can provide both a label and emoji if you like
-                                emoji("🔗")
+                            interactiveButton {
+                                label = "testt"
+                                // Style defaults to `Primary`
 
-                                url = "https://discord.com/oauth2/authorize?client_id=666304823934844938&scope=bot&permissions=204557314"
+                                action { // Easy button actions
+                                    respond("Button two pressed!")
+                                }
                             }
                         }
 
@@ -69,21 +73,25 @@ class CalculatorCommandH : Extension()   {
 
                 publicFollowUp {
                     embed {
-                        title = "Bot invite links"
-                        description = "Here you can see bot invite links"
+                        title = "test"
+                        description = "test"
                     }
                     components() {
-                        linkButton {
-                            label = "Recommended permissions invite"  // You can provide both a label and emoji if you like
-                            emoji("🔗")
+                        interactiveButton {
+                            label = "test"
+                            // Style defaults to `Primary`
 
-                            url = "https://discord.com/api/oauth2/authorize?client_id=666304823934844938&permissions=204859462&scope=applications.commands%20bot"
+                            action { // Easy button actions
+                                respond("Button one pressed!")
+                            }
                         }
-                        linkButton {
-                            label = "Minimal permissions invite"  // You can provide both a label and emoji if you like
-                            emoji("🔗")
+                        interactiveButton {
+                            label = "testt"
+                            // Style defaults to `Primary`
 
-                            url = "https://discord.com/oauth2/authorize?client_id=666304823934844938&scope=bot&permissions=204557314"
+                            action { // Easy button actions
+                                respond("Button two pressed!")
+                            }
                         }
                     }
                 }
