@@ -9,11 +9,13 @@ import com.kotlindiscord.kord.extensions.commands.slash.AutoAckType
 import com.kotlindiscord.kord.extensions.extensions.Extension
 import com.kotlindiscord.kord.extensions.utils.respond
 import dev.kord.common.annotation.KordPreview
+import dev.kord.core.behavior.edit
 import dev.kord.core.behavior.ban
 import dev.kord.rest.builder.message.create.embed
 
 
 import helia.TEST_SERVER_ID
+
 import org.codehaus.groovy.ast.expr.Expression
 import javax.script.ScriptEngineManager
 
@@ -37,7 +39,7 @@ class CalculatorCommandH : Extension()   {
                 message.respond {
                     embed {
                         title = "Calculator"
-                        description = "${expression}"
+                        description = "this description value cannot be edited? "
                         components() {
                             interactiveButton {
                                 label = "1"
@@ -45,7 +47,8 @@ class CalculatorCommandH : Extension()   {
 
                                 action { // Easy button actions
                                     expression += "1"
-                                    respond("${expression}")
+                                    respond("```${expression}```")
+
                                 }
                             }
                             interactiveButton {
@@ -54,7 +57,7 @@ class CalculatorCommandH : Extension()   {
 
                                 action { // Easy button actions
                                     expression += "2"
-                                    respond("${expression}")
+                                    respond("```${expression}```")
                                 }
                             }
                             interactiveButton {
@@ -63,7 +66,7 @@ class CalculatorCommandH : Extension()   {
 
                                 action { // Easy button actions
                                     expression += "3"
-                                    respond("${expression}")
+                                    respond("```${expression}```")
                                 }
                             }
                             interactiveButton {
@@ -72,7 +75,7 @@ class CalculatorCommandH : Extension()   {
 
                                 action { // Easy button actions
                                     expression += "*"
-                                    respond("${expression}")
+                                    respond("```${expression}```")
                                 }
                             }
                             interactiveButton {
@@ -80,7 +83,7 @@ class CalculatorCommandH : Extension()   {
                                 // Style defaults to `Primary`
 
                                 action { // Easy button actions
-                                    respond("Button five pressed!")
+                                    respond("If embeds were editable this would remove it")
                                 }
                             }
                             interactiveButton {
@@ -89,7 +92,7 @@ class CalculatorCommandH : Extension()   {
 
                                 action { // Easy button actions
                                     expression += "4"
-                                    respond("${expression}")
+                                    respond("```${expression}```")
                                 }
                             }
                             interactiveButton {
@@ -98,7 +101,7 @@ class CalculatorCommandH : Extension()   {
 
                                 action { // Easy button actions
                                     expression += "5"
-                                    respond("${expression}")
+                                    respond("```${expression}```")
                                 }
                             }
                             interactiveButton {
@@ -107,7 +110,7 @@ class CalculatorCommandH : Extension()   {
 
                                 action { // Easy button actions
                                     expression += "6"
-                                    respond("${expression}")
+                                    respond("```${expression}```")
                                 }
                             }
                             interactiveButton {
@@ -116,7 +119,7 @@ class CalculatorCommandH : Extension()   {
 
                                 action { // Easy button actions
                                     expression += "/"
-                                    respond("${expression}")
+                                    respond("```${expression}```")
                                 }
                             }
                             interactiveButton {
@@ -133,7 +136,7 @@ class CalculatorCommandH : Extension()   {
 
                                 action { // Easy button actions
                                     expression += "7"
-                                    respond("${expression}")
+                                    respond("```${expression}```")
                                 }
                             }
                             interactiveButton {
@@ -142,7 +145,7 @@ class CalculatorCommandH : Extension()   {
 
                                 action { // Easy button actions
                                     expression += "8"
-                                    respond("${expression}")
+                                    respond("```${expression}```")
                                 }
                             }
                             interactiveButton {
@@ -151,7 +154,7 @@ class CalculatorCommandH : Extension()   {
 
                                 action { // Easy button actions
                                     expression += "9"
-                                    respond("${expression}")
+                                    respond("```${expression}```")
                                 }
                             }
                             interactiveButton {
@@ -160,7 +163,7 @@ class CalculatorCommandH : Extension()   {
 
                                 action { // Easy button actions
                                     expression += "+"
-                                    respond("${expression}")
+                                    respond("```${expression}```")
                                 }
                             }
                             interactiveButton {
@@ -168,7 +171,8 @@ class CalculatorCommandH : Extension()   {
                                 // Style defaults to `Primary`
 
                                 action { // Easy button actions
-                                    respond("Button fivteen pressed!")
+                                    expression = ""
+                                    respond("Cleared the expression")
                                 }
                             }
                             interactiveButton {
@@ -177,7 +181,7 @@ class CalculatorCommandH : Extension()   {
 
                                 action { // Easy button actions
                                     expression += "00"
-                                    respond("${expression}")
+                                    respond("```${expression}```")
                                 }
                             }
                             interactiveButton {
@@ -186,7 +190,7 @@ class CalculatorCommandH : Extension()   {
 
                                 action { // Easy button actions
                                     expression += "0"
-                                    respond("${expression}")
+                                    respond("```${expression}```")
                                 }
                             }
                             interactiveButton {
@@ -195,7 +199,7 @@ class CalculatorCommandH : Extension()   {
 
                                 action { // Easy button actions
                                     expression += "."
-                                    respond("${expression}")
+                                    respond("```${expression}```")
                                 }
                             }
                             interactiveButton {
@@ -204,7 +208,7 @@ class CalculatorCommandH : Extension()   {
 
                                 action { // Easy button actions
                                     expression += "-"
-                                    respond("${expression}")
+                                    respond("```${expression}```")
                                 }
                             }
                             interactiveButton {
@@ -214,7 +218,7 @@ class CalculatorCommandH : Extension()   {
                                 action { // Easy button actions
                                     var result = e.eval(expression)
                                     var formatedres = result.toString()
-                                    respond("${formatedres}")
+                                    respond("```${formatedres}```")
 
                                 }
                             }
@@ -224,7 +228,7 @@ class CalculatorCommandH : Extension()   {
 
                                 action { // Easy button actions
                                     expression += "("
-                                    respond("${expression}")
+                                    respond("```${expression}```")
                                 }
                             }
                             interactiveButton {
@@ -233,7 +237,7 @@ class CalculatorCommandH : Extension()   {
 
                                 action { // Easy button actions
                                     expression += ")"
-                                    respond("${expression}")
+                                    respond("```${expression}```")
                                 }
                             }
                             interactiveButton {
@@ -267,12 +271,14 @@ class CalculatorCommandH : Extension()   {
                 val kord = this@CalculatorCommandH.kord
                 val e = ScriptEngineManager().getEngineByName("js")
                 var expression = ""
+                lateinit var descriptionem: String
 
 
                 publicFollowUp {
-                    embed {
-                        title = "test"
-                        description = "test"
+                    var thisemb = embed {
+                        title = "Calculator"
+                        description = "this description value cannot be edited? "
+
                     }
                     components() {
                         interactiveButton {
@@ -281,7 +287,8 @@ class CalculatorCommandH : Extension()   {
 
                             action { // Easy button actions
                                 expression += "1"
-                                respond("${expression}")
+                                respond("```${expression}```")
+
                             }
                         }
                         interactiveButton {
@@ -290,7 +297,7 @@ class CalculatorCommandH : Extension()   {
 
                             action { // Easy button actions
                                 expression += "2"
-                                respond("${expression}")
+                                respond("```${expression}```")
                             }
                         }
                         interactiveButton {
@@ -299,7 +306,7 @@ class CalculatorCommandH : Extension()   {
 
                             action { // Easy button actions
                                 expression += "3"
-                                respond("${expression}")
+                                respond("```${expression}```")
                             }
                         }
                         interactiveButton {
@@ -308,7 +315,7 @@ class CalculatorCommandH : Extension()   {
 
                             action { // Easy button actions
                                 expression += "*"
-                                respond("${expression}")
+                                respond("```${expression}```")
                             }
                         }
                         interactiveButton {
@@ -316,7 +323,7 @@ class CalculatorCommandH : Extension()   {
                             // Style defaults to `Primary`
 
                             action { // Easy button actions
-                                respond("Button five pressed!")
+                                respond("If embeds were editable this would remove it")
                             }
                         }
                         interactiveButton {
@@ -325,7 +332,7 @@ class CalculatorCommandH : Extension()   {
 
                             action { // Easy button actions
                                 expression += "4"
-                                respond("${expression}")
+                                respond("```${expression}```")
                             }
                         }
                         interactiveButton {
@@ -334,7 +341,7 @@ class CalculatorCommandH : Extension()   {
 
                             action { // Easy button actions
                                 expression += "5"
-                                respond("${expression}")
+                                respond("```${expression}```")
                             }
                         }
                         interactiveButton {
@@ -343,7 +350,7 @@ class CalculatorCommandH : Extension()   {
 
                             action { // Easy button actions
                                 expression += "6"
-                                respond("${expression}")
+                                respond("```${expression}```")
                             }
                         }
                         interactiveButton {
@@ -352,7 +359,7 @@ class CalculatorCommandH : Extension()   {
 
                             action { // Easy button actions
                                 expression += "/"
-                                respond("${expression}")
+                                respond("```${expression}```")
                             }
                         }
                         interactiveButton {
@@ -369,7 +376,7 @@ class CalculatorCommandH : Extension()   {
 
                             action { // Easy button actions
                                 expression += "7"
-                                respond("${expression}")
+                                respond("```${expression}```")
                             }
                         }
                         interactiveButton {
@@ -378,7 +385,7 @@ class CalculatorCommandH : Extension()   {
 
                             action { // Easy button actions
                                 expression += "8"
-                                respond("${expression}")
+                                respond("```${expression}```")
                             }
                         }
                         interactiveButton {
@@ -387,7 +394,7 @@ class CalculatorCommandH : Extension()   {
 
                             action { // Easy button actions
                                 expression += "9"
-                                respond("${expression}")
+                                respond("```${expression}```")
                             }
                         }
                         interactiveButton {
@@ -396,7 +403,7 @@ class CalculatorCommandH : Extension()   {
 
                             action { // Easy button actions
                                 expression += "+"
-                                respond("${expression}")
+                                respond("```${expression}```")
                             }
                         }
                         interactiveButton {
@@ -404,7 +411,8 @@ class CalculatorCommandH : Extension()   {
                             // Style defaults to `Primary`
 
                             action { // Easy button actions
-                                respond("Button fivteen pressed!")
+                                expression = ""
+                                respond("Cleared the expression")
                             }
                         }
                         interactiveButton {
@@ -413,7 +421,7 @@ class CalculatorCommandH : Extension()   {
 
                             action { // Easy button actions
                                 expression += "00"
-                                respond("${expression}")
+                                respond("```${expression}```")
                             }
                         }
                         interactiveButton {
@@ -422,7 +430,7 @@ class CalculatorCommandH : Extension()   {
 
                             action { // Easy button actions
                                 expression += "0"
-                                respond("${expression}")
+                                respond("```${expression}```")
                             }
                         }
                         interactiveButton {
@@ -431,7 +439,7 @@ class CalculatorCommandH : Extension()   {
 
                             action { // Easy button actions
                                 expression += "."
-                                respond("${expression}")
+                                respond("```${expression}```")
                             }
                         }
                         interactiveButton {
@@ -440,7 +448,7 @@ class CalculatorCommandH : Extension()   {
 
                             action { // Easy button actions
                                 expression += "-"
-                                respond("${expression}")
+                                respond("```${expression}```")
                             }
                         }
                         interactiveButton {
@@ -450,7 +458,7 @@ class CalculatorCommandH : Extension()   {
                             action { // Easy button actions
                                 var result = e.eval(expression)
                                 var formatedres = result.toString()
-                                respond("${formatedres}")
+                                respond("```${formatedres}```")
 
                             }
                         }
@@ -460,7 +468,7 @@ class CalculatorCommandH : Extension()   {
 
                             action { // Easy button actions
                                 expression += "("
-                                respond("${expression}")
+                                respond("```${expression}```")
                             }
                         }
                         interactiveButton {
@@ -469,7 +477,7 @@ class CalculatorCommandH : Extension()   {
 
                             action { // Easy button actions
                                 expression += ")"
-                                respond("${expression}")
+                                respond("```${expression}```")
                             }
                         }
                         interactiveButton {
