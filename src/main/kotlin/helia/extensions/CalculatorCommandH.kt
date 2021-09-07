@@ -13,6 +13,7 @@ import dev.kord.common.entity.ButtonStyle
 import dev.kord.core.behavior.edit
 import dev.kord.core.behavior.ban
 import dev.kord.core.behavior.interaction.edit
+import dev.kord.core.entity.Message
 import dev.kord.core.entity.interaction.PublicFollowupMessage
 import dev.kord.rest.builder.message.create.embed
 import dev.kord.rest.builder.message.modify.embed
@@ -38,92 +39,158 @@ class CalculatorCommandH : Extension()   {
                 val kord = this@CalculatorCommandH.kord
                 val e = ScriptEngineManager().getEngineByName("js")
                 var expression = ""
+                lateinit var createmessage : Message
 
 
-                message.respond {
+                createmessage = message.respond {
                     embed {
                         title = "Calculator"
-                        description = "this description value cannot be edited? "
+                        description = "```PREP TEXT```"
                         components() {
+
                             interactiveButton {
                                 label = "1"
                                 style = ButtonStyle.Secondary
+                                deferredAck = true
 
                                 action { // Easy button actions
                                     expression += "1"
-                                    respond("```${expression}```")
+                                    createmessage.edit{
+                                        this.embed {
+                                            title = "Calculator"
+                                            description = "```${expression}```"
+
+                                        }
+                                    }
 
                                 }
                             }
                             interactiveButton {
                                 label = "2"
                                 style = ButtonStyle.Secondary
+                                deferredAck = true
 
                                 action { // Easy button actions
                                     expression += "2"
-                                    respond("```${expression}```")
+                                    createmessage.edit{
+                                        this.embed {
+                                            title = "Calculator"
+                                            description = "```${expression}```"
+
+                                        }
+                                    }
                                 }
                             }
                             interactiveButton {
                                 label = "3"
                                 style = ButtonStyle.Secondary
+                                deferredAck = true
 
                                 action { // Easy button actions
                                     expression += "3"
-                                    respond("```${expression}```")
+                                    createmessage.edit{
+                                        this.embed {
+                                            title = "Calculator"
+                                            description = "```${expression}```"
+
+                                        }
+                                    }
                                 }
                             }
                             interactiveButton {
                                 label = "*"
                                 style = ButtonStyle.Danger
+                                deferredAck = true
 
                                 action { // Easy button actions
                                     expression += "*"
-                                    respond("```${expression}```")
+                                    createmessage.edit{
+                                        this.embed {
+                                            title = "Calculator"
+                                            description = "```${expression}```"
+
+                                        }
+                                    }
                                 }
                             }
                             interactiveButton {
                                 label = "EXIT"
                                 style = ButtonStyle.Success
+                                deferredAck = true
 
                                 action { // Easy button actions
-                                    respond("If embeds were editable this would remove it")
+                                    createmessage.edit{
+                                        this.embed {
+                                            title = "Exiting embed"
+                                            description = "```Closing calculator```"
+                                        }
+                                        components = mutableListOf()
+
+                                    }
                                 }
                             }
                             interactiveButton {
                                 label = "4"
                                 style = ButtonStyle.Secondary
+                                deferredAck = true
 
                                 action { // Easy button actions
                                     expression += "4"
-                                    respond("```${expression}```")
+                                    createmessage.edit{
+                                        this.embed {
+                                            title = "Calculator"
+                                            description = "```${expression}```"
+
+                                        }
+                                    }
                                 }
                             }
                             interactiveButton {
                                 label = "5"
                                 style = ButtonStyle.Secondary
+                                deferredAck = true
 
                                 action { // Easy button actions
                                     expression += "5"
-                                    respond("```${expression}```")
+                                    createmessage.edit{
+                                        this.embed {
+                                            title = "Calculator"
+                                            description = "```${expression}```"
+
+                                        }
+                                    }
                                 }
                             }
                             interactiveButton {
                                 label = "6"
                                 style = ButtonStyle.Secondary
+                                deferredAck = true
 
                                 action { // Easy button actions
                                     expression += "6"
-                                    respond("```${expression}```")
+                                    createmessage.edit{
+                                        this.embed {
+                                            title = "Calculator"
+                                            description = "```${expression}```"
+
+                                        }
+                                    }
                                 }
                             }
                             interactiveButton {
                                 label = "÷"
                                 style = ButtonStyle.Danger
+                                deferredAck = true
 
                                 action { // Easy button actions
                                     expression += "/"
-                                    respond("```${expression}```")
+                                    createmessage.edit{
+                                        this.embed {
+                                            title = "Calculator"
+                                            description = "```${expression}```"
+
+                                        }
+                                    }
                                 }
                             }
                             interactiveButton {
@@ -137,93 +204,165 @@ class CalculatorCommandH : Extension()   {
                             interactiveButton {
                                 label = "7"
                                 style = ButtonStyle.Secondary
+                                deferredAck = true
 
                                 action { // Easy button actions
                                     expression += "7"
-                                    respond("```${expression}```")
+                                    createmessage.edit{
+                                        this.embed {
+                                            title = "Calculator"
+                                            description = "```${expression}```"
+
+                                        }
+                                    }
                                 }
                             }
                             interactiveButton {
                                 label = "8"
                                 style = ButtonStyle.Secondary
+                                deferredAck = true
 
                                 action { // Easy button actions
                                     expression += "8"
-                                    respond("```${expression}```")
+                                    createmessage.edit{
+                                        this.embed {
+                                            title = "Calculator"
+                                            description = "```${expression}```"
+
+                                        }
+                                    }
                                 }
                             }
                             interactiveButton {
                                 label = "9"
                                 style = ButtonStyle.Secondary
+                                deferredAck = true
 
                                 action { // Easy button actions
                                     expression += "9"
-                                    respond("```${expression}```")
+                                    createmessage.edit{
+                                        this.embed {
+                                            title = "Calculator"
+                                            description = "```${expression}```"
+
+                                        }
+                                    }
                                 }
                             }
                             interactiveButton {
                                 label = "+"
                                 style = ButtonStyle.Danger
+                                deferredAck = true
 
                                 action { // Easy button actions
                                     expression += "+"
-                                    respond("```${expression}```")
+                                    createmessage.edit{
+                                        this.embed {
+                                            title = "Calculator"
+                                            description = "```${expression}```"
+
+                                        }
+                                    }
                                 }
                             }
                             interactiveButton {
                                 label = "Clear"
                                 style = ButtonStyle.Success
 
+
                                 action { // Easy button actions
                                     expression = ""
+                                    createmessage.edit{
+                                        this.embed {
+                                            title = "Calculator"
+                                            description = "```${expression}```"
+
+                                        }
+                                    }
                                     respond("Cleared the expression")
                                 }
                             }
                             interactiveButton {
                                 label = "00"
                                 style = ButtonStyle.Secondary
+                                deferredAck = true
 
                                 action { // Easy button actions
                                     expression += "00"
-                                    respond("```${expression}```")
+                                    createmessage.edit{
+                                        this.embed {
+                                            title = "Calculator"
+                                            description = "```${expression}```"
+
+                                        }
+                                    }
                                 }
                             }
                             interactiveButton {
                                 label = "0"
                                 style = ButtonStyle.Secondary
+                                deferredAck = true
 
                                 action { // Easy button actions
                                     expression += "0"
-                                    respond("```${expression}```")
+                                    createmessage.edit{
+                                        this.embed {
+                                            title = "Calculator"
+                                            description = "```${expression}```"
+
+                                        }
+                                    }
                                 }
                             }
                             interactiveButton {
                                 label = "."
                                 style = ButtonStyle.Secondary
+                                deferredAck = true
 
                                 action { // Easy button actions
                                     expression += "."
-                                    respond("```${expression}```")
+                                    createmessage.edit{
+                                        this.embed {
+                                            title = "Calculator"
+                                            description = "```${expression}```"
+
+                                        }
+                                    }
                                 }
                             }
                             interactiveButton {
                                 label = "-"
                                 style = ButtonStyle.Danger
+                                deferredAck = true
 
                                 action { // Easy button actions
                                     expression += "-"
-                                    respond("```${expression}```")
+                                    createmessage.edit{
+                                        this.embed {
+                                            title = "Calculator"
+                                            description = "```${expression}```"
+
+                                        }
+                                    }
                                 }
                             }
                             interactiveButton {
                                 label = "="
                                 style = ButtonStyle.Success
+                                deferredAck = true
 
                                 action { // Easy button actions
                                     var result = e.eval(expression)
                                     var formatedres = result.toString()
                                     expression = formatedres
-                                    respond("```${formatedres}```")
+                                    createmessage.edit{
+                                        this.embed {
+                                            title = "Calculator"
+                                            description = "```${formatedres}```"
+
+                                        }
+                                    }
+
 
 
                                 }
@@ -231,19 +370,33 @@ class CalculatorCommandH : Extension()   {
                             interactiveButton {
                                 label = "("
                                 style = ButtonStyle.Secondary
+                                deferredAck = true
 
                                 action { // Easy button actions
                                     expression += "("
-                                    respond("```${expression}```")
+                                    createmessage.edit{
+                                        this.embed {
+                                            title = "Calculator"
+                                            description = "```${expression}```"
+
+                                        }
+                                    }
                                 }
                             }
                             interactiveButton {
                                 label = ")"
                                 style = ButtonStyle.Secondary
+                                deferredAck = true
 
                                 action { // Easy button actions
                                     expression += ")"
-                                    respond("```${expression}```")
+                                    createmessage.edit{
+                                        this.embed {
+                                            title = "Calculator"
+                                            description = "```${expression}```"
+
+                                        }
+                                    }
                                 }
                             }
                             interactiveButton {
@@ -270,6 +423,7 @@ class CalculatorCommandH : Extension()   {
             // We want to send a public follow-up - KordEx will handle the rest
             autoAck = AutoAckType.PUBLIC
 
+
             //invite(TEST_SERVER_ID)  // it'll take an hour to show publically
 
             action {
@@ -290,9 +444,11 @@ class CalculatorCommandH : Extension()   {
 
                     }
                     components() {
+
                         interactiveButton {
                             label = "1"
                             style = ButtonStyle.Secondary
+                            deferredAck = true
 
                             action { // Easy button actions
                                 expression += "1"
@@ -309,6 +465,7 @@ class CalculatorCommandH : Extension()   {
                         interactiveButton {
                             label = "2"
                             style = ButtonStyle.Secondary
+                            deferredAck = true
 
                             action { // Easy button actions
                                 expression += "2"
@@ -324,6 +481,7 @@ class CalculatorCommandH : Extension()   {
                         interactiveButton {
                             label = "3"
                             style = ButtonStyle.Secondary
+                            deferredAck = true
 
                             action { // Easy button actions
                                 expression += "3"
@@ -339,6 +497,7 @@ class CalculatorCommandH : Extension()   {
                         interactiveButton {
                             label = "*"
                             style = ButtonStyle.Danger
+                            deferredAck = true
 
                             action { // Easy button actions
                                 expression += "*"
@@ -354,6 +513,7 @@ class CalculatorCommandH : Extension()   {
                         interactiveButton {
                             label = "EXIT"
                             style = ButtonStyle.Success
+                            deferredAck = true
 
                             action { // Easy button actions
                                 myResponse.edit{
@@ -361,12 +521,15 @@ class CalculatorCommandH : Extension()   {
                                         title = "Exiting embed"
                                         description = "```Closing calculator```"
                                     }
+                                    components = mutableListOf()
+
                                 }
                             }
                         }
                         interactiveButton {
                             label = "4"
                             style = ButtonStyle.Secondary
+                            deferredAck = true
 
                             action { // Easy button actions
                                 expression += "4"
@@ -382,6 +545,7 @@ class CalculatorCommandH : Extension()   {
                         interactiveButton {
                             label = "5"
                             style = ButtonStyle.Secondary
+                            deferredAck = true
 
                             action { // Easy button actions
                                 expression += "5"
@@ -397,6 +561,7 @@ class CalculatorCommandH : Extension()   {
                         interactiveButton {
                             label = "6"
                             style = ButtonStyle.Secondary
+                            deferredAck = true
 
                             action { // Easy button actions
                                 expression += "6"
@@ -412,6 +577,7 @@ class CalculatorCommandH : Extension()   {
                         interactiveButton {
                             label = "÷"
                             style = ButtonStyle.Danger
+                            deferredAck = true
 
                             action { // Easy button actions
                                 expression += "/"
@@ -435,6 +601,7 @@ class CalculatorCommandH : Extension()   {
                         interactiveButton {
                             label = "7"
                             style = ButtonStyle.Secondary
+                            deferredAck = true
 
                             action { // Easy button actions
                                 expression += "7"
@@ -450,6 +617,7 @@ class CalculatorCommandH : Extension()   {
                         interactiveButton {
                             label = "8"
                             style = ButtonStyle.Secondary
+                            deferredAck = true
 
                             action { // Easy button actions
                                 expression += "8"
@@ -465,6 +633,7 @@ class CalculatorCommandH : Extension()   {
                         interactiveButton {
                             label = "9"
                             style = ButtonStyle.Secondary
+                            deferredAck = true
 
                             action { // Easy button actions
                                 expression += "9"
@@ -480,6 +649,7 @@ class CalculatorCommandH : Extension()   {
                         interactiveButton {
                             label = "+"
                             style = ButtonStyle.Danger
+                            deferredAck = true
 
                             action { // Easy button actions
                                 expression += "+"
@@ -496,6 +666,7 @@ class CalculatorCommandH : Extension()   {
                             label = "Clear"
                             style = ButtonStyle.Success
 
+
                             action { // Easy button actions
                                 expression = ""
                                 myResponse.edit{
@@ -511,6 +682,7 @@ class CalculatorCommandH : Extension()   {
                         interactiveButton {
                             label = "00"
                             style = ButtonStyle.Secondary
+                            deferredAck = true
 
                             action { // Easy button actions
                                 expression += "00"
@@ -520,6 +692,7 @@ class CalculatorCommandH : Extension()   {
                         interactiveButton {
                             label = "0"
                             style = ButtonStyle.Secondary
+                            deferredAck = true
 
                             action { // Easy button actions
                                 expression += "0"
@@ -535,6 +708,7 @@ class CalculatorCommandH : Extension()   {
                         interactiveButton {
                             label = "."
                             style = ButtonStyle.Secondary
+                            deferredAck = true
 
                             action { // Easy button actions
                                 expression += "."
@@ -550,6 +724,7 @@ class CalculatorCommandH : Extension()   {
                         interactiveButton {
                             label = "-"
                             style = ButtonStyle.Danger
+                            deferredAck = true
 
                             action { // Easy button actions
                                 expression += "-"
@@ -565,6 +740,7 @@ class CalculatorCommandH : Extension()   {
                         interactiveButton {
                             label = "="
                             style = ButtonStyle.Success
+                            deferredAck = true
 
                             action { // Easy button actions
                                 var result = e.eval(expression)
@@ -585,6 +761,7 @@ class CalculatorCommandH : Extension()   {
                         interactiveButton {
                             label = "("
                             style = ButtonStyle.Secondary
+                            deferredAck = true
 
                             action { // Easy button actions
                                 expression += "("
@@ -600,6 +777,7 @@ class CalculatorCommandH : Extension()   {
                         interactiveButton {
                             label = ")"
                             style = ButtonStyle.Secondary
+                            deferredAck = true
 
                             action { // Easy button actions
                                 expression += ")"
