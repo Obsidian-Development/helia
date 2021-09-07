@@ -9,6 +9,7 @@ import com.kotlindiscord.kord.extensions.commands.slash.AutoAckType
 import com.kotlindiscord.kord.extensions.extensions.Extension
 import com.kotlindiscord.kord.extensions.utils.respond
 import dev.kord.common.annotation.KordPreview
+import dev.kord.common.entity.ButtonStyle
 import dev.kord.core.behavior.edit
 import dev.kord.core.behavior.ban
 import dev.kord.rest.builder.message.create.embed
@@ -43,7 +44,7 @@ class CalculatorCommandH : Extension()   {
                         components() {
                             interactiveButton {
                                 label = "1"
-                                // Style defaults to `Primary`
+                                style = ButtonStyle.Secondary
 
                                 action { // Easy button actions
                                     expression += "1"
@@ -53,7 +54,7 @@ class CalculatorCommandH : Extension()   {
                             }
                             interactiveButton {
                                 label = "2"
-                                // Style defaults to `Primary`
+                                style = ButtonStyle.Secondary
 
                                 action { // Easy button actions
                                     expression += "2"
@@ -62,7 +63,7 @@ class CalculatorCommandH : Extension()   {
                             }
                             interactiveButton {
                                 label = "3"
-                                // Style defaults to `Primary`
+                                style = ButtonStyle.Secondary
 
                                 action { // Easy button actions
                                     expression += "3"
@@ -71,7 +72,7 @@ class CalculatorCommandH : Extension()   {
                             }
                             interactiveButton {
                                 label = "*"
-                                // Style defaults to `Primary`
+                                style = ButtonStyle.Danger
 
                                 action { // Easy button actions
                                     expression += "*"
@@ -80,7 +81,7 @@ class CalculatorCommandH : Extension()   {
                             }
                             interactiveButton {
                                 label = "EXIT"
-                                // Style defaults to `Primary`
+                                style = ButtonStyle.Danger
 
                                 action { // Easy button actions
                                     respond("If embeds were editable this would remove it")
@@ -88,7 +89,7 @@ class CalculatorCommandH : Extension()   {
                             }
                             interactiveButton {
                                 label = "4"
-                                // Style defaults to `Primary`
+                                style = ButtonStyle.Secondary
 
                                 action { // Easy button actions
                                     expression += "4"
@@ -97,7 +98,7 @@ class CalculatorCommandH : Extension()   {
                             }
                             interactiveButton {
                                 label = "5"
-                                // Style defaults to `Primary`
+                                style = ButtonStyle.Secondary
 
                                 action { // Easy button actions
                                     expression += "5"
@@ -106,7 +107,7 @@ class CalculatorCommandH : Extension()   {
                             }
                             interactiveButton {
                                 label = "6"
-                                // Style defaults to `Primary`
+                                style = ButtonStyle.Secondary
 
                                 action { // Easy button actions
                                     expression += "6"
@@ -115,7 +116,7 @@ class CalculatorCommandH : Extension()   {
                             }
                             interactiveButton {
                                 label = "÷"
-                                // Style defaults to `Primary`
+                                style = ButtonStyle.Danger
 
                                 action { // Easy button actions
                                     expression += "/"
@@ -124,7 +125,7 @@ class CalculatorCommandH : Extension()   {
                             }
                             interactiveButton {
                                 label = "←"
-                                // Style defaults to `Primary`
+                                style = ButtonStyle.Danger
 
                                 action { // Easy button actions
                                     respond("Button ten pressed!")
@@ -132,7 +133,7 @@ class CalculatorCommandH : Extension()   {
                             }
                             interactiveButton {
                                 label = "7"
-                                // Style defaults to `Primary`
+                                style = ButtonStyle.Secondary
 
                                 action { // Easy button actions
                                     expression += "7"
@@ -141,7 +142,7 @@ class CalculatorCommandH : Extension()   {
                             }
                             interactiveButton {
                                 label = "8"
-                                // Style defaults to `Primary`
+                                style = ButtonStyle.Secondary
 
                                 action { // Easy button actions
                                     expression += "8"
@@ -150,7 +151,7 @@ class CalculatorCommandH : Extension()   {
                             }
                             interactiveButton {
                                 label = "9"
-                                // Style defaults to `Primary`
+                                style = ButtonStyle.Secondary
 
                                 action { // Easy button actions
                                     expression += "9"
@@ -159,7 +160,7 @@ class CalculatorCommandH : Extension()   {
                             }
                             interactiveButton {
                                 label = "+"
-                                // Style defaults to `Primary`
+                                style = ButtonStyle.Danger
 
                                 action { // Easy button actions
                                     expression += "+"
@@ -168,7 +169,7 @@ class CalculatorCommandH : Extension()   {
                             }
                             interactiveButton {
                                 label = "Clear"
-                                // Style defaults to `Primary`
+                                style = ButtonStyle.Danger
 
                                 action { // Easy button actions
                                     expression = ""
@@ -177,7 +178,7 @@ class CalculatorCommandH : Extension()   {
                             }
                             interactiveButton {
                                 label = "00"
-                                // Style defaults to `Primary`
+                                style = ButtonStyle.Secondary
 
                                 action { // Easy button actions
                                     expression += "00"
@@ -186,7 +187,7 @@ class CalculatorCommandH : Extension()   {
                             }
                             interactiveButton {
                                 label = "0"
-                                // Style defaults to `Primary`
+                                style = ButtonStyle.Secondary
 
                                 action { // Easy button actions
                                     expression += "0"
@@ -195,7 +196,7 @@ class CalculatorCommandH : Extension()   {
                             }
                             interactiveButton {
                                 label = "."
-                                // Style defaults to `Primary`
+                                style = ButtonStyle.Secondary
 
                                 action { // Easy button actions
                                     expression += "."
@@ -204,7 +205,7 @@ class CalculatorCommandH : Extension()   {
                             }
                             interactiveButton {
                                 label = "-"
-                                // Style defaults to `Primary`
+                                style = ButtonStyle.Danger
 
                                 action { // Easy button actions
                                     expression += "-"
@@ -213,7 +214,7 @@ class CalculatorCommandH : Extension()   {
                             }
                             interactiveButton {
                                 label = "="
-                                // Style defaults to `Primary`
+                                style = ButtonStyle.Success
 
                                 action { // Easy button actions
                                     var result = e.eval(expression)
@@ -226,7 +227,7 @@ class CalculatorCommandH : Extension()   {
                             }
                             interactiveButton {
                                 label = "("
-                                // Style defaults to `Primary`
+                                style = ButtonStyle.Secondary
 
                                 action { // Easy button actions
                                     expression += "("
@@ -235,7 +236,7 @@ class CalculatorCommandH : Extension()   {
                             }
                             interactiveButton {
                                 label = ")"
-                                // Style defaults to `Primary`
+                                style = ButtonStyle.Secondary
 
                                 action { // Easy button actions
                                     expression += ")"
@@ -244,7 +245,7 @@ class CalculatorCommandH : Extension()   {
                             }
                             interactiveButton {
                                 label = "π"
-                                // Style defaults to `Primary`
+                                style = ButtonStyle.Secondary
 
                                 action { // Easy button actions
                                     respond("Button  pressed!")
@@ -285,7 +286,7 @@ class CalculatorCommandH : Extension()   {
                     components() {
                         interactiveButton {
                             label = "1"
-                            // Style defaults to `Primary`
+                            style = ButtonStyle.Secondary
 
                             action { // Easy button actions
                                 expression += "1"
@@ -295,7 +296,7 @@ class CalculatorCommandH : Extension()   {
                         }
                         interactiveButton {
                             label = "2"
-                            // Style defaults to `Primary`
+                            style = ButtonStyle.Secondary
 
                             action { // Easy button actions
                                 expression += "2"
@@ -304,7 +305,7 @@ class CalculatorCommandH : Extension()   {
                         }
                         interactiveButton {
                             label = "3"
-                            // Style defaults to `Primary`
+                            style = ButtonStyle.Secondary
 
                             action { // Easy button actions
                                 expression += "3"
@@ -313,7 +314,7 @@ class CalculatorCommandH : Extension()   {
                         }
                         interactiveButton {
                             label = "*"
-                            // Style defaults to `Primary`
+                            style = ButtonStyle.Danger
 
                             action { // Easy button actions
                                 expression += "*"
@@ -322,7 +323,7 @@ class CalculatorCommandH : Extension()   {
                         }
                         interactiveButton {
                             label = "EXIT"
-                            // Style defaults to `Primary`
+                            style = ButtonStyle.Danger
 
                             action { // Easy button actions
                                 respond("If embeds were editable this would remove it")
@@ -330,7 +331,7 @@ class CalculatorCommandH : Extension()   {
                         }
                         interactiveButton {
                             label = "4"
-                            // Style defaults to `Primary`
+                            style = ButtonStyle.Secondary
 
                             action { // Easy button actions
                                 expression += "4"
@@ -339,7 +340,7 @@ class CalculatorCommandH : Extension()   {
                         }
                         interactiveButton {
                             label = "5"
-                            // Style defaults to `Primary`
+                            style = ButtonStyle.Secondary
 
                             action { // Easy button actions
                                 expression += "5"
@@ -348,7 +349,7 @@ class CalculatorCommandH : Extension()   {
                         }
                         interactiveButton {
                             label = "6"
-                            // Style defaults to `Primary`
+                            style = ButtonStyle.Secondary
 
                             action { // Easy button actions
                                 expression += "6"
@@ -357,7 +358,7 @@ class CalculatorCommandH : Extension()   {
                         }
                         interactiveButton {
                             label = "÷"
-                            // Style defaults to `Primary`
+                            style = ButtonStyle.Danger
 
                             action { // Easy button actions
                                 expression += "/"
@@ -366,7 +367,7 @@ class CalculatorCommandH : Extension()   {
                         }
                         interactiveButton {
                             label = "←"
-                            // Style defaults to `Primary`
+                            style = ButtonStyle.Danger
 
                             action { // Easy button actions
                                 respond("Button ten pressed!")
@@ -374,7 +375,7 @@ class CalculatorCommandH : Extension()   {
                         }
                         interactiveButton {
                             label = "7"
-                            // Style defaults to `Primary`
+                            style = ButtonStyle.Secondary
 
                             action { // Easy button actions
                                 expression += "7"
@@ -383,7 +384,7 @@ class CalculatorCommandH : Extension()   {
                         }
                         interactiveButton {
                             label = "8"
-                            // Style defaults to `Primary`
+                            style = ButtonStyle.Secondary
 
                             action { // Easy button actions
                                 expression += "8"
@@ -392,7 +393,7 @@ class CalculatorCommandH : Extension()   {
                         }
                         interactiveButton {
                             label = "9"
-                            // Style defaults to `Primary`
+                            style = ButtonStyle.Secondary
 
                             action { // Easy button actions
                                 expression += "9"
@@ -401,7 +402,7 @@ class CalculatorCommandH : Extension()   {
                         }
                         interactiveButton {
                             label = "+"
-                            // Style defaults to `Primary`
+                            style = ButtonStyle.Danger
 
                             action { // Easy button actions
                                 expression += "+"
@@ -410,7 +411,7 @@ class CalculatorCommandH : Extension()   {
                         }
                         interactiveButton {
                             label = "Clear"
-                            // Style defaults to `Primary`
+                            style = ButtonStyle.Danger
 
                             action { // Easy button actions
                                 expression = ""
@@ -419,7 +420,7 @@ class CalculatorCommandH : Extension()   {
                         }
                         interactiveButton {
                             label = "00"
-                            // Style defaults to `Primary`
+                            style = ButtonStyle.Secondary
 
                             action { // Easy button actions
                                 expression += "00"
@@ -428,7 +429,7 @@ class CalculatorCommandH : Extension()   {
                         }
                         interactiveButton {
                             label = "0"
-                            // Style defaults to `Primary`
+                            style = ButtonStyle.Secondary
 
                             action { // Easy button actions
                                 expression += "0"
@@ -437,7 +438,7 @@ class CalculatorCommandH : Extension()   {
                         }
                         interactiveButton {
                             label = "."
-                            // Style defaults to `Primary`
+                            style = ButtonStyle.Secondary
 
                             action { // Easy button actions
                                 expression += "."
@@ -446,7 +447,7 @@ class CalculatorCommandH : Extension()   {
                         }
                         interactiveButton {
                             label = "-"
-                            // Style defaults to `Primary`
+                            style = ButtonStyle.Danger
 
                             action { // Easy button actions
                                 expression += "-"
@@ -455,7 +456,7 @@ class CalculatorCommandH : Extension()   {
                         }
                         interactiveButton {
                             label = "="
-                            // Style defaults to `Primary`
+                            style = ButtonStyle.Success
 
                             action { // Easy button actions
                                 var result = e.eval(expression)
@@ -468,7 +469,7 @@ class CalculatorCommandH : Extension()   {
                         }
                         interactiveButton {
                             label = "("
-                            // Style defaults to `Primary`
+                            style = ButtonStyle.Secondary
 
                             action { // Easy button actions
                                 expression += "("
@@ -477,7 +478,7 @@ class CalculatorCommandH : Extension()   {
                         }
                         interactiveButton {
                             label = ")"
-                            // Style defaults to `Primary`
+                            style = ButtonStyle.Secondary
 
                             action { // Easy button actions
                                 expression += ")"
@@ -486,7 +487,7 @@ class CalculatorCommandH : Extension()   {
                         }
                         interactiveButton {
                             label = "π"
-                            // Style defaults to `Primary`
+                            style = ButtonStyle.Secondary
 
                             action { // Easy button actions
                                 respond("Button  pressed!")
