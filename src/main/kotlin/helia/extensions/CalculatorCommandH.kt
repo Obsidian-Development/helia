@@ -12,7 +12,10 @@ import dev.kord.common.annotation.KordPreview
 import dev.kord.common.entity.ButtonStyle
 import dev.kord.core.behavior.edit
 import dev.kord.core.behavior.ban
+import dev.kord.core.behavior.interaction.edit
+import dev.kord.core.entity.interaction.PublicFollowupMessage
 import dev.kord.rest.builder.message.create.embed
+import dev.kord.rest.builder.message.modify.embed
 
 
 import helia.TEST_SERVER_ID
@@ -274,14 +277,16 @@ class CalculatorCommandH : Extension()   {
                 val kord = this@CalculatorCommandH.kord
                 val e = ScriptEngineManager().getEngineByName("js")
                 var expression = ""
+                lateinit var myResponse: PublicFollowupMessage
 
 
 
 
-                publicFollowUp {
-                    var thisemb = embed {
+
+                myResponse = publicFollowUp {
+                    embed {
                         title = "Calculator"
-                        description = "this description value cannot be edited? "
+                        description = "```PREP TEXT```"
 
                     }
                     components() {
@@ -291,7 +296,13 @@ class CalculatorCommandH : Extension()   {
 
                             action { // Easy button actions
                                 expression += "1"
-                                respond("```${expression}```")
+                                myResponse.edit{
+                                    this.embed {
+                                        title = "Calculator"
+                                        description = "```${expression}```"
+
+                                    }
+                                }
 
                             }
                         }
@@ -301,7 +312,13 @@ class CalculatorCommandH : Extension()   {
 
                             action { // Easy button actions
                                 expression += "2"
-                                respond("```${expression}```")
+                                myResponse.edit{
+                                    this.embed {
+                                        title = "Calculator"
+                                        description = "```${expression}```"
+
+                                    }
+                                }
                             }
                         }
                         interactiveButton {
@@ -310,7 +327,13 @@ class CalculatorCommandH : Extension()   {
 
                             action { // Easy button actions
                                 expression += "3"
-                                respond("```${expression}```")
+                                myResponse.edit{
+                                    this.embed {
+                                        title = "Calculator"
+                                        description = "```${expression}```"
+
+                                    }
+                                }
                             }
                         }
                         interactiveButton {
@@ -319,7 +342,13 @@ class CalculatorCommandH : Extension()   {
 
                             action { // Easy button actions
                                 expression += "*"
-                                respond("```${expression}```")
+                                myResponse.edit{
+                                    this.embed {
+                                        title = "Calculator"
+                                        description = "```${expression}```"
+
+                                    }
+                                }
                             }
                         }
                         interactiveButton {
@@ -327,7 +356,12 @@ class CalculatorCommandH : Extension()   {
                             style = ButtonStyle.Success
 
                             action { // Easy button actions
-                                respond("If embeds were editable this would remove it")
+                                myResponse.edit{
+                                    this.embed {
+                                        title = "Exiting embed"
+                                        description = "```Closing calculator```"
+                                    }
+                                }
                             }
                         }
                         interactiveButton {
@@ -336,7 +370,13 @@ class CalculatorCommandH : Extension()   {
 
                             action { // Easy button actions
                                 expression += "4"
-                                respond("```${expression}```")
+                                myResponse.edit{
+                                    this.embed {
+                                        title = "Calculator"
+                                        description = "```${expression}```"
+
+                                    }
+                                }
                             }
                         }
                         interactiveButton {
@@ -345,7 +385,13 @@ class CalculatorCommandH : Extension()   {
 
                             action { // Easy button actions
                                 expression += "5"
-                                respond("```${expression}```")
+                                myResponse.edit{
+                                    this.embed {
+                                        title = "Calculator"
+                                        description = "```${expression}```"
+
+                                    }
+                                }
                             }
                         }
                         interactiveButton {
@@ -354,7 +400,13 @@ class CalculatorCommandH : Extension()   {
 
                             action { // Easy button actions
                                 expression += "6"
-                                respond("```${expression}```")
+                                myResponse.edit{
+                                    this.embed {
+                                        title = "Calculator"
+                                        description = "```${expression}```"
+
+                                    }
+                                }
                             }
                         }
                         interactiveButton {
@@ -363,7 +415,13 @@ class CalculatorCommandH : Extension()   {
 
                             action { // Easy button actions
                                 expression += "/"
-                                respond("```${expression}```")
+                                myResponse.edit{
+                                    this.embed {
+                                        title = "Calculator"
+                                        description = "```${expression}```"
+
+                                    }
+                                }
                             }
                         }
                         interactiveButton {
@@ -380,7 +438,13 @@ class CalculatorCommandH : Extension()   {
 
                             action { // Easy button actions
                                 expression += "7"
-                                respond("```${expression}```")
+                                myResponse.edit{
+                                    this.embed {
+                                        title = "Calculator"
+                                        description = "```${expression}```"
+
+                                    }
+                                }
                             }
                         }
                         interactiveButton {
@@ -389,7 +453,13 @@ class CalculatorCommandH : Extension()   {
 
                             action { // Easy button actions
                                 expression += "8"
-                                respond("```${expression}```")
+                                myResponse.edit{
+                                    this.embed {
+                                        title = "Calculator"
+                                        description = "```${expression}```"
+
+                                    }
+                                }
                             }
                         }
                         interactiveButton {
@@ -398,7 +468,13 @@ class CalculatorCommandH : Extension()   {
 
                             action { // Easy button actions
                                 expression += "9"
-                                respond("```${expression}```")
+                                myResponse.edit{
+                                    this.embed {
+                                        title = "Calculator"
+                                        description = "```${expression}```"
+
+                                    }
+                                }
                             }
                         }
                         interactiveButton {
@@ -407,7 +483,13 @@ class CalculatorCommandH : Extension()   {
 
                             action { // Easy button actions
                                 expression += "+"
-                                respond("```${expression}```")
+                                myResponse.edit{
+                                    this.embed {
+                                        title = "Calculator"
+                                        description = "```${expression}```"
+
+                                    }
+                                }
                             }
                         }
                         interactiveButton {
@@ -416,6 +498,13 @@ class CalculatorCommandH : Extension()   {
 
                             action { // Easy button actions
                                 expression = ""
+                                myResponse.edit{
+                                    this.embed {
+                                        title = "Calculator"
+                                        description = "```${expression}```"
+
+                                    }
+                                }
                                 respond("Cleared the expression")
                             }
                         }
@@ -434,7 +523,13 @@ class CalculatorCommandH : Extension()   {
 
                             action { // Easy button actions
                                 expression += "0"
-                                respond("```${expression}```")
+                                myResponse.edit{
+                                    this.embed {
+                                        title = "Calculator"
+                                        description = "```${expression}```"
+
+                                    }
+                                }
                             }
                         }
                         interactiveButton {
@@ -443,7 +538,13 @@ class CalculatorCommandH : Extension()   {
 
                             action { // Easy button actions
                                 expression += "."
-                                respond("```${expression}```")
+                                myResponse.edit{
+                                    this.embed {
+                                        title = "Calculator"
+                                        description = "```${expression}```"
+
+                                    }
+                                }
                             }
                         }
                         interactiveButton {
@@ -452,7 +553,13 @@ class CalculatorCommandH : Extension()   {
 
                             action { // Easy button actions
                                 expression += "-"
-                                respond("```${expression}```")
+                                myResponse.edit{
+                                    this.embed {
+                                        title = "Calculator"
+                                        description = "```${expression}```"
+
+                                    }
+                                }
                             }
                         }
                         interactiveButton {
@@ -463,7 +570,14 @@ class CalculatorCommandH : Extension()   {
                                 var result = e.eval(expression)
                                 var formatedres = result.toString()
                                 expression = formatedres
-                                respond("```${formatedres}```")
+                                myResponse.edit{
+                                    this.embed {
+                                        title = "Calculator"
+                                        description = "```${formatedres}```"
+
+                                    }
+                                }
+
 
 
                             }
@@ -474,7 +588,13 @@ class CalculatorCommandH : Extension()   {
 
                             action { // Easy button actions
                                 expression += "("
-                                respond("```${expression}```")
+                                myResponse.edit{
+                                    this.embed {
+                                        title = "Calculator"
+                                        description = "```${expression}```"
+
+                                    }
+                                }
                             }
                         }
                         interactiveButton {
@@ -483,7 +603,13 @@ class CalculatorCommandH : Extension()   {
 
                             action { // Easy button actions
                                 expression += ")"
-                                respond("```${expression}```")
+                                myResponse.edit{
+                                    this.embed {
+                                        title = "Calculator"
+                                        description = "```${expression}```"
+
+                                    }
+                                }
                             }
                         }
                         interactiveButton {
