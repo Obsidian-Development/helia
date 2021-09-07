@@ -81,7 +81,7 @@ class CalculatorCommandH : Extension()   {
                             }
                             interactiveButton {
                                 label = "EXIT"
-                                style = ButtonStyle.Danger
+                                style = ButtonStyle.Success
 
                                 action { // Easy button actions
                                     respond("If embeds were editable this would remove it")
@@ -125,7 +125,7 @@ class CalculatorCommandH : Extension()   {
                             }
                             interactiveButton {
                                 label = "←"
-                                style = ButtonStyle.Danger
+                                style = ButtonStyle.Success
 
                                 action { // Easy button actions
                                     respond("Button ten pressed!")
@@ -169,7 +169,7 @@ class CalculatorCommandH : Extension()   {
                             }
                             interactiveButton {
                                 label = "Clear"
-                                style = ButtonStyle.Danger
+                                style = ButtonStyle.Success
 
                                 action { // Easy button actions
                                     expression = ""
@@ -274,7 +274,8 @@ class CalculatorCommandH : Extension()   {
                 val kord = this@CalculatorCommandH.kord
                 val e = ScriptEngineManager().getEngineByName("js")
                 var expression = ""
-                lateinit var descriptionem: String
+
+
 
 
                 publicFollowUp {
@@ -323,7 +324,7 @@ class CalculatorCommandH : Extension()   {
                         }
                         interactiveButton {
                             label = "EXIT"
-                            style = ButtonStyle.Danger
+                            style = ButtonStyle.Success
 
                             action { // Easy button actions
                                 respond("If embeds were editable this would remove it")
@@ -367,7 +368,7 @@ class CalculatorCommandH : Extension()   {
                         }
                         interactiveButton {
                             label = "←"
-                            style = ButtonStyle.Danger
+                            style = ButtonStyle.Success
 
                             action { // Easy button actions
                                 respond("Button ten pressed!")
@@ -411,7 +412,7 @@ class CalculatorCommandH : Extension()   {
                         }
                         interactiveButton {
                             label = "Clear"
-                            style = ButtonStyle.Danger
+                            style = ButtonStyle.Success
 
                             action { // Easy button actions
                                 expression = ""
