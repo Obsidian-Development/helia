@@ -22,18 +22,25 @@ repositories {
         name = "Kotlin Discord"
         url = uri("https://maven.kotlindiscord.com/repository/maven-public/")
     }
+    maven {
+        name = "Jitpack"
+        url  = uri("https://jitpack.io")
+    }
 }
 
 dependencies {
+
     detektPlugins(libs.detekt)
 
     implementation(libs.kord.extensions)
     implementation(libs.kotlin.stdlib)
+    implementation("com.udojava:EvalEx:2.6")
 
     // Logging dependencies
     implementation(libs.groovy)
     implementation(libs.logback)
     implementation(libs.logging)
+
 }
 
 application {
