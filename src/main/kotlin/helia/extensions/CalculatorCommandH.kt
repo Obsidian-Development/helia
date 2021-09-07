@@ -218,7 +218,9 @@ class CalculatorCommandH : Extension()   {
                                 action { // Easy button actions
                                     var result = e.eval(expression)
                                     var formatedres = result.toString()
+                                    expression = formatedres
                                     respond("```${formatedres}```")
+
 
                                 }
                             }
@@ -458,7 +460,9 @@ class CalculatorCommandH : Extension()   {
                             action { // Easy button actions
                                 var result = e.eval(expression)
                                 var formatedres = result.toString()
+                                expression = formatedres
                                 respond("```${formatedres}```")
+
 
                             }
                         }
