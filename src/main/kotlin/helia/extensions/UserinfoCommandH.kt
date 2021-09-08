@@ -37,24 +37,39 @@ class UserinfoCommandH : Extension()   {
                         description = "Information about user"
                         field {
                             name = "Username"
-                            value = "${message.getAuthorAsMember()?.tag}"
+                            value = "```${message.getAuthorAsMember()?.username}```"
                             inline = true
                         }
                         field {
                             name = "ID"
-                            value = "${message.getAuthorAsMember()?.id?.value}"
+                            value = "```${message.getAuthorAsMember()?.id?.value}```"
+                            inline = true
+                        }
+                        field {
+                            name = "Discriminator"
+                            value = "```${message.getAuthorAsMember()?.discriminator}```"
                             inline = true
                         }
                         field {
                             name = "Nickname"
-                            value = "${message.getAuthorAsMember()?.nickname}"
+                            value = "```${message.getAuthorAsMember()?.nickname}```"
+                            inline = true
+                        }
+                        field {
+                            name = "Presence"
+                            value = "```${message.getAuthorAsMember()?.getPresenceOrNull().toString()}```"
                             inline = true
                         }
                         field {
                             name = "Joined at"
-                            value = "${message.getAuthorAsMember()?.joinedAt}"
+                            value = "```${message.getAuthorAsMember()?.joinedAt}```"
                             inline = true
                         }
+                        thumbnail {
+                            url = message.getAuthorAsMember()?.avatar?.url.toString()
+                        }
+
+
 
 
 
@@ -86,23 +101,36 @@ class UserinfoCommandH : Extension()   {
                         description = "Information about user"
                         field {
                             name = "Username"
-                            value = "${member?.asMember()?.tag}"
+                            value = "```${member?.asMember()?.username}```"
                             inline = true
                         }
                         field {
                             name = "ID"
-                            value = "${member?.asMember()?.id?.value}"
+                            value = "```${member?.asMember()?.id?.value}```"
+                            inline = true
+                        }
+                        field {
+                            name = "Discriminator"
+                            value = "```${member?.asMember()?.discriminator}```"
                             inline = true
                         }
                         field {
                             name = "Nickname"
-                            value = "${member?.asMember()?.nickname}"
+                            value = "```${member?.asMember()?.nickname}```"
+                            inline = true
+                        }
+                        field {
+                            name = "Presence"
+                            value = "```${member?.asMember()?.getPresenceOrNull().toString()}```"
                             inline = true
                         }
                         field {
                             name = "Joined at"
-                            value = "${member?.asMember()?.joinedAt}"
+                            value = "```${member?.asMember()?.joinedAt}```"
                             inline = true
+                        }
+                        thumbnail {
+                            url = member?.asMember()?.avatar?.url.toString()
                         }
 
 
