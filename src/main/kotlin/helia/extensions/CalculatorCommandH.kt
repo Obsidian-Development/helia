@@ -196,9 +196,19 @@ class CalculatorCommandH : Extension()   {
                             interactiveButton {
                                 label = "←"
                                 style = ButtonStyle.Success
+                                deferredAck = true
 
                                 action { // Easy button actions
-                                    respond("Button ten pressed!")
+                                    var n = 1
+                                    var droponenum = expression.dropLast(n)
+                                    expression = droponenum
+                                    createmessage.edit{
+                                        this.embed {
+                                            title = "Calculator"
+                                            description = "```${expression}```"
+
+                                        }
+                                    }
                                 }
                             }
                             interactiveButton {
@@ -593,9 +603,19 @@ class CalculatorCommandH : Extension()   {
                         interactiveButton {
                             label = "←"
                             style = ButtonStyle.Success
+                            deferredAck = true
 
                             action { // Easy button actions
-                                respond("Button ten pressed!")
+                                var n = 1
+                                var droponenum = expression.dropLast(n)
+                                expression = droponenum
+                                myResponse.edit{
+                                    this.embed {
+                                        title = "Calculator"
+                                        description = "```${expression}```"
+
+                                    }
+                                }
                             }
                         }
                         interactiveButton {
