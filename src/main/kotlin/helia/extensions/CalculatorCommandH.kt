@@ -813,9 +813,17 @@ class CalculatorCommandH : Extension()   {
                         interactiveButton {
                             label = "π"
                             style = ButtonStyle.Secondary
+                            deferredAck = true
 
                             action { // Easy button actions
-                                respond("Button  pressed!")
+                                expression += "3,1415926535"
+                                myResponse.edit{
+                                    this.embed {
+                                        title = "Calculator"
+                                        description = "```${expression}```"
+
+                                    }
+                                }
                             }
                         }
                     }

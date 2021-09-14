@@ -14,6 +14,8 @@ import helia.extensions.GuildCommandH
 import helia.extensions.InviteCommandH
 import helia.extensions.CalculatorCommandH
 import helia.extensions.UserinfoCommandH
+import helia.extensions.PurgeCommandH
+import kotlinx.coroutines.InternalCoroutinesApi
 
 val TEST_SERVER_ID = Snowflake(
     env("TEST_SERVER")?.toLong()  // Get the test server ID from the env vars or a .env file
@@ -23,6 +25,7 @@ val TEST_SERVER_ID = Snowflake(
 private val TOKEN = env("TOKEN")   // Get the bot' token from the env vars or a .env file
     ?: error("Env var TOKEN not provided")
 
+@InternalCoroutinesApi
 suspend fun main() {
     val bot = ExtensibleBot(TOKEN) {
         messageCommands {
@@ -50,6 +53,7 @@ suspend fun main() {
             add(::InviteCommandH)
             add(::CalculatorCommandH)
             add(::UserinfoCommandH)
+
         }
         presence {
             status = PresenceStatus.Online
