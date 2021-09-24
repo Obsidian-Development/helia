@@ -1,1 +1,1 @@
-Sentinel X's website - General Purpose Discord Bot
+Helia's website - General Purpose Discord Bot

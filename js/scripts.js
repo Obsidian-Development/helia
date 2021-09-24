@@ -13,7 +13,7 @@ function preventDefault(e) {
 
 
 function not_ready_yet() {
-    alert("Sentinel X is not released yet.")
+    alert("Helia is not released yet.")
 }
 
 function done_with_gen() {

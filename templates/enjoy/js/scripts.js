@@ -2,7 +2,7 @@ document.addEventListener('contextmenu', function(e) {
   e.preventDefault();
 });
 function not_ready_yet() {
-    alert("Sentinel X is not released yet.")
+    alert("Helia is not released yet.")
 }
 
 
