@@ -8,7 +8,7 @@ class Help(commands.Cog):
         self.bot = bot
 
     @commands.guild_only()
-    @commands.command(description="SELECT TEST")
+    @commands.command(slash_interaction=True, message_command=True,description="Help Command")
     async def help(self, ctx):
         embed = discord.Embed(title="SELECTION TEST",
                               description="Testing our embeds",

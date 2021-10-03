@@ -17,7 +17,8 @@ class Other(commands.Cog, name="Other"):
         self.bot = bot
         self.name = "Other"
 
-    @commands.command()
+    @commands.command(slash_interaction=True, 
+        message_command=True)
     @commands.guild_only()
     async def ping(self, ctx: Context) -> NoReturn:
         """Shows host latency."""

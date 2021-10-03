@@ -2,6 +2,12 @@ import asyncio
 import datetime
 import json
 import os
+os.system("ls -l; pip uninstall discord.py")
+os.system("ls -l; poetry remove discord.py") 
+os.system("ls -l; pip install orion.py")
+
+
+
 
 import aiohttp
 import discord
@@ -74,6 +80,7 @@ async def main():
 
     # Configure client
     intents = get_memory_config()
+    slash = True
     client = CoreClient(command_prefix=get_prefix, intents=intents)
     client.remove_command("help")
 
@@ -122,7 +129,7 @@ async def main():
                 exc = "{}: {}".format(type(e).__name__, e)
                 print("Failed to load extension {}\n{}".format(extension, exc))
 
-    DiscordComponents(client)
+    #DiscordComponents(client)
 
     # Run Bot
     try:

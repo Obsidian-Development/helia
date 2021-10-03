@@ -19,7 +19,8 @@ class Utilities(commands.Cog):
         self.bot = bot
         self.name = "Utilities"
 
-    @commands.command()
+    @commands.command(slash_interaction=True, 
+        message_command=True)
     @commands.guild_only()
     async def user(self,
                    ctx: Context,
@@ -47,7 +48,7 @@ class Utilities(commands.Cog):
         stat = member.status
         activ = member.activity
         color = member.color
-        avatar = member.avatar_url_as()
+        avatar = member.avatar.url
 
         embed = discord.Embed(
             description=STRINGS["utilities"]["user_info"].format(
@@ -60,7 +61,8 @@ class Utilities(commands.Cog):
 
         await ctx.send(embed=embed)
 
-    @commands.command()
+    @commands.command(slash_interaction=True, 
+        message_command=True)
     @commands.guild_only()
     async def emoji(self, ctx: Context, emoji: str) -> NoReturn:
         """Shows emoji information."""
@@ -81,7 +83,8 @@ class Utilities(commands.Cog):
 
         await ctx.send(embed=embed)
 
-    @commands.command()
+    @commands.command(slash_interaction=True, 
+        message_command=True)
     @commands.guild_only()
     async def channel(self, ctx: Context, channel: str) -> NoReturn:
         """Shows channel information."""
@@ -125,7 +128,8 @@ class Utilities(commands.Cog):
         else:
             await ctx.send("чел, это не канал, ты что-то попутал")
 
-    @commands.command()
+    @commands.command(slash_interaction=True, 
+        message_command=True)
     @commands.guild_only()
     async def avatar(self,
                      ctx: Context,
@@ -145,7 +149,7 @@ class Utilities(commands.Cog):
             member = ctx.message.author
         name = member.name
         tag = member.discriminator
-        avatar = member.avatar_url_as()
+        avatar = member.avatar.url
         hash = member.avatar
 
         embed = discord.Embed(
@@ -158,7 +162,8 @@ class Utilities(commands.Cog):
 
         await ctx.send(embed=embed)
 
-    @commands.command(description="Random number generator")
+    @commands.command(slash_interaction=True, 
+        message_command=True,description="Random number generator")
     async def randint(self, ctx: Context, stc1: int, stc2: int):
         s = await Settings(ctx.guild.id)
         lang = await s.get_field("locale", CONFIG["default_locale"])
@@ -179,7 +184,8 @@ class Utilities(commands.Cog):
                         inline=False)
         await ctx.send(embed=embed)
 
-    @commands.command(description="Count square root")
+    @commands.command(slash_interaction=True, 
+        message_command=True,description="Count square root")
     async def sqrt(self, ctx: Context, num: int):
         s = await Settings(ctx.guild.id)
         lang = await s.get_field("locale", CONFIG["default_locale"])
@@ -215,7 +221,8 @@ class Utilities(commands.Cog):
             )
             await ctx.send(embed=embed)
 
-    @commands.command(aliases=["server"])
+    @commands.command(slash_interaction=True, 
+        message_command=True,aliases=["server"])
     @commands.guild_only()
     async def guild(self, ctx, *, guild_id: int = None) -> NoReturn:
         """Shows guild information."""
@@ -258,7 +265,7 @@ class Utilities(commands.Cog):
         e.title = guild.name
         e.description = f"**ID**: {guild.id}\n**Owner**: {guild.owner}"
         if guild.icon:
-            e.set_thumbnail(url=f"{guild.icon_url}")
+            e.set_thumbnail(url=f"{guild.icon.url}")
         else:
             e.set_thumbnail(
                 url="https://cdn.discordapp.com/embed/avatars/1.png")

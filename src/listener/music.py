@@ -208,9 +208,7 @@ class Player(wavelink.Player):
                 value=f"**({tracks[0].length//60000}:{str(tracks[0].length%60).zfill(2)})**",
                 inline=True,
             )
-            playEmbed.add_field(name="Server:",
-                                value=f"{ctx.guild.name}",
-                                inline=False)
+            playEmbed.add_field(name="Server:", value=f"{ctx.guild.name}", inline=False)
 
             await ctx.send(embed=playEmbed)
 
@@ -388,7 +386,7 @@ class Music(commands.Cog, wavelink.WavelinkMixin, name="Music"):
 
         # logger.info(f"[MUSIC]Voice channel quit requested by {ctx.author} in {ctx.message.guild}")
 
-    @commands.command(name="play",
+    @commands.command(slash_interaction=True, message_command=True,name="play",
                       brief="play music.",
                       aliases=["p", "pl", "игратьмузыку"])
     async def play_command(self, ctx, *, query: t.Optional[str]):
@@ -443,7 +441,7 @@ class Music(commands.Cog, wavelink.WavelinkMixin, name="Music"):
                 text=STRINGS["music"]["embed_controler_footer"])
             await ctx.send(embed=playEmbed_3)
 
-    @commands.command(name="pause",
+    @commands.command(slash_interaction=True, message_command=True,name="pause",
                       brief="Pause playback.",
                       aliases=["ps", "pauza", "пауза"])
     async def pause_command(self, ctx):
@@ -469,7 +467,7 @@ class Music(commands.Cog, wavelink.WavelinkMixin, name="Music"):
                                           colour=0x6AA84F)
             await ctx.send(embed=pauseer_embed)
 
-    @commands.command(name="stop",
+    @commands.command(slash_interaction=True, message_command=True,name="stop",
                       brief="Stops music playback.",
                       aliases=["sp", "стоп"])
     async def stop_command(self, ctx):
@@ -487,6 +485,8 @@ class Music(commands.Cog, wavelink.WavelinkMixin, name="Music"):
         # logger.info(f"[MUSIC]Music stopped by {ctx.author} in {ctx.message.guild}")
 
     @commands.command(
+        slash_interaction=True, 
+        message_command=True,
         name="skip",
         brief="Skips currently playing song.",
         aliases=["next", "s", "скип"],
@@ -543,6 +543,8 @@ class Music(commands.Cog, wavelink.WavelinkMixin, name="Music"):
             await ctx.send(embed=nextEmbed_3)
 
     @commands.command(
+        slash_interaction=True, 
+        message_command=True,
         name="previous",
         brief="Returns to the previous song in the list.",
         aliases=["prev", "предыдущая"],
@@ -593,6 +595,8 @@ class Music(commands.Cog, wavelink.WavelinkMixin, name="Music"):
             await ctx.send(embed=previousEmbed_3)
 
     @commands.command(
+        slash_interaction=True, 
+        message_command=True,
         name="shuffle",
         brief="Shuffles queue.",
         aliases=["randomize", "рандомизацияплейлиста"],
@@ -628,6 +632,8 @@ class Music(commands.Cog, wavelink.WavelinkMixin, name="Music"):
             await ctx.send(embed=shuffleEmbed_2)
 
     @commands.command(
+        slash_interaction=True, 
+        message_command=True,
         name="queue",
         brief="Lists the songs in queue.",
         aliases=["q", "ochered", "очередь"],
@@ -676,7 +682,8 @@ class Music(commands.Cog, wavelink.WavelinkMixin, name="Music"):
                 text=STRINGS["music"]["embed_controler_footer"])
             await ctx.send(embed=queueEmbed_2)
 
-    @commands.command(name="volume",
+    @commands.command(slash_interaction=True, 
+        message_command=True,name="volume",
                       brief="Sets bot volume.",
                       aliases=["vol", "громкость"])
     async def volume_command(self, ctx, value: int):

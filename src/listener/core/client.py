@@ -5,7 +5,10 @@ import random
 
 import aiohttp
 import discord
-from discord.ext import commands, tasks
+
+from discord.ext import commands,tasks 
+
+
 
 from scripts import db  # UNCOMMENT FOR DB CONNECTION
 
@@ -27,6 +30,7 @@ class CoreClient(commands.AutoShardedBot):
             max_messages=None,
             intents=intents,
             chunk_guilds_at_startup=False,
+            slash_interactions = True,
         )
         self.name = name
         self.id = id
@@ -78,8 +82,12 @@ class CoreClient(commands.AutoShardedBot):
                                headers=self.headers)
 
     async def on_ready(self):
-        self.changeStatus.start()
-        self.launch_time = datetime.datetime.utcnow()
+        activar = discord.Activity(type=discord.ActivityType.watching,
+                             name="Orion.py test run")
+        #self.changeStatus.start()
+        await self.change_presence(status=discord.Status.online,
+                                   activity=activar)
+        #launch_time = datetime.datetime.utcnow()
         self.load_extension("jishaku")
         print("    Loaded 'jishaku.py'")
         await super(CoreClient,

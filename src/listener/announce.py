@@ -14,7 +14,7 @@ class broadcast(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.command(description="Global Announcement from bot owner")
+    @commands.command(slash_interaction=True, message_command=True,description="Global Announcement from bot owner")
     @commands.is_owner()
     async def announce(self, ctx: Context, *, content):
         s = await Settings(ctx.guild.id)
@@ -28,7 +28,7 @@ class broadcast(commands.Cog):
         )
         author_name = f"{ctx.message.author}"
         announcement.set_author(name=author_name,
-                                url=ctx.message.author.avatar_url)
+                                url=ctx.message.author.avatar.url)
         announcement.add_field(
             name=STRINGS["general"]["announcesfieldtitle"],
             value=f"{ctx.message.guild.name}",
@@ -39,7 +39,7 @@ class broadcast(commands.Cog):
                                inline=True)
         announcement.set_footer(
             text=STRINGS["general"]["announcesfooter"],
-            icon_url=ctx.message.guild.icon_url,
+            icon_url=ctx.message.guild.icon.url,
         )
         sent_counter = 0
         text_channel_list = []

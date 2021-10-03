@@ -175,7 +175,7 @@ class Admin(commands.Cog, name="Admin"):
                 inline=True,
             )
             embed.set_footer(text=self.bot.user.name,
-                             icon_url=self.bot.user.avatar_url)
+                             icon_url=self.bot.user.avatar.url)
         else:
             embed = discord.Embed(
                 title="You failed",

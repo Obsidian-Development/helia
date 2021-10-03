@@ -53,7 +53,7 @@ class Listeners(commands.Cog, name="Listeners"):
         )
         # embed.add_field(name=STRINGS['general']['aboutthanks'], value=STRINGS['general']['aboutthankstext'],inline=False)
         embed.set_footer(text=self.bot.user.name,
-                         icon_url=self.bot.user.avatar_url)
+                         icon_url=self.bot.user.avatar.url)
         print("The invite for this server is :")
         print(f"{invite}")
         with open(logpath, "a") as file:
