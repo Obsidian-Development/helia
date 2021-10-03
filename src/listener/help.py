@@ -1,7 +1,45 @@
 import discord
 from discord.ext import commands
-from discord_components import Button, ButtonStyle, Select, SelectOption
+from discord import SelectOption,ButtonStyle
+from discord.ui import View, Select,Button
 
+class Dropdown(discord.ui.Select):
+    def __init__(self):
+
+        # Set the options that will be presented inside the dropdown
+        options=[
+                    SelectOption(label="General", value="General"),
+                    SelectOption(label="Moderation", value="Moderation"),
+                    SelectOption(label="Utilities", value="Utilities"),
+                    SelectOption(label="Music", value="Music"),
+                    SelectOption(label="Preferences", value="Preferences"),
+                    SelectOption(
+                        label="Welcome & Goodbye Messages",
+                        value="Welcome & Goodbye Messages",
+                    ),
+                    SelectOption(label="Other", value="Other"),
+                    SelectOption(label="Close", value="Close"),
+                ]
+
+        # The placeholder is what will be shown when no option is chosen
+        # The min and max values indicate we can only pick one of the three options
+        # The options parameter defines the dropdown options. We defined this above
+        super().__init__(placeholder='Select a category', min_values=1, max_values=1, options=options)
+
+    #async def callback(self, interaction: discord.Interaction):
+        # Use the interaction object to send a response message containing
+        # the user's favourite colour or choice. The self object refers to the
+        # Select object, and the values attribute gets a list of the user's 
+        # selected options. We only want the first one.
+        #await interaction.response.send_message(f'Your favourite colour is {self.values[0]}')
+
+
+class DropdownView(discord.ui.View):
+    def __init__(self):
+        super().__init__()
+
+        # Adds the dropdown to our view object.
+        self.add_item(Dropdown())
 
 class Help(commands.Cog):
     def __init__(self, bot):
@@ -18,32 +56,15 @@ class Help(commands.Cog):
             description=f"Welcome To {self.bot.user.name} Help System",
         )
         embede.set_footer(text="Developed with ❤️ by Middlle")
-        components = [
-            Select(
-                placeholder="Select a category",
-                options=[
-                    SelectOption(label="General", value="General"),
-                    SelectOption(label="Moderation", value="Moderation"),
-                    SelectOption(label="Utilities", value="Utilities"),
-                    SelectOption(label="Music", value="Music"),
-                    SelectOption(label="Preferences", value="Preferences"),
-                    SelectOption(
-                        label="Welcome & Goodbye Messages",
-                        value="Welcome & Goodbye Messages",
-                    ),
-                    SelectOption(label="Other", value="Other"),
-                    SelectOption(label="Close", value="Close"),
-                ],
-            )
-        ]
+        view = DropdownView()
         done_components = [
-            Button(style=ButtonStyle.grey, label="·", disabled=True),
+            Button(style=ButtonStyle.secondary, label="·", disabled=True),
         ]
 
         async def callback(interaction):
             await interaction.send(embed=embed)
 
-        await ctx.send(embed=embede, components=components)
+        await ctx.send(embed=embede, view=view)
 
         while True:
             interaction = await self.bot.wait_for("select_option")
