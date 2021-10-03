@@ -17,7 +17,7 @@ class Prefs(commands.Cog, name="Prefs"):
         self.server_prefixes = server_prefixes
 
     @commands.command(aliases=["setprefix"])
-    @commands.guild_only()
+    
     @commands.has_permissions(administrator=True)
     @commands.cooldown(1, 5, commands.BucketType.user)
     async def prefix(self, ctx: Context, prefix: str) -> NoReturn:
@@ -34,7 +34,7 @@ class Prefs(commands.Cog, name="Prefs"):
         await ctx.message.add_reaction(CONFIG["yes_emoji"])
 
     @commands.command(aliases=["lang", "setlang", "language"])
-    @commands.guild_only()
+    
     @commands.has_permissions(administrator=True)
     @commands.cooldown(1, 5, commands.BucketType.user)
     async def locale(self, ctx: Context, locale: str) -> NoReturn:

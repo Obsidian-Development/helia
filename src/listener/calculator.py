@@ -16,7 +16,7 @@ class Calculator(commands.Cog, name="Calculator"):
         self.name = "Calculator"
         self.dc = DiscordComponents(self.bot)
 
-    @commands.guild_only()
+    
     @commands.command(slash_interaction=True, message_command=True,description="Calculator command")
     async def calculator(self, ctx):
         def calculate(exp):

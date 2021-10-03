@@ -7,7 +7,7 @@ class testingCOG(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.guild_only()
+    
     @commands.command(description="BUTTON TEST")
     async def button(self, ctx):
         async def callback(interaction):
@@ -22,7 +22,7 @@ class testingCOG(commands.Cog):
             ],
         )
 
-    @commands.guild_only()
+    
     @commands.command(description="SELECT TEST")
     async def select(self, ctx):
         embed = discord.Embed(title="SELECTION TEST",

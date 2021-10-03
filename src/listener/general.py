@@ -25,7 +25,7 @@ class General(commands.Cog, name="General"):
         self.process = psutil.Process(os.getpid())
 
     # @commands.command()
-    # @commands.guild_only()
+    # 
     # async def help(self, ctx: Context, command: str = None) -> NoReturn:
     # """Shows help for a specific command, or displays a complete list of commands.
 
@@ -83,7 +83,7 @@ class General(commands.Cog, name="General"):
     # else:
     # await ctx.send(embed=Utils.error_embed(STRINGS['error']['command_not_found']))
 
-    @commands.guild_only()
+    
     @commands.command(slash_interaction=True, message_command=True,description="Echo Commands")
     async def echo(self, ctx: Context, *, content):
         s = await Settings(ctx.guild.id)
@@ -104,7 +104,7 @@ class General(commands.Cog, name="General"):
         else:
             return await ctx.send(content)
 
-    @commands.guild_only()
+    
     @commands.command(slash_interaction=True, message_command=True,description="Generate Embed")
     async def embed(self, ctx: Context, name, *, content):
         s = await Settings(ctx.guild.id)
@@ -156,7 +156,7 @@ class General(commands.Cog, name="General"):
             await ctx.send(
                 "bot: Missing argument or permissions to do the command")
 
-    @commands.guild_only()
+    
     @commands.command(slash_interaction=True, message_command=True,description="Shows information about bot and its author")
     async def about(self, ctx: Context) -> NoReturn:
         """Shows a short description of the bot."""
@@ -202,7 +202,7 @@ class General(commands.Cog, name="General"):
                          icon_url=self.bot.user.avatar.url)
         await ctx.send(embed=embed)
 
-    @commands.guild_only()
+    
     @commands.command(slash_interaction=True, message_command=True,description="Shows bot privacy policy")
     async def privacy(self, ctx: Context):
         s = await Settings(ctx.guild.id)
