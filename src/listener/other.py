@@ -19,7 +19,6 @@ class Other(commands.Cog, name="Other"):
 
     @commands.command(slash_interaction=True, 
         message_command=True)
-    
     async def ping(self, ctx: Context) -> NoReturn:
         """Shows host latency."""
         s = await Settings(ctx.guild.id)

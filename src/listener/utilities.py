@@ -21,7 +21,6 @@ class Utilities(commands.Cog):
 
     @commands.command(slash_interaction=True, 
         message_command=True)
-    
     async def user(self,
                    ctx: Context,
                    member: discord.Member = None) -> NoReturn:
@@ -63,7 +62,6 @@ class Utilities(commands.Cog):
 
     @commands.command(slash_interaction=True, 
         message_command=True)
-    
     async def emoji(self, ctx: Context, emoji: str) -> NoReturn:
         """Shows emoji information."""
         s = await Settings(ctx.guild.id)
@@ -85,7 +83,6 @@ class Utilities(commands.Cog):
 
     @commands.command(slash_interaction=True, 
         message_command=True)
-    
     async def channel(self, ctx: Context, channel: str) -> NoReturn:
         """Shows channel information."""
         s = await Settings(ctx.guild.id)
@@ -130,7 +127,6 @@ class Utilities(commands.Cog):
 
     @commands.command(slash_interaction=True, 
         message_command=True)
-    
     async def avatar(self,
                      ctx: Context,
                      member: discord.Member = None) -> NoReturn:
@@ -223,7 +219,6 @@ class Utilities(commands.Cog):
 
     @commands.command(slash_interaction=True, 
         message_command=True,aliases=["server"])
-    
     async def guild(self, ctx, *, guild_id: int = None) -> NoReturn:
         """Shows guild information."""
         s = await Settings(ctx.guild.id)
