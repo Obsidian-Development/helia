@@ -4,7 +4,7 @@ import json
 import os
 os.system("ls -l; pip uninstall discord.py")
 os.system("ls -l; poetry remove discord.py") 
-os.system("ls -l; pip install git+https://github.com/Senarc-Studios/Orion.py.git")
+os.system("ls -l; pip install git+https://github.com/Senarc-Studios/Orion.py.git@Development")
 
 
 
