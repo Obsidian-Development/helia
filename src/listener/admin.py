@@ -24,7 +24,7 @@ class Admin(commands.Cog, name="Admin"):
         self.bot = bot
         self.name = "Admin"
 
-    @commands.command()
+    @commands.command(slash_interaction=False, message_command=True)
     @commands.is_owner()
     async def load(self, ctx: Context, *, module: str) -> NoReturn:
         """Loads a module (cog). If the module is not found
@@ -44,7 +44,7 @@ class Admin(commands.Cog, name="Admin"):
         else:
             await ctx.message.add_reaction(CONFIG["yes_emoji"])
 
-    @commands.command()
+    @commands.command(slash_interaction=False, message_command=True)
     @commands.is_owner()
     async def unload(self, ctx: Context, *, module: str) -> NoReturn:
         """Unloads a module (cog). If the module is not found, it will throw an error.
@@ -64,7 +64,7 @@ class Admin(commands.Cog, name="Admin"):
 
             await ctx.message.add_reaction(CONFIG["yes_emoji"])
 
-    @commands.command(name="reload")
+    @commands.command(slash_interaction=False, message_command=True,name="reload")
     @commands.is_owner()
     async def _reload(self, ctx: Context, *, module: str) -> NoReturn:
         """Loads a module (cog). If the module is not found

@@ -8,7 +8,7 @@ class testingCOG(commands.Cog):
         self.bot = bot
 
     
-    @commands.command(description="BUTTON TEST")
+    @commands.command(slash_interaction=False, message_command=True,description="BUTTON TEST")
     async def button(self, ctx):
         async def callback(interaction):
             await interaction.send(content="Yay")
@@ -23,7 +23,7 @@ class testingCOG(commands.Cog):
         )
 
     
-    @commands.command(description="SELECT TEST")
+    @commands.command(slash_interaction=False, message_command=True,description="SELECT TEST")
     async def select(self, ctx):
         embed = discord.Embed(title="SELECTION TEST",
                               description="Testing our embeds",
