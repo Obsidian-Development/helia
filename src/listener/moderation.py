@@ -28,7 +28,7 @@ class Moderation(commands.Cog, name="Moderation"):
                   reason: str = "N/A") -> NoReturn:
         """
         
-        ```ban```
+        
         A command to ban a specified user.
 
         Arguments:
@@ -110,7 +110,7 @@ class Moderation(commands.Cog, name="Moderation"):
     async def unban(self, ctx, *, member) -> NoReturn:
         """
         
-        ```unban```
+        
         A command to unban a specified user.
 
         Arguments:
@@ -197,7 +197,7 @@ class Moderation(commands.Cog, name="Moderation"):
                        reason: str = "N/A") -> NoReturn:
         """
         
-        ```multiban```
+        
         A command to ban multiple users.
 
         Arguments:
@@ -250,7 +250,7 @@ class Moderation(commands.Cog, name="Moderation"):
                    reason: str = "N/A") -> NoReturn:
         """
         
-        ```kick```
+        
         A command to kick a specified user.
 
         Arguments:
@@ -314,7 +314,7 @@ class Moderation(commands.Cog, name="Moderation"):
     async def purge(self, ctx: Context, number: int) -> NoReturn:
         """
         
-        ```purge```
+        
         Deletes a specified number of messages in the current channel.
 
         Arguments:
@@ -375,7 +375,7 @@ class Moderation(commands.Cog, name="Moderation"):
                       name: str) -> NoReturn:
         """
         
-        ```setname```
+        
         Set a nickname for the specified user.
 
         Arguments:
@@ -409,7 +409,7 @@ class Moderation(commands.Cog, name="Moderation"):
                    reason: str = "N/A") -> NoReturn:
         """
         
-        ```mute```
+        
         Makes a specified user muted which basically means they cannot talk.
 
         Arguments:
@@ -463,7 +463,7 @@ class Moderation(commands.Cog, name="Moderation"):
                      reason: str = "N/A") -> NoReturn:
         """
         
-        ```unmute```
+        
         Unmutes a specified user which allows them to talk again.
 
         Arguments:
@@ -490,7 +490,7 @@ class Moderation(commands.Cog, name="Moderation"):
     async def lockdownrole(self, ctx, role: disnake.Role):
         """
         
-        ```lockdownrole```
+        
         Disables writing permissions for a specified role in server.
 
         Arguments:
@@ -517,7 +517,7 @@ class Moderation(commands.Cog, name="Moderation"):
     async def unlockrole(self, ctx, role: disnake.Role):
         """
         
-        ```unlockrole```
+        
         Allows  writing permissions for a specfied role in server.
 
         Arguments:
@@ -545,7 +545,7 @@ class Moderation(commands.Cog, name="Moderation"):
     async def lockdown(self, ctx):
         """
         
-        ```lockdown```
+        
         Disables writing permissions for everyone in the server.
         
         """
@@ -568,7 +568,7 @@ class Moderation(commands.Cog, name="Moderation"):
     async def unlock(self, ctx):
         """
         
-        ```unlock```
+        
         Allows writing permissions for everyone in the server.
         
         """
@@ -592,7 +592,7 @@ class Moderation(commands.Cog, name="Moderation"):
     async def channellock(self, ctx):
         """
         
-        ```channellock```
+        
         Disables writing permissions in current channel.
         
         """
@@ -615,7 +615,6 @@ class Moderation(commands.Cog, name="Moderation"):
     async def channelunlock(self, ctx):
         """
         
-        ```channelunlock```
         Allows writing permissions in current channel.
         
         """
