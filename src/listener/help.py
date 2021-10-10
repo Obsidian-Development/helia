@@ -35,7 +35,7 @@ class Help(commands.Cog):
                     SelectOption(label="Close", value="Close"),
                 ]
         view = discord.ui.View()
-        selecter = discord.ui.Select(placeholder='Select a category', min_values=1, max_values=1, options=options)
+        selecter = discord.ui.Select(placeholder='Select a category', min_values=1, max_values=1, options=options,custom_id="helpmenuer")
         view.add_item(selecter)
         
         done_components = [
