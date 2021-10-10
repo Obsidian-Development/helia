@@ -2,23 +2,23 @@ import asyncio
 import datetime
 import json
 import os
-os.system("ls -l; pip uninstall discord.py")
-os.system("ls -l; poetry remove discord.py") 
-os.system("ls -l; pip install git+https://github.com/Senarc-Studios/Orion.py.git@Development")
-#os.system("ls -l; pip install git+https://github.com/pieckenst/Orion.py.git@patch-1")
+#os.system("ls -l; pip uninstall discord.py")
+#os.system("ls -l; poetry remove discord.py") 
+#os.system("ls -l; pip install git+https://github.com/Senarc-Studios/Orion.py.git@Development")
+
 
 
 
 import aiohttp
 import discord
 from discord.ext import commands
-from discord_components import (
-    Button,
-    ComponentsBot,
-    DiscordComponents,
-    Select,
-    SelectOption,
-)
+#from discord_components import (
+    #Button,
+    #ComponentsBot,
+    #DiscordComponents,
+    #Select,
+    #SelectOption,
+#)
 from dotenv import load_dotenv
 
 import flwebhost
@@ -33,7 +33,7 @@ prefixes = ["//"]
 default_prefix = "//"
 server_prefixes = {}
 loaded = False
-flwebhost.keep_alive()
+#flwebhost.keep_alive() # uncomment for repl.it!
 
 
 def load_server_prefixes():
