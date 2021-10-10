@@ -158,7 +158,7 @@ class Help(commands.Cog):
             if Select.values[0] == "Close":
                 await interaction.response.edit_message(
                                           embed=embede,
-                                          view=none)
+                                          view=None)
 
 
 def setup(bot):
