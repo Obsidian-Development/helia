@@ -21,7 +21,7 @@ class Help(commands.Cog):
                     if y.cog and y.cog.qualified_name == "General":
                         x.append(y.name)
                 formatlistprep = ":\n```.```".join(x)
-                await interaction.response.message_update(
+                await interaction.response.edit_message(
                     
                     embed=disnake.Embed(
                         title=":beginner: General",
@@ -35,7 +35,7 @@ class Help(commands.Cog):
                         x.append(y.name)
                 formatlistprep = ":\n```.```".join(x)
 
-                await interaction.response.message_update(
+                await interaction.response.edit_message(
                     
                     embed=disnake.Embed(
                         title=":hammer_pick: Moderation",
@@ -48,7 +48,7 @@ class Help(commands.Cog):
                     if y.cog and y.cog.qualified_name == "Utilities":
                         x.append(y.name)
                 formatlistprep = ":\n```.```".join(x)
-                await interaction.response.message_update(
+                await interaction.response.edit_message(
                     
                     embed=disnake.Embed(
                         title=":wrench: Utilities",
@@ -61,7 +61,7 @@ class Help(commands.Cog):
                     if y.cog and y.cog.qualified_name == "Music":
                         x.append(y.name)
                 formatlistprep = ":\n```.```".join(x)
-                await interaction.response.message_update(
+                await interaction.response.edit_message(
                     
                     embed=disnake.Embed(
                         title=":headphones: Music",
@@ -74,7 +74,7 @@ class Help(commands.Cog):
                     if y.cog and y.cog.qualified_name == "Prefs":
                         x.append(y.name)
                 formatlistprep = ":\n```.```".join(x)
-                await interaction.response.message_update(
+                await interaction.response.edit_message(
                     
                     embed=disnake.Embed(
                         title=":tools: Preferences",
@@ -102,7 +102,7 @@ class Help(commands.Cog):
                 ```goodbye text {Optionally enter text - otherwise the default will be set} - Set goodbye text```
 
                 """
-                await interaction.response.message_update(
+                await interaction.response.edit_message(
                     
                     embed=disnake.Embed(
                         title=":wave: Welcome & Goodbye Messages",
@@ -115,7 +115,7 @@ class Help(commands.Cog):
                     if y.cog and y.cog.qualified_name == "Other":
                         x.append(y.name)
                 formatlistprep = ":\n```.```".join(x)
-                await interaction.response.message_update(
+                await interaction.response.edit_message(
                     
                     embed=disnake.Embed(
                         title=":hourglass: Other",
@@ -123,7 +123,7 @@ class Help(commands.Cog):
                     ).set_author(name="Help System"),
                 )
       if label == "Close":
-                await interaction.response.message_update(
+                await interaction.response.edit_message(
                                           embed=embede,
                                           view=None)
 
