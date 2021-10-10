@@ -2,6 +2,7 @@
 import asyncio
 import datetime
 import os
+from os import system as sys
 from os.path import abspath, dirname
 from typing import NoReturn
 
@@ -20,8 +21,7 @@ from listener.utils import Config, Logger, Settings, Strings, Utils
 CONFIG = Config()
 # STRINGS = Strings(CONFIG["default_locale"])
 
-def restart_bot(): 
-  os.execv(sys.executable, ['python'] + sys.argv)
+
 
 class Admin(commands.Cog, name="Admin"):
     """A module required to administer the bot. Only works for its owners."""
@@ -195,7 +195,8 @@ class Admin(commands.Cog, name="Admin"):
     @commands.is_owner()
     async def restart(self,ctx):
       await ctx.send("Restarting bot...")
-      restart_bot()
+      for ext in self.bot.startup_extensions: # Idk how you called it
+        self.bot.reload_extension(f"cogs.{ext[:3]}")
 
     @commands.command(description="Bot invite links")
     async def invite(self, ctx: Context):
