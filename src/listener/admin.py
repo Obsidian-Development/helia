@@ -194,22 +194,22 @@ class Admin(commands.Cog, name="Admin"):
             Button(
                 style=ButtonStyle.URL,
                 label=STRINGS["general"]["botinvitetitle"],
-                url=f"https://disnake.com/api/oauth2/authorize?client_id={self.bot.user.id}&permissions=204859462&scope=applications.commands%20bot",
+                url=f"https://discord.com/api/oauth2/authorize?client_id={self.bot.user.id}&permissions=204859462&scope=applications.commands%20bot",
             ),
             Button(
                 style=ButtonStyle.URL,
                 label=STRINGS["general"]["botinvitedescd"],
-                url=f"https://disnake.com/oauth2/authorize?client_id={self.bot.user.id}&scope=bot&permissions=204557314",
+                url=f"https://discord.com/oauth2/authorize?client_id={self.bot.user.id}&scope=bot&permissions=204557314",
             ),
             Button(
                 style=ButtonStyle.URL,
                 label=STRINGS["general"]["canaryver"],
-                url="https://disnake.com/oauth2/authorize?client_id=671612079106424862&scope=bot&permissions=204557314",
+                url="https://discord.com/oauth2/authorize?client_id=671612079106424862&scope=bot&permissions=204557314",
             ),
             Button(
                 style=ButtonStyle.URL,
                 label=STRINGS["general"]["botupsdc"],
-                url=f"https://bots.server-disnake.com/{self.bot.user.id}",
+                url=f"https://bots.server-discord.com/{self.bot.user.id}",
             ),
             Button(
                 style=ButtonStyle.URL,
@@ -222,12 +222,12 @@ class Admin(commands.Cog, name="Admin"):
             Button(
                 style=ButtonStyle.URL,
                 label=STRINGS["general"]["botupbod"],
-                url=f"https://bots.ondisnake.xyz/bots/{self.bot.user.id}",
+                url=f"https://bots.ondiscord.xyz/bots/{self.bot.user.id}",
             ),
             Button(
                 style=ButtonStyle.URL,
                 label=STRINGS["general"]["botupdblco"],
-                url=f"https://disnakebotslist.co/bot/{self.bot.user.id}",
+                url=f"https://discordbotslist.co/bot/{self.bot.user.id}",
             ),
         ]
 

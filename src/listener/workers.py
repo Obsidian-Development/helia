@@ -29,7 +29,7 @@ class Workers(commands.Cog):
             print("Proceeding to authorize")
             headers = {"Authorization": CONFIG["sdc_token"]}
             r = requests.post(
-                f"https://api.server-disnake.com/v2/bots/{self.bot.user.id}/stats",
+                f"https://api.server-discord.com/v2/bots/{self.bot.user.id}/stats",
                 headers=headers,
                 data={
                     "servers": len(self.bot.guilds),
