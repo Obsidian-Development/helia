@@ -26,13 +26,16 @@ class Moderation(commands.Cog, name="Moderation"):
                   member: Member,
                   *,
                   reason: str = "N/A") -> NoReturn:
-        """Bans the user.
+        """
+        =========
+        ```ban```
+        A command to ban a specified user.
 
-        Attributes:
+        Arguments:
         -----------
         - `member` - user
         - `reason` - ban reason
-
+        =========
         """
         s = await Settings(ctx.guild.id)
         lang = await s.get_field("locale", CONFIG["default_locale"])
@@ -105,12 +108,15 @@ class Moderation(commands.Cog, name="Moderation"):
     @commands.has_permissions(ban_members=True)
     @commands.cooldown(1, 5, commands.BucketType.user)
     async def unban(self, ctx, *, member) -> NoReturn:
-        """Unbans the user.
+        """
+        =========
+        ```unban```
+        A command to unban a specified user.
 
-        Attributes:
+        Arguments:
         -----------
         - `member` - user tag. Example: `name#1234`
-
+        =========
         """
         s = await Settings(ctx.guild.id)
         lang = await s.get_field("locale", CONFIG["default_locale"])
@@ -189,13 +195,16 @@ class Moderation(commands.Cog, name="Moderation"):
                        members: Greedy[Member],
                        *,
                        reason: str = "N/A") -> NoReturn:
-        """Bans multiple users.
+        """
+        =========
+        ```multiban```
+        A command to ban multiple users.
 
-        Attributes:
+        Arguments:
         -----------
         - `member` - user
         - `reason` - ban reason
-
+        =========
         """
         s = await Settings(ctx.guild.id)
         lang = await s.get_field("locale", CONFIG["default_locale"])
@@ -239,13 +248,16 @@ class Moderation(commands.Cog, name="Moderation"):
                    member: Member,
                    *,
                    reason: str = "N/A") -> NoReturn:
-        """Kicks the user.
+        """
+        =========
+        ```kick```
+        A command to kick a specified user.
 
-        Attributes:
+        Arguments:
         -----------
         - `member` - user
         - `reason` - kick reason
-
+        =========
         """
         s = await Settings(ctx.guild.id)
         lang = await s.get_field("locale", CONFIG["default_locale"])
@@ -300,12 +312,15 @@ class Moderation(commands.Cog, name="Moderation"):
     @commands.has_permissions(manage_messages=True)
     @commands.cooldown(1, 5, commands.BucketType.user)
     async def purge(self, ctx: Context, number: int) -> NoReturn:
-        """Deletes a specified number of messages in the current channel.
+        """
+        =========
+        ```purge```
+        Deletes a specified number of messages in the current channel.
 
-        Attributes:
+        Arguments:
         -----------
         - `number` - The number of messages to be deleted.
-
+        =========
         """
         s = await Settings(ctx.guild.id)
         lang = await s.get_field("locale", CONFIG["default_locale"])
@@ -358,6 +373,17 @@ class Moderation(commands.Cog, name="Moderation"):
     @commands.cooldown(1, 5, commands.BucketType.user)
     async def setname(self, ctx: Context, member: Member, *,
                       name: str) -> NoReturn:
+        """
+        =========
+        ```setname```
+        Set a nickname for the specified user.
+
+        Arguments:
+        -----------
+        - `member` - user.
+        - `name` - Nickname to set 
+        =========
+        """
         s = await Settings(ctx.guild.id)
         lang = await s.get_field("locale", CONFIG["default_locale"])
         STRINGS = Strings(lang)
@@ -381,6 +407,17 @@ class Moderation(commands.Cog, name="Moderation"):
                    member: Member,
                    *,
                    reason: str = "N/A") -> NoReturn:
+        """
+        =========
+        ```mute```
+        Makes a specified user muted which basically means they cannot talk.
+
+        Arguments:
+        -----------
+        - `member` - user.
+        - `reason` - Reason to mute the person
+        =========
+        """
         s = await Settings(ctx.guild.id)
         lang = await s.get_field("locale", CONFIG["default_locale"])
         STRINGS = Strings(lang)
@@ -424,6 +461,17 @@ class Moderation(commands.Cog, name="Moderation"):
                      member: Member,
                      *,
                      reason: str = "N/A") -> NoReturn:
+        """
+        =========
+        ```unmute```
+        Unmutes a specified user which allows them to talk again.
+
+        Arguments:
+        -----------
+        - `member` - user.
+        - `reason` - Reason to unmute the person
+        =========
+        """
         mute_role = disnake.utils.get(ctx.guild.roles,
                                       id=Utils.get_mute_role(
                                           None, ctx.message))
@@ -440,6 +488,17 @@ class Moderation(commands.Cog, name="Moderation"):
     @commands.cooldown(1, 30, commands.BucketType.user)
     # `RoleConverter` will automatically convert it to a `disnake.Role` instance
     async def lockdownrole(self, ctx, role: disnake.Role):
+        """
+        =========
+        ```lockdownrole```
+        Disables writing permissions for a specified role in server.
+
+        Arguments:
+        -----------
+        - `role` - Role for which to disallow writing in server.
+        
+        =========
+        """
         s = await Settings(ctx.guild.id)
         lang = await s.get_field("locale", CONFIG["default_locale"])
         STRINGS = Strings(lang)
@@ -456,6 +515,17 @@ class Moderation(commands.Cog, name="Moderation"):
     @commands.has_permissions(manage_roles=True)
     @commands.cooldown(1, 30, commands.BucketType.user)
     async def unlockrole(self, ctx, role: disnake.Role):
+        """
+        =========
+        ```unlockrole```
+        Allows  writing permissions for a specfied role in server.
+
+        Arguments:
+        -----------
+        - `role` - Role for which to disallow writing in server.
+        
+        =========
+        """
         s = await Settings(ctx.guild.id)
         lang = await s.get_field("locale", CONFIG["default_locale"])
         STRINGS = Strings(lang)
@@ -473,6 +543,12 @@ class Moderation(commands.Cog, name="Moderation"):
     @commands.has_permissions(manage_roles=True)
     @commands.cooldown(1, 30, commands.BucketType.user)
     async def lockdown(self, ctx):
+        """
+        =========
+        ```lockdown```
+        Disables writing permissions for everyone in the server.
+        =========
+        """
         s = await Settings(ctx.guild.id)
         lang = await s.get_field("locale", CONFIG["default_locale"])
         STRINGS = Strings(lang)
@@ -490,6 +566,12 @@ class Moderation(commands.Cog, name="Moderation"):
     @commands.has_permissions(manage_roles=True)
     @commands.cooldown(1, 30, commands.BucketType.user)
     async def unlock(self, ctx):
+        """
+        =========
+        ```unlock```
+        Allows writing permissions for everyone in the server.
+        =========
+        """
         s = await Settings(ctx.guild.id)
         lang = await s.get_field("locale", CONFIG["default_locale"])
         STRINGS = Strings(lang)
@@ -508,6 +590,12 @@ class Moderation(commands.Cog, name="Moderation"):
     @commands.has_permissions(manage_roles=True)
     @commands.cooldown(1, 30, commands.BucketType.user)
     async def channellock(self, ctx):
+        """
+        =========
+        ```channellock```
+        Disables writing permissions in current channel.
+        =========
+        """
         s = await Settings(ctx.guild.id)
         lang = await s.get_field("locale", CONFIG["default_locale"])
         STRINGS = Strings(lang)
@@ -525,6 +613,12 @@ class Moderation(commands.Cog, name="Moderation"):
     @commands.has_permissions(manage_roles=True)
     @commands.cooldown(1, 30, commands.BucketType.user)
     async def channelunlock(self, ctx):
+        """
+        =========
+        ```channelunlock```
+        Allows writing permissions in current channel.
+        =========
+        """
         s = await Settings(ctx.guild.id)
         lang = await s.get_field("locale", CONFIG["default_locale"])
         STRINGS = Strings(lang)

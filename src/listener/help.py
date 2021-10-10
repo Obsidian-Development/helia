@@ -4,124 +4,50 @@ from disnake.ext import commands
 from disnake import SelectOption,ButtonStyle
 from disnake.ui import View, Select,Button
 
+async def get_help(self, interaction, CogToPassAlong):
+     #if CogToPassAlong == "NSFW":
+        #if not interaction.channel.is_nsfw():
+           #embed = disnake.Embed(title="Non-NSFW channel 🔞", description=f"Find yourself an NSFW-Channel and retry from there.", color=disnake.Colour.red())
+            #embed.set_footer(text=f"set_your_footer_here")
+            #await interaction.respond(embed=embed)
+            #return
+        #else:
+            #pass
 
+     for command in self.bot.get_cog(CogToPassAlong).get_commands():
+        if command is not None:
+            pass
+    
+     # making title - getting description from doc-string below class
+     emb = disnake.Embed(title=f'{CogToPassAlong} - Commands', description=self.bot.cogs[CogToPassAlong].__doc__)
+     emb.set_author(name="Help System")
+     # getting commands from cog
+     for command in self.bot.get_cog(CogToPassAlong).get_commands():
+        # if cog is not hidden
+        if not command.hidden:
+            emb.add_field(name=f"『`{command.name}`』", value=command.help, inline=False)
+     # found cog - breaking loop
+     await interaction.response.edit_message(embed=emb)
 
 class Help(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
+    
+    
 
     @commands.Cog.listener()
     async def on_interaction(self, interaction: disnake.Interaction):
+      embede = disnake.Embed(
+            title=":books: Help System",
+            description=f"Welcome To {self.bot.user.name} Help System",
+        )
       #print(f"{interaction.author.name} with ID {interaction.author.id} just clicked something in the select menu")
       label = interaction.data.values[0]
       print(label)
-      if label == "General":
-                x = []
-                for y in self.bot.commands:
-                    if y.cog and y.cog.qualified_name == "General":
-                        x.append(y.name)
-                formatlistprep = ":\n```.```".join(x)
-                await interaction.response.edit_message(
-                    
-                    embed=disnake.Embed(
-                        title=":beginner: General",
-                        description=f"Here is the list of general commands we have \n ```{formatlistprep}```",
-                    ).set_author(name="Help System")
-                )
-      if label == "Moderation":
-                x = []
-                for y in self.bot.commands:
-                    if y.cog and y.cog.qualified_name == "Moderation":
-                        x.append(y.name)
-                formatlistprep = ":\n```.```".join(x)
-
-                await interaction.response.edit_message(
-                    
-                    embed=disnake.Embed(
-                        title=":hammer_pick: Moderation",
-                        description=f"Here is the list of moderation commands we have \n ```{formatlistprep}```",
-                    ).set_author(name="Help System")
-                )
-      if label == "Utilities":
-                x = []
-                for y in self.bot.commands:
-                    if y.cog and y.cog.qualified_name == "Utilities":
-                        x.append(y.name)
-                formatlistprep = ":\n```.```".join(x)
-                await interaction.response.edit_message(
-                    
-                    embed=disnake.Embed(
-                        title=":wrench: Utilities",
-                        description=f"Here is the list of utilities commands we have \n ```{formatlistprep}```",
-                    ).set_author(name="Help System")
-                )
-      if label == "Music":
-                x = []
-                for y in self.bot.commands:
-                    if y.cog and y.cog.qualified_name == "Music":
-                        x.append(y.name)
-                formatlistprep = ":\n```.```".join(x)
-                await interaction.response.edit_message(
-                    
-                    embed=disnake.Embed(
-                        title=":headphones: Music",
-                        description=f"Here is the list of music commands we have \n ```{formatlistprep}```",
-                    ).set_author(name="Help System")
-                )
-      if label == "Preferences":
-                x = []
-                for y in self.bot.commands:
-                    if y.cog and y.cog.qualified_name == "Prefs":
-                        x.append(y.name)
-                formatlistprep = ":\n```.```".join(x)
-                await interaction.response.edit_message(
-                    
-                    embed=disnake.Embed(
-                        title=":tools: Preferences",
-                        description=f"Here is the list of bot configuration commands \n ```{formatlistprep}```",
-                    ).set_author(name="Help System")
-                )
-
-      if label == "Welcome & Goodbye Messages":
-                descwelcgood = """
-                Here is the list of commands related to server join and leave messages
-                ```welcome - Displays this message```
-                .
-                ```welcome channel [#channel mention] - Set welcome channel```
-                .
-                ```welcome clear - Remove the set welcome channel```
-                .
-                ```welcome text {Optionally enter text - otherwise the default will be set} - Set welcome text```
-                .
-                ```goodbye - Displays this message```
-                .
-                ```goodbye channel [#channel mention] - Set goodbye channel```
-                .
-                ```goodbye clear - Remove the set goodbye channel```
-                .
-                ```goodbye text {Optionally enter text - otherwise the default will be set} - Set goodbye text```
-
-                """
-                await interaction.response.edit_message(
-                    
-                    embed=disnake.Embed(
-                        title=":wave: Welcome & Goodbye Messages",
-                        description=f"{descwelcgood}",
-                    ).set_author(name="Help System")
-                )
-      if label == "Other":
-                x = []
-                for y in self.bot.commands:
-                    if y.cog and y.cog.qualified_name == "Other":
-                        x.append(y.name)
-                formatlistprep = ":\n```.```".join(x)
-                await interaction.response.edit_message(
-                    
-                    embed=disnake.Embed(
-                        title=":hourglass: Other",
-                        description=f"Here is the list of miscellaneous commands \n ```{formatlistprep}```",
-                    ).set_author(name="Help System")
-                )
+      for cog in self.bot.cogs:
+            if label == cog:#-------------------[1]
+                await get_help(self, interaction, CogToPassAlong=cog)
+                print(str(cog))
       if label == "Close":
                 await interaction.response.edit_message(
                                           embed=embede,
