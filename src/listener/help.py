@@ -12,9 +12,10 @@ class Help(commands.Cog):
 
     @commands.Cog.listener()
     async def on_interaction(self, interaction: discord.Interaction):
-      print(f"{interaction.author.name} with ID {interaction.author.id} just clicked something in the select menu")
+      #print(f"{interaction.author.name} with ID {interaction.author.id} just clicked something in the select menu")
       label = interaction.data.values[0]
-      if label.values[0] == "General":
+      print(label)
+      if label == "General":
                 x = []
                 for y in self.bot.commands:
                     if y.cog and y.cog.qualified_name == "General":
@@ -27,7 +28,7 @@ class Help(commands.Cog):
                         description=f"Here is the list of general commands we have \n ```{formatlistprep}```",
                     ).set_author(name="Help System"),
                 )
-      if label.values[0] == "Moderation":
+      if label == "Moderation":
                 x = []
                 for y in self.bot.commands:
                     if y.cog and y.cog.qualified_name == "Moderation":
@@ -41,7 +42,7 @@ class Help(commands.Cog):
                         description=f"Here is the list of moderation commands we have \n ```{formatlistprep}```",
                     ).set_author(name="Help System"),
                 )
-      if label.values[0] == "Utilities":
+      if label == "Utilities":
                 x = []
                 for y in self.bot.commands:
                     if y.cog and y.cog.qualified_name == "Utilities":
@@ -54,7 +55,7 @@ class Help(commands.Cog):
                         description=f"Here is the list of utilities commands we have \n ```{formatlistprep}```",
                     ).set_author(name="Help System"),
                 )
-      if label.values[0] == "Music":
+      if label == "Music":
                 x = []
                 for y in self.bot.commands:
                     if y.cog and y.cog.qualified_name == "Music":
@@ -67,7 +68,7 @@ class Help(commands.Cog):
                         description=f"Here is the list of music commands we have \n ```{formatlistprep}```",
                     ).set_author(name="Help System"),
                 )
-      if label.values[0] == "Preferences":
+      if label == "Preferences":
                 x = []
                 for y in self.bot.commands:
                     if y.cog and y.cog.qualified_name == "Prefs":
@@ -81,7 +82,7 @@ class Help(commands.Cog):
                     ).set_author(name="Help System"),
                 )
 
-      if label.values[0] == "Welcome & Goodbye Messages":
+      if label == "Welcome & Goodbye Messages":
                 descwelcgood = """
                 Here is the list of commands related to server join and leave messages
                 ```welcome - Displays this message```
@@ -108,7 +109,7 @@ class Help(commands.Cog):
                         description=f"{descwelcgood}",
                     ).set_author(name="Help System"),
                 )
-      if label.values[0] == "Other":
+      if label == "Other":
                 x = []
                 for y in self.bot.commands:
                     if y.cog and y.cog.qualified_name == "Other":
@@ -121,7 +122,7 @@ class Help(commands.Cog):
                         description=f"Here is the list of miscellaneous commands \n ```{formatlistprep}```",
                     ).set_author(name="Help System"),
                 )
-      if label.values[0] == "Close":
+      if label == "Close":
                 await interaction.response.edit_message(
                                           embed=embede,
                                           view=None)
