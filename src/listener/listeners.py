@@ -3,6 +3,8 @@ import asyncio
 import datetime
 from typing import NoReturn
 
+from termcolor import cprint
+
 import disnake
 from disnake import Guild, Message
 from disnake.ext import commands
@@ -109,7 +111,12 @@ class Listeners(commands.Cog, name="Listeners"):
         cprint(f"""║=================║=================║=================║
                    ║Guild            ║Guild ID         ║Member           ║
                    ║{ctx.guild.name} ║{ctx.guild.id}   ║{ctx.member.name}║
-                   ║=================║=================║=================║""")
+                   ║=================║=================║=================║
+                   =======================================================
+                   Traceback 
+                   {error}
+                   """)
+        cprint("==============================")
 
         if isinstance(error, commands.CommandNotFound):
             return
