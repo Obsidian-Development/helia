@@ -13,34 +13,7 @@ async def get_help(self, interaction, CogToPassAlong):
             #return
         #else:
             #pass
-     if CogToPassAlong == "Welcome & Goodbye Messages":
-        descwelcgood = """
-                Here is the list of commands related to server join and leave messages
-                ```welcome - Displays this message```
-                .
-                ```welcome channel [#channel mention] - Set welcome channel```
-                .
-                ```welcome clear - Remove the set welcome channel```
-                .
-                ```welcome text {Optionally enter text - otherwise the default will be set} - Set welcome text```
-                .
-                ```goodbye - Displays this message```
-                .
-                ```goodbye channel [#channel mention] - Set goodbye channel```
-                .
-                ```goodbye clear - Remove the set goodbye channel```
-                .
-                ```goodbye text {Optionally enter text - otherwise the default will be set} - Set goodbye text```
-                """
-        await interaction.response.edit_message(
-            embed=disnake.Embed(
-                title=":wave: Welcome & Goodbye Messages",
-                description=f"{descwelcgood}",
-            ).set_author(name="Help System")
-        )
-     else:
-        pass
-
+     
      for command in self.bot.get_cog(CogToPassAlong).get_commands():
         if command is not None:
             pass
@@ -99,8 +72,12 @@ class Help(commands.Cog):
                     SelectOption(label="Music", value="Music"),
                     SelectOption(label="Preferences", value="Preferences"),
                     SelectOption(
-                        label="Welcome & Goodbye Messages",
-                        value="Welcome & Goodbye Messages",
+                        label="Welcome",
+                        value="Welcome",
+                    ),
+                    SelectOption(
+                        label="Goodbye",
+                        value="Goodbye",
                     ),
                     SelectOption(label="Other", value="Other"),
                     SelectOption(label="Close", value="Close"),

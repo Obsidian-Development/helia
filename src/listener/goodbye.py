@@ -11,7 +11,7 @@ from disnake.ext.commands import Bot, Context
 from scripts import db
 
 
-class goodbye(commands.Cog):
+class Goodbye(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
@@ -183,4 +183,4 @@ class goodbye(commands.Cog):
 
 
 def setup(bot):
-    bot.add_cog(goodbye(bot))
+    bot.add_cog(Goodbye(bot))
