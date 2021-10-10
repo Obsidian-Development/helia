@@ -19,6 +19,8 @@ from listener.utils import Config, Logger, Settings, Strings, Utils
 CONFIG = Config()
 # STRINGS = Strings(CONFIG["default_locale"])
 
+def restart_bot(): 
+  os.execv(sys.executable, ['python'] + sys.argv)
 
 class Admin(commands.Cog, name="Admin"):
     """A module required to administer the bot. Only works for its owners."""
@@ -190,11 +192,9 @@ class Admin(commands.Cog, name="Admin"):
 
     @client.command()
     @commands.is_owner()
-    async def restart(ctx):
-      load_dotenv()
-      nano_token = os.getenv("BOT_TOKEN")
-      await ctx.bot.logout()
-      await ctx.bot.login(nano_token, bot=True)
+    async def restartBot(ctx):
+      await ctx.send("Restarting bot...")
+      restart_bot()
 
     @commands.command(description="Bot invite links")
     async def invite(self, ctx: Context):
