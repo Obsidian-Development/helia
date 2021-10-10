@@ -87,10 +87,10 @@ class General(commands.Cog, name="General"):
     @commands.command(slash_interaction=True, message_command=True,description="Echo Commands")
     async def echo(self, ctx: Context, *, content):
         """
-        =========
+        
         ```echo```
         A command to send a specified message as bot
-        =========
+        
         """
         s = await Settings(ctx.guild.id)
         lang = await s.get_field("locale", CONFIG["default_locale"])
@@ -114,10 +114,10 @@ class General(commands.Cog, name="General"):
     @commands.command(slash_interaction=True, message_command=True,description="Generate Embed")
     async def embed(self, ctx: Context, name, *, content):
         """
-        =========
+        
         ```embed```
         A command to send a embed with specified name and content as bot
-        =========
+        
         """
         s = await Settings(ctx.guild.id)
         lang = await s.get_field("locale", CONFIG["default_locale"])
@@ -142,11 +142,11 @@ class General(commands.Cog, name="General"):
     @commands.is_nsfw()
     async def wiki(self, ctx: Context, *, searcher=None):
         """
-        =========
+        
         ```wiki```
         A command to search wikipedia for a specified topic
         [REQUIRES NSFW CHANNEL! - Thank you top.gg for somehow fucking finding nsfw there and as a result forcing this command to be restricted]
-        =========
+        
         """
         try:
             wikipedia.set_lang("en")
@@ -179,10 +179,10 @@ class General(commands.Cog, name="General"):
     @commands.command(slash_interaction=True, message_command=True,description="Shows information about bot and its author")
     async def about(self, ctx: Context) -> NoReturn:
         """
-        =========
+        
         ```about```
         Shows a short description of the bot.
-        =========
+        
         """
         
         s = await Settings(ctx.guild.id)
@@ -231,10 +231,10 @@ class General(commands.Cog, name="General"):
     @commands.command(slash_interaction=True, message_command=True,description="Shows bot privacy policy")
     async def privacy(self, ctx: Context):
         """
-        =========
+        
         ```privacy```
         Shows the privacy policy of the bot
-        =========
+        
         """
         s = await Settings(ctx.guild.id)
         lang = await s.get_field("locale", CONFIG["default_locale"])
