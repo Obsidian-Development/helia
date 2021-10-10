@@ -2,9 +2,9 @@ import asyncio
 import datetime
 import json
 import os
-#os.system("ls -l; pip uninstall discord.py")
-#os.system("ls -l; poetry remove discord.py") 
-#os.system("ls -l; pip install git+https://github.com/Senarc-Studios/Orion.py.git@Development")
+os.system("ls -l; pip uninstall discord.py")
+os.system("ls -l; poetry remove discord.py") 
+os.system("ls -l; pip install git+https://github.com/Senarc-Studios/Orion.py.git@Development")
 
 
 
@@ -33,7 +33,7 @@ prefixes = ["//"]
 default_prefix = "//"
 server_prefixes = {}
 loaded = False
-#flwebhost.keep_alive() # uncomment for repl.it!
+flwebhost.keep_alive() # uncomment for repl.it!
 
 
 def load_server_prefixes():
@@ -51,10 +51,11 @@ def save_server_prefixes():
 
 
 def get_memory_config():
-    intents = discord.Intents.default()
+    intents = discord.Intents.all()
     # Commented line for requesting members privileged intent - uncomment for enabling
     intents.members = True
-    # intents.presences = True # Commented line for requesting presence privileged intent - uncomment for enabling
+    intents.presences = False
+    
     return intents
 
 

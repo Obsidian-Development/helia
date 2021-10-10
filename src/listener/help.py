@@ -1,4 +1,5 @@
 import discord
+from discord import interactions
 from discord.ext import commands
 from discord import SelectOption,ButtonStyle
 from discord.ui import View, Select,Button
@@ -33,89 +34,88 @@ class Help(commands.Cog):
                     SelectOption(label="Other", value="Other"),
                     SelectOption(label="Close", value="Close"),
                 ]
-        view = view = discord.ui.View()
+        view = discord.ui.View()
         view.add_item(discord.ui.Select(placeholder='Select a category', min_values=1, max_values=1, options=options))
         
         done_components = [
             Button(style=ButtonStyle.secondary, label="·", disabled=True),
         ]
 
-        async def callback(interaction):
-            await interaction.send(embed=embed)
+        #async def callback(interaction):
+            #await interaction.send(embed=embed)
 
         await ctx.send(embed=embede, view=view)
 
-        while True:
-            interaction = await self.bot.wait_for("select_option")
-            label = interaction.values[0]
-            if label == "General":
+        async def callback(self, select: discord.ui.select, interaction: discord.Interaction):
+            
+            if Select.values[0] == "General":
                 x = []
                 for y in self.bot.commands:
                     if y.cog and y.cog.qualified_name == "General":
                         x.append(y.name)
                 formatlistprep = ":\n```.```".join(x)
-                await interaction.respond(
-                    type=7,
+                await interaction.response.edit_message(
+                    
                     embed=discord.Embed(
                         title=":beginner: General",
                         description=f"Here is the list of general commands we have \n ```{formatlistprep}```",
                     ).set_author(name="Help System"),
                 )
-            if label == "Moderation":
+            if Select.values[0] == "Moderation":
                 x = []
                 for y in self.bot.commands:
                     if y.cog and y.cog.qualified_name == "Moderation":
                         x.append(y.name)
                 formatlistprep = ":\n```.```".join(x)
 
-                await interaction.respond(
-                    type=7,
+                await interaction.response.edit_message(
+                    
                     embed=discord.Embed(
                         title=":hammer_pick: Moderation",
                         description=f"Here is the list of moderation commands we have \n ```{formatlistprep}```",
                     ).set_author(name="Help System"),
                 )
-            if label == "Utilities":
+            if Select.values[0] == "Utilities":
                 x = []
                 for y in self.bot.commands:
                     if y.cog and y.cog.qualified_name == "Utilities":
                         x.append(y.name)
                 formatlistprep = ":\n```.```".join(x)
-                await interaction.respond(
-                    type=7,
+                await interaction.response.edit_message(
+                    
                     embed=discord.Embed(
                         title=":wrench: Utilities",
                         description=f"Here is the list of utilities commands we have \n ```{formatlistprep}```",
                     ).set_author(name="Help System"),
                 )
-            if label == "Music":
+            if Select.values[0] == "Music":
                 x = []
                 for y in self.bot.commands:
                     if y.cog and y.cog.qualified_name == "Music":
                         x.append(y.name)
                 formatlistprep = ":\n```.```".join(x)
-                await interaction.respond(
-                    type=7,
+                await interaction.response.edit_message(
+                    
                     embed=discord.Embed(
                         title=":headphones: Music",
                         description=f"Here is the list of music commands we have \n ```{formatlistprep}```",
                     ).set_author(name="Help System"),
                 )
-            if label == "Preferences":
+            if Select.values[0] == "Preferences":
                 x = []
                 for y in self.bot.commands:
                     if y.cog and y.cog.qualified_name == "Prefs":
                         x.append(y.name)
                 formatlistprep = ":\n```.```".join(x)
-                await interaction.respond(
-                    type=7,
+                await interaction.response.edit_message(
+                    
                     embed=discord.Embed(
                         title=":tools: Preferences",
                         description=f"Here is the list of bot configuration commands \n ```{formatlistprep}```",
                     ).set_author(name="Help System"),
                 )
 
-            if label == "Welcome & Goodbye Messages":
+            if Select.values[0] == "Welcome & Goodbye Messages":
                 descwelcgood = """
                 Here is the list of commands related to server join and leave messages
                 ```welcome - Displays this message```
@@ -135,30 +135,30 @@ class Help(commands.Cog):
                 ```goodbye text {Optionally enter text - otherwise the default will be set} - Set goodbye text```
 
                 """
-                await interaction.respond(
-                    type=7,
+                await interaction.response.edit_message(
+                    
                     embed=discord.Embed(
                         title=":wave: Welcome & Goodbye Messages",
                         description=f"{descwelcgood}",
                     ).set_author(name="Help System"),
                 )
-            if label == "Other":
+            if Select.values[0] == "Other":
                 x = []
                 for y in self.bot.commands:
                     if y.cog and y.cog.qualified_name == "Other":
                         x.append(y.name)
                 formatlistprep = ":\n```.```".join(x)
-                await interaction.respond(
-                    type=7,
+                await interaction.response.edit_message(
+                    
                     embed=discord.Embed(
                         title=":hourglass: Other",
                         description=f"Here is the list of miscellaneous commands \n ```{formatlistprep}```",
                     ).set_author(name="Help System"),
                 )
-            if label == "Close":
-                await interaction.respond(type=7,
+            if Select.values[0] == "Close":
+                await interaction.response.edit_message(
                                           embed=embede,
-                                          components=done_components)
+                                          view=none)
 
 
 def setup(bot):
