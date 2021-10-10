@@ -190,7 +190,7 @@ class Admin(commands.Cog, name="Admin"):
 
         await ctx.send(embed=embed)
 
-    @commands.command(description="Bot restart)
+    @commands.command(description="Bot restart")
     @commands.is_owner()
     async def restartBot(self,ctx):
       await ctx.send("Restarting bot...")
