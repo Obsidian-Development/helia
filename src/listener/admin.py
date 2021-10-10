@@ -192,7 +192,7 @@ class Admin(commands.Cog, name="Admin"):
 
     @commands.command(description="Bot restart")
     @commands.is_owner()
-    async def restartBot(self,ctx):
+    async def restart(self,ctx):
       await ctx.send("Restarting bot...")
       restart_bot()
 
