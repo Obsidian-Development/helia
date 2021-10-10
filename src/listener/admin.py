@@ -9,6 +9,7 @@ from disnake.ext import commands
 from disnake.ext.commands import Bot, Context
 from disnake import SelectOption,ButtonStyle
 from disnake.ui import View, Select,Button
+from dotenv import load_dotenv
 #from disnake_components import Button, ButtonStyle, disnakeComponents
 
 from listener.utils import Config, Logger, Settings, Strings, Utils
@@ -186,6 +187,14 @@ class Admin(commands.Cog, name="Admin"):
             )
 
         await ctx.send(embed=embed)
+
+    @client.command()
+    @commands.is_owner()
+    async def restart(ctx):
+      load_dotenv()
+      nano_token = os.getenv("BOT_TOKEN")
+      await ctx.bot.logout()
+      await ctx.bot.login(nano_token, bot=True)
 
     @commands.command(description="Bot invite links")
     async def invite(self, ctx: Context):

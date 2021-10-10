@@ -108,15 +108,16 @@ class Listeners(commands.Cog, name="Listeners"):
         STRINGS = Strings(lang)
         COMMANDS = Commands(lang)
         cprint("==============================")
-        cprint(f"""║=================║=================║=================║
-                   ║Guild            ║Guild ID         ║Member           ║
-                   ║{ctx.guild.name} ║{ctx.guild.id}   ║{ctx.author.name}║
-                   ║=================║=================║=================║
-                   =======================================================
-                   Traceback 
-                   {error}
-                   =======================================================
-                   """)
+        cprint(f"""
+        ║====================║====================║====================║
+        ║Guild               ║   Guild ID         ║ Member             ║
+        ║{ctx.guild.name}    ║   {ctx.guild.id}   ║ {ctx.author.name}  ║
+        ║====================║====================║====================║
+        =======================================================
+        Traceback 
+        {error}
+        =======================================================
+        """)
         cprint("==============================")
 
         if isinstance(error, commands.CommandNotFound):
