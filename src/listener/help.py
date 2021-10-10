@@ -35,7 +35,8 @@ class Help(commands.Cog):
                     SelectOption(label="Close", value="Close"),
                 ]
         view = discord.ui.View()
-        view.add_item(discord.ui.Select(placeholder='Select a category', min_values=1, max_values=1, options=options))
+        selecter = discord.ui.Select(placeholder='Select a category', min_values=1, max_values=1, options=options)
+        view.add_item(selecter)
         
         done_components = [
             Button(style=ButtonStyle.secondary, label="·", disabled=True),
@@ -45,10 +46,11 @@ class Help(commands.Cog):
             #await interaction.send(embed=embed)
 
         await ctx.send(embed=embede, view=view)
+        
 
-        async def callback(self, select: discord.ui.select, interaction: discord.Interaction):
+        
             
-            if Select.values[0] == "General":
+        if selecter.values[0] == "General":
                 x = []
                 for y in self.bot.commands:
                     if y.cog and y.cog.qualified_name == "General":
@@ -61,7 +63,7 @@ class Help(commands.Cog):
                         description=f"Here is the list of general commands we have \n ```{formatlistprep}```",
                     ).set_author(name="Help System"),
                 )
-            if Select.values[0] == "Moderation":
+        if selecter.values[0] == "Moderation":
                 x = []
                 for y in self.bot.commands:
                     if y.cog and y.cog.qualified_name == "Moderation":
@@ -75,7 +77,7 @@ class Help(commands.Cog):
                         description=f"Here is the list of moderation commands we have \n ```{formatlistprep}```",
                     ).set_author(name="Help System"),
                 )
-            if Select.values[0] == "Utilities":
+        if selecter.values[0] == "Utilities":
                 x = []
                 for y in self.bot.commands:
                     if y.cog and y.cog.qualified_name == "Utilities":
@@ -88,7 +90,7 @@ class Help(commands.Cog):
                         description=f"Here is the list of utilities commands we have \n ```{formatlistprep}```",
                     ).set_author(name="Help System"),
                 )
-            if Select.values[0] == "Music":
+        if selecter.values[0] == "Music":
                 x = []
                 for y in self.bot.commands:
                     if y.cog and y.cog.qualified_name == "Music":
@@ -101,7 +103,7 @@ class Help(commands.Cog):
                         description=f"Here is the list of music commands we have \n ```{formatlistprep}```",
                     ).set_author(name="Help System"),
                 )
-            if Select.values[0] == "Preferences":
+        if selecter.values[0] == "Preferences":
                 x = []
                 for y in self.bot.commands:
                     if y.cog and y.cog.qualified_name == "Prefs":
@@ -115,7 +117,7 @@ class Help(commands.Cog):
                     ).set_author(name="Help System"),
                 )
 
-            if Select.values[0] == "Welcome & Goodbye Messages":
+        if selecter.values[0] == "Welcome & Goodbye Messages":
                 descwelcgood = """
                 Here is the list of commands related to server join and leave messages
                 ```welcome - Displays this message```
@@ -142,7 +144,7 @@ class Help(commands.Cog):
                         description=f"{descwelcgood}",
                     ).set_author(name="Help System"),
                 )
-            if Select.values[0] == "Other":
+        if selecter.values[0] == "Other":
                 x = []
                 for y in self.bot.commands:
                     if y.cog and y.cog.qualified_name == "Other":
@@ -155,7 +157,7 @@ class Help(commands.Cog):
                         description=f"Here is the list of miscellaneous commands \n ```{formatlistprep}```",
                     ).set_author(name="Help System"),
                 )
-            if Select.values[0] == "Close":
+        if selecter.values[0] == "Close":
                 await interaction.response.edit_message(
                                           embed=embede,
                                           view=None)
