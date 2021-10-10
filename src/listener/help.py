@@ -68,6 +68,7 @@ class Help(commands.Cog):
             title=":books: Help System",
             description=f"Welcome To {self.bot.user.name} Help System",
         )
+      embede.set_footer(text="Developed with ❤️ by Middlle")
       #print(f"{interaction.author.name} with ID {interaction.author.id} just clicked something in the select menu")
       label = interaction.data.values[0]
       print(label)
