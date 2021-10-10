@@ -35,7 +35,7 @@ class Help(commands.Cog):
                     SelectOption(label="Close", value="Close"),
                 ]
         view = discord.ui.View()
-        view.add_item(discord.ui.Select(placeholder='Select a category', min_values=1, max_values=100, options=options))
+        view.add_item(discord.ui.Select(placeholder='Select a category', min_values=1, max_values=25, options=options))
         
         done_components = [
             Button(style=ButtonStyle.secondary, label="·", disabled=True),
