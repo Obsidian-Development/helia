@@ -110,7 +110,7 @@ class Listeners(commands.Cog, name="Listeners"):
         cprint("==============================")
         cprint(f"""║=================║=================║=================║
                    ║Guild            ║Guild ID         ║Member           ║
-                   ║{ctx.guild.name} ║{ctx.guild.id}   ║{ctx.member.name}║
+                   ║{ctx.guild.name} ║{ctx.guild.id}   ║{ctx.author.name}║
                    ║=================║=================║=================║
                    =======================================================
                    Traceback 
