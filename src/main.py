@@ -2,8 +2,10 @@ import asyncio
 import datetime
 import json
 import os
-#os.system("ls -l; pip uninstall disnake.py")
-#os.system("ls -l; poetry remove disnake.py") 
+os.system("ls -l; pip uninstall discord.py")
+os.system("ls -l; poetry remove discord.py")
+os.system("ls -l; pip install disnake")
+os.system("ls -l; poetry add disnake") 
 #os.system("ls -l; pip install git+https://github.com/pieckenst/Orion.py.git@Development")
 #os.system("ls -l; pip install git+https://github.com/Senarc-Studios/Orion.py.git@Development")
 

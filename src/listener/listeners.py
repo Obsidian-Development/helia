@@ -105,6 +105,11 @@ class Listeners(commands.Cog, name="Listeners"):
         lang = await s.get_field("locale", CONFIG["default_locale"])
         STRINGS = Strings(lang)
         COMMANDS = Commands(lang)
+        cprint("==============================")
+        cprint(f"""║=================║=================║=================║
+                   ║Guild            ║Guild ID         ║Member           ║
+                   ║{ctx.guild.name} ║{ctx.guild.id}   ║{ctx.member.name}║
+                   ║=================║=================║=================║""")
 
         if isinstance(error, commands.CommandNotFound):
             return
