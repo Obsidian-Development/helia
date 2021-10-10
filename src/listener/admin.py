@@ -194,30 +194,9 @@ class Admin(commands.Cog, name="Admin"):
     @commands.command(description="Bot restart")
     @commands.is_owner()
     async def restart(self,ctx):
-      startup_extensions = [
-            "listener.help",
-            "listener.testing",
-            "listener.music",
-            "listener.moderation",
-            "listener.calculator",
-            "listener.listeners",
-            "listener.admin",
-            # 'listener.wallpapers',
-            "listener.utilities",
-            "listener.gnulinux",
-            "listener.general",
-            "listener.announce",
-            "listener.minigames",
-            "listener.other",
-            "listener.utils",
-            "listener.welcome",
-            "listener.goodbye",
-            "listener.workers",
-            # 'listener.gacha_commands'
-        ]
-      await ctx.send("Restarting bot...")
-      for ext in startup_extensions: # Idk how you called it
-        self.bot.reload_extension(f"cogs.{ext[:3]}")
+      
+      for ext in self.bot.cogs: # Idk how you called it
+        self.bot.reload_extension(f"{ext}")
 
     @commands.command(description="Bot invite links")
     async def invite(self, ctx: Context):
