@@ -4,9 +4,9 @@ import functools
 import sqlite3
 from datetime import datetime
 
-import discord
-from discord.ext import commands
-from discord.ext.commands import Bot, Context
+import disnake
+from disnake.ext import commands
+from disnake.ext.commands import Bot, Context
 
 from scripts import db
 
@@ -33,7 +33,7 @@ class goodbye(commands.Cog):
             db.select_table("goodbye", "text", "guild_id", member.guild.id))
         desc = cursor.fetchone()
         descdef = f"The one who left was {member}, who knows his/hers reasons for leaving but we will welcome them with open arms if they return "
-        gb = discord.Embed(
+        gb = disnake.Embed(
             title="User left the server",
             description=f"```Someone left {member.guild}```",
         )
@@ -73,14 +73,14 @@ class goodbye(commands.Cog):
                 ```goodbye text {Optionally enter text - otherwise the default will be set} - Set goodbye text```
 
                 """
-        goodbyehelp = discord.Embed(
+        goodbyehelp = disnake.Embed(
             title=":wave: Welcome & Goodbye Messages",
             description=f"{descwelcgood}",
         ).set_author(name="Help System")
         await ctx.send(embed=goodbyehelp)
 
     @goodbye.command()
-    async def channel(self, ctx: Context, channel: discord.TextChannel = None):
+    async def channel(self, ctx: Context, channel: disnake.TextChannel = None):
         try:
             author = ctx.message.author
             if author.guild_permissions.manage_channels:

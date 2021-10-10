@@ -1,8 +1,8 @@
-import discord
-from discord import interactions
-from discord.ext import commands
-from discord import SelectOption,ButtonStyle
-from discord.ui import View, Select,Button
+import disnake
+from disnake import interactions
+from disnake.ext import commands
+from disnake import SelectOption,ButtonStyle
+from disnake.ui import View, Select,Button
 
 
 
@@ -11,7 +11,7 @@ class Help(commands.Cog):
         self.bot = bot
 
     @commands.Cog.listener()
-    async def on_interaction(self, interaction: discord.Interaction):
+    async def on_interaction(self, interaction: disnake.Interaction):
       #print(f"{interaction.author.name} with ID {interaction.author.id} just clicked something in the select menu")
       label = interaction.data.values[0]
       print(label)
@@ -23,7 +23,7 @@ class Help(commands.Cog):
                 formatlistprep = ":\n```.```".join(x)
                 await interaction.response.edit_message(
                     
-                    embed=discord.Embed(
+                    embed=disnake.Embed(
                         title=":beginner: General",
                         description=f"Here is the list of general commands we have \n ```{formatlistprep}```",
                     ).set_author(name="Help System"),
@@ -37,7 +37,7 @@ class Help(commands.Cog):
 
                 await interaction.response.edit_message(
                     
-                    embed=discord.Embed(
+                    embed=disnake.Embed(
                         title=":hammer_pick: Moderation",
                         description=f"Here is the list of moderation commands we have \n ```{formatlistprep}```",
                     ).set_author(name="Help System"),
@@ -50,7 +50,7 @@ class Help(commands.Cog):
                 formatlistprep = ":\n```.```".join(x)
                 await interaction.response.edit_message(
                     
-                    embed=discord.Embed(
+                    embed=disnake.Embed(
                         title=":wrench: Utilities",
                         description=f"Here is the list of utilities commands we have \n ```{formatlistprep}```",
                     ).set_author(name="Help System"),
@@ -63,7 +63,7 @@ class Help(commands.Cog):
                 formatlistprep = ":\n```.```".join(x)
                 await interaction.response.edit_message(
                     
-                    embed=discord.Embed(
+                    embed=disnake.Embed(
                         title=":headphones: Music",
                         description=f"Here is the list of music commands we have \n ```{formatlistprep}```",
                     ).set_author(name="Help System"),
@@ -76,7 +76,7 @@ class Help(commands.Cog):
                 formatlistprep = ":\n```.```".join(x)
                 await interaction.response.edit_message(
                     
-                    embed=discord.Embed(
+                    embed=disnake.Embed(
                         title=":tools: Preferences",
                         description=f"Here is the list of bot configuration commands \n ```{formatlistprep}```",
                     ).set_author(name="Help System"),
@@ -104,7 +104,7 @@ class Help(commands.Cog):
                 """
                 await interaction.response.edit_message(
                     
-                    embed=discord.Embed(
+                    embed=disnake.Embed(
                         title=":wave: Welcome & Goodbye Messages",
                         description=f"{descwelcgood}",
                     ).set_author(name="Help System"),
@@ -117,7 +117,7 @@ class Help(commands.Cog):
                 formatlistprep = ":\n```.```".join(x)
                 await interaction.response.edit_message(
                     
-                    embed=discord.Embed(
+                    embed=disnake.Embed(
                         title=":hourglass: Other",
                         description=f"Here is the list of miscellaneous commands \n ```{formatlistprep}```",
                     ).set_author(name="Help System"),
@@ -130,10 +130,10 @@ class Help(commands.Cog):
       
     @commands.command(slash_interaction=True, message_command=True,description="Help Command")
     async def help(self, ctx):
-        embed = discord.Embed(title="SELECTION TEST",
+        embed = disnake.Embed(title="SELECTION TEST",
                               description="Testing our embeds",
                               color=0xFF8000)
-        embede = discord.Embed(
+        embede = disnake.Embed(
             title=":books: Help System",
             description=f"Welcome To {self.bot.user.name} Help System",
         )
@@ -151,8 +151,8 @@ class Help(commands.Cog):
                     SelectOption(label="Other", value="Other"),
                     SelectOption(label="Close", value="Close"),
                 ]
-        view = discord.ui.View()
-        selecter = discord.ui.Select(placeholder='Select a category', min_values=1, max_values=1, options=options,custom_id="helpmenuer")
+        view = disnake.ui.View()
+        selecter = disnake.ui.Select(placeholder='Select a category', min_values=1, max_values=1, options=options,custom_id="helpmenuer")
         view.add_item(selecter)
         
         done_components = [

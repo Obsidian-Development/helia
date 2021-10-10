@@ -1,6 +1,6 @@
 import math
 
-from discord_components import Button, ButtonStyle
+from disnake_components import Button, ButtonStyle
 
 buttons = [
     [

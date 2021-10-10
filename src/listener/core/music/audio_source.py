@@ -1,8 +1,8 @@
-import discord
+import disnake
 import youtube_dl
 import asyncio
 
-from discord import User
+from disnake import User
 
 from .utilities import parse_duration
 
@@ -31,7 +31,7 @@ ffmpeg_options = {
 ytdl = youtube_dl.YoutubeDL(ytdl_format_options)
 
 
-class AudioTrack(discord.PCMVolumeTransformer):
+class AudioTrack(disnake.PCMVolumeTransformer):
     def __init__(self, source, *, data, volume=1.0, requester: User = ""):
         super().__init__(source, volume=volume)
 
@@ -54,13 +54,13 @@ class AudioTrack(discord.PCMVolumeTransformer):
             list_of_source = []
             for each_data in data['entries']:
                 filename = each_data['url']
-                source = cls(discord.FFmpegPCMAudio(filename, **ffmpeg_options), data=each_data, requester=requester)
+                source = cls(disnake.FFmpegPCMAudio(filename, **ffmpeg_options), data=each_data, requester=requester)
                 list_of_source.append(source)
 
             return list_of_source
 
         filename = data['url'] if stream else ytdl.prepare_filename(data)
-        return [cls(discord.FFmpegPCMAudio(source=filename, **ffmpeg_options), data=data, requester=requester)]
+        return [cls(disnake.FFmpegPCMAudio(source=filename, **ffmpeg_options), data=data, requester=requester)]
 
     @classmethod
     async def from_keywords(cls, keywords, *, loop=None, stream=False, requester: User = ""):
@@ -73,4 +73,4 @@ class AudioTrack(discord.PCMVolumeTransformer):
             data = data['entries'][0]
 
         filename = data['url'] if stream else ytdl.prepare_filename(data)
-        return [cls(discord.FFmpegPCMAudio(source=filename, **ffmpeg_options), data=data, requester=requester)]
+        return [cls(disnake.FFmpegPCMAudio(source=filename, **ffmpeg_options), data=data, requester=requester)]

@@ -4,14 +4,14 @@ import datetime
 from os.path import abspath, dirname
 from typing import NoReturn
 
-import discord
-from discord.ext import commands
-from discord.ext.commands import Bot, Context
-#from discord_components import Button, ButtonStyle, DiscordComponents
+import disnake
+from disnake.ext import commands
+from disnake.ext.commands import Bot, Context
+#from disnake_components import Button, ButtonStyle, disnakeComponents
 
 from listener.utils import Config, Logger, Settings, Strings, Utils
 
-# from discord.ext.commands import Bot, Context
+# from disnake.ext.commands import Bot, Context
 
 CONFIG = Config()
 # STRINGS = Strings(CONFIG["default_locale"])
@@ -110,7 +110,7 @@ class Admin(commands.Cog, name="Admin"):
             Button(style=ButtonStyle.grey, label="·", disabled=True)
         ]
 
-        embedconfirm = discord.Embed(
+        embedconfirm = disnake.Embed(
             title=STRINGS["moderation"]["shutdownembedtitle"],
             description=STRINGS["moderation"]["shutdownconfirm"],
         )
@@ -120,7 +120,7 @@ class Admin(commands.Cog, name="Admin"):
         if str(author.id) in valid_users and response.component.label == "✓":
             await response.respond(
                 type=7,
-                embed=discord.Embed(
+                embed=disnake.Embed(
                     title=STRINGS["moderation"]["shutdownembedtitle"],
                     description=STRINGS["moderation"]["shutdownembeddesc"],
                     color=0xFF8000,
@@ -128,7 +128,7 @@ class Admin(commands.Cog, name="Admin"):
                 components=done_components,
             )
 
-            await ctx.bot.change_presence(activity=discord.Game(
+            await ctx.bot.change_presence(activity=disnake.Game(
                 name="Shutting down for either reboot or update "))
             await asyncio.sleep(5)
             print("---------------------------")
@@ -138,7 +138,7 @@ class Admin(commands.Cog, name="Admin"):
         else:
             await response.respond(
                 type=7,
-                embed=discord.Embed(
+                embed=disnake.Embed(
                     title=STRINGS["moderation"]["shutdownaborttitle"],
                     description=STRINGS["moderation"]["shutdownabortdesc"],
                     color=0xDD2E44,
@@ -163,8 +163,8 @@ class Admin(commands.Cog, name="Admin"):
         ]
         if str(author.id) in valid_users:
             await self.bot.change_presence(
-                activity=discord.Game(" ".join(args)))
-            embed = discord.Embed(
+                activity=disnake.Game(" ".join(args)))
+            embed = disnake.Embed(
                 title=STRINGS["moderation"]["setstatustext"],
                 description=STRINGS["moderation"]["setstatusdesc"],
                 color=0xFF8000,
@@ -177,7 +177,7 @@ class Admin(commands.Cog, name="Admin"):
             embed.set_footer(text=self.bot.user.name,
                              icon_url=self.bot.user.avatar.url)
         else:
-            embed = discord.Embed(
+            embed = disnake.Embed(
                 title="You failed",
                 description="Need Permission : Bot Owner",
                 color=0xFF0000,
@@ -194,22 +194,22 @@ class Admin(commands.Cog, name="Admin"):
             Button(
                 style=ButtonStyle.URL,
                 label=STRINGS["general"]["botinvitetitle"],
-                url=f"https://discord.com/api/oauth2/authorize?client_id={self.bot.user.id}&permissions=204859462&scope=applications.commands%20bot",
+                url=f"https://disnake.com/api/oauth2/authorize?client_id={self.bot.user.id}&permissions=204859462&scope=applications.commands%20bot",
             ),
             Button(
                 style=ButtonStyle.URL,
                 label=STRINGS["general"]["botinvitedescd"],
-                url=f"https://discord.com/oauth2/authorize?client_id={self.bot.user.id}&scope=bot&permissions=204557314",
+                url=f"https://disnake.com/oauth2/authorize?client_id={self.bot.user.id}&scope=bot&permissions=204557314",
             ),
             Button(
                 style=ButtonStyle.URL,
                 label=STRINGS["general"]["canaryver"],
-                url="https://discord.com/oauth2/authorize?client_id=671612079106424862&scope=bot&permissions=204557314",
+                url="https://disnake.com/oauth2/authorize?client_id=671612079106424862&scope=bot&permissions=204557314",
             ),
             Button(
                 style=ButtonStyle.URL,
                 label=STRINGS["general"]["botupsdc"],
-                url=f"https://bots.server-discord.com/{self.bot.user.id}",
+                url=f"https://bots.server-disnake.com/{self.bot.user.id}",
             ),
             Button(
                 style=ButtonStyle.URL,
@@ -222,37 +222,37 @@ class Admin(commands.Cog, name="Admin"):
             Button(
                 style=ButtonStyle.URL,
                 label=STRINGS["general"]["botupbod"],
-                url=f"https://bots.ondiscord.xyz/bots/{self.bot.user.id}",
+                url=f"https://bots.ondisnake.xyz/bots/{self.bot.user.id}",
             ),
             Button(
                 style=ButtonStyle.URL,
                 label=STRINGS["general"]["botupdblco"],
-                url=f"https://discordbotslist.co/bot/{self.bot.user.id}",
+                url=f"https://disnakebotslist.co/bot/{self.bot.user.id}",
             ),
         ]
 
-        embed = discord.Embed(
+        embed = disnake.Embed(
             title=STRINGS["general"]["invitedescd"],
-            colour=discord.Colour(0xFF6900),
+            colour=disnake.Colour(0xFF6900),
             # url=
-            # f"https://discord.com/api/oauth2/authorize?client_id={self.bot.user.id}&permissions=204859462&scope=applications.commands%20bot",
+            # f"https://disnake.com/api/oauth2/authorize?client_id={self.bot.user.id}&permissions=204859462&scope=applications.commands%20bot",
             description=STRINGS["general"]["botinvitedesc"],
         )
         # embed.set_author(
         # name=STRINGS["general"]["botinvitedescd"],
         # url=
-        # f"https://discord.com/oauth2/authorize?client_id={self.bot.user.id}&scope=bot&permissions=204557314",
+        # f"https://disnake.com/oauth2/authorize?client_id={self.bot.user.id}&scope=bot&permissions=204557314",
         # )
         # mostly useful for helia canary invite but still why not have it be there - comment if your self hosted version will not have canary branch
         # embed.add_field(
         # name=STRINGS["general"]["canaryver"],
         # value=
-        # f"https://discord.com/oauth2/authorize?client_id=671612079106424862&scope=bot&permissions=204557314",
+        # f"https://disnake.com/oauth2/authorize?client_id=671612079106424862&scope=bot&permissions=204557314",
         # inline=False,
         # )
         # embed.add_field(
         # name=STRINGS["general"]["botupsdc"],
-        # value=f"https://bots.server-discord.com/{self.bot.user.id}",
+        # value=f"https://bots.server-disnake.com/{self.bot.user.id}",
         # inline=True,
         # )
         # embed.add_field(
@@ -262,19 +262,19 @@ class Admin(commands.Cog, name="Admin"):
         # )
         # embed.add_field(
         # name=STRINGS["general"]["botupbod"],
-        # value=f"https://bots.ondiscord.xyz/bots/{self.bot.user.id}",
+        # value=f"https://bots.ondisnake.xyz/bots/{self.bot.user.id}",
         # inline=True,
         # )
         # embed.add_field(
         # name=STRINGS["general"]["botupdblco"],
-        # value=f"https://discordbotslist.co/bot/{self.bot.user.id}",
+        # value=f"https://disnakebotslist.co/bot/{self.bot.user.id}",
         # inline=True,
         # )
         embed.set_footer(text=self.bot.user.name,
                          icon_url=self.bot.user.avatar_url)
 
-        embedcont = discord.Embed(title="-----",
-                                  colour=discord.Colour(0xFF6900))
+        embedcont = disnake.Embed(title="-----",
+                                  colour=disnake.Colour(0xFF6900))
         await ctx.send(embed=embed, components=menu_components)
         await ctx.send("`----`", components=menuer_components)
 
@@ -284,7 +284,7 @@ class Admin(commands.Cog, name="Admin"):
         hours, remainder = divmod(int(delta_uptime.total_seconds()), 3600)
         minutes, seconds = divmod(remainder, 60)
         days, hours = divmod(hours, 24)
-        embed = discord.Embed(title="Bot uptime")
+        embed = disnake.Embed(title="Bot uptime")
         embed.add_field(name="Days", value=f"```{days}d```", inline=True)
         embed.add_field(name="Hours", value=f"```{hours}h```", inline=True)
         embed.add_field(name="Minutes",

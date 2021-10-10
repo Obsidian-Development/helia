@@ -1,12 +1,12 @@
 import datetime
 import math
 
-import discord
-from discord.ext import commands
-from discord.ext.commands import Bot, Context
-#from discord_components import Button, ButtonStyle, DiscordComponents
+import disnake
+from disnake.ext import commands
+from disnake.ext.commands import Bot, Context
+#from disnake_components import Button, ButtonStyle, disnakeComponents
 
-# from discord_slash import cog_ext
+# from disnake_slash import cog_ext
 from scripts.calculator import buttons
 
 
@@ -14,7 +14,7 @@ class Calculator(commands.Cog, name="Calculator"):
     def __init__(self, bot):
         self.bot = bot
         self.name = "Calculator"
-        self.dc = DiscordComponents(self.bot)
+        self.dc = disnakeComponents(self.bot)
 
     
     @commands.command(slash_interaction=True, message_command=True,description="Calculator command")
@@ -38,11 +38,11 @@ class Calculator(commands.Cog, name="Calculator"):
         m = await ctx.send(content="Loading Calculators...")
         expression = "None"
         delta = datetime.datetime.utcnow() + datetime.timedelta(minutes=5)
-        e = discord.Embed(
+        e = disnake.Embed(
             title=f"{ctx.author.name}'s calculator",
             description=f"```xl\n{expression}```",
             timestamp=delta,
-            color=discord.Colour.blurple(),
+            color=disnake.Colour.blurple(),
         )
         await m.edit(content="", components=buttons, embed=e)
         done = [[
@@ -77,7 +77,7 @@ class Calculator(commands.Cog, name="Calculator"):
                 if res.component.label == "Exit":
                     await res.respond(
                         type=7,
-                        embed=discord.Embed(
+                        embed=disnake.Embed(
                             title="Closing down",
                             description="Calculator was terminated",
                             color=0xDD2E44,
@@ -94,10 +94,10 @@ class Calculator(commands.Cog, name="Calculator"):
                     expression = calculate(expression)
                     await res.respond(
                         type=7,
-                        embed=discord.Embed(
+                        embed=disnake.Embed(
                             title=f"{ctx.author.name}'s calculator",
                             description=f"```The expression you entered has a result of : {expression}```",
-                            color=discord.Colour.blurple(),
+                            color=disnake.Colour.blurple(),
                         ),
                         components=done,
                     )
@@ -113,7 +113,7 @@ class Calculator(commands.Cog, name="Calculator"):
 
                         await res.respond(
                             type=7,
-                            embed=discord.Embed(
+                            embed=disnake.Embed(
                                 title="Closing down",
                                 description="You have entered a number that is 9 or more in length or some calculation prone to crashing the bot - for the stability of the bot and crash prevention we will close down this calculator session",
                                 color=0xDD2E44,
@@ -127,7 +127,7 @@ class Calculator(commands.Cog, name="Calculator"):
 
                         await res.respond(
                             type=7,
-                            embed=discord.Embed(
+                            embed=disnake.Embed(
                                 title="Closing down",
                                 description="You have entered a number that is 9 or more in length or some calculation prone to crashing the bot - for the stability of the bot and crash prevention we will close down this calculator session",
                                 color=0xDD2E44,
@@ -140,11 +140,11 @@ class Calculator(commands.Cog, name="Calculator"):
 
                 else:
                     expression += res.component.label
-                    f = discord.Embed(
+                    f = disnake.Embed(
                         title=f"{ctx.author.name}'s calculator",
                         description=f"```xl\n{expression}```",
                         timestamp=delta,
-                        color=discord.Colour.blurple(),
+                        color=disnake.Colour.blurple(),
                     )
                     await res.respond(content="",
                                       embed=f,

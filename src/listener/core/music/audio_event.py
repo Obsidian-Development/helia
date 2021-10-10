@@ -1,5 +1,5 @@
 import asyncio
-from discord import VoiceClient
+from disnake import VoiceClient
 
 from listener.core.music.audio_source import AudioTrack
 

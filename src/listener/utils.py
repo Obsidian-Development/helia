@@ -7,9 +7,9 @@ from typing import Any, AnyStr, Dict, List, NoReturn
 
 from aiofile import async_open
 from asyncinit import asyncinit
-from discord import Embed, Message
-from discord.ext import commands
-from discord.ext.commands import Bot
+from disnake import Embed, Message
+from disnake.ext import commands
+from disnake.ext.commands import Bot
 from termcolor import cprint
 
 

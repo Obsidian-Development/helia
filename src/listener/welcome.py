@@ -4,9 +4,9 @@ import functools
 import os
 import sqlite3
 
-import discord
-from discord.ext import commands
-from discord.ext.commands import Bot, Context
+import disnake
+from disnake.ext import commands
+from disnake.ext.commands import Bot, Context
 
 from scripts import db
 
@@ -31,7 +31,7 @@ class welcome(commands.Cog):
         cursor.execute(
             db.select_table("welcome", "text", "guild_id", member.guild.id))
         desc = cursor.fetchone()
-        hello = discord.Embed(
+        hello = disnake.Embed(
             title="User joined the server",
             description=f"```Welcome {member} to {member.guild}```",
         )
@@ -73,14 +73,14 @@ class welcome(commands.Cog):
                 ```goodbye text {Optionally enter text - otherwise the default will be set} - Set goodbye text```
 
                 """
-        welcomehelp = discord.Embed(
+        welcomehelp = disnake.Embed(
             title=":wave: Welcome & Goodbye Messages",
             description=f"{descwelcgood}",
         ).set_author(name="Help System")
         await ctx.send(embed=welcomehelp)
 
     @welcome.command(pass_context=True)
-    async def channel(self, ctx: Context, chan: discord.TextChannel = None):
+    async def channel(self, ctx: Context, chan: disnake.TextChannel = None):
         try:
             author = ctx.message.author
             if author.guild_permissions.manage_channels:

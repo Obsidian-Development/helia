@@ -1,9 +1,9 @@
 import asyncio
 import os
 
-import discord
-from discord.ext import commands
-from discord.ext.commands import Bot, Context
+import disnake
+from disnake.ext import commands
+from disnake.ext.commands import Bot, Context
 
 from listener.utils import Config, Logger, Settings, Strings
 
@@ -21,7 +21,7 @@ class broadcast(commands.Cog):
         lang = await s.get_field("locale", CONFIG["default_locale"])
         prefix = await s.get_field("prefix", CONFIG["default_prefix"])
         STRINGS = Strings(lang)
-        announcement = discord.Embed(
+        announcement = disnake.Embed(
             title=STRINGS["general"]["announcestitle"],
             description=STRINGS["general"]["announcesdesc"],
             color=0x3B88C3,
@@ -43,7 +43,7 @@ class broadcast(commands.Cog):
         )
         sent_counter = 0
         text_channel_list = []
-        embed = discord.Embed(
+        embed = disnake.Embed(
             title=STRINGS["general"]["announcestitle"],
             description=STRINGS["general"]["announceaway"],
         )
@@ -53,9 +53,9 @@ class broadcast(commands.Cog):
             try:
                 await guild.text_channels[0].send(embed=announcement)
                 sent_counter += 1
-            except discord.Forbidden:
+            except disnake.Forbidden:
                 continue
-            except discord.NotFound:
+            except disnake.NotFound:
                 continue
 
     # @commands.command(description='Debug info')

@@ -1,11 +1,11 @@
 import asyncio
 from typing import NoReturn
 
-import discord
-from discord import Member, User
-from discord.ext import commands
-from discord.ext.commands import Bot, Context, Greedy
-#from discord_components import Button, ButtonStyle, DiscordComponents
+import disnake
+from disnake import Member, User
+from disnake.ext import commands
+from disnake.ext.commands import Bot, Context, Greedy
+#from disnake_components import Button, ButtonStyle, disnakeComponents
 
 from listener.utils import Config, Logger, Settings, Strings, Utils
 
@@ -46,7 +46,7 @@ class Moderation(commands.Cog, name="Moderation"):
             Button(style=ButtonStyle.grey, label="·", disabled=True),
         ]]
 
-        embedconfirm = discord.Embed(
+        embedconfirm = disnake.Embed(
             title="Ban Command",
             description="```Do you want to ban this member?```",
         )
@@ -57,7 +57,7 @@ class Moderation(commands.Cog, name="Moderation"):
             if response.component.label == "✓":
                 await response.respond(
                     type=7,
-                    embed=discord.Embed(
+                    embed=disnake.Embed(
                         title="Action confirmed",
                         description=f"Banning {member} for {reason}",
                         color=0xFF8000,
@@ -74,7 +74,7 @@ class Moderation(commands.Cog, name="Moderation"):
             else:
                 await response.respond(
                     type=7,
-                    embed=discord.Embed(
+                    embed=disnake.Embed(
                         title="Action Aborted",
                         description="The action was aborted by clicking the no button",
                         color=0xDD2E44,
@@ -82,7 +82,7 @@ class Moderation(commands.Cog, name="Moderation"):
                     components=done_components,
                 )
 
-        except discord.Forbidden:
+        except disnake.Forbidden:
             await ctx.message.add_reaction(CONFIG["no_emoji"])
             embed = Utils.error_embed(STRINGS["error"]["ban_fail"])
             msg = await ctx.send(embed=embed)
@@ -124,7 +124,7 @@ class Moderation(commands.Cog, name="Moderation"):
             Button(style=ButtonStyle.grey, label="·", disabled=True),
         ]]
 
-        embedconfirm = discord.Embed(
+        embedconfirm = disnake.Embed(
             title="Unban Command",
             description="```Do you want to unban this member?```",
         )
@@ -144,7 +144,7 @@ class Moderation(commands.Cog, name="Moderation"):
                     await ctx.guild.unban(user)
                     await response.respond(
                         type=7,
-                        embed=discord.Embed(
+                        embed=disnake.Embed(
                             title="Action confirmed",
                             description=f"Unbanned {user}",
                             color=0xFF8000,
@@ -158,7 +158,7 @@ class Moderation(commands.Cog, name="Moderation"):
             await ctx.guild.unban(member)
             await response.respond(
                 type=7,
-                embed=discord.Embed(
+                embed=disnake.Embed(
                     title="Action confirmed",
                     description=f"Unbanned {member}",
                     color=0xFF8000,
@@ -168,7 +168,7 @@ class Moderation(commands.Cog, name="Moderation"):
         else:
             await response.respond(
                 type=7,
-                embed=discord.Embed(
+                embed=disnake.Embed(
                     title="Action Aborted",
                     description="The action was aborted by clicking the no button",
                     color=0xDD2E44,
@@ -207,7 +207,7 @@ class Moderation(commands.Cog, name="Moderation"):
                 await member.ban(reason=reason)
                 await ctx.send("Members banned")
 
-            except discord.Forbidden:
+            except disnake.Forbidden:
                 not_banned_members.append(member.mention)
 
             else:
@@ -259,7 +259,7 @@ class Moderation(commands.Cog, name="Moderation"):
             Button(style=ButtonStyle.grey, label="·", disabled=True),
         ]]
 
-        embedconfirm = discord.Embed(
+        embedconfirm = disnake.Embed(
             title="Kick Command",
             description="```Do you want to kick this member?```",
         )
@@ -269,7 +269,7 @@ class Moderation(commands.Cog, name="Moderation"):
         if response.component.label == "✓":
             await response.respond(
                 type=7,
-                embed=discord.Embed(
+                embed=disnake.Embed(
                     title="Action Completed",
                     description=f"Kicked {member} for {reason}",
                     color=0xDD2E44,
@@ -286,7 +286,7 @@ class Moderation(commands.Cog, name="Moderation"):
         else:
             await response.respond(
                 type=7,
-                embed=discord.Embed(
+                embed=disnake.Embed(
                     title="Action Aborted",
                     description="The action was aborted by clicking the no button",
                     color=0xDD2E44,
@@ -319,7 +319,7 @@ class Moderation(commands.Cog, name="Moderation"):
             Button(style=ButtonStyle.grey, label="·", disabled=True),
         ]]
 
-        embedconfirm = discord.Embed(
+        embedconfirm = disnake.Embed(
             title="Clear Command",
             description=f"```Do you want to remove {number} messages?```",
         )
@@ -330,7 +330,7 @@ class Moderation(commands.Cog, name="Moderation"):
         if response.component.label == "✓":
             await response.respond(
                 type=7,
-                embed=discord.Embed(
+                embed=disnake.Embed(
                     title="Action Completed",
                     description=f"Purging {number} messages",
                     color=0xDD2E44,
@@ -343,7 +343,7 @@ class Moderation(commands.Cog, name="Moderation"):
         else:
             await response.respond(
                 type=7,
-                embed=discord.Embed(
+                embed=disnake.Embed(
                     title="Action Aborted",
                     description="The action was aborted by clicking the no button",
                     color=0xDD2E44,
@@ -387,7 +387,7 @@ class Moderation(commands.Cog, name="Moderation"):
         mute_role_id = await s.get_field("mute_role_id")
 
         if (mute_role_id is None or
-                discord.utils.get(ctx.guild.roles, id=mute_role_id) is None):
+                disnake.utils.get(ctx.guild.roles, id=mute_role_id) is None):
             embed = Utils.done_embed(
                 STRINGS["moderation"]["on_mute_role_create"])
             await ctx.send(embed=embed)
@@ -397,7 +397,7 @@ class Moderation(commands.Cog, name="Moderation"):
             mute_role_id = await s.get_field("mute_role_id")
 
         else:
-            mute_role = discord.utils.get(ctx.guild.roles, id=mute_role_id)
+            mute_role = disnake.utils.get(ctx.guild.roles, id=mute_role_id)
 
             for user_role in member.roles:
                 if user_role == mute_role:
@@ -424,7 +424,7 @@ class Moderation(commands.Cog, name="Moderation"):
                      member: Member,
                      *,
                      reason: str = "N/A") -> NoReturn:
-        mute_role = discord.utils.get(ctx.guild.roles,
+        mute_role = disnake.utils.get(ctx.guild.roles,
                                       id=Utils.get_mute_role(
                                           None, ctx.message))
         if mute_role is None:
@@ -438,14 +438,14 @@ class Moderation(commands.Cog, name="Moderation"):
     @commands.bot_has_permissions(manage_roles=True)
     @commands.has_permissions(manage_roles=True)
     @commands.cooldown(1, 30, commands.BucketType.user)
-    # `RoleConverter` will automatically convert it to a `discord.Role` instance
-    async def lockdownrole(self, ctx, role: discord.Role):
+    # `RoleConverter` will automatically convert it to a `disnake.Role` instance
+    async def lockdownrole(self, ctx, role: disnake.Role):
         s = await Settings(ctx.guild.id)
         lang = await s.get_field("locale", CONFIG["default_locale"])
         STRINGS = Strings(lang)
         for channel in ctx.guild.channels:
             await channel.set_permissions(role, send_messages=False)
-        embed = discord.Embed(
+        embed = disnake.Embed(
             title=STRINGS["moderation"]["lockdowntitleone"],
             description=STRINGS["moderation"]["lockdowndescone"],
         )
@@ -455,13 +455,13 @@ class Moderation(commands.Cog, name="Moderation"):
     @commands.bot_has_permissions(manage_roles=True)
     @commands.has_permissions(manage_roles=True)
     @commands.cooldown(1, 30, commands.BucketType.user)
-    async def unlockrole(self, ctx, role: discord.Role):
+    async def unlockrole(self, ctx, role: disnake.Role):
         s = await Settings(ctx.guild.id)
         lang = await s.get_field("locale", CONFIG["default_locale"])
         STRINGS = Strings(lang)
         for channel in ctx.guild.channels:
             await channel.set_permissions(role, send_messages=True)
-        embed = discord.Embed(
+        embed = disnake.Embed(
             title=STRINGS["moderation"]["lockdownliftedtitleone"],
             description=STRINGS["moderation"]["lockdownlifteddescone"],
             color=0x6E8F5D,
@@ -479,7 +479,7 @@ class Moderation(commands.Cog, name="Moderation"):
         for channel in ctx.guild.channels:
             await channel.set_permissions(ctx.guild.default_role,
                                           send_messages=False)
-        embed = discord.Embed(
+        embed = disnake.Embed(
             title=STRINGS["moderation"]["lockdowntitleone"],
             description=STRINGS["moderation"]["lockdowndescone"],
         )
@@ -496,7 +496,7 @@ class Moderation(commands.Cog, name="Moderation"):
         for channel in ctx.guild.channels:
             await channel.set_permissions(ctx.guild.default_role,
                                           send_messages=True)
-        embed = discord.Embed(
+        embed = disnake.Embed(
             title=STRINGS["moderation"]["lockdownliftedtitleone"],
             description=STRINGS["moderation"]["lockdownlifteddescone"],
             color=0x6E8F5D,
@@ -513,7 +513,7 @@ class Moderation(commands.Cog, name="Moderation"):
         STRINGS = Strings(lang)
         await ctx.channel.set_permissions(ctx.guild.default_role,
                                           send_messages=False)
-        embed = discord.Embed(
+        embed = disnake.Embed(
             title=STRINGS["moderation"]["channellockdowntitle"],
             description=STRINGS["moderation"]["channellockdowndesc"],
             color=0x000000,
@@ -530,7 +530,7 @@ class Moderation(commands.Cog, name="Moderation"):
         STRINGS = Strings(lang)
         await ctx.channel.set_permissions(ctx.guild.default_role,
                                           send_messages=True)
-        embed = discord.Embed(
+        embed = disnake.Embed(
             title=STRINGS["moderation"]["channellockdownliftedtitle"],
             description=STRINGS["moderation"]["channellockdownlifteddesc"],
             color=0x6E8F5D,

@@ -1,9 +1,9 @@
 # LOCALIZATION SUPPORT NEEDS IMPLEMENTING
 import asyncio
 
-import discord
-from discord.ext import commands
-from discord.ext.commands import Bot, Context
+import disnake
+from disnake.ext import commands
+from disnake.ext.commands import Bot, Context
 
 from listener.utils import Config, Logger, Settings, Strings
 
@@ -21,7 +21,7 @@ class gnulinux(commands.Cog):
         lang = await s.get_field("locale", CONFIG["default_locale"])
         STRINGS = Strings(lang)
         channel = ctx.message.channel
-        archl = discord.Embed(
+        archl = disnake.Embed(
             title="Arch Linux",
             url="https://www.archlinux.org/download/",
             description=STRINGS["gnulinuxx"]["archdesc"],
@@ -38,7 +38,7 @@ class gnulinux(commands.Cog):
         lang = await s.get_field("locale", CONFIG["default_locale"])
         STRINGS = Strings(lang)
         channel = ctx.message.channel
-        ubuntu1 = discord.Embed(
+        ubuntu1 = disnake.Embed(
             title="Ubuntu",
             url="https://ubuntu.com/",
             description=STRINGS["gnulinuxx"]["ubuntudesc"],
@@ -53,7 +53,7 @@ class gnulinux(commands.Cog):
         lang = await s.get_field("locale", CONFIG["default_locale"])
         STRINGS = Strings(lang)
         channel = ctx.message.channel
-        debian1 = discord.Embed(
+        debian1 = disnake.Embed(
             title="Debian",
             url="https://www.debian.org/",
             description=STRINGS["gnulinuxx"]["debiandesc"],
@@ -70,7 +70,7 @@ class gnulinux(commands.Cog):
         lang = await s.get_field("locale", CONFIG["default_locale"])
         STRINGS = Strings(lang)
         channel = ctx.message.channel
-        deepin1 = discord.Embed(
+        deepin1 = disnake.Embed(
             title="Deepin",
             url="https://www.deepin.org",
             description=STRINGS["gnulinuxx"]["deeepindesc"],
@@ -87,7 +87,7 @@ class gnulinux(commands.Cog):
         lang = await s.get_field("locale", CONFIG["default_locale"])
         STRINGS = Strings(lang)
         channel = ctx.message.channel
-        manjaro1 = discord.Embed(
+        manjaro1 = disnake.Embed(
             title="Manjaro",
             url="https://manjaro.org/",
             description=STRINGS["gnulinuxx"]["manjarodesc"],
@@ -104,7 +104,7 @@ class gnulinux(commands.Cog):
         lang = await s.get_field("locale", CONFIG["default_locale"])
         STRINGS = Strings(lang)
         channel = ctx.message.channel
-        mint1 = discord.Embed(
+        mint1 = disnake.Embed(
             title="Linux Mint",
             url="https://linuxmint.com/",
             description=STRINGS["gnulinuxx"]["mintdesc"],

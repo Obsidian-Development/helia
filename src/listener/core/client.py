@@ -4,9 +4,9 @@ import os
 import random
 
 import aiohttp
-import discord
+import disnake
 
-from discord.ext import commands,tasks 
+from disnake.ext import commands,tasks 
 
 
 
@@ -36,42 +36,42 @@ class CoreClient(commands.AutoShardedBot):
         self.id = id
         self.command_prefix = command_prefix
 
-        # Discord Bot List updates.
+        # disnake Bot List updates.
         # self.dbl_token = os.environ['DBL_TOKEN']
-        # self.BASE_URL = "https://discordbots.org/api/bots/458298539517411328/stats"
+        # self.BASE_URL = "https://disnakebots.org/api/bots/458298539517411328/stats"
         # self.headers = {"Authorization": self.dbl_token}
 
     @tasks.loop(seconds=110)
     async def changeStatus(self):
         statuses = [
-            # discord.Activity(type=discord.ActivityType.watching, name=f"{len(self.bot.guilds)} servers | {len(self.bot.shards)} shards!"), # bugged status - uncomment after fix
-            discord.Activity(type=discord.ActivityType.watching,
+            # disnake.Activity(type=disnake.ActivityType.watching, name=f"{len(self.bot.guilds)} servers | {len(self.bot.shards)} shards!"), # bugged status - uncomment after fix
+            disnake.Activity(type=disnake.ActivityType.watching,
                              name="for bot breakage"),
-            discord.Activity(type=discord.ActivityType.watching,
-                             name="the discord.py deprecation"),
-            discord.Activity(
-                type=discord.ActivityType.listening,
+            disnake.Activity(type=disnake.ActivityType.watching,
+                             name="the disnake.py deprecation"),
+            disnake.Activity(
+                type=disnake.ActivityType.listening,
                 name="Dont forget to bump the bot every 3 hours on bot lists!",
             ),
-            # discord.Game(name=f"{command_prefix}help for info"),
-            discord.Activity(type=discord.ActivityType.listening,
+            # disnake.Game(name=f"{command_prefix}help for info"),
+            disnake.Activity(type=disnake.ActivityType.listening,
                              name="to my creator Middlle#7488"),
-            discord.Game(name="Final Fantasy XIV"),
-            discord.Activity(
-                type=discord.ActivityType.watching,
-                name="our support server https://discord.gg/xUaWU2AQVm",
+            disnake.Game(name="Final Fantasy XIV"),
+            disnake.Activity(
+                type=disnake.ActivityType.watching,
+                name="our support server https://disnake.gg/xUaWU2AQVm",
             ),
-            discord.Game(
+            disnake.Game(
                 name="Deep inside, we're nothing more than scions and sinners"
             ),
-            discord.Activity(type=discord.ActivityType.watching,
+            disnake.Activity(type=disnake.ActivityType.watching,
                              name="headbanging"),
         ]
         await asyncio.sleep(40)
         print("---------------------------")
         print("[DYNAMIC-STATUS] Dynamic status changed")
         print("---------------------------")
-        await self.change_presence(status=discord.Status.online,
+        await self.change_presence(status=disnake.Status.online,
                                    activity=random.choice(statuses))
 
     async def update_status_on_dbl(self):
@@ -82,16 +82,16 @@ class CoreClient(commands.AutoShardedBot):
                                headers=self.headers)
 
     async def on_ready(self):
-        activar = discord.Activity(type=discord.ActivityType.watching,
+        activar = disnake.Activity(type=disnake.ActivityType.watching,
                              name="Orion.py test run")
         #self.changeStatus.start()
-        await self.change_presence(status=discord.Status.online,
+        await self.change_presence(status=disnake.Status.online,
                                    activity=activar)
         #launch_time = datetime.datetime.utcnow()
         self.load_extension("jishaku")
         print("    Loaded 'jishaku.py'")
         await super(CoreClient,
-                    self).change_presence(status=discord.Status.online)
+                    self).change_presence(status=disnake.Status.online)
         # await self.update_status_on_dbl()
         print("[LAUNCH] Logged in as {}".format(super(CoreClient, self).user))
         db.control()  # UNCOMMENT FOR DB CONNECTION

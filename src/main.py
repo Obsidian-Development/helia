@@ -2,21 +2,21 @@ import asyncio
 import datetime
 import json
 import os
-os.system("ls -l; pip uninstall discord.py")
-os.system("ls -l; poetry remove discord.py") 
-os.system("ls -l; pip install git+https://github.com/pieckenst/Orion.py.git@Development")
+#os.system("ls -l; pip uninstall disnake.py")
+#os.system("ls -l; poetry remove disnake.py") 
+#os.system("ls -l; pip install git+https://github.com/pieckenst/Orion.py.git@Development")
 #os.system("ls -l; pip install git+https://github.com/Senarc-Studios/Orion.py.git@Development")
 
 
 
 
 import aiohttp
-import discord
-from discord.ext import commands
-#from discord_components import (
+import disnake
+from disnake.ext import commands
+#from disnake_components import (
     #Button,
     #ComponentsBot,
-    #DiscordComponents,
+    #disnakeComponents,
     #Select,
     #SelectOption,
 #)
@@ -52,7 +52,7 @@ def save_server_prefixes():
 
 
 def get_memory_config():
-    intents = discord.Intents.all()
+    intents = disnake.Intents.all()
     # Commented line for requesting members privileged intent - uncomment for enabling
     intents.members = True
     intents.presences = False
@@ -131,7 +131,7 @@ async def main():
                 exc = "{}: {}".format(type(e).__name__, e)
                 print("Failed to load extension {}\n{}".format(extension, exc))
 
-    #DiscordComponents(client)
+    #disnakeComponents(client)
 
     # Run Bot
     try:

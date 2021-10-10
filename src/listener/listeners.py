@@ -3,10 +3,10 @@ import asyncio
 import datetime
 from typing import NoReturn
 
-import discord
-from discord import Guild, Message
-from discord.ext import commands
-from discord.ext.commands import Bot, Context
+import disnake
+from disnake import Guild, Message
+from disnake.ext import commands
+from disnake.ext.commands import Bot, Context
 
 from listener.utils import Commands, Config, Logger, Settings, Strings, Utils
 
@@ -33,7 +33,7 @@ class Listeners(commands.Cog, name="Listeners"):
             ver = file.readline()
         channel = guild.text_channels[0]
         invite = await channel.create_invite()
-        embed = discord.Embed(
+        embed = disnake.Embed(
             title=STRINGS["general"]["abouttitle"],
             description=STRINGS["general"]["aboutdesc"],
             color=0xFF6900,
@@ -131,7 +131,7 @@ class Listeners(commands.Cog, name="Listeners"):
                 error.retry_after))
 
         elif isinstance(error, commands.errors.NSFWChannelRequired):
-            embed = discord.Embed(
+            embed = disnake.Embed(
                 title=STRINGS["error"]["nsfwerrortitle"],
                 description=STRINGS["error"]["nsfwnotcorrectspot"],
                 color=0xFF0000,
@@ -143,7 +143,7 @@ class Listeners(commands.Cog, name="Listeners"):
             )
 
         else:
-            embed = discord.Embed(color=0xDD0000)
+            embed = disnake.Embed(color=0xDD0000)
             embed.title = STRINGS["error"]["on_error_title"]
             embed.description = STRINGS["error"]["on_error_text"].format(
                 str(error))

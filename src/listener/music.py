@@ -5,10 +5,10 @@ import re
 import typing as t
 from enum import Enum
 
-import discord
+import disnake
 import humanize
 import wavelink
-from discord.ext import commands
+from disnake.ext import commands
 
 from listener.utils import Commands, Config, Logger, Settings, Strings, Utils
 
@@ -167,7 +167,7 @@ class Player(wavelink.Player):
             raise NoTracksFound
         if isinstance(tracks, wavelink.TrackPlaylist):
             self.queue.add(*tracks.tracks)
-            playEmbedplaylist = discord.Embed(
+            playEmbedplaylist = disnake.Embed(
                 title=STRINGS["music"]["embed_controler_title"],
                 description=STRINGS["music"]["embed_controler_desc"],
                 color=0xFF8000,
@@ -188,7 +188,7 @@ class Player(wavelink.Player):
             await ctx.send(embed=playEmbedplaylist)
         elif len(tracks) == 1:
             self.queue.add(tracks[0])
-            playEmbed = discord.Embed(
+            playEmbed = disnake.Embed(
                 title=STRINGS["music"]["embed_controler_title"],
                 description=STRINGS["music"]["embed_controler_desc"],
                 color=0xFF8000,
@@ -215,7 +215,7 @@ class Player(wavelink.Player):
             # logger.info(f"[MUSIC]Tracks added by {ctx.author} in {ctx.message.guild}")
         elif (track := await self.choose_track(ctx, tracks)) is not None:
             self.queue.add(track)
-            playEmbed_2 = discord.Embed(
+            playEmbed_2 = disnake.Embed(
                 title=STRINGS["music"]["embed_controler_title"],
                 description=STRINGS["music"]["embed_controler_desc"],
                 color=0xFF8000,
@@ -253,7 +253,7 @@ class Player(wavelink.Player):
         s = await Settings(ctx.guild.id)
         lang = await s.get_field("locale", CONFIG["default_locale"])
         STRINGS = Strings(lang)
-        chooseTrackEmbed = discord.Embed(
+        chooseTrackEmbed = disnake.Embed(
             description=("\n".join(
                 f"**{i+1}.** {t.title} ({t.length//60000}:{str(t.length%60).zfill(2)})"
                 for i, t in enumerate(tracks[:5]))),
@@ -358,7 +358,7 @@ class Music(commands.Cog, wavelink.WavelinkMixin, name="Music"):
             return self.wavelink.get_player(obj.guild.id,
                                             cls=Player,
                                             context=obj)
-        elif isinstance(obj, discord.Guild):
+        elif isinstance(obj, disnake.Guild):
             return self.wavelink.get_player(obj.id, cls=Player)
 
     @commands.command(
@@ -380,7 +380,7 @@ class Music(commands.Cog, wavelink.WavelinkMixin, name="Music"):
         lang = await s.get_field("locale", CONFIG["default_locale"])
         STRINGS = Strings(lang)
         await player.teardown()
-        embed = discord.Embed(title=STRINGS["music"]["botleavevc"],
+        embed = disnake.Embed(title=STRINGS["music"]["botleavevc"],
                               color=0x808000)
         await ctx.send(embed=embed)
 
@@ -403,7 +403,7 @@ class Music(commands.Cog, wavelink.WavelinkMixin, name="Music"):
                 raise QueueIsEmpty
             elif player.is_paused:
                 await player.set_pause(False)
-                playEmbed = discord.Embed(title=STRINGS["music"]["playresume"],
+                playEmbed = disnake.Embed(title=STRINGS["music"]["playresume"],
                                           colour=0x6AA84F)
                 playEmbed.set_footer(
                     text=STRINGS["music"]["embed_controler_footer"])
@@ -425,14 +425,14 @@ class Music(commands.Cog, wavelink.WavelinkMixin, name="Music"):
             s = await Settings(ctx.guild.id)
             lang = await s.get_field("locale", CONFIG["default_locale"])
             STRINGS = Strings(lang)
-            playEmbed_2 = discord.Embed(
+            playEmbed_2 = disnake.Embed(
                 title=STRINGS["music"]["playererrorone"], colour=0x6AA84F)
             await ctx.send(embed=playEmbed_2)
         elif isinstance(exc, QueueIsEmpty):
             s = await Settings(ctx.guild.id)
             lang = await s.get_field("locale", CONFIG["default_locale"])
             STRINGS = Strings(lang)
-            playEmbed_3 = discord.Embed(
+            playEmbed_3 = disnake.Embed(
                 title=STRINGS["music"]["queueerror"],
                 description=STRINGS["music"]["queueerrordesc"],
                 colour=0x6AA84F,
@@ -452,7 +452,7 @@ class Music(commands.Cog, wavelink.WavelinkMixin, name="Music"):
         if player.is_paused:
             raise PlayerIsAlreadyPaused
         await player.set_pause(True)
-        pauseEmbed = discord.Embed(title=STRINGS["music"]["pausetracktext"],
+        pauseEmbed = disnake.Embed(title=STRINGS["music"]["pausetracktext"],
                                    colour=0x6AA84F)
         pauseEmbed.set_footer(text=STRINGS["music"]["embed_controler_footer"])
 
@@ -463,7 +463,7 @@ class Music(commands.Cog, wavelink.WavelinkMixin, name="Music"):
     @pause_command.error
     async def pause_command_error(self, ctx, exc):
         if isinstance(exc, PlayerIsAlreadyPaused):
-            pauseer_embed = discord.Embed(title=STRINGS["music"]["pauseerror"],
+            pauseer_embed = disnake.Embed(title=STRINGS["music"]["pauseerror"],
                                           colour=0x6AA84F)
             await ctx.send(embed=pauseer_embed)
 
@@ -475,7 +475,7 @@ class Music(commands.Cog, wavelink.WavelinkMixin, name="Music"):
         s = await Settings(ctx.guild.id)
         lang = await s.get_field("locale", CONFIG["default_locale"])
         STRINGS = Strings(lang)
-        stopEmbed = discord.Embed(title=STRINGS["music"]["stoptext"],
+        stopEmbed = disnake.Embed(title=STRINGS["music"]["stoptext"],
                                   colour=0x6AA84F)
         stopEmbed.set_footer(text=STRINGS["music"]["embed_controler_footer"])
         player.queue.empty()
@@ -500,7 +500,7 @@ class Music(commands.Cog, wavelink.WavelinkMixin, name="Music"):
         if not player.queue.upcoming:
             raise NoMoreTracks
         await player.stop()
-        nextEmbed = discord.Embed(title=STRINGS["music"]["skipsongtext"],
+        nextEmbed = disnake.Embed(title=STRINGS["music"]["skipsongtext"],
                                   colour=0x6AA84F)
         if upcoming := player.queue.upcoming:
             nextEmbed.add_field(
@@ -521,7 +521,7 @@ class Music(commands.Cog, wavelink.WavelinkMixin, name="Music"):
             s = await Settings(ctx.guild.id)
             lang = await s.get_field("locale", CONFIG["default_locale"])
             STRINGS = Strings(lang)
-            nextEmbed_2 = discord.Embed(
+            nextEmbed_2 = disnake.Embed(
                 title=STRINGS["music"]["queueerror"],
                 description=STRINGS["music"]["queueerrordesc"],
                 colour=0x6AA84F,
@@ -533,7 +533,7 @@ class Music(commands.Cog, wavelink.WavelinkMixin, name="Music"):
             s = await Settings(ctx.guild.id)
             lang = await s.get_field("locale", CONFIG["default_locale"])
             STRINGS = Strings(lang)
-            nextEmbed_3 = discord.Embed(
+            nextEmbed_3 = disnake.Embed(
                 title=STRINGS["music"]["nomoretrackstext"],
                 description=STRINGS["music"]["nomoretrackdesc"],
                 colour=0x6AA84F,
@@ -558,7 +558,7 @@ class Music(commands.Cog, wavelink.WavelinkMixin, name="Music"):
             raise NoPreviousTracks
         player.queue.position -= 2
         await player.stop()
-        previousEmbed = discord.Embed(title=STRINGS["music"]["previoustext"],
+        previousEmbed = disnake.Embed(title=STRINGS["music"]["previoustext"],
                                       colour=0x6AA84F)
         previousEmbed.set_footer(
             text=STRINGS["music"]["embed_controler_footer"])
@@ -573,7 +573,7 @@ class Music(commands.Cog, wavelink.WavelinkMixin, name="Music"):
             s = await Settings(ctx.guild.id)
             lang = await s.get_field("locale", CONFIG["default_locale"])
             STRINGS = Strings(lang)
-            previousEmbed_2 = discord.Embed(
+            previousEmbed_2 = disnake.Embed(
                 title=STRINGS["music"]["queueerror"],
                 description=STRINGS["music"]["queueerrordesc"],
                 colour=0x6AA84F,
@@ -585,7 +585,7 @@ class Music(commands.Cog, wavelink.WavelinkMixin, name="Music"):
             s = await Settings(ctx.guild.id)
             lang = await s.get_field("locale", CONFIG["default_locale"])
             STRINGS = Strings(lang)
-            previousEmbed_3 = discord.Embed(
+            previousEmbed_3 = disnake.Embed(
                 title=STRINGS["music"]["nomoretrackstext"],
                 description=STRINGS["music"]["nomoretracksprevdesc"],
                 colour=0x6AA84F,
@@ -607,7 +607,7 @@ class Music(commands.Cog, wavelink.WavelinkMixin, name="Music"):
         lang = await s.get_field("locale", CONFIG["default_locale"])
         STRINGS = Strings(lang)
         player.queue.shuffle()
-        shuffleEmbed = discord.Embed(title=STRINGS["music"]["listshuffled"],
+        shuffleEmbed = disnake.Embed(title=STRINGS["music"]["listshuffled"],
                                      colour=0x6AA84F)
         shuffleEmbed.set_footer(
             text=STRINGS["music"]["embed_controler_footer"])
@@ -622,7 +622,7 @@ class Music(commands.Cog, wavelink.WavelinkMixin, name="Music"):
             s = await Settings(ctx.guild.id)
             lang = await s.get_field("locale", CONFIG["default_locale"])
             STRINGS = Strings(lang)
-            shuffleEmbed_2 = discord.Embed(
+            shuffleEmbed_2 = disnake.Embed(
                 title=STRINGS["music"]["queueerror"],
                 description=STRINGS["music"]["queueerrordesc"],
                 colour=0x6AA84F,
@@ -646,7 +646,7 @@ class Music(commands.Cog, wavelink.WavelinkMixin, name="Music"):
 
         if player.queue.is_empty:
             raise QueueIsEmpty
-        queueEmbed = discord.Embed(title=STRINGS["music"]["queuelisttext"],
+        queueEmbed = disnake.Embed(title=STRINGS["music"]["queuelisttext"],
                                    colour=0x6AA84F)
         queueEmbed.add_field(
             name=STRINGS["music"]["queuelistcurrentlyplaying"],
@@ -673,7 +673,7 @@ class Music(commands.Cog, wavelink.WavelinkMixin, name="Music"):
             s = await Settings(ctx.guild.id)
             lang = await s.get_field("locale", CONFIG["default_locale"])
             STRINGS = Strings(lang)
-            queueEmbed_2 = discord.Embed(
+            queueEmbed_2 = disnake.Embed(
                 title=STRINGS["music"]["queueerror"],
                 description=STRINGS["music"]["queueerrordesc"],
                 colour=0x6AA84F,
@@ -695,7 +695,7 @@ class Music(commands.Cog, wavelink.WavelinkMixin, name="Music"):
         if player.queue.is_empty:
             raise QueueIsEmpty
         if not 0 < value < 101:
-            volumeEmbed_3 = discord.Embed(
+            volumeEmbed_3 = disnake.Embed(
                 title=STRINGS["music"]["invalidvolumevalue"],
                 description=STRINGS["music"]["invalidvolumevaluedesc"],
                 colour=0x6AA84F,
@@ -703,7 +703,7 @@ class Music(commands.Cog, wavelink.WavelinkMixin, name="Music"):
             return await ctx.send(embed=volumeEmbed_3)
 
         await player.set_volume(value)
-        volumeEmbed = discord.Embed(
+        volumeEmbed = disnake.Embed(
             title=STRINGS["music"]["volumeset"],
             description=STRINGS["music"]["volumesetdesc"],
             color=0xFF8040,
@@ -723,7 +723,7 @@ class Music(commands.Cog, wavelink.WavelinkMixin, name="Music"):
             s = await Settings(ctx.guild.id)
             lang = await s.get_field("locale", CONFIG["default_locale"])
             STRINGS = Strings(lang)
-            volumeEmbed_2 = discord.Embed(
+            volumeEmbed_2 = disnake.Embed(
                 title=STRINGS["music"]["queueerror"],
                 description=STRINGS["music"]["queueerrordesc"],
                 colour=0x6AA84F,

@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 from typing import NoReturn
 
-import discord
-from discord.ext import commands
-from discord.ext.commands import Bot, Context
+import disnake
+from disnake.ext import commands
+from disnake.ext.commands import Bot, Context
 
 from listener.utils import Config, Logger, Settings, Strings, Utils
 
@@ -56,7 +56,7 @@ class Prefs(commands.Cog, name="Prefs"):
                 return
 
         # FIXME
-        embed = discord.Embed(
+        embed = disnake.Embed(
             title=STRINGS["error"]["on_error_title"],
             description=STRINGS["error"]["localeerrortext"],
             color=0xFF0000,
