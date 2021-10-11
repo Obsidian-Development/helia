@@ -73,7 +73,7 @@ class Utilities(commands.Cog):
         embed = disnake.Embed(
             title=STRINGS["utilities"]["emoji_info_title"].format(name), color=0xEDA84E
         )
-        embed.set_image(url=f"https://cdn.disnakeapp.com/emojis/{id}.{format}")
+        embed.set_image(url=f"https://cdn.discordapp.com/emojis/{id}.{format}")
         embed.set_footer(text=STRINGS["utilities"]["emoji_info"].format(id))
 
         await ctx.send(embed=embed)
