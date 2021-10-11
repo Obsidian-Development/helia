@@ -41,7 +41,7 @@ class Dropdown(discord.ui.Select):
         # selected options. We only want the first one.
 
         # print(f"{interaction.author.name} with ID {interaction.author.id} just clicked something in the select menu")
-        label = interaction.data.values[0]
+        label = self.values[0]
         print(label)
         for cog in self.bot.cogs:  # fixed
             if label == cog:  # -------------------[1]
