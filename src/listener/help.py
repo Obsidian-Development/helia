@@ -74,10 +74,8 @@ async def get_help(self, interaction, CogToPassAlong):
     # else:
     # pass
 
-    for command in self.bot.get_cog(CogToPassAlong).get_commands():
-        if command is not None:
-            pass
-
+    for _ in self.bot.get_cog(CogToPassAlong).get_commands():
+        pass
     # making title - getting description from doc-string below class
     emb = disnake.Embed(
         title=f"{CogToPassAlong} - Commands",
