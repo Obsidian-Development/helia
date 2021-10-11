@@ -195,17 +195,19 @@ class General(commands.Cog, name="General"):
         pythonVersion = platform.python_version()
         dpyVersion = disnake.__version__
         servercount = len(self.bot.guilds)
+        usercount = len(self.bot.users)
         embed = disnake.Embed(
             title=STRINGS["general"]["abouttitle"],
             description=STRINGS["general"]["aboutdesc"],
             color=0xFF6900,
         )
+        
         embed.add_field(name="Libraries and bot version information",
                         value=f"```Bot Version: {ver}\nPython Version:{pythonVersion}\nLibrary: disnake.py\ndisnake.Py Version: {dpyVersion} ```",
                         inline=True) 
         embed.add_field(
             name="Other Information",
-            value=f"```Server Count: {servercount}\nRAM Usage:{ramUsage:.2f} MB```",
+            value=f"```Server Count: {servercount}\nUser Count: {usercount}\nRAM Usage:{ramUsage:.2f} MB```",
             inline=True,
         )
         embed.add_field(
