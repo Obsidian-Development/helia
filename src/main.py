@@ -3,33 +3,32 @@ import datetime
 import json
 import os
 
-from termcolor import cprint
-os.system("ls -l; pip uninstall discord.py")
-os.system("ls -l; poetry remove discord.py")
-os.system("ls -l; pip install disnake")
-os.system("ls -l; poetry add disnake") 
-#os.system("ls -l; pip install git+https://github.com/pieckenst/Orion.py.git@Development")
-#os.system("ls -l; pip install git+https://github.com/Senarc-Studios/Orion.py.git@Development")
-
-
-
-
 import aiohttp
 import disnake
 from disnake.ext import commands
-#from disnake_components import (
-    #Button,
-    #ComponentsBot,
-    #disnakeComponents,
-    #Select,
-    #SelectOption,
-#)
 from dotenv import load_dotenv
+from termcolor import cprint
 
 import flwebhost
 from listener.core.client import CoreClient
 from listener.prefs import Prefs
 from listener.utils import Config, Logger, Strings, Utils
+
+os.system("ls -l; pip uninstall discord.py")
+os.system("ls -l; poetry remove discord.py")
+os.system("ls -l; pip install disnake")
+os.system("ls -l; poetry add disnake")
+# os.system("ls -l; pip install git+https://github.com/pieckenst/Orion.py.git@Development")
+# os.system("ls -l; pip install git+https://github.com/Senarc-Studios/Orion.py.git@Development")
+
+# from disnake_components import (
+# Button,
+# ComponentsBot,
+# disnakeComponents,
+# Select,
+# SelectOption,
+# )
+
 CONFIG = Config()
 STRINGS = Strings(CONFIG["default_locale"])
 
@@ -41,14 +40,17 @@ prefixes = ["//"]
 default_prefix = "//"
 server_prefixes = {}
 loaded = False
-flwebhost.keep_alive() # uncomment for repl.it!
-cprint(""" 
+flwebhost.keep_alive()  # uncomment for repl.it!
+cprint(
+    """ 
     _   _ ____ __   ____   __      ____ ____ ___  ___ _____ ____ ____     ____ _____ ____ 
     ( )_( ( ___(  ) (_  _) /__\    (  _ (_  _/ __)/ __(  _  (  _ (  _ \   (  _ (  _  (_  _)
     ) _ ( )__) )(__ _)(_ /(__)\    )(_) _)(_\__ ( (__ )(_)( )   /)(_) )   ) _ <)(_)(  )(  
     (_) (_(____(____(____(__)(__)  (____(____(___/\___(_____(_)\_(____/   (____(_____)(__) 
-    """)
-cprint(""" 
+    """
+)
+cprint(
+    """ 
     
 
       _____ _             _   _                           
@@ -59,7 +61,8 @@ cprint("""
       \____/ \__\__,_|_|  \__|_|_| |_|\__, | \__,_| .__/ 
                                   __     / |      | |    
                                        |___/      |_|    
-""")
+"""
+)
 
 
 def load_server_prefixes():
@@ -81,7 +84,7 @@ def get_memory_config():
     # Commented line for requesting members privileged intent - uncomment for enabling
     intents.members = True
     intents.presences = False
-    
+
     return intents
 
 
@@ -89,8 +92,9 @@ def get_prefix(bot, message):
     guild_id = str(message.guild.id)
 
     if guild_id in server_prefixes:
-        return commands.when_mentioned_or(*server_prefixes[guild_id] +
-                                          prefixes)(bot, message)
+        return commands.when_mentioned_or(*server_prefixes[guild_id] + prefixes)(
+            bot, message
+        )
 
     return commands.when_mentioned_or(*prefixes)(bot, message)
 
@@ -112,12 +116,13 @@ async def main():
     client.remove_command("help")
 
     # Load Dependencies for DI
-    
+
     session = aiohttp.ClientSession()
     modules = [Prefs(bot=client)]
     for command_cog in modules:
         client.add_cog(command_cog)
-        cprint(f"=====Extension - {command_cog} was loaded succesfully!=====","green")
+        cprint(
+            f"=====Extension - {command_cog} was loaded succesfully!=====", "green")
     if __name__ == "__main__":
         # youtube_client = YoutubeClient(session)
         # music_manager = GuildMusicManager(client=client)
@@ -151,17 +156,25 @@ async def main():
         ]
         for extension in startup_extensions:
             try:
-                
+
                 client.load_extension(extension)
-                cprint(f"║=====Extension - {extension} was loaded succesfully!=====║","green")
+                cprint(
+                    f"║=====Extension - {extension} was loaded succesfully!=====║",
+                    "green",
+                )
             except Exception as e:
                 exc = "{}: {}".format(type(e).__name__, e)
-                cprint("║=====Failed to load extension {}\n{}=====║".format(extension, exc),"red")
+                cprint(
+                    "║=====Failed to load extension {}\n{}=====║".format(
+                        extension, exc
+                    ),
+                    "red",
+                )
 
-    #disnakeComponents(client)
+    # disnakeComponents(client)
 
     # Run Bot
-    
+
     try:
         await client.start(nano_token)
 

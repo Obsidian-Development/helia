@@ -15,7 +15,11 @@ class gnulinux(commands.Cog):
         self.bot = bot
 
     # GNU/Linux Distr Wiki
-    @commands.command(slash_interaction=False, message_command=True,description="Arch Linux Description")
+    @commands.command(
+        slash_interaction=False,
+        message_command=True,
+        description="Arch Linux Description",
+    )
     async def arch(self, ctx: Context):
         s = await Settings(ctx.guild.id)
         lang = await s.get_field("locale", CONFIG["default_locale"])
@@ -32,7 +36,11 @@ class gnulinux(commands.Cog):
         )
         await ctx.send(embed=archl)
 
-    @commands.command(slash_interaction=False, message_command=True,description="Ubuntu linux description")
+    @commands.command(
+        slash_interaction=False,
+        message_command=True,
+        description="Ubuntu linux description",
+    )
     async def ubuntu(self, ctx: Context):  # Ubuntu
         s = await Settings(ctx.guild.id)
         lang = await s.get_field("locale", CONFIG["default_locale"])
@@ -47,7 +55,11 @@ class gnulinux(commands.Cog):
         ubuntu1.set_thumbnail(url="https://i.imgur.com/TfVgK1v.png")
         await ctx.send(embed=ubuntu1)
 
-    @commands.command(slash_interaction=False, message_command=True,description="Debian Linux Description")
+    @commands.command(
+        slash_interaction=False,
+        message_command=True,
+        description="Debian Linux Description",
+    )
     async def debian(self, ctx: Context):  # Debian
         s = await Settings(ctx.guild.id)
         lang = await s.get_field("locale", CONFIG["default_locale"])
@@ -64,7 +76,11 @@ class gnulinux(commands.Cog):
         )
         await ctx.send(embed=debian1)
 
-    @commands.command(slash_interaction=False, message_command=True,description="Deepin linux description")
+    @commands.command(
+        slash_interaction=False,
+        message_command=True,
+        description="Deepin linux description",
+    )
     async def deepin(self, ctx: Context):  # Deepin
         s = await Settings(ctx.guild.id)
         lang = await s.get_field("locale", CONFIG["default_locale"])
@@ -81,7 +97,11 @@ class gnulinux(commands.Cog):
         )
         await ctx.send(embed=deepin1)
 
-    @commands.command(slash_interaction=False, message_command=True,description="Manjaro linux description")
+    @commands.command(
+        slash_interaction=False,
+        message_command=True,
+        description="Manjaro linux description",
+    )
     async def manjaro(self, ctx: Context):  # Manjaro
         s = await Settings(ctx.guild.id)
         lang = await s.get_field("locale", CONFIG["default_locale"])
@@ -98,7 +118,11 @@ class gnulinux(commands.Cog):
         )
         await ctx.send(embed=manjaro1)
 
-    @commands.command(slash_interaction=False, message_command=True,description="Linux Mint description")
+    @commands.command(
+        slash_interaction=False,
+        message_command=True,
+        description="Linux Mint description",
+    )
     async def mint(self, ctx: Context):  # Mint
         s = await Settings(ctx.guild.id)
         lang = await s.get_field("locale", CONFIG["default_locale"])

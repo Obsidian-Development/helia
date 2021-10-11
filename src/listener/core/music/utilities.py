@@ -5,12 +5,12 @@ def parse_duration(duration: int) -> str:
 
     duration = []
     if days > 0:
-        duration.append(f'{days}d')
+        duration.append(f"{days}d")
     if hours > 0:
-        duration.append(f'{hours}h')
+        duration.append(f"{hours}h")
     if minutes > 0:
-        duration.append(f'{minutes}m')
+        duration.append(f"{minutes}m")
     if seconds > 0:
-        duration.append(f'{seconds}s')
+        duration.append(f"{seconds}s")
 
-    return ' : '.join(duration)
+    return " : ".join(duration)

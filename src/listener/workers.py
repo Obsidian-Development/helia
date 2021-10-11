@@ -4,9 +4,9 @@ import asyncio
 import requests
 from disnake.ext import commands
 from disnake.ext.commands import Bot
+from termcolor import cprint
 
 from listener.utils import Config, Logger
-from termcolor import cprint
 
 CONFIG = Config()
 
@@ -21,29 +21,28 @@ class Workers(commands.Cog):
         """Updates bot information on bots.servers-disnake.com"""
         while True:
             await asyncio.sleep(65)
-            cprint( """║=============================║""")
+            cprint("""║=============================║""")
             print("║[SDC] Looping update request-║")
             print("║Debug information║")
-            cprint(f"""
+            cprint(
+                f"""
             ║=============================================║
             ║Number of guilds:-----║Client ID:            ║
             ║{len(self.bot.guilds)}:::::::::::::::::::║{self.bot.user.id}----║
             ║======================║======================║
-            """)
+            """
+            )
             print("Proceeding to authorize")
             headers = {"Authorization": CONFIG["sdc_token"]}
             r = requests.post(
                 f"https://api.server-discord.com/v2/bots/{self.bot.user.id}/stats",
                 headers=headers,
-                data={
-                    "servers": len(self.bot.guilds),
-                    "shards": 1
-                },
+                data={"servers": len(self.bot.guilds), "shards": 1},
             )
             print(r.content)
             print("[SDC] Authorization completed")
             print("[SDC] Request sent")
-            cprint( """║=============================║""")
+            cprint("""║=============================║""")
             await asyncio.sleep(3600)
 
 

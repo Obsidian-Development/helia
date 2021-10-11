@@ -14,7 +14,7 @@ class Prefs(commands.Cog, name="Prefs"):
     def __init__(self, bot) -> None:
         self.bot = bot
         self.name = "Prefs"
-        #self.server_prefixes = server_prefixes
+        # self.server_prefixes = server_prefixes
 
     @commands.command(aliases=["setprefix"])
     @commands.has_permissions(administrator=True)

@@ -1,7 +1,7 @@
 import math
 
-from disnake import SelectOption,ButtonStyle
-from disnake.ui import View, Select,Button
+from disnake import ButtonStyle, SelectOption
+from disnake.ui import Button, Select, View
 
 buttons = [
     [
