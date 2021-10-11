@@ -7,6 +7,7 @@ import sqlite3
 import disnake
 from disnake.ext import commands
 from disnake.ext.commands import Bot, Context
+from termcolor import cprint
 
 from scripts import db
 
