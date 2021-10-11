@@ -22,7 +22,7 @@ class Workers(commands.Cog):
         while True:
             await asyncio.sleep(65)
             cprint( """║=============================║""")
-            print("║[SDC] Looping update request║")
+            print("║[SDC] Looping update request-║")
             print("║Debug information║")
             cprint(f"""
             ║=============================================║
