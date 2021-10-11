@@ -18,6 +18,14 @@ class Welcome(commands.Cog):
     @commands.Cog.listener()
     async def on_member_join(self, member):
 
+        cprint(
+            f"""
+        ║============================================================║
+        ║-------- {member} joined {member.guild.name}-------║
+        ║============================================================║
+        """
+        )
+
         connect = sqlite3.connect(db.main)
         cursor = connect.cursor()
         cursor.execute(
@@ -48,7 +56,7 @@ class Welcome(commands.Cog):
                 name="Server message", value=f"```{desc[0]}```", inline=True
             )
 
-        channel = self.bot.get_channel(id=int(chan[0]))
+        channel = self.bot.get_channel(int(chan[0]))
         await channel.send(embed=hello)
         cursor.close()
         connect.close()

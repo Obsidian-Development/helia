@@ -7,6 +7,8 @@ from datetime import datetime
 import disnake
 from disnake.ext import commands
 from disnake.ext.commands import Bot, Context
+from termcolor import cprint
+
 
 from scripts import db
 
@@ -17,6 +19,13 @@ class Goodbye(commands.Cog):
 
     @commands.Cog.listener()
     async def on_member_remove(self, member):
+        cprint(
+            f"""
+        ║============================================================║
+        ║-------- {member} left {member.guild.name}-------║
+        ║============================================================║
+        """
+        )
 
         # now  = datetime.now()
         # time = now.strftime("%H:%M:%S")
@@ -46,7 +55,7 @@ class Goodbye(commands.Cog):
         else:
             gb.add_field(name="Server message",
                          value=f"```{desc[0]}```", inline=True)
-        channel = self.bot.get_channel(id=int(chan[0]))
+        channel = self.bot.get_channel(int(chan[0]))
         cursor.close()
         connect.close()
         await channel.send(embed=gb)
