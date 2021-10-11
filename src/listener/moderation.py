@@ -72,29 +72,8 @@ class Moderation(commands.Cog, name="Moderation"):
                 STRINGS["moderation"]["dm_kick"].format(ctx.guild, reason)
             )
             await member.send(embed=embed)
-            await asyncio.sleep(5)
-            await member.ban(reason=reason)
-        # else:
-        # await response.respond(
-        # type=7,
-        # embed=disnake.Embed(
-        # title="Action Aborted",
-        # description="The action was aborted by clicking the no button",
-        # color=0xDD2E44,
-        # ),
-        # components=done_components,
-        # )
-
-        # except disnake.Forbidden:
-        # await ctx.message.add_reaction(CONFIG["no_emoji"])
-        # embed = Utils.error_embed(STRINGS["error"]["ban_fail"])
-        # msg = await ctx.send(embed=embed)
-        # await asyncio.sleep(5)
-        # await msg.delete()
-
-        else:
-            await asyncio.sleep(5)
-            await member.ban(reason=reason)
+        await asyncio.sleep(5)
+        await member.ban(reason=reason)
         cprint(
             f"""
         ║============================================================║
