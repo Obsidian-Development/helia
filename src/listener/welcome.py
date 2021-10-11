@@ -6,8 +6,8 @@ import sqlite3
 
 import disnake
 from disnake.ext import commands
-from disnake.ext.commands import Bot, Context
-
+from disnake.ext.commands import Bot
+from disnake.ext.commands import Context
 from scripts import db
 
 

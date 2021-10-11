@@ -3,9 +3,12 @@ import os
 
 import disnake
 from disnake.ext import commands
-from disnake.ext.commands import Bot, Context
-
-from listener.utils import Config, Logger, Settings, Strings
+from disnake.ext.commands import Bot
+from disnake.ext.commands import Context
+from listener.utils import Config
+from listener.utils import Logger
+from listener.utils import Settings
+from listener.utils import Strings
 
 CONFIG = Config()
 
