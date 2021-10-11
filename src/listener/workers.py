@@ -21,7 +21,7 @@ class Workers(commands.Cog):
         """Updates bot information on bots.servers-disnake.com"""
         while True:
             await asyncio.sleep(65)
-            cprint( """║=============================║""")
+            cprint("""║=============================║""")
             print("║[SDC] Looping update request-║")
             print("║Debug information║")
             cprint(f"""
@@ -43,7 +43,7 @@ class Workers(commands.Cog):
             print(r.content)
             print("[SDC] Authorization completed")
             print("[SDC] Request sent")
-            cprint( """║=============================║""")
+            cprint("""║=============================║""")
             await asyncio.sleep(3600)
 
 

@@ -164,7 +164,7 @@ class Listeners(commands.Cog, name="Listeners"):
             embed.title = STRINGS["error"]["on_error_title"]
             embed.description = STRINGS["error"]["on_error_text"].format(
                 str(error))
-            #Logger.warn(str(error))
+            # Logger.warn(str(error))
 
         msg = await ctx.send(embed=embed)
         await asyncio.sleep(20)

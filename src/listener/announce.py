@@ -14,7 +14,7 @@ class broadcast(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.command(slash_interaction=True, message_command=True,description="Global Announcement from bot owner")
+    @commands.command(slash_interaction=True, message_command=True, description="Global Announcement from bot owner")
     @commands.is_owner()
     async def announce(self, ctx: Context, *, content):
         s = await Settings(ctx.guild.id)

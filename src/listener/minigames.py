@@ -15,7 +15,7 @@ class minigames(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.command(slash_interaction=False, message_command=True,description="Random cube")
+    @commands.command(slash_interaction=False, message_command=True, description="Random cube")
     async def kubik(self, ctx: Context):  # кубик рандом
         s = await Settings(ctx.guild.id)
         lang = await s.get_field("locale", CONFIG["default_locale"])
@@ -28,7 +28,7 @@ class minigames(commands.Cog):
                            inline=False)
         await ctx.send(embed=embedkub)
 
-    @commands.command(slash_interaction=False, message_command=True,description="Coin throw")
+    @commands.command(slash_interaction=False, message_command=True, description="Coin throw")
     async def monetka(self, ctx: Context):
         s = await Settings(ctx.guild.id)
         lang = await s.get_field("locale", CONFIG["default_locale"])
@@ -41,7 +41,7 @@ class minigames(commands.Cog):
                              inline=False)
         await ctx.send(embed=embedmonet)
 
-    @commands.command(slash_interaction=False, message_command=True,description="Casino")
+    @commands.command(slash_interaction=False, message_command=True, description="Casino")
     async def casino(self, ctx: Context):
         s = await Settings(ctx.guild.id)
         lang = await s.get_field("locale", CONFIG["default_locale"])

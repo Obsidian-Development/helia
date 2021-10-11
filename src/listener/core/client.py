@@ -6,8 +6,7 @@ import random
 import aiohttp
 import disnake
 
-from disnake.ext import commands,tasks 
-
+from disnake.ext import commands, tasks
 
 
 from scripts import db  # UNCOMMENT FOR DB CONNECTION
@@ -30,7 +29,7 @@ class CoreClient(commands.AutoShardedBot):
             max_messages=None,
             intents=intents,
             chunk_guilds_at_startup=False,
-            slash_interactions = True,
+            slash_interactions=True,
         )
         self.name = name
         self.id = id
@@ -83,12 +82,12 @@ class CoreClient(commands.AutoShardedBot):
 
     async def on_ready(self):
         activar = disnake.Activity(type=disnake.ActivityType.watching,
-                             name="Orion.py test run")
-        #self.changeStatus.start()
+                                   name="Orion.py test run")
+        # self.changeStatus.start()
         await self.change_presence(status=disnake.Status.online,
                                    activity=activar)
         self.launch_time = datetime.datetime.utcnow()
-        
+
         self.load_extension("jishaku")
         print("    Loaded 'jishaku.py'")
         await super(CoreClient,

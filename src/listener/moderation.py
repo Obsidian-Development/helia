@@ -28,72 +28,73 @@ class Moderation(commands.Cog, name="Moderation"):
                   *,
                   reason: str = "N/A") -> NoReturn:
         """
-        
-        
+
+
         A command to ban a specified user.
 
         Arguments:
         -----------
         - `member` - user
         - `reason` - ban reason
-        
+
         """
         s = await Settings(ctx.guild.id)
         lang = await s.get_field("locale", CONFIG["default_locale"])
         STRINGS = Strings(lang)
 
-        #select_components = [[
-            #Button(style=ButtonStyle.green, label="✓"),
-            #Button(style=ButtonStyle.red, label="X"),
-        #]]
-        #done_components = [[
-            #Button(style=ButtonStyle.grey, label="·", disabled=True),
-        #]]
+        # select_components = [[
+        #Button(style=ButtonStyle.green, label="✓"),
+        #Button(style=ButtonStyle.red, label="X"),
+        # ]]
+        # done_components = [[
+        #Button(style=ButtonStyle.grey, label="·", disabled=True),
+        # ]]
 
-        #embedconfirm = disnake.Embed(
-            #title="Ban Command",
-            #description="```Do you want to ban this member?```",
-        #)
-        #await ctx.send(embed=embedconfirm, components=select_components)
-        #response = await self.bot.wait_for(
-            #"button_click", check=lambda message: message.author == ctx.author)
-        #try:
-            #if response.component.label == "✓":
-                #await response.respond(
-                    #type=7,
-                    #embed=disnake.Embed(
-                        #title="Action confirmed",
-                        #description=f"Banning {member} for {reason}",
-                        #color=0xFF8000,
-                    #),
-                    #components=done_components,
-                #)
+        # embedconfirm = disnake.Embed(
+        #title="Ban Command",
+        #description="```Do you want to ban this member?```",
+        # )
+        # await ctx.send(embed=embedconfirm, components=select_components)
+        # response = await self.bot.wait_for(
+        # "button_click", check=lambda message: message.author == ctx.author)
+        # try:
+        # if response.component.label == "✓":
+        # await response.respond(
+        # type=7,
+        # embed=disnake.Embed(
+        #title="Action confirmed",
+        #description=f"Banning {member} for {reason}",
+        # color=0xFF8000,
+        # ),
+        # components=done_components,
+        # )
         if not member.bot:
-            embed = Utils.error_embed(STRINGS["moderation"]["dm_kick"].format(ctx.guild, reason))
+            embed = Utils.error_embed(
+                STRINGS["moderation"]["dm_kick"].format(ctx.guild, reason))
             await member.send(embed=embed)
             await asyncio.sleep(5)
             await member.ban(reason=reason)
-        #else:
-                #await response.respond(
-                    #type=7,
-                    #embed=disnake.Embed(
-                        #title="Action Aborted",
-                        #description="The action was aborted by clicking the no button",
-                        #color=0xDD2E44,
-                    #),
-                    #components=done_components,
-                #)
+        # else:
+            # await response.respond(
+            # type=7,
+            # embed=disnake.Embed(
+            #title="Action Aborted",
+            #description="The action was aborted by clicking the no button",
+            # color=0xDD2E44,
+            # ),
+            # components=done_components,
+            # )
 
-        #except disnake.Forbidden:
-            #await ctx.message.add_reaction(CONFIG["no_emoji"])
+        # except disnake.Forbidden:
+            # await ctx.message.add_reaction(CONFIG["no_emoji"])
             #embed = Utils.error_embed(STRINGS["error"]["ban_fail"])
-            #msg = await ctx.send(embed=embed)
-            #await asyncio.sleep(5)
-            #await msg.delete()
+            # msg = await ctx.send(embed=embed)
+            # await asyncio.sleep(5)
+            # await msg.delete()
 
         else:
-          await asyncio.sleep(5)
-          await member.ban(reason=reason)
+            await asyncio.sleep(5)
+            await member.ban(reason=reason)
         cprint(f"""
         ║============================================================║
         ║--------Succesfully banned {member} in {ctx.guild.name}-------║
@@ -106,34 +107,34 @@ class Moderation(commands.Cog, name="Moderation"):
     @commands.cooldown(1, 5, commands.BucketType.user)
     async def unban(self, ctx, *, member) -> NoReturn:
         """
-        
-        
+
+
         A command to unban a specified user.
 
         Arguments:
         -----------
         - `member` - user tag. Example: `name#1234`
-        
+
         """
         s = await Settings(ctx.guild.id)
         lang = await s.get_field("locale", CONFIG["default_locale"])
         STRINGS = Strings(lang)
 
-        #select_components = [[
-            #Button(style=ButtonStyle.green, label="✓"),
-            #Button(style=ButtonStyle.red, label="X"),
-        #]]
-        #done_components = [[
-            #Button(style=ButtonStyle.grey, label="·", disabled=True),
-        #]]
+        # select_components = [[
+        #Button(style=ButtonStyle.green, label="✓"),
+        #Button(style=ButtonStyle.red, label="X"),
+        # ]]
+        # done_components = [[
+        #Button(style=ButtonStyle.grey, label="·", disabled=True),
+        # ]]
 
-        #embedconfirm = disnake.Embed(
-            #title="Unban Command",
-            #description="```Do you want to unban this member?```",
-        #)
-        #await ctx.send(embed=embedconfirm, components=select_components)
-        #response = await self.bot.wait_for(
-            #"button_click", check=lambda message: message.author == ctx.author)
+        # embedconfirm = disnake.Embed(
+        #title="Unban Command",
+        #description="```Do you want to unban this member?```",
+        # )
+        # await ctx.send(embed=embedconfirm, components=select_components)
+        # response = await self.bot.wait_for(
+        # "button_click", check=lambda message: message.author == ctx.author)
 
         if "#" in ctx.message.content:
             banned_users = await ctx.guild.bans()
@@ -146,13 +147,13 @@ class Moderation(commands.Cog, name="Moderation"):
                 ):
                     await ctx.guild.unban(user)
                     await ctx.send(
-                        
+
                         embed=disnake.Embed(
                             title="Action confirmed",
                             description=f"Unbanned {user}",
                             color=0xFF8000,
                         ),
-                        
+
                     )
             cprint(f"""
              ║============================================================║
@@ -164,34 +165,33 @@ class Moderation(commands.Cog, name="Moderation"):
             member = await self.client.fetch_user(int(member))
             await ctx.guild.unban(member)
             await ctx.send(
-                        
+
                 embed=disnake.Embed(
                     title="Action confirmed",
                     description=f"Unbanned {user}",
                     color=0xFF8000,
                 ),
-                        
+
             )
             cprint(f"""
              ║============================================================║
              ║------Succesfully unbanned {member} in {ctx.guild.name}-------║
              ║============================================================║
             """)
-        #else:
-            #await response.respond(
-                #type=7,
-                #embed=disnake.Embed(
-                    #title="Action Aborted",
-                    #description="The action was aborted by clicking the no button",
-                    #color=0xDD2E44,
-                #),
-                #components=done_components,
-            #)
+        # else:
+            # await response.respond(
+            # type=7,
+            # embed=disnake.Embed(
+            #title="Action Aborted",
+            #description="The action was aborted by clicking the no button",
+            # color=0xDD2E44,
+            # ),
+            # components=done_components,
+            # )
 
         await ctx.message.add_reaction(CONFIG["no_emoji"])
         embed = Utils.error_embed(STRINGS["error"]["user_not_found"])
         await ctx.send(embed=embed)
-        
 
     @commands.command()
     @commands.bot_has_permissions(ban_members=True)
@@ -203,15 +203,15 @@ class Moderation(commands.Cog, name="Moderation"):
                        *,
                        reason: str = "N/A") -> NoReturn:
         """
-        
-        
+
+
         A command to ban multiple users.
 
         Arguments:
         -----------
         - `member` - user
         - `reason` - ban reason
-        
+
         """
         s = await Settings(ctx.guild.id)
         lang = await s.get_field("locale", CONFIG["default_locale"])
@@ -256,15 +256,15 @@ class Moderation(commands.Cog, name="Moderation"):
                    *,
                    reason: str = "N/A") -> NoReturn:
         """
-        
-        
+
+
         A command to kick a specified user.
 
         Arguments:
         -----------
         - `member` - user
         - `reason` - kick reason
-        
+
         """
         s = await Settings(ctx.guild.id)
         lang = await s.get_field("locale", CONFIG["default_locale"])
@@ -320,57 +320,56 @@ class Moderation(commands.Cog, name="Moderation"):
     @commands.cooldown(1, 5, commands.BucketType.user)
     async def purge(self, ctx: Context, number: int) -> NoReturn:
         """
-        
-        
+
+
         Deletes a specified number of messages in the current channel.
 
         Arguments:
         -----------
         - `number` - The number of messages to be deleted.
-        
+
         """
         s = await Settings(ctx.guild.id)
         lang = await s.get_field("locale", CONFIG["default_locale"])
         STRINGS = Strings(lang)
 
-        #select_components = [[
-            #Button(style=ButtonStyle.green, label="✓"),
-            #Button(style=ButtonStyle.red, label="X"),
-        #]]
-        #done_components = [[
-            #Button(style=ButtonStyle.grey, label="·", disabled=True),
-        #]]
+        # select_components = [[
+        #Button(style=ButtonStyle.green, label="✓"),
+        #Button(style=ButtonStyle.red, label="X"),
+        # ]]
+        # done_components = [[
+        #Button(style=ButtonStyle.grey, label="·", disabled=True),
+        # ]]
 
-        #embedconfirm = disnake.Embed(
-            #title="Clear Command",
-            #description=f"```Do you want to remove {number} messages?```",
-        #)
-        #await ctx.send(embed=embedconfirm, components=select_components)
-        #response = await self.bot.wait_for(
-            #"button_click", check=lambda message: message.author == ctx.author)
+        # embedconfirm = disnake.Embed(
+        #title="Clear Command",
+        #description=f"```Do you want to remove {number} messages?```",
+        # )
+        # await ctx.send(embed=embedconfirm, components=select_components)
+        # response = await self.bot.wait_for(
+        # "button_click", check=lambda message: message.author == ctx.author)
 
-        
         await ctx.send(
-                embed=disnake.Embed(
-                    title="Action Completed",
-                    description=f"Purging {number} messages",
-                    color=0xDD2E44,
-                )
+            embed=disnake.Embed(
+                title="Action Completed",
+                description=f"Purging {number} messages",
+                color=0xDD2E44,
+            )
         )
         await asyncio.sleep(10)
         deleted = await ctx.channel.purge(limit=number + 1)
 
-        #else:
-            #await response.respond(
-                #type=7,
-                #embed=disnake.Embed(
-                    #title="Action Aborted",
-                    #description="The action was aborted by clicking the no button",
-                    #color=0xDD2E44,
-                #),
-                #components=done_components,
-            #)
-            #return
+        # else:
+        # await response.respond(
+        # type=7,
+        # embed=disnake.Embed(
+        #title="Action Aborted",
+        #description="The action was aborted by clicking the no button",
+        # color=0xDD2E44,
+        # ),
+        # components=done_components,
+        # )
+        # return
 
     @commands.command(aliases=["setnick, setname"])
     @commands.bot_has_permissions(manage_nicknames=True)
@@ -379,15 +378,15 @@ class Moderation(commands.Cog, name="Moderation"):
     async def setname(self, ctx: Context, member: Member, *,
                       name: str) -> NoReturn:
         """
-        
-        
+
+
         Set a nickname for the specified user.
 
         Arguments:
         -----------
         - `member` - user.
         - `name` - Nickname to set 
-        
+
         """
         s = await Settings(ctx.guild.id)
         lang = await s.get_field("locale", CONFIG["default_locale"])
@@ -413,15 +412,15 @@ class Moderation(commands.Cog, name="Moderation"):
                    *,
                    reason: str = "N/A") -> NoReturn:
         """
-        
-        
+
+
         Makes a specified user muted which basically means they cannot talk.
 
         Arguments:
         -----------
         - `member` - user.
         - `reason` - Reason to mute the person
-        
+
         """
         s = await Settings(ctx.guild.id)
         lang = await s.get_field("locale", CONFIG["default_locale"])
@@ -467,15 +466,15 @@ class Moderation(commands.Cog, name="Moderation"):
                      *,
                      reason: str = "N/A") -> NoReturn:
         """
-        
-        
+
+
         Unmutes a specified user which allows them to talk again.
 
         Arguments:
         -----------
         - `member` - user.
         - `reason` - Reason to unmute the person
-        
+
         """
         mute_role = disnake.utils.get(ctx.guild.roles,
                                       id=Utils.get_mute_role(
@@ -494,15 +493,15 @@ class Moderation(commands.Cog, name="Moderation"):
     # `RoleConverter` will automatically convert it to a `disnake.Role` instance
     async def lockdownrole(self, ctx, role: disnake.Role):
         """
-        
-        
+
+
         Disables writing permissions for a specified role in server.
 
         Arguments:
         -----------
         - `role` - Role for which to disallow writing in server.
-        
-        
+
+
         """
         s = await Settings(ctx.guild.id)
         lang = await s.get_field("locale", CONFIG["default_locale"])
@@ -521,15 +520,15 @@ class Moderation(commands.Cog, name="Moderation"):
     @commands.cooldown(1, 30, commands.BucketType.user)
     async def unlockrole(self, ctx, role: disnake.Role):
         """
-        
-        
+
+
         Allows  writing permissions for a specfied role in server.
 
         Arguments:
         -----------
         - `role` - Role for which to disallow writing in server.
-        
-        
+
+
         """
         s = await Settings(ctx.guild.id)
         lang = await s.get_field("locale", CONFIG["default_locale"])
@@ -549,10 +548,10 @@ class Moderation(commands.Cog, name="Moderation"):
     @commands.cooldown(1, 30, commands.BucketType.user)
     async def lockdown(self, ctx):
         """
-        
-        
+
+
         Disables writing permissions for everyone in the server.
-        
+
         """
         s = await Settings(ctx.guild.id)
         lang = await s.get_field("locale", CONFIG["default_locale"])
@@ -572,10 +571,10 @@ class Moderation(commands.Cog, name="Moderation"):
     @commands.cooldown(1, 30, commands.BucketType.user)
     async def unlock(self, ctx):
         """
-        
-        
+
+
         Allows writing permissions for everyone in the server.
-        
+
         """
         s = await Settings(ctx.guild.id)
         lang = await s.get_field("locale", CONFIG["default_locale"])
@@ -596,10 +595,10 @@ class Moderation(commands.Cog, name="Moderation"):
     @commands.cooldown(1, 30, commands.BucketType.user)
     async def channellock(self, ctx):
         """
-        
-        
+
+
         Disables writing permissions in current channel.
-        
+
         """
         s = await Settings(ctx.guild.id)
         lang = await s.get_field("locale", CONFIG["default_locale"])
@@ -619,9 +618,9 @@ class Moderation(commands.Cog, name="Moderation"):
     @commands.cooldown(1, 30, commands.BucketType.user)
     async def channelunlock(self, ctx):
         """
-        
+
         Allows writing permissions in current channel.
-        
+
         """
         s = await Settings(ctx.guild.id)
         lang = await s.get_field("locale", CONFIG["default_locale"])

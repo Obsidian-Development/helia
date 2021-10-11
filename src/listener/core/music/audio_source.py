@@ -20,7 +20,8 @@ ytdl_format_options = {
     'quiet': True,
     'no_warnings': True,
     'default_search': 'auto',
-    'source_address': '0.0.0.0'  # bind to ipv4 since ipv6 addresses cause issues sometimes
+    # bind to ipv4 since ipv6 addresses cause issues sometimes
+    'source_address': '0.0.0.0'
 }
 
 ffmpeg_options = {
@@ -54,7 +55,8 @@ class AudioTrack(disnake.PCMVolumeTransformer):
             list_of_source = []
             for each_data in data['entries']:
                 filename = each_data['url']
-                source = cls(disnake.FFmpegPCMAudio(filename, **ffmpeg_options), data=each_data, requester=requester)
+                source = cls(disnake.FFmpegPCMAudio(
+                    filename, **ffmpeg_options), data=each_data, requester=requester)
                 list_of_source.append(source)
 
             return list_of_source
