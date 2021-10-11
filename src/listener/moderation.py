@@ -5,6 +5,7 @@ import disnake
 from disnake import Member, User
 from disnake.ext import commands
 from disnake.ext.commands import Bot, Context, Greedy
+from termcolor import cprint
 #from disnake_components import Button, ButtonStyle, disnakeComponents
 
 from listener.utils import Config, Logger, Settings, Strings, Utils
@@ -93,6 +94,11 @@ class Moderation(commands.Cog, name="Moderation"):
         else:
           await asyncio.sleep(5)
           await member.ban(reason=reason)
+        cprint(f"""
+        ║============================================================║
+        ║--------Succesfully banned {member} in {ctx.guild.name}-------║
+        ║============================================================║
+        """)
 
     @commands.command()
     @commands.bot_has_permissions(ban_members=True)
@@ -148,7 +154,11 @@ class Moderation(commands.Cog, name="Moderation"):
                         ),
                         
                     )
-
+            cprint(f"""
+             ║============================================================║
+             ║------Succesfully unbanned {member} in {ctx.guild.name}-------║
+             ║============================================================║
+            """)
             return
         elif member is int:
             member = await self.client.fetch_user(int(member))
@@ -162,6 +172,11 @@ class Moderation(commands.Cog, name="Moderation"):
                 ),
                         
             )
+            cprint(f"""
+             ║============================================================║
+             ║------Succesfully unbanned {member} in {ctx.guild.name}-------║
+             ║============================================================║
+            """)
         #else:
             #await response.respond(
                 #type=7,
@@ -176,6 +191,7 @@ class Moderation(commands.Cog, name="Moderation"):
         await ctx.message.add_reaction(CONFIG["no_emoji"])
         embed = Utils.error_embed(STRINGS["error"]["user_not_found"])
         await ctx.send(embed=embed)
+        
 
     @commands.command()
     @commands.bot_has_permissions(ban_members=True)
