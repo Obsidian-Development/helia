@@ -17,7 +17,7 @@ from dotenv import load_dotenv
 from listener.utils import Config, Logger, Settings, Strings, Utils
 
 # from disnake.ext.commands import Bot, Context
-bot = commands.Bot
+
 
 
 CONFIG = Config()
@@ -25,7 +25,7 @@ CONFIG = Config()
 
 
 class Confirm(disnake.ui.View):
-    def __init__(self,ctx):
+    def __init__(self,ctx,bot:Bot):
         super().__init__()
         self.bot = bot
         self.ctx = ctx
@@ -60,12 +60,12 @@ class Confirm(disnake.ui.View):
                     description=STRINGS["moderation"]["shutdownembeddesc"],
                     color=0xFF8000,
                 ),view= None)
-            #await self.ctx.change_presence(activity=disnake.Game(name="Shutting down for either reboot or update "))
+            await self.bot.change_presence(status=disnake.Status.online,activity=disnake.Game(name="Shutting down for either reboot or update "))
             await asyncio.sleep(5)
             print("---------------------------")
             print("[SHUTDOWN] Shutdown requested by bot owner")
             print("---------------------------")
-            await self.ctx.close()
+            await self.bot.close()
         else:
             await interaction.response.edit_message(embed=disnake.Embed(
                     title=STRINGS["moderation"]["shutdownaborttitle"],
@@ -163,7 +163,7 @@ class Admin(commands.Cog, name="Admin"):
         lang = await s.get_field("locale", CONFIG["default_locale"])
         STRINGS = Strings(lang)
         author = ctx.message.author
-        viewb = Confirm(ctx)
+        viewb = Confirm(ctx,self.bot)
         viewbx = disnake.ui.View()
         valid_users = [
             "540142383270985738",
