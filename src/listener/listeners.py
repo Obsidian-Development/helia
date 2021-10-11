@@ -27,7 +27,11 @@ class Listeners(commands.Cog, name="Listeners"):
         """
 
         STRINGS = Strings(CONFIG["default_locale"])
-        print(f"Bot has been added to: {guild}")
+        cprint(f"""
+        ║==============================║
+        ║Bot has been added to: {guild}║
+        ║==============================║
+        """)
         path = "scripts/version.txt"
         logpath = "logs/log.txt"
         with open(path, "r") as file:
