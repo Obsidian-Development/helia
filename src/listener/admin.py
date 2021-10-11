@@ -196,8 +196,7 @@ class Admin(commands.Cog, name="Admin"):
             "168422909482762240",
         ]
 
-        viewbx.add_item(Button(style=ButtonStyle.grey,
-                        label="·", disabled=True))
+        viewbx.add_item(Button(style=ButtonStyle.grey, label="·", disabled=True))
         embedconfirm = disnake.Embed(
             title=STRINGS["moderation"]["shutdownembedtitle"],
             description=STRINGS["moderation"]["shutdownconfirm"],
@@ -232,8 +231,7 @@ class Admin(commands.Cog, name="Admin"):
                 value=STRINGS["moderation"]["setstatusfielddesc"],
                 inline=True,
             )
-            embed.set_footer(text=self.bot.user.name,
-                             icon_url=self.bot.user.avatar.url)
+            embed.set_footer(text=self.bot.user.name, icon_url=self.bot.user.avatar.url)
         else:
             embed = disnake.Embed(
                 title="You failed",
@@ -345,11 +343,9 @@ class Admin(commands.Cog, name="Admin"):
         # value=f"https://disnakebotslist.co/bot/{self.bot.user.id}",
         # inline=True,
         # )
-        embed.set_footer(text=self.bot.user.name,
-                         icon_url=self.bot.user.avatar.url)
+        embed.set_footer(text=self.bot.user.name, icon_url=self.bot.user.avatar.url)
 
-        embedcont = disnake.Embed(
-            title="-----", colour=disnake.Colour(0xFF6900))
+        embedcont = disnake.Embed(title="-----", colour=disnake.Colour(0xFF6900))
         await ctx.send(embed=embed, view=view)
         await ctx.send("`----`", view=viewx)
 
@@ -362,10 +358,8 @@ class Admin(commands.Cog, name="Admin"):
         embed = disnake.Embed(title="Bot uptime")
         embed.add_field(name="Days", value=f"```{days}d```", inline=True)
         embed.add_field(name="Hours", value=f"```{hours}h```", inline=True)
-        embed.add_field(
-            name="Minutes", value=f"```{minutes}m```", inline=False)
-        embed.add_field(
-            name="Seconds", value=f"```{seconds}s```", inline=False)
+        embed.add_field(name="Minutes", value=f"```{minutes}m```", inline=False)
+        embed.add_field(name="Seconds", value=f"```{seconds}s```", inline=False)
         await ctx.send(embed=embed)
 
     # @commands.command()

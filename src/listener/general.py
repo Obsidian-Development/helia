@@ -105,8 +105,7 @@ class General(commands.Cog, name="General"):
                     description=STRINGS["general"]["blacklistwarndesc"],
                     color=0xFF0000,
                 )
-                embed.set_footer(
-                    text=STRINGS["general"]["blacklistwarnfooter"])
+                embed.set_footer(text=STRINGS["general"]["blacklistwarnfooter"])
                 return await ctx.send(embed=embed)
         else:
             return await ctx.send(content)
@@ -133,8 +132,7 @@ class General(commands.Cog, name="General"):
                     description=STRINGS["general"]["blacklistwarndesc"],
                     color=0xFF0000,
                 )
-                embed.set_footer(
-                    text=STRINGS["general"]["blacklistwarnfooter"])
+                embed.set_footer(text=STRINGS["general"]["blacklistwarnfooter"])
                 return await ctx.send(embed=embed)
         else:
             creator = disnake.Embed(title=name, description=content)
@@ -229,8 +227,7 @@ class General(commands.Cog, name="General"):
         )
 
         # embed.add_field(name=STRINGS['general']['aboutthanks'], value=STRINGS['general']['aboutthankstext'],inline=False)
-        embed.set_footer(text=self.bot.user.name,
-                         icon_url=self.bot.user.avatar.url)
+        embed.set_footer(text=self.bot.user.name, icon_url=self.bot.user.avatar.url)
         await ctx.send(embed=embed)
 
     @commands.command(
@@ -283,8 +280,7 @@ class General(commands.Cog, name="General"):
             value=STRINGS["privacy"]["datadeletepoldesc"],
             inline=True,
         )
-        embed.set_footer(text=self.bot.user.name,
-                         icon_url=self.bot.user.avatar.url)
+        embed.set_footer(text=self.bot.user.name, icon_url=self.bot.user.avatar.url)
         await ctx.send(embed=embed)
 
 

@@ -21,16 +21,14 @@ class Welcome(commands.Cog):
         connect = sqlite3.connect(db.main)
         cursor = connect.cursor()
         cursor.execute(
-            db.select_table("welcome", "channel_id",
-                            "guild_id", member.guild.id)
+            db.select_table("welcome", "channel_id", "guild_id", member.guild.id)
         )
         chan = cursor.fetchone()
         # print(f" Channel id fetch - {chan[0]}")
         if chan is None:
             return
 
-        cursor.execute(db.select_table(
-            "welcome", "text", "guild_id", member.guild.id))
+        cursor.execute(db.select_table("welcome", "text", "guild_id", member.guild.id))
         desc = cursor.fetchone()
         hello = disnake.Embed(
             title="User joined the server",
@@ -96,8 +94,7 @@ class Welcome(commands.Cog):
                 if res is None:
                     val = (ctx.message.guild.id, chan.id)
                     cursor.execute(
-                        db.insert_table("welcome", "guild_id",
-                                        "channel_id"), val
+                        db.insert_table("welcome", "guild_id", "channel_id"), val
                     )
                 else:
                     cursor.execute(
@@ -141,8 +138,7 @@ class Welcome(commands.Cog):
                     )
                 else:
                     cursor.execute(
-                        db.delete_table("welcome", "guild_id",
-                                        ctx.message.guild.id)
+                        db.delete_table("welcome", "guild_id", ctx.message.guild.id)
                     )
                     await ctx.send(" Cleared the table")
                 connect.commit()
@@ -166,14 +162,12 @@ class Welcome(commands.Cog):
                 connect = sqlite3.connect(db.main)
                 cursor = connect.cursor()
                 cursor.execute(
-                    db.select_table("welcome", "text",
-                                    "guild_id", ctx.message.guild.id)
+                    db.select_table("welcome", "text", "guild_id", ctx.message.guild.id)
                 )
                 res = cursor.fetchone()
                 if res is None:
                     val = (ctx.message.guild.id, content)
-                    cursor.execute(db.insert_table(
-                        "welcome", "guild_id", "text"), val)
+                    cursor.execute(db.insert_table("welcome", "guild_id", "text"), val)
                 else:
                     val = (content, ctx.message.guild.id)
                     cursor.execute(

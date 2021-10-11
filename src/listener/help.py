@@ -86,8 +86,7 @@ async def get_help(self, interaction, CogToPassAlong):
     for command in self.bot.get_cog(CogToPassAlong).get_commands():
         # if cog is not hidden
         if not command.hidden:
-            emb.add_field(name=f"『`{command.name}`』",
-                          value=command.help, inline=False)
+            emb.add_field(name=f"『`{command.name}`』", value=command.help, inline=False)
     # found cog - breaking loop
     await interaction.response.edit_message(embed=emb)
 

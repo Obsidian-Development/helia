@@ -52,8 +52,7 @@ class Utilities(commands.Cog):
             ),
             color=color,
         )
-        embed.set_author(name=STRINGS["utilities"]
-                         ["user_info_title"].format(name, tag))
+        embed.set_author(name=STRINGS["utilities"]["user_info_title"].format(name, tag))
         embed.set_thumbnail(url=avatar)
 
         await ctx.send(embed=embed)
@@ -65,8 +64,7 @@ class Utilities(commands.Cog):
         lang = await s.get_field("locale", CONFIG["default_locale"])
         STRINGS = Strings(lang)
 
-        format = r"png" if re.sub(
-            r"[\<]", r"", emoji.split(":")[0]) == "" else "gif"
+        format = r"png" if re.sub(r"[\<]", r"", emoji.split(":")[0]) == "" else "gif"
         name = emoji.split(":")[1]
         id = re.sub(r"[\>]", r"", emoji.split(r":")[2])
 
@@ -146,8 +144,7 @@ class Utilities(commands.Cog):
         embed = disnake.Embed(
             color=0xEDA84E,
             title=STRINGS["utilities"]["avatar_info_title"].format(name, tag),
-            description=STRINGS["utilities"]["avatar_info"].format(
-                hash, avatar),
+            description=STRINGS["utilities"]["avatar_info"].format(hash, avatar),
         )
         embed.set_image(url=avatar)
 
@@ -243,8 +240,7 @@ class Utilities(commands.Cog):
         totals = Counter()
         for channel in guild.channels:
             allow, deny = channel.overwrites_for(everyone).pair()
-            perms = disnake.Permissions(
-                (everyone_perms & ~deny.value) | allow.value)
+            perms = disnake.Permissions((everyone_perms & ~deny.value) | allow.value)
             channel_type = type(channel)
             totals[channel_type] += 1
             if not perms.read_messages:
@@ -260,8 +256,7 @@ class Utilities(commands.Cog):
         if guild.icon:
             e.set_thumbnail(url=f"{guild.icon.url}")
         else:
-            e.set_thumbnail(
-                url="https://cdn.disnakeapp.com/embed/avatars/1.png")
+            e.set_thumbnail(url="https://cdn.disnakeapp.com/embed/avatars/1.png")
 
         channel_info = []
         key_to_emoji = {
@@ -322,8 +317,7 @@ class Utilities(commands.Cog):
         e.add_field(name="Members", value=fmt, inline=True)
         e.add_field(
             name="Roles",
-            value=", ".join(roles) if len(
-                roles) < 10 else f"{len(roles)} roles",
+            value=", ".join(roles) if len(roles) < 10 else f"{len(roles)} roles",
         )
 
         emoji_stats = Counter()
