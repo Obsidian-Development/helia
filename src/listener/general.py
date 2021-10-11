@@ -200,21 +200,12 @@ class General(commands.Cog, name="General"):
             description=STRINGS["general"]["aboutdesc"],
             color=0xFF6900,
         )
-        embed.add_field(name=STRINGS["general"]["aboutver"],
-                        value=f"```{ver}```",
-                        inline=False)
-        embed.add_field(name="Python Version:",
-                        value=f"```{pythonVersion}```",
-                        inline=False)
-        embed.add_field(name="Library", value="```disnake.py```", inline=True)
-        embed.add_field(name="disnake.Py Version", value=f"```{dpyVersion}```",inline=True)
-        
-        embed.add_field(name="RAM Usage",
-                        value=f"```{ramUsage:.2f} MB```",
-                        inline=False)
+        embed.add_field(name="Libraries and bot version information",
+                        value=f"```Bot Version: {ver}\nPython Version:{pythonVersion}\nLibrary: disnake.py\ndisnake.Py Version: {dpyVersion} ```",
+                        inline=True) 
         embed.add_field(
-            name="Servers",
-            value=f"```{servercount}```",
+            name="Other Information",
+            value=f"```Server Count: {servercount}\nRAM Usage:{ramUsage:.2f} MB```",
             inline=True,
         )
         embed.add_field(
