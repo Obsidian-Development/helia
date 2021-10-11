@@ -18,6 +18,9 @@ class Welcome(commands.Cog):
 
     @commands.Cog.listener()
     async def on_member_join(self, member):
+        logpath = "logs/log.txt"
+        with open(path, "r") as file:
+            ver = file.readline()
 
         cprint(
             f"""
@@ -26,6 +29,10 @@ class Welcome(commands.Cog):
         ║============================================================║
         """
         )
+        with open(logpath, "a") as file:
+            print("\n", file=file)
+            print(f"{member} joined {member.guild.name}", file=file)
+            
 
         connect = sqlite3.connect(db.main)
         cursor = connect.cursor()
