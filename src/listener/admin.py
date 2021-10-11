@@ -60,7 +60,7 @@ class Confirm(disnake.ui.View):
                     description=STRINGS["moderation"]["shutdownembeddesc"],
                     color=0xFF8000,
                 ),view= None)
-            #await self.bot.change_presence(self,activity=disnake.Game(name="Shutting down for either reboot or update "))
+            #await self.ctx.change_presence(activity=disnake.Game(name="Shutting down for either reboot or update "))
             await asyncio.sleep(5)
             print("---------------------------")
             print("[SHUTDOWN] Shutdown requested by bot owner")
