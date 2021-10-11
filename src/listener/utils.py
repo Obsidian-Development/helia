@@ -145,7 +145,7 @@ class Logger:
         STRINGS = Strings(CONFIG["default_locale"])
         now = datetime.datetime.now()
         time = now.strftime("%H:%M:%S")
-        cprint(STRINGS["bot_log"]["warn"].format(time, msg), "red")
+        cprint(STRINGS["bot_log"]["warn"].format(time, msg), "red")#
 
     # some wrappers:
 
@@ -153,13 +153,12 @@ class Logger:
         STRINGS = Strings(CONFIG["default_locale"])
         now = datetime.datetime.now()
         time = now.strftime("%HH:%MM:%SS")
-        cprint(
-            """║==========================================║""",
-            STRINGS["bot_log"]["info"].format(
-                time, STRINGS["bot_log"]["cog_loaded"].format(cog)),
-            "green",
-            """║==========================================║""",
-        )
+        cprint( """║============================================================║""")
+        #cprint(
+            #STRINGS["bot_log"]["info"].format(time, STRINGS["bot_log"]["cog_loaded"].format(cog)),
+            #"green",
+        #)
+        cprint( """║============================================================║""")
 
     def command_used(tag: AnyStr, command: AnyStr, guild: AnyStr) -> NoReturn:
         STRINGS = Strings(CONFIG["default_locale"])
