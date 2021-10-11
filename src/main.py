@@ -27,6 +27,9 @@ from dotenv import load_dotenv
 import flwebhost
 from listener.core.client import CoreClient
 from listener.prefs import Prefs
+from listener.utils import Config, Logger, Strings, Utils
+CONFIG = Config()
+STRINGS = Strings(CONFIG["default_locale"])
 
 # from pixivpy_async import PixivClient
 # from ytpy import YoutubeClient
@@ -85,12 +88,12 @@ async def main():
     # Configure client
     intents = get_memory_config()
     slash = True
-    client = CoreClient(command_prefix=get_prefix, intents=intents)
+    client = CoreClient(command_prefix=Utils.get_prefix, intents=intents)
     client.remove_command("help")
 
     # Load Dependencies for DI
     session = aiohttp.ClientSession()
-    modules = [Prefs(bot=client, server_prefixes=server_prefixes)]
+    modules = [Prefs(bot=client)]
     for command_cog in modules:
         client.add_cog(command_cog)
         print(f"Loaded {command_cog}")

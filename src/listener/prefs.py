@@ -11,10 +11,10 @@ CONFIG = Config()
 
 
 class Prefs(commands.Cog, name="Prefs"):
-    def __init__(self, bot, server_prefixes: dict) -> None:
+    def __init__(self, bot) -> None:
         self.bot = bot
         self.name = "Prefs"
-        self.server_prefixes = server_prefixes
+        #self.server_prefixes = server_prefixes
 
     @commands.command(aliases=["setprefix"])
     @commands.has_permissions(administrator=True)
@@ -27,8 +27,8 @@ class Prefs(commands.Cog, name="Prefs"):
         - `prefix` - new prefix
 
         """
-        guild_id = str(ctx.guild.id)
-        self.server_prefixes[guild_id] = [prefix]
+        s = await Settings(ctx.guild.id)
+        await s.set_field("prefix", prefix)
 
         await ctx.message.add_reaction(CONFIG["yes_emoji"])
 

@@ -4,7 +4,8 @@ import math
 import disnake
 from disnake.ext import commands
 from disnake.ext.commands import Bot, Context
-#from disnake_components import Button, ButtonStyle, disnakeComponents
+from disnake import SelectOption,ButtonStyle
+from disnake.ui import View, Select,Button
 
 # from disnake_slash import cog_ext
 from scripts.calculator import buttons
@@ -14,7 +15,7 @@ class Calculator(commands.Cog, name="Calculator"):
     def __init__(self, bot):
         self.bot = bot
         self.name = "Calculator"
-        self.dc = disnakeComponents(self.bot)
+        
 
     
     @commands.command(slash_interaction=True, message_command=True,description="Calculator command")
