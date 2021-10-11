@@ -23,6 +23,7 @@ CONFIG = Config()
 
 
 
+
 class Admin(commands.Cog, name="Admin"):
     """A module required to administer the bot. Only works for its owners."""
 
@@ -96,6 +97,8 @@ class Admin(commands.Cog, name="Admin"):
         lang = await s.get_field("locale", CONFIG["default_locale"])
         STRINGS = Strings(lang)
         author = ctx.message.author
+        viewb = disnake.ui.View()
+        viewbx = disnake.ui.View()
         valid_users = [
             "540142383270985738",
             "573123021598883850",
@@ -108,30 +111,23 @@ class Admin(commands.Cog, name="Admin"):
             "717822288375971900",
             "168422909482762240",
         ]
-        select_components = [
-            Button(style=ButtonStyle.green, label="✓"),
-            Button(style=ButtonStyle.red, label="X"),
-        ]
-        done_components = [
-            Button(style=ButtonStyle.grey, label="·", disabled=True)
-        ]
-
+        viewb.add_item(Button(style=ButtonStyle.green, label="✓"))
+        viewb.add_item(Button(style=ButtonStyle.red, label="X"))
+        viewbx.add_item(Button(style=ButtonStyle.grey, label="·", disabled=True))
         embedconfirm = disnake.Embed(
             title=STRINGS["moderation"]["shutdownembedtitle"],
             description=STRINGS["moderation"]["shutdownconfirm"],
         )
-        await ctx.send(embed=embedconfirm, components=select_components)
-        response = await self.bot.wait_for(
-            "button_click", check=lambda message: message.author == ctx.author)
-        if str(author.id) in valid_users and response.component.label == "✓":
-            await response.respond(
-                type=7,
+        await ctx.send(embed=embedconfirm, view=viewb)
+        response = await viewb.wait()
+        if str(author.id) in valid_users and response.value == "✓":
+            await disnake.MessageInteraction.response.send_message(
                 embed=disnake.Embed(
                     title=STRINGS["moderation"]["shutdownembedtitle"],
                     description=STRINGS["moderation"]["shutdownembeddesc"],
                     color=0xFF8000,
                 ),
-                components=done_components,
+                view=viewbx,
             )
 
             await ctx.bot.change_presence(activity=disnake.Game(
@@ -142,14 +138,13 @@ class Admin(commands.Cog, name="Admin"):
             print("---------------------------")
             await ctx.bot.close()
         else:
-            await response.respond(
-                type=7,
+            await disnake.MessageInteraction.response.send_message(
                 embed=disnake.Embed(
                     title=STRINGS["moderation"]["shutdownaborttitle"],
                     description=STRINGS["moderation"]["shutdownabortdesc"],
                     color=0xDD2E44,
                 ),
-                components=done_components,
+                view=viewbx
             )
 
     @commands.command(description="Set bot status")
@@ -205,47 +200,43 @@ class Admin(commands.Cog, name="Admin"):
         s = await Settings(ctx.guild.id)
         lang = await s.get_field("locale", CONFIG["default_locale"])
         STRINGS = Strings(lang)
-        menu_components = [
-            Button(
-                style=ButtonStyle.URL,
+        view = disnake.ui.View()
+        viewx = disnake.ui.View()
+        view.add_item(Button(
+                style=ButtonStyle.link,
                 label=STRINGS["general"]["botinvitetitle"],
-                url=f"https://discord.com/api/oauth2/authorize?client_id={self.bot.user.id}&permissions=204859462&scope=applications.commands%20bot",
-            ),
-            Button(
-                style=ButtonStyle.URL,
+                url=f"https://discord.com/api/oauth2/authorize?client_id={self.bot.user.id}&permissions=204859462&scope=applications.commands%20bot"
+            ))
+        view.add_item(Button(
+                style=ButtonStyle.link,
                 label=STRINGS["general"]["botinvitedescd"],
-                url=f"https://discord.com/oauth2/authorize?client_id={self.bot.user.id}&scope=bot&permissions=204557314",
-            ),
-            Button(
-                style=ButtonStyle.URL,
+                url=f"https://discord.com/oauth2/authorize?client_id={self.bot.user.id}&scope=bot&permissions=204557314"
+            ))
+        view.add_item(Button(
+                style=ButtonStyle.link,
                 label=STRINGS["general"]["canaryver"],
-                url="https://discord.com/oauth2/authorize?client_id=671612079106424862&scope=bot&permissions=204557314",
-            ),
-            Button(
-                style=ButtonStyle.URL,
+                url="https://discord.com/oauth2/authorize?client_id=671612079106424862&scope=bot&permissions=204557314"
+            ))
+        view.add_item(Button(
+                style=ButtonStyle.link,
                 label=STRINGS["general"]["botupsdc"],
-                url=f"https://bots.server-discord.com/{self.bot.user.id}",
-            ),
-            Button(
-                style=ButtonStyle.URL,
+                url=f"https://bots.server-discord.com/{self.bot.user.id}"
+            ))
+        view.add_item(Button(
+                style=ButtonStyle.link,
                 label=STRINGS["general"]["botuptopgg"],
-                url=f"https://top.gg/bot/{self.bot.user.id}",
-            ),
-        ]
-
-        menuer_components = [
-            Button(
-                style=ButtonStyle.URL,
+                url=f"https://top.gg/bot/{self.bot.user.id}"
+            ))
+        viewx.add_item(Button(
+                style=ButtonStyle.link,
                 label=STRINGS["general"]["botupbod"],
-                url=f"https://bots.ondiscord.xyz/bots/{self.bot.user.id}",
-            ),
-            Button(
-                style=ButtonStyle.URL,
+                url=f"https://bots.ondiscord.xyz/bots/{self.bot.user.id}"
+            ))
+        viewx.add_item(Button(
+                style=ButtonStyle.link,
                 label=STRINGS["general"]["botupdblco"],
-                url=f"https://discordbotslist.co/bot/{self.bot.user.id}",
-            ),
-        ]
-
+                url=f"https://discordbotslist.co/bot/{self.bot.user.id}"
+            ))
         embed = disnake.Embed(
             title=STRINGS["general"]["invitedescd"],
             colour=disnake.Colour(0xFF6900),
@@ -286,12 +277,12 @@ class Admin(commands.Cog, name="Admin"):
         # inline=True,
         # )
         embed.set_footer(text=self.bot.user.name,
-                         icon_url=self.bot.user.avatar_url)
+                         icon_url=self.bot.user.avatar.url)
 
         embedcont = disnake.Embed(title="-----",
                                   colour=disnake.Colour(0xFF6900))
-        await ctx.send(embed=embed, components=menu_components)
-        await ctx.send("`----`", components=menuer_components)
+        await ctx.send(embed=embed, view=view)
+        await ctx.send("`----`", view=viewx)
 
     @commands.command(brief="Gives the bot's uptime")
     async def uptime(self, ctx):
