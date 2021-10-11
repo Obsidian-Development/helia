@@ -2,9 +2,10 @@ import datetime
 import math
 
 import discord
+from discord import ButtonStyle, SelectOption
 from discord.ext import commands
 from discord.ext.commands import Bot, Context
-#from discord_components import Button, ButtonStyle, DiscordComponents
+from discord.ui import Button, Select, View
 
 # from discord_slash import cog_ext
 from scripts.calculator import buttons
@@ -14,10 +15,10 @@ class Calculator(commands.Cog, name="Calculator"):
     def __init__(self, bot):
         self.bot = bot
         self.name = "Calculator"
-        self.dc = DiscordComponents(self.bot)
 
-    
-    @commands.command(slash_interaction=True, message_command=True,description="Calculator command")
+    @commands.command(
+        slash_interaction=True, message_command=True, description="Calculator command"
+    )
     async def calculator(self, ctx):
         def calculate(exp):
             ox = str(exp)
@@ -45,9 +46,11 @@ class Calculator(commands.Cog, name="Calculator"):
             color=discord.Colour.blurple(),
         )
         await m.edit(content="", components=buttons, embed=e)
-        done = [[
-            Button(style=ButtonStyle.grey, label="·", disabled=True),
-        ]]
+        done = [
+            [
+                Button(style=ButtonStyle.grey, label="·", disabled=True),
+            ]
+        ]
         allowed = [
             "1",
             "2",
@@ -69,8 +72,10 @@ class Calculator(commands.Cog, name="Calculator"):
         ]
         while m.created_at < delta:
             res = await self.bot.wait_for("button_click")
-            if (res.author.id == ctx.author.id
-                    and res.message.embeds[0].timestamp < delta):
+            if (
+                res.author.id == ctx.author.id
+                and res.message.embeds[0].timestamp < delta
+            ):
                 expression = res.message.embeds[0].description[6:-3]
                 if expression in ["None", "An error occurred."]:
                     expression = ""
@@ -102,14 +107,16 @@ class Calculator(commands.Cog, name="Calculator"):
                         components=done,
                     )
 
-                elif (len(expression) > 9 or expression.count("²") >= 4
-                      or expression.count("³") >= 4
-                      or expression.count("²²") > 1
-                      or expression.count("³³") > 1
-                      or expression.count("²²³³") >= 1):
+                elif (
+                    len(expression) > 9
+                    or expression.count("²") >= 4
+                    or expression.count("³") >= 4
+                    or expression.count("²²") > 1
+                    or expression.count("³³") > 1
+                    or expression.count("²²³³") >= 1
+                ):
                     if res.component.label in allowed:
-                        await m.edit(
-                            content="Preparing to tear down the buttons")
+                        await m.edit(content="Preparing to tear down the buttons")
 
                         await res.respond(
                             type=7,
@@ -122,8 +129,7 @@ class Calculator(commands.Cog, name="Calculator"):
                         )
                         break
                     elif expression.count("××") > 1:
-                        await m.edit(
-                            content="Preparing to tear down the buttons")
+                        await m.edit(content="Preparing to tear down the buttons")
 
                         await res.respond(
                             type=7,
@@ -146,10 +152,7 @@ class Calculator(commands.Cog, name="Calculator"):
                         timestamp=delta,
                         color=discord.Colour.blurple(),
                     )
-                    await res.respond(content="",
-                                      embed=f,
-                                      components=buttons,
-                                      type=7)
+                    await res.respond(content="", embed=f, components=buttons, type=7)
 
 
 def setup(bot):
