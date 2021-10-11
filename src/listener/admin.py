@@ -17,12 +17,78 @@ from dotenv import load_dotenv
 from listener.utils import Config, Logger, Settings, Strings, Utils
 
 # from disnake.ext.commands import Bot, Context
+bot = commands.Bot
+
 
 CONFIG = Config()
 # STRINGS = Strings(CONFIG["default_locale"])
 
 
+class Confirm(disnake.ui.View):
+    def __init__(self,ctx):
+        super().__init__()
+        self.bot = bot
+        self.ctx = ctx
+        self.value = None
 
+    # When the confirm button is pressed, set the inner value to `True` and
+    # stop the View from listening to more input.
+    # We also send the user an ephemeral message that we're confirming their choice.
+    @disnake.ui.button(style=ButtonStyle.green, label="✓",custom_id = "yes")
+    async def confirm(self,button: disnake.ui.Button, interaction: disnake.MessageInteraction):
+        s = await Settings(self.ctx.guild.id)
+        lang = await s.get_field("locale", CONFIG["default_locale"])
+        STRINGS = Strings(lang)
+        author = self.ctx.message.author
+        valid_users = [
+            "540142383270985738",
+            "573123021598883850",
+            "584377789969596416",
+            "106451437839499264",
+            "237984877604110336",
+            "579750505736044574",
+            "497406228364787717",
+            "353049432037523467",
+            "717822288375971900",
+            "168422909482762240",
+        ]
+        
+        if str(author.id) in valid_users:
+
+            await interaction.response.edit_message(embed=disnake.Embed(
+                    title=STRINGS["moderation"]["shutdownembedtitle"],
+                    description=STRINGS["moderation"]["shutdownembeddesc"],
+                    color=0xFF8000,
+                ),view= None)
+            #await self.bot.change_presence(self,activity=disnake.Game(name="Shutting down for either reboot or update "))
+            await asyncio.sleep(5)
+            print("---------------------------")
+            print("[SHUTDOWN] Shutdown requested by bot owner")
+            print("---------------------------")
+            await self.ctx.close()
+        else:
+            await interaction.response.edit_message(embed=disnake.Embed(
+                    title=STRINGS["moderation"]["shutdownaborttitle"],
+                    description=STRINGS["moderation"]["shutdownabortdesc"],
+                    color=0xDD2E44,
+                ),view= None)
+        self.value = True
+        self.stop()
+
+    # This one is similar to the confirmation button except sets the inner value to `False`
+    @disnake.ui.button(style=ButtonStyle.red, label="X",custom_id = "no")
+    async def cancel(self, button: disnake.ui.Button, interaction: disnake.MessageInteraction):
+        s = await Settings(self.ctx.guild.id)
+        lang = await s.get_field("locale", CONFIG["default_locale"])
+        STRINGS = Strings(lang)
+        author = self.ctx.message.author
+        await interaction.response.edit_message(embed=disnake.Embed(
+                    title=STRINGS["moderation"]["shutdownaborttitle"],
+                    description=STRINGS["moderation"]["shutdownabortdesc"],
+                    color=0xDD2E44,
+                ),view= None)
+        self.value = False
+        self.stop()
 
 class Admin(commands.Cog, name="Admin"):
     """A module required to administer the bot. Only works for its owners."""
@@ -97,7 +163,7 @@ class Admin(commands.Cog, name="Admin"):
         lang = await s.get_field("locale", CONFIG["default_locale"])
         STRINGS = Strings(lang)
         author = ctx.message.author
-        viewb = disnake.ui.View()
+        viewb = Confirm(ctx)
         viewbx = disnake.ui.View()
         valid_users = [
             "540142383270985738",
@@ -111,41 +177,15 @@ class Admin(commands.Cog, name="Admin"):
             "717822288375971900",
             "168422909482762240",
         ]
-        viewb.add_item(Button(style=ButtonStyle.green, label="✓"))
-        viewb.add_item(Button(style=ButtonStyle.red, label="X"))
+        
         viewbx.add_item(Button(style=ButtonStyle.grey, label="·", disabled=True))
         embedconfirm = disnake.Embed(
             title=STRINGS["moderation"]["shutdownembedtitle"],
             description=STRINGS["moderation"]["shutdownconfirm"],
         )
         await ctx.send(embed=embedconfirm, view=viewb)
-        response = await viewb.wait()
-        if str(author.id) in valid_users and response.value == "✓":
-            await disnake.MessageInteraction.response.send_message(
-                embed=disnake.Embed(
-                    title=STRINGS["moderation"]["shutdownembedtitle"],
-                    description=STRINGS["moderation"]["shutdownembeddesc"],
-                    color=0xFF8000,
-                ),
-                view=viewbx,
-            )
-
-            await ctx.bot.change_presence(activity=disnake.Game(
-                name="Shutting down for either reboot or update "))
-            await asyncio.sleep(5)
-            print("---------------------------")
-            print("[SHUTDOWN] Shutdown requested by bot owner")
-            print("---------------------------")
-            await ctx.bot.close()
-        else:
-            await disnake.MessageInteraction.response.send_message(
-                embed=disnake.Embed(
-                    title=STRINGS["moderation"]["shutdownaborttitle"],
-                    description=STRINGS["moderation"]["shutdownabortdesc"],
-                    color=0xDD2E44,
-                ),
-                view=viewbx
-            )
+        await viewb.wait()
+        
 
     @commands.command(description="Set bot status")
     async def set_status(self, ctx, *args):
