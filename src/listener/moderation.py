@@ -17,7 +17,6 @@ from termcolor import cprint
 
 # from disnake_components import Button, ButtonStyle, disnakeComponents
 
-
 CONFIG = Config()
 
 
@@ -30,9 +29,11 @@ class Moderation(commands.Cog, name="Moderation"):
     @commands.bot_has_permissions(ban_members=True)
     @commands.has_permissions(ban_members=True)
     @commands.cooldown(1, 5, commands.BucketType.user)
-    async def ban(
-        self, ctx: Context, member: Member, *, reason: str = "N/A"
-    ) -> NoReturn:
+    async def ban(self,
+                  ctx: Context,
+                  member: Member,
+                  *,
+                  reason: str = "N/A") -> NoReturn:
         """
 
 
@@ -75,9 +76,8 @@ class Moderation(commands.Cog, name="Moderation"):
         # components=done_components,
         # )
         if not member.bot:
-            embed = Utils.error_embed(
-                STRINGS["moderation"]["dm_kick"].format(ctx.guild, reason)
-            )
+            embed = Utils.error_embed(STRINGS["moderation"]["dm_kick"].format(
+                ctx.guild, reason))
             await member.send(embed=embed)
             await asyncio.sleep(5)
             await member.ban(reason=reason)
@@ -102,13 +102,11 @@ class Moderation(commands.Cog, name="Moderation"):
         else:
             await asyncio.sleep(5)
             await member.ban(reason=reason)
-        cprint(
-            f"""
+        cprint(f"""
         ║============================================================║
         ║--------Succesfully banned {member} in {ctx.guild.name}-------║
         ║============================================================║
-        """
-        )
+        """)
 
     @commands.command()
     @commands.bot_has_permissions(ban_members=True)
@@ -151,42 +149,34 @@ class Moderation(commands.Cog, name="Moderation"):
                 member_name, member_discriminator = member.split("#")
                 user = ban_entry.user
                 if (user.name, user.discriminator) == (
-                    member_name,
-                    member_discriminator,
+                        member_name,
+                        member_discriminator,
                 ):
                     await ctx.guild.unban(user)
-                    await ctx.send(
-                        embed=disnake.Embed(
-                            title="Action confirmed",
-                            description=f"Unbanned {user}",
-                            color=0xFF8000,
-                        ),
-                    )
-            cprint(
-                f"""
+                    await ctx.send(embed=disnake.Embed(
+                        title="Action confirmed",
+                        description=f"Unbanned {user}",
+                        color=0xFF8000,
+                    ), )
+            cprint(f"""
              ║============================================================║
              ║------Succesfully unbanned {member} in {ctx.guild.name}-------║
              ║============================================================║
-            """
-            )
+            """)
             return
         elif member is int:
             member = await self.client.fetch_user(int(member))
             await ctx.guild.unban(member)
-            await ctx.send(
-                embed=disnake.Embed(
-                    title="Action confirmed",
-                    description=f"Unbanned {user}",
-                    color=0xFF8000,
-                ),
-            )
-            cprint(
-                f"""
+            await ctx.send(embed=disnake.Embed(
+                title="Action confirmed",
+                description=f"Unbanned {user}",
+                color=0xFF8000,
+            ), )
+            cprint(f"""
              ║============================================================║
              ║------Succesfully unbanned {member} in {ctx.guild.name}-------║
              ║============================================================║
-            """
-            )
+            """)
         # else:
         # await response.respond(
         # type=7,
@@ -206,9 +196,11 @@ class Moderation(commands.Cog, name="Moderation"):
     @commands.bot_has_permissions(ban_members=True)
     @commands.has_permissions(ban_members=True)
     @commands.cooldown(1, 5, commands.BucketType.user)
-    async def multiban(
-        self, ctx: Context, members: Greedy[Member], *, reason: str = "N/A"
-    ) -> NoReturn:
+    async def multiban(self,
+                       ctx: Context,
+                       members: Greedy[Member],
+                       *,
+                       reason: str = "N/A") -> NoReturn:
         """
 
 
@@ -236,8 +228,8 @@ class Moderation(commands.Cog, name="Moderation"):
             else:
                 try:
                     embed = Utils.error_embed(
-                        STRINGS["moderation"]["dm_ban"].format(ctx.guild.name, reason)
-                    )
+                        STRINGS["moderation"]["dm_ban"].format(
+                            ctx.guild.name, reason))
                     await member.send(embed=embed)
                 except:
                     pass
@@ -249,10 +241,7 @@ class Moderation(commands.Cog, name="Moderation"):
             msg = await ctx.send(
                 Utils.warn_embed(
                     STRINGS["moderation"]["on_not_full_multiban"].format(
-                        ", ".join(not_banned_members)
-                    )
-                )
-            )
+                        ", ".join(not_banned_members))))
             await asyncio.sleep(30)
             await msg.delete()
 
@@ -260,9 +249,11 @@ class Moderation(commands.Cog, name="Moderation"):
     @commands.bot_has_permissions(kick_members=True)
     @commands.has_permissions(kick_members=True)
     @commands.cooldown(1, 5, commands.BucketType.user)
-    async def kick(
-        self, ctx: Context, member: Member, *, reason: str = "N/A"
-    ) -> NoReturn:
+    async def kick(self,
+                   ctx: Context,
+                   member: Member,
+                   *,
+                   reason: str = "N/A") -> NoReturn:
         """
 
 
@@ -278,17 +269,13 @@ class Moderation(commands.Cog, name="Moderation"):
         lang = await s.get_field("locale", CONFIG["default_locale"])
         STRINGS = Strings(lang)
 
-        select_components = [
-            [
-                Button(style=ButtonStyle.green, label="✓"),
-                Button(style=ButtonStyle.red, label="X"),
-            ]
-        ]
-        done_components = [
-            [
-                Button(style=ButtonStyle.grey, label="·", disabled=True),
-            ]
-        ]
+        select_components = [[
+            Button(style=ButtonStyle.green, label="✓"),
+            Button(style=ButtonStyle.red, label="X"),
+        ]]
+        done_components = [[
+            Button(style=ButtonStyle.grey, label="·", disabled=True),
+        ]]
 
         embedconfirm = disnake.Embed(
             title="Kick Command",
@@ -296,8 +283,7 @@ class Moderation(commands.Cog, name="Moderation"):
         )
         await ctx.send(embed=embedconfirm, components=select_components)
         response = await self.bot.wait_for(
-            "button_click", check=lambda message: message.author == ctx.author
-        )
+            "button_click", check=lambda message: message.author == ctx.author)
         if response.component.label == "✓":
             await response.respond(
                 type=7,
@@ -310,8 +296,7 @@ class Moderation(commands.Cog, name="Moderation"):
             )
             if not member.bot:
                 embed = Utils.error_embed(
-                    STRINGS["moderation"]["dm_kick"].format(ctx.guild, reason)
-                )
+                    STRINGS["moderation"]["dm_kick"].format(ctx.guild, reason))
                 await member.send(embed=embed)
             await asyncio.sleep(5)
             await member.kick()
@@ -321,7 +306,8 @@ class Moderation(commands.Cog, name="Moderation"):
                 type=7,
                 embed=disnake.Embed(
                     title="Action Aborted",
-                    description="The action was aborted by clicking the no button",
+                    description=
+                    "The action was aborted by clicking the no button",
                     color=0xDD2E44,
                 ),
                 components=done_components,
@@ -363,13 +349,11 @@ class Moderation(commands.Cog, name="Moderation"):
         # response = await self.bot.wait_for(
         # "button_click", check=lambda message: message.author == ctx.author)
 
-        await ctx.send(
-            embed=disnake.Embed(
-                title="Action Completed",
-                description=f"Purging {number} messages",
-                color=0xDD2E44,
-            )
-        )
+        await ctx.send(embed=disnake.Embed(
+            title="Action Completed",
+            description=f"Purging {number} messages",
+            color=0xDD2E44,
+        ))
         await asyncio.sleep(10)
         deleted = await ctx.channel.purge(limit=number + 1)
 
@@ -389,7 +373,8 @@ class Moderation(commands.Cog, name="Moderation"):
     @commands.bot_has_permissions(manage_nicknames=True)
     @commands.has_permissions(manage_roles=True)
     @commands.cooldown(1, 5, commands.BucketType.user)
-    async def setname(self, ctx: Context, member: Member, *, name: str) -> NoReturn:
+    async def setname(self, ctx: Context, member: Member, *,
+                      name: str) -> NoReturn:
         """
 
 
@@ -408,10 +393,8 @@ class Moderation(commands.Cog, name="Moderation"):
         if len(name) > 32:
             embed = Utils.error_embed(STRINGS["error"]["too_long_name"])
             await ctx.send(embed=embed)
-        elif (
-            ctx.message.author.guild_permissions.manage_nicknames
-            or member == ctx.message.author
-        ):
+        elif (ctx.message.author.guild_permissions.manage_nicknames
+              or member == ctx.message.author):
             await member.edit(nick=name)
             await ctx.message.add_reaction(CONFIG["yes_emoji"])
         else:
@@ -421,9 +404,11 @@ class Moderation(commands.Cog, name="Moderation"):
     @commands.command()
     @commands.bot_has_permissions(manage_roles=True)
     @commands.cooldown(1, 5, commands.BucketType.user)
-    async def mute(
-        self, ctx: Context, member: Member, *, reason: str = "N/A"
-    ) -> NoReturn:
+    async def mute(self,
+                   ctx: Context,
+                   member: Member,
+                   *,
+                   reason: str = "N/A") -> NoReturn:
         """
 
 
@@ -440,11 +425,10 @@ class Moderation(commands.Cog, name="Moderation"):
         STRINGS = Strings(lang)
         mute_role_id = await s.get_field("mute_role_id")
 
-        if (
-            mute_role_id is None
-            or disnake.utils.get(ctx.guild.roles, id=mute_role_id) is None
-        ):
-            embed = Utils.done_embed(STRINGS["moderation"]["on_mute_role_create"])
+        if (mute_role_id is None or
+                disnake.utils.get(ctx.guild.roles, id=mute_role_id) is None):
+            embed = Utils.done_embed(
+                STRINGS["moderation"]["on_mute_role_create"])
             await ctx.send(embed=embed)
             mute_role = await ctx.guild.create_role(name="Muted")
 
@@ -456,14 +440,16 @@ class Moderation(commands.Cog, name="Moderation"):
 
             for user_role in member.roles:
                 if user_role == mute_role:
-                    embed = Utils.error_embed(STRINGS["error"]["already_muted"])
+                    embed = Utils.error_embed(
+                        STRINGS["error"]["already_muted"])
                     await ctx.send(embed=embed)
                     return
 
         for channel in ctx.guild.text_channels:
-            await channel.set_permissions(
-                mute_role, read_messages=True, send_messages=False, speak=False
-            )
+            await channel.set_permissions(mute_role,
+                                          read_messages=True,
+                                          send_messages=False,
+                                          speak=False)
 
         await member.add_roles(mute_role)
         await ctx.message.add_reaction(CONFIG["yes_emoji"])
@@ -472,9 +458,11 @@ class Moderation(commands.Cog, name="Moderation"):
     @commands.bot_has_permissions(manage_roles=True)
     @commands.has_permissions(manage_roles=True)
     @commands.cooldown(1, 5, commands.BucketType.user)
-    async def unmute(
-        self, ctx: Context, member: Member, *, reason: str = "N/A"
-    ) -> NoReturn:
+    async def unmute(self,
+                     ctx: Context,
+                     member: Member,
+                     *,
+                     reason: str = "N/A") -> NoReturn:
         """
 
 
@@ -486,9 +474,9 @@ class Moderation(commands.Cog, name="Moderation"):
         - `reason` - Reason to unmute the person
 
         """
-        mute_role = disnake.utils.get(
-            ctx.guild.roles, id=Utils.get_mute_role(None, ctx.message)
-        )
+        mute_role = disnake.utils.get(ctx.guild.roles,
+                                      id=Utils.get_mute_role(
+                                          None, ctx.message))
         if mute_role is None:
             # FIXME
             await ctx.send("нету роли мута ок да\n\n\nок")
@@ -567,7 +555,8 @@ class Moderation(commands.Cog, name="Moderation"):
         lang = await s.get_field("locale", CONFIG["default_locale"])
         STRINGS = Strings(lang)
         for channel in ctx.guild.channels:
-            await channel.set_permissions(ctx.guild.default_role, send_messages=False)
+            await channel.set_permissions(ctx.guild.default_role,
+                                          send_messages=False)
         embed = disnake.Embed(
             title=STRINGS["moderation"]["lockdowntitleone"],
             description=STRINGS["moderation"]["lockdowndescone"],
@@ -589,7 +578,8 @@ class Moderation(commands.Cog, name="Moderation"):
         lang = await s.get_field("locale", CONFIG["default_locale"])
         STRINGS = Strings(lang)
         for channel in ctx.guild.channels:
-            await channel.set_permissions(ctx.guild.default_role, send_messages=True)
+            await channel.set_permissions(ctx.guild.default_role,
+                                          send_messages=True)
         embed = disnake.Embed(
             title=STRINGS["moderation"]["lockdownliftedtitleone"],
             description=STRINGS["moderation"]["lockdownlifteddescone"],
@@ -611,7 +601,8 @@ class Moderation(commands.Cog, name="Moderation"):
         s = await Settings(ctx.guild.id)
         lang = await s.get_field("locale", CONFIG["default_locale"])
         STRINGS = Strings(lang)
-        await ctx.channel.set_permissions(ctx.guild.default_role, send_messages=False)
+        await ctx.channel.set_permissions(ctx.guild.default_role,
+                                          send_messages=False)
         embed = disnake.Embed(
             title=STRINGS["moderation"]["channellockdowntitle"],
             description=STRINGS["moderation"]["channellockdowndesc"],
@@ -632,7 +623,8 @@ class Moderation(commands.Cog, name="Moderation"):
         s = await Settings(ctx.guild.id)
         lang = await s.get_field("locale", CONFIG["default_locale"])
         STRINGS = Strings(lang)
-        await ctx.channel.set_permissions(ctx.guild.default_role, send_messages=True)
+        await ctx.channel.set_permissions(ctx.guild.default_role,
+                                          send_messages=True)
         embed = disnake.Embed(
             title=STRINGS["moderation"]["channellockdownliftedtitle"],
             description=STRINGS["moderation"]["channellockdownlifteddesc"],
