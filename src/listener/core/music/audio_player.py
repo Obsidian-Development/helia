@@ -1,6 +1,7 @@
 from disnake import VoiceClient
 
-from listener.core.music.audio_event import AudioEventListener, DefaultTrackScheduler
+from listener.core.music.audio_event import (AudioEventListener,
+                                             DefaultTrackScheduler)
 from listener.core.music.audio_source import AudioTrack
 
 
