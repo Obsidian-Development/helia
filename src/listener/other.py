@@ -2,9 +2,9 @@
 import random
 from typing import NoReturn
 
-import discord
-from discord.ext import commands
-from discord.ext.commands import Bot, Context
+import disnake
+from disnake.ext import commands
+from disnake.ext.commands import Bot, Context
 
 from listener.utils import Config, Logger, Settings, Strings, Utils
 from scripts import desAnime, desNature, desStarwars
@@ -17,15 +17,14 @@ class Other(commands.Cog, name="Other"):
         self.bot = bot
         self.name = "Other"
 
-    @commands.command()
-    @commands.guild_only()
+    @commands.command(slash_interaction=True, message_command=True)
     async def ping(self, ctx: Context) -> NoReturn:
         """Shows host latency."""
         s = await Settings(ctx.guild.id)
         lang = await s.get_field("locale", CONFIG["default_locale"])
         STRINGS = Strings(lang)
         latency = "%.0fms" % (self.bot.latency * 100)
-        embed = discord.Embed(
+        embed = disnake.Embed(
             title="{} Latency".format(self.bot.name),
             description=f":hourglass_flowing_sand: {latency} ",
             color=0xFF8000,
@@ -37,7 +36,7 @@ class Other(commands.Cog, name="Other"):
         s = await Settings(ctx.guild.id)
         lang = await s.get_field("locale", CONFIG["default_locale"])
         STRINGS = Strings(lang)
-        wallinfo = discord.Embed(
+        wallinfo = disnake.Embed(
             title=STRINGS["wallpaper"]["wallpaperembedtitle"],
             description=STRINGS["wallpaper"]["wallpaperdesc"],
             color=0x00FF00,
@@ -64,7 +63,7 @@ class Other(commands.Cog, name="Other"):
         s = await Settings(ctx.guild.id)
         lang = await s.get_field("locale", CONFIG["default_locale"])
         STRINGS = Strings(lang)
-        embedanime = discord.Embed(
+        embedanime = disnake.Embed(
             title=STRINGS["wallpaper"]["wallpaperanimetitle"],
             color=0x00FF00,
         )
@@ -78,7 +77,7 @@ class Other(commands.Cog, name="Other"):
         lang = await s.get_field("locale", CONFIG["default_locale"])
         STRINGS = Strings(lang)
         imgnat = random.choice(desNature.images)
-        embednat = discord.Embed(
+        embednat = disnake.Embed(
             title=STRINGS["wallpaper"]["wallpapernaturetitle"],
             color=0x00FF00,
             url=imgnat,
@@ -92,7 +91,7 @@ class Other(commands.Cog, name="Other"):
         lang = await s.get_field("locale", CONFIG["default_locale"])
         STRINGS = Strings(lang)
         imgstarwars = random.choice(desStarwars.images)
-        embedstarwars = discord.Embed(
+        embedstarwars = disnake.Embed(
             title=STRINGS["wallpaper"]["wallpaperstarwarstitle"],
             color=0x00FF00,
             url=imgstarwars,

@@ -1,9 +1,9 @@
 import asyncio
 import os
 
-import discord
-from discord.ext import commands
-from discord.ext.commands import Bot, Context
+import disnake
+from disnake.ext import commands
+from disnake.ext.commands import Bot, Context
 
 from listener.utils import Config, Logger, Settings, Strings
 
@@ -14,36 +14,40 @@ class broadcast(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.command(description="Global Announcement from bot owner")
+    @commands.command(
+        slash_interaction=True,
+        message_command=True,
+        description="Global Announcement from bot owner",
+    )
     @commands.is_owner()
     async def announce(self, ctx: Context, *, content):
         s = await Settings(ctx.guild.id)
         lang = await s.get_field("locale", CONFIG["default_locale"])
         prefix = await s.get_field("prefix", CONFIG["default_prefix"])
         STRINGS = Strings(lang)
-        announcement = discord.Embed(
+        announcement = disnake.Embed(
             title=STRINGS["general"]["announcestitle"],
             description=STRINGS["general"]["announcesdesc"],
             color=0x3B88C3,
         )
         author_name = f"{ctx.message.author}"
-        announcement.set_author(name=author_name,
-                                url=ctx.message.author.avatar_url)
+        announcement.set_author(
+            name=author_name, url=ctx.message.author.avatar.url)
         announcement.add_field(
             name=STRINGS["general"]["announcesfieldtitle"],
             value=f"{ctx.message.guild.name}",
             inline=False,
         )
-        announcement.add_field(name=STRINGS["general"]["announcesfielddesc"],
-                               value=content,
-                               inline=True)
+        announcement.add_field(
+            name=STRINGS["general"]["announcesfielddesc"], value=content, inline=True
+        )
         announcement.set_footer(
             text=STRINGS["general"]["announcesfooter"],
-            icon_url=ctx.message.guild.icon_url,
+            icon_url=ctx.message.guild.icon.url,
         )
         sent_counter = 0
         text_channel_list = []
-        embed = discord.Embed(
+        embed = disnake.Embed(
             title=STRINGS["general"]["announcestitle"],
             description=STRINGS["general"]["announceaway"],
         )
@@ -53,9 +57,9 @@ class broadcast(commands.Cog):
             try:
                 await guild.text_channels[0].send(embed=announcement)
                 sent_counter += 1
-            except discord.Forbidden:
+            except disnake.Forbidden:
                 continue
-            except discord.NotFound:
+            except disnake.NotFound:
                 continue
 
     # @commands.command(description='Debug info')

@@ -7,9 +7,9 @@ from typing import Any, AnyStr, Dict, List, NoReturn
 
 from aiofile import async_open
 from asyncinit import asyncinit
-from discord import Embed, Message
-from discord.ext import commands
-from discord.ext.commands import Bot
+from disnake import Embed, Message
+from disnake.ext import commands
+from disnake.ext.commands import Bot
 from termcolor import cprint
 
 
@@ -17,8 +17,7 @@ class Config:
     cfg = None
 
     def __new__(self) -> Any:
-        with open(dirname(abspath(__file__)) + "/../data/config.json",
-                  "r") as f:
+        with open(dirname(abspath(__file__)) + "/../data/config.json", "r") as f:
             return json.load(f)
 
 
@@ -27,9 +26,7 @@ CONFIG = Config()
 
 class Commands:
     def __listdirs(path: AnyStr) -> List[str]:
-        return [
-            d for d in os.listdir(path) if os.path.isdir(os.path.join(path, d))
-        ]
+        return [d for d in os.listdir(path) if os.path.isdir(os.path.join(path, d))]
 
     def __new__(self, locale: AnyStr = "") -> Dict:
         dirs = self.__listdirs(
@@ -37,17 +34,17 @@ class Commands:
 
         if locale in dirs or locale != "":
             with open(
-                    dirname(abspath(__file__)) +
-                    f"/../data/locales/{locale}/commands.json",
-                    "r",
+                dirname(abspath(__file__)) +
+                f"/../data/locales/{locale}/commands.json",
+                "r",
             ) as f:
                 return json.load(f)
         else:
             CONFIG = Config()
             with open(
-                    dirname(abspath(__file__)) +
-                    f'/../data/locales/{CONFIG["default_locale"]}/commands.json',
-                    "r",
+                dirname(abspath(__file__))
+                + f'/../data/locales/{CONFIG["default_locale"]}/commands.json',
+                "r",
             ) as f:
                 return json.load(f)
 
@@ -61,14 +58,14 @@ class Settings:
         self.guild_id = _guild_id
 
         async with async_open(
-                dirname(abspath(__file__)) + "/../data/settings.json",
-                "r") as f:
+            dirname(abspath(__file__)) + "/../data/settings.json", "r"
+        ) as f:
             self.settings = json.loads(await f.read())
 
     async def __save(self) -> NoReturn:
         async with async_open(
-                dirname(abspath(__file__)) + "/../data/settings.json",
-                "w") as f:
+            dirname(abspath(__file__)) + "/../data/settings.json", "w"
+        ) as f:
             await f.write(json.dumps(self.settings, indent=4))
 
     async def __create_guild_object(self) -> NoReturn:
@@ -109,9 +106,7 @@ class Settings:
 
 class Strings:
     def __listdirs(path: AnyStr) -> List[str]:
-        return [
-            d for d in os.listdir(path) if os.path.isdir(os.path.join(path, d))
-        ]
+        return [d for d in os.listdir(path) if os.path.isdir(os.path.join(path, d))]
 
     def __new__(self, locale: AnyStr = "") -> Dict:
         dirs = self.__listdirs(
@@ -119,17 +114,17 @@ class Strings:
 
         if locale in dirs or locale != "":
             with open(
-                    dirname(abspath(__file__)) +
-                    f"/../data/locales/{locale}/strings.json",
-                    "r",
+                dirname(abspath(__file__)) +
+                f"/../data/locales/{locale}/strings.json",
+                "r",
             ) as f:
                 return json.load(f)
         else:
             CONFIG = Config()
             with open(
-                    dirname(abspath(__file__)) +
-                    f'/../data/locales/{CONFIG["default_locale"]}/strings.json',
-                    "r",
+                dirname(abspath(__file__))
+                + f'/../data/locales/{CONFIG["default_locale"]}/strings.json',
+                "r",
             ) as f:
                 return json.load(f)
 
@@ -145,19 +140,20 @@ class Logger:
         STRINGS = Strings(CONFIG["default_locale"])
         now = datetime.datetime.now()
         time = now.strftime("%H:%M:%S")
-        cprint(STRINGS["bot_log"]["warn"].format(time, msg), "red")
+        cprint(STRINGS["bot_log"]["warn"].format(time, msg), "red")  #
 
     # some wrappers:
 
     def cog_loaded(cog: AnyStr) -> NoReturn:
         STRINGS = Strings(CONFIG["default_locale"])
         now = datetime.datetime.now()
-        time = now.strftime("%H:%M:%S")
-        cprint(
-            STRINGS["bot_log"]["info"].format(
-                time, STRINGS["bot_log"]["cog_loaded"].format(cog)),
-            "green",
-        )
+        time = now.strftime("%HH:%MM:%SS")
+        cprint("""║============================================================║""")
+        # cprint(
+        # STRINGS["bot_log"]["info"].format(time, STRINGS["bot_log"]["cog_loaded"].format(cog)),
+        # "green",
+        # )
+        cprint("""║============================================================║""")
 
     def command_used(tag: AnyStr, command: AnyStr, guild: AnyStr) -> NoReturn:
         STRINGS = Strings(CONFIG["default_locale"])
@@ -187,16 +183,11 @@ class Utils(commands.Cog, name="Utils"):
     async def get_prefix(bot: Bot, msg: Message) -> List[str]:
         s = await Settings(msg.guild.id)
         prefix = await s.get_field("prefix", CONFIG["default_prefix"])
-        return [
-            bot.user.mention + " ", f"<@!{bot.user.id}> ", prefix, prefix + " "
-        ]
+        return [bot.user.mention + " ", f"<@!{bot.user.id}> ", prefix, prefix + " "]
 
     def get_locales_list():
         def __listdirs(path: AnyStr) -> List[str]:
-            return [
-                d for d in os.listdir(path)
-                if os.path.isdir(os.path.join(path, d))
-            ]
+            return [d for d in os.listdir(path) if os.path.isdir(os.path.join(path, d))]
 
         return __listdirs(dirname(abspath(__file__)) + "/../data/locales/")
 

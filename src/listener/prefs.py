@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 from typing import NoReturn
 
-import discord
-from discord.ext import commands
-from discord.ext.commands import Bot, Context
+import disnake
+from disnake.ext import commands
+from disnake.ext.commands import Bot, Context
 
 from listener.utils import Config, Logger, Settings, Strings, Utils
 
@@ -11,13 +11,12 @@ CONFIG = Config()
 
 
 class Prefs(commands.Cog, name="Prefs"):
-    def __init__(self, bot, server_prefixes: dict) -> None:
+    def __init__(self, bot) -> None:
         self.bot = bot
         self.name = "Prefs"
-        self.server_prefixes = server_prefixes
+        # self.server_prefixes = server_prefixes
 
     @commands.command(aliases=["setprefix"])
-    @commands.guild_only()
     @commands.has_permissions(administrator=True)
     @commands.cooldown(1, 5, commands.BucketType.user)
     async def prefix(self, ctx: Context, prefix: str) -> NoReturn:
@@ -28,13 +27,12 @@ class Prefs(commands.Cog, name="Prefs"):
         - `prefix` - new prefix
 
         """
-        guild_id = str(ctx.guild.id)
-        self.server_prefixes[guild_id] = [prefix]
+        s = await Settings(ctx.guild.id)
+        await s.set_field("prefix", prefix)
 
         await ctx.message.add_reaction(CONFIG["yes_emoji"])
 
     @commands.command(aliases=["lang", "setlang", "language"])
-    @commands.guild_only()
     @commands.has_permissions(administrator=True)
     @commands.cooldown(1, 5, commands.BucketType.user)
     async def locale(self, ctx: Context, locale: str) -> NoReturn:
@@ -58,7 +56,7 @@ class Prefs(commands.Cog, name="Prefs"):
                 return
 
         # FIXME
-        embed = discord.Embed(
+        embed = disnake.Embed(
             title=STRINGS["error"]["on_error_title"],
             description=STRINGS["error"]["localeerrortext"],
             color=0xFF0000,

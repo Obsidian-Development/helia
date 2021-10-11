@@ -3,8 +3,8 @@ termcolor
 aiofile
 jishaku
 asyncinit
-discord.py
-discord.py[voice]
+disnake
+disnake[voice]
 discord-py-slash-command
 google-api-python-client
 google-auth

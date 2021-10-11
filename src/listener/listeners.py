@@ -3,10 +3,11 @@ import asyncio
 import datetime
 from typing import NoReturn
 
-import discord
-from discord import Guild, Message
-from discord.ext import commands
-from discord.ext.commands import Bot, Context
+import disnake
+from disnake import Guild, Message
+from disnake.ext import commands
+from disnake.ext.commands import Bot, Context
+from termcolor import cprint
 
 from listener.utils import Commands, Config, Logger, Settings, Strings, Utils
 
@@ -33,14 +34,13 @@ class Listeners(commands.Cog, name="Listeners"):
             ver = file.readline()
         channel = guild.text_channels[0]
         invite = await channel.create_invite()
-        embed = discord.Embed(
+        embed = disnake.Embed(
             title=STRINGS["general"]["abouttitle"],
             description=STRINGS["general"]["aboutdesc"],
             color=0xFF6900,
         )
-        embed.add_field(name=STRINGS["general"]["aboutver"],
-                        value=ver,
-                        inline=True)
+        embed.add_field(name=STRINGS["general"]
+                        ["aboutver"], value=ver, inline=True)
         embed.add_field(
             name=STRINGS["general"]["aboutauthoroninvitetitle"],
             value=STRINGS["general"]["aboutauthoroninvite"],
@@ -53,7 +53,7 @@ class Listeners(commands.Cog, name="Listeners"):
         )
         # embed.add_field(name=STRINGS['general']['aboutthanks'], value=STRINGS['general']['aboutthankstext'],inline=False)
         embed.set_footer(text=self.bot.user.name,
-                         icon_url=self.bot.user.avatar_url)
+                         icon_url=self.bot.user.avatar.url)
         print("The invite for this server is :")
         print(f"{invite}")
         with open(logpath, "a") as file:
@@ -69,8 +69,8 @@ class Listeners(commands.Cog, name="Listeners"):
     @commands.Cog.listener()
     async def on_command(self, ctx: Context) -> NoReturn:
         """Logging commands to the console."""
-        Logger.command_used(ctx.message.author, ctx.command.name,
-                            ctx.message.guild)
+        Logger.command_used(ctx.message.author,
+                            ctx.command.name, ctx.message.guild)
 
     @commands.Cog.listener()
     async def on_message(self, message: Message) -> NoReturn:
@@ -84,16 +84,17 @@ class Listeners(commands.Cog, name="Listeners"):
             pass
         else:
             if message.content in [
-                    f"<@!{self.bot.user.id}>",
-                    f"<@{self.bot.user.id}>",
-                    f"@{self.bot.user}",
+                f"<@!{self.bot.user.id}>",
+                f"<@{self.bot.user.id}>",
+                f"@{self.bot.user}",
             ]:
-                await message.channel.send(STRINGS["etc"]["on_mention"].format(
-                    message.author.id, prefix))
+                await message.channel.send(
+                    STRINGS["etc"]["on_mention"].format(
+                        message.author.id, prefix)
+                )
 
     @commands.Cog.listener()
-    async def on_command_error(self, ctx: Context,
-                               error: Exception) -> NoReturn:
+    async def on_command_error(self, ctx: Context, error: Exception) -> NoReturn:
         """If an unexpected error occurs, it displays an... error message?
 
         Attributes:
@@ -105,6 +106,23 @@ class Listeners(commands.Cog, name="Listeners"):
         lang = await s.get_field("locale", CONFIG["default_locale"])
         STRINGS = Strings(lang)
         COMMANDS = Commands(lang)
+        cprint("==============================")
+        cprint(
+            f"""
+        ║========================║=========================║
+        ║ Guild                  ║ Member                  ║
+        ║ {ctx.guild.name}::::::::::::::║ {ctx.author.name}:::::::::::::::::║        
+        ║========================║=========================║
+        ║ Guild ID               ║ Member ID               ║
+        ║ {ctx.guild.id}:::::║ {ctx.author.id}::::::║
+        ║========================║=========================║
+        =======================================================
+        Traceback 
+        {error}
+        =======================================================
+        """
+        )
+        cprint("==============================")
 
         if isinstance(error, commands.CommandNotFound):
             return
@@ -114,24 +132,33 @@ class Listeners(commands.Cog, name="Listeners"):
             prefix = await s.get_field("prefix", CONFIG["default_prefix"])
 
             if ctx.command.cog.name != "Jishaku":
-                embed = Utils.error_embed(STRINGS["etc"]["usage"].format(
-                    COMMANDS[ctx.command.cog.name]["commands"][
-                        ctx.command.name]["usage"].format(prefix)))
+                embed = Utils.error_embed(
+                    STRINGS["etc"]["usage"].format(
+                        COMMANDS[ctx.command.cog.name]["commands"][ctx.command.name][
+                            "usage"
+                        ].format(prefix)
+                    )
+                )
         elif isinstance(error, commands.MissingPermissions):
             embed = Utils.error_embed(STRINGS["error"]["missing_perms"])
 
         elif isinstance(error, commands.BotMissingPermissions):
             embed = Utils.error_embed(
-                STRINGS["error"]["missing_bot_perms"].format(" ".join(
-                    "+ " + STRINGS["etc"]["permissions"][f"{perm}"]
-                    for perm in error.missing_perms)))
+                STRINGS["error"]["missing_bot_perms"].format(
+                    " ".join(
+                        "+ " + STRINGS["etc"]["permissions"][f"{perm}"]
+                        for perm in error.missing_perms
+                    )
+                )
+            )
 
         elif isinstance(error, commands.CommandOnCooldown):
-            embed = Utils.error_embed(STRINGS["error"]["cooldown"].format(
-                error.retry_after))
+            embed = Utils.error_embed(
+                STRINGS["error"]["cooldown"].format(error.retry_after)
+            )
 
         elif isinstance(error, commands.errors.NSFWChannelRequired):
-            embed = discord.Embed(
+            embed = disnake.Embed(
                 title=STRINGS["error"]["nsfwerrortitle"],
                 description=STRINGS["error"]["nsfwnotcorrectspot"],
                 color=0xFF0000,
@@ -143,11 +170,11 @@ class Listeners(commands.Cog, name="Listeners"):
             )
 
         else:
-            embed = discord.Embed(color=0xDD0000)
+            embed = disnake.Embed(color=0xDD0000)
             embed.title = STRINGS["error"]["on_error_title"]
             embed.description = STRINGS["error"]["on_error_text"].format(
                 str(error))
-            Logger.warn(str(error))
+            # Logger.warn(str(error))
 
         msg = await ctx.send(embed=embed)
         await asyncio.sleep(20)
