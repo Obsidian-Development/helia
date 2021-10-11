@@ -152,11 +152,13 @@ class Logger:
     def cog_loaded(cog: AnyStr) -> NoReturn:
         STRINGS = Strings(CONFIG["default_locale"])
         now = datetime.datetime.now()
-        time = now.strftime("%H:%M:%S")
+        time = now.strftime("%HH:%MM:%SS")
         cprint(
+            """║==========================================║""",
             STRINGS["bot_log"]["info"].format(
                 time, STRINGS["bot_log"]["cog_loaded"].format(cog)),
             "green",
+            """║==========================================║""",
         )
 
     def command_used(tag: AnyStr, command: AnyStr, guild: AnyStr) -> NoReturn:
