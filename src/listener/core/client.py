@@ -87,7 +87,7 @@ class CoreClient(commands.AutoShardedBot):
         #self.changeStatus.start()
         await self.change_presence(status=disnake.Status.online,
                                    activity=activar)
-        #launch_time = datetime.datetime.utcnow()
+        self.launch_time = datetime.datetime.utcnow()
         
         self.load_extension("jishaku")
         print("    Loaded 'jishaku.py'")

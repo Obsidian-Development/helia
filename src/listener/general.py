@@ -202,15 +202,16 @@ class General(commands.Cog, name="General"):
         )
         embed.add_field(name=STRINGS["general"]["aboutver"],
                         value=f"```{ver}```",
-                        inline=True)
+                        inline=False)
         embed.add_field(name="Python Version:",
                         value=f"```{pythonVersion}```",
-                        inline=True)
+                        inline=False)
         embed.add_field(name="Library", value="```disnake.py```", inline=True)
-        embed.add_field(name="disnake.Py Version", value=f"```{dpyVersion}```")
+        embed.add_field(name="disnake.Py Version", value=f"```{dpyVersion}```",inline=True)
+        
         embed.add_field(name="RAM Usage",
                         value=f"```{ramUsage:.2f} MB```",
-                        inline=True)
+                        inline=False)
         embed.add_field(
             name="Servers",
             value=f"```{servercount}```",
@@ -219,8 +220,10 @@ class General(commands.Cog, name="General"):
         embed.add_field(
             name=STRINGS["general"]["aboutauthor"],
             value=STRINGS["general"]["aboutauthortext"],
-            inline=True,
+            inline=False,
         )
+        
+        
 
         # embed.add_field(name=STRINGS['general']['aboutthanks'], value=STRINGS['general']['aboutthankstext'],inline=False)
         embed.set_footer(text=self.bot.user.name,
