@@ -1,10 +1,8 @@
 import disnake
-from disnake import interactions
-
+from disnake import ButtonStyle, SelectOption, interactions
 # from disnake.ext.commands import bot
 from disnake.ext import commands
-from disnake import SelectOption, ButtonStyle
-from disnake.ui import View, Select, Button
+from disnake.ui import Button, Select, View
 
 bot = commands.Bot
 

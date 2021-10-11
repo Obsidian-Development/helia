@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
+import datetime
 import math
 import os
 import platform
 import random
-import datetime
 from typing import NoReturn
 
 import disnake

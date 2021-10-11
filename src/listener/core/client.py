@@ -5,9 +5,7 @@ import random
 
 import aiohttp
 import disnake
-
 from disnake.ext import commands, tasks
-
 
 from scripts import db  # UNCOMMENT FOR DB CONNECTION
 

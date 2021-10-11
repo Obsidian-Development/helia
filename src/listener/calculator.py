@@ -2,10 +2,10 @@ import datetime
 import math
 
 import disnake
+from disnake import ButtonStyle, SelectOption
 from disnake.ext import commands
 from disnake.ext.commands import Bot, Context
-from disnake import SelectOption, ButtonStyle
-from disnake.ui import View, Select, Button
+from disnake.ui import Button, Select, View
 
 # from disnake_slash import cog_ext
 from scripts.calculator import buttons
