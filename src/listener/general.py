@@ -3,7 +3,7 @@ import math
 import os
 import platform
 import random
-from datetime import datetime
+import datetime
 from typing import NoReturn
 
 import disnake
@@ -196,25 +196,29 @@ class General(commands.Cog, name="General"):
         dpyVersion = disnake.__version__
         servercount = len(self.bot.guilds)
         usercount = len(self.bot.users)
+        delta_uptime = datetime.datetime.utcnow() - self.bot.launch_time
+        hours, remainder = divmod(int(delta_uptime.total_seconds()), 3600)
+        minutes, seconds = divmod(remainder, 60)
+        days, hours = divmod(hours, 24)
         embed = disnake.Embed(
             title=STRINGS["general"]["abouttitle"],
             description=STRINGS["general"]["aboutdesc"],
             color=0xFF6900,
         )
         
-        embed.add_field(name="Libraries and bot version information",
+        embed.add_field(name=STRINGS["general"]["aboutver"],
                         value=f"```Bot Version: {ver}\nPython Version:{pythonVersion}\nLibrary: disnake.py\ndisnake.Py Version: {dpyVersion} ```",
-                        inline=True) 
+                        inline=False) 
         embed.add_field(
             name="Other Information",
-            value=f"```Server Count: {servercount}\nUser Count: {usercount}\nRAM Usage:{ramUsage:.2f} MB```",
+            value=f"```Server Count: {servercount}\nUser Count: {usercount}\nRAM Usage:{ramUsage:.2f} MB\nDays: {days}d\nHours: {hours}h\nMinutes: {minutes}m\nSeconds: {seconds}s```",
             inline=True,
         )
-        embed.add_field(
-            name=STRINGS["general"]["aboutauthor"],
-            value=STRINGS["general"]["aboutauthortext"],
-            inline=False,
-        )
+        #embed.add_field(
+            #name=STRINGS["general"]["aboutauthor"],
+            #value=STRINGS["general"]["aboutauthortext"],
+            #inline=True,
+        #)
         
         
 
