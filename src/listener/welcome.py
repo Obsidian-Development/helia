@@ -6,8 +6,8 @@ import sqlite3
 
 import disnake
 from disnake.ext import commands
-from disnake.ext.commands import Bot
-from disnake.ext.commands import Context
+from disnake.ext.commands import Bot, Context
+
 from scripts import db
 
 
@@ -21,15 +21,16 @@ class Welcome(commands.Cog):
         connect = sqlite3.connect(db.main)
         cursor = connect.cursor()
         cursor.execute(
-            db.select_table("welcome", "channel_id", "guild_id",
-                            member.guild.id))
+            db.select_table("welcome", "channel_id",
+                            "guild_id", member.guild.id)
+        )
         chan = cursor.fetchone()
         # print(f" Channel id fetch - {chan[0]}")
         if chan is None:
             return
 
-        cursor.execute(
-            db.select_table("welcome", "text", "guild_id", member.guild.id))
+        cursor.execute(db.select_table(
+            "welcome", "text", "guild_id", member.guild.id))
         desc = cursor.fetchone()
         hello = disnake.Embed(
             title="User joined the server",
@@ -39,13 +40,13 @@ class Welcome(commands.Cog):
         if desc is None:
             descdef = "Give them a warm welcome and say hello to them"
 
-            hello.add_field(name="Server message",
-                            value=f"```{descdef}```",
-                            inline=True)
+            hello.add_field(
+                name="Server message", value=f"```{descdef}```", inline=True
+            )
         else:
-            hello.add_field(name="Server message",
-                            value=f"```{desc[0]}```",
-                            inline=True)
+            hello.add_field(
+                name="Server message", value=f"```{desc[0]}```", inline=True
+            )
 
         channel = self.bot.get_channel(id=int(chan[0]))
         await channel.send(embed=hello)
@@ -87,14 +88,17 @@ class Welcome(commands.Cog):
                 connect = sqlite3.connect(db.main)
                 cursor = connect.cursor()
                 cursor.execute(
-                    db.select_table("welcome", "channel_id", "guild_id",
-                                    ctx.message.guild.id))
+                    db.select_table(
+                        "welcome", "channel_id", "guild_id", ctx.message.guild.id
+                    )
+                )
                 res = cursor.fetchone()
                 if res is None:
                     val = (ctx.message.guild.id, chan.id)
                     cursor.execute(
-                        db.insert_table("welcome", "guild_id", "channel_id"),
-                        val)
+                        db.insert_table("welcome", "guild_id",
+                                        "channel_id"), val
+                    )
                 else:
                     cursor.execute(
                         db.update_table(
@@ -103,7 +107,8 @@ class Welcome(commands.Cog):
                             chan.id,
                             "guild_id",
                             ctx.message.guild.id,
-                        ))
+                        )
+                    )
                 connect.commit()
                 cursor.close()
                 connect.close()
@@ -125,8 +130,10 @@ class Welcome(commands.Cog):
                 connect = sqlite3.connect(db.main)
                 cursor = connect.cursor()
                 cursor.execute(
-                    db.select_table("welcome", "channel_id", "guild_id",
-                                    ctx.message.guild.id))
+                    db.select_table(
+                        "welcome", "channel_id", "guild_id", ctx.message.guild.id
+                    )
+                )
                 res = cursor.fetchone()
                 if res is None:
                     await ctx.send(
@@ -135,7 +142,8 @@ class Welcome(commands.Cog):
                 else:
                     cursor.execute(
                         db.delete_table("welcome", "guild_id",
-                                        ctx.message.guild.id))
+                                        ctx.message.guild.id)
+                    )
                     await ctx.send(" Cleared the table")
                 connect.commit()
                 cursor.close()
@@ -158,17 +166,19 @@ class Welcome(commands.Cog):
                 connect = sqlite3.connect(db.main)
                 cursor = connect.cursor()
                 cursor.execute(
-                    db.select_table("welcome", "text", "guild_id",
-                                    ctx.message.guild.id))
+                    db.select_table("welcome", "text",
+                                    "guild_id", ctx.message.guild.id)
+                )
                 res = cursor.fetchone()
                 if res is None:
                     val = (ctx.message.guild.id, content)
-                    cursor.execute(
-                        db.insert_table("welcome", "guild_id", "text"), val)
+                    cursor.execute(db.insert_table(
+                        "welcome", "guild_id", "text"), val)
                 else:
                     val = (content, ctx.message.guild.id)
                     cursor.execute(
-                        "UPDATE welcome SET text = ? WHERE guild_id = ?", val)
+                        "UPDATE welcome SET text = ? WHERE guild_id = ?", val
+                    )
                 connect.commit()
                 cursor.close()
                 connect.close()

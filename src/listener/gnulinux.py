@@ -3,12 +3,9 @@ import asyncio
 
 import disnake
 from disnake.ext import commands
-from disnake.ext.commands import Bot
-from disnake.ext.commands import Context
-from listener.utils import Config
-from listener.utils import Logger
-from listener.utils import Settings
-from listener.utils import Strings
+from disnake.ext.commands import Bot, Context
+
+from listener.utils import Config, Logger, Settings, Strings
 
 CONFIG = Config()
 
@@ -35,8 +32,7 @@ class gnulinux(commands.Cog):
             color=0x1793D1,
         )
         archl.set_thumbnail(
-            url=
-            "https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Archlinux-vert-dark.svg/1280px-Archlinux-vert-dark.svg.png"
+            url="https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Archlinux-vert-dark.svg/1280px-Archlinux-vert-dark.svg.png"
         )
         await ctx.send(embed=archl)
 
@@ -76,8 +72,7 @@ class gnulinux(commands.Cog):
             color=0xD80150,
         )
         debian1.set_thumbnail(
-            url=
-            "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Debian-OpenLogo.svg/800px-Debian-OpenLogo.svg.png"
+            url="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Debian-OpenLogo.svg/800px-Debian-OpenLogo.svg.png"
         )
         await ctx.send(embed=debian1)
 
@@ -98,8 +93,7 @@ class gnulinux(commands.Cog):
             color=0x1793D1,
         )
         deepin1.set_thumbnail(
-            url=
-            "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Deepin_logo.svg/600px-Deepin_logo.svg.png"
+            url="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Deepin_logo.svg/600px-Deepin_logo.svg.png"
         )
         await ctx.send(embed=deepin1)
 
@@ -120,8 +114,7 @@ class gnulinux(commands.Cog):
             color=0x35BF5C,
         )
         manjaro1.set_thumbnail(
-            url=
-            "https://fost.ws/uploads/posts/2019-05/1557568788_manjaro-logo.png"
+            url="https://fost.ws/uploads/posts/2019-05/1557568788_manjaro-logo.png"
         )
         await ctx.send(embed=manjaro1)
 

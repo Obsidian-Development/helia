@@ -3,12 +3,9 @@ import os
 
 import disnake
 from disnake.ext import commands
-from disnake.ext.commands import Bot
-from disnake.ext.commands import Context
-from listener.utils import Config
-from listener.utils import Logger
-from listener.utils import Settings
-from listener.utils import Strings
+from disnake.ext.commands import Bot, Context
+
+from listener.utils import Config, Logger, Settings, Strings
 
 CONFIG = Config()
 
@@ -34,16 +31,16 @@ class broadcast(commands.Cog):
             color=0x3B88C3,
         )
         author_name = f"{ctx.message.author}"
-        announcement.set_author(name=author_name,
-                                url=ctx.message.author.avatar.url)
+        announcement.set_author(
+            name=author_name, url=ctx.message.author.avatar.url)
         announcement.add_field(
             name=STRINGS["general"]["announcesfieldtitle"],
             value=f"{ctx.message.guild.name}",
             inline=False,
         )
-        announcement.add_field(name=STRINGS["general"]["announcesfielddesc"],
-                               value=content,
-                               inline=True)
+        announcement.add_field(
+            name=STRINGS["general"]["announcesfielddesc"], value=content, inline=True
+        )
         announcement.set_footer(
             text=STRINGS["general"]["announcesfooter"],
             icon_url=ctx.message.guild.icon.url,

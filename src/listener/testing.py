@@ -1,18 +1,15 @@
 import disnake
 from disnake.ext import commands
-from disnake_components import Button
-from disnake_components import ButtonStyle
-from disnake_components import Select
-from disnake_components import SelectOption
+from disnake_components import Button, ButtonStyle, Select, SelectOption
 
 
 class testingCOG(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.command(slash_interaction=False,
-                      message_command=True,
-                      description="BUTTON TEST")
+    @commands.command(
+        slash_interaction=False, message_command=True, description="BUTTON TEST"
+    )
     async def button(self, ctx):
         async def callback(interaction):
             await interaction.send(content="Yay")
@@ -21,18 +18,19 @@ class testingCOG(commands.Cog):
             "Button callbacks!",
             components=[
                 self.bot.components_manager.add_callback(
-                    Button(style=ButtonStyle.blue, label="Click this"),
-                    callback),
+                    Button(style=ButtonStyle.blue,
+                           label="Click this"), callback
+                ),
             ],
         )
 
-    @commands.command(slash_interaction=False,
-                      message_command=True,
-                      description="SELECT TEST")
+    @commands.command(
+        slash_interaction=False, message_command=True, description="SELECT TEST"
+    )
     async def select(self, ctx):
-        embed = disnake.Embed(title="SELECTION TEST",
-                              description="Testing our embeds",
-                              color=0xFF8000)
+        embed = disnake.Embed(
+            title="SELECTION TEST", description="Testing our embeds", color=0xFF8000
+        )
         embede = disnake.Embed(
             title=":books: Help System",
             description=f"Welcome To {self.bot.user.name} Help System",
@@ -52,9 +50,11 @@ class testingCOG(commands.Cog):
                 ],
             )
         ]
-        done_components = [[
-            Button(style=ButtonStyle.grey, label="·", disabled=True),
-        ]]
+        done_components = [
+            [
+                Button(style=ButtonStyle.grey, label="·", disabled=True),
+            ]
+        ]
 
         async def callback(interaction):
             await interaction.send(embed=embed)
@@ -74,8 +74,7 @@ class testingCOG(commands.Cog):
                     type=7,
                     embed=disnake.Embed(
                         title=":beginner: General",
-                        description=
-                        f"Here is the list of general commands we have \n ```{formatlistprep}```",
+                        description=f"Here is the list of general commands we have \n ```{formatlistprep}```",
                     ).set_author(name="Help System"),
                 )
             if label == "Moderation":
@@ -89,8 +88,7 @@ class testingCOG(commands.Cog):
                     type=7,
                     embed=disnake.Embed(
                         title=":hammer_pick: Moderation",
-                        description=
-                        f"Here is the list of moderation commands we have \n ```{formatlistprep}```",
+                        description=f"Here is the list of moderation commands we have \n ```{formatlistprep}```",
                     ).set_author(name="Help System"),
                 )
             if label == "Utilities":
@@ -103,8 +101,7 @@ class testingCOG(commands.Cog):
                     type=7,
                     embed=disnake.Embed(
                         title=":wrench: Utilities",
-                        description=
-                        f"Here is the list of utilities commands we have \n ```{formatlistprep}```",
+                        description=f"Here is the list of utilities commands we have \n ```{formatlistprep}```",
                     ).set_author(name="Help System"),
                 )
             if label == "Music":
@@ -117,8 +114,7 @@ class testingCOG(commands.Cog):
                     type=7,
                     embed=disnake.Embed(
                         title=":headphones: Music",
-                        description=
-                        f"Here is the list of music commands we have \n ```{formatlistprep}```",
+                        description=f"Here is the list of music commands we have \n ```{formatlistprep}```",
                     ).set_author(name="Help System"),
                 )
             if label == "Preferences":
@@ -131,8 +127,7 @@ class testingCOG(commands.Cog):
                     type=7,
                     embed=disnake.Embed(
                         title=":tools: Preferences",
-                        description=
-                        f"Here is the list of bot configuration commands \n ```{formatlistprep}```",
+                        description=f"Here is the list of bot configuration commands \n ```{formatlistprep}```",
                     ).set_author(name="Help System"),
                 )
             if label == "Other":
@@ -145,14 +140,13 @@ class testingCOG(commands.Cog):
                     type=7,
                     embed=disnake.Embed(
                         title=":hourglass: Other",
-                        description=
-                        f"Here is the list of miscellaneous commads \n ```{formatlistprep}```",
+                        description=f"Here is the list of miscellaneous commads \n ```{formatlistprep}```",
                     ).set_author(name="Help System"),
                 )
             if label == "Close":
-                await interaction.respond(type=7,
-                                          embed=embede,
-                                          components=done_components)
+                await interaction.respond(
+                    type=7, embed=embede, components=done_components
+                )
 
 
 def setup(bot):

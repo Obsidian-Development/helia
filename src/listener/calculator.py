@@ -2,15 +2,13 @@ import datetime
 import math
 
 import disnake
-from disnake import ButtonStyle
-from disnake import SelectOption
+from disnake import ButtonStyle, SelectOption
 from disnake.ext import commands
-from disnake.ext.commands import Bot
-from disnake.ext.commands import Context
-from disnake.ui import Button
-from disnake.ui import Select
-from disnake.ui import View
+from disnake.ext.commands import Bot, Context
+from disnake.ui import Button, Select, View
+
 from scripts.calculator import buttons
+
 # from disnake_slash import cog_ext
 
 
@@ -19,9 +17,9 @@ class Calculator(commands.Cog, name="Calculator"):
         self.bot = bot
         self.name = "Calculator"
 
-    @commands.command(slash_interaction=True,
-                      message_command=True,
-                      description="Calculator command")
+    @commands.command(
+        slash_interaction=True, message_command=True, description="Calculator command"
+    )
     async def calculator(self, ctx):
         def calculate(exp):
             ox = str(exp)
@@ -49,9 +47,11 @@ class Calculator(commands.Cog, name="Calculator"):
             color=disnake.Colour.blurple(),
         )
         await m.edit(content="", components=buttons, embed=e)
-        done = [[
-            Button(style=ButtonStyle.grey, label="·", disabled=True),
-        ]]
+        done = [
+            [
+                Button(style=ButtonStyle.grey, label="·", disabled=True),
+            ]
+        ]
         allowed = [
             "1",
             "2",
@@ -73,8 +73,10 @@ class Calculator(commands.Cog, name="Calculator"):
         ]
         while m.created_at < delta:
             res = await self.bot.wait_for("button_click")
-            if (res.author.id == ctx.author.id
-                    and res.message.embeds[0].timestamp < delta):
+            if (
+                res.author.id == ctx.author.id
+                and res.message.embeds[0].timestamp < delta
+            ):
                 expression = res.message.embeds[0].description[6:-3]
                 if expression in ["None", "An error occurred."]:
                     expression = ""
@@ -100,43 +102,41 @@ class Calculator(commands.Cog, name="Calculator"):
                         type=7,
                         embed=disnake.Embed(
                             title=f"{ctx.author.name}'s calculator",
-                            description=
-                            f"```The expression you entered has a result of : {expression}```",
+                            description=f"```The expression you entered has a result of : {expression}```",
                             color=disnake.Colour.blurple(),
                         ),
                         components=done,
                     )
 
-                elif (len(expression) > 9 or expression.count("²") >= 4
-                      or expression.count("³") >= 4
-                      or expression.count("²²") > 1
-                      or expression.count("³³") > 1
-                      or expression.count("²²³³") >= 1):
+                elif (
+                    len(expression) > 9
+                    or expression.count("²") >= 4
+                    or expression.count("³") >= 4
+                    or expression.count("²²") > 1
+                    or expression.count("³³") > 1
+                    or expression.count("²²³³") >= 1
+                ):
                     if res.component.label in allowed:
-                        await m.edit(
-                            content="Preparing to tear down the buttons")
+                        await m.edit(content="Preparing to tear down the buttons")
 
                         await res.respond(
                             type=7,
                             embed=disnake.Embed(
                                 title="Closing down",
-                                description=
-                                "You have entered a number that is 9 or more in length or some calculation prone to crashing the bot - for the stability of the bot and crash prevention we will close down this calculator session",
+                                description="You have entered a number that is 9 or more in length or some calculation prone to crashing the bot - for the stability of the bot and crash prevention we will close down this calculator session",
                                 color=0xDD2E44,
                             ),
                             components=done,
                         )
                         break
                     elif expression.count("××") > 1:
-                        await m.edit(
-                            content="Preparing to tear down the buttons")
+                        await m.edit(content="Preparing to tear down the buttons")
 
                         await res.respond(
                             type=7,
                             embed=disnake.Embed(
                                 title="Closing down",
-                                description=
-                                "You have entered a number that is 9 or more in length or some calculation prone to crashing the bot - for the stability of the bot and crash prevention we will close down this calculator session",
+                                description="You have entered a number that is 9 or more in length or some calculation prone to crashing the bot - for the stability of the bot and crash prevention we will close down this calculator session",
                                 color=0xDD2E44,
                             ),
                             components=done,
@@ -153,10 +153,7 @@ class Calculator(commands.Cog, name="Calculator"):
                         timestamp=delta,
                         color=disnake.Colour.blurple(),
                     )
-                    await res.respond(content="",
-                                      embed=f,
-                                      components=buttons,
-                                      type=7)
+                    await res.respond(content="", embed=f, components=buttons, type=7)
 
 
 def setup(bot):

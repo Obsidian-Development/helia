@@ -4,16 +4,10 @@ from typing import NoReturn
 
 import disnake
 from disnake.ext import commands
-from disnake.ext.commands import Bot
-from disnake.ext.commands import Context
-from listener.utils import Config
-from listener.utils import Logger
-from listener.utils import Settings
-from listener.utils import Strings
-from listener.utils import Utils
-from scripts import desAnime
-from scripts import desNature
-from scripts import desStarwars
+from disnake.ext.commands import Bot, Context
+
+from listener.utils import Config, Logger, Settings, Strings, Utils
+from scripts import desAnime, desNature, desStarwars
 
 CONFIG = Config()
 
