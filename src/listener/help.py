@@ -1,7 +1,7 @@
-
 import disnake
 from disnake import interactions
-#from disnake.ext.commands import bot
+
+# from disnake.ext.commands import bot
 from disnake.ext import commands
 from disnake import SelectOption, ButtonStyle
 from disnake.ui import View, Select, Button
@@ -31,8 +31,9 @@ class Dropdown(disnake.ui.Select):
         # The placeholder is what will be shown when no option is chosen
         # The min and max values indicate we can only pick one of the three options
         # The options parameter defines the dropdown options. We defined this above
-        super().__init__(placeholder='Select a category',
-                         min_values=1, max_values=1, options=options)
+        super().__init__(
+            placeholder="Select a category", min_values=1, max_values=1, options=options
+        )
 
     async def callback(self, interaction: disnake.Interaction):
         # Use the interaction object to send a response message containing
@@ -40,7 +41,7 @@ class Dropdown(disnake.ui.Select):
         # Select object, and the values attribute gets a list of the user's
         # selected options. We only want the first one.
 
-        #print(f"{interaction.author.name} with ID {interaction.author.id} just clicked something in the select menu")
+        # print(f"{interaction.author.name} with ID {interaction.author.id} just clicked something in the select menu")
         label = interaction.data.values[0]
         print(label)
         for cog in self.bot.cogs:  # fixed
@@ -53,9 +54,7 @@ class Dropdown(disnake.ui.Select):
                 description=f"Welcome To {self.bot.user.name} Help System",
             )
             embede.set_footer(text="Developed with ❤️ by Middlle")
-            await interaction.response.edit_message(
-                embed=embede,
-                view=None)
+            await interaction.response.edit_message(embed=embede, view=None)
 
 
 class DropdownView(disnake.ui.View):
@@ -69,7 +68,7 @@ class DropdownView(disnake.ui.View):
 async def get_help(self, interaction, CogToPassAlong):
     # if CogToPassAlong == "NSFW":
     # if not interaction.channel.is_nsfw():
-    #embed = disnake.Embed(title="Non-NSFW channel 🔞", description=f"Find yourself an NSFW-Channel and retry from there.", color=disnake.Colour.red())
+    # embed = disnake.Embed(title="Non-NSFW channel 🔞", description=f"Find yourself an NSFW-Channel and retry from there.", color=disnake.Colour.red())
     # embed.set_footer(text=f"set_your_footer_here")
     # await interaction.respond(embed=embed)
     # return
@@ -81,15 +80,16 @@ async def get_help(self, interaction, CogToPassAlong):
             pass
 
     # making title - getting description from doc-string below class
-    emb = disnake.Embed(title=f'{CogToPassAlong} - Commands',
-                        description=self.bot.cogs[CogToPassAlong].__doc__)
+    emb = disnake.Embed(
+        title=f"{CogToPassAlong} - Commands",
+        description=self.bot.cogs[CogToPassAlong].__doc__,
+    )
     emb.set_author(name="Help System")
     # getting commands from cog
     for command in self.bot.get_cog(CogToPassAlong).get_commands():
         # if cog is not hidden
         if not command.hidden:
-            emb.add_field(name=f"『`{command.name}`』",
-                          value=command.help, inline=False)
+            emb.add_field(name=f"『`{command.name}`』", value=command.help, inline=False)
     # found cog - breaking loop
     await interaction.response.edit_message(embed=emb)
 
@@ -98,11 +98,13 @@ class Help(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.command(slash_interaction=True, message_command=True, description="Help Command")
+    @commands.command(
+        slash_interaction=True, message_command=True, description="Help Command"
+    )
     async def help(self, ctx):
-        embed = disnake.Embed(title="SELECTION TEST",
-                              description="Testing our embeds",
-                              color=0xFF8000)
+        embed = disnake.Embed(
+            title="SELECTION TEST", description="Testing our embeds", color=0xFF8000
+        )
         embede = disnake.Embed(
             title=":books: Help System",
             description=f"Welcome To {self.bot.user.name} Help System",

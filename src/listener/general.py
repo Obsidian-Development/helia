@@ -83,7 +83,9 @@ class General(commands.Cog, name="General"):
     # else:
     # await ctx.send(embed=Utils.error_embed(STRINGS['error']['command_not_found']))
 
-    @commands.command(slash_interaction=True, message_command=True, description="Echo Commands")
+    @commands.command(
+        slash_interaction=True, message_command=True, description="Echo Commands"
+    )
     async def echo(self, ctx: Context, *, content):
         """
 
@@ -103,13 +105,14 @@ class General(commands.Cog, name="General"):
                     description=STRINGS["general"]["blacklistwarndesc"],
                     color=0xFF0000,
                 )
-                embed.set_footer(
-                    text=STRINGS["general"]["blacklistwarnfooter"])
+                embed.set_footer(text=STRINGS["general"]["blacklistwarnfooter"])
                 return await ctx.send(embed=embed)
         else:
             return await ctx.send(content)
 
-    @commands.command(slash_interaction=True, message_command=True, description="Generate Embed")
+    @commands.command(
+        slash_interaction=True, message_command=True, description="Generate Embed"
+    )
     async def embed(self, ctx: Context, name, *, content):
         """
 
@@ -129,14 +132,15 @@ class General(commands.Cog, name="General"):
                     description=STRINGS["general"]["blacklistwarndesc"],
                     color=0xFF0000,
                 )
-                embed.set_footer(
-                    text=STRINGS["general"]["blacklistwarnfooter"])
+                embed.set_footer(text=STRINGS["general"]["blacklistwarnfooter"])
                 return await ctx.send(embed=embed)
         else:
             creator = disnake.Embed(title=name, description=content)
             await ctx.send(embed=creator)
 
-    @commands.command(slash_interaction=True, message_command=True, description="Search Wikipedia")
+    @commands.command(
+        slash_interaction=True, message_command=True, description="Search Wikipedia"
+    )
     @commands.is_nsfw()
     async def wiki(self, ctx: Context, *, searcher=None):
         """
@@ -170,10 +174,13 @@ class General(commands.Cog, name="General"):
             wikierror.set_footer(text="Try again ")
             await ctx.send(embed=wikierror)
         except:
-            await ctx.send(
-                "bot: Missing argument or permissions to do the command")
+            await ctx.send("bot: Missing argument or permissions to do the command")
 
-    @commands.command(slash_interaction=True, message_command=True, description="Shows information about bot and its author")
+    @commands.command(
+        slash_interaction=True,
+        message_command=True,
+        description="Shows information about bot and its author",
+    )
     async def about(self, ctx: Context) -> NoReturn:
         """
 
@@ -188,7 +195,7 @@ class General(commands.Cog, name="General"):
         path = "scripts/version.txt"
         with open(path, "r") as file:
             ver = file.readline()
-        ramUsage = self.process.memory_full_info().rss / 1024**2
+        ramUsage = self.process.memory_full_info().rss / 1024 ** 2
         pythonVersion = platform.python_version()
         dpyVersion = disnake.__version__
         servercount = len(self.bot.guilds)
@@ -203,9 +210,11 @@ class General(commands.Cog, name="General"):
             color=0xFF6900,
         )
 
-        embed.add_field(name=STRINGS["general"]["aboutver"],
-                        value=f"```Bot Version: {ver}\nPython Version:{pythonVersion}\nLibrary: disnake.py\ndisnake.Py Version: {dpyVersion} ```",
-                        inline=False)
+        embed.add_field(
+            name=STRINGS["general"]["aboutver"],
+            value=f"```Bot Version: {ver}\nPython Version:{pythonVersion}\nLibrary: disnake.py\ndisnake.Py Version: {dpyVersion} ```",
+            inline=False,
+        )
         embed.add_field(
             name="Other Information",
             value=f"```Server Count: {servercount}\nUser Count: {usercount}\nRAM Usage:{ramUsage:.2f} MB\nDays: {days}d\nHours: {hours}h\nMinutes: {minutes}m\nSeconds: {seconds}s```",
@@ -218,11 +227,14 @@ class General(commands.Cog, name="General"):
         )
 
         # embed.add_field(name=STRINGS['general']['aboutthanks'], value=STRINGS['general']['aboutthankstext'],inline=False)
-        embed.set_footer(text=self.bot.user.name,
-                         icon_url=self.bot.user.avatar.url)
+        embed.set_footer(text=self.bot.user.name, icon_url=self.bot.user.avatar.url)
         await ctx.send(embed=embed)
 
-    @commands.command(slash_interaction=True, message_command=True, description="Shows bot privacy policy")
+    @commands.command(
+        slash_interaction=True,
+        message_command=True,
+        description="Shows bot privacy policy",
+    )
     async def privacy(self, ctx: Context):
         """
 
@@ -268,8 +280,7 @@ class General(commands.Cog, name="General"):
             value=STRINGS["privacy"]["datadeletepoldesc"],
             inline=True,
         )
-        embed.set_footer(text=self.bot.user.name,
-                         icon_url=self.bot.user.avatar.url)
+        embed.set_footer(text=self.bot.user.name, icon_url=self.bot.user.avatar.url)
         await ctx.send(embed=embed)
 
 
