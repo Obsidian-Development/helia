@@ -214,11 +214,11 @@ class General(commands.Cog, name="General"):
             value=f"```Server Count: {servercount}\nUser Count: {usercount}\nRAM Usage:{ramUsage:.2f} MB\nDays: {days}d\nHours: {hours}h\nMinutes: {minutes}m\nSeconds: {seconds}s```",
             inline=True,
         )
-        #embed.add_field(
-            #name=STRINGS["general"]["aboutauthor"],
-            #value=STRINGS["general"]["aboutauthortext"],
-            #inline=True,
-        #)
+        embed.add_field(
+            name=STRINGS["general"]["aboutauthor"],
+            value=STRINGS["general"]["aboutauthortext"],
+            inline=True,
+        )
         
         
 
