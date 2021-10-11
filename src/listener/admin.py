@@ -196,6 +196,8 @@ class Admin(commands.Cog, name="Admin"):
     async def restart(self,ctx):
       
       for ext in self.bot.cogs: # Idk how you called it
+        if ext == "Prefs":
+            pass
         self.bot.reload_extension(f"{ext}")
 
     @commands.command(description="Bot invite links")

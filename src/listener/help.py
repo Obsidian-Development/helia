@@ -1,8 +1,67 @@
+
 import disnake
 from disnake import interactions
+#from disnake.ext.commands import bot
 from disnake.ext import commands
 from disnake import SelectOption,ButtonStyle
 from disnake.ui import View, Select,Button
+
+bot = commands.bot
+
+class Dropdown(disnake.ui.Select):
+     def __init__(self):
+        self.bot = bot # ome thing fixed...
+        
+        # Set the options that will be presented inside the dropdown
+        options=[
+                    SelectOption(label="General", value="General"),
+                    SelectOption(label="Moderation", value="Moderation"),
+                    SelectOption(label="Utilities", value="Utilities"),
+                    SelectOption(label="Music", value="Music"),
+                    SelectOption(label="Preferences", value="Preferences"),
+                    SelectOption(
+                        label="Welcome & Goodbye Messages",
+                        value="Welcome & Goodbye Messages",
+                    ),
+                    SelectOption(label="Other", value="Other"),
+                    SelectOption(label="Close", value="Close"),
+                ]
+
+        # The placeholder is what will be shown when no option is chosen
+        # The min and max values indicate we can only pick one of the three options
+        # The options parameter defines the dropdown options. We defined this above
+        super().__init__(placeholder='Select a category', min_values=1, max_values=1, options=options)
+
+     async def callback(self, interaction: disnake.Interaction):
+        # Use the interaction object to send a response message containing
+        # the user's favourite colour or choice. The self object refers to the
+        # Select object, and the values attribute gets a list of the user's 
+        # selected options. We only want the first one.
+        
+        #print(f"{interaction.author.name} with ID {interaction.author.id} just clicked something in the select menu")
+        label = interaction.data.values[0]
+        print(label)
+        for cog in self.bot.cogs: # now have to fix error here?
+            if label == cog:#-------------------[1]
+                await get_help(self, interaction, CogToPassAlong=cog)
+                print(str(cog))
+        if label == "Close":
+                embede = disnake.Embed(
+                 title=":books: Help System",
+                 description=f"Welcome To {self.bot.user.name} Help System",
+                )
+                embede.set_footer(text="Developed with ❤️ by Middlle")
+                await interaction.response.edit_message(
+                                          embed=embede,
+                                          view=None)
+
+
+class DropdownView(disnake.ui.View):
+    def __init__(self):
+        super().__init__()
+
+        # Adds the dropdown to our view object.
+        self.add_item(Dropdown())
 
 async def get_help(self, interaction, CogToPassAlong):
      #if CogToPassAlong == "NSFW":
@@ -32,29 +91,7 @@ async def get_help(self, interaction, CogToPassAlong):
 class Help(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-    
-    
 
-    @commands.Cog.listener()
-    async def on_interaction(self, interaction: disnake.Interaction):
-      embede = disnake.Embed(
-            title=":books: Help System",
-            description=f"Welcome To {self.bot.user.name} Help System",
-        )
-      embede.set_footer(text="Developed with ❤️ by Middlle")
-      #print(f"{interaction.author.name} with ID {interaction.author.id} just clicked something in the select menu")
-      label = interaction.data.values[0]
-      print(label)
-      for cog in self.bot.cogs:
-            if label == cog:#-------------------[1]
-                await get_help(self, interaction, CogToPassAlong=cog)
-                print(str(cog))
-      if label == "Close":
-                await interaction.response.edit_message(
-                                          embed=embede,
-                                          view=None)
-
-      
     @commands.command(slash_interaction=True, message_command=True,description="Help Command")
     async def help(self, ctx):
         embed = disnake.Embed(title="SELECTION TEST",
@@ -65,26 +102,7 @@ class Help(commands.Cog):
             description=f"Welcome To {self.bot.user.name} Help System",
         )
         embede.set_footer(text="Developed with ❤️ by Middlle")
-        options=[
-                    SelectOption(label="General", value="General"),
-                    SelectOption(label="Moderation", value="Moderation"),
-                    SelectOption(label="Utilities", value="Utilities"),
-                    SelectOption(label="Music", value="Music"),
-                    SelectOption(label="Preferences", value="Preferences"),
-                    SelectOption(
-                        label="Welcome",
-                        value="Welcome",
-                    ),
-                    SelectOption(
-                        label="Goodbye",
-                        value="Goodbye",
-                    ),
-                    SelectOption(label="Other", value="Other"),
-                    SelectOption(label="Close", value="Close"),
-                ]
-        view = disnake.ui.View()
-        selecter = disnake.ui.Select(placeholder='Select a category', min_values=1, max_values=1, options=options,custom_id="helpmenuer")
-        view.add_item(selecter)
+        view = DropdownView()
         
         done_components = [
             Button(style=ButtonStyle.secondary, label="·", disabled=True),
