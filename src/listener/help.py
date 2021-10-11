@@ -6,11 +6,12 @@ from disnake.ext import commands
 from disnake import SelectOption,ButtonStyle
 from disnake.ui import View, Select,Button
 
-bot = commands.bot
+bot = commands.Bot
+
 
 class Dropdown(disnake.ui.Select):
      def __init__(self):
-        self.bot = bot # ome thing fixed...
+        self.bot = bot # one thing fixed...
         
         # Set the options that will be presented inside the dropdown
         options=[
@@ -41,7 +42,7 @@ class Dropdown(disnake.ui.Select):
         #print(f"{interaction.author.name} with ID {interaction.author.id} just clicked something in the select menu")
         label = interaction.data.values[0]
         print(label)
-        for cog in self.bot.cogs: # now have to fix error here?
+        for cog in self.bot.cogs: # fixed
             if label == cog:#-------------------[1]
                 await get_help(self, interaction, CogToPassAlong=cog)
                 print(str(cog))
