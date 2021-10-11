@@ -18,7 +18,7 @@ class Workers(commands.Cog):
         bot.loop.create_task(Workers.sdc_updater(self))
 
     async def sdc_updater(self):
-        """Updates bot information on bots.servers-disnake.com"""
+        """Updates bot information on bots.servers-discord.com"""
         while True:
             await asyncio.sleep(65)
             cprint("""║=============================║""")

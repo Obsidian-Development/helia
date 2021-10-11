@@ -310,24 +310,24 @@ class Admin(commands.Cog, name="Admin"):
             title=STRINGS["general"]["invitedescd"],
             colour=disnake.Colour(0xFF6900),
             # url=
-            # f"https://disnake.com/api/oauth2/authorize?client_id={self.bot.user.id}&permissions=204859462&scope=applications.commands%20bot",
+            # f"https://discord.com/api/oauth2/authorize?client_id={self.bot.user.id}&permissions=204859462&scope=applications.commands%20bot",
             description=STRINGS["general"]["botinvitedesc"],
         )
         # embed.set_author(
         # name=STRINGS["general"]["botinvitedescd"],
         # url=
-        # f"https://disnake.com/oauth2/authorize?client_id={self.bot.user.id}&scope=bot&permissions=204557314",
+        # f"https://discord.com/oauth2/authorize?client_id={self.bot.user.id}&scope=bot&permissions=204557314",
         # )
         # mostly useful for helia canary invite but still why not have it be there - comment if your self hosted version will not have canary branch
         # embed.add_field(
         # name=STRINGS["general"]["canaryver"],
         # value=
-        # f"https://disnake.com/oauth2/authorize?client_id=671612079106424862&scope=bot&permissions=204557314",
+        # f"https://discord.com/oauth2/authorize?client_id=671612079106424862&scope=bot&permissions=204557314",
         # inline=False,
         # )
         # embed.add_field(
         # name=STRINGS["general"]["botupsdc"],
-        # value=f"https://bots.server-disnake.com/{self.bot.user.id}",
+        # value=f"https://bots.server-discord.com/{self.bot.user.id}",
         # inline=True,
         # )
         # embed.add_field(

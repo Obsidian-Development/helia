@@ -261,7 +261,7 @@ class Utilities(commands.Cog):
             e.set_thumbnail(url=f"{guild.icon.url}")
         else:
             e.set_thumbnail(
-                url="https://cdn.disnakeapp.com/embed/avatars/1.png")
+                url="https://cdn.discordapp.com/embed/avatars/1.png")
 
         channel_info = []
         key_to_emoji = {
