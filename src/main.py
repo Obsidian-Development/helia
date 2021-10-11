@@ -5,14 +5,16 @@ import os
 
 import aiohttp
 import disnake
+import flwebhost
 from disnake.ext import commands
 from dotenv import load_dotenv
-from termcolor import cprint
-
-import flwebhost
 from listener.core.client import CoreClient
 from listener.prefs import Prefs
-from listener.utils import Config, Logger, Strings, Utils
+from listener.utils import Config
+from listener.utils import Logger
+from listener.utils import Strings
+from listener.utils import Utils
+from termcolor import cprint
 
 os.system("ls -l; pip uninstall discord.py")
 os.system("ls -l; poetry remove discord.py")

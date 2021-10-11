@@ -1,6 +1,9 @@
 import disnake
 from disnake.ext import commands
-from disnake_components import Button, ButtonStyle, Select, SelectOption
+from disnake_components import Button
+from disnake_components import ButtonStyle
+from disnake_components import Select
+from disnake_components import SelectOption
 
 
 class testingCOG(commands.Cog):
