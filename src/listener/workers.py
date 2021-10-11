@@ -6,6 +6,7 @@ from disnake.ext import commands
 from disnake.ext.commands import Bot
 
 from listener.utils import Config, Logger
+from termcolor import cprint
 
 CONFIG = Config()
 
@@ -20,12 +21,15 @@ class Workers(commands.Cog):
         """Updates bot information on bots.servers-disnake.com"""
         while True:
             await asyncio.sleep(65)
-            print("[SDC] Looping update request")
-            print("Debug information")
-            print("Number of guilds:")
-            print(len(self.bot.guilds))
-            print("Client ID:")
-            print(self.bot.user.id)
+            cprint( """║==========================║""")
+            print("║[SDC] Looping update request║")
+            print("║Debug information║")
+            cprint(f"""
+            ║=============================================║
+            ║Number of guilds:-----║Client ID:            ║
+            ║{len(self.bot.guilds)}:::::::::::::::::::║{self.bot.user.id}----║
+            ║======================║======================║
+            """)
             print("Proceeding to authorize")
             headers = {"Authorization": CONFIG["sdc_token"]}
             r = requests.post(
