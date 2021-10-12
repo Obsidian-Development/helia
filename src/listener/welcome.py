@@ -19,8 +19,8 @@ class Welcome(commands.Cog):
     @commands.Cog.listener()
     async def on_member_join(self, member):
         logpath = "logs/log.txt"
-        with open(path, "r") as file:
-            ver = file.readline()
+        #with open(path, "r") as file:
+            #ver = file.readline()
 
         cprint(
             f"""
