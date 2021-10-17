@@ -41,7 +41,7 @@ class General(commands.Cog, name="General"):
         COMMANDS = Commands(lang)
 
         if command == None:
-            embed = discord.Embed(
+            embed = disnake.Embed(
                 title=STRINGS['general']['commands_list'], description=STRINGS['general']['help_list_description'].format(prefix), color=0xef940b)
             embed.set_thumbnail(
                 url=self.bot.user.avatar.url)
@@ -62,7 +62,7 @@ class General(commands.Cog, name="General"):
             for i in COMMANDS:
                 for j in COMMANDS[i]['commands']:
                     if command == j:
-                        embed = discord.Embed(
+                        embed = disnake.Embed(
                             title=STRINGS['general']['help'].format(f'`{prefix}{j}`'), color=0xef940b)
 
                         embed.set_thumbnail(
