@@ -44,7 +44,7 @@ class General(commands.Cog, name="General"):
             embed = discord.Embed(
                 title=STRINGS['general']['commands_list'], description=STRINGS['general']['help_list_description'].format(prefix), color=0xef940b)
             embed.set_thumbnail(
-                url=self.bot.user.avatar_url_as())
+                url=self.bot.user.avatar.url)
 
             for i in COMMANDS:
                 title = COMMANDS[i]['title']
@@ -66,7 +66,7 @@ class General(commands.Cog, name="General"):
                             title=STRINGS['general']['help'].format(f'`{prefix}{j}`'), color=0xef940b)
 
                         embed.set_thumbnail(
-                            url=self.bot.user.avatar_url_as())
+                            url=self.bot.user.avatar.url)
 
                         embed.add_field(
                             name=STRINGS['general']['description'], value=COMMANDS[i]['commands'][j]['description'], inline=False)
