@@ -24,64 +24,66 @@ class General(commands.Cog, name="General"):
         self.name = "General"
         self.process = psutil.Process(os.getpid())
 
-    # @commands.command()
-    #
-    # async def help(self, ctx: Context, command: str = None) -> NoReturn:
-    # """Shows help for a specific command, or displays a complete list of commands.
+    @commands.command()
+    @commands.guild_only()
+    async def fuglyhelp(self, ctx: Context, command: str = None) -> NoReturn:
+        """Shows help for a specific command, or displays a complete list of commands.
+        Attributes:
+        -----------
+        - `command` - the command to display help for. 
+            If `command` is empty, displays a complete list of commands.     
+            If the command does not exist, writes that the command was not found.
+        """
+        s = await Settings(ctx.guild.id)
+        lang = await s.get_field('locale', CONFIG['default_locale'])
+        prefix = await s.get_field('prefix', CONFIG['default_prefix'])
+        STRINGS = Strings(lang)
+        COMMANDS = Commands(lang)
 
-    # Attributes:
-    # -----------
-    # - `command` - the command to display help for.
-    # If `command` is empty, displays a complete list of commands.
-    # If the command does not exist, writes that the command was not found.
+        if command == None:
+            embed = discord.Embed(
+                title=STRINGS['general']['commands_list'], description=STRINGS['general']['help_list_description'].format(prefix), color=0xef940b)
+            embed.set_thumbnail(
+                url=self.bot.user.avatar_url_as())
 
-    # """
-    # s = await Settings(ctx.guild.id)
-    # lang = await s.get_field('locale', CONFIG['default_locale'])
-    # prefix = await s.get_field('prefix', CONFIG['default_prefix'])
-    # STRINGS = Strings(lang)
-    # COMMANDS = Commands(lang)
+            for i in COMMANDS:
+                title = COMMANDS[i]['title']
 
-    # if command == None:
-    # embed = disnake.Embed(
-    # itle=STRINGS['general']['commands_list'], description=STRINGS['general']['help_list_description'].format(prefix), color=0xef940b)
-    # for i in COMMANDS:
-    # title = COMMANDS[i]['title']
+                description = ', '.join(
+                    [f'`{j}`' for j in COMMANDS[i]['commands']])
 
-    # description = ', '.join(
-    # [f'`{j}`' for j in COMMANDS[i]['commands']])
+                if self.bot.get_cog(i) != None:
+                    embed.add_field(
+                        name=title, value=description, inline=False)
 
-    # if self.bot.get_cog(i) != None:
-    # embed.add_field(
-    # name=title, value=description, inline=False)
-    # embed.set_footer(text=self.bot.user.name, icon_url=self.bot.user.avatar_url)
-    # await ctx.send(embed=embed)
+            await ctx.send(embed=embed)
 
-    # elif command != '':
-    # for i in COMMANDS:
-    # for j in COMMANDS[i]['commands']:
-    # if command == j:
-    # embed = disnake.Embed(
-    # title=STRINGS['general']['helpsystemtitle'].format(f'`{prefix}{j}`'), color=0xef940b)
+        elif command != '':
+            for i in COMMANDS:
+                for j in COMMANDS[i]['commands']:
+                    if command == j:
+                        embed = discord.Embed(
+                            title=STRINGS['general']['help'].format(f'`{prefix}{j}`'), color=0xef940b)
 
-    # embed.add_field(
-    # name=STRINGS['general']['description'], value=COMMANDS[i]['commands'][j]['description'], inline=False)
+                        embed.set_thumbnail(
+                            url=self.bot.user.avatar_url_as())
 
-    # embed.add_field(
-    # name=STRINGS['general']['usage'], value=COMMANDS[i]['commands'][j]['usage'].format(prefix), inline=False)
+                        embed.add_field(
+                            name=STRINGS['general']['description'], value=COMMANDS[i]['commands'][j]['description'], inline=False)
 
-    # if len(COMMANDS[i]['commands'][j]['aliases']) > 0:
-    # aliases = ', '.join(
-    # [f'`{alias}`' for alias in COMMANDS[i]['commands'][j]['aliases']])
-    # embed.add_field(
-    # name=STRINGS['general']['aliases'], value=aliases, inline=False)
+                        embed.add_field(
+                            name=STRINGS['general']['usage'], value=COMMANDS[i]['commands'][j]['usage'].format(prefix), inline=False)
 
-    # embed.set_footer(text=self.bot.user.name, icon_url=self.bot.user.avatar_url)
+                        if len(COMMANDS[i]['commands'][j]['aliases']) > 0:
+                            aliases = ', '.join(
+                                [f'`{alias}`' for alias in COMMANDS[i]['commands'][j]['aliases']])
+                            embed.add_field(
+                                name=STRINGS['general']['aliases'], value=aliases, inline=False)
 
-    # await ctx.send(embed=embed)
-    # return
-    # else:
-    # await ctx.send(embed=Utils.error_embed(STRINGS['error']['command_not_found']))
+                        await ctx.send(embed=embed)
+                        return
+            else:
+                await ctx.send(embed=Utils.error_embed(STRINGS['error']['command_not_found']))
 
     @commands.command(
         slash_interaction=True, message_command=True, description="Echo Commands"
