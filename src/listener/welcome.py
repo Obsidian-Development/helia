@@ -6,10 +6,10 @@ import sqlite3
 
 import disnake
 from disnake.ext import commands
-from disnake.ext.commands import Bot, Context
-from termcolor import cprint
-
+from disnake.ext.commands import Bot
+from disnake.ext.commands import Context
 from scripts import db
+from termcolor import cprint
 
 
 class Welcome(commands.Cog):

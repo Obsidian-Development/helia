@@ -4,9 +4,9 @@ import asyncio
 import requests
 from disnake.ext import commands
 from disnake.ext.commands import Bot
+from listener.utils import Config
+from listener.utils import Logger
 from termcolor import cprint
-
-from listener.utils import Config, Logger
 
 CONFIG = Config()
 
