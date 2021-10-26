@@ -1,15 +1,12 @@
 import discord
 from discord import ButtonStyle, SelectOption, interactions
 
-# from discord.ext.commands import bot
+
 from discord.ext import commands
 from discord.ui import Button, Select, View
 
-bot = commands.Bot
-
-
 class Dropdown(discord.ui.Select):
-    def __init__(self):
+    def __init__(self, bot):
         self.bot = bot  # one thing fixed...
 
         # Set the options that will be presented inside the dropdown
@@ -20,8 +17,12 @@ class Dropdown(discord.ui.Select):
             SelectOption(label="Music", value="Music"),
             SelectOption(label="Preferences", value="Preferences"),
             SelectOption(
-                label="Welcome & Goodbye Messages",
-                value="Welcome & Goodbye Messages",
+                label="Welcome",
+                value="Welcome",
+            ),
+            SelectOption(
+                label="Goodbye",
+                value="Goodbye",
             ),
             SelectOption(label="Other", value="Other"),
             SelectOption(label="Close", value="Close"),
@@ -57,11 +58,12 @@ class Dropdown(discord.ui.Select):
 
 
 class DropdownView(discord.ui.View):
-    def __init__(self):
+    def __init__(self, bot):
         super().__init__()
 
         # Adds the dropdown to our view object.
-        self.add_item(Dropdown())
+        self.bot = bot
+        self.add_item(Dropdown(self.bot))
 
 
 async def get_help(self, interaction, CogToPassAlong):
@@ -97,7 +99,7 @@ class Help(commands.Cog):
         self.bot = bot
 
     @commands.command(
-        slash_interaction=True, message_command=True, description="Help Command"
+        slash_command=True, message_command=True, description="Help Command"
     )
     async def help(self, ctx):
         embed = discord.Embed(
@@ -108,7 +110,7 @@ class Help(commands.Cog):
             description=f"Welcome To {self.bot.user.name} Help System",
         )
         embede.set_footer(text="Developed with ❤️ by Middlle")
-        view = DropdownView()
+        view = DropdownView(self.bot)
 
         done_components = [
             Button(style=ButtonStyle.secondary, label="·", disabled=True),
