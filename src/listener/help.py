@@ -1,11 +1,11 @@
-import disnake
-from disnake import ButtonStyle, SelectOption, interactions
+import discord
+from discord import ButtonStyle, SelectOption, interactions
 
 
-from disnake.ext import commands
-from disnake.ui import Button, Select, View
+from discord.ext import commands
+from discord.ui import Button, Select, View
 
-class Dropdown(disnake.ui.Select):
+class Dropdown(discord.ui.Select):
     def __init__(self, bot):
         self.bot = bot  # one thing fixed...
 
@@ -35,7 +35,7 @@ class Dropdown(disnake.ui.Select):
             placeholder="Select a category", min_values=1, max_values=1, options=options
         )
 
-    async def callback(self, interaction: disnake.Interaction):
+    async def callback(self, interaction: discord.Interaction):
         # Use the interaction object to send a response message containing
         # the user's favourite colour or choice. The self object refers to the
         # Select object, and the values attribute gets a list of the user's
@@ -49,7 +49,7 @@ class Dropdown(disnake.ui.Select):
                 await get_help(self, interaction, CogToPassAlong=cog)
                 print(str(cog))
         if label == "Close":
-            embede = disnake.Embed(
+            embede = discord.Embed(
                 title=":books: Help System",
                 description=f"Welcome To {self.bot.user.name} Help System",
             )
@@ -57,7 +57,7 @@ class Dropdown(disnake.ui.Select):
             await interaction.response.edit_message(embed=embede, view=None)
 
 
-class DropdownView(disnake.ui.View):
+class DropdownView(discord.ui.View):
     def __init__(self, bot):
         super().__init__()
 
@@ -69,7 +69,7 @@ class DropdownView(disnake.ui.View):
 async def get_help(self, interaction, CogToPassAlong):
     # if CogToPassAlong == "NSFW":
     # if not interaction.channel.is_nsfw():
-    # embed = disnake.Embed(title="Non-NSFW channel 🔞", description=f"Find yourself an NSFW-Channel and retry from there.", color=disnake.Colour.red())
+    # embed = discord.Embed(title="Non-NSFW channel 🔞", description=f"Find yourself an NSFW-Channel and retry from there.", color=discord.Colour.red())
     # embed.set_footer(text=f"set_your_footer_here")
     # await interaction.respond(embed=embed)
     # return
@@ -79,7 +79,7 @@ async def get_help(self, interaction, CogToPassAlong):
     for _ in self.bot.get_cog(CogToPassAlong).get_commands():
         pass
     # making title - getting description from doc-string below class
-    emb = disnake.Embed(
+    emb = discord.Embed(
         title=f"{CogToPassAlong} - Commands",
         description=self.bot.cogs[CogToPassAlong].__doc__,
     )
@@ -102,10 +102,10 @@ class Help(commands.Cog):
         slash_command=True, message_command=True, description="Help Command"
     )
     async def help(self, ctx):
-        embed = disnake.Embed(
+        embed = discord.Embed(
             title="SELECTION TEST", description="Testing our embeds", color=0xFF8000
         )
-        embede = disnake.Embed(
+        embede = discord.Embed(
             title=":books: Help System",
             description=f"Welcome To {self.bot.user.name} Help System",
         )
