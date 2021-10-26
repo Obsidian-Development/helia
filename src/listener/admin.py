@@ -186,11 +186,11 @@ class Admin(commands.Cog, name="Admin"):
 
       invite = discord.utils.oauth_url(client_id = user.id, scopes = ("bot", "applications.commands"))
       embeder=discord.Embed(title="Generating invite for the provided user id", color=0x778efd)
-      waiter = ctx.send(embed=embeder,delete_after=15)
+      waiter = await ctx.send(embed=embeder)
       await asyncio.sleep(15)
       embedtimes=discord.Embed(title="Your invite", color=0x778efd)
       embedtimes.add_field(name="Is here", value=f"{invite}", inline=True)
-      ctx.send(embed=embedtimes)
+      await ctx.send(embed=embedtimes)
 
     @commands.command(description="Bot restart/shutdown")
     async def shutdown(self, ctx: Context):  # Команда для выключения бота
