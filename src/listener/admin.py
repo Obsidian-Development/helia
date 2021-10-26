@@ -36,7 +36,7 @@ class Confirm(discord.ui.View):
     # We also send the user an ephemeral message that we're confirming their choice.
     @discord.ui.button(style=ButtonStyle.green, label="✓", custom_id="yes")
     async def confirm(
-        self, button: discord.ui.Button, interaction: discord.MessageInteraction
+        self, button: discord.ui.Button, interaction: discord.Interaction
     ):
         s = await Settings(self.ctx.guild.id)
         lang = await s.get_field("locale", CONFIG["default_locale"])
@@ -91,7 +91,7 @@ class Confirm(discord.ui.View):
     # This one is similar to the confirmation button except sets the inner value to `False`
     @discord.ui.button(style=ButtonStyle.red, label="X", custom_id="no")
     async def cancel(
-        self, button: discord.ui.Button, interaction: discord.MessageInteraction
+        self, button: discord.ui.Button, interaction: discord.Interaction
     ):
         s = await Settings(self.ctx.guild.id)
         lang = await s.get_field("locale", CONFIG["default_locale"])
