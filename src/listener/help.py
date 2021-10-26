@@ -1,15 +1,12 @@
 import disnake
 from disnake import ButtonStyle, SelectOption, interactions
 
-# from disnake.ext.commands import bot
+
 from disnake.ext import commands
 from disnake.ui import Button, Select, View
 
-bot = commands.Bot
-
-
 class Dropdown(disnake.ui.Select):
-    def __init__(self):
+    def __init__(self, bot):
         self.bot = bot  # one thing fixed...
 
         # Set the options that will be presented inside the dropdown
@@ -20,8 +17,12 @@ class Dropdown(disnake.ui.Select):
             SelectOption(label="Music", value="Music"),
             SelectOption(label="Preferences", value="Preferences"),
             SelectOption(
-                label="Welcome & Goodbye Messages",
-                value="Welcome & Goodbye Messages",
+                label="Welcome",
+                value="Welcome",
+            ),
+            SelectOption(
+                label="Goodbye",
+                value="Goodbye",
             ),
             SelectOption(label="Other", value="Other"),
             SelectOption(label="Close", value="Close"),
@@ -41,7 +42,7 @@ class Dropdown(disnake.ui.Select):
         # selected options. We only want the first one.
 
         # print(f"{interaction.author.name} with ID {interaction.author.id} just clicked something in the select menu")
-        label = interaction.data.values[0]
+        label = self.values[0]
         print(label)
         for cog in self.bot.cogs:  # fixed
             if label == cog:  # -------------------[1]
@@ -57,11 +58,12 @@ class Dropdown(disnake.ui.Select):
 
 
 class DropdownView(disnake.ui.View):
-    def __init__(self):
+    def __init__(self, bot):
         super().__init__()
 
         # Adds the dropdown to our view object.
-        self.add_item(Dropdown())
+        self.bot = bot
+        self.add_item(Dropdown(self.bot))
 
 
 async def get_help(self, interaction, CogToPassAlong):
@@ -97,7 +99,7 @@ class Help(commands.Cog):
         self.bot = bot
 
     @commands.command(
-        slash_interaction=True, message_command=True, description="Help Command"
+        slash_command=True, message_command=True, description="Help Command"
     )
     async def help(self, ctx):
         embed = disnake.Embed(
@@ -108,7 +110,7 @@ class Help(commands.Cog):
             description=f"Welcome To {self.bot.user.name} Help System",
         )
         embede.set_footer(text="Developed with ❤️ by Middlle")
-        view = DropdownView()
+        view = DropdownView(self.bot)
 
         done_components = [
             Button(style=ButtonStyle.secondary, label="·", disabled=True),
