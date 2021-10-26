@@ -12,6 +12,7 @@ from disnake.ext import commands
 from disnake.ext.commands import Bot, Context
 from disnake.ui import Button, Select, View
 from dotenv import load_dotenv
+import typing
 
 from listener.utils import Config, Logger, Settings, Strings, Utils
 
@@ -174,6 +175,25 @@ class Admin(commands.Cog, name="Admin"):
             await ctx.send(embed=embed)
         else:
             await ctx.message.add_reaction(CONFIG["yes_emoji"])
+
+    @commands.command(brief = "make a quick bot invite with 0 perms")
+    async def invite_bot(self, ctx, *, user : typing.Optional[disnake.User] = None):
+      user = user or ctx.author
+
+      if not user.bot:
+          embed=disnake.Embed(title="Error", description="The provided user id is not a bot!", color=0xff0000)
+          
+          return await ctx.send(embed=embed)
+
+      invite = disnake.utils.oauth_url(client_id = user.id, scopes = ("bot", "applications.commands"))
+      embeder=disnake.Embed(title="Generating invite for the provided user id", color=0x778efd)
+      waiter = ctx.send(embed=embeder,delete_after=15)
+      await asyncio.sleep(15)
+      embedtimes=disnake.Embed(title="Your invite", color=0x778efd)
+      embedtimes.add_field(name="Is here", value=f"{invite}", inline=True)
+      ctx.send(embed=embedtimes)
+
+      
 
     @commands.command(description="Bot restart/shutdown")
     async def shutdown(self, ctx: Context):  # Команда для выключения бота
