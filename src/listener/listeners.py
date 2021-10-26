@@ -110,6 +110,7 @@ class Listeners(commands.Cog, name="Listeners"):
         lang = await s.get_field("locale", CONFIG["default_locale"])
         STRINGS = Strings(lang)
         COMMANDS = Commands(lang)
+        logpath = "logs/log.txt"
         cprint("==============================")
         cprint(
             f"""
@@ -127,6 +128,12 @@ class Listeners(commands.Cog, name="Listeners"):
         """
         )
         cprint("==============================")
+        with open(logpath, "a") as file:
+            print("\n", file=file)
+            print("An error has occured in the bot!", file=file))
+            print(f"Traceback : {error}", file=file)
+            print(f"Guild that caused the error : {ctx.guild.name} - Guild id {ctx.guild.id} - Member triggering the error {ctx.author.name} - Member id {ctx.author.id} ", file=file)
+            
 
         if isinstance(error, commands.CommandNotFound):
             return
