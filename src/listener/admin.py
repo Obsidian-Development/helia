@@ -187,11 +187,12 @@ class Admin(commands.Cog, name="Admin"):
 
       invite = disnake.utils.oauth_url(client_id = user.id, scopes = ("bot", "applications.commands"))
       embeder=disnake.Embed(title="Generating invite for the provided user id", color=0x778efd)
-      waiter = ctx.send(embed=embeder,delete_after=15)
+      waiter = await ctx.send(embed=embeder)
       await asyncio.sleep(15)
       embedtimes=disnake.Embed(title="Your invite", color=0x778efd)
       embedtimes.add_field(name="Is here", value=f"{invite}", inline=True)
-      ctx.send(embed=embedtimes)
+      await ctx.send(embed=embedtimes)
+      
 
       
 
