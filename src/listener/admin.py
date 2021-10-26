@@ -5,13 +5,14 @@ import os
 from os import system as sys
 from os.path import abspath, dirname
 from typing import NoReturn
-import typing
+
 import discord
 from discord import ButtonStyle, SelectOption
 from discord.ext import commands
 from discord.ext.commands import Bot, Context
 from discord.ui import Button, Select, View
 from dotenv import load_dotenv
+import typing
 
 from listener.utils import Config, Logger, Settings, Strings, Utils
 
@@ -35,7 +36,7 @@ class Confirm(discord.ui.View):
     # We also send the user an ephemeral message that we're confirming their choice.
     @discord.ui.button(style=ButtonStyle.green, label="✓", custom_id="yes")
     async def confirm(
-        self, button: discord.ui.Button, interaction: discord.Interaction
+        self, button: discord.ui.Button, interaction: discord.MessageInteraction
     ):
         s = await Settings(self.ctx.guild.id)
         lang = await s.get_field("locale", CONFIG["default_locale"])
@@ -90,7 +91,7 @@ class Confirm(discord.ui.View):
     # This one is similar to the confirmation button except sets the inner value to `False`
     @discord.ui.button(style=ButtonStyle.red, label="X", custom_id="no")
     async def cancel(
-        self, button: discord.ui.Button, interaction: discord.Interaction
+        self, button: discord.ui.Button, interaction: discord.MessageInteraction
     ):
         s = await Settings(self.ctx.guild.id)
         lang = await s.get_field("locale", CONFIG["default_locale"])
@@ -174,7 +175,7 @@ class Admin(commands.Cog, name="Admin"):
             await ctx.send(embed=embed)
         else:
             await ctx.message.add_reaction(CONFIG["yes_emoji"])
-    
+
     @commands.command(brief = "make a quick bot invite with 0 perms")
     @commands.cooldown(1, 15, commands.BucketType.user)
     async def invite_bot(self, ctx, *, user : typing.Optional[discord.User] = None):
@@ -192,6 +193,9 @@ class Admin(commands.Cog, name="Admin"):
       embedtimes=discord.Embed(title="Your invite", color=0x778efd)
       embedtimes.add_field(name="Is here", value=f"{invite}", inline=True)
       await ctx.send(embed=embedtimes)
+      
+
+      
 
     @commands.command(description="Bot restart/shutdown")
     async def shutdown(self, ctx: Context):  # Команда для выключения бота
