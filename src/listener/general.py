@@ -10,14 +10,9 @@ import discord
 import psutil
 import wikipedia
 from discord.ext import commands
-from discord.ext.commands import Bot
-from discord.ext.commands import Context
-from listener.utils import Commands
-from listener.utils import Config
-from listener.utils import Logger
-from listener.utils import Settings
-from listener.utils import Strings
-from listener.utils import Utils
+from discord.ext.commands import Bot, Context
+
+from listener.utils import Commands, Config, Logger, Settings, Strings, Utils
 from scripts import blacklist
 
 CONFIG = Config()
@@ -177,8 +172,7 @@ class General(commands.Cog, name="General"):
             )
             wikierror.add_field(
                 name="If you are still having this error",
-                value=
-                "Report the issue on github or ask in bot support server about it",
+                value="Report the issue on github or ask in bot support server about it",
                 inline=True,
             )
             wikierror.set_footer(text="Try again ")
@@ -223,14 +217,12 @@ class General(commands.Cog, name="General"):
 
         embed.add_field(
             name=STRINGS["general"]["aboutver"],
-            value=
-            f"```Bot Version: {ver}\nPython Version:{pythonVersion}\nLibrary: discord.py\ndiscord.Py Version: {dpyVersion} ```",
+            value=f"```Bot Version: {ver}\nPython Version:{pythonVersion}\nLibrary: discord.py\ndiscord.Py Version: {dpyVersion} ```",
             inline=False,
         )
         embed.add_field(
             name="Other Information",
-            value=
-            f"```Server Count: {servercount}\nUser Count: {usercount}\nRAM Usage:{ramUsage:.2f} MB\nDays: {days}d\nHours: {hours}h\nMinutes: {minutes}m\nSeconds: {seconds}s```",
+            value=f"```Server Count: {servercount}\nUser Count: {usercount}\nRAM Usage:{ramUsage:.2f} MB\nDays: {days}d\nHours: {hours}h\nMinutes: {minutes}m\nSeconds: {seconds}s```",
             inline=True,
         )
         embed.add_field(

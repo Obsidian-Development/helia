@@ -1,11 +1,7 @@
 import disnake
-from disnake import ButtonStyle
-from disnake import interactions
-from disnake import SelectOption
+from disnake import ButtonStyle, SelectOption, interactions
 from disnake.ext import commands
-from disnake.ui import Button
-from disnake.ui import Select
-from disnake.ui import View
+from disnake.ui import Button, Select, View
 
 
 class Dropdown(disnake.ui.Select):

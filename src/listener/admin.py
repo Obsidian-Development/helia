@@ -4,25 +4,17 @@ import datetime
 import os
 import typing
 from os import system as sys
-from os.path import abspath
-from os.path import dirname
+from os.path import abspath, dirname
 from typing import NoReturn
 
 import disnake
-from disnake import ButtonStyle
-from disnake import SelectOption
+from disnake import ButtonStyle, SelectOption
 from disnake.ext import commands
-from disnake.ext.commands import Bot
-from disnake.ext.commands import Context
-from disnake.ui import Button
-from disnake.ui import Select
-from disnake.ui import View
+from disnake.ext.commands import Bot, Context
+from disnake.ui import Button, Select, View
 from dotenv import load_dotenv
-from listener.utils import Config
-from listener.utils import Logger
-from listener.utils import Settings
-from listener.utils import Strings
-from listener.utils import Utils
+
+from listener.utils import Config, Logger, Settings, Strings, Utils
 
 # from disnake_components import Button, ButtonStyle, disnakeComponents
 
@@ -116,6 +108,7 @@ class Confirm(disnake.ui.View):
 
 class Admin(commands.Cog, name="Admin"):
     """A module required to administer the bot. Only works for its owners."""
+
     def __init__(self, bot: Bot) -> None:
         self.bot = bot
         self.name = "Admin"
@@ -297,22 +290,19 @@ class Admin(commands.Cog, name="Admin"):
             Button(
                 style=ButtonStyle.link,
                 label=STRINGS["general"]["botinvitetitle"],
-                url=
-                f"https://discord.com/api/oauth2/authorize?client_id={self.bot.user.id}&permissions=204859462&scope=applications.commands%20bot",
+                url=f"https://discord.com/api/oauth2/authorize?client_id={self.bot.user.id}&permissions=204859462&scope=applications.commands%20bot",
             ))
         view.add_item(
             Button(
                 style=ButtonStyle.link,
                 label=STRINGS["general"]["botinvitedescd"],
-                url=
-                f"https://discord.com/oauth2/authorize?client_id={self.bot.user.id}&scope=bot&permissions=204557314",
+                url=f"https://discord.com/oauth2/authorize?client_id={self.bot.user.id}&scope=bot&permissions=204557314",
             ))
         view.add_item(
             Button(
                 style=ButtonStyle.link,
                 label=STRINGS["general"]["canaryver"],
-                url=
-                "https://discord.com/oauth2/authorize?client_id=671612079106424862&scope=bot&permissions=204557314",
+                url="https://discord.com/oauth2/authorize?client_id=671612079106424862&scope=bot&permissions=204557314",
             ))
         view.add_item(
             Button(
