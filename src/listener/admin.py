@@ -176,6 +176,7 @@ class Admin(commands.Cog, name="Admin"):
             await ctx.message.add_reaction(CONFIG["yes_emoji"])
     
     @commands.command(brief = "make a quick bot invite with 0 perms")
+    @commands.cooldown(1, 15, commands.BucketType.user)
     async def invite_bot(self, ctx, *, user : typing.Optional[discord.User] = None):
       user = user or ctx.author
 
