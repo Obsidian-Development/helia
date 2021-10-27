@@ -22,7 +22,7 @@ os.system("ls -l; poetry remove discord.py")
 #os.system("ls -l; pip install -U git+https://github.com/pieckenst/WaveLinkFork.git")
 
 # os.system("ls -l; pip install git+https://github.com/pieckenst/Orion.py.git@Development")
-os.system("ls -l; pip install git+https://github.com/Senarc-Studios/Orion.py.git@Development")
+os.system("ls -l; pip install git+https://github.com/iDevision/enhanced-discord.py.git")
 
 # from discord_components import (
 # Button,
