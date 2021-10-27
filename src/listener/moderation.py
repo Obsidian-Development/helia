@@ -19,7 +19,7 @@ class Moderation(commands.Cog, name="Moderation"):
         self.bot = bot
         self.name = "Moderation"
 
-    @commands.command(slash_interaction=True, message_command=True)
+    @commands.command(slash_command=True, message_command=True)
     @commands.bot_has_permissions(ban_members=True)
     @commands.has_permissions(ban_members=True)
     @commands.cooldown(1, 5, commands.BucketType.user)

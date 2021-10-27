@@ -85,7 +85,7 @@ class General(commands.Cog, name="General"):
     # else:
     # await ctx.send(embed=Utils.error_embed(STRINGS['error']['command_not_found']))
 
-    @commands.command(slash_interaction=True,
+    @commands.command(slash_command=True,
                       message_command=True,
                       description="Echo Commands")
     async def echo(self, ctx: Context, *, content):
@@ -113,7 +113,7 @@ class General(commands.Cog, name="General"):
         else:
             return await ctx.send(content)
 
-    @commands.command(slash_interaction=True,
+    @commands.command(slash_command=True,
                       message_command=True,
                       description="Generate Embed")
     async def embed(self, ctx: Context, name, *, content):
@@ -142,7 +142,7 @@ class General(commands.Cog, name="General"):
             creator = discord.Embed(title=name, description=content)
             await ctx.send(embed=creator)
 
-    @commands.command(slash_interaction=True,
+    @commands.command(slash_command=True,
                       message_command=True,
                       description="Search Wikipedia")
     @commands.is_nsfw()
@@ -182,7 +182,7 @@ class General(commands.Cog, name="General"):
                 "bot: Missing argument or permissions to do the command")
 
     @commands.command(
-        slash_interaction=True,
+        slash_command=True,
         message_command=True,
         description="Shows information about bot and its author",
     )
@@ -237,7 +237,7 @@ class General(commands.Cog, name="General"):
         await ctx.send(embed=embed)
 
     @commands.command(
-        slash_interaction=True,
+        slash_command=True,
         message_command=True,
         description="Shows bot privacy policy",
     )

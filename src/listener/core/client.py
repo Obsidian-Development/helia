@@ -25,7 +25,7 @@ class CoreClient(commands.AutoShardedBot):
             max_messages=None,
             intents=intents,
             chunk_guilds_at_startup=False,
-            slash_interactions=True,
+            slash_commands=False,
         )
         self.name = name
         self.id = id

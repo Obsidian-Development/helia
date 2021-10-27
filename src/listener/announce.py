@@ -15,7 +15,7 @@ class broadcast(commands.Cog):
         self.bot = bot
 
     @commands.command(
-        slash_interaction=True,
+        slash_command=True,
         message_command=True,
         description="Global Announcement from bot owner",
     )

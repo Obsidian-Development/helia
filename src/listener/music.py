@@ -394,7 +394,7 @@ class Music(commands.Cog, wavelink.WavelinkMixin, name="Music"):
         # logger.info(f"[MUSIC]Voice channel quit requested by {ctx.author} in {ctx.message.guild}")
 
     @commands.command(
-        slash_interaction=True,
+        slash_command=True,
         message_command=True,
         name="play",
         brief="play music.",
@@ -455,7 +455,7 @@ class Music(commands.Cog, wavelink.WavelinkMixin, name="Music"):
             await ctx.send(embed=playEmbed_3)
 
     @commands.command(
-        slash_interaction=True,
+        slash_command=True,
         message_command=True,
         name="pause",
         brief="Pause playback.",
@@ -487,7 +487,7 @@ class Music(commands.Cog, wavelink.WavelinkMixin, name="Music"):
             await ctx.send(embed=pauseer_embed)
 
     @commands.command(
-        slash_interaction=True,
+        slash_command=True,
         message_command=True,
         name="stop",
         brief="Stops music playback.",
@@ -508,7 +508,7 @@ class Music(commands.Cog, wavelink.WavelinkMixin, name="Music"):
         # logger.info(f"[MUSIC]Music stopped by {ctx.author} in {ctx.message.guild}")
 
     @commands.command(
-        slash_interaction=True,
+        slash_command=True,
         message_command=True,
         name="skip",
         brief="Skips currently playing song.",
@@ -570,7 +570,7 @@ class Music(commands.Cog, wavelink.WavelinkMixin, name="Music"):
             await ctx.send(embed=nextEmbed_3)
 
     @commands.command(
-        slash_interaction=True,
+        slash_command=True,
         message_command=True,
         name="previous",
         brief="Returns to the previous song in the list.",
@@ -623,7 +623,7 @@ class Music(commands.Cog, wavelink.WavelinkMixin, name="Music"):
             await ctx.send(embed=previousEmbed_3)
 
     @commands.command(
-        slash_interaction=True,
+        slash_command=True,
         message_command=True,
         name="shuffle",
         brief="Shuffles queue.",
@@ -661,7 +661,7 @@ class Music(commands.Cog, wavelink.WavelinkMixin, name="Music"):
             await ctx.send(embed=shuffleEmbed_2)
 
     @commands.command(
-        slash_interaction=True,
+        slash_command=True,
         message_command=True,
         name="queue",
         brief="Lists the songs in queue.",
@@ -716,7 +716,7 @@ class Music(commands.Cog, wavelink.WavelinkMixin, name="Music"):
             await ctx.send(embed=queueEmbed_2)
 
     @commands.command(
-        slash_interaction=True,
+        slash_command=True,
         message_command=True,
         name="volume",
         brief="Sets bot volume.",

@@ -16,7 +16,7 @@ class minigames(commands.Cog):
         self.bot = bot
 
     @commands.command(
-        slash_interaction=False, message_command=True, description="Random cube"
+        slash_command=False, message_command=True, description="Random cube"
     )
     async def kubik(self, ctx: Context):  # кубик рандом
         s = await Settings(ctx.guild.id)
@@ -31,7 +31,7 @@ class minigames(commands.Cog):
         await ctx.send(embed=embedkub)
 
     @commands.command(
-        slash_interaction=False, message_command=True, description="Coin throw"
+        slash_command=False, message_command=True, description="Coin throw"
     )
     async def monetka(self, ctx: Context):
         s = await Settings(ctx.guild.id)
@@ -46,7 +46,7 @@ class minigames(commands.Cog):
         await ctx.send(embed=embedmonet)
 
     @commands.command(
-        slash_interaction=False, message_command=True, description="Casino"
+        slash_command=False, message_command=True, description="Casino"
     )
     async def casino(self, ctx: Context):
         s = await Settings(ctx.guild.id)
