@@ -130,7 +130,7 @@ class Admin(commands.Cog, name="Admin"):
             #await ctx.message.add_reaction(CONFIG["no_emoji"])
             embed = Utils.error_embed("`{}`: {}".format(type(e).__name__, e))
             await ctx.send(embed=embed)
-        else:
+        #else:
             #await ctx.message.add_reaction(CONFIG["yes_emoji"])
 
     @commands.command(slash_command=False, message_command=True)
@@ -149,7 +149,7 @@ class Admin(commands.Cog, name="Admin"):
             #await ctx.message.add_reaction(CONFIG["no_emoji"])
             embed = Utils.error_embed("`{}`: {}".format(type(e).__name__, e))
             await ctx.send(embed=embed)
-        else:
+        #else:
 
             #await ctx.message.add_reaction(CONFIG["yes_emoji"])
 
@@ -172,7 +172,7 @@ class Admin(commands.Cog, name="Admin"):
             #await ctx.message.add_reaction(CONFIG["no_emoji"])
             embed = Utils.error_embed("`{}`: {}".format(type(e).__name__, e))
             await ctx.send(embed=embed)
-        else:
+        #else:
             #await ctx.message.add_reaction(CONFIG["yes_emoji"])
 
     @commands.command(brief="make a quick bot invite with 0 perms")

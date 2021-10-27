@@ -216,9 +216,9 @@ class Moderation(commands.Cog, name="Moderation"):
                     pass
 
         if not not_banned_members:
-            #await ctx.message.add_reaction(CONFIG["yes_emoji"])
+            await ctx.message.add_reaction(CONFIG["yes_emoji"])
         else:
-            #await ctx.message.add_reaction(CONFIG["warn_emoji"])
+            await ctx.message.add_reaction(CONFIG["warn_emoji"])
             msg = await ctx.send(
                 Utils.warn_embed(
                     STRINGS["moderation"]["on_not_full_multiban"].format(
