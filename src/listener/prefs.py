@@ -10,10 +10,10 @@ from listener.utils import Config, Logger, Settings, Strings, Utils
 CONFIG = Config()
 
 
-class Prefs(commands.Cog, name="Prefs"):
+class Preferences(commands.Cog, name="Preferences"):
     def __init__(self, bot) -> None:
         self.bot = bot
-        self.name = "Prefs"
+        self.name = "Preferences"
         # self.server_prefixes = server_prefixes
 
     @commands.command(aliases=["setprefix"])
@@ -71,5 +71,5 @@ class Prefs(commands.Cog, name="Prefs"):
 
 
 def setup(bot: Bot) -> NoReturn:
-    bot.add_cog(Prefs(bot))
-    Logger.cog_loaded(bot.get_cog("Prefs").name)
+    bot.add_cog(Preferences(bot))
+    Logger.cog_loaded(bot.get_cog("Preferences").name)
