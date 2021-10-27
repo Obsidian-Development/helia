@@ -126,6 +126,8 @@ class Admin(commands.Cog, name="Admin"):
         """
         try:
             self.bot.load_extension(f"listener.{module}")
+            embeder=discord.Embed(title="Cog has been loaded!", color=0x0c0c0c)
+            await ctx.send(embed=embeder,ephemeral=True)
         except Exception as e:
             #await ctx.message.add_reaction(CONFIG["no_emoji"])
             embed = Utils.error_embed("`{}`: {}".format(type(e).__name__, e))
@@ -145,6 +147,8 @@ class Admin(commands.Cog, name="Admin"):
         """
         try:
             self.bot.unload_extension(f"listener.{module}")
+            embederx=discord.Embed(title="Cog has been unloaded!", color=0x0c0c0c)
+            await ctx.send(embed=embederx,ephemeral=True)
         except Exception as e:
             #await ctx.message.add_reaction(CONFIG["no_emoji"])
             embed = Utils.error_embed("`{}`: {}".format(type(e).__name__, e))
@@ -168,6 +172,8 @@ class Admin(commands.Cog, name="Admin"):
         """
         try:
             self.bot.reload_extension(f"listener.{module}")
+            embederxx=discord.Embed(title="Cog has been reloaded!", color=0x0c0c0c)
+            await ctx.send(embed=embederxx,ephemeral=True)
         except Exception as e:
             #await ctx.message.add_reaction(CONFIG["no_emoji"])
             embed = Utils.error_embed("`{}`: {}".format(type(e).__name__, e))
