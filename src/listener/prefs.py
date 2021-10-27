@@ -16,7 +16,7 @@ class Preferences(commands.Cog, name="Preferences"):
         self.name = "Preferences"
         # self.server_prefixes = server_prefixes
 
-    @commands.command(aliases=["setprefix"])
+    @commands.command(slash_command=True, message_command=True,aliases=["setprefix"])
     @commands.has_permissions(administrator=True)
     @commands.cooldown(1, 5, commands.BucketType.user)
     async def prefix(self, ctx: Context, prefix: str) -> NoReturn:
@@ -29,10 +29,12 @@ class Preferences(commands.Cog, name="Preferences"):
         """
         s = await Settings(ctx.guild.id)
         await s.set_field("prefix", prefix)
+        embederx=disnake.Embed(title=f"Prefix has been set to {prefix}", color=0x0c0c0c)
+        await ctx.send(embed=embederx,ephemeral=True)
 
         #await ctx.message.add_reaction(CONFIG["yes_emoji"])
 
-    @commands.command(aliases=["lang", "setlang", "language"])
+    @commands.command(slash_command=True, message_command=True,aliases=["lang", "setlang", "language"])
     @commands.has_permissions(administrator=True)
     @commands.cooldown(1, 5, commands.BucketType.user)
     async def locale(self, ctx: Context, locale: str) -> NoReturn:
@@ -51,6 +53,8 @@ class Preferences(commands.Cog, name="Preferences"):
         for _locale in locales:
             if _locale == locale:
                 await s.set_field("locale", locale)
+                embederx=disnake.Embed(title=f"Locale succesfully set!", color=0x0c0c0c)
+                await ctx.send(embed=embederx,ephemeral=True)
 
                 #await ctx.message.add_reaction(CONFIG["yes_emoji"])
                 return
