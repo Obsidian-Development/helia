@@ -137,7 +137,7 @@ class Listeners(commands.Cog, name="Listeners"):
 
         if isinstance(error, commands.CommandNotFound):
             return
-        await ctx.message.add_reaction(CONFIG["no_emoji"])
+        #await ctx.message.add_reaction(CONFIG["no_emoji"])
 
         if isinstance(error, commands.MissingRequiredArgument):
             prefix = await s.get_field("prefix", CONFIG["default_prefix"])

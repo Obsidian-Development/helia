@@ -30,7 +30,7 @@ class Preferences(commands.Cog, name="Preferences"):
         s = await Settings(ctx.guild.id)
         await s.set_field("prefix", prefix)
 
-        await ctx.message.add_reaction(CONFIG["yes_emoji"])
+        #await ctx.message.add_reaction(CONFIG["yes_emoji"])
 
     @commands.command(aliases=["lang", "setlang", "language"])
     @commands.has_permissions(administrator=True)
@@ -52,7 +52,7 @@ class Preferences(commands.Cog, name="Preferences"):
             if _locale == locale:
                 await s.set_field("locale", locale)
 
-                await ctx.message.add_reaction(CONFIG["yes_emoji"])
+                #await ctx.message.add_reaction(CONFIG["yes_emoji"])
                 return
 
         # FIXME

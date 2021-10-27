@@ -16,7 +16,7 @@ class gnulinux(commands.Cog):
 
     # GNU/Linux Distr Wiki
     @commands.command(
-        slash_interaction=False,
+        slash_command=False,
         message_command=True,
         description="Arch Linux Description",
     )
@@ -37,7 +37,7 @@ class gnulinux(commands.Cog):
         await ctx.send(embed=archl)
 
     @commands.command(
-        slash_interaction=False,
+        slash_command=False,
         message_command=True,
         description="Ubuntu linux description",
     )
@@ -56,7 +56,7 @@ class gnulinux(commands.Cog):
         await ctx.send(embed=ubuntu1)
 
     @commands.command(
-        slash_interaction=False,
+        slash_command=False,
         message_command=True,
         description="Debian Linux Description",
     )
@@ -77,7 +77,7 @@ class gnulinux(commands.Cog):
         await ctx.send(embed=debian1)
 
     @commands.command(
-        slash_interaction=False,
+        slash_command=False,
         message_command=True,
         description="Deepin linux description",
     )
@@ -98,7 +98,7 @@ class gnulinux(commands.Cog):
         await ctx.send(embed=deepin1)
 
     @commands.command(
-        slash_interaction=False,
+        slash_command=False,
         message_command=True,
         description="Manjaro linux description",
     )
@@ -119,7 +119,7 @@ class gnulinux(commands.Cog):
         await ctx.send(embed=manjaro1)
 
     @commands.command(
-        slash_interaction=False,
+        slash_command=False,
         message_command=True,
         description="Linux Mint description",
     )

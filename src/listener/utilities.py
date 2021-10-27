@@ -19,7 +19,7 @@ class Utilities(commands.Cog):
         self.bot = bot
         self.name = "Utilities"
 
-    @commands.command(slash_interaction=True, message_command=True)
+    @commands.command(slash_command=True, message_command=True)
     async def user(self,
                    ctx: Context,
                    member: disnake.Member = None) -> NoReturn:
@@ -59,7 +59,7 @@ class Utilities(commands.Cog):
 
         await ctx.send(embed=embed)
 
-    @commands.command(slash_interaction=True, message_command=True)
+    @commands.command(slash_command=True, message_command=True)
     async def emoji(self, ctx: Context, emoji: str) -> NoReturn:
         """Shows emoji information."""
         s = await Settings(ctx.guild.id)
@@ -79,7 +79,7 @@ class Utilities(commands.Cog):
 
         await ctx.send(embed=embed)
 
-    @commands.command(slash_interaction=True, message_command=True)
+    @commands.command(slash_command=True, message_command=True)
     async def channel(self, ctx: Context, channel: str) -> NoReturn:
         """Shows channel information."""
         s = await Settings(ctx.guild.id)
@@ -122,7 +122,7 @@ class Utilities(commands.Cog):
         else:
             await ctx.send("чел, это не канал, ты что-то попутал")
 
-    @commands.command(slash_interaction=True, message_command=True)
+    @commands.command(slash_command=True, message_command=True)
     async def avatar(self,
                      ctx: Context,
                      member: disnake.Member = None) -> NoReturn:
@@ -155,7 +155,7 @@ class Utilities(commands.Cog):
         await ctx.send(embed=embed)
 
     @commands.command(
-        slash_interaction=True,
+        slash_command=True,
         message_command=True,
         description="Random number generator",
     )
@@ -179,7 +179,7 @@ class Utilities(commands.Cog):
                         inline=False)
         await ctx.send(embed=embed)
 
-    @commands.command(slash_interaction=True,
+    @commands.command(slash_command=True,
                       message_command=True,
                       description="Count square root")
     async def sqrt(self, ctx: Context, num: int):
@@ -217,7 +217,7 @@ class Utilities(commands.Cog):
             )
             await ctx.send(embed=embed)
 
-    @commands.command(slash_interaction=True,
+    @commands.command(slash_command=True,
                       message_command=True,
                       aliases=["server"])
     async def guild(self, ctx, *, guild_id: int = None) -> NoReturn:

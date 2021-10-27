@@ -8,7 +8,7 @@ class testingCOG(commands.Cog):
         self.bot = bot
 
     @commands.command(
-        slash_interaction=False, message_command=True, description="BUTTON TEST"
+        slash_command=False, message_command=True, description="BUTTON TEST"
     )
     async def button(self, ctx):
         async def callback(interaction):
@@ -25,7 +25,7 @@ class testingCOG(commands.Cog):
         )
 
     @commands.command(
-        slash_interaction=False, message_command=True, description="SELECT TEST"
+        slash_command=False, message_command=True, description="SELECT TEST"
     )
     async def select(self, ctx):
         embed = disnake.Embed(

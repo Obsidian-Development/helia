@@ -65,7 +65,7 @@ class Welcome(commands.Cog):
         cursor.close()
         connect.close()
 
-    @commands.group(invoke_without_command=True)
+    @commands.group(slash_command=True, message_command=True,invoke_without_command=True)
     async def welcome(self, ctx: Context):
         descwelcgood = """
                 Here is the list of commands related to server join and leave messages
