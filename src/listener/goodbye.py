@@ -64,7 +64,7 @@ class Goodbye(commands.Cog):
         connect.close()
         await channel.send(embed=gb)
 
-    @commands.group(invoke_without_command=True)
+    @commands.group(slash_command=True, message_command=True,invoke_without_command=True)
     async def goodbye(self, ctx: Context):
         descwelcgood = """
                 Here is the list of commands related to server join and leave messages

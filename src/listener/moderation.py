@@ -82,7 +82,7 @@ class Moderation(commands.Cog, name="Moderation"):
         """
         )
 
-    @commands.command()
+    @commands.command(slash_command=True, message_command=True)
     @commands.bot_has_permissions(ban_members=True)
     @commands.has_permissions(ban_members=True)
     @commands.cooldown(1, 5, commands.BucketType.user)
@@ -174,7 +174,7 @@ class Moderation(commands.Cog, name="Moderation"):
         embed = Utils.error_embed(STRINGS["error"]["user_not_found"])
         await ctx.send(embed=embed)
 
-    @commands.command()
+    @commands.command(slash_command=True, message_command=True)
     @commands.bot_has_permissions(ban_members=True)
     @commands.has_permissions(ban_members=True)
     @commands.cooldown(1, 5, commands.BucketType.user)
@@ -229,7 +229,7 @@ class Moderation(commands.Cog, name="Moderation"):
             await asyncio.sleep(30)
             await msg.delete()
 
-    @commands.command()
+    @commands.command(slash_command=True, message_command=True)
     @commands.bot_has_permissions(kick_members=True)
     @commands.has_permissions(kick_members=True)
     @commands.cooldown(1, 5, commands.BucketType.user)
@@ -301,7 +301,7 @@ class Moderation(commands.Cog, name="Moderation"):
             )
             return
 
-    @commands.command(aliases=["clear"])
+    @commands.command(slash_command=True, message_command=True,aliases=["clear"])
     @commands.bot_has_permissions(manage_messages=True)
     @commands.has_permissions(manage_messages=True)
     @commands.cooldown(1, 5, commands.BucketType.user)
@@ -358,7 +358,7 @@ class Moderation(commands.Cog, name="Moderation"):
         # )
         # return
 
-    @commands.command(aliases=["setnick, setname"])
+    @commands.command(slash_command=True, message_command=True,aliases=["setnick, setname"])
     @commands.bot_has_permissions(manage_nicknames=True)
     @commands.has_permissions(manage_roles=True)
     @commands.cooldown(1, 5, commands.BucketType.user)
@@ -391,7 +391,7 @@ class Moderation(commands.Cog, name="Moderation"):
             embed = Utils.error_embed(STRINGS["error"]["missing_perms"])
             await ctx.send(embed=embed)
 
-    @commands.command()
+    @commands.command(slash_command=True, message_command=True)
     @commands.bot_has_permissions(manage_roles=True)
     @commands.cooldown(1, 5, commands.BucketType.user)
     async def mute(
@@ -443,7 +443,7 @@ class Moderation(commands.Cog, name="Moderation"):
         await member.add_roles(mute_role)
         #await ctx.message.add_reaction(CONFIG["yes_emoji"])
 
-    @commands.command()
+    @commands.command(slash_command=True, message_command=True)
     @commands.bot_has_permissions(manage_roles=True)
     @commands.has_permissions(manage_roles=True)
     @commands.cooldown(1, 5, commands.BucketType.user)
@@ -471,7 +471,7 @@ class Moderation(commands.Cog, name="Moderation"):
             await member.remove_roles(mute_role)
             #await ctx.message.add_reaction(CONFIG["yes_emoji"])
 
-    @commands.command()
+    @commands.command(slash_command=True, message_command=True)
     @commands.bot_has_permissions(manage_roles=True)
     @commands.has_permissions(manage_roles=True)
     @commands.cooldown(1, 30, commands.BucketType.user)
@@ -499,7 +499,7 @@ class Moderation(commands.Cog, name="Moderation"):
         )
         await ctx.send(embed=embed)
 
-    @commands.command()
+    @commands.command(slash_command=True, message_command=True)
     @commands.bot_has_permissions(manage_roles=True)
     @commands.has_permissions(manage_roles=True)
     @commands.cooldown(1, 30, commands.BucketType.user)
@@ -527,7 +527,7 @@ class Moderation(commands.Cog, name="Moderation"):
         )
         await ctx.send(embed=embed)
 
-    @commands.command()
+    @commands.command(slash_command=True, message_command=True)
     @commands.bot_has_permissions(manage_roles=True)
     @commands.has_permissions(manage_roles=True)
     @commands.cooldown(1, 30, commands.BucketType.user)
@@ -549,7 +549,7 @@ class Moderation(commands.Cog, name="Moderation"):
         )
         await ctx.send(embed=embed)
 
-    @commands.command()
+    @commands.command(slash_command=True, message_command=True)
     @commands.bot_has_permissions(manage_roles=True)
     @commands.has_permissions(manage_roles=True)
     @commands.cooldown(1, 30, commands.BucketType.user)
@@ -572,7 +572,7 @@ class Moderation(commands.Cog, name="Moderation"):
         )
         await ctx.send(embed=embed)
 
-    @commands.command()
+    @commands.command(slash_command=True, message_command=True)
     @commands.bot_has_permissions(manage_roles=True)
     @commands.has_permissions(manage_roles=True)
     @commands.cooldown(1, 30, commands.BucketType.user)
@@ -594,7 +594,7 @@ class Moderation(commands.Cog, name="Moderation"):
         )
         await ctx.send(embed=embed)
 
-    @commands.command()
+    @commands.command(slash_command=True, message_command=True)
     @commands.bot_has_permissions(manage_roles=True)
     @commands.has_permissions(manage_roles=True)
     @commands.cooldown(1, 30, commands.BucketType.user)

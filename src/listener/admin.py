@@ -113,7 +113,7 @@ class Admin(commands.Cog, name="Admin"):
         self.bot = bot
         self.name = "Admin"
 
-    @commands.command(slash_command=False, message_command=True)
+    @commands.command(slash_command=True, message_command=True)
     @commands.is_owner()
     async def load(self, ctx: Context, *, module: str) -> NoReturn:
         """Loads a module (cog). If the module is not found
@@ -133,7 +133,7 @@ class Admin(commands.Cog, name="Admin"):
         #else:
             #await ctx.message.add_reaction(CONFIG["yes_emoji"])
 
-    @commands.command(slash_command=False, message_command=True)
+    @commands.command(slash_command=True, message_command=True)
     @commands.is_owner()
     async def unload(self, ctx: Context, *, module: str) -> NoReturn:
         """Unloads a module (cog). If the module is not found, it will throw an error.
@@ -153,7 +153,7 @@ class Admin(commands.Cog, name="Admin"):
 
             #await ctx.message.add_reaction(CONFIG["yes_emoji"])
 
-    @commands.command(slash_command=False,
+    @commands.command(slash_command=True,
                       message_command=True,
                       name="reload")
     @commands.is_owner()
@@ -175,7 +175,9 @@ class Admin(commands.Cog, name="Admin"):
         #else:
             #await ctx.message.add_reaction(CONFIG["yes_emoji"])
 
-    @commands.command(brief="make a quick bot invite with 0 perms")
+    @commands.command(slash_command=True,
+                      message_command=True,
+                      name="invite_bot",brief="Makes a bot invite without any permissions")
     @commands.cooldown(1, 15, commands.BucketType.user)
     async def invite_bot(self,
                          ctx,
@@ -203,7 +205,9 @@ class Admin(commands.Cog, name="Admin"):
         embedtimes.add_field(name="Is here", value=f"{invite}", inline=True)
         await ctx.send(embed=embedtimes)
 
-    @commands.command(description="Bot restart/shutdown")
+    @commands.command(slash_command=True,
+                      message_command=True,
+                      name="shutdown",description="Bot restart/shutdown")
     async def shutdown(self, ctx: Context):  # Команда для выключения бота
         s = await Settings(ctx.guild.id)
         lang = await s.get_field("locale", CONFIG["default_locale"])
@@ -233,7 +237,8 @@ class Admin(commands.Cog, name="Admin"):
         await ctx.send(embed=embedconfirm, view=viewb)
         await viewb.wait()
 
-    @commands.command(description="Set bot status")
+    @commands.command(slash_command=True,
+                      message_command=True,description="Set bot status")
     async def set_status(self, ctx, *args):
         s = await Settings(ctx.guild.id)
         lang = await s.get_field("locale", CONFIG["default_locale"])
@@ -279,7 +284,8 @@ class Admin(commands.Cog, name="Admin"):
         for ext in self.bot.cogs:  # Idk how you called it
             self.bot.reload_extension(f"{ext}")
 
-    @commands.command(description="Bot invite links")
+    @commands.command(slash_command=True,
+                      message_command=True,description="Bot invite links")
     async def invite(self, ctx: Context):
         s = await Settings(ctx.guild.id)
         lang = await s.get_field("locale", CONFIG["default_locale"])
@@ -375,7 +381,8 @@ class Admin(commands.Cog, name="Admin"):
         await ctx.send(embed=embed, view=view)
         await ctx.send("`----`", view=viewx)
 
-    @commands.command(brief="Gives the bot's uptime")
+    @commands.command(slash_command=True,
+                      message_command=True,brief="Gives the bot's uptime")
     async def uptime(self, ctx):
         delta_uptime = datetime.datetime.utcnow() - self.bot.launch_time
         hours, remainder = divmod(int(delta_uptime.total_seconds()), 3600)
