@@ -6,11 +6,11 @@ import platform
 import random
 from typing import NoReturn
 
-import discord
+import disnake
 import psutil
 import wikipedia
-from discord.ext import commands
-from discord.ext.commands import Bot, Context
+from disnake.ext import commands
+from disnake.ext.commands import Bot, Context
 
 from listener.utils import Commands, Config, Logger, Settings, Strings, Utils
 from scripts import blacklist
@@ -41,7 +41,7 @@ class General(commands.Cog, name="General"):
     # COMMANDS = Commands(lang)
 
     # if command == None:
-    # embed = discord.Embed(
+    # embed = disnake.Embed(
     # title=STRINGS['general']['commands_list'], description=STRINGS['general']['help_list_description'].format(prefix), color=0xef940b)
     # embed.set_thumbnail(
     # url=self.bot.user.avatar.url)
@@ -62,7 +62,7 @@ class General(commands.Cog, name="General"):
     # for i in COMMANDS:
     # for j in COMMANDS[i]['commands']:
     # if command == j:
-    # embed = discord.Embed(
+    # embed = disnake.Embed(
     # title=STRINGS['general']['help'].format(f'`{prefix}{j}`'), color=0xef940b)
 
     # embed.set_thumbnail(
@@ -102,7 +102,7 @@ class General(commands.Cog, name="General"):
         for item in blacklist.list:
             if content in item:
                 await ctx.message.delete()
-                embed = discord.Embed(
+                embed = disnake.Embed(
                     title=STRINGS["general"]["blacklistwarntitle"],
                     description=STRINGS["general"]["blacklistwarndesc"],
                     color=0xFF0000,
@@ -130,7 +130,7 @@ class General(commands.Cog, name="General"):
         for item in blacklist.list:
             if content in item:
                 await ctx.message.delete()
-                embed = discord.Embed(
+                embed = disnake.Embed(
                     title=STRINGS["general"]["blacklistwarntitle"],
                     description=STRINGS["general"]["blacklistwarndesc"],
                     color=0xFF0000,
@@ -139,7 +139,7 @@ class General(commands.Cog, name="General"):
                     text=STRINGS["general"]["blacklistwarnfooter"])
                 return await ctx.send(embed=embed)
         else:
-            creator = discord.Embed(title=name, description=content)
+            creator = disnake.Embed(title=name, description=content)
             await ctx.send(embed=creator)
 
     @commands.command(slash_interaction=True,
@@ -157,7 +157,7 @@ class General(commands.Cog, name="General"):
         try:
             wikipedia.set_lang("en")
             req = wikipedia.page(searcher)
-            wikip = discord.Embed(
+            wikip = disnake.Embed(
                 title=req.title,
                 description="Wikipedia search results",
                 url=req.url,
@@ -166,7 +166,7 @@ class General(commands.Cog, name="General"):
             wikip.set_thumbnail(url=req.images[0])
             await ctx.send(embed=wikip)
         except wikipedia.exceptions.PageError:
-            wikierror = discord.Embed(
+            wikierror = disnake.Embed(
                 title="Wikipedia Error",
                 description="Page not found or some other error",
             )
@@ -202,14 +202,14 @@ class General(commands.Cog, name="General"):
             ver = file.readline()
         ramUsage = self.process.memory_full_info().rss / 1024**2
         pythonVersion = platform.python_version()
-        dpyVersion = discord.__version__
+        dpyVersion = disnake.__version__
         servercount = len(self.bot.guilds)
         usercount = len(self.bot.users)
         delta_uptime = datetime.datetime.utcnow() - self.bot.launch_time
         hours, remainder = divmod(int(delta_uptime.total_seconds()), 3600)
         minutes, seconds = divmod(remainder, 60)
         days, hours = divmod(hours, 24)
-        embed = discord.Embed(
+        embed = disnake.Embed(
             title=STRINGS["general"]["abouttitle"],
             description=STRINGS["general"]["aboutdesc"],
             color=0xFF6900,
@@ -217,7 +217,7 @@ class General(commands.Cog, name="General"):
 
         embed.add_field(
             name=STRINGS["general"]["aboutver"],
-            value=f"```Bot Version: {ver}\nPython Version:{pythonVersion}\nLibrary: discord.py\ndiscord.Py Version: {dpyVersion} ```",
+            value=f"```Bot Version: {ver}\nPython Version:{pythonVersion}\nLibrary: disnake.py\ndisnake.Py Version: {dpyVersion} ```",
             inline=False,
         )
         embed.add_field(
@@ -251,7 +251,7 @@ class General(commands.Cog, name="General"):
         s = await Settings(ctx.guild.id)
         lang = await s.get_field("locale", CONFIG["default_locale"])
         STRINGS = Strings(lang)
-        embed = discord.Embed(
+        embed = disnake.Embed(
             title=STRINGS["privacy"]["privtitle"],
             description=STRINGS["privacy"]["privdesc"],
             color=0xFF8040,
