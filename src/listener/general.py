@@ -222,7 +222,7 @@ class General(commands.Cog, name="General"):
         )
         embed.add_field(
             name="Other Information",
-            value=f"```Server Count: {servercount}\nUser Count: {usercount}\nRAM Usage:{ramUsage:.2f} MB\nDays: {days}d\nHours: {hours}h\nMinutes: {minutes}m\nSeconds: {seconds}s```",
+            value=f"```Server Count: {servercount}\nUser Count: {usercount}\nRAM Usage:{ramUsage:.2f} MB\nDays: {days}d\nHours: {hours}h\nMinutes: {minutes}m\nSeconds: {seconds}s\n Command Count: {len(self.bot.commands)}```",
             inline=True,
         )
         embed.add_field(
