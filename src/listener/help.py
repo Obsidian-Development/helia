@@ -35,7 +35,7 @@ class Dropdown(disnake.ui.Select):
                          max_values=1,
                          options=options)
 
-    async def callback(self, interaction: disnake.Interaction):
+    async def callback(self, interaction: disnake.MessageInteraction):
         # Use the interaction object to send a response message containing
         # the user's favourite colour or choice. The self object refers to the
         # Select object, and the values attribute gets a list of the user's

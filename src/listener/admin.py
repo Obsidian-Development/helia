@@ -36,7 +36,7 @@ class Confirm(disnake.ui.View):
     # We also send the user an ephemeral message that we're confirming their choice.
     @disnake.ui.button(style=ButtonStyle.green, label="✓", custom_id="yes")
     async def confirm(self, button: disnake.ui.Button,
-                      interaction: disnake.Interaction):
+                      interaction: disnake.MessageInteraction):
         s = await Settings(self.ctx.guild.id)
         lang = await s.get_field("locale", CONFIG["default_locale"])
         STRINGS = Strings(lang)
@@ -89,7 +89,7 @@ class Confirm(disnake.ui.View):
     # This one is similar to the confirmation button except sets the inner value to `False`
     @disnake.ui.button(style=ButtonStyle.red, label="X", custom_id="no")
     async def cancel(self, button: disnake.ui.Button,
-                     interaction: disnake.Interaction):
+                     interaction: disnake.MessageInteraction):
         s = await Settings(self.ctx.guild.id)
         lang = await s.get_field("locale", CONFIG["default_locale"])
         STRINGS = Strings(lang)
