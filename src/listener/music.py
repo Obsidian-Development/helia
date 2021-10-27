@@ -369,6 +369,7 @@ class Music(commands.Cog, wavelink.WavelinkMixin, name="Music"):
             return self.wavelink.get_player(obj.id, cls=Player)
 
     @commands.command(
+        slash_command=True, message_command=True,
         name="leave",
         brief="L.",
         aliases=[

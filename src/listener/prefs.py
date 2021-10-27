@@ -16,7 +16,7 @@ class Preferences(commands.Cog, name="Preferences"):
         self.name = "Preferences"
         # self.server_prefixes = server_prefixes
 
-    @commands.command(aliases=["setprefix"])
+    @commands.command(slash_command=True, message_command=True,aliases=["setprefix"])
     @commands.has_permissions(administrator=True)
     @commands.cooldown(1, 5, commands.BucketType.user)
     async def prefix(self, ctx: Context, prefix: str) -> NoReturn:
@@ -32,7 +32,7 @@ class Preferences(commands.Cog, name="Preferences"):
 
         #await ctx.message.add_reaction(CONFIG["yes_emoji"])
 
-    @commands.command(aliases=["lang", "setlang", "language"])
+    @commands.command(slash_command=True, message_command=True,aliases=["lang", "setlang", "language"])
     @commands.has_permissions(administrator=True)
     @commands.cooldown(1, 5, commands.BucketType.user)
     async def locale(self, ctx: Context, locale: str) -> NoReturn:

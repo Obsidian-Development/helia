@@ -17,7 +17,7 @@ class Calculator(commands.Cog, name="Calculator"):
         self.name = "Calculator"
 
     @commands.command(
-        slash_command=True, message_command=True, description="Calculator command"
+        slash_command=False, message_command=True, description="Calculator command"
     )
     async def calculator(self, ctx):
         def calculate(exp):
