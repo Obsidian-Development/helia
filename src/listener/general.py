@@ -24,70 +24,70 @@ class General(commands.Cog, name="General"):
         self.name = "General"
         self.process = psutil.Process(os.getpid())
 
-    #@commands.command()
-    #@commands.guild_only()
-    #async def fuglyhelp(self, ctx: Context, command: str = None) -> NoReturn:
-        #"""Shows help for a specific command, or displays a complete list of commands.
-        #Attributes:
-        #-----------
-        #- `command` - the command to display help for. 
-        #    If `command` is empty, displays a complete list of commands.     
-        #    If the command does not exist, writes that the command was not found.
-        #"""
-        #s = await Settings(ctx.guild.id)
-        #lang = await s.get_field('locale', CONFIG['default_locale'])
-        #prefix = await s.get_field('prefix', CONFIG['default_prefix'])
-        #STRINGS = Strings(lang)
-        #COMMANDS = Commands(lang)
+    # @commands.command()
+    # @commands.guild_only()
+    # async def fuglyhelp(self, ctx: Context, command: str = None) -> NoReturn:
+    # """Shows help for a specific command, or displays a complete list of commands.
+    # Attributes:
+    # -----------
+    # - `command` - the command to display help for.
+    #    If `command` is empty, displays a complete list of commands.
+    #    If the command does not exist, writes that the command was not found.
+    # """
+    # s = await Settings(ctx.guild.id)
+    # lang = await s.get_field('locale', CONFIG['default_locale'])
+    # prefix = await s.get_field('prefix', CONFIG['default_prefix'])
+    # STRINGS = Strings(lang)
+    # COMMANDS = Commands(lang)
 
-        #if command == None:
-            #embed = discord.Embed(
-                #title=STRINGS['general']['commands_list'], description=STRINGS['general']['help_list_description'].format(prefix), color=0xef940b)
-            #embed.set_thumbnail(
-                #url=self.bot.user.avatar.url)
+    # if command == None:
+    # embed = discord.Embed(
+    # title=STRINGS['general']['commands_list'], description=STRINGS['general']['help_list_description'].format(prefix), color=0xef940b)
+    # embed.set_thumbnail(
+    # url=self.bot.user.avatar.url)
 
-            #for i in COMMANDS:
-                #title = COMMANDS[i]['title']
+    # for i in COMMANDS:
+    # title = COMMANDS[i]['title']
 
-                #description = ', '.join(
-                    #[f'`{j}`' for j in COMMANDS[i]['commands']])
+    # description = ', '.join(
+    # [f'`{j}`' for j in COMMANDS[i]['commands']])
 
-                #if self.bot.get_cog(i) != None:
-                    #embed.add_field(
-                        #name=title, value=description, inline=False)
+    # if self.bot.get_cog(i) != None:
+    # embed.add_field(
+    # name=title, value=description, inline=False)
 
-            #await ctx.send(embed=embed)
+    # await ctx.send(embed=embed)
 
-        #elif command != '':
-            #for i in COMMANDS:
-                #for j in COMMANDS[i]['commands']:
-                    #if command == j:
-                        #embed = discord.Embed(
-                            #title=STRINGS['general']['help'].format(f'`{prefix}{j}`'), color=0xef940b)
+    # elif command != '':
+    # for i in COMMANDS:
+    # for j in COMMANDS[i]['commands']:
+    # if command == j:
+    # embed = discord.Embed(
+    # title=STRINGS['general']['help'].format(f'`{prefix}{j}`'), color=0xef940b)
 
-                        #embed.set_thumbnail(
-                            #url=self.bot.user.avatar.url)
+    # embed.set_thumbnail(
+    # url=self.bot.user.avatar.url)
 
-                        #embed.add_field(
-                            #name=STRINGS['general']['description'], value=COMMANDS[i]['commands'][j]['description'], inline=False)
+    # embed.add_field(
+    # name=STRINGS['general']['description'], value=COMMANDS[i]['commands'][j]['description'], inline=False)
 
-                        #embed.add_field(
-                            #name=STRINGS['general']['usage'], value=COMMANDS[i]['commands'][j]['usage'].format(prefix), inline=False)
+    # embed.add_field(
+    # name=STRINGS['general']['usage'], value=COMMANDS[i]['commands'][j]['usage'].format(prefix), inline=False)
 
-                        #if len(COMMANDS[i]['commands'][j]['aliases']) > 0:
-                            #aliases = ', '.join(
-                                #[f'`{alias}`' for alias in COMMANDS[i]['commands'][j]['aliases']])
-                            #embed.add_field(
-                                #name=STRINGS['general']['aliases'], value=aliases, inline=False)
+    # if len(COMMANDS[i]['commands'][j]['aliases']) > 0:
+    # aliases = ', '.join(
+    # [f'`{alias}`' for alias in COMMANDS[i]['commands'][j]['aliases']])
+    # embed.add_field(
+    # name=STRINGS['general']['aliases'], value=aliases, inline=False)
 
-                        #await ctx.send(embed=embed)
-                        #return
-            #else:
-                #await ctx.send(embed=Utils.error_embed(STRINGS['error']['command_not_found']))
+    # await ctx.send(embed=embed)
+    # return
+    # else:
+    # await ctx.send(embed=Utils.error_embed(STRINGS['error']['command_not_found']))
 
-    @commands.command(
-        slash_interaction=True, message_command=True, description="Echo Commands"
-    )
+    @commands.command(slash_interaction=True,
+                      message_command=True,
+                      description="Echo Commands")
     async def echo(self, ctx: Context, *, content):
         """
 
@@ -113,9 +113,9 @@ class General(commands.Cog, name="General"):
         else:
             return await ctx.send(content)
 
-    @commands.command(
-        slash_interaction=True, message_command=True, description="Generate Embed"
-    )
+    @commands.command(slash_interaction=True,
+                      message_command=True,
+                      description="Generate Embed")
     async def embed(self, ctx: Context, name, *, content):
         """
 
@@ -142,9 +142,9 @@ class General(commands.Cog, name="General"):
             creator = discord.Embed(title=name, description=content)
             await ctx.send(embed=creator)
 
-    @commands.command(
-        slash_interaction=True, message_command=True, description="Search Wikipedia"
-    )
+    @commands.command(slash_interaction=True,
+                      message_command=True,
+                      description="Search Wikipedia")
     @commands.is_nsfw()
     async def wiki(self, ctx: Context, *, searcher=None):
         """
@@ -178,7 +178,8 @@ class General(commands.Cog, name="General"):
             wikierror.set_footer(text="Try again ")
             await ctx.send(embed=wikierror)
         except:
-            await ctx.send("bot: Missing argument or permissions to do the command")
+            await ctx.send(
+                "bot: Missing argument or permissions to do the command")
 
     @commands.command(
         slash_interaction=True,
@@ -199,7 +200,7 @@ class General(commands.Cog, name="General"):
         path = "scripts/version.txt"
         with open(path, "r") as file:
             ver = file.readline()
-        ramUsage = self.process.memory_full_info().rss / 1024 ** 2
+        ramUsage = self.process.memory_full_info().rss / 1024**2
         pythonVersion = platform.python_version()
         dpyVersion = discord.__version__
         servercount = len(self.bot.guilds)
@@ -221,7 +222,7 @@ class General(commands.Cog, name="General"):
         )
         embed.add_field(
             name="Other Information",
-            value=f"```Server Count: {servercount}\nUser Count: {usercount}\nRAM Usage:{ramUsage:.2f} MB\nDays: {days}d\nHours: {hours}h\nMinutes: {minutes}m\nSeconds: {seconds}s```",
+            value=f"```Server Count: {servercount}\nUser Count: {usercount}\nRAM Usage:{ramUsage:.2f} MB\nDays: {days}d\nHours: {hours}h\nMinutes: {minutes}m\nSeconds: {seconds}s\nCommand Count: {len(self.bot.commands)}```",
             inline=True,
         )
         embed.add_field(
