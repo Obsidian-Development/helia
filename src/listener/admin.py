@@ -127,11 +127,11 @@ class Admin(commands.Cog, name="Admin"):
         try:
             self.bot.load_extension(f"listener.{module}")
         except Exception as e:
-            await ctx.message.add_reaction(CONFIG["no_emoji"])
+            #await ctx.message.add_reaction(CONFIG["no_emoji"])
             embed = Utils.error_embed("`{}`: {}".format(type(e).__name__, e))
             await ctx.send(embed=embed)
         else:
-            await ctx.message.add_reaction(CONFIG["yes_emoji"])
+            #await ctx.message.add_reaction(CONFIG["yes_emoji"])
 
     @commands.command(slash_command=False, message_command=True)
     @commands.is_owner()
@@ -146,12 +146,12 @@ class Admin(commands.Cog, name="Admin"):
         try:
             self.bot.unload_extension(f"listener.{module}")
         except Exception as e:
-            await ctx.message.add_reaction(CONFIG["no_emoji"])
+            #await ctx.message.add_reaction(CONFIG["no_emoji"])
             embed = Utils.error_embed("`{}`: {}".format(type(e).__name__, e))
             await ctx.send(embed=embed)
         else:
 
-            await ctx.message.add_reaction(CONFIG["yes_emoji"])
+            #await ctx.message.add_reaction(CONFIG["yes_emoji"])
 
     @commands.command(slash_command=False,
                       message_command=True,
@@ -169,11 +169,11 @@ class Admin(commands.Cog, name="Admin"):
         try:
             self.bot.reload_extension(f"listener.{module}")
         except Exception as e:
-            await ctx.message.add_reaction(CONFIG["no_emoji"])
+            #await ctx.message.add_reaction(CONFIG["no_emoji"])
             embed = Utils.error_embed("`{}`: {}".format(type(e).__name__, e))
             await ctx.send(embed=embed)
         else:
-            await ctx.message.add_reaction(CONFIG["yes_emoji"])
+            #await ctx.message.add_reaction(CONFIG["yes_emoji"])
 
     @commands.command(brief="make a quick bot invite with 0 perms")
     @commands.cooldown(1, 15, commands.BucketType.user)

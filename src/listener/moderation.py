@@ -170,7 +170,7 @@ class Moderation(commands.Cog, name="Moderation"):
         # components=done_components,
         # )
 
-        await ctx.message.add_reaction(CONFIG["no_emoji"])
+        #await ctx.message.add_reaction(CONFIG["no_emoji"])
         embed = Utils.error_embed(STRINGS["error"]["user_not_found"])
         await ctx.send(embed=embed)
 
@@ -216,9 +216,9 @@ class Moderation(commands.Cog, name="Moderation"):
                     pass
 
         if not not_banned_members:
-            await ctx.message.add_reaction(CONFIG["yes_emoji"])
+            #await ctx.message.add_reaction(CONFIG["yes_emoji"])
         else:
-            await ctx.message.add_reaction(CONFIG["warn_emoji"])
+            #await ctx.message.add_reaction(CONFIG["warn_emoji"])
             msg = await ctx.send(
                 Utils.warn_embed(
                     STRINGS["moderation"]["on_not_full_multiban"].format(
@@ -288,7 +288,7 @@ class Moderation(commands.Cog, name="Moderation"):
                 await member.send(embed=embed)
             await asyncio.sleep(5)
             await member.kick()
-            await ctx.message.add_reaction(CONFIG["yes_emoji"])
+            #await ctx.message.add_reaction(CONFIG["yes_emoji"])
         else:
             await response.respond(
                 type=7,
@@ -386,7 +386,7 @@ class Moderation(commands.Cog, name="Moderation"):
             or member == ctx.message.author
         ):
             await member.edit(nick=name)
-            await ctx.message.add_reaction(CONFIG["yes_emoji"])
+            #await ctx.message.add_reaction(CONFIG["yes_emoji"])
         else:
             embed = Utils.error_embed(STRINGS["error"]["missing_perms"])
             await ctx.send(embed=embed)
@@ -441,7 +441,7 @@ class Moderation(commands.Cog, name="Moderation"):
             )
 
         await member.add_roles(mute_role)
-        await ctx.message.add_reaction(CONFIG["yes_emoji"])
+        #await ctx.message.add_reaction(CONFIG["yes_emoji"])
 
     @commands.command()
     @commands.bot_has_permissions(manage_roles=True)
@@ -469,7 +469,7 @@ class Moderation(commands.Cog, name="Moderation"):
             await ctx.send("нету роли мута ок да\n\n\nок")
         else:
             await member.remove_roles(mute_role)
-            await ctx.message.add_reaction(CONFIG["yes_emoji"])
+            #await ctx.message.add_reaction(CONFIG["yes_emoji"])
 
     @commands.command()
     @commands.bot_has_permissions(manage_roles=True)
