@@ -4,8 +4,8 @@ import json
 import os
 
 import aiohttp
-import discord
-from discord.ext import commands
+import disnake
+from disnake.ext import commands
 from dotenv import load_dotenv
 from termcolor import cprint
 
@@ -16,15 +16,18 @@ from listener.utils import Config, Logger, Strings, Utils
 
 os.system("ls -l; pip uninstall discord.py")
 os.system("ls -l; poetry remove discord.py")
-os.system("ls -l; pip install discord")
-os.system("ls -l; poetry add discord")
-# os.system("ls -l; pip install git+https://github.com/pieckenst/Orion.py.git@Development")
-# os.system("ls -l; pip install git+https://github.com/Senarc-Studios/Orion.py.git@Development")
+#os.system("ls -l; pip install disnake")
+#os.system("ls -l; poetry add disnake")
+#os.system("ls -l; pip install -U git+https://github.com/Disnake-Extensions/jishaku")
+#os.system("ls -l; pip install -U git+https://github.com/pieckenst/WaveLinkFork.git")
 
-# from discord_components import (
+# os.system("ls -l; pip install git+https://github.com/pieckenst/Orion.py.git@Development")
+os.system("ls -l; pip install git+https://github.com/Senarc-Studios/Orion.py.git@Development")
+
+# from disnake_components import (
 # Button,
 # ComponentsBot,
-# discordComponents,
+# disnakeComponents,
 # Select,
 # SelectOption,
 # )
@@ -80,7 +83,7 @@ def save_server_prefixes():
 
 
 def get_memory_config():
-    intents = discord.Intents.all()
+    intents = disnake.Intents.all()
     # Commented line for requesting members privileged intent - uncomment for enabling
     intents.members = True
     intents.presences = False
@@ -171,7 +174,7 @@ async def main():
                     "red",
                 )
 
-    # discordComponents(client)
+    # disnakeComponents(client)
 
     # Run Bot
 
