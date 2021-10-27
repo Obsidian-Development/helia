@@ -11,7 +11,7 @@ from termcolor import cprint
 
 import flwebhost
 from listener.core.client import CoreClient
-from listener.prefs import Prefs
+from listener.prefs import Preferences
 from listener.utils import Config, Logger, Strings, Utils
 
 os.system("ls -l; pip uninstall discord.py")
@@ -121,7 +121,7 @@ async def main():
     # Load Dependencies for DI
 
     session = aiohttp.ClientSession()
-    modules = [Prefs(bot=client)]
+    modules = [Preferences(bot=client)]
     for command_cog in modules:
         client.add_cog(command_cog)
         cprint(
