@@ -29,6 +29,8 @@ class Preferences(commands.Cog, name="Preferences"):
         """
         s = await Settings(ctx.guild.id)
         await s.set_field("prefix", prefix)
+        embederx=discord.Embed(title=f"Prefix has been set to {prefix}", color=0x0c0c0c)
+        await ctx.send(embed=embederx,ephemeral=True)
 
         #await ctx.message.add_reaction(CONFIG["yes_emoji"])
 
@@ -51,6 +53,8 @@ class Preferences(commands.Cog, name="Preferences"):
         for _locale in locales:
             if _locale == locale:
                 await s.set_field("locale", locale)
+                embederx=discord.Embed(title=f"Locale succesfully set!", color=0x0c0c0c)
+                await ctx.send(embed=embederx,ephemeral=True)
 
                 #await ctx.message.add_reaction(CONFIG["yes_emoji"])
                 return
