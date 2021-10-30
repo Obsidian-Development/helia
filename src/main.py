@@ -14,7 +14,7 @@ from listener.core.client import CoreClient
 from listener.prefs import Preferences
 from listener.utils import Config, Logger, Strings, Utils
 
-os.system("ls -l; pip uninstall -y discord.py")
+#os.system("ls -l; pip uninstall -y discord.py")
 os.system("ls -l; poetry remove discord.py")
 #os.system("ls -l; pip install discord")
 #os.system("ls -l; poetry add discord")
