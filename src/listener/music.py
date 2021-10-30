@@ -7,7 +7,7 @@ from enum import Enum
 
 import discord
 import humanize
-import wavelink
+import forklink
 from discord.ext import commands
 
 from listener.utils import Commands, Config, Logger, Settings, Strings, Utils
@@ -140,7 +140,7 @@ class Queue:
         self.position = 0
 
 
-class Player(wavelink.Player):
+class Player(forklink.Player):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.queue = Queue()
@@ -165,7 +165,7 @@ class Player(wavelink.Player):
         STRINGS = Strings(lang)
         if not tracks:
             raise NoTracksFound
-        if isinstance(tracks, wavelink.TrackPlaylist):
+        if isinstance(tracks, forklink.TrackPlaylist):
             self.queue.add(*tracks.tracks)
             playEmbedplaylist = discord.Embed(
                 title=STRINGS["music"]["embed_controler_title"],
@@ -298,11 +298,11 @@ class Player(wavelink.Player):
         await self.play(self.queue.current_track)
 
 
-class Music(commands.Cog, wavelink.WavelinkMixin, name="Music"):
+class Music(commands.Cog, forklink.forklinkMixin, name="Music"):
     def __init__(self, bot):
         self.bot = bot
         self.name = "Music"
-        self.wavelink = wavelink.Client(bot=bot)
+        self.forklink = forklink.Client(bot=bot)
         self.bot.loop.create_task(self.start_nodes())
 
     @commands.Cog.listener()
@@ -316,9 +316,9 @@ class Music(commands.Cog, wavelink.WavelinkMixin, name="Music"):
             print("[MUSIC]Someone left voice chat")
             print("---------------------------")
 
-    @wavelink.WavelinkMixin.listener("on_track_stuck")
-    @wavelink.WavelinkMixin.listener("on_track_end")
-    @wavelink.WavelinkMixin.listener("on_track_exception")
+    @forklink.forklinkMixin.listener("on_track_stuck")
+    @forklink.forklinkMixin.listener("on_track_end")
+    @forklink.forklinkMixin.listener("on_track_exception")
     async def on_player_stop(self, node, payload):
         if payload.player.queue.repeat_mode == RepeatMode.ONE:
             await payload.player.repeat_track()
@@ -354,19 +354,19 @@ class Music(commands.Cog, wavelink.WavelinkMixin, name="Music"):
             },
         }
         for node in nodes.values():
-            await self.wavelink.initiate_node(**node)
+            await self.forklink.initiate_node(**node)
 
-    @wavelink.WavelinkMixin.listener()
-    async def on_node_ready(self, node: wavelink.Node):
+    @forklink.forklinkMixin.listener()
+    async def on_node_ready(self, node: forklink.Node):
         print("---------------------------")
         print(f"[MUSIC]Node {node.identifier} is ready!")
         print("---------------------------")
 
     def get_player(self, obj):
         if isinstance(obj, commands.Context):
-            return self.wavelink.get_player(obj.guild.id, cls=Player, context=obj)
+            return self.forklink.get_player(obj.guild.id, cls=Player, context=obj)
         elif isinstance(obj, discord.Guild):
-            return self.wavelink.get_player(obj.id, cls=Player)
+            return self.forklink.get_player(obj.id, cls=Player)
 
     @commands.command(
         slash_command=True, message_command=True,
@@ -430,7 +430,7 @@ class Music(commands.Cog, wavelink.WavelinkMixin, name="Music"):
             if not re.match(URL_REGEX, query):
                 query = f"ytsearch:{query}"
 
-            await player.add_tracks(ctx, await self.wavelink.get_tracks(query))
+            await player.add_tracks(ctx, await self.forklink.get_tracks(query))
 
     @play_command.error
     async def play_command_error(self, ctx, exc):
