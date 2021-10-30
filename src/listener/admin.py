@@ -126,7 +126,7 @@ class Admin(commands.Cog, name="Admin"):
         """
         try:
             self.bot.load_extension(f"listener.{module}")
-            embeder=disnake.Embed(title="Cog has been loaded!", color=0x0c0c0c)
+            embeder=disnake.Embed(title=f"Module {module} has been loaded", color=0x0c0c0c)
             await ctx.send(embed=embeder,ephemeral=True)
         except Exception as e:
             #await ctx.message.add_reaction(CONFIG["no_emoji"])
@@ -147,7 +147,7 @@ class Admin(commands.Cog, name="Admin"):
         """
         try:
             self.bot.unload_extension(f"listener.{module}")
-            embederx=disnake.Embed(title="Cog has been unloaded!", color=0x0c0c0c)
+            embederx=disnake.Embed(title=f"Module {module} has been unloaded", color=0x0c0c0c)
             await ctx.send(embed=embederx)
         except Exception as e:
             #await ctx.message.add_reaction(CONFIG["no_emoji"])
@@ -172,7 +172,7 @@ class Admin(commands.Cog, name="Admin"):
         """
         try:
             self.bot.reload_extension(f"listener.{module}")
-            embederxx=disnake.Embed(title="Cog has been reloaded!", color=0x0c0c0c)
+            embederxx=disnake.Embed(title=f"Module {module} has been reloaded", color=0x0c0c0c)
             await ctx.send(embed=embederxx)
         except Exception as e:
             #await ctx.message.add_reaction(CONFIG["no_emoji"])
