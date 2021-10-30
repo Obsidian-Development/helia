@@ -148,7 +148,7 @@ class Admin(commands.Cog, name="Admin"):
         try:
             self.bot.unload_extension(f"listener.{module}")
             embederx=disnake.Embed(title="Cog has been unloaded!", color=0x0c0c0c)
-            await ctx.send(embed=embederx,ephemeral=True)
+            await ctx.send(embed=embederx)
         except Exception as e:
             #await ctx.message.add_reaction(CONFIG["no_emoji"])
             embed = Utils.error_embed("`{}`: {}".format(type(e).__name__, e))
@@ -173,7 +173,7 @@ class Admin(commands.Cog, name="Admin"):
         try:
             self.bot.reload_extension(f"listener.{module}")
             embederxx=disnake.Embed(title="Cog has been reloaded!", color=0x0c0c0c)
-            await ctx.send(embed=embederxx,ephemeral=True)
+            await ctx.send(embed=embederxx)
         except Exception as e:
             #await ctx.message.add_reaction(CONFIG["no_emoji"])
             embed = Utils.error_embed("`{}`: {}".format(type(e).__name__, e))
