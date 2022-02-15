@@ -12,6 +12,7 @@ from disnake import ButtonStyle, SelectOption
 from disnake.ext import commands
 from disnake.ext.commands import Bot, Context
 from disnake.ui import Button, Select, View
+from disnake.ext.commands.params import Param
 from dotenv import load_dotenv
 
 from listener.utils import Config, Logger, Settings, Strings, Utils
@@ -140,7 +141,7 @@ class Admin(commands.Cog, name="Admin"):
         description="Load a module.",
     )
     @commands.is_owner()
-    async def sload(self, inter: disnake.ApplicationCommandInteraction, *, module: str) -> NoReturn:
+    async def sload(self, inter: disnake.ApplicationCommandInteraction, *, module: str = Param(description="Name of the module.")) -> NoReturn:
         """Loads a module (cog). If the module is not found
             or an error is found in its code, it will throw an error.
 
@@ -188,7 +189,7 @@ class Admin(commands.Cog, name="Admin"):
         description="Unload a module.",
     )
     @commands.is_owner()
-    async def sunload(self, inter: disnake.ApplicationCommandInteraction, *, module: str) -> NoReturn:
+    async def sunload(self, inter: disnake.ApplicationCommandInteraction, *, module: str= Param(description="Name of the module.")) -> NoReturn:
         """Unloads a module (cog). If the module is not found, it will throw an error.
 
         Attributes:
@@ -238,7 +239,7 @@ class Admin(commands.Cog, name="Admin"):
         description="Reload a module.",
     )
     @commands.is_owner()
-    async def _sreload(self, inter: disnake.ApplicationCommandInteraction, *, module: str) -> NoReturn:
+    async def _sreload(self, inter: disnake.ApplicationCommandInteraction, *, module: str = Param(description="Name of the module.")) -> NoReturn:
         """Loads a module (cog). If the module is not found
             or an error is found in its code, it will throw an error.
 
