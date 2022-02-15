@@ -121,6 +121,31 @@ class Help(commands.Cog):
         # await interaction.send(embed=embed)
 
         await ctx.send(embed=embede, view=view)
+        
+    @commands.slash_command(
+        name="help",
+        description="Get a list of commands in the bot.",
+    )
+    async def shelp(self,inter: disnake.ApplicationCommandInteraction):
+        embed = disnake.Embed(title="SELECTION TEST",
+                              description="Testing our embeds",
+                              color=0xFF8000)
+        embede = disnake.Embed(
+            title=":books: Help System",
+            description=f"Welcome To {self.bot.user.name} Help System",
+        )
+        embede.set_footer(text="Developed with ❤️ by Middlle")
+        view = DropdownView(self.bot)
+
+        done_components = [
+            Button(style=ButtonStyle.secondary, label="·", disabled=True),
+        ]
+
+        # async def callback(interaction):
+        # await interaction.send(embed=embed)
+
+        await inter.send(embed=embede, view=view)
+    
 
 
 def setup(bot):
