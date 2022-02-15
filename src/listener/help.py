@@ -144,7 +144,7 @@ class Help(commands.Cog):
         # async def callback(interaction):
         # await interaction.send(embed=embed)
 
-        await inter.send(embed=embede, view=view)
+        await inter.response.send_message(embed=embede, view=view)
     
 
 

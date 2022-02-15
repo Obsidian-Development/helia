@@ -134,6 +134,31 @@ class Admin(commands.Cog, name="Admin"):
             await ctx.send(embed=embed)
         #else:
             #await ctx.message.add_reaction(CONFIG["yes_emoji"])
+    
+    @commands.slash_command(
+        name="load",
+        description="Load a module.",
+    )
+    @commands.is_owner()
+    async def sload(self, inter: disnake.ApplicationCommandInteraction, *, module: str) -> NoReturn:
+        """Loads a module (cog). If the module is not found
+            or an error is found in its code, it will throw an error.
+
+        Attributes:
+        -----------
+        - `module` - the module to load
+
+        """
+        try:
+            self.bot.load_extension(f"listener.{module}")
+            embeder=disnake.Embed(title=f"Module {module} has been loaded", color=0x0c0c0c)
+            await inter.response.send_message(embed=embeder,delete_after=5)
+        except Exception as e:
+            #await ctx.message.add_reaction(CONFIG["no_emoji"])
+            embed = Utils.error_embed("`{}`: {}".format(type(e).__name__, e))
+            await inter.response.send_message(embed=embed)
+        #else:
+            #await ctx.message.add_reaction(CONFIG["yes_emoji"])
 
     @commands.command(slash_command=True, message_command=True)
     @commands.is_owner()
@@ -153,6 +178,32 @@ class Admin(commands.Cog, name="Admin"):
             #await ctx.message.add_reaction(CONFIG["no_emoji"])
             embed = Utils.error_embed("`{}`: {}".format(type(e).__name__, e))
             await ctx.send(embed=embed)
+        #else:
+
+            #await ctx.message.add_reaction(CONFIG["yes_emoji"])
+    
+    
+    @commands.slash_command(
+        name="unload",
+        description="Unload a module.",
+    )
+    @commands.is_owner()
+    async def sunload(self, inter: disnake.ApplicationCommandInteraction, *, module: str) -> NoReturn:
+        """Unloads a module (cog). If the module is not found, it will throw an error.
+
+        Attributes:
+        -----------
+        - `module` - the module to load
+
+        """
+        try:
+            self.bot.unload_extension(f"listener.{module}")
+            embederx=disnake.Embed(title=f"Module {module} has been unloaded", color=0x0c0c0c)
+            await inter.response.send_message(embed=embederx,delete_after=5)
+        except Exception as e:
+            #await ctx.message.add_reaction(CONFIG["no_emoji"])
+            embed = Utils.error_embed("`{}`: {}".format(type(e).__name__, e))
+            await inter.response.send_message(embed=embed)
         #else:
 
             #await ctx.message.add_reaction(CONFIG["yes_emoji"])
@@ -178,6 +229,32 @@ class Admin(commands.Cog, name="Admin"):
             #await ctx.message.add_reaction(CONFIG["no_emoji"])
             embed = Utils.error_embed("`{}`: {}".format(type(e).__name__, e))
             await ctx.send(embed=embed)
+        #else:
+            #await ctx.message.add_reaction(CONFIG["yes_emoji"])
+            
+    
+    @commands.slash_command(
+        name="reload",
+        description="Reload a module.",
+    )
+    @commands.is_owner()
+    async def _sreload(self, inter: disnake.ApplicationCommandInteraction, *, module: str) -> NoReturn:
+        """Loads a module (cog). If the module is not found
+            or an error is found in its code, it will throw an error.
+
+        Attributes:
+        -----------
+        - `module` - the module to load
+
+        """
+        try:
+            self.bot.reload_extension(f"listener.{module}")
+            embederxx=disnake.Embed(title=f"Module {module} has been reloaded", color=0x0c0c0c)
+            await inter.response.send_message(embed=embederxx,delete_after=5)
+        except Exception as e:
+            #await ctx.message.add_reaction(CONFIG["no_emoji"])
+            embed = Utils.error_embed("`{}`: {}".format(type(e).__name__, e))
+            await inter.response.send_message(embed=embed)
         #else:
             #await ctx.message.add_reaction(CONFIG["yes_emoji"])
 
