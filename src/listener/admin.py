@@ -153,7 +153,7 @@ class Admin(commands.Cog, name="Admin"):
         try:
             self.bot.load_extension(f"listener.{module}")
             embeder=disnake.Embed(title=f"Module {module} has been loaded", color=0x0c0c0c)
-            await inter.response.send_message(embed=embeder,delete_after=5)
+            await inter.response.send_message(embed=embeder,ephemeral=True)
         except Exception as e:
             #await ctx.message.add_reaction(CONFIG["no_emoji"])
             embed = Utils.error_embed("`{}`: {}".format(type(e).__name__, e))
@@ -200,7 +200,7 @@ class Admin(commands.Cog, name="Admin"):
         try:
             self.bot.unload_extension(f"listener.{module}")
             embederx=disnake.Embed(title=f"Module {module} has been unloaded", color=0x0c0c0c)
-            await inter.response.send_message(embed=embederx,delete_after=5)
+            await inter.response.send_message(embed=embederx,ephemeral=True)
         except Exception as e:
             #await ctx.message.add_reaction(CONFIG["no_emoji"])
             embed = Utils.error_embed("`{}`: {}".format(type(e).__name__, e))
@@ -251,7 +251,7 @@ class Admin(commands.Cog, name="Admin"):
         try:
             self.bot.reload_extension(f"listener.{module}")
             embederxx=disnake.Embed(title=f"Module {module} has been reloaded", color=0x0c0c0c)
-            await inter.response.send_message(embed=embederxx,delete_after=5)
+            await inter.response.send_message(embed=embederxx,ephemeral=True)
         except Exception as e:
             #await ctx.message.add_reaction(CONFIG["no_emoji"])
             embed = Utils.error_embed("`{}`: {}".format(type(e).__name__, e))
@@ -288,6 +288,37 @@ class Admin(commands.Cog, name="Admin"):
         embedtimes = disnake.Embed(title="Your invite", color=0x778EFD)
         embedtimes.add_field(name="Is here", value=f"{invite}", inline=True)
         await ctx.send(embed=embedtimes)
+    
+    @commands.slash_command(
+        name="invite_bot",
+        description="Makes a bot invite without any permissions.",
+    )
+    
+    async def sinvite_bot(self,
+                         inter: disnake.ApplicationCommandInteraction,
+                         *,
+                         user: disnake.User = None):
+        user = user or inter.author
+
+        if not user.bot:
+            embed = disnake.Embed(
+                title="Error",
+                description="The provided user id is not a bot!",
+                color=0xFF0000,
+            )
+
+            return await inter.response.send_message(embed=embed)
+
+        invite = disnake.utils.oauth_url(client_id=user.id,
+                                         scopes=("bot",
+                                                 "applications.commands"))
+        embeder = disnake.Embed(
+            title="Generating invite for the provided user id", color=0x778EFD)
+        
+       
+        embedtimes = disnake.Embed(title="Your invite is here", color=0x778EFD)
+        embedtimes.add_field(name="Link", value=f"{invite}", inline=True)
+        await inter.response.send_message(embed=embedtimes,ephemeral=True)
 
     @commands.command(slash_command=True,
                       message_command=True,
