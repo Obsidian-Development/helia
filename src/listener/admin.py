@@ -436,7 +436,7 @@ class Admin(commands.Cog, name="Admin"):
         name="set_status",
         description="Set the bot status[OWNERS-ONLY!!!!].",
     )
-    async def slashset_status(self, inter: disnake.ApplicationCommandInteraction, *args):
+    async def slashset_status(self, inter: disnake.ApplicationCommandInteraction, sts: str = Param(description="Text of status.")):
         s = await Settings(inter.guild.id)
         lang = await s.get_field("locale", CONFIG["default_locale"])
         STRINGS = Strings(lang)
@@ -452,7 +452,7 @@ class Admin(commands.Cog, name="Admin"):
         ]
         if str(author.id) in valid_users:
             await self.bot.change_presence(
-                activity=disnake.Game(" ".join(args)))
+                activity=disnake.Game(" ".join(sts)))
             embed = disnake.Embed(
                 title=STRINGS["moderation"]["setstatustext"],
                 description=STRINGS["moderation"]["setstatusdesc"],
