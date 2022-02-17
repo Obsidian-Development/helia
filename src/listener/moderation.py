@@ -6,7 +6,7 @@ from disnake import Member, User
 from disnake.ext import commands
 from disnake.ext.commands import Bot, Context, Greedy
 from termcolor import cprint
-
+from disnake.ext.commands.params import Param
 from listener.utils import Config, Logger, Settings, Strings, Utils
 
 # from disnake_components import Button, ButtonStyle, disnakeComponents
@@ -81,6 +81,55 @@ class Moderation(commands.Cog, name="Moderation"):
         ║============================================================║
         """
         )
+        
+    @commands.slash_command(
+        name="ban",
+        description="Bans a member.",
+    )
+    @commands.bot_has_permissions(ban_members=True)
+    @commands.has_permissions(ban_members=True)
+    @commands.cooldown(1, 5, commands.BucketType.user)
+    async def slashban(
+        self, inter: disnake.ApplicationCommandInteraction, member: Member = Param(description="User to ban."), *, reason: str = Param(description="Reason to ban.")
+    ) -> NoReturn:
+        """
+
+
+        A command to ban a specified user.
+
+        Arguments:
+        -----------
+        - `member` - user
+        - `reason` - ban reason
+
+        """
+        await inter.response.defer()
+        s = await Settings(inter.guild.id)
+        lang = await s.get_field("locale", CONFIG["default_locale"])
+        STRINGS = Strings(lang)
+        if not member.bot:
+            embed = Utils.error_embed(
+                STRINGS["moderation"]["dm_kick"].format(inter.guild, reason)
+            )
+            await member.send(embed=embed)
+        await asyncio.sleep(5)
+        await member.ban(reason=reason)
+        cprint(
+            f"""
+        ║============================================================║
+        ║--------Succesfully banned {member} in {inter.guild.name}-------║
+        ║============================================================║
+        """
+        )
+        await inter.edit_original_message(
+                        embed=disnake.Embed(
+                            title="Action done",
+                            description=f"Banned {member}",
+                            color=0xFF8000,
+                        ),
+                        
+                    )
+        
 
     @commands.command(slash_command=True, message_command=True)
     @commands.bot_has_permissions(ban_members=True)
