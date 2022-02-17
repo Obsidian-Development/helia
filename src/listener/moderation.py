@@ -41,32 +41,6 @@ class Moderation(commands.Cog, name="Moderation"):
         lang = await s.get_field("locale", CONFIG["default_locale"])
         STRINGS = Strings(lang)
 
-        # select_components = [[
-        # Button(style=ButtonStyle.green, label="✓"),
-        # Button(style=ButtonStyle.red, label="X"),
-        # ]]
-        # done_components = [[
-        # Button(style=ButtonStyle.grey, label="·", disabled=True),
-        # ]]
-
-        # embedconfirm = disnake.Embed(
-        # title="Ban Command",
-        # description="```Do you want to ban this member?```",
-        # )
-        # await ctx.send(embed=embedconfirm, components=select_components)
-        # response = await self.bot.wait_for(
-        # "button_click", check=lambda message: message.author == ctx.author)
-        # try:
-        # if response.component.label == "✓":
-        # await response.respond(
-        # type=7,
-        # embed=disnake.Embed(
-        # title="Action confirmed",
-        # description=f"Banning {member} for {reason}",
-        # color=0xFF8000,
-        # ),
-        # components=done_components,
-        # )
         if not member.bot:
             embed = Utils.error_embed(
                 STRINGS["moderation"]["dm_kick"].format(ctx.guild, reason)
@@ -150,22 +124,6 @@ class Moderation(commands.Cog, name="Moderation"):
         lang = await s.get_field("locale", CONFIG["default_locale"])
         STRINGS = Strings(lang)
 
-        # select_components = [[
-        # Button(style=ButtonStyle.green, label="✓"),
-        # Button(style=ButtonStyle.red, label="X"),
-        # ]]
-        # done_components = [[
-        # Button(style=ButtonStyle.grey, label="·", disabled=True),
-        # ]]
-
-        # embedconfirm = disnake.Embed(
-        # title="Unban Command",
-        # description="```Do you want to unban this member?```",
-        # )
-        # await ctx.send(embed=embedconfirm, components=select_components)
-        # response = await self.bot.wait_for(
-        # "button_click", check=lambda message: message.author == ctx.author)
-
         if "#" in ctx.message.content:
             banned_users = await ctx.guild.bans()
             for ban_entry in banned_users:
@@ -208,20 +166,75 @@ class Moderation(commands.Cog, name="Moderation"):
              ║============================================================║
             """
             )
-        # else:
-        # await response.respond(
-        # type=7,
-        # embed=disnake.Embed(
-        # title="Action Aborted",
-        # description="The action was aborted by clicking the no button",
-        # color=0xDD2E44,
-        # ),
-        # components=done_components,
-        # )
-
-        #await ctx.message.add_reaction(CONFIG["no_emoji"])
         embed = Utils.error_embed(STRINGS["error"]["user_not_found"])
         await ctx.send(embed=embed)
+        
+    @commands.slash_command(
+        name="unban",
+        description="Unbans a member.",
+    )
+    @commands.bot_has_permissions(ban_members=True)
+    @commands.has_permissions(ban_members=True)
+    @commands.cooldown(1, 5, commands.BucketType.user)
+    async def slashunban(self, inter: disnake.ApplicationCommandInteraction, *, member= Param(description="User to unban.")) -> NoReturn:
+        """
+
+
+        A command to unban a specified user.
+
+        Arguments:
+        -----------
+        - `member` - user tag. Example: `name#1234`
+
+        """
+        s = await Settings(inter.guild.id)
+        lang = await s.get_field("locale", CONFIG["default_locale"])
+        STRINGS = Strings(lang)
+
+        if "#" in member:
+            banned_users = await inter.guild.bans()
+            for ban_entry in banned_users:
+                member_name, member_discriminator = member.split("#")
+                user = ban_entry.user
+                if (user.name, user.discriminator) == (
+                    member_name,
+                    member_discriminator,
+                ):
+                    await inter.guild.unban(user)
+                    await inter.response.send_message(
+                        embed=disnake.Embed(
+                            title="Action confirmed",
+                            description=f"Unbanned {user}",
+                            color=0xFF8000,
+                        ),
+                    )
+            cprint(
+                f"""
+             ║============================================================║
+             ║------Succesfully unbanned {member} in {inter.guild.name}-------║
+             ║============================================================║
+            """
+            )
+            return
+        elif member is int:
+            member = await self.client.fetch_user(int(member))
+            await inter.guild.unban(member)
+            await inter.response.send_message(
+                embed=disnake.Embed(
+                    title="Action confirmed",
+                    description=f"Unbanned {user}",
+                    color=0xFF8000,
+                ),
+            )
+            cprint(
+                f"""
+             ║============================================================║
+             ║------Succesfully unbanned {member} in {inter.guild.name}-------║
+             ║============================================================║
+            """
+            )
+        embed = Utils.error_embed(STRINGS["error"]["user_not_found"])
+        await inter.response.send_message(embed=embed)
 
     @commands.command(slash_command=True, message_command=True)
     @commands.bot_has_permissions(ban_members=True)
