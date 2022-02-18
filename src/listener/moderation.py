@@ -312,56 +312,68 @@ class Moderation(commands.Cog, name="Moderation"):
         s = await Settings(ctx.guild.id)
         lang = await s.get_field("locale", CONFIG["default_locale"])
         STRINGS = Strings(lang)
-
-        select_components = [
-            [
-                Button(style=ButtonStyle.green, label="✓"),
-                Button(style=ButtonStyle.red, label="X"),
-            ]
-        ]
-        done_components = [
-            [
-                Button(style=ButtonStyle.grey, label="·", disabled=True),
-            ]
-        ]
-
-        embedconfirm = disnake.Embed(
-            title="Kick Command",
-            description="```Do you want to kick this member?```",
-        )
-        await ctx.send(embed=embedconfirm, components=select_components)
-        response = await self.bot.wait_for(
-            "button_click", check=lambda message: message.author == ctx.author
-        )
-        if response.component.label == "✓":
-            await response.respond(
-                type=7,
-                embed=disnake.Embed(
-                    title="Action Completed",
-                    description=f"Kicked {member} for {reason}",
-                    color=0xDD2E44,
-                ),
-                components=done_components,
-            )
-            if not member.bot:
+        
+        if not member.bot:
                 embed = Utils.error_embed(
                     STRINGS["moderation"]["dm_kick"].format(ctx.guild, reason)
                 )
                 await member.send(embed=embed)
-            await asyncio.sleep(5)
-            await member.kick()
+        await asyncio.sleep(5)
+        await member.kick()
+        await ctx.send(
+                
+            embed=disnake.Embed(
+                title="Action Completed",
+                description=f"Kicked {member} for {reason}",
+                color=0xDD2E44,
+            ),
+                
+        )
             #await ctx.message.add_reaction(CONFIG["yes_emoji"])
-        else:
-            await response.respond(
-                type=7,
-                embed=disnake.Embed(
-                    title="Action Aborted",
-                    description="The action was aborted by clicking the no button",
-                    color=0xDD2E44,
-                ),
-                components=done_components,
-            )
-            return
+        
+            
+    @commands.slash_command(
+        name="kick",
+        description="Kicks a member.",
+    )
+    @commands.bot_has_permissions(kick_members=True)
+    @commands.has_permissions(kick_members=True)
+    @commands.cooldown(1, 5, commands.BucketType.user)
+    async def slashkick(
+        self, inter: disnake.ApplicationCommandInteraction, member: Member= Param(description="User to kick."), *, reason: str = "N/A"
+    ) -> NoReturn:
+        """
+
+
+        A command to kick a specified user.
+
+        Arguments:
+        -----------
+        - `member` - user
+        - `reason` - kick reason
+
+        """
+        await inter.response.defer()
+        s = await Settings(ctx.guild.id)
+        lang = await s.get_field("locale", CONFIG["default_locale"])
+        STRINGS = Strings(lang)
+        
+        if not member.bot:
+                embed = Utils.error_embed(
+                    STRINGS["moderation"]["dm_kick"].format(ctx.guild, reason)
+                )
+                await member.send(embed=embed)
+        await asyncio.sleep(5)
+        await member.kick()
+        await inter.edit_original_message(
+                
+            embed=disnake.Embed(
+                title="Action Completed",
+                description=f"Kicked {member} for {reason}",
+                color=0xDD2E44,
+            ),
+                
+        )
 
     @commands.command(slash_command=True, message_command=True,aliases=["clear"])
     @commands.bot_has_permissions(manage_messages=True)
