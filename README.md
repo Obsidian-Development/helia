@@ -17,7 +17,7 @@
 [![GitHub](https://img.shields.io/github/license/pieckenst/helia?style=for-the-badge)](https://github.com/pieckenst/helia/blob/master/LICENSE)
 [![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)](https://forthebadge.com)
 
-<h6 align="center"> This bot is no longer actively maintained due to changes in the Discord API in 2022. Since then, any verified bot must use slash commands. I might consider restarting development if it's possible to convert all the functionality to use slash commands. Until then, this is mainly a public code archive for anyone who wants to use the code from this codebase.</h6>
+<h6 align="center"> This bot is no longer actively maintained due to changes in the Discord API made back in 2022. Since then, any verified bot must use slash commands. I might consider restarting development if it's possible to convert all the functionality to use slash commands. Until then, this is mainly a public code archive for anyone who wants to use the code from this codebase.</h6>
 
 <div align="center">
 <h3 align="center">An open-source music and moderation bot made for your pleasure</h3>
@@ -58,9 +58,7 @@ We have a complete copy of this repository for mainland china folk up at gitee ,
 Функции модерации (например, ban,kick,mute,unmute). Имеется возможность
 просматривать информацию о пользователе и смотреть аватарку профиля.
 
-Информационные команды а также поиск в википедии. Вы можете использовать //wiki
-для поиска в википедии. Кроме того, бот включает несколько команд для просмотра
-короткой информации о некоторых дистрибутивах Linux.
+Информационные команды а также поиск в википедии. Вы можете воспользоваться //wiki для поиска в Википедии. Кроме того, бот включает в себя несколько команд, позволяющих быстро ознакомиться с кратким описанием популярных дистрибутивов Linux.
 
 Более подробную информацию о функциях бота можно увидеть в //help, и вы всегда
 можете внести свой вклад в улучшение бота, если знаете python, перейдя в
