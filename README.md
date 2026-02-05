@@ -17,7 +17,11 @@
 [![GitHub](https://img.shields.io/github/license/pieckenst/helia?style=for-the-badge)](https://github.com/pieckenst/helia/blob/master/LICENSE)
 [![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)](https://forthebadge.com)
 
-<h6 align="center"> This bot is no longer actively maintained due to changes in the Discord API made back in 2022. Since then, any verified bot must use slash commands. I might consider restarting development if it's possible to convert all the functionality to use slash commands. Until then, this is mainly a public code archive for anyone who wants to use the code from this codebase.</h6>
+<h6 align="center"> This bot is no longer actively maintained due to changes in the Discord API made back in 2022. Since then, any verified bot must use slash commands. I might consider restarting development if it's possible to convert all the functionality to use slash commands. Until then, this is mainly a public code archive for anyone who wants to use the code from this codebase.
+   
+Also gotta enjoy how there's now ipfs/helia repository that exists nowadays even though i came up with the idea for name helia back in Commit 537d6e9 that i authored on Aug 6, 2020
+
+</h6>
 
 <div align="center">
 <h3 align="center">An open-source music and moderation bot made for your pleasure</h3>
