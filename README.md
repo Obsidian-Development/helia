@@ -17,7 +17,7 @@
 [![GitHub](https://img.shields.io/github/license/pieckenst/helia?style=for-the-badge)](https://github.com/pieckenst/helia/blob/master/LICENSE)
 [![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)](https://forthebadge.com)
 
-<h6 align="center"> This bot is not actively maintained anymore due to the API changes of discord back in 2022 where slash commands were mandated to be mandatorily used for any verified bot - i might bother restarting development if it's realistically possible to convert all functionality over to slash commands - until then it's mostly a public code archive for anyone willing to copy code from this codebase</h6>
+<h6 align="center"> This bot is no longer actively maintained due to changes in the Discord API in 2022. Since then, any verified bot must use slash commands. I might consider restarting development if it's possible to convert all the functionality to use slash commands. Until then, this is mainly a public code archive for anyone who wants to use the code from this codebase.</h6>
 
 <div align="center">
 <h3 align="center">An open-source music and moderation bot made for your pleasure</h3>
