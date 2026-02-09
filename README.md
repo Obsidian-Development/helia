@@ -19,7 +19,7 @@
 
 <h6 align="center"> This bot is no longer actively maintained due to changes in the Discord API made back in 2022. Since then, any verified bot must use slash commands. I might consider restarting development if it's possible to convert all the functionality to use slash commands. Until then, this is mainly a public code archive for anyone who wants to use the code from this codebase.
    
-Also gotta enjoy how there's now ipfs/helia repository that exists nowadays even though i came up with the idea for name helia back in Commit 537d6e9 that i authored on Aug 6, 2020
+It's interesting to see that there's also now an ipfs/helia repository that exists since 2022, using the same name. I had the same idea for the name "Helia" back in August 2020, back in Commit 537d6e9.
 
 </h6>
 
